@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "name": "functional-income",
+  "alias": "functional-income.com",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build"
+    }
+  ]
+}
