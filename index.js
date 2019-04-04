@@ -6,7 +6,7 @@ const qs = require('qs')
 const defaultBaseUrl = 'https://api.functional-income.com'
 
 module.exports = class FinClient {
-  constructor(opts = { }) {
+  constructor (opts = { }) {
     const {
       baseUrl = defaultBaseUrl,
       user,
@@ -24,15 +24,15 @@ module.exports = class FinClient {
     this._reset()
   }
 
-  get isAuthenticated() {
+  get isAuthenticated () {
     return !!this._token
   }
 
-  get token() {
+  get token () {
     return this._token
   }
 
-  get user() {
+  get user () {
     return this._user
   }
 
@@ -40,7 +40,7 @@ module.exports = class FinClient {
   // Users
   // --------------------------------------------------------------------------
 
-  async signin({ email, password }) {
+  async signin ({ email, password }) {
     return this._request({
       url: `/1/auth/signin`,
       method: 'put',
@@ -56,7 +56,7 @@ module.exports = class FinClient {
       })
   }
 
-  async signup(data) {
+  async signup (data) {
     return this._request({
       url: `/1/auth/signup`,
       method: 'post',
@@ -69,18 +69,18 @@ module.exports = class FinClient {
       })
   }
 
-  async signout() {
+  async signout () {
     this._token = null
     this._user = null
   }
 
-  async getMe() {
+  async getMe () {
     return this._request({
       url: `/1/me`
     }).then(res => res.data)
   }
 
-  async updateMe(data) {
+  async updateMe (data) {
     return this._request({
       url: `/1/me`,
       method: 'put',
@@ -92,7 +92,7 @@ module.exports = class FinClient {
   // Projects
   // --------------------------------------------------------------------------
 
-  async createProject(data) {
+  async createProject (data) {
     return this._request({
       url: `/1/projects`,
       method: 'post',
@@ -100,13 +100,13 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async getProject(id) {
+  async getProject (id) {
     return this._request({
       url: `/1/projects/${id}`
     }).then(res => res.data)
   }
 
-  async updateProject(data) {
+  async updateProject (data) {
     return this._request({
       url: `/1/projects/${data.id}`,
       method: 'put',
@@ -118,7 +118,7 @@ module.exports = class FinClient {
   // Consumers
   // --------------------------------------------------------------------------
 
-  async createConsumer(data) {
+  async createConsumer (data) {
     return this._request({
       url: `/1/consumers`,
       method: 'post',
@@ -126,13 +126,13 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async getConsumer(id) {
+  async getConsumer (id) {
     return this._request({
       url: `/1/consumers/${id}`
     }).then(res => res.data)
   }
 
-  async removeConsumer(data) {
+  async removeConsumer (data) {
     return this._request({
       url: `/1/consumers/${data.id}`,
       method: 'delete'
@@ -143,7 +143,7 @@ module.exports = class FinClient {
   // Deployments
   // --------------------------------------------------------------------------
 
-  async createDeployment(data) {
+  async createDeployment (data) {
     return this._request({
       url: `/1/deployments`,
       method: 'post',
@@ -151,13 +151,13 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async getDeployment(id) {
+  async getDeployment (id) {
     return this._request({
       url: `/1/deployments/${id}`
     }).then(res => res.data)
   }
 
-  async updateDeployment(data) {
+  async updateDeployment (data) {
     return this._request({
       url: `/1/deployments/${data.id}`,
       method: 'put',
@@ -165,14 +165,14 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async removeDeployment(id) {
+  async removeDeployment (id) {
     return this._request({
       url: `/1/deployments/${id}`,
       method: 'delete'
     }).then(res => res.data)
   }
 
-  async listDeployments(opts = { }) {
+  async listDeployments (opts = { }) {
     const querystring = qs.stringify(opts)
 
     return this._request({
@@ -184,7 +184,7 @@ module.exports = class FinClient {
   // Resolving
   // --------------------------------------------------------------------------
 
-  async resolveDeployments(data) {
+  async resolveDeployments (data) {
     return this._request({
       url: `/1/resolve/deployments`,
       method: 'put',
@@ -192,7 +192,7 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async resolveConsumers(data) {
+  async resolveConsumers (data) {
     return this._request({
       url: `/1/resolve/consumers`,
       method: 'put',
@@ -204,7 +204,7 @@ module.exports = class FinClient {
   // Logs
   // --------------------------------------------------------------------------
 
-  async getLogs(identifier, opts) {
+  async getLogs (identifier, opts) {
     return this._request({
       url: `/1/logs`,
       method: 'put',
@@ -219,19 +219,19 @@ module.exports = class FinClient {
   // Billing
   // --------------------------------------------------------------------------
 
-  async getBilling() {
+  async getBilling () {
     return this._request({
       url: `/1/billing`
     }).then(res => res.data)
   }
 
-  async listBillingSources() {
+  async listBillingSources () {
     return this._request({
       url: `/1/billing/sources`
     }).then(res => res.data)
   }
 
-  async addBillingSource(data) {
+  async addBillingSource (data) {
     return this._request({
       url: `/1/billing/sources`,
       method: 'post',
@@ -239,14 +239,14 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async removeBillingSource(id) {
+  async removeBillingSource (id) {
     return this._request({
       url: `/1/billing/sources/${id}`,
       method: 'delete'
     }).then(res => res.data)
   }
 
-  async setDefaultBillingSource(id) {
+  async setDefaultBillingSource (id) {
     return this._request({
       url: `/1/billing/sources/${id}/set-default`,
       method: 'put'
@@ -257,7 +257,7 @@ module.exports = class FinClient {
   // Internal
   // --------------------------------------------------------------------------
 
-  _reset() {
+  _reset () {
     const headers = {}
 
     if (this._token) {
