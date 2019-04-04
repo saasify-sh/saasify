@@ -1,6 +1,6 @@
-# fin
+# fin-cli
 
-> CLI for [Fin](htts://functional-income.com). Fin is the easiest way to deploy and monetize serverless functions.
+> Developer CLI for [Fin](htts://functional-income.com). Fin is the easiest way to launch your own SaaS.
 
 [![NPM](https://img.shields.io/npm/v/fin.svg)](https://www.npmjs.com/package/fin) [![Build Status](https://travis-ci.com/functional-income/fin-cli.svg?branch=master)](https://travis-ci.com/functional-income/fin-cli) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -37,6 +37,12 @@ Commands:
   signup [options]                                     Creates a new account
   whoami                                               Prints information about the current user
 ```
+
+You can run `fin help [cmd]` to view the sub-help for any given command.
+
+## Walkthrough
+
+For more documentation and a detailed walkthrough, visit [functional-income.com](https://functional-income.com).
 
 ## Related
 
