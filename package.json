@@ -7,7 +7,7 @@
   "repository": "functional-income/fin-client",
   "license": "MIT",
   "scripts": {
-    "test": "ava -v && standard"
+    "test": "standard"
   },
   "engines": {
     "node": ">=8"
