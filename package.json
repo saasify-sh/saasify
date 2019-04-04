@@ -1,6 +1,6 @@
 {
   "name": "fin-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Universal HTTP client for Fin.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
