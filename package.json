@@ -1,6 +1,6 @@
 {
   "name": "fin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI for Fin. Fin is the easiest way to deploy and monetize serverless functions.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
