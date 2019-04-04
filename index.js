@@ -3,7 +3,7 @@
 const axios = require('axios')
 const qs = require('qs')
 
-const defaultBaseUrl = 'https://api.fin.io'
+const defaultBaseUrl = 'https://api.functional-income.com'
 
 module.exports = class FinClient {
   constructor(opts = { }) {
