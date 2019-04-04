@@ -26,27 +26,28 @@
     "fts"
   ],
   "devDependencies": {
-    "ava": "^1.2.0",
+    "ava": "^1.4.1",
     "standard": "^12.0.1",
     "update-markdown-usage": "^1.0.1"
   },
   "dependencies": {
-    "ajv": "^6.8.1",
+    "ajv": "^6.10.0",
     "clipboardy": "^1.2.3",
-    "commander": "^2.16.0",
-    "conf": "^2.2.0",
-    "credit-card": "^3.0.1",
+    "commander": "^2.20.0",
+    "conf": "^4.0.0",
+    "credit-card": "^3.0.2",
     "enquirer": "^2.3.0",
     "fast-stream-to-buffer": "^1.0.0",
+    "fin-client": "^0.0.2",
     "fs-extra": "^7.0.1",
-    "fts": "^1.0.8",
-    "fts-http": "^1.0.8",
-    "globby": "^9.0.0",
+    "fts": "^1.0.9",
+    "fts-http": "^1.0.9",
+    "globby": "^9.2.0",
     "is-directory": "^0.3.1",
-    "ora": "^3.1.0",
+    "ora": "^3.4.0",
     "p-map": "^2.0.0",
     "pluralize": "^7.0.0",
-    "stripe": "^6.25.1",
+    "stripe": "^6.28.0",
     "tempy": "^0.2.1",
     "yazl": "^2.5.1"
   }
