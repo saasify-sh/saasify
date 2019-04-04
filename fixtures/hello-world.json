@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "name": "hello-world",
+  "services": [
+    {
+      "src": "functions/hello-world.ts",
+      "name": "helloWorld"
+    }
+  ]
+}

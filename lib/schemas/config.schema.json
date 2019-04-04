@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Config",
+  "definitions": {
+    "Config": {
+      "title": "Config",
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "number",
+          "title": "version",
+          "default": 1
+        },
+        "name": {
+          "type": "string",
+          "title": "name"
+        },
+        "alias": {
+          "type": "string",
+          "title": "alias"
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Service"
+          },
+          "title": "services"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "services"
+      ]
+    },
+    "Service": {
+      "title": "Service",
+      "type": "object",
+      "properties": {
+        "src": {
+          "type": "string",
+          "title": "src"
+        },
+        "name": {
+          "type": "string",
+          "title": "name"
+        },
+        "route": {
+          "type": "string",
+          "title": "route"
+        },
+        "amountPerRequest": {
+          "type": "number",
+          "title": "amountPerRequest",
+          "default": 1
+        },
+        "amountPerCompute": {
+          "type": "number",
+          "title": "amountPerCompute",
+          "default": 1
+        },
+        "timeout": {
+          "type": "number",
+          "title": "timeout",
+          "default": 0
+        },
+        "authRateLimit": {
+          "$ref": "#/definitions/RateLimit",
+          "title": "authRateLimit"
+        },
+        "noAuthRateLimit": {
+          "$ref": "#/definitions/RateLimit",
+          "title": "noAuthRateLimit"
+        },
+        "additionalProperties": false
+      },
+      "required": [
+        "src"
+      ]
+    },
+    "RateLimit": {
+      "title": "RateLimit",
+      "type": "object",
+      "properties": {
+        "requests": {
+          "type": "boolean",
+          "title": "requests",
+          "default": true
+        },
+        "requestsInterval": {
+          "type": "number",
+          "title": "requestsInterval",
+          "default": 60000
+        },
+        "requestsMaxPerInterval": {
+          "type": "number",
+          "title": "requestsMaxPerInterval",
+          "default": 1000
+        }
+      },
+      "additionalProperties": false,
+      "required": [ ]
+    }
+  }
+}

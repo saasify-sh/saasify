@@ -1,0 +1,53 @@
+{
+  "name": "fin",
+  "version": "1.0.0",
+  "description": "CLI for Fin. Fin is the easiest way to deploy and monetize serverless functions.",
+  "main": "index.js",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "repository": "functional-income/fin-cli",
+  "license": "MIT",
+  "bin": {
+    "fin": "lib/cli.js"
+  },
+  "scripts": {
+    "docs": "update-markdown-usage",
+    "test": "standard"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "faas",
+    "saas",
+    "lambda",
+    "serverless",
+    "deploy",
+    "fin",
+    "fts"
+  ],
+  "devDependencies": {
+    "ava": "^1.2.0",
+    "standard": "^12.0.1",
+    "update-markdown-usage": "^1.0.1"
+  },
+  "dependencies": {
+    "ajv": "^6.8.1",
+    "clipboardy": "^1.2.3",
+    "commander": "^2.16.0",
+    "conf": "^2.2.0",
+    "credit-card": "^3.0.1",
+    "enquirer": "^2.3.0",
+    "fast-stream-to-buffer": "^1.0.0",
+    "fs-extra": "^7.0.1",
+    "fts": "^1.0.8",
+    "fts-http": "^1.0.8",
+    "globby": "^9.0.0",
+    "is-directory": "^0.3.1",
+    "ora": "^3.1.0",
+    "p-map": "^2.0.0",
+    "pluralize": "^7.0.0",
+    "stripe": "^6.25.1",
+    "tempy": "^0.2.1",
+    "yazl": "^2.5.1"
+  }
+}
