@@ -1,8 +1,8 @@
-# fin-cli
+# fin
 
 > Developer CLI for [Fin](https://functional-income.com). Fin is the easiest way to launch your own SaaS.
 
-[![NPM](https://img.shields.io/npm/v/fin.svg)](https://www.npmjs.com/package/fin) [![Build Status](https://travis-ci.com/functional-income/fin-cli.svg?branch=master)](https://travis-ci.com/functional-income/fin-cli) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/fin.svg)](https://www.npmjs.com/package/fin) [![Build Status](https://travis-ci.com/functional-income/fin.svg?branch=master)](https://travis-ci.com/functional-income/fin) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
