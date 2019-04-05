@@ -10,6 +10,14 @@ Fin allows makers to:
 2) Ship in minutes instead of months ✈️
 3) Monetize OSS ⭐️
 
+## Status
+
+**As of April, 2019, Fin is an active WIP and is not yet ready for general use.**
+
+The backend and developer CLI are complete, and our team is working hard on an MVP of the template-based SaaS website generation.
+
+If you're interested in OSS sustainability and want to follow along with the progress of Fin, please consider starring the [repo](https://github.com/functional-income/fin) and following us on [ProductHunt](https://www.producthunt.com/upcoming/fin). Thanks! ⭐️
+
 ## Features
 
 - **$$$**: Monetize your open source projects!
