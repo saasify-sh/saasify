@@ -12,13 +12,13 @@ Fin allows makers to:
 
 ## Features
 
-- **Sustainable**: Monetize your open source projects!
+- **$$$**: Monetize your open source projects!
 - **Simple**: Quick to setup your own SaaS
 - **Productive**: Focus on your unique value prop instead of SaaS boilerplate
-- **Standard**: Built with TypeScript + Stripe
+- **Standard**: Built with TypeScript + Lambda + Stripe
 - **Compatible**: Generated APIs are usable from any programming language
 - **Automatic**: Fin handles all docs, hosting, billing, accounts, and support for you
-- **Effective**: Start validating product / market fit in minutes instead of months
+- **Efficient**: Start validating product / market fit in minutes instead of months
 
 ## Install
 
