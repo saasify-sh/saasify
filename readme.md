@@ -1,14 +1,10 @@
 # fin
 
-> [Fin](https://functional-income.com) is the easiest way to launch your own SaaS.
+> [Fin](https://functional-income.com) transforms **serverless functions** into fully functional **SaaS** websites!
 
 [![NPM](https://img.shields.io/npm/v/fin.svg)](https://www.npmjs.com/package/fin) [![Build Status](https://travis-ci.com/functional-income/fin.svg?branch=master)](https://travis-ci.com/functional-income/fin) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Intro
-
-Fin transforms **serverless functions** into fully functional **SaaS** websites!
-
-This allows makers to:
+Fin allows makers to:
 
 1) Focus on unique value instead of boilerplate 🔥
 2) Ship in minutes instead of months ✈️
