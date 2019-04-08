@@ -3,14 +3,19 @@ import React, { Component } from 'react'
 import { observer, Provider } from 'mobx-react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import { AuthenticatedRoute } from 'components/AuthenticatedRoute'
+import {
+  AuthenticatedRoute,
+  FinContext
+} from './components'
 
-import { DashboardPage } from 'routes/DashboardPage'
-import { HomePage } from 'routes/HomePage'
-import { LoginPage } from 'routes/LoginPage'
-import { AuthGitHubPage } from 'routes/AuthGitHubPage'
+import {
+  DashboardPage,
+  HomePage,
+  LoginPage,
+  AuthGitHubPage
+} from './routes'
 
-import AuthManager from 'store/AuthManager'
+import AuthManager from './store/AuthManager'
 
 @observer
 export default class App extends Component {
@@ -22,16 +27,18 @@ export default class App extends Component {
     return (
       <Router>
         <Provider auth={AuthManager}>
-          <Switch>
-            <Route exact path='/' component={HomePage} />
+          <FinContext.Provider value={process.env.REACT_APP_FIN_PROJECT}>
+            <Switch>
+              <Route exact path='/' component={HomePage} />
 
-            <Route path='/login' component={LoginPage} />
-            <Route path='/auth/github' component={AuthGitHubPage} />
+              <Route path='/login' component={LoginPage} />
+              <Route path='/auth/github' component={AuthGitHubPage} />
 
-            <AuthenticatedRoute path='/dashboard' component={DashboardPage} />
+              <AuthenticatedRoute path='/dashboard' component={DashboardPage} />
 
-            <Route render={() => (<div> TODO: 404 page </div>)} />
-          </Switch>
+              <Route render={() => (<div> TODO: 404 page </div>)} />
+            </Switch>
+          </FinContext.Provider>
         </Provider>
       </Router>
     )

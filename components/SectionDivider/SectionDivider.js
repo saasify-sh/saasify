@@ -9,7 +9,8 @@ const isServer = typeof window === 'undefined'
 
 const V = 0.025
 
-class SectionDividerImpl extends Component {
+@sizeMe({ monitorWidth: true, monitorHeight: true })
+export class SectionDivider extends Component {
   static propTypes = {
     foreground: PropTypes.string,
     background: PropTypes.string,
@@ -183,5 +184,3 @@ class SectionDividerImpl extends Component {
     this._onResize()
   }
 }
-
-export const SectionDivider = sizeMe({ monitorWidth: true, monitorHeight: true })(SectionDividerImpl)

@@ -1,4 +1,4 @@
-import { computed, observable } from 'mobx'
+import { autorun, computed, observable } from 'mobx'
 import debug from 'lib/debug'
 
 import API from 'lib/api'
@@ -82,4 +82,11 @@ class AuthManager {
   }
 }
 
-export default observable(new AuthManager())
+const authManager = observable(new AuthManager())
+
+autorun(() => {
+  API.user = authManager.auth && authManager.auth.user
+  API.token = authManager.auth && authManager.auth.token
+})
+
+export default authManager
