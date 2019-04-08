@@ -1,0 +1,104 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+
+  background: transparent;
+  transition: all 400ms ease;
+}
+
+.attached {
+  background: #23303a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  max-height: 64px;
+  transition: all 400ms ease;
+}
+
+.attached .logo {
+  max-height: 48px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.link {
+  display: block;
+  padding: 8px 16px;
+
+  font-size: 1.05em;
+  text-decoration: none;
+  cursor: pointer;
+  color: #333;
+
+  transition: color 250ms ease;
+}
+
+.activeLink {
+  color: #fff;
+  font-weight: bold;
+}
+
+.link:active, .link:visited, .link:hover {
+  color: #333;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    justify-content: space-around;
+    padding: 12px 24px;
+  }
+
+  .logo {
+    margin-right: 24px;
+  }
+
+  .menuWrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .menuWrapper > a {
+    padding: 8px 16px;
+    font-size: 1em;
+    margin-left: 2em;
+  }
+
+  .links {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .link {
+    padding: 0;
+    margin-left: 2em;
+    color: #fff;
+  }
+
+  .link:active, .link:visited {
+    color: #fff;
+  }
+
+  .link:hover {
+    transition: color 100ms ease;
+    color: #eb3d48;
+  }
+
+  .activeLink.activeLink {
+    color: #fff;
+  }
+}

@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  color: #d2d2d6;
+  font-family: proxima-nova, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-style: initial;
+  font-style: normal;
+  font-weight: 200;
+  font-family: proxima-nova, Helvetica Neue, sans-serif;
+  color: inherit !important;
+  margin: initial;
+}

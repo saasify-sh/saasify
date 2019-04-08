@@ -1,0 +1,88 @@
+.container {
+  background: #23303a;
+  padding: 50px 24px;
+}
+
+.content {
+  width: 80%;
+  max-width: 1024px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  color: #fff;
+}
+
+.content > div {
+  margin-bottom: 2em;
+}
+
+.content > div:last-child {
+  margin-bottom: 0;
+}
+
+.header {
+  color: #fff;
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
+}
+
+.listItem {
+  list-style-type: none;
+  margin-bottom: 0.75em;
+}
+
+.listItem:last-child {
+  margin-bottom: 0;
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link, .link:visited, .link:active {
+  color: #ddd;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  max-height: 48px;
+  margin-bottom: 1em;
+}
+
+.detail {
+  position: relative;
+  left: 6px;
+  margin-bottom: 1em;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  color: #ddd;
+}
+
+.detail > svg {
+  margin-right: 8px;
+}
+
+@media only screen and (min-width: 768px) {
+  .content {
+    flex-direction: row;
+  }
+
+  .content > div {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .detailColumn {
+    position: relative;
+    top: -16px;
+  }
+}
