@@ -1,0 +1,18 @@
+{
+  "id": "hello-world",
+  "description": null,
+  "version": "1",
+  "enabled": true,
+  "user": "5c5a35cc1cd684a8f5fc93fa",
+  "publishedDeployment": "hello-world_360e148006098c95",
+  "createdAt": "2019-02-16T17:19:20.047Z",
+  "updatedAt": "2019-04-09T17:07:14.584Z",
+  "saas": {
+    "name": "Okta",
+    "heading": "NEVER BUILD AUTH AGAIN",
+    "subheading": "Okta adds authentication, authorization, and user management to your web or mobile app within minutes.",
+    "theme": {
+      "primary": "#d23d67"
+    }
+  }
+}

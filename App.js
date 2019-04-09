@@ -16,6 +16,7 @@ import {
 } from './routes'
 
 import AuthManager from './store/AuthManager'
+import FinProject from './project.json'
 
 @observer
 export default class App extends Component {
@@ -27,7 +28,7 @@ export default class App extends Component {
     return (
       <Router>
         <Provider auth={AuthManager}>
-          <FinContext.Provider value={process.env.REACT_APP_FIN_PROJECT}>
+          <FinContext.Provider value={FinProject}>
             <Switch>
               <Route exact path='/' component={HomePage} />
 
