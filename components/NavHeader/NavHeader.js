@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import cs from 'classnames'
 import raf from 'raf'
 
+import { Logo } from '../Logo'
+
 import styles from './styles.module.css'
 
 const isServer = (typeof window === 'undefined')
@@ -45,7 +47,9 @@ export class NavHeader extends Component {
     return (
       <header
         className={cs(styles.container, attached || fixed ? styles.attached : null)}
-      />
+      >
+        <Logo className={styles.logo} />
+      </header>
     )
   }
 

@@ -1,21 +1,27 @@
 import React, { Component } from 'react'
 
 import { SectionDivider } from '../SectionDivider'
+import { FinContext } from '../FinContext'
+import { Markdown } from '../Markdown'
 
 import styles from './styles.module.css'
 
 export class IntroSection extends Component {
   render() {
     return (
-      <section className={styles.container}>
-        <div className={styles.content}>
-          <h2>
-            TODO: Intro Section
-          </h2>
-        </div>
+      <FinContext.Consumer>
+        {project => (
+          <section className={styles.container}>
+            <div className={styles.content}>
+              <Markdown
+                source={project.readme}
+              />
+            </div>
 
-        <SectionDivider inverted />
-      </section>
+            <SectionDivider inverted />
+          </section>
+        )}
+      </FinContext.Consumer>
     )
   }
 }

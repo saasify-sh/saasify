@@ -1,32 +1,40 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 import { Button } from 'antd'
+
 import { SectionDivider } from '../SectionDivider'
+import { FinContext } from '../FinContext'
 
 import styles from './styles.module.css'
 
 export class HeroSection extends Component {
   render() {
     return (
-      <section className={styles.container}>
-        <div className={styles.content}>
-          <h1>
-            NEVER BUILD AUTH AGAIN
-          </h1>
+      <FinContext.Consumer>
+        {project => (
+          <section className={styles.container}>
+            <div className={styles.content}>
+              <h1>
+                {project.saas.heading}
+              </h1>
 
-          <p className={styles.subtitle}>
-            Okta adds authentication, authorization, and user management to your web or mobile app within minutes.
-          </p>
+              <p className={styles.subtitle}>
+                {project.saas.subheading}
+              </p>
 
-          <div className={styles.cta}>
-            <Button type='primary' className={styles.signupButton}>
-              Get Started
-            </Button>
-          </div>
-        </div>
+              <div className={styles.cta}>
+                <Link to='/login'>
+                  <Button type='primary' className={styles.signupButton}>
+                    Get Started
+                  </Button>
+                </Link>
+              </div>
+            </div>
 
-        <SectionDivider />
-      </section>
+            <SectionDivider />
+          </section>
+        )}
+      </FinContext.Consumer>
     )
   }
 }

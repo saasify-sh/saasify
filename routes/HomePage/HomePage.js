@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 
 import {
   NavHeader,
@@ -17,8 +16,6 @@ export class HomePage extends Component {
         <NavHeader />
 
         <HeroSection />
-
-        <Link to='/login'>Login</Link>
 
         <IntroSection />
 

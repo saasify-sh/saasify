@@ -1,6 +1,5 @@
 .container {
   position: relative;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,6 +53,7 @@
   text-transform: uppercase;
   font-size: 14px;
   letter-spacing: 2px;
+  cursor: pointer;
 }
 
 .bottom {

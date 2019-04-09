@@ -10,3 +10,7 @@ export * from './HeroSection'
 export * from './IntroSection'
 
 export * from './SignupButton'
+
+export * from './CodeBlock'
+export * from './Markdown'
+export * from './Logo'

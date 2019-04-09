@@ -22,9 +22,14 @@
   margin-bottom: 0;
 }
 
+.content ul {
+  padding: 0;
+  padding-inline-start: 0;
+}
+
 .header {
   color: #fff;
-  font-size: 1.2em;
+  font-size: 1.3em;
   margin-bottom: 1.5em;
 }
 
@@ -43,7 +48,7 @@
 }
 
 .link, .link:visited, .link:active {
-  color: #ddd;
+  color: #ccc;
 }
 
 .link:hover {
@@ -52,22 +57,20 @@
 
 .logo {
   max-height: 48px;
-  margin-bottom: 1em;
+  margin-bottom: 0.7em;
 }
 
 .detail {
-  position: relative;
-  left: 6px;
   margin-bottom: 1em;
 
   display: flex;
   flex-direction: row;
   align-items: center;
 
-  color: #ddd;
+  color: #ccc;
 }
 
-.detail > svg {
+.detail > i {
   margin-right: 8px;
 }
 
@@ -79,10 +82,5 @@
   .content > div {
     flex: 1;
     margin-bottom: 0;
-  }
-
-  .detailColumn {
-    position: relative;
-    top: -16px;
   }
 }

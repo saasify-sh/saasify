@@ -1,10 +1,10 @@
 {
   "id": "hello-world",
   "description": null,
+  "readme": "# Hello World\n\nThis is a very simple Fin project with a single serverless function that implements the classic \"Hello World!\".\n",
   "version": "1",
   "enabled": true,
   "user": "5c5a35cc1cd684a8f5fc93fa",
-  "publishedDeployment": "hello-world_360e148006098c95",
   "createdAt": "2019-02-16T17:19:20.047Z",
   "updatedAt": "2019-04-09T17:07:14.584Z",
   "saas": {
@@ -12,7 +12,69 @@
     "heading": "NEVER BUILD AUTH AGAIN",
     "subheading": "Okta adds authentication, authorization, and user management to your web or mobile app within minutes.",
     "theme": {
-      "primary": "#d23d67"
+      "@primary-color": "#d23d67"
     }
+  },
+  "publishedDeployment": {
+    "id": "hello-world_360e148006098c95",
+    "url": "https://api.functional-income.com/1/call/hello-world_360e148006098c95",
+    "user": "5c5a35cc1cd684a8f5fc93fa",
+    "project": "hello-world",
+    "enabled": true,
+    "version": "1",
+    "services": [
+      {
+        "route": "/",
+        "amountPerRequest": 1,
+        "amountPerCompute": 1,
+        "timeout": 0,
+        "enabled": true,
+        "src": "index.ts",
+        "name": "index",
+        "definition": {
+          "config": {
+            "defaultExport": true,
+            "language": "typescript"
+          },
+          "params": {
+            "context": false,
+            "order": [
+              "name"
+            ],
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "default": "World"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "name"
+              ],
+              "$schema": "http://json-schema.org/draft-07/schema#"
+            }
+          },
+          "returns": {
+            "async": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "$schema": "http://json-schema.org/draft-07/schema#"
+            }
+          },
+          "version": "1.0.9",
+          "title": "index"
+        }
+      }
+    ],
+    "createdAt": "2019-04-09T17:07:14.546Z",
+    "updatedAt": "2019-04-09T17:07:14.546Z"
   }
 }
