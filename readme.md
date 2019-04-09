@@ -4,9 +4,13 @@
 
 ## Examples
 
-- [hello-world](./hello-world) - Simplest possible Fin project.
+- [x] [hello-world](./hello-world) - Simplest possible Fin project.
+- [ ] npm-deps - Example using dependencies from NPM.
+- [ ] puppeteer - Example using headless Chromium.
+- [ ] ffmpeg - Example using FFmpeg.
+- [ ] tensorflow - Example using machine learning via Tensorflow.
 
-... More to come soon!
+...More to come soon!
 
 ## Related
 
