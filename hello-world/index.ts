@@ -1,3 +1,3 @@
-export const helloWorld = (name = 'World') => {
+export default (name = 'World') => {
   return `Hello ${name}!`
 }
