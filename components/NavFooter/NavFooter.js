@@ -57,15 +57,6 @@ export class NavFooter extends Component {
 
                   <li className={styles.listItem}>
                     <a
-                      href='/login'
-                      className={styles.link}
-                    >
-                      Login
-                    </a>
-                  </li>
-
-                  <li className={styles.listItem}>
-                    <a
                       href='/create'
                       className={styles.link}
                     >
@@ -105,12 +96,13 @@ export class NavFooter extends Component {
                 <ul>
                   <li className={styles.listItem}>
                     <a
-                      href='https://support.functional-income.com'
+                      href='/faq'
                       className={styles.link}
                     >
-                      Support
+                      FAQ
                     </a>
                   </li>
+
                   <li className={styles.listItem}>
                     <div
                       className={styles.link}

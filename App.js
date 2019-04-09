@@ -12,6 +12,8 @@ import {
   DashboardPage,
   HomePage,
   LoginPage,
+  TermsPage,
+  PrivacyPage,
   AuthGitHubPage
 } from './routes'
 
@@ -31,6 +33,9 @@ export default class App extends Component {
           <FinContext.Provider value={FinProject}>
             <Switch>
               <Route exact path='/' component={HomePage} />
+
+              <Route path='/terms' component={TermsPage} />
+              <Route path='/privacy' component={PrivacyPage} />
 
               <Route path='/login' component={LoginPage} />
               <Route path='/auth/github' component={AuthGitHubPage} />
