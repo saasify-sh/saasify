@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import cs from 'classnames'
 
 import { inject } from 'mobx-react'
 import { Link, withRouter } from 'react-router-dom'
@@ -30,7 +31,8 @@ export class LoginForm extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     form: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired
+    location: PropTypes.object.isRequired,
+    className: PropTypes.string
   }
 
   state = {
@@ -38,12 +40,13 @@ export class LoginForm extends Component {
   }
 
   render() {
+    const { className } = this.props
     const { getFieldDecorator } = this.props.form
     const { loading } = this.state
 
     return (
       <Form
-        className={styles.loginForm}
+        className={cs(styles.loginForm, className)}
         onSubmit={this._onSubmit}
       >
         <Button

@@ -4,7 +4,14 @@ import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 import { Redirect } from 'react-router-dom'
 
-import { LoginForm } from 'components/LoginForm'
+import {
+  BackgroundSlideshow,
+  LoginForm,
+  Paper,
+  NavHeader
+} from 'components'
+
+import styles from './styles.module.css'
 
 @inject('auth')
 @observer
@@ -21,10 +28,14 @@ export class LoginPage extends Component {
     }
 
     return (
-      <div>
-        <p>Login Page</p>
+      <div className={styles.container}>
+        <BackgroundSlideshow />
 
-        <LoginForm />
+        <NavHeader fixed={true} />
+
+        <Paper className={styles.content}>
+          <LoginForm />
+        </Paper>
       </div>
     )
   }

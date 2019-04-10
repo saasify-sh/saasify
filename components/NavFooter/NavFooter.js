@@ -106,7 +106,7 @@ export class NavFooter extends Component {
                   <li className={styles.listItem}>
                     <div
                       className={styles.link}
-                      onTouchTap={this._onTapSupport}
+                      onClick={this._onTapSupport}
                     >
                       Live Chat
                     </div>
