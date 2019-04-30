@@ -36,8 +36,16 @@ module.exports = class FinClient {
     return this._user
   }
 
+  set user (user) {
+    this._user = user
+  }
+
+  set token (token) {
+    this._token = token
+  }
+
   // --------------------------------------------------------------------------
-  // Users
+  // Auth
   // --------------------------------------------------------------------------
 
   async signin ({ email, password }) {
@@ -69,10 +77,40 @@ module.exports = class FinClient {
       })
   }
 
+  async authWithGitHub (data) {
+    return this._request({
+      url: `/1/auth/github`,
+      method: 'put',
+      data
+    }).then(res => res.data)
+      .then((data) => {
+        this._token = data.token
+        this._user = data.user
+        return data
+      })
+  }
+
+  async authWithFacebook (data) {
+    return this._request({
+      url: `/1/auth/facebook`,
+      method: 'put',
+      data
+    }).then(res => res.data)
+      .then((data) => {
+        this._token = data.token
+        this._user = data.user
+        return data
+      })
+  }
+
   async signout () {
     this._token = null
     this._user = null
   }
+
+  // --------------------------------------------------------------------------
+  // Users
+  // --------------------------------------------------------------------------
 
   async getMe () {
     return this._request({
@@ -172,8 +210,8 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async listDeployments (opts = { }) {
-    const querystring = qs.stringify(opts)
+  async listDeployments (where = { }) {
+    const querystring = qs.stringify({ where })
 
     return this._request({
       url: `/1/deployments?${querystring}`
