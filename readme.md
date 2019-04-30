@@ -5,7 +5,7 @@
 ## Examples
 
 - [x] [hello-world](./hello-world) - Simplest possible Fin project.
-- [ ] npm-deps - Example using dependencies from NPM.
+- [x] [imagemin](./imagemin) - Example to optimize images.
 - [x] [puppeteer](./puppeteer) - Example using headless Chromium.
 - [ ] ffmpeg - Example using FFmpeg.
 - [ ] tensorflow - Example using machine learning via Tensorflow.
