@@ -2069,10 +2069,10 @@ fill-range@^4.0.0:
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
 
-fin-client@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/fin-client/-/fin-client-0.0.2.tgz#655baf55ee057ebb4fc2bc2bdde7bd6d833f0651"
-  integrity sha512-ZaX0XwC1PtlrbsLWI+MdlIYL1cdwxFaI6i1fg2QiGAe8M+MHZFzEwYSI/OpKl8Siw8K+y1+n9Jw5td3x/PQIPQ==
+fin-client@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/fin-client/-/fin-client-0.0.5.tgz#7d5694441d58a18e776e7bb12e86aae63c45e409"
+  integrity sha512-3nVMX1+MjS7a26JVTY5bkLDE+1V0dK5+FkqG1HW5NDmzebhEBhFZxCzrv0gBmdkTBXqZJF5EQng2D8HmYEwxDQ==
   dependencies:
     axios "^0.18.0"
     qs "^6.6.0"
@@ -2235,6 +2235,14 @@ fts-core@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/fts-core/-/fts-core-1.0.9.tgz#d5b2b1ad96a0c396ee3a3add740e5b5c012a2288"
   integrity sha512-jKUzApI528vHDlyyQ33FMujuru3MoJcITN+8vA2NApIzjFf78KrsIXA3+D7I61kXAJiHC3i23UywHrP15CEuzQ==
+
+fts-http-client@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/fts-http-client/-/fts-http-client-1.0.9.tgz#2145feeb7e4578be07ca11c1cd22770ec399401a"
+  integrity sha512-VERs3P5PQTpk0BdjMfF/g94iH3W+FVOkkXgkPYXHN0FgkX+ZRySoZRXFMHkU1lxVFQKV1P+7CV6FC4CJWB8RpQ==
+  dependencies:
+    fts-validator "^1.0.4"
+    isomorphic-unfetch "^3.0.0"
 
 fts-http@^1.0.9:
   version "1.0.9"
@@ -3001,6 +3009,14 @@ isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
 
+isomorphic-unfetch@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/isomorphic-unfetch/-/isomorphic-unfetch-3.0.0.tgz#de6d80abde487b17de2c400a7ef9e5ecc2efb362"
+  integrity sha512-V0tmJSYfkKokZ5mgl0cmfQMTb7MLHsBMngTkbLY0eXvKqiVRRoZP04Ly+KhKrJfKtzC9E6Pp15Jo+bwh7Vi2XQ==
+  dependencies:
+    node-fetch "^2.2.0"
+    unfetch "^4.0.0"
+
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
@@ -3675,6 +3691,11 @@ node-fetch-npm@^2.0.2:
     encoding "^0.1.11"
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
+
+node-fetch@^2.2.0:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.4.1.tgz#b2e38f1117b8acbedbe0524f041fb3177188255d"
+  integrity sha512-P9UbpFK87NyqBZzUuDBDz4f6Yiys8xm8j7ACDbi6usvFm6KItklQUKjeoqTrYS/S1k6I8oaOC2YLLDr/gg26Mw==
 
 node-gyp@~3.6.2:
   version "3.6.3"
@@ -5519,6 +5540,11 @@ umask@~1.1.0:
 unc-path-regex@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/unc-path-regex/-/unc-path-regex-0.1.2.tgz#e73dd3d7b0d7c5ed86fbac6b0ae7d8c6a69d50fa"
+
+unfetch@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-4.1.0.tgz#6ec2dd0de887e58a4dee83a050ded80ffc4137db"
+  integrity sha512-crP/n3eAPUJxZXM9T80/yv0YhkTEx2K1D3h7D1AJM6fzsWZrxdyRuLN0JH/dkZh1LNH8LxCnBzoPFCPbb2iGpg==
 
 unherit@^1.0.4:
   version "1.1.1"
