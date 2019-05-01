@@ -1,0 +1,75 @@
+import { Head } from 'mdx-go'
+
+<Head>
+  <title>Fin Concepts</title>
+</Head>
+
+## Concepts
+
+#### Service
+
+A `Service` is a single monetizable serverless function. It is written in TypeScript and configured via its parent `Project`.
+
+Services conform to the [Functional TypeScript](https://github.com/transitive-bullshit/functional-typescript) specification which. This strong typing allows Fin to automatically generate documentation, client SDKs, and examples for services.
+
+By default, every service deployed on Fin is publicly available and rate-limited by IP address. Other developers can *subscribe* to your Project's API in order to gain access to higher rate limits and usage-based pricing.
+
+#### Project
+
+A `Project` is a collection of related `Services`. It is specified by a Fin config file `fin.json` which has the following format:
+
+```ts
+class Config {
+  version?: number = 1
+  name?: string
+  alias?: string
+  services: Service[]
+}
+
+class Service {
+  src: string
+  name?: string
+  route?: string
+  amountPerRequest?: number = 1
+  amountPerCompute?: number = 1
+  timeout?: number = 300000
+  authRateLimit?: RateLimit
+  noAuthRateLimit?: RateLimit
+}
+
+class RateLimit {
+  requests?: boolean = true
+  requestsInterval?: number = 60000
+  requestsMaxPerInterval?: number = 1000
+}
+```
+
+An example `fin.json` config file could look like:
+
+```
+{
+  "version": 1,
+  "name": "hello-world",
+  "services": [
+    {
+      "src": "functions/hello-world.ts",
+      "name": "helloWorld"
+    }
+  ]
+}
+```
+
+This config specifies a `Project` named `hello-world` with a single service generated from the specified `src` TypeScript file. All pricing and rate limits will use platform defaults.
+
+#### Deployment
+
+You can deploy your `Projects` by creating immutable `Deployments`.
+
+- `fin deploy` creates a new deployment
+- `fin logs` prints logs for a deployment
+- `fin ls` lists existing deployments for a given project
+- `fin rm` removes deployments for a given project
+
+---
+
+[home](/)
