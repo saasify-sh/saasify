@@ -3,12 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "description": "Fin example for image optimization",
-  "repository": "functional-income/fin-examples",
+  "repository": "functional-income/fin",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
   "license": "MIT",
-  "engines": {
-    "node": ">=8"
-  },
   "dependencies": {
     "imagemin": "^6.1.0",
     "imagemin-jpegtran": "^6.0.0",

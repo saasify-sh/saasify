@@ -3,12 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "description": "Fin example using Puppeteer",
-  "repository": "functional-income/fin-examples",
+  "repository": "functional-income/fin",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
   "license": "MIT",
-  "engines": {
-    "node": ">=8"
-  },
   "dependencies": {
     "chrome-aws-lambda": "^1.14.0",
     "puppeteer-core": "^1.14.0"

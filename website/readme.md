@@ -10,10 +10,8 @@ Check out the main docs at [functional-income.com](https://functional-income.com
 
 ## Related
 
-- [fin](https://github.com/functional-income/fin) - Developer CLI for Fin.
-- [fin-client](https://github.com/functional-income/fin-client) - Universal HTTP client for Fin.
+- [fin](https://functional-income.com) - Fin homepage.
 - [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
-- [now](https://zeit.co/now) - Global serverless deployments.
 
 ## License
 

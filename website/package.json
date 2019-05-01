@@ -1,11 +1,11 @@
 {
-  "name": "functional-income",
+  "name": "fin-website",
   "private": true,
   "version": "1.0.0",
   "description": "Fin is the easiest way to launch your own SaaS.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "functional-income/website",
+  "repository": "functional-income/fin",
   "license": "MIT",
   "scripts": {
     "start": "mdx-go docs",

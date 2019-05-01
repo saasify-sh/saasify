@@ -15,7 +15,6 @@
 ## Related
 
 - [fin](https://functional-income.com) - Fin homepage.
-- [fin-client](https://github.com/functional-income/fin-client) - Universal HTTP client for Fin.
 - [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
 
 ## License

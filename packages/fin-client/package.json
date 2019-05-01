@@ -4,7 +4,7 @@
   "description": "Universal HTTP client for Fin.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "functional-income/fin-client",
+  "repository": "functional-income/fin",
   "license": "MIT",
   "scripts": {
     "test": "standard"
