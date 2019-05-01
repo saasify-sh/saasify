@@ -1,0 +1,19 @@
+{
+  "name": "fin-example-puppeteer",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Fin example using Puppeteer",
+  "repository": "functional-income/fin-examples",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "chrome-aws-lambda": "^1.14.0",
+    "puppeteer-core": "^1.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.4"
+  }
+}

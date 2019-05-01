@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "name": "imagemin",
+  "services": [
+    {
+      "src": "index.ts"
+    }
+  ]
+}

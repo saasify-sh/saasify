@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "name": "hello-world",
+  "services": [
+    {
+      "src": "index.ts"
+    }
+  ]
+}

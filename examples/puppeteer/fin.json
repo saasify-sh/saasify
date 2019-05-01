@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "name": "puppeteer-example",
+  "services": [
+    {
+      "src": "index.ts"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "fin-example-imagemin",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Fin example for image optimization",
+  "repository": "functional-income/fin-examples",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "imagemin": "^6.1.0",
+    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-pngquant": "^7.0.0",
+    "imagemin-svgo": "^7.0.0",
+    "imagemin-webp": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.8"
+  }
+}
