@@ -1,0 +1,32 @@
+{
+  "name": "fin-client",
+  "version": "0.0.5",
+  "description": "Universal HTTP client for Fin.",
+  "main": "index.js",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "repository": "functional-income/fin-client",
+  "license": "MIT",
+  "scripts": {
+    "test": "standard"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "faas",
+    "saas",
+    "lambda",
+    "serverless",
+    "deploy",
+    "fin",
+    "fts"
+  ],
+  "devDependencies": {
+    "ava": "^1.2.0",
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "qs": "^6.6.0"
+  }
+}
