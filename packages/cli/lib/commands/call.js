@@ -20,6 +20,8 @@ module.exports = (program, client) => {
         process.exit(1)
       }
 
+      // TODO: support all httpie param syntax types
+
       const params = args
         .filter((a) => /=/.test(a))
         .reduce((acc, a) => {
@@ -62,6 +64,7 @@ module.exports = (program, client) => {
         const deployment = deployments[0]
 
         // TODO: support multiple services
+        // TODO: move deployment parsing to fin-utils
         const s = deployment.services[0]
         const httpClient = createHttpClient(s.definition, `${deployment.url}${s.route}`)
 
