@@ -1,0 +1,76 @@
+{
+  "project": "puppeteer-example",
+  "id": "puppeteer-example_c204408318ac4c1b",
+  "enabled": true,
+  "version": "1",
+  "url": "http://localhost:5000/1/call/puppeteer-example_c204408318ac4c1b",
+  "user": "5c5a35cc1cd684a8f5fc93fa",
+  "createdAt": "2019-04-17T20:21:40.971Z",
+  "updatedAt": "2019-04-17T20:21:40.971Z",
+  "services": [
+    {
+      "route": "/",
+      "amountPerRequest": 1,
+      "amountPerCompute": 1,
+      "timeout": 0,
+      "enabled": true,
+      "src": "index.ts",
+      "name": "getScreenshot",
+      "definition": {
+        "config": {
+          "defaultExport": true,
+          "language": "typescript"
+        },
+        "params": {
+          "context": false,
+          "order": [
+            "url",
+            "type"
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "type": {
+                "$ref": "#/definitions/ImageFormat",
+                "default": "png"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "url"
+            ],
+            "definitions": {
+              "ImageFormat": {
+                "enum": [
+                  "jpg",
+                  "png"
+                ],
+                "type": "string"
+              }
+            },
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "returns": {
+          "async": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "version": "1.0.9",
+        "title": "getScreenshot"
+      }
+    }
+  ]
+}

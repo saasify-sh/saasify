@@ -1,0 +1,63 @@
+{
+  "project": "imagemin",
+  "url": "http://localhost:5000/1/call/imagemin_516db71baeb64417",
+  "id": "imagemin_516db71baeb64417",
+  "version": "1",
+  "enabled": true,
+  "user": "5c5a35cc1cd684a8f5fc93fa",
+  "createdAt": "2019-05-01T00:23:04.613Z",
+  "updatedAt": "2019-05-01T00:23:04.613Z",
+  "services": [
+    {
+      "route": "/",
+      "amountPerRequest": 1,
+      "amountPerCompute": 1,
+      "timeout": 0,
+      "enabled": true,
+      "src": "index.ts",
+      "name": "optimizeImage",
+      "definition": {
+        "config": {
+          "defaultExport": true,
+          "language": "typescript"
+        },
+        "params": {
+          "context": false,
+          "order": [
+            "image"
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "image": {
+                "coerceTo": "Buffer",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "image"
+            ],
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "returns": {
+          "async": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "coerceTo": "Buffer",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "version": "1.0.9",
+        "title": "optimizeImage"
+      }
+    }
+  ]
+}
