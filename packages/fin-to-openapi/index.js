@@ -3,6 +3,7 @@
 const jsonSchemaToOpenAPI = require('json-schema-to-openapi-schema')
 const jsonSchemaRefParser = require('json-schema-ref-parser')
 const pReduce = require('p-reduce')
+const { URL } = require('url')
 
 module.exports = async function finToOpenAPI (deployment, opts = { }) {
   const {
