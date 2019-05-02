@@ -1,6 +1,6 @@
 {
   "name": "fin-to-openapi",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Converts Fin deployments to OpenAPI specs.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
