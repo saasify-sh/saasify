@@ -16,8 +16,12 @@ npm install fin-to-openapi
 const convertFinToOpenAPI = require('fin-to-openapi')
 const finDeployment = { /* ... */ }
 
-const openAPI = convertFinToOpenAPI(finDeployment)
+const openAPI = await convertFinToOpenAPI(finDeployment)
 ```
+
+## Examples
+
+See the test [fixtures](./fixtures) and their corresponding output [snapshots](./.snapshots/test.js.md) for conversion examples.
 
 ## Related
 
