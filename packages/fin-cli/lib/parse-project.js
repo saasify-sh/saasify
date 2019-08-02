@@ -30,8 +30,8 @@ module.exports.generateDefinition = async (service, config, opts) => {
   if (!service.name) {
     service.name = definition.title
 
-    if (!validators.service(service.name)) {
-      throw new Error(`Invalid service name [${service.name}] (must be a valid JavaScript function identifier ${validators.serviceRe})`)
+    if (!validators.serviceName(service.name)) {
+      throw new Error(`Invalid service name [${service.name}] (must be a valid JavaScript function identifier ${validators.serviceNameRe})`)
     }
   }
 

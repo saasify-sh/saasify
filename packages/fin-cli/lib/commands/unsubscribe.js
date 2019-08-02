@@ -14,7 +14,7 @@ module.exports = (program, client) => {
       program.requireAuthentication()
 
       try {
-        // TODO: call client.resolveDeployments or use fin-utils
+        // TODO: use fin-utils for this
 
         if (!validators.project(project)) {
           throw new Error(`Invalid project name [${project}] (regex ${validators.projectRe})`)
@@ -22,7 +22,7 @@ module.exports = (program, client) => {
 
         const [ consumer ] = await spinner(
           client.resolveConsumers([ project ]),
-          `Resolving subscription for [${project}]`
+          `Resolving subscription for project [${project}]`
         )
 
         if (!opts.yes) {

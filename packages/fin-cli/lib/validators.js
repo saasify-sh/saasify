@@ -2,9 +2,22 @@
 
 // TODO: move these to fin-utils
 
-exports.projectRe = /^[a-zA-Z][a-zA-Z0-9-]+$/
-exports.deploymentRe = /^[a-zA-Z][a-zA-Z0-9-]+_[a-z0-9]{16}$/
+exports.usernameRe = /^[a-zA-Z0-9-_]{1,64}$/
+exports.passwordRe = /^.{3,1024}$/
+exports.projectNameRe = /^[a-zA-Z0-9-_]{3,64}$/
+exports.deploymentHashRe = /^[a-z0-9]{8}$/
+
+exports.projectRe = /^[a-zA-Z0-9-_]{1,64}\/[a-zA-Z0-9-_]{3,64}$/
+exports.deploymentRe = /^[a-zA-Z0-9-_]{1,64}\/[a-zA-Z0-9-_]{3,64}@[a-z0-9]{8}$/
 exports.serviceRe = /^[a-zA-Z_][a-zA-Z0-9_]*$/
+
+exports.username = (value) => {
+  return value && exports.usernameRe.test(value)
+}
+
+exports.password = (value) => {
+  return value && exports.passwordRe.test(value)
+}
 
 exports.project = (value) => {
   return value && exports.projectRe.test(value)
@@ -16,4 +29,12 @@ exports.deployment = (value) => {
 
 exports.service = (value) => {
   return value && exports.serviceRe.test(value)
+}
+
+exports.projectName = (value) => {
+  return value && exports.projectNameRe.test(value)
+}
+
+exports.deploymentHash = (value) => {
+  return value && exports.deploymentHashRe.test(value)
 }

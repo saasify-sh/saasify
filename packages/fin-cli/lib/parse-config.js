@@ -45,11 +45,9 @@ module.exports = (program) => {
     throw new Error(`Missing config name`)
   }
 
-  if (!validators.project(config.name)) {
-    throw new Error(`Invalid config name [${config.name}] (regex ${validators.projectRe})`)
+  if (!validators.projectName(config.name)) {
+    throw new Error(`Invalid config name [${config.name}] (regex ${validators.projectNameRe})`)
   }
-
-  // NOTE: availability of project name is validated on the server
 
   if (config.version !== 1) {
     throw new Error(`Invalid config version "${config.version}"`)
