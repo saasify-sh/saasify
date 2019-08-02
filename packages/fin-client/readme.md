@@ -16,7 +16,10 @@ npm install fin-client
 const FinClient = require('fin-client')
 const client = new FinClient()
 
-await client.signin(username, password)
+const username = 'example'
+const password = 'password'
+
+await client.signin({ username, password })
 ```
 
 ## Related

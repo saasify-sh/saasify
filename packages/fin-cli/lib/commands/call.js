@@ -11,7 +11,7 @@ module.exports = (program, client) => {
     .command('call <service> [args...]')
     .description('Invokes a given service')
     .option('-o, --output <file>', 'Save output to file instead of stdout.')
-    .action(async (service, args, opts) => {
+    .action(async (faasIdentifier, args, opts) => {
       const nonParams = args
         .filter((a) => !/[=@]/.test(a))
 
@@ -52,12 +52,12 @@ module.exports = (program, client) => {
 
       try {
         const deployments = await spinner(
-          client.resolveDeployments([ service ]),
+          client.resolveDeployments([ faasIdentifier ]),
           `Resolving deployment`
         )
 
         if (!deployments.length) {
-          console.error(`Error no deployment found matching input "${service}"`)
+          console.error(`Error no deployment found matching input "${faasIdentifier}"`)
           process.exit(1)
         }
 

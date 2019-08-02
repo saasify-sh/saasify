@@ -3,9 +3,9 @@
 const clipboard = require('clipboardy')
 
 const handleError = require('../handle-error')
-const parseDeployment = require('../parse-deployment')
+const parseProject = require('../parse-project')
 const spinner = require('../spinner')
-const zipDeployment = require('../zip-deployment')
+const zipProject = require('../zip-project')
 
 module.exports = (program, client) => {
   program
@@ -17,16 +17,16 @@ module.exports = (program, client) => {
       program.requireAuthentication()
 
       try {
-        const deployment = await parseDeployment(program)
+        const project = await parseProject(program)
         if (program.debug) {
-          console.log(JSON.stringify(deployment, null, 2))
+          console.log(JSON.stringify(project, null, 2))
         }
 
-        const zipBuffer = await zipDeployment(program, deployment)
+        const zipBuffer = await zipProject(program, project)
 
         const result = await spinner(
           client.createDeployment({
-            ...deployment,
+            ...project,
             force: opts.force,
             data: zipBuffer.toString('base64')
           }),

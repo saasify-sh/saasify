@@ -1,5 +1,7 @@
 'use strict'
 
+// TODO: move these to fin-utils
+
 exports.projectRe = /^[a-zA-Z][a-zA-Z0-9-]+$/
 exports.deploymentRe = /^[a-zA-Z][a-zA-Z0-9-]+_[a-z0-9]{16}$/
 exports.serviceRe = /^[a-zA-Z_][a-zA-Z0-9_]*$/

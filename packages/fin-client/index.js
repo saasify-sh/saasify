@@ -48,12 +48,13 @@ module.exports = class FinClient {
   // Auth
   // --------------------------------------------------------------------------
 
-  async signin ({ email, password }) {
+  async signin ({ email, username, password }) {
     return this._request({
       url: `/1/auth/signin`,
       method: 'put',
       data: {
         email,
+        username,
         password
       }
     }).then(res => res.data)

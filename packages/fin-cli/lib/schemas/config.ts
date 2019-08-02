@@ -1,3 +1,5 @@
+// NOTE: this is just a pseudocode reference for now
+
 class Config {
   version?: number = 1
   name?: string
