@@ -31,6 +31,9 @@ module.exports = (identifier, opts = { }) => {
   const hasNamespacePrefix = /^([a-zA-Z0-9-_]{1,64}\/)/.test(uri)
 
   if (hasNamespacePrefix) {
+    if (!strict && !uri.startsWith(namespacePrefix)) {
+      // namespace doesn't match expected
+    }
   } else if (strict) {
     throw new Error(`FaaS identifier is missing namespace prefix [${uri}]`)
   } else if (!namespace) {

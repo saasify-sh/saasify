@@ -3,9 +3,9 @@
 const fts = require('fts')
 const path = require('path')
 const pMap = require('p-map')
+const { validators } = require('fin-utils')
 
 const parseConfig = require('./parse-config')
-const validators = require('./validators')
 
 module.exports = async (program, opts = { }) => {
   const config = parseConfig(program)
@@ -30,8 +30,8 @@ module.exports.generateDefinition = async (service, config, opts) => {
   if (!service.name) {
     service.name = definition.title
 
-    if (!validators.serviceName(service.name)) {
-      throw new Error(`Invalid service name [${service.name}] (must be a valid JavaScript function identifier ${validators.serviceNameRe})`)
+    if (!validators.service(service.name)) {
+      throw new Error(`Invalid service name [${service.name}] (must be a valid JavaScript function identifier ${validators.serviceRe})`)
     }
   }
 

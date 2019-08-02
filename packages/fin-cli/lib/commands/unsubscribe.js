@@ -1,24 +1,30 @@
 'use strict'
 
 const { Confirm } = require('enquirer')
+const { parseFaasIdentifier } = require('fin-utils')
+
 const handleError = require('../handle-error')
 const spinner = require('../spinner')
-const validators = require('../validators')
 
 module.exports = (program, client) => {
   program
     .command('unsubscribe <project>')
     .description('Unsubscribes from a project')
     .option('-y, --yes', 'Skip confirmation')
-    .action(async (project, opts) => {
+    .action(async (identifier, opts) => {
       program.requireAuthentication()
 
       try {
-        // TODO: use fin-utils for this
+        const parsedFaas = parseFaasIdentifier(identifier, {
+          strict: true,
+          namespace: client.user.username
+        })
 
-        if (!validators.project(project)) {
-          throw new Error(`Invalid project name [${project}] (regex ${validators.projectRe})`)
+        if (!parsedFaas) {
+          throw new Error(`Invalid project identifier [${identifier}]`)
         }
+
+        const { projectId: project } = parsedFaas
 
         const [ consumer ] = await spinner(
           client.resolveConsumers([ project ]),

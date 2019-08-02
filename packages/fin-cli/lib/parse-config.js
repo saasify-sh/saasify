@@ -4,9 +4,9 @@ const Ajv = require('ajv')
 const fs = require('fs-extra')
 const isDirectory = require('is-directory')
 const path = require('path')
+const { validators } = require('fin-utils')
 
 const configSchema = require('./schemas/config.schema')
-const validators = require('./validators')
 
 const ajv = new Ajv({ useDefaults: true })
 const validateConfig = ajv.compile(configSchema)
