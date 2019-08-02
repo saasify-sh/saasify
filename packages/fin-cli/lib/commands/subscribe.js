@@ -14,7 +14,7 @@ module.exports = (program, client) => {
       program.requireAuthentication()
 
       try {
-        // TODO: call client.resolveDeployments
+        // TODO: call client.resolveDeployments or use fin-utils
 
         if (!validators.project(project)) {
           throw new Error(`Invalid project name [${project}] (regex ${validators.projectRe})`)

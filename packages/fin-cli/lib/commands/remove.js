@@ -30,11 +30,10 @@ module.exports = (program, client) => {
         }
 
         if (!opts.yes) {
-          // TODO: pluralize text depending on if 1 or more deployments
           console.log(`${deploymentsLabel}:`, deployments.map((d) => d.id).join(', '))
 
           const prompt = new Confirm({
-            message: `Are you sure you want to delete ${deployments.length} ${deploymentsLabel}?`,
+            message: `Are you sure you want to delete these ${deployments.length} ${deploymentsLabel}?`,
             initial: true
           })
 
