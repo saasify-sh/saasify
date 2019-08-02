@@ -59,7 +59,7 @@ module.exports = (program) => {
 
   for (const service of config.services) {
     if (service.name && !validators.service(service.name)) {
-      throw new Error(`Invalid config service "name" [${service.name}] (must be a valid JavaScript function identifier regex ${validators.serviceRe})`)
+      throw new Error(`Invalid config service "name" [${service.name}] (must be a valid JavaScript identifier regex ${validators.serviceRe})`)
     }
   }
 

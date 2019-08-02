@@ -1,0 +1,32 @@
+{
+  "name": "fin-utils",
+  "version": "0.0.1",
+  "description": "Shared utilities for Fin.",
+  "main": "index.js",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "repository": "functional-income/fin",
+  "license": "MIT",
+  "scripts": {
+    "test": "ava -v && standard"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "faas",
+    "saas",
+    "lambda",
+    "serverless",
+    "deploy",
+    "fin",
+    "fts"
+  ],
+  "devDependencies": {
+    "ava": "^1.2.0",
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "email-validator": "^2.0.4",
+    "is-url-superb": "^3.0.0"
+  }
+}
