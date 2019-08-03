@@ -32,6 +32,9 @@ module.exports = (program, client) => {
           process.exit(1)
         }
 
+        // TODO: if any projects are specified without deployment version info, then
+        // expand them out to include all deployments in those projects
+
         const deployments = parsedArgs.map(({ deploymentId }) => deploymentId)
 
         if (!opts.yes) {
