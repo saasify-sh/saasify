@@ -2083,10 +2083,10 @@ fin-client@^0.0.5:
     axios "^0.18.0"
     qs "^6.6.0"
 
-fin-utils@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/fin-utils/-/fin-utils-0.0.1.tgz#6936df766932e289afeecbd0e13586ca214700f4"
-  integrity sha512-ZRPCUnmFYpRaITMRhD+mPZfEWthXRwTztVZF7gygb5Ihpn6dTIUOP25O1xm6tzabPnHeuU9XCAkcfl+ECG4ong==
+fin-utils@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/fin-utils/-/fin-utils-0.0.2.tgz#b6c26816fb414a80f9d73d451cb67a66300488b5"
+  integrity sha512-YU2xs/aP8+rvEvyOG6of3YE4hS75jSgIdkG6P1PiJz3+ZLAXVh41rC+cYeBpeNkyDxIzAVKPJgcb84estuY0rQ==
   dependencies:
     email-validator "^2.0.4"
     is-url-superb "^3.0.0"
