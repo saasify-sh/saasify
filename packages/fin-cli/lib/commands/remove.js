@@ -3,6 +3,7 @@
 const { Confirm } = require('enquirer')
 const pluralize = require('pluralize')
 const pMap = require('p-map')
+const { parseFaasIdentifier } = require('fin-utils')
 
 const handleError = require('../handle-error')
 const spinner = require('../spinner')
@@ -19,18 +20,23 @@ module.exports = (program, client) => {
 
       try {
         const deploymentsLabel = pluralize('deployment', args.length)
-        const deployments = await spinner(
-          client.resolveDeployments(args),
-          `Resolving ${deploymentsLabel}`
-        )
+        const parsedArgs = args.map((identifier) => parseFaasIdentifier(identifier, {
+          strict: false,
+          namespace: client.user.username
+        }))
 
-        if (!deployments.length) {
-          console.log(`Error no ${deploymentsLabel} found matching input`)
+        const invalid = args.filter((_, index) => !parsedArgs[index])
+
+        if (invalid.length) {
+          const invalidLabel = pluralize('deployment', invalid.length)
+          console.log(`Error invalid ${invalidLabel} [${invalid.join(', ')}]`)
           process.exit(1)
         }
 
+        const deployments = parsedArgs.map(({ deploymentId }) => deploymentId)
+
         if (!opts.yes) {
-          console.log(`${deploymentsLabel}:`, deployments.map((d) => d.id).join(', '))
+          console.log(`${deploymentsLabel}:`, deployments.join(', '))
 
           const prompt = new Confirm({
             message: `Are you sure you want to delete these ${deployments.length} ${deploymentsLabel}?`,
@@ -44,8 +50,8 @@ module.exports = (program, client) => {
         }
 
         await spinner(
-          pMap(deployments, (deployment) => {
-            return client.removeDeployment(deployment.id, {
+          pMap(deployments, (deploymentId) => {
+            return client.removeDeployment(deploymentId, {
               safe: opts.safe
             })
           }, {

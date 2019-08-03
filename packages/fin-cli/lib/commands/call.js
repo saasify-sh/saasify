@@ -1,9 +1,9 @@
 'use strict'
 
-const { createHttpClient } = require('fts-http-client')
 const fs = require('fs-extra')
+const { createHttpClient } = require('fts-http-client')
+const { parseFaasIdentifier } = require('fin-utils')
 
-const spinner = require('../spinner')
 const handleError = require('../handle-error')
 
 module.exports = (program, client) => {
@@ -11,7 +11,7 @@ module.exports = (program, client) => {
     .command('call <service> [args...]')
     .description('Invokes a given service')
     .option('-o, --output <file>', 'Save output to file instead of stdout.')
-    .action(async (faasIdentifier, args, opts) => {
+    .action(async (identifier, args, opts) => {
       const nonParams = args
         .filter((a) => !/[=@]/.test(a))
 
@@ -51,22 +51,32 @@ module.exports = (program, client) => {
         }, { })
 
       try {
-        const deployments = await spinner(
-          client.resolveDeployments([ faasIdentifier ]),
-          `Resolving deployment`
-        )
+        const parsedFaas = parseFaasIdentifier(identifier, {
+          strict: false,
+          namespace: client.user.username
+        })
 
-        if (!deployments.length) {
-          console.error(`Error no deployment found matching input "${faasIdentifier}"`)
+        if (!parsedFaas) {
+          console.error(`Error no deployment found matching input "${identifier}"`)
           process.exit(1)
         }
 
-        const deployment = deployments[0]
+        const deployment = await client.getDeployment(parsedFaas.deployment)
+        let service
 
-        // TODO: support multiple services
-        // TODO: move deployment parsing to fin-utils
-        const s = deployment.services[0]
-        const httpClient = createHttpClient(s.definition, `${deployment.url}${s.route}`)
+        if (parsedFaas.serviceName) {
+          service = deployment.services
+            .find((service) => service.name === parsedFaas.serviceName)
+        } else if (deployment.services.length === 1) {
+          service = deployment.services[0]
+        }
+
+        if (!service) {
+          console.error(`Error invalid service`)
+          process.exit(1)
+        }
+
+        const httpClient = createHttpClient(service.definition, `${deployment.url}${service.route}`)
 
         const result = await httpClient({
           ...params,

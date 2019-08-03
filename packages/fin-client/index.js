@@ -44,6 +44,10 @@ module.exports = class FinClient {
     this._token = token
   }
 
+  get baseUrl () {
+    return this._baseUrl
+  }
+
   // --------------------------------------------------------------------------
   // Auth
   // --------------------------------------------------------------------------
@@ -178,6 +182,12 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
+  async resolveConsumers (project) {
+    return this._request({
+      url: `/1/consumers/projects/${project}`
+    }).then(res => res.data)
+  }
+
   // --------------------------------------------------------------------------
   // Deployments
   // --------------------------------------------------------------------------
@@ -216,26 +226,6 @@ module.exports = class FinClient {
 
     return this._request({
       url: `/1/deployments?${querystring}`
-    }).then(res => res.data)
-  }
-
-  // --------------------------------------------------------------------------
-  // Resolving
-  // --------------------------------------------------------------------------
-
-  async resolveDeployments (data) {
-    return this._request({
-      url: `/1/resolve/deployments`,
-      method: 'put',
-      data
-    }).then(res => res.data)
-  }
-
-  async resolveConsumers (data) {
-    return this._request({
-      url: `/1/resolve/consumers`,
-      method: 'put',
-      data
     }).then(res => res.data)
   }
 

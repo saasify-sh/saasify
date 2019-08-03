@@ -26,6 +26,10 @@ module.exports = (program, client) => {
 
         const { projectId: project } = parsedFaas
 
+        // TODO: remove this call to resolveConsumers?
+        // TODO: is moving all parsing and ID formatting logic to be shared between
+        // client and server really a good idea?
+
         const [ consumer ] = await spinner(
           client.resolveConsumers([ project ]),
           `Resolving subscription for project [${project}]`
