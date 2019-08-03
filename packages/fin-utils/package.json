@@ -28,5 +28,8 @@
   "dependencies": {
     "email-validator": "^2.0.4",
     "is-url-superb": "^3.0.0"
+  },
+  "ava": {
+    "snapshotDir": "./.snapshots"
   }
 }
