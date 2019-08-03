@@ -21,7 +21,6 @@ module.exports = (program, client) => {
       try {
         const deploymentsLabel = pluralize('deployment', args.length)
         const parsedArgs = args.map((identifier) => parseFaasIdentifier(identifier, {
-          strict: false,
           namespace: client.user.username
         }))
 
