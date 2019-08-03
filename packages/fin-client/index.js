@@ -182,7 +182,7 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async resolveConsumers (project) {
+  async getConsumerByProject (project) {
     return this._request({
       url: `/1/consumers/projects/${project}`
     }).then(res => res.data)

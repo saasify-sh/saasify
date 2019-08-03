@@ -24,15 +24,15 @@ module.exports = (program, client) => {
           throw new Error(`Invalid project identifier [${identifier}]`)
         }
 
-        const { projectId: project } = parsedFaas
+        const { projectId } = parsedFaas
 
         // TODO: remove this call to resolveConsumers?
         // TODO: is moving all parsing and ID formatting logic to be shared between
         // client and server really a good idea?
 
-        const [ consumer ] = await spinner(
-          client.resolveConsumers([ project ]),
-          `Resolving subscription for project [${project}]`
+        const consumer = await spinner(
+          client.getConsumerByProject(projectId),
+          `Resolving subscription for project [${projectId}]`
         )
 
         if (!opts.yes) {
@@ -52,7 +52,7 @@ module.exports = (program, client) => {
           `Cancelling subscription to project [${consumer.project}]`
         )
 
-        console.log(`Successfully unsubscribed from project [${project}]`)
+        console.log(`Successfully unsubscribed from project [${consumer.project}]`)
       } catch (err) {
         handleError(err)
       }
