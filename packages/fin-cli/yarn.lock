@@ -2075,10 +2075,10 @@ fill-range@^4.0.0:
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
 
-fin-client@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/fin-client/-/fin-client-0.0.5.tgz#7d5694441d58a18e776e7bb12e86aae63c45e409"
-  integrity sha512-3nVMX1+MjS7a26JVTY5bkLDE+1V0dK5+FkqG1HW5NDmzebhEBhFZxCzrv0gBmdkTBXqZJF5EQng2D8HmYEwxDQ==
+fin-client@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/fin-client/-/fin-client-0.0.6.tgz#d82b22650b9f1660da49d09e177845703a6aef0b"
+  integrity sha512-A0SmmYaYz++2MIWvvrW/0JYRRtBNOrjIw7pneMpxC8+9+GEiPCLDt9Oa1Z82sDyDfAx2123DzpRbwYJNJeJx7g==
   dependencies:
     axios "^0.18.0"
     qs "^6.6.0"

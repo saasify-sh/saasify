@@ -38,7 +38,7 @@
     "credit-card": "^3.0.2",
     "enquirer": "^2.3.0",
     "fast-stream-to-buffer": "^1.0.0",
-    "fin-client": "^0.0.5",
+    "fin-client": "^0.0.6",
     "fin-utils": "^0.0.2",
     "fs-extra": "^7.0.1",
     "fts": "^1.0.9",
