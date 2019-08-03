@@ -15,7 +15,6 @@ module.exports = (program, client) => {
 
       try {
         const parsedFaas = parseFaasIdentifier(identifier, {
-          strict: true,
           namespace: client.user.username
         })
 

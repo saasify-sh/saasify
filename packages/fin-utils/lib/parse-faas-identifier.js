@@ -6,8 +6,7 @@ const parseFaasUri = require('./parse-faas-uri')
 
 module.exports = (identifier, opts = { }) => {
   const {
-    namespace,
-    strict = true
+    namespace
   } = opts
 
   if (!identifier) {
@@ -27,20 +26,15 @@ module.exports = (identifier, opts = { }) => {
     return
   }
 
-  const namespacePrefix = `${namespace}/`
   const hasNamespacePrefix = /^([a-zA-Z0-9-_]{1,64}\/)/.test(uri)
 
-  if (hasNamespacePrefix) {
-    if (!strict && !uri.startsWith(namespacePrefix)) {
-      // namespace doesn't match expected
+  if (!hasNamespacePrefix) {
+    if (namespace) {
+      // add inferred namespace prefix (defaults to authenticated user's username)
+      uri = `${namespace}/${uri}`
+    } else {
+      throw new Error(`FaaS identifier is missing namespace prefix or you must be authenticated [${uri}]`)
     }
-  } else if (strict) {
-    throw new Error(`FaaS identifier is missing namespace prefix [${uri}]`)
-  } else if (!namespace) {
-    throw new Error(`FaaS identifier is missing namespace prefix or you must be authenticated [${uri}]`)
-  } else {
-    // add inferred namespace prefix from authenticated user's username
-    uri = `${namespacePrefix}${uri}`
   }
 
   const result = parseFaasUri(uri)
