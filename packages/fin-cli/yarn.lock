@@ -1184,9 +1184,10 @@ co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
 
-code-block-writer@^7.2.2:
+code-block-writer@7.2.2:
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/code-block-writer/-/code-block-writer-7.2.2.tgz#14ec0120de9a65d2cc5d214561d51d1660dddbb1"
+  integrity sha512-8SyXM1bWsMDCzvCoTdnDBhnnUbHntxcba4ApBIO3S3QX0M2Iq0xZCzs6SYdBOGaSUi4drysvrAK15JoXhlpsvQ==
 
 code-excerpt@^2.1.1:
   version "2.1.1"
@@ -2245,28 +2246,28 @@ fstream@^1.0.0, fstream@^1.0.2, fstream@~1.0.11:
     mkdirp ">=0.5 0"
     rimraf "2"
 
-fts-core@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/fts-core/-/fts-core-1.0.9.tgz#d5b2b1ad96a0c396ee3a3add740e5b5c012a2288"
-  integrity sha512-jKUzApI528vHDlyyQ33FMujuru3MoJcITN+8vA2NApIzjFf78KrsIXA3+D7I61kXAJiHC3i23UywHrP15CEuzQ==
+fts-core@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/fts-core/-/fts-core-1.1.0.tgz#b4d77bb1f00fe93dbff063ca0ac20c277bd510ec"
+  integrity sha512-SAwYBDBmTkHBUVVBaE+TskQGUPJ0fEqEYnfvFRlv5rvJ4uRznOOx5HCu2j2uqCwdJ2fhV5rpcb5OZ6U+EzKvXQ==
 
-fts-http-client@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/fts-http-client/-/fts-http-client-1.0.9.tgz#2145feeb7e4578be07ca11c1cd22770ec399401a"
-  integrity sha512-VERs3P5PQTpk0BdjMfF/g94iH3W+FVOkkXgkPYXHN0FgkX+ZRySoZRXFMHkU1lxVFQKV1P+7CV6FC4CJWB8RpQ==
+fts-http-client@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/fts-http-client/-/fts-http-client-1.1.1.tgz#c623dc4beef7f6ef00099e6dc359e45f5ebcd4fc"
+  integrity sha512-QOYJse6o0JsmVN89orApl7HhW95odZLiVA+1KSJW96FNsBBdQI9NSCnH8nhO1zTes7At+vLieqrzhY1lEazvnA==
   dependencies:
     fts-validator "^1.0.4"
     isomorphic-unfetch "^3.0.0"
 
-fts-http@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/fts-http/-/fts-http-1.0.9.tgz#d162d1502cdcbdde8cb61d63dd8130d1ab5b9a26"
-  integrity sha512-fD8ZmNfy/6ss/VRCbaW8rHRYW8qUN0RrurG+VyR/gRGpSO37COSQfYn9xuUU9NJJjJWx/TtvwdK8/LpqlgUv0Q==
+fts-http@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/fts-http/-/fts-http-1.1.1.tgz#76e4d0d056559c3f728531c381e05548221d4326"
+  integrity sha512-e75rT/aq+5dt0od4N86rKhqag7F851TsPdnc8MOWCBe/ep1uZzbZeURbWgQgX35qUcjHxPemK7C6Y3sn+md3MQ==
   dependencies:
     accepts "^1.3.5"
     content-type "^1.0.4"
     cors "^2.8.5"
-    fts-core "^1.0.9"
+    fts-core "^1.1.0"
     fts-validator "^1.0.4"
     is-stream "^1.1.0"
     micro "^9.3.3"
@@ -2282,17 +2283,17 @@ fts-validator@^1.0.4:
     ajv "^6.7.0"
     clone-deep "^4.0.1"
 
-fts@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/fts/-/fts-1.0.9.tgz#52b93687dd8785462f1bfbe26a85424ae4af903d"
-  integrity sha512-B6RiZAQ8Yvf3xY3AKE6Xj2HvN/Go0H0XyBrfTVSvM5f6q+8CFO+YVz7EUdEG3ezzVXm9jt6tZ97UleZfIJR5jg==
+fts@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/fts/-/fts-1.1.1.tgz#95364abaa11f15a3f17b661f42472a1ad3af3a05"
+  integrity sha512-ocFU3zSStneUI0gmQ6rJ2ngVoHroEGoIqhJi7JCTQ05zsiSD6GTb7UpQFqlt8uuZrY1vGzu700ARTafErR98Tw==
   dependencies:
     ajv "^6.7.0"
     commander "^2.19.0"
     doctrine "^3.0.0"
     fs-extra "^7.0.1"
     tempy "^0.2.1"
-    ts-simple-ast "^21.0.0"
+    ts-morph "^1.3.4"
     typescript-json-schema "^0.34.0"
 
 function-bind@^1.1.1:
@@ -5503,19 +5504,20 @@ trough@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/trough/-/trough-1.0.3.tgz#e29bd1614c6458d44869fc28b255ab7857ef7c24"
 
-ts-simple-ast@^21.0.0:
-  version "21.0.4"
-  resolved "https://registry.yarnpkg.com/ts-simple-ast/-/ts-simple-ast-21.0.4.tgz#b1703287fa8c7f5d6a8bfbef47c1c6cc3dd43e0b"
+ts-morph@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-1.3.4.tgz#bd213b9366fffcda9f30f255945c4380c6c4b33e"
+  integrity sha512-LCBlHgb9GiZ7tfemjEwbvWlX2yysVFTKiAbBcepmBXCcH2IFDZFM4uI6vXhghUddSAmI9I5aiswKFRTSqzTVLA==
   dependencies:
     "@dsherret/to-absolute-glob" "^2.0.2"
-    code-block-writer "^7.2.2"
+    code-block-writer "7.2.2"
     fs-extra "^7.0.0"
     glob-parent "^3.1.0"
     globby "^8.0.1"
     is-negated-glob "^1.0.0"
     multimatch "^2.1.0"
     tslib "^1.9.0"
-    typescript "^3.0.1"
+    typescript ">=3.0.1 <3.6.0"
 
 tslib@^1.9.0:
   version "1.9.3"
@@ -5556,6 +5558,11 @@ typescript-json-schema@^0.34.0:
     json-stable-stringify "^1.0.1"
     typescript "^3.0.1"
     yargs "^12.0.1"
+
+"typescript@>=3.0.1 <3.6.0":
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
+  integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
 
 typescript@^3.0.1:
   version "3.3.1"

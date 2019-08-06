@@ -4,6 +4,8 @@ const url = require('url')
 
 const parseFaasUri = require('./parse-faas-uri')
 
+// TODO: add unit tests for the URL and namespace handling
+
 module.exports = (identifier, opts = { }) => {
   const {
     namespace
