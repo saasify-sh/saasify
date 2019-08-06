@@ -1,6 +1,6 @@
 {
   "name": "fin-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Shared utilities for Fin.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
