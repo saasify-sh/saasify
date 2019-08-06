@@ -19,15 +19,22 @@ test('username success', (t) => {
   t.truthy(validators.username('z'))
   t.truthy(validators.username('abc'))
   t.truthy(validators.username('Foo123'))
-  t.truthy(validators.username('username'))
   t.truthy(validators.username('asldfkjasldkfjlaksdfjlkas'))
 })
 
-test('username failure', (t) => {
+test('username failure (invalid)', (t) => {
   t.falsy(validators.username('ab%'))
   t.falsy(validators.username('.'))
   t.falsy(validators.username('$'))
   t.falsy(validators.username('a'.repeat(65)))
+})
+
+test('username failure (blacklist)', (t) => {
+  t.falsy(validators.username('fuck'))
+  t.falsy(validators.username('username'))
+  t.falsy(validators.username('undefined'))
+  t.falsy(validators.username('null'))
+  t.falsy(validators.username('404'))
 })
 
 test('password success', (t) => {

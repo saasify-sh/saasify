@@ -1,6 +1,8 @@
 'use strict'
 
 const emailValidator = require('email-validator')
+const usernameBlacklist = require('./username-blacklist.json')
+const usernameBlacklistSet = new Set(usernameBlacklist)
 
 exports.usernameRe = /^[a-zA-Z0-9-_]{1,64}$/
 exports.passwordRe = /^.{3,1024}$/
@@ -19,7 +21,7 @@ exports.email = (value) => {
 }
 
 exports.username = (value) => {
-  return value && exports.usernameRe.test(value)
+  return value && exports.usernameRe.test(value) && !usernameBlacklistSet.has(value)
 }
 
 exports.password = (value) => {
