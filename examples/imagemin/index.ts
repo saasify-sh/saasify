@@ -1,5 +1,5 @@
 import { HttpResponse} from 'fts-core'
-import fileType from 'file-type'
+import * as fileType from 'file-type'
 import imagemin from 'imagemin'
 import imageminPngquant from 'imagemin-pngquant'
 import imageminJpegtran from 'imagemin-jpegtran'
