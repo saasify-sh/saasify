@@ -12,7 +12,7 @@ module.exports = (program, client) => {
         program.outputHelp()
         process.exit(0)
       } else {
-        cli([ process.argv[0], process.argv[1], arg, '--help' ])
+        cli([process.argv[0], process.argv[1], arg, '--help'])
       }
     })
 }

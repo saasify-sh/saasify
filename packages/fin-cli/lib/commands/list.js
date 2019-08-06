@@ -26,13 +26,13 @@ module.exports = (program, client) => {
         )
 
         const projects = { }
-        const sortedProjects = [ ]
+        const sortedProjects = []
 
         // aggregate deployments by project
         for (const deployment of deployments) {
           const { project } = deployment
           if (!projects[project]) {
-            projects[project] = [ ]
+            projects[project] = []
           }
 
           deployment.createdAt = new Date(deployment.createdAt)
