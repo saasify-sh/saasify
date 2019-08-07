@@ -8,8 +8,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import App from './App'
-import * as serviceWorker from 'lib/service-worker'
+
+// import * as serviceWorker from 'lib/service-worker'
+// serviceWorker.unregister()
 
 ReactDOM.render(<App />, document.getElementById('root'))
-
-serviceWorker.unregister()

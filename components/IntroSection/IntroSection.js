@@ -14,7 +14,7 @@ export class IntroSection extends Component {
           <section className={styles.container}>
             <div className={styles.content}>
               <Markdown
-                source={project.readme}
+                source={project.lastPublishedDeployment.readme}
               />
             </div>
 

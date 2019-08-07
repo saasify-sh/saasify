@@ -27,7 +27,7 @@ import styles from './styles.module.css'
 @inject('auth')
 @withRouter
 @Form.create()
-export class LoginForm extends Component {
+export class SignupForm extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     form: PropTypes.object.isRequired,
@@ -55,7 +55,7 @@ export class LoginForm extends Component {
             icon='github'
             onClick={this._onClickGitHub}
           >
-            Login with GitHub
+            Signup with GitHub
           </Button>
         </FormItem>
 
@@ -71,7 +71,7 @@ export class LoginForm extends Component {
                 icon='facebook'
                 onClick={props.onClick}
               >
-                Login with Facebook
+                Signup with Facebook
               </Button>
             )}
           />
@@ -80,8 +80,21 @@ export class LoginForm extends Component {
         <Divider />
 
         <FormItem>
+          {getFieldDecorator('email', {
+            rules: [{ required: true, message: 'Please enter your email.' }]
+          })(
+            <Input
+              prefix={
+                <Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />
+              }
+              placeholder='Email'
+            />
+          )}
+        </FormItem>
+
+        <FormItem>
           {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please enter your username or email.' }]
+            rules: [{ required: true, message: 'Please enter a username.' }]
           })(
             <Input
               prefix={
@@ -94,7 +107,7 @@ export class LoginForm extends Component {
 
         <FormItem>
           {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please enter your password.' }]
+            rules: [{ required: true, message: 'Please enter a password.' }]
           })(
             <Input
               prefix={
@@ -114,23 +127,14 @@ export class LoginForm extends Component {
             <Checkbox>Remember me</Checkbox>
           )}
 
-          <Link
-            className={styles.forgot}
-            to='/forgot-password'
-          >
-            Forgot password
-          </Link>
-
           <Button
             type='primary'
             htmlType='submit'
             className={styles.submit}
             loading={loading}
           >
-            Log in
+            Signup!
           </Button>
-
-          Or <Link to='/signup'>sign up!</Link>
         </FormItem>
       </Form>
     )
@@ -141,11 +145,11 @@ export class LoginForm extends Component {
     this.props.form.validateFields((err, data) => {
       if (!err) {
         this.setState({ loading: true })
-        this.props.auth.signin(data)
+        this.props.auth.signup(data)
           .catch((err) => {
             this.setState({ loading: false })
             debug(err)
-            message.error('Error logging in')
+            message.error('Error signing up')
           })
       }
     })
