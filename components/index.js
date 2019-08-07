@@ -9,6 +9,7 @@ export * from './NavFooter'
 
 export * from './HeroSection'
 export * from './IntroSection'
+export * from './SectionDivider'
 
 export * from './SignupButton'
 

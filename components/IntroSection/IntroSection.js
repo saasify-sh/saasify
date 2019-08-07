@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import { SectionDivider } from '../SectionDivider'
 import { FinContext } from '../FinContext'
 import { Markdown } from '../Markdown'
 
@@ -17,8 +16,6 @@ export class IntroSection extends Component {
                 source={project.lastPublishedDeployment.readme}
               />
             </div>
-
-            <SectionDivider inverted />
           </section>
         )}
       </FinContext.Consumer>

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'antd'
 
-import { SectionDivider } from '../SectionDivider'
 import { FinContext } from '../FinContext'
 
 import styles from './styles.module.css'
@@ -30,8 +29,6 @@ export class HeroSection extends Component {
                 </Link>
               </div>
             </div>
-
-            <SectionDivider />
           </section>
         )}
       </FinContext.Consumer>

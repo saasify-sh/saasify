@@ -4,7 +4,8 @@ import {
   NavHeader,
   NavFooter,
   HeroSection,
-  IntroSection
+  IntroSection,
+  SectionDivider
 } from 'components'
 
 import styles from './styles.module.css'
@@ -17,7 +18,11 @@ export class HomePage extends Component {
 
         <HeroSection />
 
+        <SectionDivider />
+
         <IntroSection />
+
+        <SectionDivider inverted />
 
         <NavFooter />
       </div>
