@@ -12,6 +12,7 @@ import {
   DashboardPage,
   HomePage,
   LoginPage,
+  SignupPage,
   TermsPage,
   PrivacyPage,
   AuthGitHubPage
@@ -38,6 +39,7 @@ export default class App extends Component {
               <Route path='/privacy' component={PrivacyPage} />
 
               <Route path='/login' component={LoginPage} />
+              <Route path='/signup' component={SignupPage} />
               <Route path='/auth/github' component={AuthGitHubPage} />
 
               <AuthenticatedRoute path='/dashboard' component={DashboardPage} />

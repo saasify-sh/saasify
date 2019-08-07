@@ -23,7 +23,7 @@ export class HeroSection extends Component {
               </p>
 
               <div className={styles.cta}>
-                <Link to='/login'>
+                <Link to='/signup'>
                   <Button type='primary' className={styles.signupButton}>
                     Get Started
                   </Button>

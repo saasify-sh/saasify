@@ -5,15 +5,22 @@
   width: 100%;
   z-index: 10;
 
+  padding: 6px 12px;
+
+  background: transparent;
+  transition: all 400ms ease;
+}
+
+.content {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 12px;
-
-  background: transparent;
-  transition: all 400ms ease;
 }
 
 .attached {
@@ -33,6 +40,9 @@
 .links {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+
   user-select: none;
 }
 
@@ -41,20 +51,10 @@
   padding: 8px 16px;
 
   font-size: 1.05em;
-  text-decoration: none;
-  cursor: pointer;
-  color: #333;
-
-  transition: color 250ms ease;
 }
 
-.activeLink {
-  color: #fff;
-  font-weight: bold;
-}
-
-.link:active, .link:visited, .link:hover {
-  color: #333;
+.login {
+  margin-right: 2em;
 }
 
 @media only screen and (min-width: 768px) {

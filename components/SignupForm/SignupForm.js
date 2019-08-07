@@ -149,7 +149,7 @@ export class SignupForm extends Component {
           .catch((err) => {
             this.setState({ loading: false })
             debug(err)
-            message.error('Error signing up')
+            message.error(`Error signing up: ${err.response.data.error}`)
           })
       }
     })

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import cs from 'classnames'
 import raf from 'raf'
+import { Link } from 'react-router-dom'
+import { CTAButton } from '../CTAButton'
 
 import { Logo } from '../Logo'
 
@@ -48,7 +50,57 @@ export class NavHeader extends Component {
       <header
         className={cs(styles.container, attached || fixed ? styles.attached : null)}
       >
-        <Logo className={styles.logo} />
+        <div className={styles.content}>
+          <div className={styles.links}>
+            <Link
+              to='/'
+            >
+              <Logo className={styles.logo} />
+            </Link>
+
+            <Link
+              to='/'
+              className={styles.link}
+            >
+              Home
+            </Link>
+
+            <Link
+              to='/pricing'
+              className={styles.link}
+            >
+              Pricing
+            </Link>
+
+            <Link
+              to='/docs'
+              className={styles.link}
+            >
+              Docs
+            </Link>
+
+            <Link
+              to='/support'
+              className={styles.link}
+            >
+              Support
+            </Link>
+          </div>
+
+          <div>
+            <Link to='/login' className={styles.login}>
+              <CTAButton type='secondary' inline>
+                LOGIN
+              </CTAButton>
+            </Link>
+
+            <Link to='/signup'>
+              <CTAButton type='primary' inline>
+                SIGNUP
+              </CTAButton>
+            </Link>
+          </div>
+        </div>
       </header>
     )
   }

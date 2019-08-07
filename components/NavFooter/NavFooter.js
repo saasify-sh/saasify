@@ -57,10 +57,10 @@ export class NavFooter extends Component {
 
                   <li className={styles.listItem}>
                     <a
-                      href='/create'
+                      href='/signup'
                       className={styles.link}
                     >
-                      Signup
+                      Get Started
                     </a>
                   </li>
                 </ul>

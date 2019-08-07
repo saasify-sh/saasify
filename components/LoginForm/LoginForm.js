@@ -145,7 +145,7 @@ export class LoginForm extends Component {
           .catch((err) => {
             this.setState({ loading: false })
             debug(err)
-            message.error('Error logging in')
+            message.error(`Error logging in: ${err.response.data.error}`)
           })
       }
     })
