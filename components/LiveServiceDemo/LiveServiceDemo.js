@@ -2,49 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import cs from 'classnames'
 import mem from 'mem'
-import { Tabs } from 'antd'
 
 import { CodeBlock } from '../CodeBlock'
+import { languages } from './languages'
 
 import styles from './styles.module.css'
-
-const { TabPane } = Tabs
-
-const languages = [
-  {
-    language: 'bash',
-    label: 'cURL',
-    code: (props) => `
-curl --request POST \\
-  --url https://hoot.at/api/hoot \\
-  --user readme: \\
-  --header 'content-type: application/json' \\
-  --data '{"post": "Hello world!"}'`
-  },
-  {
-    language: 'javascript',
-    label: 'Node.js',
-    code: (props) => `
-const request = require('request')
-
-const options = {
-  method: 'POST',
-  url: 'https://hoot.at/api/hoot',
-  headers: {
-    authorization: 'Basic cmVhZG1lOg=='
-    'content-type': 'application/json'
-  },
-  body: { post: 'Hello World!'},
-  json: true
-}
-
-request(options, (error, response, body) => {
-  if (error) throw new Error(error)
-
-  console.log(body)
-})`
-  }
-]
 
 export class LiveServiceDemo extends Component {
   static propTypes = {
@@ -61,8 +23,21 @@ export class LiveServiceDemo extends Component {
 
   render() {
     const {
+      project,
+      deployment,
+      service
+    } = this.props
+
+    const {
       selected
     } = this.state
+
+    const params = {
+      project,
+      deployment,
+      service,
+      url: `${deployment.url}${service.route}`
+    }
 
     return (
       <div className={styles.container}>
@@ -87,7 +62,7 @@ export class LiveServiceDemo extends Component {
               <CodeBlock
                 className={styles.code}
                 language={l.language}
-                value={l.code(this.props).trim()}
+                value={l.code(params).trim()}
               />
             </div>
           ))}
