@@ -12,6 +12,10 @@ module.exports = (program, client) => {
     .option('-p, --password <password>', 'account password')
     .action(async (opts) => {
       try {
+        if (!opts.username) {
+          opts.username = opts.email
+        }
+
         const { user, token } = await module.exports.signin(opts, client)
         auth.signin({ user, token })
 
@@ -23,8 +27,8 @@ module.exports = (program, client) => {
 }
 
 module.exports.signin = async (opts, client) => {
-  const { email, username, password } = opts
+  const { username, password } = opts
 
-  // TODO: validate email / username and password
-  return client.signin({ email, username, password })
+  // TODO: validate username and password
+  return client.signin({ username, password })
 }

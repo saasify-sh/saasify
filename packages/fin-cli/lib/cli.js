@@ -41,6 +41,10 @@ module.exports = (argv, opts = { }) => {
     }
   }
 
+  if (argv.length <= 2) {
+    argv.push('deploy')
+  }
+
   program.parse(argv)
 }
 

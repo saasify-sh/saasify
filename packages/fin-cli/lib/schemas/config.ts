@@ -16,6 +16,7 @@ class Service {
   timeout?: number = 300000
   authRateLimit?: RateLimit
   noAuthRateLimit?: RateLimit
+  example?: object
 }
 
 class RateLimit {

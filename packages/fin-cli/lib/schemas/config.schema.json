@@ -71,6 +71,10 @@
           "$ref": "#/definitions/RateLimit",
           "title": "noAuthRateLimit"
         },
+        "example": {
+          "type": "object",
+          "title": "example"
+        },
         "additionalProperties": false
       },
       "required": [
