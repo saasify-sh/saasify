@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import cs from 'classnames'
+import mem from 'mem'
 import { Tabs } from 'antd'
 
 import { CodeBlock } from '../CodeBlock'
@@ -52,26 +54,51 @@ export class LiveServiceDemo extends Component {
   }
 
   state = {
-    selected: 'curl'
+    selected: 'cURL'
   }
 
+  _onClickTabMem = mem((i) => () => this._onClickTab(languages[i]))
+
   render() {
+    const {
+      selected
+    } = this.state
+
     return (
       <div className={styles.container}>
-        <Tabs type='card'>
+        <div className={styles.tabs}>
           {languages.map((l, i) => (
-            <TabPane
-              tab={l.label}
+            <div
+              className={cs(styles.tab, selected === l.label && styles.selectedTab)}
+              key={i}
+              onClick={this._onClickTabMem(i)}
+            >
+              {l.label}
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.content}>
+          {languages.map((l, i) => (
+            <div
+              className={cs(styles.tabPane, selected === l.label && styles.selectedTabPane)}
               key={i}
             >
               <CodeBlock
+                className={styles.code}
                 language={l.language}
                 value={l.code(this.props).trim()}
               />
-            </TabPane>
+            </div>
           ))}
-        </Tabs>
+        </div>
       </div>
     )
+  }
+
+  _onClickTab = (language) => {
+    this.setState({
+      selected: language.label
+    })
   }
 }
