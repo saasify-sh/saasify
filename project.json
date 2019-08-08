@@ -7,14 +7,14 @@
   "createdAt": "2019-02-16T17:19:20.047Z",
   "updatedAt": "2019-04-09T17:07:14.584Z",
   "saas": {
-    "name": "Okta",
+    "name": "Hello World!",
     "heading": "Nala is a baby kitten",
     "subheading": "She is perfect in every way and loves doing kitty things like taking naps and such.",
     "theme": {
       "@primary-color": "#d23d67"
     }
   },
-  "lastPublishedDeployment": {
+  "deployment": {
     "id": "fin/hello-world@360e1480",
     "url": "https://api.functional-income.com/1/call/fin/hello-world@360e1480",
     "user": "5c5a35cc1cd684a8f5fc93fa",

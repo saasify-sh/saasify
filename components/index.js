@@ -11,9 +11,9 @@ export * from './HeroSection'
 export * from './IntroSection'
 export * from './SectionDivider'
 
-export * from './SignupButton'
-
 export * from './CodeBlock'
+export * from './LiveServiceDemo'
+
 export * from './Markdown'
 export * from './Logo'
 export * from './BackgroundSlideshow'

@@ -47,12 +47,8 @@
   cursor: pointer;
 }
 
-.link, .link:visited, .link:active {
+.link {
   color: #ccc;
-}
-
-.link:hover {
-  text-decoration: underline;
 }
 
 .logo {

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'antd'
 
+import { CTAButton } from '../CTAButton'
 import { FinContext } from '../FinContext'
 
 import styles from './styles.module.css'
@@ -23,9 +24,9 @@ export class HeroSection extends Component {
 
               <div className={styles.cta}>
                 <Link to='/signup'>
-                  <Button type='primary' className={styles.signupButton}>
+                  <CTAButton>
                     Get Started
-                  </Button>
+                  </CTAButton>
                 </Link>
               </div>
             </div>

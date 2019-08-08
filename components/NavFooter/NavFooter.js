@@ -56,12 +56,12 @@ export class NavFooter extends Component {
                   </li>
 
                   <li className={styles.listItem}>
-                    <a
-                      href='/signup'
+                    <Link
+                      to='/signup'
                       className={styles.link}
                     >
                       Get Started
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -95,30 +95,31 @@ export class NavFooter extends Component {
 
                 <ul>
                   <li className={styles.listItem}>
-                    <a
-                      href='/faq'
+                    <Link
+                      to='/support'
                       className={styles.link}
                     >
                       FAQ
-                    </a>
+                    </Link>
                   </li>
 
                   <li className={styles.listItem}>
-                    <div
+                    <Link
+                      to='/support'
                       className={styles.link}
                       onClick={this._onTapSupport}
                     >
                       Live Chat
-                    </div>
+                    </Link>
                   </li>
 
                   <li className={styles.listItem}>
-                    <a
-                      href='mailto:support@functional-income.com'
+                    <Link
+                      to='mailto:support@functional-income.com'
                       className={styles.link}
                     >
                       Email
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
