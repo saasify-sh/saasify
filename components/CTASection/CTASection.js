@@ -15,7 +15,7 @@ export class CTASection extends Component {
             <div className={styles.content}>
               <Link to='/signup'>
                 <CTAButton>
-                  Get Started
+                  Get Started For Free!
                 </CTAButton>
               </Link>
             </div>
