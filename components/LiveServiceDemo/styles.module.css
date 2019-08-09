@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   width: 650px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px;
 }
@@ -39,6 +40,7 @@
 }
 
 .content {
+  position: relative;
   font-size: 0.85em;
 }
 
@@ -55,4 +57,10 @@
   border-bottom-right-radius: 8px;
   height: 360px;
   overflow-y: auto;
+}
+
+.copy {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
 }

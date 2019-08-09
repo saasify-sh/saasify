@@ -17,6 +17,10 @@ export class IntroSection extends Component {
                 Demo
               </h1>
 
+              <p>
+                Feel free to play around with the the API... rate limit public shit free shit
+              </p>
+
               <LiveServiceDemo
                 project={project}
                 deployment={project.deployment}

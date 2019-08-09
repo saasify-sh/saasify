@@ -19,6 +19,10 @@ h1, h2, h3, h4, h5, h6 {
   margin: initial;
 }
 
+p {
+  color: rgb(210, 210, 214);
+}
+
 :global(.ant-form-item:last-child) {
   margin-bottom: 0;
 }
