@@ -19,5 +19,11 @@
 .title {
   text-align: center;
   font-size: 3em;
-  margin-bottom: 2em;
+  margin-bottom: 0.5em;
+}
+
+.desc {
+  text-align: center;
+  margin-bottom: 3em;
+  max-width: 650px;
 }

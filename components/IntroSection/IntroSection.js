@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import { FinContext } from '../FinContext'
 import { LiveServiceDemo } from '../LiveServiceDemo'
@@ -17,8 +18,8 @@ export class IntroSection extends Component {
                 Demo
               </h1>
 
-              <p>
-                Feel free to play around with the the API... rate limit public shit free shit
+              <p className={styles.desc}>
+                Feel free to experiment with the the API for <b>FREE</b>! Once you're sure that it fits your use case, <Link to='/signup'>sign up</Link> for a subcription to remove the public rate limit.
               </p>
 
               <LiveServiceDemo
