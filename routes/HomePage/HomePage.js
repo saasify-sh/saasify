@@ -5,6 +5,7 @@ import {
   NavFooter,
   HeroSection,
   FeaturesSection,
+  CTASection,
   IntroSection,
   SectionDivider
 } from 'components'
@@ -28,6 +29,10 @@ export class HomePage extends Component {
         <FeaturesSection />
 
         <SectionDivider />
+
+        <CTASection />
+
+        <SectionDivider inverted />
 
         <NavFooter />
       </div>

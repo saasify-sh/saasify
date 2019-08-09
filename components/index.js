@@ -10,6 +10,8 @@ export * from './NavFooter'
 export * from './HeroSection'
 export * from './IntroSection'
 export * from './FeaturesSection'
+export * from './CTASection'
+
 export * from './SectionDivider'
 
 export * from './CodeBlock'

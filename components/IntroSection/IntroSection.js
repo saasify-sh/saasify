@@ -13,6 +13,10 @@ export class IntroSection extends Component {
         {project => (
           <section className={styles.container}>
             <div className={styles.content}>
+              <h1 className={styles.title}>
+                Demo
+              </h1>
+
               <LiveServiceDemo
                 project={project}
                 deployment={project.deployment}

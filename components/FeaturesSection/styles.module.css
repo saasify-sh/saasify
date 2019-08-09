@@ -8,18 +8,23 @@
 
 .content {
   width: 100%;
-  max-width: 1080px;
-  padding: 24px;
+  max-width: 1280px;
+  padding: 3em 2em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .title {
   text-align: center;
   font-size: 3em;
+  margin-bottom: 2em;
 }
 
 .features {
   display: grid;
-  grid-gap: 3em;
+  grid-gap: 4em;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
 }
 
@@ -33,7 +38,7 @@
 }
 
 .illustration {
-  min-height: 64px;
-  max-height: 50%;
+  min-height: 72px;
+  max-height: 60%;
   margin-bottom: 1em;
 }
