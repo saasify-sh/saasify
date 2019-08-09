@@ -1,5 +1,5 @@
 {
-  "id": "fin/hello-world",
+  "id": "t/hello-world@99a9cdf7",
   "description": null,
   "version": "1",
   "enabled": true,
@@ -67,10 +67,10 @@
     ]
   },
   "deployment": {
-    "id": "fin/hello-world@360e1480",
-    "url": "https://api.functional-income.com/1/call/fin/hello-world@360e1480",
+    "id": "t/hello-world@99a9cdf7",
+    "url": "https://api.functional-income.com/1/call/t/hello-world@99a9cdf7",
     "user": "5c5a35cc1cd684a8f5fc93fa",
-    "project": "fin/hello-world",
+    "project": "t/hello-world",
     "readme": "# Hello World\n\nThis is a very simple Fin project with a single serverless function that implements the classic \"Hello World!\".\n",
     "enabled": true,
     "version": "1.0.0",

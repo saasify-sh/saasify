@@ -11,6 +11,7 @@ import {
 import {
   DashboardPage,
   HomePage,
+  PricingPage,
   LoginPage,
   SignupPage,
   TermsPage,
@@ -35,6 +36,8 @@ export default class App extends Component {
           <FinContext.Provider value={FinProject}>
             <Switch>
               <Route exact path='/' component={HomePage} />
+
+              <Route path='/pricing' component={PricingPage} />
 
               <Route path='/terms' component={TermsPage} />
               <Route path='/privacy' component={PrivacyPage} />

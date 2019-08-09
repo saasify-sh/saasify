@@ -11,6 +11,7 @@ export * from './HeroSection'
 export * from './IntroSection'
 export * from './FeaturesSection'
 export * from './CTASection'
+export * from './PricingSection'
 export * from './NotFoundSection'
 
 export * from './SectionDivider'

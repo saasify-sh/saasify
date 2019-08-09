@@ -1,6 +1,7 @@
 export * from './AuthGitHubPage'
 export * from './DashboardPage'
 export * from './HomePage'
+export * from './PricingPage'
 export * from './LoginPage'
 export * from './SignupPage'
 export * from './TermsPage'
