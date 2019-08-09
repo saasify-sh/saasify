@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
-import { NavHeader, NavFooter } from 'components'
+import {
+  NavHeader,
+  NavFooter,
+  ScrollToTopOnMount
+} from 'components'
 
 import styles from './styles.module.css'
 
@@ -11,6 +15,8 @@ export class PrivacyPage extends Component {
         <NavHeader fixed={true} />
 
         <div className={styles.content}>
+          <ScrollToTopOnMount />
+
           <h1>Privacy Policy</h1>
           <p className={styles.lastModified}>Last Modified: April 9, 2019</p>
           <p><strong><u>Introduction</u></strong></p>

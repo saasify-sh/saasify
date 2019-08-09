@@ -15,7 +15,8 @@ import {
   SignupPage,
   TermsPage,
   PrivacyPage,
-  AuthGitHubPage
+  AuthGitHubPage,
+  NotFoundPage
 } from './routes'
 
 import AuthManager from './store/AuthManager'
@@ -44,7 +45,7 @@ export default class App extends Component {
 
               <AuthenticatedRoute path='/dashboard' component={DashboardPage} />
 
-              <Route render={() => (<div> TODO: 404 page </div>)} />
+              <Route component={NotFoundPage} />
             </Switch>
           </FinContext.Provider>
         </Provider>

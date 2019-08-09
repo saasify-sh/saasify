@@ -16,6 +16,10 @@
   margin: 0 auto;
 }
 
+.content p {
+  color: #222;
+}
+
 .content h1 {
   font-size: 2.4em;
   margin-bottom: 0.25em;

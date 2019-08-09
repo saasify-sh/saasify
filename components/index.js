@@ -11,6 +11,7 @@ export * from './HeroSection'
 export * from './IntroSection'
 export * from './FeaturesSection'
 export * from './CTASection'
+export * from './NotFoundSection'
 
 export * from './SectionDivider'
 
@@ -21,4 +22,5 @@ export * from './Markdown'
 export * from './UndrawSVG'
 export * from './Logo'
 export * from './BackgroundSlideshow'
+export * from './ScrollToTopOnMount'
 export * from './Paper'
