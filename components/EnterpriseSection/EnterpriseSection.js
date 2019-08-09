@@ -5,7 +5,7 @@ import { FinContext } from '../FinContext'
 
 import styles from './styles.module.css'
 
-export class PricingSection extends Component {
+export class EnterpriseSection extends Component {
   render() {
     return (
       <FinContext.Consumer>
@@ -13,12 +13,10 @@ export class PricingSection extends Component {
           <section className={styles.container}>
             <div className={styles.content}>
               <h1 className={styles.title}>
-                Pricing
+                Enterprise
               </h1>
 
-              <div className={styles.subtitle}>
-                Free. Unlimited. <b>Pay as you Grow.</b>
-              </div>
+              TODO
             </div>
           </section>
         )}

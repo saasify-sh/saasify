@@ -4,6 +4,7 @@ import {
   NavHeader,
   NavFooter,
   PricingSection,
+  EnterpriseSection,
   CTASection,
   SectionDivider
 } from 'components'
@@ -17,6 +18,10 @@ export class PricingPage extends Component {
         <NavHeader />
 
         <PricingSection />
+
+        <SectionDivider />
+
+        <EnterpriseSection />
 
         <CTASection />
 

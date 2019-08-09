@@ -12,6 +12,7 @@ export * from './IntroSection'
 export * from './FeaturesSection'
 export * from './CTASection'
 export * from './PricingSection'
+export * from './EnterpriseSection'
 export * from './NotFoundSection'
 
 export * from './SectionDivider'
