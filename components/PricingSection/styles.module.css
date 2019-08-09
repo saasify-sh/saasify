@@ -42,3 +42,16 @@
   color: #d2d2d6;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.name {
+  font-weight: 700;
+  font-size: 2em;
+  letter-spacing: 4px;
+
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.plan {
+  display: inline-block;
+}
+
