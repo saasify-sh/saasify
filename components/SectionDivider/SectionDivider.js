@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import Colr from 'colr'
 import raf from 'raf'
 import random from 'random'
 import sizeMe from 'react-sizeme'
@@ -12,8 +13,8 @@ const V = 0.025
 @sizeMe({ monitorWidth: true, monitorHeight: true })
 export class SectionDivider extends Component {
   static propTypes = {
-    foreground: PropTypes.string,
     background: PropTypes.string,
+    foreground: PropTypes.string,
     inverted: PropTypes.bool,
     animated: PropTypes.bool,
     style: PropTypes.object,
@@ -39,8 +40,15 @@ export class SectionDivider extends Component {
     x0: random.float(0.0, 0.4),
     y0: random.float(0.2, 1.0),
     x1: random.float(0.4, 1.0),
-    y1: random.float(0.5, 1.0)
+    y1: random.float(0.5, 1.0),
+    ltr: random.boolean()
   }
+
+  // '#1d3546'
+  fg = Colr
+    .fromHex(this.props.foreground)
+    .toRgbArray()
+  foregroundLight = `rgba(${this.fg[0]}, ${this.fg[1]}, ${this.fg[2]}, 0.5)`
 
   componentDidMount() {
     if (!isServer) {
@@ -74,7 +82,7 @@ export class SectionDivider extends Component {
       <div
         style={{
           width: '100%',
-          height: 80,
+          height: 64,
           ...style
         }}
         {...rest}
@@ -150,8 +158,8 @@ export class SectionDivider extends Component {
 
   _draw() {
     const {
-      foreground,
       background,
+      foreground,
       inverted
     } = this.props
 
@@ -159,7 +167,8 @@ export class SectionDivider extends Component {
       x0,
       y0,
       x1,
-      y1
+      y1,
+      ltr
     } = this._state
 
     const ctx = this._canvas.getContext('2d')
@@ -168,6 +177,30 @@ export class SectionDivider extends Component {
 
     ctx.fillStyle = background
     ctx.fillRect(0, 0, w, h)
+
+    if (ltr) {
+      ctx.fillStyle = this.foregroundLight
+      ctx.beginPath()
+      ctx.moveTo(0, inverted ? h : 0)
+      const cx0 = w * x0
+      const cy0 = h * y0
+      const cx1 = w * x1
+      const cy1 = h * y1
+      ctx.bezierCurveTo(cx0, inverted ? h - cy0 : cy0, cx1, inverted ? h - cy1 : cy1, w, h / 2)
+      ctx.lineTo(w, inverted ? h : 0)
+      ctx.fill()
+    } else {
+      ctx.fillStyle = this.foregroundLight
+      ctx.beginPath()
+      ctx.moveTo(w, inverted ? h : 0)
+      const cx0 = w * x0
+      const cy0 = h * y0
+      const cx1 = w * x1
+      const cy1 = h * y1
+      ctx.bezierCurveTo(cx1, inverted ? h - cy0 : cy0, cx0, inverted ? h - cy1 : cy1, 0, h / 2)
+      ctx.lineTo(0, inverted ? h : 0)
+      ctx.fill()
+    }
 
     ctx.fillStyle = foreground
     ctx.beginPath()

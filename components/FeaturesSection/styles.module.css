@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #23303a;
+}
+
+.content {
+  width: 100%;
+  max-width: 1080px;
+  padding: 24px;
+}
+
+.title {
+  text-align: center;
+  font-size: 3em;
+}
+
+.features {
+  display: grid;
+  grid-gap: 3em;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
+}
+
+.feature {
+  text-align: center;
+}
+
+.feature h3 {
+  font-size: 1.3em;
+  font-weight: 500;
+}
+
+.illustration {
+  min-height: 64px;
+  max-height: 50%;
+  margin-bottom: 1em;
+}
