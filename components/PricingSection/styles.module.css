@@ -10,7 +10,7 @@
 .content {
   position: relative;
   z-index: 2;
-  padding: 180px 16px 80px;
+  padding: 180px 16px 16px;
   flex: 1;
   width: 100%;
 
@@ -51,7 +51,51 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.plan {
-  display: inline-block;
+.plans {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
+.plan {
+  margin-bottom: 64px;
+}
+
+.infinity {
+  height: 1.5em;
+}
+
+.secondaryCTAButton {
+  color: #000;
+}
+
+.secondaryCTAButton:hover {
+  color: #fff;
+}
+
+.price {
+  margin: 0.5em 0 1.2em;
+}
+
+.dollas {
+  font-size: 2.2em;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+  text-align: left;
+}
+
+.emphasis {
+  font-weight: 700;
+}

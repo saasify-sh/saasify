@@ -36,51 +36,140 @@ export class PricingSection extends Component {
 
                   <Divider />
 
-                  <div className={cs(styles.feature, styles.split)}>
-                    <span>
+                  <div className={styles.features}>
+                    <div />
+
+                    <div>
+                      Price
+                    </div>
+
+                    <div>
+                      Rate Limit
+                    </div>
+
+                    <div className={styles.emphasis}>
+                      API Calls
+                    </div>
+
+                    <div>
                       $0 / call
-                    </span>
+                    </div>
 
-                    <span>
+                    <div>
                       N / day
-                    </span>
-                  </div>
+                    </div>
 
-                  <Divider />
+                    <div className={styles.emphasis}>
+                      Compute Time
+                    </div>
 
-                  <div className={cs(styles.feature, styles.split)}>
-                    <span>
+                    <div>
                       $0
-                    </span>
+                    </div>
 
-                    <span>
-                      <img src={infinity} style={{ height: '1.5em' }} />
-                    </span>
-                  </div>
+                    <div>
+                      <img className={styles.infinity} src={infinity} />
+                    </div>
 
-                  <Divider />
+                    <div className={styles.emphasis}>
+                      Bandwidth
+                    </div>
 
-                  <div className={cs(styles.feature, styles.split)}>
-                    <span>
+                    <div>
                       $0 / GB
-                    </span>
+                    </div>
 
-                    <span>
+                    <div>
                       100 GB / mo
-                    </span>
+                    </div>
                   </div>
 
                   <Divider />
 
-                  <Text type='primary'>
+                  <div style={{ color: project.saas.theme['@primary-color'] }}>
                     FREE FOREVER
-                  </Text>
+                  </div>
 
                   <div className={styles.price}>
-                    $0.00 / mo
+                    <span className={styles.dollas}>$0.00</span> / mo
                   </div>
 
-                  <CTAButton type='secondary' inline>
+                  <CTAButton
+                    type='secondary'
+                    className={styles.secondaryCTAButton}
+                  >
+                    Get Started
+                  </CTAButton>
+                </Paper>
+
+                <Paper className={styles.plan}>
+                  <h3 className={styles.name}>
+                    Unlimited
+                  </h3>
+
+                  <Divider />
+
+                  <div className={styles.features}>
+                    <div />
+
+                    <div>
+                      Price
+                    </div>
+
+                    <div>
+                      Rate Limit
+                    </div>
+
+                    <div className={styles.emphasis}>
+                      API Calls
+                    </div>
+
+                    <div>
+                      $0.0004 / call
+                    </div>
+
+                    <div>
+                      <img className={styles.infinity} src={infinity} />
+                    </div>
+
+                    <div className={styles.emphasis}>
+                      Compute Time
+                    </div>
+
+                    <div>
+                      $0.0034 / s
+                    </div>
+
+                    <div>
+                      <img className={styles.infinity} src={infinity} />
+                    </div>
+
+                    <div className={styles.emphasis}>
+                      Bandwidth
+                    </div>
+
+                    <div>
+                      $0.2 / GB
+                    </div>
+
+                    <div>
+                      <img className={styles.infinity} src={infinity} />
+                    </div>
+                  </div>
+
+                  <Divider />
+
+                  <div style={{ color: project.saas.theme['@primary-color'] }}>
+                    STARTING AT
+                  </div>
+
+                  <div className={styles.price}>
+                    <span className={styles.dollas}>$0.99</span> / mo
+                  </div>
+
+                  <CTAButton
+                    type='primary'
+                  >
                     Get Started
                   </CTAButton>
                 </Paper>
