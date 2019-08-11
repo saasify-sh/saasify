@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 import { Link } from 'react-router-dom'
 import { Divider, Typography } from 'antd'
+import { observer, inject } from 'mobx-react'
 import cs from 'classnames'
 
 import { FinContext } from '../FinContext'
@@ -13,8 +16,15 @@ import styles from './styles.module.css'
 
 const { Text } = Typography
 
+@inject('auth')
+@observer
 export class PricingSection extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  }
+
   render() {
+
     return (
       <FinContext.Consumer>
         {project => (
@@ -94,12 +104,14 @@ export class PricingSection extends Component {
                     <span className={styles.dollas}>$0.00</span> / mo
                   </div>
 
-                  <CTAButton
-                    type='secondary'
-                    className={styles.secondaryCTAButton}
-                  >
-                    Get Started
-                  </CTAButton>
+                  <Link to='/signup'>
+                    <CTAButton
+                      type='secondary'
+                      className={styles.secondaryCTAButton}
+                    >
+                      Get Started
+                    </CTAButton>
+                  </Link>
                 </Paper>
 
                 <Paper className={styles.plan}>
@@ -167,11 +179,13 @@ export class PricingSection extends Component {
                     <span className={styles.dollas}>$0.99</span> / mo
                   </div>
 
-                  <CTAButton
-                    type='primary'
-                  >
-                    Get Started
-                  </CTAButton>
+                  <Link to='/signup'>
+                    <CTAButton
+                      type='primary'
+                    >
+                      Get Started
+                    </CTAButton>
+                  </Link>
                 </Paper>
               </div>
             </div>

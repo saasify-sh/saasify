@@ -21,6 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   color: rgb(210, 210, 214);
+  font-size: 16px;
 }
 
 :global(.ant-form-item:last-child) {

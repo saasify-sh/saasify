@@ -9,7 +9,7 @@
 .content {
   width: 100%;
   max-width: 1280px;
-  padding: 3em 2em 5em;
+  padding: 3em 2em 1em;
 
   display: flex;
   flex-direction: column;

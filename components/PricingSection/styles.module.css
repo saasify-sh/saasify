@@ -10,7 +10,7 @@
 .content {
   position: relative;
   z-index: 2;
-  padding: 180px 16px 16px;
+  padding: 140px 16px 16px;
   flex: 1;
   width: 100%;
 
@@ -39,7 +39,7 @@
   font-weight: 400;
   line-height: 30px;
 
-  color: #d2d2d6;
+  color: #fff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
