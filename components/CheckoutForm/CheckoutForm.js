@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import cs from 'classnames'
 
+import { withRouter } from 'react-router-dom'
 import { CardElement, injectStripe } from 'react-stripe-elements'
 
 import {
@@ -33,9 +34,11 @@ const createOptions = (fontSize = 16, padding = 8) => {
   }
 }
 
+@withRouter
 @injectStripe
 export class CheckoutForm extends Component {
   static propTypes = {
+    history: PropTypes.object.isRequired,
     stripe: PropTypes.object.isRequired,
     className: PropTypes.string
   }
@@ -117,10 +120,10 @@ export class CheckoutForm extends Component {
 
       notification.success({
         message: 'Subscription Created',
-        description: 'Your subscription has been created successfully. You may not use your token in API requests.',
+        description: `Your subscription has been created successfully. You may now use your token "${consumer.token}" in API requests.`,
       })
 
-      // TODO
+      this.props.history.replace('/dashboard')
     } catch (err) {
       notification.error({
         message: 'Error initializing subscription',
