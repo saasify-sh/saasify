@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
 import { Link } from 'react-router-dom'
-import { Divider, Typography } from 'antd'
-import { observer, inject } from 'mobx-react'
-import cs from 'classnames'
+import { Divider } from 'antd'
 
 import { FinContext } from '../FinContext'
 import { CTAButton } from '../CTAButton'
@@ -14,17 +11,8 @@ import infinity from '../../assets/infinity.svg'
 
 import styles from './styles.module.css'
 
-const { Text } = Typography
-
-@inject('auth')
-@observer
 export class PricingSection extends Component {
-  static propTypes = {
-    auth: PropTypes.object.isRequired
-  }
-
   render() {
-
     return (
       <FinContext.Consumer>
         {project => (
@@ -74,11 +62,15 @@ export class PricingSection extends Component {
                     </div>
 
                     <div>
-                      $0
+                      $0 / s
                     </div>
 
                     <div>
-                      <img className={styles.infinity} src={infinity} />
+                      <img
+                        alt='unlimited'
+                        src={infinity}
+                        className={styles.infinity}
+                      />
                     </div>
 
                     <div className={styles.emphasis}>
@@ -104,7 +96,7 @@ export class PricingSection extends Component {
                     <span className={styles.dollas}>$0.00</span> / mo
                   </div>
 
-                  <Link to='/signup'>
+                  <Link to='/signup?plan=free'>
                     <CTAButton
                       type='secondary'
                       className={styles.secondaryCTAButton}
@@ -141,7 +133,11 @@ export class PricingSection extends Component {
                     </div>
 
                     <div>
-                      <img className={styles.infinity} src={infinity} />
+                      <img
+                        alt='unlimited'
+                        src={infinity}
+                        className={styles.infinity}
+                      />
                     </div>
 
                     <div className={styles.emphasis}>
@@ -153,7 +149,11 @@ export class PricingSection extends Component {
                     </div>
 
                     <div>
-                      <img className={styles.infinity} src={infinity} />
+                      <img
+                        alt='unlimited'
+                        src={infinity}
+                        className={styles.infinity}
+                      />
                     </div>
 
                     <div className={styles.emphasis}>
@@ -165,7 +165,11 @@ export class PricingSection extends Component {
                     </div>
 
                     <div>
-                      <img className={styles.infinity} src={infinity} />
+                      <img
+                        alt='unlimited'
+                        src={infinity}
+                        className={styles.infinity}
+                      />
                     </div>
                   </div>
 
@@ -179,7 +183,7 @@ export class PricingSection extends Component {
                     <span className={styles.dollas}>$0.99</span> / mo
                   </div>
 
-                  <Link to='/signup'>
+                  <Link to='/signup?plan=unlimited'>
                     <CTAButton
                       type='primary'
                     >

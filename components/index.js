@@ -1,6 +1,8 @@
 export * from './AuthenticatedRoute'
+
 export * from './LoginForm'
 export * from './SignupForm'
+export * from './CheckoutForm'
 
 export * from './FinContext'
 

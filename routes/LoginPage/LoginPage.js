@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import { withRouter } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
-import { Redirect } from 'react-router-dom'
+
+import { handleAuth } from '../../lib/checkout'
 
 import {
   BackgroundSlideshow,
@@ -14,17 +16,17 @@ import {
 import styles from './styles.module.css'
 
 @inject('auth')
+@withRouter
 @observer
 export class LoginPage extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired
   }
 
   render() {
     if (this.props.auth.isAuthenticated) {
-      return (
-        <Redirect to='/dashboard' />
-      )
+      return handleAuth(this.props)
     }
 
     return (
@@ -34,9 +36,13 @@ export class LoginPage extends Component {
         <NavHeader fixed={true} />
 
         <Paper className={styles.content}>
-          <LoginForm />
+          <LoginForm onAuth={this._onAuth} />
         </Paper>
       </div>
     )
+  }
+
+  _onAuth = () => {
+    handleAuth(this.props)
   }
 }

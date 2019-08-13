@@ -16,13 +16,13 @@ import {
   message
 } from 'antd'
 
-const FormItem = Form.Item
-
 import authGitHub from 'lib/auth-github'
 import debug from 'lib/debug'
 import env from 'lib/env'
 
 import styles from './styles.module.css'
+
+const FormItem = Form.Item
 
 @inject('auth')
 @withRouter
@@ -32,7 +32,12 @@ export class LoginForm extends Component {
     auth: PropTypes.object.isRequired,
     form: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
-    className: PropTypes.string
+    className: PropTypes.string,
+    onAuth: PropTypes.func
+  }
+
+  static defaultProps = {
+    onAuth: () => undefined
   }
 
   state = {
@@ -49,6 +54,10 @@ export class LoginForm extends Component {
         className={cs(styles.form, className)}
         onSubmit={this._onSubmit}
       >
+        <h2 className={styles.title}>
+          Login
+        </h2>
+
         <FormItem>
           <Button
             className={styles.submit}
@@ -120,18 +129,18 @@ export class LoginForm extends Component {
           >
             Forgot password
           </Link>
-
-          <Button
-            type='primary'
-            htmlType='submit'
-            className={styles.submit}
-            loading={loading}
-          >
-            Log in
-          </Button>
-
-          Or <Link to='/signup'>sign up!</Link>
         </FormItem>
+
+        <Button
+          type='primary'
+          htmlType='submit'
+          className={styles.submit}
+          loading={loading}
+        >
+          Log in
+        </Button>
+
+        Or <Link to='/signup'>sign up!</Link>
       </Form>
     )
   }
@@ -142,6 +151,7 @@ export class LoginForm extends Component {
       if (!err) {
         this.setState({ loading: true })
         this.props.auth.signin(data)
+          .then(this.props.onAuth)
           .catch((err) => {
             this.setState({ loading: false })
             debug(err)
@@ -165,6 +175,7 @@ export class LoginForm extends Component {
     console.log(e)
 
     this.props.auth.authWithFacebook(e)
+      .then(this.props.onAuth)
       .catch((err) => {
         this.setState({ loading: false })
         debug(err)

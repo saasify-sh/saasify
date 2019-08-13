@@ -4,7 +4,7 @@ import cs from 'classnames'
 
 import styles from './styles.module.css'
 
-export class UndrawSVG extends React.Component {
+export class UndrawSVG extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     color: PropTypes.string,
@@ -23,8 +23,9 @@ export class UndrawSVG extends React.Component {
 
     return (
       <img
-        className={cs(styles.undrawSVG, className)}
         src={uri}
+        alt={name}
+        className={cs(styles.undrawSVG, className)}
         {...rest}
       />
     )

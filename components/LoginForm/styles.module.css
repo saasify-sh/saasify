@@ -2,6 +2,13 @@
   max-width: 300px;
 }
 
+.title {
+  text-align: center;
+  font-weight: 400;
+  font-size: 2.5em;
+  margin: 0 0 1em;
+}
+
 .forgot {
   float: right;
 }

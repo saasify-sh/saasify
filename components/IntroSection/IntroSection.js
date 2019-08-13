@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 import { FinContext } from '../FinContext'
 import { LiveServiceDemo } from '../LiveServiceDemo'
-import { Markdown } from '../Markdown'
 
 import styles from './styles.module.css'
 
@@ -27,11 +26,6 @@ export class IntroSection extends Component {
                 deployment={project.deployment}
                 service={project.deployment.services[0]}
               />
-              {/*
-              <Markdown
-                source={project.deployment.readme}
-              />
-              */}
             </div>
           </section>
         )}

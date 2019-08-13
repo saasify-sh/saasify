@@ -3,7 +3,7 @@ import cs from 'classnames'
 
 import styles from './styles.module.css'
 
-export class Paper extends React.Component {
+export class Paper extends Component {
   render() {
     const {
       className,

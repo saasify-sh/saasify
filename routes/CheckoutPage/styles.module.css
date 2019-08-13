@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.content {
+  position: relative;
+  z-index: 100;
+
+  width: 40%;
+  min-width: 320px;
+  max-width: 600px;
+}

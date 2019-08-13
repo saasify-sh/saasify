@@ -14,6 +14,7 @@ import {
   PricingPage,
   LoginPage,
   SignupPage,
+  CheckoutPage,
   TermsPage,
   PrivacyPage,
   AuthGitHubPage,
@@ -47,6 +48,7 @@ export default class App extends Component {
               <Route path='/auth/github' component={AuthGitHubPage} />
 
               <AuthenticatedRoute path='/dashboard' component={DashboardPage} />
+              <AuthenticatedRoute path='/checkout' component={CheckoutPage} />
 
               <Route component={NotFoundPage} />
             </Switch>
