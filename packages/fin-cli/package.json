@@ -1,6 +1,6 @@
 {
   "name": "fin",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Developer CLI for Fin. Fin is the easiest way to launch your own SaaS.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
@@ -38,7 +38,7 @@
     "credit-card": "^3.0.2",
     "enquirer": "^2.3.0",
     "fast-stream-to-buffer": "^1.0.0",
-    "fin-client": "^1.1.1",
+    "fin-client": "^1.1.2",
     "fin-utils": "^0.0.2",
     "fs-extra": "^8.1.0",
     "fts": "^1.1.1",
