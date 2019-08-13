@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import AuthManager from 'store/AuthManager'
+
 import {
   NavHeader,
   NavFooter,
@@ -7,6 +9,7 @@ import {
   ReadmeSection,
   DemoSection,
   BlankSection,
+  CTASection,
   SectionDivider
 } from 'components'
 
@@ -18,14 +21,20 @@ export class DocsPage extends Component {
       <div className={styles.container}>
         <NavHeader />
 
-        <DocsSection />
+        <DocsSection inverted />
 
         <SectionDivider />
 
         <ReadmeSection />
 
         <SectionDivider inverted />
-        <BlankSection />
+
+        {AuthManager.isAuthenticated ? (
+          <BlankSection inverted />
+        ) : (
+          <CTASection inverted />
+        )}
+
         <SectionDivider />
 
         <DemoSection />

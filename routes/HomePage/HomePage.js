@@ -18,7 +18,7 @@ export class HomePage extends Component {
       <div className={styles.container}>
         <NavHeader />
 
-        <HeroSection />
+        <HeroSection inverted />
 
         <SectionDivider />
 
@@ -26,7 +26,7 @@ export class HomePage extends Component {
 
         <SectionDivider inverted />
 
-        <FeaturesSection />
+        <FeaturesSection inverted />
 
         <SectionDivider />
 

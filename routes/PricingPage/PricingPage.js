@@ -17,7 +17,7 @@ export class PricingPage extends Component {
       <div className={styles.container}>
         <NavHeader />
 
-        <PricingSection />
+        <PricingSection inverted />
 
         <SectionDivider />
 
