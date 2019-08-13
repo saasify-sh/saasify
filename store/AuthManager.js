@@ -26,8 +26,8 @@ class AuthManager {
   constructor() {
     LocalStore.get(AUTH_STORE_KEY)
       .then((auth) => {
-        API.user = auth.user
-        API.token = auth.token
+        API.user = auth && auth.user
+        API.token = auth && auth.token
 
         this.auth = auth
         this.isBootstrapping = false

@@ -2,17 +2,22 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import cs from 'classnames'
 import raf from 'raf'
-import { Link } from 'react-router-dom'
-import { CTAButton } from '../CTAButton'
 
+import { Link } from 'react-router-dom'
+import { observer, inject } from 'mobx-react'
+
+import { CTAButton } from '../CTAButton'
 import { Logo } from '../Logo'
 
 import styles from './styles.module.css'
 
 const isServer = (typeof window === 'undefined')
 
+@inject('auth')
+@observer
 export class NavHeader extends Component {
   static propTypes = {
+    auth: PropTypes.object.isRequired,
     fixed: PropTypes.bool
   }
 
@@ -87,19 +92,35 @@ export class NavHeader extends Component {
             </Link>
           </div>
 
-          <div>
-            <Link to='/login' className={styles.login}>
-              <CTAButton type='secondary' inline>
-                LOGIN
-              </CTAButton>
-            </Link>
+          {this.props.auth.isAuthenticated ? (
+            <div>
+              <Link to='/logout' className={styles.login}>
+                <CTAButton type='secondary' inline>
+                  LOGOUT
+                </CTAButton>
+              </Link>
 
-            <Link to='/signup'>
-              <CTAButton type='primary' inline>
-                SIGNUP
-              </CTAButton>
-            </Link>
-          </div>
+              <Link to='/dashboard'>
+                <CTAButton type='primary' inline>
+                  DASHBOARD
+                </CTAButton>
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <Link to='/login' className={styles.login}>
+                <CTAButton type='secondary' inline>
+                  LOGIN
+                </CTAButton>
+              </Link>
+
+              <Link to='/signup'>
+                <CTAButton type='primary' inline>
+                  SIGNUP
+                </CTAButton>
+              </Link>
+            </div>
+          )}
         </div>
       </header>
     )

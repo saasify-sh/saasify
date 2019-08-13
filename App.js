@@ -13,6 +13,7 @@ import {
   HomePage,
   PricingPage,
   LoginPage,
+  LogoutPage,
   SignupPage,
   CheckoutPage,
   TermsPage,
@@ -49,6 +50,7 @@ export default class App extends Component {
 
               <AuthenticatedRoute path='/dashboard' component={DashboardPage} />
               <AuthenticatedRoute path='/checkout' component={CheckoutPage} />
+              <AuthenticatedRoute path='/logout' component={LogoutPage} />
 
               <Route component={NotFoundPage} />
             </Switch>
