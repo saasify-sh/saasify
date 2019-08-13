@@ -38,10 +38,12 @@ module.exports = class FinClient {
 
   set user (user) {
     this._user = user
+    this._reset()
   }
 
   set token (token) {
     this._token = token
+    this._reset()
   }
 
   get baseUrl () {
@@ -280,6 +282,20 @@ module.exports = class FinClient {
       method: 'put'
     }).then(res => res.data)
   }
+
+  // --------------------------------------------------------------------------
+  // Checkout
+  // --------------------------------------------------------------------------
+
+  /* TODO: not supported for plans with usage_type=metered
+  async createCheckoutSession (data) {
+    return this._request({
+      url: `/1/billing/checkout`,
+      method: 'post',
+      data
+    }).then(res => res.data)
+  }
+  */
 
   // --------------------------------------------------------------------------
   // Internal
