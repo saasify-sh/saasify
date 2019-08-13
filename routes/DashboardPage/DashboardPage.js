@@ -1,32 +1,25 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 
-import { Button } from 'antd'
+import {
+  NavHeader,
+  NavFooter,
+  SectionDivider,
+  BlankSection
+} from 'components'
 
-import { observer, inject } from 'mobx-react'
+import styles from './styles.module.css'
 
-@inject('auth')
-@observer
 export class DashboardPage extends Component {
-  static propTypes = {
-    auth: PropTypes.object.isRequired
-  }
-
   render() {
     return (
-      <div>
-        <p>Dashboard Page</p>
+      <div className={styles.container}>
+        <NavHeader />
 
-        <Button
-          onClick={this._onClickLogout}
-        >
-          Logout
-        </Button>
+        <BlankSection inverted />
+        <SectionDivider inverted />
+
+        <NavFooter />
       </div>
     )
-  }
-
-  _onClickLogout = (e) => {
-    this.props.auth.signout()
   }
 }
