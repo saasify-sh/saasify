@@ -6,13 +6,24 @@
   justify-content: center;
   align-items: center;
   color: #fff;
+  padding: 66px 0 0;
 }
 
 .content {
   position: relative;
   z-index: 100;
 
-  width: 40%;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+
+  padding: 2em 2em;
+}
+
+.checkoutForm {
+  width: 100%;
   min-width: 320px;
   max-width: 600px;
 }

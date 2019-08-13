@@ -40,7 +40,7 @@ export class PricingPlan extends Component {
             {...rest}
           >
             <h3 className={styles.name}>
-              {plan.name}
+              {plan.name} {inline ? 'Plan' : ''}
             </h3>
 
             <Divider />
@@ -65,7 +65,7 @@ export class PricingPlan extends Component {
               </div>
 
               <div>
-                {plan.compute.rateLimit || (
+                {plan.requests.rateLimit || (
                   <img
                     alt='unlimited'
                     src={infinity}
@@ -101,7 +101,7 @@ export class PricingPlan extends Component {
               </div>
 
               <div>
-                {plan.compute.rateLimit || (
+                {plan.bandwidth.rateLimit || (
                   <img
                     alt='unlimited'
                     src={infinity}
@@ -118,7 +118,7 @@ export class PricingPlan extends Component {
             </div>
 
             <div className={styles.price}>
-              <span className={styles.dollas}>$0.00</span> / mo
+              <span className={styles.dollas}>{plan.price}</span> / {plan.interval}
             </div>
 
             {!inline && (
