@@ -1,200 +1,80 @@
 import React, { Component } from 'react'
 
-import { Link } from 'react-router-dom'
-import { Divider } from 'antd'
-
 import { FinContext } from '../FinContext'
-import { CTAButton } from '../CTAButton'
-import { Paper } from '../Paper'
 import { Section } from '../Section'
-
-import infinity from '../../assets/infinity.svg'
+import { PricingPlan } from '../PricingPlan'
 
 import styles from './styles.module.css'
+
+const getPlansForProject = (project) => [
+  {
+    name: 'Free',
+    key: 'free',
+    type: 'secondary',
+    desc: 'FREE FOREVER',
+    price: '$0.00',
+    interval: 'mo',
+    requests: {
+      price: '$0.0004 / call',
+      rateLimit: 'N / day' // TODO
+    },
+    compute: {
+      price: '$0 / s',
+      rateLimit: undefined
+    },
+    bandwidth: {
+      price: '$0 / GB',
+      rateLimit: '100 GB / mo'
+    }
+  },
+  {
+    name: 'Unlimited',
+    key: 'unlimited',
+    type: 'primary',
+    desc: 'STARTING AT',
+    price: '$0.99',
+    interval: 'mo',
+    requests: {
+      price: '$0 / call',
+      rateLimit: undefined
+    },
+    compute: {
+      price: '$0.0034 / s',
+      rateLimit: undefined
+    },
+    bandwidth: {
+      price: '$0.2 / GB',
+      rateLimit: undefined
+    }
+  }
+]
 
 export class PricingSection extends Component {
   render() {
     return (
       <FinContext.Consumer>
-        {project => (
-          <Section
-            title='Pricing'
-            subtitle={(
-              <span>
-                Free. Unlimited. <b>Pay as you Grow.</b>
-              </span>
-            )}
-            stretch
-            {...this.props}
-          >
-            <div className={styles.plans}>
-              <Paper className={styles.plan}>
-                <h3 className={styles.name}>
-                  Free
-                </h3>
+        {project => {
+          const plans = getPlansForProject(project)
 
-                <Divider />
-
-                <div className={styles.features}>
-                  <div />
-
-                  <div>
-                    Price
-                  </div>
-
-                  <div>
-                    Rate Limit
-                  </div>
-
-                  <div className={styles.emphasis}>
-                    API Calls
-                  </div>
-
-                  <div>
-                    $0 / call
-                  </div>
-
-                  <div>
-                    N / day
-                  </div>
-
-                  <div className={styles.emphasis}>
-                    Compute Time
-                  </div>
-
-                  <div>
-                    $0 / s
-                  </div>
-
-                  <div>
-                    <img
-                      alt='unlimited'
-                      src={infinity}
-                      className={styles.infinity}
-                    />
-                  </div>
-
-                  <div className={styles.emphasis}>
-                    Bandwidth
-                  </div>
-
-                  <div>
-                    $0 / GB
-                  </div>
-
-                  <div>
-                    100 GB / mo
-                  </div>
-                </div>
-
-                <Divider />
-
-                <div style={{ color: project.saas.theme['@primary-color'] }}>
-                  FREE FOREVER
-                </div>
-
-                <div className={styles.price}>
-                  <span className={styles.dollas}>$0.00</span> / mo
-                </div>
-
-                <Link to='/signup?plan=free'>
-                  <CTAButton
-                    type='secondary'
-                    className={styles.secondaryCTAButton}
-                  >
-                    Get Started
-                  </CTAButton>
-                </Link>
-              </Paper>
-
-              <Paper className={styles.plan}>
-                <h3 className={styles.name}>
-                  Unlimited
-                </h3>
-
-                <Divider />
-
-                <div className={styles.features}>
-                  <div />
-
-                  <div>
-                    Price
-                  </div>
-
-                  <div>
-                    Rate Limit
-                  </div>
-
-                  <div className={styles.emphasis}>
-                    API Calls
-                  </div>
-
-                  <div>
-                    $0.0004 / call
-                  </div>
-
-                  <div>
-                    <img
-                      alt='unlimited'
-                      src={infinity}
-                      className={styles.infinity}
-                    />
-                  </div>
-
-                  <div className={styles.emphasis}>
-                    Compute Time
-                  </div>
-
-                  <div>
-                    $0.0034 / s
-                  </div>
-
-                  <div>
-                    <img
-                      alt='unlimited'
-                      src={infinity}
-                      className={styles.infinity}
-                    />
-                  </div>
-
-                  <div className={styles.emphasis}>
-                    Bandwidth
-                  </div>
-
-                  <div>
-                    $0.2 / GB
-                  </div>
-
-                  <div>
-                    <img
-                      alt='unlimited'
-                      src={infinity}
-                      className={styles.infinity}
-                    />
-                  </div>
-                </div>
-
-                <Divider />
-
-                <div style={{ color: project.saas.theme['@primary-color'] }}>
-                  STARTING AT
-                </div>
-
-                <div className={styles.price}>
-                  <span className={styles.dollas}>$0.99</span> / mo
-                </div>
-
-                <Link to='/signup?plan=unlimited'>
-                  <CTAButton
-                    type='primary'
-                  >
-                    Get Started
-                  </CTAButton>
-                </Link>
-              </Paper>
-            </div>
-          </Section>
-        )}
+          return (
+            <Section
+              title='Pricing'
+              subtitle={(
+                <span>
+                  Free. Unlimited. <b>Pay as you Grow.</b>
+                </span>
+              )}
+              stretch
+              {...this.props}
+            >
+              <div className={styles.plans}>
+                {plans.map((plan) => (
+                  <PricingPlan plan={plan} />
+                ))}
+              </div>
+            </Section>
+          )
+        }}
       </FinContext.Consumer>
     )
   }

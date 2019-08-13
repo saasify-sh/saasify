@@ -24,6 +24,7 @@ export * from './SectionDivider'
 
 export * from './CodeBlock'
 export * from './LiveServiceDemo'
+export * from './PricingPlan'
 
 export * from './Markdown'
 export * from './UndrawSVG'
