@@ -4,6 +4,8 @@ import debug from 'lib/debug'
 import API from 'lib/api'
 import LocalStore from 'store/LocalStore'
 
+import project from '../project.json'
+
 import { config as githubConfig } from 'lib/auth-github'
 
 const AUTH_STORE_KEY = 'FinAuth'
@@ -11,6 +13,9 @@ const AUTH_STORE_KEY = 'FinAuth'
 class AuthManager {
   @observable
   auth = null
+
+  @observable
+  consumer = null
 
   @computed get user() {
     return this.auth && this.auth.user
@@ -26,9 +31,6 @@ class AuthManager {
   constructor() {
     LocalStore.get(AUTH_STORE_KEY)
       .then((auth) => {
-        API.user = auth && auth.user
-        API.token = auth && auth.token
-
         this.auth = auth
         this.isBootstrapping = false
       }, () => {
@@ -90,6 +92,17 @@ const authManager = observable(new AuthManager())
 autorun(() => {
   API.user = authManager.auth && authManager.auth.user
   API.token = authManager.auth && authManager.auth.token
+
+  if (authManager.isAuthenticated) {
+    API.getConsumerByProject(project.id)
+      .then((consumer) => {
+        authManager.consumer = consumer
+      }, (err) => {
+        authManager.consumer = null
+      })
+  } else {
+    authManager.consumer = null
+  }
 })
 
 export default authManager

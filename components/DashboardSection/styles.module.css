@@ -11,6 +11,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: left;
+  margin: 0 0 2em;
 }
 
 .header h4 {
@@ -23,4 +24,8 @@
 
 .body :global(.ant-steps-item-title) {
   color: #fff !important;
+}
+
+.body :global(.ant-steps-item-description) {
+  color: #d2d2d6 !important;
 }
