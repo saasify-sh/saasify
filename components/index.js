@@ -10,12 +10,15 @@ export * from './NavHeader'
 export * from './NavFooter'
 
 export * from './HeroSection'
-export * from './IntroSection'
+export * from './DemoSection'
 export * from './FeaturesSection'
 export * from './CTASection'
 export * from './PricingSection'
 export * from './EnterpriseSection'
 export * from './NotFoundSection'
+export * from './DocsSection'
+export * from './ReadmeSection'
+export * from './BlankSection'
 
 export * from './SectionDivider'
 

@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1e3a54;
+}
+
+.content {
+  width: 100%;
+  max-width: 1280px;
+  padding: 3em 2em 5em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+
+.desc {
+  text-align: center;
+  margin-bottom: 3em;
+  max-width: 650px;
+}

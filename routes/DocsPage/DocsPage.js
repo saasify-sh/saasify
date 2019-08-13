@@ -3,34 +3,32 @@ import React, { Component } from 'react'
 import {
   NavHeader,
   NavFooter,
-  HeroSection,
-  FeaturesSection,
-  CTASection,
+  DocsSection,
+  ReadmeSection,
   DemoSection,
+  BlankSection,
   SectionDivider
 } from 'components'
 
 import styles from './styles.module.css'
 
-export class HomePage extends Component {
+export class DocsPage extends Component {
   render() {
     return (
       <div className={styles.container}>
         <NavHeader />
 
-        <HeroSection />
+        <DocsSection />
 
+        <SectionDivider />
+
+        <ReadmeSection />
+
+        <SectionDivider inverted />
+        <BlankSection />
         <SectionDivider />
 
         <DemoSection />
-
-        <SectionDivider inverted />
-
-        <FeaturesSection />
-
-        <SectionDivider />
-
-        <CTASection />
 
         <SectionDivider inverted />
 

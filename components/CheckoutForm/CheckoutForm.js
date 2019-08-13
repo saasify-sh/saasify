@@ -12,7 +12,6 @@ import {
   notification
 } from 'antd'
 
-import AuthManager from 'store/AuthManager'
 import API from 'lib/api'
 import project from 'project.json'
 
@@ -64,18 +63,6 @@ export class CheckoutForm extends Component {
         </h2>
 
         <label className={styles.label}>
-          Email
-
-          <input
-            className={styles.input}
-            name='email'
-            type='text'
-            defaultValue={AuthManager.user.email}
-            required
-          />
-        </label>
-
-        <label className={styles.label}>
           Name
 
           <input
@@ -120,12 +107,13 @@ export class CheckoutForm extends Component {
   _onSubmit = async (e) => {
     e.preventDefault()
 
+    const name = e.target.name.value
+
     this.setState({ loading: true })
 
     try {
       const { token, error } = await this.props.stripe.createToken({
-        name: e.target.name.value,
-        email: e.target.email.value
+        name
       })
 
       console.log({ token, error })

@@ -6,7 +6,7 @@ import { LiveServiceDemo } from '../LiveServiceDemo'
 
 import styles from './styles.module.css'
 
-export class IntroSection extends Component {
+export class DemoSection extends Component {
   render() {
     return (
       <FinContext.Consumer>

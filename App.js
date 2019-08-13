@@ -12,6 +12,7 @@ import {
   DashboardPage,
   HomePage,
   PricingPage,
+  DocsPage,
   LoginPage,
   LogoutPage,
   SignupPage,
@@ -40,6 +41,7 @@ export default class App extends Component {
               <Route exact path='/' component={HomePage} />
 
               <Route path='/pricing' component={PricingPage} />
+              <Route path='/docs' component={DocsPage} />
 
               <Route path='/terms' component={TermsPage} />
               <Route path='/privacy' component={PrivacyPage} />
