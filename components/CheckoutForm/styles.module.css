@@ -53,3 +53,9 @@
 :global(.StripeElement.PaymentRequestButton) {
   padding: 0;
 }
+
+.detail {
+  margin-left: 0.5em;
+  cursor: pointer;
+  font-size: 1.2em;
+}
