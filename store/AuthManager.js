@@ -37,7 +37,7 @@ class AuthManager {
   }
 
   async signin(opts) {
-    debug(`AuthManager.signin "${opts.username}"`)
+    debug(`AuthManager.signin [${opts.username}]`)
 
     const auth = await API.signin(opts)
 
@@ -49,7 +49,7 @@ class AuthManager {
   }
 
   async signup(opts) {
-    debug(`AuthManager.signup "${opts.email}" "${opts.username}"`)
+    debug(`AuthManager.signup [${opts.email}] [${opts.username}]`)
 
     const auth = await API.signup(opts)
     await LocalStore.set(AUTH_STORE_KEY, auth)

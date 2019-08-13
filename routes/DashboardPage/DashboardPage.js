@@ -4,7 +4,7 @@ import {
   NavHeader,
   NavFooter,
   SectionDivider,
-  BlankSection
+  DashboardSection
 } from 'components'
 
 import styles from './styles.module.css'
@@ -13,9 +13,9 @@ export class DashboardPage extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <NavHeader />
+        <NavHeader fixed />
 
-        <BlankSection inverted />
+        <DashboardSection />
         <SectionDivider inverted />
 
         <NavFooter />

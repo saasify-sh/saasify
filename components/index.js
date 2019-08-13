@@ -19,6 +19,7 @@ export * from './NotFoundSection'
 export * from './DocsSection'
 export * from './ReadmeSection'
 export * from './BlankSection'
+export * from './DashboardSection'
 
 export * from './SectionDivider'
 
