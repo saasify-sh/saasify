@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import cs from 'classnames'
 import mem from 'mem'
 import copyTextToClipboard from 'copy-text-to-clipboard'
+import stringifyObject from 'stringify-object'
+
+import { observer, inject } from 'mobx-react'
 import { Button, Tooltip } from 'antd'
 
 import { CodeBlock } from '../CodeBlock'
@@ -10,11 +13,14 @@ import { languages } from './languages'
 
 import styles from './styles.module.css'
 
+@inject('auth')
+@observer
 export class LiveServiceDemo extends Component {
   static propTypes = {
     project: PropTypes.object.isRequired,
     deployment: PropTypes.object.isRequired,
-    service: PropTypes.object.isRequired
+    service: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired
   }
 
   state = {
@@ -87,14 +93,20 @@ export class LiveServiceDemo extends Component {
     const {
       project,
       deployment,
-      service
+      service,
+      auth
     } = this.props
 
     return {
       project,
       deployment,
       service,
-      url: `${deployment.url}${service.route}`
+      url: `${deployment.url}${service.route}`,
+      token: auth.consumer && auth.consumer.token,
+      exampleJSON: JSON.stringify(service.example),
+      example: stringifyObject(service.example, {
+        indent: '  '
+      })
     }
   }
 

@@ -104,7 +104,7 @@ export class DashboardSection extends Component {
 
                           <Tooltip
                             placement='top'
-                            title={isTokenVisible ? 'Hide token' : 'Show token'}
+                            title={isTokenVisible ? 'Hide auth token' : 'Show auth token'}
                           >
                             <Button
                               icon={isTokenVisible ? 'eye' : 'eye-invisible'}

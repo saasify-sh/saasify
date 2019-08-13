@@ -1,4 +1,4 @@
-// TODO: use service.example for params
+import indent from 'indent-string'
 
 export const languages = [
   {
@@ -8,7 +8,7 @@ export const languages = [
 curl --request POST \\
   --url ${params.url} \\
   --header 'content-type: application/json' \\
-  --data '{"name": "Nala"}'`
+  --data '${params.exampleJSON}'`
   },
   {
     language: 'javascript',
@@ -22,7 +22,7 @@ const options = {
   headers: {
     'content-type': 'application/json'
   },
-  body: { name: 'Nala'},
+  body: ${indent(params.example, 1, { indent: '  ' }).slice(2)},
   json: true
 }
 
@@ -39,7 +39,7 @@ request(options, (error, response, body) => {
 import requests
 
 url = "${params.url}"
-payload = "{ name: 'Nala' }"
+payload = "${params.example}"
 response = requests.request("POST", url, data=payload)
 
 print(response.text)
@@ -58,7 +58,7 @@ http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 
 request = Net::HTTP::Post.new(url)
-request.body = "{ name: 'Nala' }"
+request.body = "${params.example}"
 
 response = http.request(request)
 puts response.read_body
