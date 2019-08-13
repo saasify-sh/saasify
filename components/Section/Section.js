@@ -30,7 +30,7 @@ export class Section extends Component {
     } = this.props
 
     return (
-      <section className={cs(styles.container, inverted && styles.inverted)}>
+      <section className={cs(styles.section, inverted && styles.inverted)}>
         <div className={cs(styles.content, stretch && styles.stretch)}>
           {title && (
             <h1 className={styles.title}>
