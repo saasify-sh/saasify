@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import { StripeProvider, Elements } from 'react-stripe-elements'
+import { observer, inject } from 'mobx-react'
+import { Redirect } from 'react-router-dom'
 
 import env from 'lib/env'
 import { getPlansForProject } from 'lib/pricing-plans'
@@ -16,8 +19,26 @@ import {
 
 import styles from './styles.module.css'
 
+@inject('auth')
+@observer
 export class CheckoutPage extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  }
+
   render() {
+    const {
+      auth
+    } = this.props
+
+    if (auth.isAuthenticated && auth.consumer && auth.consumer.enabled) {
+      return (
+        <Redirect
+          to='/dashboard'
+        />
+      )
+    }
+
     return (
       <FinContext.Consumer>
         {project => {
