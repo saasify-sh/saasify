@@ -101,7 +101,7 @@ export class LiveServiceDemo extends Component {
       project,
       deployment,
       service,
-      url: `${deployment.url}${service.route}`,
+      url: service.url,
       token: auth.consumer && auth.consumer.token,
       exampleJSON: JSON.stringify(service.example),
       example: stringifyObject(service.example, {

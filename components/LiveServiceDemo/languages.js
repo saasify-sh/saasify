@@ -1,5 +1,8 @@
 import indent from 'indent-string'
 
+// TODO: python and ruby example params seem off
+// TODO: add token if given
+
 export const languages = [
   {
     language: 'bash',
@@ -7,7 +10,8 @@ export const languages = [
     code: (params) => `
 curl --request POST \\
   --url ${params.url} \\
-  --header 'content-type: application/json' \\
+  --header 'content-type: application/json' \\${params.token && `
+  --header 'authorization: ${params.token}' \\`}
   --data '${params.exampleJSON}'`
   },
   {

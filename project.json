@@ -67,22 +67,24 @@
     ]
   },
   "deployment": {
-    "id": "t/hello-world@99a9cdf7",
-    "url": "http://localhost:5000/1/call/t/hello-world@99a9cdf7",
-    "user": "5c5a35cc1cd684a8f5fc93fa",
-    "project": "t/hello-world",
-    "readme": "# Hello World\n\nThis is a very simple Fin project with a single serverless function that implements the classic \"Hello World!\".\n",
+    "id": "t/hello-world@b71135fd",
+    "url": "http://localhost:5000/1/call/t/hello-world@b71135fd",
     "enabled": true,
-    "version": "1.0.0",
+    "published": false,
+    "hash": "b71135fd",
+    "user": "5d43dce92136a07e55167db6",
+    "project": "t/hello-world",
+    "version": "1",
+    "readme": null,
     "services": [
       {
-        "route": "/",
+        "name": "helloWorld",
+        "url": "http://localhost:5000/1/call/t/hello-world@b71135fd",
         "amountPerRequest": 1,
         "amountPerCompute": 1,
         "timeout": 0,
         "enabled": true,
-        "src": "index.ts",
-        "name": "index",
+        "src": "functions/hello-world.ts",
         "example": {
           "name": "Nala"
         },
@@ -113,6 +115,7 @@
           },
           "returns": {
             "async": false,
+            "http": false,
             "schema": {
               "type": "object",
               "properties": {
@@ -124,12 +127,12 @@
               "$schema": "http://json-schema.org/draft-07/schema#"
             }
           },
-          "version": "1.0.9",
-          "title": "index"
+          "version": "1.1.0",
+          "title": "hello-world"
         }
       }
     ],
-    "createdAt": "2019-04-09T17:07:14.546Z",
-    "updatedAt": "2019-04-09T17:07:14.546Z"
+    "createdAt": "2019-08-14T00:27:45.939Z",
+    "updatedAt": "2019-08-14T00:27:45.939Z"
   }
 }
