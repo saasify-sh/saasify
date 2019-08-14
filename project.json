@@ -67,11 +67,11 @@
     ]
   },
   "deployment": {
-    "id": "t/hello-world@b71135fd",
-    "url": "http://localhost:5000/1/call/t/hello-world@b71135fd",
+    "id": "t/hello-world@d51aad82",
+    "url": "http://localhost:5000/1/call/t/hello-world@d51aad82",
     "enabled": true,
     "published": false,
-    "hash": "b71135fd",
+    "hash": "d51aad82",
     "user": "5d43dce92136a07e55167db6",
     "project": "t/hello-world",
     "version": "1",
@@ -79,7 +79,7 @@
     "services": [
       {
         "name": "helloWorld",
-        "url": "http://localhost:5000/1/call/t/hello-world@b71135fd",
+        "url": "http://localhost:5000/1/call/t/hello-world@d51aad82",
         "amountPerRequest": 1,
         "amountPerCompute": 1,
         "timeout": 0,
