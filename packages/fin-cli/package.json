@@ -42,7 +42,7 @@
     "fin-utils": "^0.0.2",
     "fs-extra": "^8.1.0",
     "fts": "^1.1.1",
-    "fts-http": "^1.1.1",
+    "fts-http": "^1.1.2",
     "fts-http-client": "^1.1.1",
     "globby": "^10.0.1",
     "is-directory": "^0.3.1",

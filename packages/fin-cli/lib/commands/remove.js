@@ -35,6 +35,8 @@ module.exports = (program, client) => {
         // TODO: if any projects are specified without deployment version info, then
         // expand them out to include all deployments in those projects
 
+        // TODO: currently if you specify a project, it'll do project@latest...
+
         const deployments = parsedArgs.map(({ deploymentId }) => deploymentId)
 
         if (!opts.yes) {
