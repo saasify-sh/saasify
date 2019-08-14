@@ -10,7 +10,6 @@ class Config {
 class Service {
   src: string
   name?: string
-  route?: string
   amountPerRequest?: number = 1
   amountPerCompute?: number = 1
   timeout?: number = 300000

@@ -44,10 +44,6 @@
           "type": "string",
           "title": "name"
         },
-        "route": {
-          "type": "string",
-          "title": "route"
-        },
         "amountPerRequest": {
           "type": "number",
           "title": "amountPerRequest",

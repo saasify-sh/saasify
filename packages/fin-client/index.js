@@ -183,9 +183,9 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async getConsumerByProject (project) {
+  async getConsumerByProject (projectId) {
     return this._request({
-      url: `/1/consumers/projects/${project}`
+      url: `/1/consumers/projects/${projectId}`
     }).then(res => res.data)
   }
 
