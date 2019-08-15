@@ -128,9 +128,9 @@ export class CheckoutForm extends Component {
       }
 
       const source = await API.addBillingSource({ source: token.id })
-      console.log('checkout', { source })
+      console.log('checkout source', { source })
       const consumer = await API.createConsumer({ project: project.id })
-      console.log('checkout', { source, consumer })
+      console.log('checkout consumer', { source, consumer })
 
       notification.success({
         message: 'Subscription Created',

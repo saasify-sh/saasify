@@ -84,19 +84,10 @@ export class InvoicingSection extends Component {
     this._disposer()
   }
 
-  componentDidUpdate() {
-    if (this._reset) {
-      this._reset = false
-      this._fetch()
-    }
-  }
-
   _disposer = reaction(
     () => this.props.auth.consumer,
-    () => this._reset = true
+    () => this._fetch()
   )
-
-  _reset = false
 
   render() {
     const {
@@ -152,7 +143,6 @@ export class InvoicingSection extends Component {
       auth
     } = this.props
 
-    console.log('_fetch', auth)
     if (!auth.consumer) {
       return
     }
