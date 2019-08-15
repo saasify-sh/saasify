@@ -10,8 +10,8 @@ export const languages = [
     code: (params) => `
 curl --request POST \\
   --url ${params.url} \\
-  --header 'content-type: application/json' \\${params.token && `
-  --header 'authorization: ${params.token}' \\`}
+  --header 'content-type: application/json' \\${params.token ? `
+  --header 'authorization: ${params.token}' \\` : ''}
   --data '${params.exampleJSON}'`
   },
   {

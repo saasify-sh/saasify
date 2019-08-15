@@ -10,6 +10,10 @@ body, html {
   line-height: 24px;
 }
 
+body {
+  padding: 0 !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-style: initial;
   font-style: normal;

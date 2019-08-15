@@ -5,6 +5,7 @@ import {
   NavFooter,
   SectionDivider,
   DashboardSection,
+  ProfileSection,
   OnboardingSection,
   BillingSourcesSection,
   InvoicingSection
@@ -21,6 +22,8 @@ export class DashboardPage extends Component {
         <DashboardSection />
 
         <OnboardingSection />
+
+        <ProfileSection />
 
         <BillingSourcesSection />
 
