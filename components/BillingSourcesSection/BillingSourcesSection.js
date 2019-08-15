@@ -7,6 +7,7 @@ import { observer, inject } from 'mobx-react'
 
 import { FinContext } from '../FinContext'
 import { Section } from '../Section'
+import { CheckoutSection } from '../CheckoutSection'
 
 import API from 'lib/api'
 
@@ -54,6 +55,10 @@ export class BillingSourcesSection extends Component {
       render: (card) => (
         `${card.exp_month} / ${card.exp_year}`
       )
+    },
+    {
+      title: 'Zipcode',
+      dataIndex: 'address_zip'
     },
     {
       title: 'Default',
@@ -107,7 +112,7 @@ export class BillingSourcesSection extends Component {
   }
 
   _disposer = reaction(
-    () => this.props.auth.consumer,
+    () => this.props.auth.user,
     () => this._fetch()
   )
 
@@ -158,11 +163,17 @@ export class BillingSourcesSection extends Component {
             <Modal
               title='Add New Payment Method'
               visible={isVisibleAddNewSourceModal}
-              onOk={this._onConfirmNewSourceModal}
+              okButtonProps={{ disabled: true }}
               confirmLoading={isLoadingAddNewSourceModal}
               onCancel={this._onCancelNewSourceModal}
             >
-              TODO
+              {isVisibleAddNewSourceModal && (
+                <CheckoutSection
+                  action='Add Card'
+                  loading={isLoadingAddNewSourceModal}
+                  onSubmit={this._onConfirmNewSourceModal}
+                />
+              )}
             </Modal>
 
             <Modal
@@ -213,7 +224,7 @@ export class BillingSourcesSection extends Component {
       auth
     } = this.props
 
-    if (!auth.consumer) {
+    if (!auth.user) {
       return
     }
 
@@ -246,8 +257,48 @@ export class BillingSourcesSection extends Component {
     this.setState({ isVisibleAddNewSourceModal: true })
   }
 
-  _onConfirmNewSourceModal = () => {
-    this.setState({ isVisibleAddNewSourceModal: false })
+  _onConfirmNewSourceModal = async ({ name, stripe }) => {
+    this.setState({ isLoadingAddNewSourceModal: true })
+
+    try {
+      const { token, error } = await stripe.createToken({ name })
+      console.log({ token, error })
+
+      if (error) {
+        notification.error({
+          message: 'Error processing payment method',
+          description: error.message,
+          duration: 0
+        })
+        this.setState({ isLoadingAddNewSourceModal: false })
+        return
+      }
+
+      const source = await API.addBillingSource({ source: token.id })
+      console.log('checkout source', { source })
+
+      this.setState({
+        data: [],
+        hasMoreData: true,
+        isLoadingAddNewSourceModal: false,
+        isVisibleAddNewSourceModal: false
+      }, () => {
+        notification.success({
+          message: 'Payment Method Added',
+          description: `Your ${source.brand} card ending in ${source.last4} was added successfully.`
+        })
+
+        this._fetch()
+      })
+    } catch (err) {
+      notification.error({
+        message: 'Error adding payment source',
+        description: err.error && err.error.message,
+        duration: 0
+      })
+
+      this.setState({ isLoadingAddNewSourceModal: false })
+    }
   }
 
   _onCancelNewSourceModal = () => {
@@ -265,15 +316,18 @@ export class BillingSourcesSection extends Component {
     API.removeBillingSource(selectedSource.id)
       .then(() => {
         this.setState({
-          data: this.state.data.filter((source) => source.id === selectedSource.id),
+          data: [],
+          hasMoreData: true,
           isLoadingRemoveSourceModal: false,
           isVisibleRemoveSourceModal: false,
           selectedSource: null
-        })
+        }, () => {
+          notification.success({
+            message: 'Card Removed',
+            description: `Your ${selectedSource.brand} card ending in ${selectedSource.last4} has been removed.`
+          })
 
-        notification.success({
-          message: 'Card Removed',
-          description: `Your ${selectedSource.brand} card ending in ${selectedSource.last4} has been removed.`
+          this._fetch()
         })
       }, (err) => {
         console.warn(err)
@@ -302,20 +356,19 @@ export class BillingSourcesSection extends Component {
 
     API.setDefaultBillingSource(selectedSource.id)
       .then(() => {
-        for (const source of this.state.data) {
-          source.default = (source.id === selectedSource.id)
-        }
-
         this.setState({
-          data: this.state.data,
+          data: [],
+          hasMoreData: true,
           isLoadingSetDefaultSourceModal: false,
           isVisibleSetDefaultSourceModal: false,
           selectedSource: null
-        })
+        }, () => {
+          notification.success({
+            message: 'Card Set as Default',
+            description: `Your ${selectedSource.brand} card ending in ${selectedSource.last4} has been set as your default payment method.`
+          })
 
-        notification.success({
-          message: 'Card Set as Default',
-          description: `Your ${selectedSource.brand} card ending in ${selectedSource.last4} has been set as your default payment method.`
+          this._fetch()
         })
       }, (err) => {
         console.warn(err)
