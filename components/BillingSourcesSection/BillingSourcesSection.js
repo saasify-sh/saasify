@@ -13,6 +13,8 @@ import API from 'lib/api'
 
 import styles from './styles.module.css'
 
+// TODO: fix minor css jank with fixed header when opening modal
+
 @inject('auth')
 @observer
 export class BillingSourcesSection extends Component {
