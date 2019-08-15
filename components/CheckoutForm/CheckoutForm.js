@@ -121,7 +121,8 @@ export class CheckoutForm extends Component {
       if (error) {
         notification.error({
           message: 'Error processing payment method',
-          description: error.message
+          description: error.message,
+          duration: 0
         })
         this.setState({ loading: false })
         return
@@ -141,7 +142,8 @@ export class CheckoutForm extends Component {
     } catch (err) {
       notification.error({
         message: 'Error initializing subscription',
-        description: err.error && err.error.message
+        description: err.error && err.error.message,
+        duration: 0
       })
 
       this.setState({ loading: false })
