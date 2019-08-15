@@ -2,22 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  max-width: 720px;
+  max-width: 1080px;
   width: 100%;
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: left;
-  margin: 0 0 2em;
-}
-
-.header h4 {
-  margin: 0 0.75em 0;
-}
-
-.avatar {
-  margin-right: 0.75em;
+.body :global(.ant-table-body) {
+  background: #fff;
 }
