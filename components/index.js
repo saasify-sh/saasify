@@ -21,6 +21,7 @@ export * from './ReadmeSection'
 export * from './BlankSection'
 export * from './DashboardSection'
 export * from './OnboardingSection'
+export * from './InvoicingSection'
 
 export * from './SectionDivider'
 
