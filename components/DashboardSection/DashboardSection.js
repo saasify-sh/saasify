@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
 import { Avatar, Table } from 'antd'
 import { observer, inject } from 'mobx-react'
@@ -45,7 +46,10 @@ const columns = [
   },
   {
     title: 'Subscription',
-    dataIndex: 'subscription'
+    dataIndex: 'subscription',
+    render: (subscription) => (
+      <Link to='/pricing'>{subscription}</Link>
+    )
   },
   {
     title: 'Subscribed',

@@ -152,8 +152,6 @@ export class InvoicingSection extends Component {
       pagination
     } = this.state
 
-    console.log('params', params)
-
     if (!params.page || params.page * pagination.pageSize >= data.length) {
       this.setState({ loading: true })
 

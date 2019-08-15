@@ -6,6 +6,7 @@ import {
   SectionDivider,
   DashboardSection,
   OnboardingSection,
+  BillingSourcesSection,
   InvoicingSection
 } from 'components'
 
@@ -20,6 +21,8 @@ export class DashboardPage extends Component {
         <DashboardSection />
 
         <OnboardingSection />
+
+        <BillingSourcesSection />
 
         <InvoicingSection />
 
