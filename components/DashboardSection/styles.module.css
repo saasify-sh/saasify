@@ -21,16 +21,3 @@
 .avatar {
   margin-right: 0.75em;
 }
-
-.body :global(.ant-steps-item-title) {
-  color: #fff !important;
-}
-
-.body :global(.ant-steps-item-description) {
-  color: #d2d2d6 !important;
-}
-
-.tokenButton {
-  display: inline-block;
-  margin: 1em 1em 0 0;
-}

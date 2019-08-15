@@ -20,6 +20,7 @@ export * from './DocsSection'
 export * from './ReadmeSection'
 export * from './BlankSection'
 export * from './DashboardSection'
+export * from './OnboardingSection'
 
 export * from './SectionDivider'
 

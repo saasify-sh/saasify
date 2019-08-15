@@ -4,7 +4,8 @@ import {
   NavHeader,
   NavFooter,
   SectionDivider,
-  DashboardSection
+  DashboardSection,
+  OnboardingSection
 } from 'components'
 
 import styles from './styles.module.css'
@@ -16,6 +17,8 @@ export class DashboardPage extends Component {
         <NavHeader fixed />
 
         <DashboardSection />
+        <OnboardingSection />
+
         <SectionDivider inverted />
 
         <NavFooter />
