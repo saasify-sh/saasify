@@ -7,7 +7,7 @@ import { observer, inject } from 'mobx-react'
 
 import { FinContext } from '../FinContext'
 import { Section } from '../Section'
-import { CheckoutSection } from '../CheckoutSection'
+import { CheckoutForm } from '../CheckoutForm'
 
 import API from 'lib/api'
 
@@ -170,7 +170,7 @@ export class BillingSourcesSection extends Component {
               onCancel={this._onCancelNewSourceModal}
             >
               {isVisibleAddNewSourceModal && (
-                <CheckoutSection
+                <CheckoutForm
                   action='Add Card'
                   loading={isLoadingAddNewSourceModal}
                   onSubmit={this._onConfirmNewSourceModal}

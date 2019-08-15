@@ -12,7 +12,7 @@ import {
   FinContext,
   PricingPlan,
   BackgroundSlideshow,
-  CheckoutSection,
+  CheckoutForm,
   Paper,
   NavHeader
 } from 'components'
@@ -66,7 +66,7 @@ export class CheckoutPage extends Component {
                 />
 
                 <Paper className={styles.checkoutForm}>
-                  <CheckoutSection
+                  <CheckoutForm
                     title='Checkout'
                     action='SUBSCRIBE'
                     loading={loading}

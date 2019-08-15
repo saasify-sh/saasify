@@ -2,13 +2,21 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import cs from 'classnames'
 
-import { CardElement, injectStripe } from 'react-stripe-elements'
+import {
+  StripeProvider,
+  Elements,
+  CardElement,
+  injectStripe
+} from 'react-stripe-elements'
 
 import {
   Button,
   Icon,
   Tooltip
 } from 'antd'
+
+import { FinContext } from '../FinContext'
+import env from 'lib/env'
 
 import styles from './styles.module.css'
 
@@ -30,8 +38,34 @@ const createOptions = (fontSize = 16) => {
   }
 }
 
-@injectStripe
 export class CheckoutForm extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    loading: PropTypes.bool,
+    title: PropTypes.string,
+    action: PropTypes.node,
+    className: PropTypes.string
+  }
+
+  render() {
+    return (
+      <FinContext.Consumer>
+        {project => (
+          <StripeProvider apiKey={env.stripePublicKey}>
+            <Elements>
+              <CheckoutFormImpl
+                {...this.props}
+              />
+            </Elements>
+          </StripeProvider>
+        )}
+      </FinContext.Consumer>
+    )
+  }
+}
+
+@injectStripe
+class CheckoutFormImpl extends Component {
   static propTypes = {
     stripe: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
