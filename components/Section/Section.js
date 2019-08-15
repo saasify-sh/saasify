@@ -11,6 +11,7 @@ export class Section extends Component {
     title: PropTypes.node,
     subtitle: PropTypes.node,
     desc: PropTypes.node,
+    className: PropTypes.string,
     children: PropTypes.node
   }
 
@@ -26,11 +27,16 @@ export class Section extends Component {
       title,
       subtitle,
       desc,
-      children
+      className,
+      children,
+      ...rest
     } = this.props
 
     return (
-      <section className={cs(styles.section, inverted && styles.inverted)}>
+      <section
+        className={cs(styles.section, inverted && styles.inverted, className)}
+        {...rest}
+      >
         <div className={cs(styles.content, stretch && styles.stretch)}>
           {title && (
             <h1 className={styles.title}>

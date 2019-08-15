@@ -1,0 +1,7 @@
+.dashboard h1 {
+  margin-bottom: 0 !important;
+}
+
+.dashboard > div {
+  padding-bottom: 0 !important;
+}
