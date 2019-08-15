@@ -33,7 +33,7 @@ module.exports = (program, client) => {
             // TODO: better output formatting
             // TODO: better highlighting of default source
             console.log(JSON.stringify(sources, null, 2))
-            console.log(`default source: ${user.stripeDefaultSource}`)
+            console.log(`default source: ${user.stripeCustomer.default_source}`)
             break
           }
 
