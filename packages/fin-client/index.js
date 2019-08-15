@@ -311,7 +311,7 @@ module.exports = class FinClient {
   // Checkout
   // --------------------------------------------------------------------------
 
-  /* TODO: not supported for plans with usage_type=metered
+  /* TODO: currently not supported for plans with usage_type=metered
   async createCheckoutSession (data) {
     return this._request({
       url: `/1/billing/checkout`,
