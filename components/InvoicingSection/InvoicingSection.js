@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { Table } from 'antd'
+import { format } from 'date-fns'
+import { Table, Tag } from 'antd'
 import { reaction } from 'mobx'
 import { observer, inject } from 'mobx-react'
 
@@ -12,28 +13,49 @@ import API from 'lib/api'
 
 import styles from './styles.module.css'
 
+const statusColors = {
+  draft: 'geekblue',
+  open: 'red',
+  paid: 'green',
+  uncollectable: 'volcano',
+  void: 'purple'
+}
+
 const columns = [
   {
     title: 'ID',
-    dataIndex: 'id'
+    dataIndex: 'number'
   },
   {
     title: 'Date',
-    dataIndex: 'created'
+    dataIndex: 'created',
+    render: (timestamp) => (
+      format(new Date(timestamp), 'MM/DD/YYYY')
+    )
   },
   {
     title: 'Amount',
-    dataIndex: 'amount_due'
+    dataIndex: 'amount_due',
+    render: (amount) => (
+      `$${(amount / 100).toFixed(2)}`
+    )
   },
   {
     title: 'Status',
-    dataIndex: 'status'
+    dataIndex: 'status',
+    render: (status) => {
+      const color = statusColors[status]
+
+      return (
+        <Tag color={color}>{status}</Tag>
+      )
+    }
   },
   {
     title: 'PDF',
     dataIndex: 'invoice_pdf',
     render: (link) => (
-      <a href={link} title='Invoice PDF'>Download</a>
+      <a href={link} title='Invoice PDF' target='_blank' rel='noopener noreferrer'>Download</a>
     )
   }
 ]
