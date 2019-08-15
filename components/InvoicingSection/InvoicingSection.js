@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import titleize from 'titleize'
 
 import { format } from 'date-fns'
 import { Table, Tag } from 'antd'
@@ -30,7 +31,7 @@ const columns = [
     title: 'Date',
     dataIndex: 'created',
     render: (timestamp) => (
-      format(new Date(timestamp), 'MM/DD/YYYY')
+      format(new Date(timestamp * 1000), 'MM/DD/YYYY')
     )
   },
   {
@@ -47,7 +48,7 @@ const columns = [
       const color = statusColors[status]
 
       return (
-        <Tag color={color}>{status}</Tag>
+        <Tag color={color}>{titleize(status)}</Tag>
       )
     }
   },
