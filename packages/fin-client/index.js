@@ -150,11 +150,11 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async updateProject (data) {
+  async updateProject (project) {
     return this._request({
-      url: `/1/projects/${data.id}`,
+      url: `/1/projects/${project.id}`,
       method: 'put',
-      data
+      data: project
     }).then(res => res.data)
   }
 
@@ -176,9 +176,9 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async removeConsumer (data) {
+  async removeConsumer (consumer) {
     return this._request({
-      url: `/1/consumers/${data.id}`,
+      url: `/1/consumers/${consumer.id}`,
       method: 'delete'
     }).then(res => res.data)
   }
@@ -207,11 +207,11 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async updateDeployment (data) {
+  async updateDeployment (deployment) {
     return this._request({
-      url: `/1/deployments/${data.id}`,
+      url: `/1/deployments/${deployment.id}`,
       method: 'put',
-      data
+      data: deployment
     }).then(res => res.data)
   }
 
@@ -280,6 +280,30 @@ module.exports = class FinClient {
     return this._request({
       url: `/1/billing/sources/${id}/set-default`,
       method: 'put'
+    }).then(res => res.data)
+  }
+
+  async listBillingInvoices (opts = { }) {
+    const querystring = qs.stringify(opts)
+
+    return this._request({
+      url: `/1/billing/invoices?${querystring}`
+    }).then(res => res.data)
+  }
+
+  async listBillingInvoicesForConsumer (consumer, opts = { }) {
+    const querystring = qs.stringify(opts)
+
+    return this._request({
+      url: `/1/billing/invoices/${consumer.id}?${querystring}`
+    }).then(res => res.data)
+  }
+
+  async listBillingUsageForConsumer (consumer, opts = { }) {
+    const querystring = qs.stringify(opts)
+
+    return this._request({
+      url: `/1/billing/usage/${consumer.id}?${querystring}`
     }).then(res => res.data)
   }
 
