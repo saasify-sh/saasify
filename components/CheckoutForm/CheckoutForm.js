@@ -134,7 +134,8 @@ export class CheckoutForm extends Component {
 
       notification.success({
         message: 'Subscription Created',
-        description: `Your subscription has been created successfully. You may now use your token "${consumer.token}" in API requests.`,
+        description: `Your subscription has been created successfully. You may now use your auth token in API requests.`,
+        duration: 10
       })
 
       this.props.history.replace('/dashboard')
