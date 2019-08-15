@@ -17,7 +17,7 @@ import project from 'project.json'
 
 import styles from './styles.module.css'
 
-const createOptions = (fontSize = 16, padding = 8) => {
+const createOptions = (fontSize = 16) => {
   return {
     style: {
       base: {
@@ -26,8 +26,7 @@ const createOptions = (fontSize = 16, padding = 8) => {
         letterSpacing: '0.025em',
         '::placeholder': {
           color: '#aab7c4'
-        },
-        padding
+        }
       },
       invalid: {
         color: '#9e2146'
