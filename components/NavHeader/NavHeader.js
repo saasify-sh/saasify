@@ -84,12 +84,12 @@ export class NavHeader extends Component {
               Docs
             </Link>
 
-            <Link
-              to='/support'
+            <a
+              href='mailto:support@functional-income.com'
               className={styles.link}
             >
               Support
-            </Link>
+            </a>
           </div>
 
           {this.props.auth.isAuthenticated ? (

@@ -94,31 +94,12 @@ export class NavFooter extends Component {
 
                 <ul>
                   <li className={styles.listItem}>
-                    <Link
-                      to='/support'
-                      className={styles.link}
-                    >
-                      FAQ
-                    </Link>
-                  </li>
-
-                  <li className={styles.listItem}>
-                    <Link
-                      to='/support'
-                      className={styles.link}
-                      onClick={this._onTapSupport}
-                    >
-                      Live Chat
-                    </Link>
-                  </li>
-
-                  <li className={styles.listItem}>
-                    <Link
-                      to='mailto:support@functional-income.com'
+                    <a
+                      href='mailto:support@functional-income.com'
                       className={styles.link}
                     >
                       Email
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>

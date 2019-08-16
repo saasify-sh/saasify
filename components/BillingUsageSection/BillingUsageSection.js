@@ -13,6 +13,8 @@ import API from 'lib/api'
 
 import styles from './styles.module.css'
 
+// TODO: also show total $ spent
+
 const columns = [
   {
     title: 'Start',

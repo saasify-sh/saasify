@@ -4,11 +4,13 @@ import copyTextToClipboard from 'copy-text-to-clipboard'
 
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
-import { Avatar, Button, Table, Tooltip } from 'antd'
+import { Avatar, Button, Popconfirm, Table, Tooltip, notification } from 'antd'
 import { observer, inject } from 'mobx-react'
 
 import { FinContext } from '../FinContext'
 import { Section } from '../Section'
+
+import API from 'lib/api'
 
 import styles from './styles.module.css'
 
@@ -20,7 +22,8 @@ export class ProfileSection extends Component {
   }
 
   state = {
-    copiedTextToClipboard: false
+    copiedTextToClipboard: false,
+    isLoadingUnsubscribe: false
   }
 
   componentWillUnmount() {
@@ -37,14 +40,15 @@ export class ProfileSection extends Component {
     } = this.props
 
     const {
-      copiedTextToClipboard
+      copiedTextToClipboard,
+      isLoadingUnsubscribe
     } = this.state
 
     const hasSubscription = auth.consumer && auth.consumer.enabled
 
     const columns = [
       {
-        title: 'Picture',
+        title: 'Avatar',
         dataIndex: 'image',
         render: (image) => (
           image ? (
@@ -82,6 +86,7 @@ export class ProfileSection extends Component {
           <Link to='/pricing'>{subscription}</Link>
         )
       },
+      /*
       hasSubscription && {
         title: 'Subscribed',
         dataIndex: 'subscribed',
@@ -89,6 +94,7 @@ export class ProfileSection extends Component {
           date ? format(new Date(date), 'MM/DD/YYYY') : ''
         )
       },
+      */
       hasSubscription && {
         title: 'Auth Token',
         dataIndex: 'token',
@@ -98,11 +104,42 @@ export class ProfileSection extends Component {
             title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
           >
             <Button
+              type='primary'
+              ghost
               onClick={this._onClickCopyToken}
             >
               {`${auth.consumer.token.substr(0, 8)} ...`}
             </Button>
           </Tooltip>
+        )
+      },
+      {
+        title: 'Actions',
+        key: 'actions',
+        render: (token) => (
+          hasSubscription ? (
+            <Popconfirm
+              placement='top'
+              title='Are you sure you want to cancel your subscription?'
+              okText='Yes'
+              cancelText='No'
+              onConfirm={this._onConfirmUnsubscribe}
+            >
+              <Button
+                type='default'
+                loading={isLoadingUnsubscribe}
+              >
+                Unsubscribe
+              </Button>
+            </Popconfirm>
+          ) : (
+            <Button
+              type='primary'
+              href='/checkout?plan=unlimited'
+            >
+              Subscribe
+            </Button>
+          )
         )
       }
     ].filter(Boolean)
@@ -159,5 +196,31 @@ export class ProfileSection extends Component {
       clearTimeout(this._copyTimeout)
       this._copyTimeout = null
     }
+  }
+
+  _onConfirmUnsubscribe = () => {
+    this.setState({ isLoadingUnsubscribe: true })
+
+    API.removeConsumer(this.props.auth.consumer)
+      .then(() => {
+        this.props.auth.consumer = null
+
+        notification.success({
+          message: 'Subscription canceled',
+          description: `Your subscription has been canceled. Any outstanding charges will be charged at the end of the current billing cycle.`
+        })
+
+        this.setState({ isLoadingUnsubscribe: false })
+      }, (err) => {
+        console.warn(err)
+
+        notification.error({
+          message: 'Error canceling subscription',
+          description: err.error && err.error.message,
+          duration: 0
+        })
+
+        this.setState({ isLoadingUnsubscribe: false })
+      })
   }
 }

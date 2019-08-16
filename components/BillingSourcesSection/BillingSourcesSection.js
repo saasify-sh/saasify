@@ -243,6 +243,7 @@ export class BillingSourcesSection extends Component {
           if (!sources.length) {
             hasMoreData = false
           } else {
+            sources.sort((a, b) => a.id.localeCompare(b.id))
             data = data.concat(sources)
           }
 
