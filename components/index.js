@@ -24,6 +24,7 @@ export * from './ProfileSection'
 export * from './OnboardingSection'
 export * from './InvoicingSection'
 export * from './BillingSourcesSection'
+export * from './BillingUsageSection'
 
 export * from './SectionDivider'
 

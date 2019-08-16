@@ -8,6 +8,7 @@ import {
   ProfileSection,
   OnboardingSection,
   BillingSourcesSection,
+  BillingUsageSection,
   InvoicingSection
 } from 'components'
 
@@ -24,6 +25,8 @@ export class DashboardPage extends Component {
         <OnboardingSection />
 
         <ProfileSection />
+
+        <BillingUsageSection />
 
         <BillingSourcesSection />
 
