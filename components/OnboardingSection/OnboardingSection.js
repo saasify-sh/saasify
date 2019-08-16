@@ -102,6 +102,14 @@ export class OnboardingSection extends Component {
               href='/pricing'
             >
               View Pricing
+            </Button>,
+
+            <Button
+              type='secondary'
+              key='docs'
+              href='/docs'
+            >
+              View Docs
             </Button>
           ]}
           className={styles.result}

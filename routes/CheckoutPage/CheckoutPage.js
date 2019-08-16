@@ -108,6 +108,7 @@ export class CheckoutPage extends Component {
         description: `Your subscription has been created successfully. You may now use your auth token in API requests.`
       })
 
+      this.props.auth.consumer = consumer
       this.props.history.replace('/dashboard?success=true')
     } catch (err) {
       notification.error({
