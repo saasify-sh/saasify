@@ -87,31 +87,33 @@ export class OnboardingSection extends Component {
               Once you're ready, <Link to='/checkout?plan=unlimited'>subscribe</Link> to remove the public rate limits.
             </span>
           )}
-          extra={[
-            <Button
-              type='primary'
-              key='subscribe'
-              href='/checkout?plan=unlimited'
-            >
-              Subscribe
-            </Button>,
+          extra={(
+            <>
+              <Button
+                type='primary'
+                key='subscribe'
+                href='/checkout?plan=unlimited'
+              >
+                Subscribe
+              </Button>
 
-            <Button
-              type='secondary'
-              key='pricing'
-              href='/pricing'
-            >
-              View Pricing
-            </Button>,
+              <Button
+                type='secondary'
+                key='pricing'
+                href='/pricing'
+              >
+                View Pricing
+              </Button>
 
-            <Button
-              type='secondary'
-              key='docs'
-              href='/docs'
-            >
-              View Docs
-            </Button>
-          ]}
+              <Button
+                type='secondary'
+                key='docs'
+                href='/docs'
+              >
+                View Docs
+              </Button>
+            </>
+          )}
           className={styles.result}
         />
       )
