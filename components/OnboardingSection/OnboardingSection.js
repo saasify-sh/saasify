@@ -2,22 +2,25 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import copyTextToClipboard from 'copy-text-to-clipboard'
 
-import { Button, Icon, Steps, Tooltip } from 'antd'
+import { Button, Icon, Result, Steps, Tooltip } from 'antd'
 import { observer, inject } from 'mobx-react'
-import { Link } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 import { FinContext } from '../FinContext'
 import { Section } from '../Section'
+import { Paper } from '../Paper'
 
 import styles from './styles.module.css'
 
 const { Step } = Steps
 
+@withRouter
 @inject('auth')
 @observer
 export class OnboardingSection extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired
   }
 
   state = {
@@ -35,6 +38,8 @@ export class OnboardingSection extends Component {
   render() {
     const {
       auth,
+      location,
+      className,
       ...rest
     } = this.props
 
@@ -57,6 +62,53 @@ export class OnboardingSection extends Component {
       }
     }
 
+    const params = new URLSearchParams(location.search)
+    const success = params.get('success')
+    let result = null
+
+    if (auth.consumer && auth.consumer.enabled) {
+      if (success) {
+        result = (
+          <Result
+            status='success'
+            title='Your subscription is ready to use!'
+            subTitle={`Just add your auth token {auth} to your API requests to remove the public rate limits.`}
+            className={styles.result}
+          />
+        )
+      }
+    } else {
+      result = (
+        <Result
+          status='info'
+          title='Subscribe to remove rate limits'
+          subTitle={(
+            <span>
+              Once you're ready, <Link to='/checkout?plan=unlimited'>subscribe</Link> to remove the public rate limits.
+            </span>
+          )}
+          extra={[
+            <Button
+              type='primary'
+              key='subscribe'
+              href='/checkout?plan=unlimited'
+            >
+              Subscribe
+            </Button>,
+
+            <Button
+              type='secondary'
+              key='pricing'
+              href='/pricing'
+            >
+              View Pricing
+            </Button>
+          ]}
+          className={styles.result}
+        />
+      )
+    }
+
     return (
       <FinContext.Consumer>
         {project => (
@@ -64,10 +116,13 @@ export class OnboardingSection extends Component {
             title='Onboarding'
             {...rest}
           >
-            <div className={styles.body}>
+            <Paper className={styles.body}>
+              {result}
+
               <Steps
                 direction='vertical'
                 current={step}
+                className={styles.steps}
               >
                 <Step
                   title='Create account'
@@ -131,7 +186,7 @@ export class OnboardingSection extends Component {
                   )}
                 />
               </Steps>
-            </div>
+            </Paper>
           </Section>
         )}
       </FinContext.Consumer>

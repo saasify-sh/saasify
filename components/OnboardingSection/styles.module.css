@@ -2,19 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  max-width: 720px;
+  max-width: 1080px;
   width: 100%;
-}
-
-.body :global(.ant-steps-item-title) {
-  color: #fff !important;
-}
-
-.body :global(.ant-steps-item-description) {
-  color: #d2d2d6 !important;
 }
 
 .tokenButton {
   display: inline-block;
   margin: 1em 1em 0 0;
+}
+
+.result {
+  padding-top: 0;
+}
+
+.steps {
+  max-width: 720px;
+  margin: 0 auto;
 }

@@ -28,14 +28,12 @@ export class Section extends Component {
       subtitle,
       desc,
       className,
-      children,
-      ...rest
+      children
     } = this.props
 
     return (
       <section
         className={cs(styles.section, inverted && styles.inverted, className)}
-        {...rest}
       >
         <div className={cs(styles.content, stretch && styles.stretch)}>
           {title && (

@@ -105,11 +105,10 @@ export class CheckoutPage extends Component {
 
       notification.success({
         message: 'Subscription Created',
-        description: `Your subscription has been created successfully. You may now use your auth token in API requests.`,
-        duration: 10
+        description: `Your subscription has been created successfully. You may now use your auth token in API requests.`
       })
 
-      this.props.history.replace('/dashboard')
+      this.props.history.replace('/dashboard?success=true')
     } catch (err) {
       notification.error({
         message: 'Error initializing subscription',
