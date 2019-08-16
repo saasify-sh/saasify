@@ -72,7 +72,7 @@ export class OnboardingSection extends Component {
           <Result
             status='success'
             title='Your subscription is ready to use!'
-            subTitle={`Just add your auth token {auth} to your API requests to remove the public rate limits.`}
+            subTitle='Just add your auth token to your API requests to remove the public rate limits.'
             className={styles.result}
           />
         )
@@ -133,7 +133,7 @@ export class OnboardingSection extends Component {
                 className={styles.steps}
               >
                 <Step
-                  title='Create account'
+                  title='Create Account'
                   description='Test out the the public, rate-limited version of the API without an auth token.'
                 />
 
@@ -147,10 +147,10 @@ export class OnboardingSection extends Component {
                 />
 
                 <Step
-                  title='Call private API'
+                  title='Call Private API'
                   description={(
                     <span>
-                      Call the API with your private auth token. See the <Link to='/docs'>docs</Link> for more info.
+                      Call the API with your private auth token (below). See the <Link to='/docs'>docs</Link> for more info.
                       {auth.consumer && (
                         <>
                           <br />
@@ -187,7 +187,6 @@ export class OnboardingSection extends Component {
                   icon={step === 2 ? (
                     <Icon
                       type='loading'
-                      style={{ color: '#fff' }}
                     />
                   ) : (
                     undefined
