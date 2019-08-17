@@ -86,7 +86,7 @@ export class InvoicingSection extends Component {
 
   _disposer = reaction(
     () => this.props.auth.consumer,
-    () => this._fetch()
+    () => this._fetch({ reset: true })
   )
 
   render() {
@@ -151,6 +151,11 @@ export class InvoicingSection extends Component {
       data,
       pagination
     } = this.state
+
+    if (params.reset) {
+      data = []
+      params.page = 0
+    }
 
     if (!params.page || params.page * pagination.pageSize >= data.length) {
       this.setState({ loading: true })

@@ -47,6 +47,13 @@ const columns = [
     render: (amount) => (
       amount
     )
+  },
+  {
+    title: 'Bandwidth (GBs)',
+    dataIndex: 'bandwidth.total_usage',
+    render: (amount) => (
+      amount === undefined ? 0 : amount
+    )
   }
 ]
 
@@ -75,7 +82,7 @@ export class BillingUsageSection extends Component {
 
   _disposer = reaction(
     () => this.props.auth.consumer,
-    () => this._fetch()
+    () => this._fetch({ reset: true })
   )
 
   render() {
@@ -140,6 +147,11 @@ export class BillingUsageSection extends Component {
       data,
       pagination
     } = this.state
+
+    if (params.reset) {
+      data = []
+      params.page = 0
+    }
 
     if (!params.page || params.page * pagination.pageSize >= data.length) {
       this.setState({ loading: true })
