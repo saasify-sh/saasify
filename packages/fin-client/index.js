@@ -183,6 +183,13 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
+  async updateConsumer (consumer) {
+    return this._request({
+      url: `/1/consumers/${consumer.id}`,
+      method: 'put'
+    }).then(res => res.data)
+  }
+
   async getConsumerByProject (projectId) {
     return this._request({
       url: `/1/consumers/projects/${projectId}`
