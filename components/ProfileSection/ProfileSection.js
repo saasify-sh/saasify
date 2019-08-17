@@ -4,7 +4,7 @@ import copyTextToClipboard from 'copy-text-to-clipboard'
 
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
-import { Avatar, Button, Popconfirm, Table, Tooltip, notification } from 'antd'
+import { Avatar, Button, Divider, Popconfirm, Table, Tooltip, notification } from 'antd'
 import { observer, inject } from 'mobx-react'
 
 import { FinContext } from '../FinContext'
@@ -23,7 +23,8 @@ export class ProfileSection extends Component {
 
   state = {
     copiedTextToClipboard: false,
-    isLoadingUnsubscribe: false
+    isLoadingUnsubscribe: false,
+    isLoadingRefreshAuthToken: false
   }
 
   componentWillUnmount() {
@@ -41,7 +42,8 @@ export class ProfileSection extends Component {
 
     const {
       copiedTextToClipboard,
-      isLoadingUnsubscribe
+      isLoadingUnsubscribe,
+      isLoadingRefreshAuthToken
     } = this.state
 
     const hasSubscription = auth.consumer && auth.consumer.enabled
@@ -118,20 +120,33 @@ export class ProfileSection extends Component {
         key: 'actions',
         render: (token) => (
           hasSubscription ? (
-            <Popconfirm
-              placement='top'
-              title='Are you sure you want to cancel your subscription?'
-              okText='Yes'
-              cancelText='No'
-              onConfirm={this._onConfirmUnsubscribe}
-            >
+            <>
               <Button
-                type='default'
-                loading={isLoadingUnsubscribe}
+                type='ghost'
+                icon='reload'
+                loading={isLoadingRefreshAuthToken}
+                onClick={this._onClickRefreshAuthToken}
               >
-                Unsubscribe
+                Refresh Token
               </Button>
-            </Popconfirm>
+
+              <Divider type='vertical' />
+
+              <Popconfirm
+                placement='top'
+                title='Are you sure you want to cancel your subscription?'
+                okText='Yes'
+                cancelText='No'
+                onConfirm={this._onConfirmUnsubscribe}
+              >
+                <Button
+                  type='default'
+                  loading={isLoadingUnsubscribe}
+                >
+                  Unsubscribe
+                </Button>
+              </Popconfirm>
+            </>
           ) : (
             <Button
               type='primary'
@@ -221,6 +236,32 @@ export class ProfileSection extends Component {
         })
 
         this.setState({ isLoadingUnsubscribe: false })
+      })
+  }
+
+  _onClickRefreshAuthToken = () => {
+    this.setState({ isLoadingRefreshAuthToken: true })
+
+    API.updateConsumer(this.props.auth.consumer)
+      .then((consumer) => {
+        this.props.auth.consumer = consumer
+
+        notification.success({
+          message: 'Auth token refreshed',
+          description: `Your auth token has been refreshed. Your old token is now invalid.`
+        })
+
+        this.setState({ isLoadingRefreshAuthToken: false })
+      }, (err) => {
+        console.warn(err)
+
+        notification.error({
+          message: 'Error refreshing auth token',
+          description: err.error && err.error.message,
+          duration: 0
+        })
+
+        this.setState({ isLoadingRefreshAuthToken: false })
       })
   }
 }
