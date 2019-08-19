@@ -79,6 +79,12 @@
     "amountPerRequest": 0.0004,
     "amountPerCompute": 0.0034,
     "amountPerBandwidth": 0.2,
+    "noAuthRateLimit": {
+      "enabled": true,
+      "requests": true,
+      "requestsInterval": 3600,
+      "requestsMaxPerInterval": 10
+    },
     "services": [
       {
         "name": "helloWorld",

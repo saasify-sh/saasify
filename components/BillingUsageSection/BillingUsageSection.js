@@ -31,7 +31,7 @@ const columns = [
     render: (timestamp) => (
       timestamp
         ? format(new Date(timestamp * 1000), 'MM/DD/YYYY')
-        : ''
+        : 'Current'
     )
   },
   {
