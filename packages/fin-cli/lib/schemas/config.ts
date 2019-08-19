@@ -4,14 +4,15 @@ class Config {
   version?: number = 1
   name?: string
   alias?: string
+  amountPerRequest?: number = 0.0004
+  amountPerCompute?: number = 0.0034
+  amountPerBandwidth?: number = 0.2
   services: Service[]
 }
 
 class Service {
   src: string
   name?: string
-  amountPerRequest?: number = 1
-  amountPerCompute?: number = 1
   timeout?: number = 300000
   authRateLimit?: RateLimit
   noAuthRateLimit?: RateLimit

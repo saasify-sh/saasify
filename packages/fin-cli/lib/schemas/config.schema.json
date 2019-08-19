@@ -19,6 +19,21 @@
           "type": "string",
           "title": "alias"
         },
+        "amountPerRequest": {
+          "type": "number",
+          "title": "amountPerRequest",
+          "default": 0.0004
+        },
+        "amountPerCompute": {
+          "type": "number",
+          "title": "amountPerCompute",
+          "default": 0.0034
+        },
+        "amountPerBandwidth": {
+          "type": "number",
+          "title": "amountPerBandwidth",
+          "default": 0.2
+        },
         "services": {
           "type": "array",
           "items": {
@@ -43,16 +58,6 @@
         "name": {
           "type": "string",
           "title": "name"
-        },
-        "amountPerRequest": {
-          "type": "number",
-          "title": "amountPerRequest",
-          "default": 1
-        },
-        "amountPerCompute": {
-          "type": "number",
-          "title": "amountPerCompute",
-          "default": 1
         },
         "timeout": {
           "type": "number",
