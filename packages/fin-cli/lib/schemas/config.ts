@@ -7,6 +7,8 @@ class Config {
   amountPerRequest?: number = 0.0004
   amountPerCompute?: number = 0.0034
   amountPerBandwidth?: number = 0.2
+  authRateLimit?: RateLimit
+  noAuthRateLimit?: RateLimit
   services: Service[]
 }
 
@@ -14,8 +16,6 @@ class Service {
   src: string
   name?: string
   timeout?: number = 300000
-  authRateLimit?: RateLimit
-  noAuthRateLimit?: RateLimit
   example?: object
 }
 

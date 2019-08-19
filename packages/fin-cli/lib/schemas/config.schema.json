@@ -19,6 +19,14 @@
           "type": "string",
           "title": "alias"
         },
+        "authRateLimit": {
+          "$ref": "#/definitions/RateLimit",
+          "title": "authRateLimit"
+        },
+        "noAuthRateLimit": {
+          "$ref": "#/definitions/RateLimit",
+          "title": "noAuthRateLimit"
+        },
         "amountPerRequest": {
           "type": "number",
           "title": "amountPerRequest",
@@ -63,14 +71,6 @@
           "type": "number",
           "title": "timeout",
           "default": 0
-        },
-        "authRateLimit": {
-          "$ref": "#/definitions/RateLimit",
-          "title": "authRateLimit"
-        },
-        "noAuthRateLimit": {
-          "$ref": "#/definitions/RateLimit",
-          "title": "noAuthRateLimit"
         },
         "example": {
           "type": "object",
