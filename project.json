@@ -76,12 +76,13 @@
     "project": "t/hello-world",
     "version": "1",
     "readme": null,
+    "amountPerRequest": 0.0004,
+    "amountPerCompute": 0.0034,
+    "amountPerBandwidth": 0.2,
     "services": [
       {
         "name": "helloWorld",
         "url": "http://localhost:5000/1/call/t/hello-world@a56e4d3a",
-        "amountPerRequest": 1,
-        "amountPerCompute": 1,
         "timeout": 0,
         "enabled": true,
         "src": "functions/hello-world.ts",
