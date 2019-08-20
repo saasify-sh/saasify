@@ -38,7 +38,7 @@ module.exports = async (client) => {
     })
   })
 
-  // TODO: handle production usage
+  // TODO: handle production usage auth redirection properly
   const config = client.baseUrl.indexOf('localhost') >= 0
     ? ({
       client_id: '86d73532d0105da51a4d',
