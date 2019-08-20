@@ -41,7 +41,7 @@
   },
   {
     "title": "Support",
-    "desc": "In addition to standard email support, we offer live chat during US office hours as well as an extensive FAQ.",
+    "desc": "In addition to standard email support, we offer an integration with GitHub issues as well as an extensive FAQ.",
     "undrawSVG": "questions"
   },
   {
