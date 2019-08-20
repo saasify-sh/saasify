@@ -5,17 +5,17 @@
   "version": "1",
   "url": "http://localhost:5000/1/call/hello-world_360e148006098c95",
   "user": "5c5a35cc1cd684a8f5fc93fa",
+  "amountPerRequest": 1,
+  "amountPerCompute": 1,
   "createdAt": "2019-04-09T17:07:14.546Z",
   "updatedAt": "2019-04-09T17:07:14.546Z",
   "services": [
     {
       "route": "/",
-      "amountPerRequest": 1,
-      "amountPerCompute": 1,
       "timeout": 0,
       "enabled": true,
       "src": "index.ts",
-      "name": "index",
+      "name": "helloWorld",
       "definition": {
         "config": {
           "defaultExport": true,

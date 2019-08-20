@@ -94,30 +94,33 @@ module.exports.serviceToPath = async function serviceToPath (service) {
   const paramsSchema = jsonSchemaToOpenAPI(params)
   const responseSchema = jsonSchemaToOpenAPI(returns)
 
-  return {
-    [route]: {
-      post: {
-        operationId: name,
-        summary: definition.description || service.name,
-        requestBody: {
-          required: true,
-          content: {
-            'application/json': {
-              schema: paramsSchema
-            }
-          }
-        },
-        responses: {
-          '200': {
-            description: 'Success',
-            content: {
-              'application/json': {
-                schema: responseSchema
-              }
-            }
+  const post = {
+    operationId: name,
+    requestBody: {
+      required: true,
+      content: {
+        'application/json': {
+          schema: paramsSchema
+        }
+      }
+    },
+    responses: {
+      '200': {
+        description: 'Success',
+        content: {
+          'application/json': {
+            schema: responseSchema
           }
         }
       }
     }
+  }
+
+  if (definition.description) {
+    post.description = definition.description
+  }
+
+  return {
+    [route]: { post }
   }
 }

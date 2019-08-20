@@ -5,13 +5,13 @@
   "version": "1",
   "enabled": true,
   "user": "5c5a35cc1cd684a8f5fc93fa",
+  "amountPerRequest": 1,
+  "amountPerCompute": 1,
   "createdAt": "2019-05-01T00:23:04.613Z",
   "updatedAt": "2019-05-01T00:23:04.613Z",
   "services": [
     {
       "route": "/",
-      "amountPerRequest": 1,
-      "amountPerCompute": 1,
       "timeout": 0,
       "enabled": true,
       "src": "index.ts",
