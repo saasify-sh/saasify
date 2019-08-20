@@ -15,7 +15,7 @@ module.exports = async (client) => {
     _reject = reject
   })
 
-  const [ port ] = await findFreePort(3000)
+  const [port] = await findFreePort(3000)
   const app = new Koa()
   app.use(async (ctx) => {
     const { query } = url.parse(ctx.req.url)
