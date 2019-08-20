@@ -9,6 +9,7 @@ const url = require('url')
 module.exports = async (client) => {
   let _resolve
   let _reject
+
   const serverP = new Promise((resolve, reject) => {
     _resolve = resolve
     _reject = reject

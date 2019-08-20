@@ -33,6 +33,6 @@ module.exports = (program, client) => {
 module.exports.signup = async (opts, client) => {
   const { email, username, password } = opts
 
-  // TODO: validate email / username and password
+  // TODO: validate email, username and password
   return client.signup({ email, username, password })
 }
