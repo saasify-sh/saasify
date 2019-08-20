@@ -14,7 +14,7 @@ export class ReadmeSection extends Component {
             {...this.props}
           >
             <Markdown
-              source={project.deployment.readme}
+              source={atob(project.deployment.readme)}
             />
           </Section>
         ) : (
