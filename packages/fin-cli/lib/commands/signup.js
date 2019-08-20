@@ -1,6 +1,7 @@
 'use strict'
 
 const auth = require('../auth')
+const authWithGitHub = require('../auth-github')
 const handleError = require('../handle-error')
 
 module.exports = (program, client) => {
@@ -12,9 +13,16 @@ module.exports = (program, client) => {
     .option('-p, --password <password>', 'account password')
     .action(async (opts) => {
       try {
-        const { user, token } = await module.exports.signup(opts, client)
-        auth.signin({ user, token })
+        let result
 
+        if (!opts.email && !opts.username) {
+          result = await authWithGitHub(client)
+        } else {
+          result = await module.exports.signup(opts, client)
+        }
+
+        const { user, token } = result
+        auth.signin({ user, token })
         console.log(JSON.stringify(user, null, 2))
       } catch (err) {
         handleError(err)
