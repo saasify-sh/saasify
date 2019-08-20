@@ -48,7 +48,7 @@ export class NavHeader extends Component {
   }
 
   render() {
-    const { fixed } = this.props
+    const { auth, fixed } = this.props
     const { attached } = this.state
 
     return (
@@ -92,7 +92,7 @@ export class NavHeader extends Component {
             </a>
           </div>
 
-          {this.props.auth.isAuthenticated ? (
+          {auth.isAuthenticated ? (
             <div>
               <Link to='/logout' className={styles.login}>
                 <CTAButton type='secondary' inline>

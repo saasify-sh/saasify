@@ -1,13 +1,24 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 import { Link } from 'react-router-dom'
+import { observer, inject } from 'mobx-react'
 
 import { FinContext } from '../FinContext'
 import { Logo } from '../Logo'
 
 import styles from './styles.module.css'
 
+@inject('auth')
+@observer
 export class NavFooter extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired
+  }
+
   render() {
+    const { auth } = this.props
+
     return (
       <FinContext.Consumer>
         {project => (
@@ -55,12 +66,21 @@ export class NavFooter extends Component {
                   </li>
 
                   <li className={styles.listItem}>
-                    <Link
-                      to='/signup'
-                      className={styles.link}
-                    >
-                      Get Started
-                    </Link>
+                    {auth.isAuthenticated ? (
+                      <Link
+                        to='/dashboard'
+                        className={styles.link}
+                      >
+                        Dashboard
+                      </Link>
+                    ) : (
+                      <Link
+                        to='/signup'
+                        className={styles.link}
+                      >
+                        Get Started
+                      </Link>
+                    )}
                   </li>
                 </ul>
               </div>
