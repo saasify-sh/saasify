@@ -3,7 +3,6 @@
 const findFreePort = require('find-free-port')
 const Koa = require('koa')
 const open = require('open')
-const qs = require('qs')
 const url = require('url')
 
 module.exports = async (client) => {
@@ -18,15 +17,15 @@ module.exports = async (client) => {
   const [port] = await findFreePort(3000)
   const app = new Koa()
   app.use(async (ctx) => {
-    const { query } = url.parse(ctx.req.url)
-    const params = qs.parse(query)
+    const { searchParams } = new url.URL(`${ctx.request.origin}${ctx.request.url}`)
+    const code = searchParams.get('code')
 
-    if (!params.code) {
-      _reject(params)
+    if (!code) {
+      _reject(code)
       ctx.body = 'Error authenticated Fin with GitHub.'
     }
 
-    _resolve(params)
+    _resolve(code)
     ctx.body = 'Fin authenticated with GitHub successfully.'
   })
 
@@ -48,9 +47,9 @@ module.exports = async (client) => {
       redirect_uri: `https://functional-income.com/auth/github`
     })
 
-  const opts = qs.stringify(config)
+  const opts = (new url.URLSearchParams(config)).toString()
   open(`https://github.com/login/oauth/authorize?${opts}`)
-  const params = await serverP
+  const code = await serverP
 
   await new Promise((resolve, reject) => {
     server.close((err) => {
@@ -61,6 +60,6 @@ module.exports = async (client) => {
 
   return client.authWithGitHub({
     ...config,
-    ...params
+    code
   })
 }

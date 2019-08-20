@@ -3,6 +3,7 @@
 const auth = require('../auth')
 const authWithGitHub = require('../auth-github')
 const handleError = require('../handle-error')
+const spinner = require('../spinner')
 
 module.exports = (program, client) => {
   program
@@ -16,7 +17,10 @@ module.exports = (program, client) => {
         let result
 
         if (!opts.email && !opts.username) {
-          result = await authWithGitHub(client)
+          result = await spinner(
+            authWithGitHub(client),
+            'Authenticating with GitHub'
+          )
         } else {
           result = await module.exports.signup(opts, client)
         }
