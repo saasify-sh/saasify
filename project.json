@@ -1,9 +1,9 @@
 {
-  "id": "t/hello-world",
+  "id": "transitive-bullshit/hello-world",
   "description": null,
   "version": "1",
   "enabled": true,
-  "user": "5d54da42940b48c42ad8e544",
+  "user": "5d5b477eb5fab1199c927a36",
   "createdAt": "2019-02-16T17:19:20.047Z",
   "updatedAt": "2019-04-09T17:07:14.584Z",
   "saas": {
@@ -12,89 +12,31 @@
     "subheading": "She is perfect in every way and loves doing kitty things like taking naps and such.",
     "theme": {
       "@primary-color": "#d23d67"
-    },
-    "features": [
-      {
-        "title": "Simple",
-        "desc": "We only focus on doing one thing well and keeping things as simple as possible.",
-        "undrawSVG": "confirmation"
-      },
-      {
-        "title": "Get Going Fast",
-        "desc": "Try out the API for FREE and then sign up with your GitHub account and Stripe.",
-        "undrawSVG": "developer_activity"
-      },
-      {
-        "title": "Cost Effective",
-        "desc": "Building on top of serverless functions means you'll only pay for the API calls you actually use.",
-        "undrawSVG": "stripe_payments"
-      },
-      {
-        "title": "Documentation",
-        "desc": "Thorough docs that come with easy-to-use examples for many common programming languages.",
-        "undrawSVG": "code_review"
-      },
-      {
-        "title": "Robust",
-        "desc": "Serverless functions enable new levels of scalability and robustness against spikes in traffic.",
-        "undrawSVG": "logistics"
-      },
-      {
-        "title": "Versioned",
-        "desc": "All APIs are immutable and newer versions are always opt-in.",
-        "undrawSVG": "version_control"
-      },
-      {
-        "title": "Trusted",
-        "desc": "Our team has worked at some of the largest tech companies in the world including Facebook, Microsoft, and Netflix.",
-        "undrawSVG": "around_the_world"
-      },
-      {
-        "title": "Secure",
-        "desc": "We take security very seriously. All of our APIs are vetted by an independent third-party for compliance.",
-        "undrawSVG": "security"
-      },
-      {
-        "title": "Support",
-        "desc": "In addition to standard email support, we offer live chat during US office hours as well as an extensive FAQ.",
-        "undrawSVG": "questions"
-      },
-      {
-        "title": "Enterprise",
-        "desc": "For questions regarding bulk pricing, dedicated support, customization, self-hosting, or other enterprise considerations, please contact us below.",
-        "undrawSVG": "all_the_data"
-      }
-    ]
+    }
   },
   "deployment": {
-    "id": "t/hello-world@a56e4d3a",
-    "url": "http://localhost:5000/1/call/t/hello-world@a56e4d3a",
+    "id": "transitive-bullshit/hello-world@38100a43",
+    "url": "http://localhost:5000/1/call/transitive-bullshit/hello-world@38100a43",
+    "hash": "38100a43",
+    "user": "5d5b477eb5fab1199c927a36",
+    "project": "transitive-bullshit/hello-world",
     "enabled": true,
     "published": false,
-    "hash": "a56e4d3a",
-    "user": "5d54da42940b48c42ad8e544",
-    "project": "t/hello-world",
-    "version": "1",
-    "readme": null,
-    "amountPerRequest": 0.0004,
-    "amountPerCompute": 0.0034,
-    "amountPerBandwidth": 0.2,
     "noAuthRateLimit": {
       "enabled": true,
       "requests": true,
       "requestsInterval": 3600,
       "requestsMaxPerInterval": 10
     },
+    "amountPerRequest": 0.0004,
+    "amountPerCompute": 0.0034,
+    "amountPerBandwidth": 0.2,
+    "version": "1",
     "services": [
       {
-        "name": "helloWorld",
-        "url": "http://localhost:5000/1/call/t/hello-world@a56e4d3a",
         "timeout": 0,
-        "enabled": true,
         "src": "functions/hello-world.ts",
-        "example": {
-          "name": "Nala"
-        },
+        "name": "helloWorld",
         "definition": {
           "config": {
             "defaultExport": true,
@@ -136,10 +78,11 @@
           },
           "version": "1.1.0",
           "title": "hello-world"
-        }
+        },
+        "url": "http://localhost:5000/1/call/transitive-bullshit/hello-world@38100a43"
       }
     ],
-    "createdAt": "2019-08-14T00:27:45.939Z",
-    "updatedAt": "2019-08-14T00:27:45.939Z"
+    "createdAt": "2019-08-20T01:20:57.304Z",
+    "updatedAt": "2019-08-20T01:20:57.304Z"
   }
 }
