@@ -23,6 +23,22 @@ const openAPI = await convertFinToOpenAPI(finDeployment)
 
 See the test [fixtures](./fixtures) and their corresponding output [snapshots](./.snapshots/test.js.md) for conversion examples.
 
+## TODO
+
+Should any of these be injected by the saas client?
+
+- [ ] info.x-logo
+- [ ] info.termsOfService
+- [ ] info.contact
+- [ ] info.license (look into licensing options)
+- [ ] info.description
+- [ ] tags
+- [ ] update correct path routes
+- [ ] operation.security
+- [ ] apiKey => API Key
+- [ ] update security section
+- [ ] add GET path
+
 ## Related
 
 - [fin](https://functional-income.com) - Fin is the easiest way to launch your own SaaS.

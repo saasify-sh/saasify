@@ -144,9 +144,11 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async getProject (id) {
+  async getProject (id, opts = { }) {
+    const querystring = qs.stringify(opts)
+
     return this._request({
-      url: `/1/projects/${id}`
+      url: `/1/projects/${id}?${querystring}`
     }).then(res => res.data)
   }
 
@@ -208,9 +210,11 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async getDeployment (id) {
+  async getDeployment (id, opts = { }) {
+    const querystring = qs.stringify(opts)
+
     return this._request({
-      url: `/1/deployments/${id}`
+      url: `/1/deployments/${id}?${querystring}`
     }).then(res => res.data)
   }
 
@@ -229,8 +233,8 @@ module.exports = class FinClient {
     }).then(res => res.data)
   }
 
-  async listDeployments (where = { }) {
-    const querystring = qs.stringify({ where })
+  async listDeployments (where = { }, opts = { }) {
+    const querystring = qs.stringify({ where, ...opts })
 
     return this._request({
       url: `/1/deployments?${querystring}`
