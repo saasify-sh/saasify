@@ -6,10 +6,9 @@ import { notification } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { Redirect } from 'react-router-dom'
 
-import { getPlansForProject } from 'lib/pricing-plans'
+import plans from 'lib/pricing-plans'
 
 import {
-  FinContext,
   PricingPlan,
   BackgroundSlideshow,
   CheckoutForm,
@@ -18,7 +17,7 @@ import {
 } from 'components'
 
 import API from 'lib/api'
-import project from 'lib/project'
+import deployment from 'lib/deployment'
 
 import styles from './styles.module.css'
 
@@ -47,37 +46,30 @@ export class CheckoutPage extends Component {
       )
     }
 
+    const unlimited = plans.find(({ key }) => key === 'unlimited')
+
     return (
-      <FinContext.Consumer>
-        {project => {
-          const plans = getPlansForProject(project)
-          const unlimited = plans.find(({ key }) => key === 'unlimited')
+      <div className={styles.container}>
+        <BackgroundSlideshow />
 
-          return (
-            <div className={styles.container}>
-              <BackgroundSlideshow />
+        <NavHeader fixed={true} />
 
-              <NavHeader fixed={true} />
+        <div className={styles.content}>
+          <PricingPlan
+            plan={unlimited}
+            inline
+          />
 
-              <div className={styles.content}>
-                <PricingPlan
-                  plan={unlimited}
-                  inline
-                />
-
-                <Paper className={styles.checkoutForm}>
-                  <CheckoutForm
-                    title='Checkout'
-                    action='SUBSCRIBE'
-                    loading={loading}
-                    onSubmit={this._onSubmit}
-                  />
-                </Paper>
-              </div>
-            </div>
-          )
-        }}
-      </FinContext.Consumer>
+          <Paper className={styles.checkoutForm}>
+            <CheckoutForm
+              title='Checkout'
+              action='SUBSCRIBE'
+              loading={loading}
+              onSubmit={this._onSubmit}
+            />
+          </Paper>
+        </div>
+      </div>
     )
   }
 
@@ -100,7 +92,7 @@ export class CheckoutPage extends Component {
 
       const source = await API.addBillingSource({ source: token.id })
       console.log('checkout source', { source })
-      const consumer = await API.createConsumer({ project: project.id })
+      const consumer = await API.createConsumer({ project: deployment.project.id })
       console.log('checkout consumer', { source, consumer })
 
       notification.success({
