@@ -5,11 +5,13 @@ import { FinContext } from '../FinContext'
 import { Section } from '../Section'
 import { LiveServiceDemo } from '../LiveServiceDemo'
 
+// TODO: make service selectable
+
 export class DemoSection extends Component {
   render() {
     return (
       <FinContext.Consumer>
-        {project => (
+        {deployment => (
           <Section
             title='Live Demo'
             desc={(
@@ -20,9 +22,9 @@ export class DemoSection extends Component {
             {...this.props}
           >
             <LiveServiceDemo
-              project={project}
-              deployment={project.deployment}
-              service={project.deployment.services[0]}
+              project={deployment.project}
+              deployment={deployment}
+              service={deployment.services[0]}
             />
           </Section>
         )}

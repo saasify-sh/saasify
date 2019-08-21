@@ -34,7 +34,6 @@ export class Section extends Component {
       children
     } = this.props
 
-
     const sectionProps = { }
 
     if (id || title) {

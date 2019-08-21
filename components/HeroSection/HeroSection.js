@@ -9,10 +9,10 @@ export class HeroSection extends Component {
   render() {
     return (
       <FinContext.Consumer>
-        {project => (
+        {deployment => (
           <Section
-            title={project.saas.heading}
-            subtitle={project.saas.subheading}
+            title={deployment.project.saas.heading}
+            subtitle={deployment.project.saas.subheading}
             {...this.props}
           >
             <Link to='/signup'>

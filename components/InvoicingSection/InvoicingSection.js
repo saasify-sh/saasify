@@ -7,7 +7,6 @@ import { Table, Tag } from 'antd'
 import { reaction } from 'mobx'
 import { observer, inject } from 'mobx-react'
 
-import { FinContext } from '../FinContext'
 import { Section } from '../Section'
 
 import API from 'lib/api'
@@ -102,25 +101,21 @@ export class InvoicingSection extends Component {
     } = this.state
 
     return (
-      <FinContext.Consumer>
-        {project => (
-          <Section
-            title='Invoicing'
-            {...rest}
-          >
-            <div className={styles.body}>
-              <Table
-                columns={columns}
-                rowKey={record => record.id}
-                dataSource={data}
-                pagination={pagination}
-                loading={loading}
-                onChange={this._handleTableChange}
-              />
-            </div>
-          </Section>
-        )}
-      </FinContext.Consumer>
+      <Section
+        title='Invoicing'
+        {...rest}
+      >
+        <div className={styles.body}>
+          <Table
+            columns={columns}
+            rowKey={record => record.id}
+            dataSource={data}
+            pagination={pagination}
+            loading={loading}
+            onChange={this._handleTableChange}
+          />
+        </div>
+      </Section>
     )
   }
 

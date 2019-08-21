@@ -25,7 +25,7 @@ import {
 } from './routes'
 
 import AuthManager from './store/AuthManager'
-import FinProject from './project.json'
+import deployment from './lib/deployment'
 
 @observer
 export default class App extends Component {
@@ -37,7 +37,7 @@ export default class App extends Component {
     return (
       <Router>
         <Provider auth={AuthManager}>
-          <FinContext.Provider value={FinProject}>
+          <FinContext.Provider value={deployment}>
             <Switch>
               <Route exact path='/' component={HomePage} />
 

@@ -12,7 +12,7 @@ export class PricingSection extends Component {
   render() {
     return (
       <FinContext.Consumer>
-        {project => {
+        {({ project }) => {
           const plans = getPlansForProject(project)
 
           return (

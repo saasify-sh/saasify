@@ -4,7 +4,7 @@ import debug from 'lib/debug'
 import API from 'lib/api'
 import LocalStore from 'store/LocalStore'
 
-import project from '../project.json'
+import deployment from '../lib/deployment'
 
 import { config as githubConfig } from 'lib/auth-github'
 
@@ -94,7 +94,7 @@ autorun(() => {
   API.token = authManager.auth && authManager.auth.token
 
   if (authManager.isAuthenticated) {
-    API.getConsumerByProject(project.id)
+    API.getConsumerByProject(deployment.project.id)
       .then((consumer) => {
         authManager.consumer = consumer
       }, (err) => {

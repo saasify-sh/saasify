@@ -18,7 +18,7 @@ import {
 } from 'components'
 
 import API from 'lib/api'
-import project from 'project.json'
+import project from 'lib/project'
 
 import styles from './styles.module.css'
 

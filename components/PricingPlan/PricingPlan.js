@@ -34,7 +34,7 @@ export class PricingPlan extends Component {
 
     return (
       <FinContext.Consumer>
-        {project => (
+        {({ project }) => (
           <Paper
             className={cs(styles.plan, className)}
             {...rest}

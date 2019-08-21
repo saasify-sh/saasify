@@ -7,7 +7,6 @@ import { format } from 'date-fns'
 import { Avatar, Button, Divider, Popconfirm, Table, Tooltip, notification } from 'antd'
 import { observer, inject } from 'mobx-react'
 
-import { FinContext } from '../FinContext'
 import { Section } from '../Section'
 
 import API from 'lib/api'
@@ -172,23 +171,19 @@ export class ProfileSection extends Component {
     ]
 
     return (
-      <FinContext.Consumer>
-        {project => (
-          <Section
-            title='Profile'
-            {...rest}
-          >
-            <div className={styles.body}>
-              <Table
-                columns={columns}
-                rowKey={record => record.id}
-                dataSource={dataSource}
-                pagination={false}
-              />
-            </div>
-          </Section>
-        )}
-      </FinContext.Consumer>
+      <Section
+        title='Profile'
+        {...rest}
+      >
+        <div className={styles.body}>
+          <Table
+            columns={columns}
+            rowKey={record => record.id}
+            dataSource={dataSource}
+            pagination={false}
+          />
+        </div>
+      </Section>
     )
   }
 

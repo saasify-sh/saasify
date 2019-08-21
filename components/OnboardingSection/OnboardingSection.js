@@ -6,7 +6,6 @@ import { Button, Icon, Result, Steps, Tooltip } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { withRouter, Link } from 'react-router-dom'
 
-import { FinContext } from '../FinContext'
 import { Section } from '../Section'
 import { Paper } from '../Paper'
 
@@ -120,85 +119,81 @@ export class OnboardingSection extends Component {
     }
 
     return (
-      <FinContext.Consumer>
-        {project => (
-          <Section
-            title='Onboarding'
-            {...rest}
+      <Section
+        title='Onboarding'
+        {...rest}
+      >
+        <Paper className={styles.body}>
+          {result}
+
+          <Steps
+            direction='vertical'
+            current={step}
+            className={styles.steps}
           >
-            <Paper className={styles.body}>
-              {result}
+            <Step
+              title='Create Account'
+              description='Test out the the public, rate-limited version of the API without an auth token.'
+            />
 
-              <Steps
-                direction='vertical'
-                current={step}
-                className={styles.steps}
-              >
-                <Step
-                  title='Create Account'
-                  description='Test out the the public, rate-limited version of the API without an auth token.'
-                />
+            <Step
+              title='Subscribe'
+              description={(
+                <span>
+                  Subscribe to the <Link to='/checkout?plan=unlimited'>unlimited plan</Link> in order to remove the public rate limits.
+                </span>
+              )}
+            />
 
-                <Step
-                  title='Subscribe'
-                  description={(
-                    <span>
-                      Subscribe to the <Link to='/checkout?plan=unlimited'>unlimited plan</Link> in order to remove the public rate limits.
-                    </span>
+            <Step
+              title='Call Private API'
+              description={(
+                <span>
+                  Call the API with your private auth token (below). See the <Link to='/docs'>docs</Link> for more info.
+                  {auth.consumer && (
+                    <>
+                      <br />
+
+                      <Tooltip
+                        placement='top'
+                        title={isTokenVisible ? 'Hide auth token' : 'Show auth token'}
+                      >
+                        <Button
+                          icon={isTokenVisible ? 'eye' : 'eye-invisible'}
+                          className={styles.tokenButton}
+                          onClick={this._onClickTokenVisibility}
+                        />
+                      </Tooltip>
+
+                      <Tooltip
+                        placement='top'
+                        title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
+                      >
+                        <Button
+                          onClick={this._onClickCopyToken}
+                        >
+                          {isTokenVisible ? (
+                            auth.consumer.token
+                          ) : (
+                            `${auth.consumer.token.substr(0, 8)} ...`
+                          )}
+                        </Button>
+                      </Tooltip>
+                    </>
                   )}
+                </span>
+              )}
+              icon={step === 2 ? (
+                <Icon
+                  type='loading'
                 />
-
-                <Step
-                  title='Call Private API'
-                  description={(
-                    <span>
-                      Call the API with your private auth token (below). See the <Link to='/docs'>docs</Link> for more info.
-                      {auth.consumer && (
-                        <>
-                          <br />
-
-                          <Tooltip
-                            placement='top'
-                            title={isTokenVisible ? 'Hide auth token' : 'Show auth token'}
-                          >
-                            <Button
-                              icon={isTokenVisible ? 'eye' : 'eye-invisible'}
-                              className={styles.tokenButton}
-                              onClick={this._onClickTokenVisibility}
-                            />
-                          </Tooltip>
-
-                          <Tooltip
-                            placement='top'
-                            title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
-                          >
-                            <Button
-                              onClick={this._onClickCopyToken}
-                            >
-                              {isTokenVisible ? (
-                                auth.consumer.token
-                              ) : (
-                                `${auth.consumer.token.substr(0, 8)} ...`
-                              )}
-                            </Button>
-                          </Tooltip>
-                        </>
-                      )}
-                    </span>
-                  )}
-                  icon={step === 2 ? (
-                    <Icon
-                      type='loading'
-                    />
-                  ) : (
-                    undefined
-                  )}
-                />
-              </Steps>
-            </Paper>
-          </Section>
-        )}
-      </FinContext.Consumer>
+              ) : (
+                undefined
+              )}
+            />
+          </Steps>
+        </Paper>
+      </Section>
     )
   }
 

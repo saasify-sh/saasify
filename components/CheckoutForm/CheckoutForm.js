@@ -15,7 +15,6 @@ import {
   Tooltip
 } from 'antd'
 
-import { FinContext } from '../FinContext'
 import env from 'lib/env'
 
 import styles from './styles.module.css'
@@ -49,17 +48,13 @@ export class CheckoutForm extends Component {
 
   render() {
     return (
-      <FinContext.Consumer>
-        {project => (
-          <StripeProvider apiKey={env.stripePublicKey}>
-            <Elements>
-              <CheckoutFormImpl
-                {...this.props}
-              />
-            </Elements>
-          </StripeProvider>
-        )}
-      </FinContext.Consumer>
+      <StripeProvider apiKey={env.stripePublicKey}>
+        <Elements>
+          <CheckoutFormImpl
+            {...this.props}
+          />
+        </Elements>
+      </StripeProvider>
     )
   }
 }

@@ -8,13 +8,13 @@ export class ReadmeSection extends Component {
   render() {
     return (
       <FinContext.Consumer>
-        {project => project.deployment.readme ? (
+        {deployment => deployment.readme ? (
           <Section
             title='Readme'
             {...this.props}
           >
             <Markdown
-              source={atob(project.deployment.readme)}
+              source={atob(deployment.readme)}
             />
           </Section>
         ) : (

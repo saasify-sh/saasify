@@ -15,12 +15,12 @@ export class Logo extends Component {
 
     return (
       <FinContext.Consumer>
-        {project => (
-          project.saas.logo ? (
+        {deployment => (
+          deployment.project.saas.logo ? (
             <img
               className={cs(styles.logo, className)}
-              src={project.saas.logo}
-              alt={`${project.saas.name} Logo`}
+              src={deployment.project.saas.logo}
+              alt={`${deployment.project.saas.name} Logo`}
               style={{
                 maxWidth: '3em',
                 ...style
@@ -33,7 +33,7 @@ export class Logo extends Component {
               style={style}
               {...rest}
             >
-              {project.saas.name}
+              {deployment.project.saas.name}
             </div>
           )
         )}

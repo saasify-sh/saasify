@@ -15,7 +15,7 @@ export class APIPage extends Component {
   render() {
     return (
       <FinContext.Consumer>
-        {project => (
+        {deployment => (
           <div className={styles.container}>
             {/*
             <NavHeader fixed={true} />
@@ -24,14 +24,14 @@ export class APIPage extends Component {
             <ScrollToTopOnMount />
 
             <RedocStandalone
-              specUrl='/openapi.json'
+              specUrl={deployment.openApiUrl}
               options={{
                 suppressWarnings: (process.env.NODE_ENV === 'production'),
                 hideLoading: true,
                 theme: {
                   colors: {
                     primary: {
-                      main: project.saas.theme['@primary-color']
+                      main: deployment.project.saas.theme['@primary-color']
                     }
                   }
                 }

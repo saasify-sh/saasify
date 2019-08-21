@@ -5,7 +5,6 @@ import { Button, Divider, Icon, Modal, Table, notification } from 'antd'
 import { reaction } from 'mobx'
 import { observer, inject } from 'mobx-react'
 
-import { FinContext } from '../FinContext'
 import { Section } from '../Section'
 import { CheckoutForm } from '../CheckoutForm'
 
@@ -137,77 +136,73 @@ export class BillingSourcesSection extends Component {
     } = this.state
 
     return (
-      <FinContext.Consumer>
-        {project => (
-          <Section
-            title='Payment Methods'
-            {...rest}
+      <Section
+        title='Payment Methods'
+        {...rest}
+      >
+        <div className={styles.body}>
+          <Table
+            columns={this._columns}
+            rowKey={record => record.id}
+            dataSource={data}
+            pagination={false}
+            loading={isLoading}
+            onChange={this._handleTableChange}
+          />
+
+          <Button
+            type='primary'
+            className={styles.addSourceButton}
+            onClick={this._onClickAddNewSourceButton}
           >
-            <div className={styles.body}>
-              <Table
-                columns={this._columns}
-                rowKey={record => record.id}
-                dataSource={data}
-                pagination={false}
-                loading={isLoading}
-                onChange={this._handleTableChange}
-              />
+            Add New Payment Method
+          </Button>
+        </div>
 
-              <Button
-                type='primary'
-                className={styles.addSourceButton}
-                onClick={this._onClickAddNewSourceButton}
-              >
-                Add New Payment Method
-              </Button>
+        <Modal
+          title='Add New Payment Method'
+          visible={isVisibleAddNewSourceModal}
+          okButtonProps={{ disabled: true }}
+          confirmLoading={isLoadingAddNewSourceModal}
+          onCancel={this._onCancelNewSourceModal}
+        >
+          {isVisibleAddNewSourceModal && (
+            <CheckoutForm
+              action='Add Card'
+              loading={isLoadingAddNewSourceModal}
+              onSubmit={this._onConfirmNewSourceModal}
+            />
+          )}
+        </Modal>
+
+        <Modal
+          title='Remove Payment Method'
+          visible={isVisibleRemoveSourceModal}
+          onOk={this._onConfirmRemoveSourceModal}
+          confirmLoading={isLoadingRemoveSourceModal}
+          onCancel={this._onCancelRemoveSourceModal}
+        >
+          {selectedSource && (
+            <div>
+              Are you sure you want to remove the {selectedSource.brand} card ending in <b>{selectedSource.last4}</b> from your payment methods?
             </div>
+          )}
+        </Modal>
 
-            <Modal
-              title='Add New Payment Method'
-              visible={isVisibleAddNewSourceModal}
-              okButtonProps={{ disabled: true }}
-              confirmLoading={isLoadingAddNewSourceModal}
-              onCancel={this._onCancelNewSourceModal}
-            >
-              {isVisibleAddNewSourceModal && (
-                <CheckoutForm
-                  action='Add Card'
-                  loading={isLoadingAddNewSourceModal}
-                  onSubmit={this._onConfirmNewSourceModal}
-                />
-              )}
-            </Modal>
-
-            <Modal
-              title='Remove Payment Method'
-              visible={isVisibleRemoveSourceModal}
-              onOk={this._onConfirmRemoveSourceModal}
-              confirmLoading={isLoadingRemoveSourceModal}
-              onCancel={this._onCancelRemoveSourceModal}
-            >
-              {selectedSource && (
-                <div>
-                  Are you sure you want to remove the {selectedSource.brand} card ending in <b>{selectedSource.last4}</b> from your payment methods?
-                </div>
-              )}
-            </Modal>
-
-            <Modal
-              title='Set Default Payment Method'
-              visible={isVisibleSetDefaultSourceModal}
-              onOk={this._onConfirmSetDefaultSourceModal}
-              confirmLoading={isLoadingSetDefaultSourceModal}
-              onCancel={this._onCancelSetDefaultSourceModal}
-            >
-              {selectedSource && (
-                <div>
-                  Are you sure you want to set the {selectedSource.brand} card ending in <b>{selectedSource.last4}</b> as your default payment method?
-                </div>
-              )}
-            </Modal>
-          </Section>
-        )}
-      </FinContext.Consumer>
+        <Modal
+          title='Set Default Payment Method'
+          visible={isVisibleSetDefaultSourceModal}
+          onOk={this._onConfirmSetDefaultSourceModal}
+          confirmLoading={isLoadingSetDefaultSourceModal}
+          onCancel={this._onCancelSetDefaultSourceModal}
+        >
+          {selectedSource && (
+            <div>
+              Are you sure you want to set the {selectedSource.brand} card ending in <b>{selectedSource.last4}</b> as your default payment method?
+            </div>
+          )}
+        </Modal>
+      </Section>
     )
   }
 
