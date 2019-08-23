@@ -123,12 +123,14 @@ export class LoginForm extends Component {
             <Checkbox>Remember me</Checkbox>
           )}
 
+          {/* TODO
           <Link
             className={styles.forgot}
             to='/forgot-password'
           >
             Forgot password
           </Link>
+          */}
         </FormItem>
 
         <Button
