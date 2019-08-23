@@ -1,21 +1,22 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import theme from 'lib/theme'
-
 import Colr from 'colr'
 import raf from 'raf'
 import random from 'random'
 import sizeMe from 'react-sizeme'
+
+import { autorun } from 'mobx'
+import { observer } from 'mobx-react'
 
 const isServer = typeof window === 'undefined'
 
 const V = 0.025
 
 @sizeMe({ monitorWidth: true, monitorHeight: true })
+@observer
 export class SectionDivider extends Component {
   static propTypes = {
-    background: PropTypes.string,
-    foreground: PropTypes.string,
     inverted: PropTypes.bool,
     animated: PropTypes.bool,
     style: PropTypes.object,
@@ -27,8 +28,6 @@ export class SectionDivider extends Component {
   }
 
   static defaultProps = {
-    foreground: '#23303a',
-    background: '#1e3a54',
     inverted: false,
     animated: false,
     style: { }
@@ -46,12 +45,6 @@ export class SectionDivider extends Component {
     ltr: random.boolean()
   }
 
-  // '#1d3546'
-  fg = Colr
-    .fromHex(this.props.foreground)
-    .toRgbArray()
-  foregroundLight = `rgba(${this.fg[0]}, ${this.fg[1]}, ${this.fg[2]}, 0.5)`
-
   componentDidMount() {
     if (!isServer) {
       window.addEventListener('resize', this._onResize)
@@ -68,12 +61,12 @@ export class SectionDivider extends Component {
         this._tickRaf = null
       }
     }
+
+    this._disposer()
   }
 
   render() {
     const {
-      foreground,
-      background,
       inverted,
       animated,
       style,
@@ -160,10 +153,11 @@ export class SectionDivider extends Component {
     }
   }
 
+  // ensure that the canvas is redrawn when the theme changes
+  _disposer = autorun(() => this._draw())
+
   _draw() {
     const {
-      background,
-      foreground,
       inverted
     } = this.props
 
@@ -175,6 +169,18 @@ export class SectionDivider extends Component {
       ltr
     } = this._state
 
+    const foreground = theme['@section-fg-color']
+    const background = theme['@section-bg-color']
+
+    if (!this._canvas) {
+      return
+    }
+
+    const fg = Colr
+      .fromHex(foreground)
+      .toRgbArray()
+    const foregroundLight = `rgba(${fg[0]}, ${fg[1]}, ${fg[2]}, 0.5)`
+
     const ctx = this._canvas.getContext('2d')
     const w = this._canvas.width
     const h = this._canvas.height
@@ -183,7 +189,7 @@ export class SectionDivider extends Component {
     ctx.fillRect(0, 0, w, h)
 
     if (ltr) {
-      ctx.fillStyle = this.foregroundLight
+      ctx.fillStyle = foregroundLight
       ctx.beginPath()
       ctx.moveTo(0, inverted ? h : 0)
       const cx0 = w * x0
@@ -194,7 +200,7 @@ export class SectionDivider extends Component {
       ctx.lineTo(w, inverted ? h : 0)
       ctx.fill()
     } else {
-      ctx.fillStyle = this.foregroundLight
+      ctx.fillStyle = foregroundLight
       ctx.beginPath()
       ctx.moveTo(w, inverted ? h : 0)
       const cx0 = w * x0
