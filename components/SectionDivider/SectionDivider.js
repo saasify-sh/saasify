@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import theme from 'lib/theme'
 
 import Colr from 'colr'
 import raf from 'raf'
@@ -18,6 +19,7 @@ export class SectionDivider extends Component {
     inverted: PropTypes.bool,
     animated: PropTypes.bool,
     style: PropTypes.object,
+    className: PropTypes.string,
     size: PropTypes.shape({
       width: PropTypes.number,
       height: PropTypes.number
@@ -75,6 +77,7 @@ export class SectionDivider extends Component {
       inverted,
       animated,
       style,
+      className,
       ...rest
     } = this.props
 
@@ -85,6 +88,7 @@ export class SectionDivider extends Component {
           height: 64,
           ...style
         }}
+        className={theme(null, 'section-divider', className)}
         {...rest}
         ref={this._containerRef}
       >
