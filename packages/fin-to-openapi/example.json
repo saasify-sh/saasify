@@ -1,0 +1,112 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "hello-world",
+    "version": "v1.0.0",
+    "x-logo": {
+      "url": "https://apis.guru/branding/logo_vertical.svg",
+      "altText": "API Logo"
+    },
+    "termsOfService": "/terms",
+    "contact": {
+      "name": "API Support",
+      "email": "support@functional-income.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "email": "https://apache.org/licenses/LICENSE-2.0.html"
+    },
+    "description": "
+# Introduction
+
+This API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable resource-oriented URLs, accepts [JSON-encoded](http://www.json.org/) request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.'
+
+The API differs for every account as we release new versions and tailor functionality. If you are authenticated, these docs are customized to your version of the API and display your auth token and test data, which only you can see.
+
+# Rate Limits
+
+TODO
+
+# Versioning
+
+TODO
+"
+  },
+  "servers": [
+    {
+      "url": "https://api.functional-income.com"
+    }
+  ],
+  "tags": [
+    {
+      "name": "service",
+      "x-displayName": "Services"
+    }
+  ],
+  "paths": {
+    "/1/call/hello-world_360e148006098c95": {
+      "post": {
+        "tags": [ "service" ],
+        "operationId": "helloWorld",
+        "security": [
+          {
+            "API Key": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "default": "World"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "API Key": {
+        "type": "apiKey",
+        "description": "Optional API key for authenticated access.
+
+
+Unauthenticated (public) requests are subject to rate limiting. See [pricing](/pricing) for more details on unauthenticated rate limits.",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
+}
