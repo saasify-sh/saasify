@@ -4,7 +4,6 @@ import cs from 'classnames'
 
 import { inject } from 'mobx-react'
 import { Link, withRouter } from 'react-router-dom'
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 import {
   Button,
@@ -18,7 +17,6 @@ import {
 
 import authGitHub from 'lib/auth-github'
 import debug from 'lib/debug'
-import env from 'lib/env'
 
 import styles from './styles.module.css'
 
@@ -66,24 +64,6 @@ export class LoginForm extends Component {
           >
             Login with GitHub
           </Button>
-        </FormItem>
-
-        <FormItem>
-          <FacebookLogin
-            appId={env.facebookAppId}
-            autoLoad={false}
-            callback={this._onFacebookResponse}
-            onFailure={this._onFacebookFailure}
-            render={props => (
-              <Button
-                className={styles.submit}
-                icon='facebook'
-                onClick={props.onClick}
-              >
-                Login with Facebook
-              </Button>
-            )}
-          />
         </FormItem>
 
         <Divider />
@@ -166,22 +146,5 @@ export class LoginForm extends Component {
   _onClickGitHub = (e) => {
     e.preventDefault()
     authGitHub({ location: this.props.location })
-  }
-
-  _onFacebookFailure = (err) => {
-    debug(err)
-    message.error('Error authenticating with Facebook.')
-  }
-
-  _onFacebookResponse = (e) => {
-    console.log(e)
-
-    this.props.auth.authWithFacebook(e)
-      .then(this.props.onAuth)
-      .catch((err) => {
-        this.setState({ loading: false })
-        debug(err)
-        message.error('Error authenticating with Facebook.')
-      })
   }
 }
