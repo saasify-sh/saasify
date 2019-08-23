@@ -99,6 +99,7 @@ export class BillingUsageSection extends Component {
 
     return (
       <Section
+        id='billing-usage'
         title='Usage'
         {...rest}
       >

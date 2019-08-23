@@ -138,6 +138,7 @@ export class BillingSourcesSection extends Component {
 
     return (
       <Section
+        id='billing-sources'
         title='Payment Methods'
         {...rest}
       >

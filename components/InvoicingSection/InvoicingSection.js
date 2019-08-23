@@ -103,6 +103,7 @@ export class InvoicingSection extends Component {
 
     return (
       <Section
+        id='invoicing'
         title='Invoicing'
         {...rest}
       >

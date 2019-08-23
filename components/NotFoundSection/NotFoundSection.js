@@ -10,6 +10,7 @@ export class NotFoundSection extends Component {
   render() {
     return (
       <Section
+        id='not-found'
         title='Page Not Found'
         subtitle={(
           <span>

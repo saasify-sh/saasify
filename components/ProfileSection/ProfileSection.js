@@ -173,6 +173,7 @@ export class ProfileSection extends Component {
 
     return (
       <Section
+        id='profile'
         title='Profile'
         {...rest}
       >

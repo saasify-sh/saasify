@@ -10,6 +10,7 @@ export class ReadmeSection extends Component {
       <FinContext.Consumer>
         {deployment => deployment.readme ? (
           <Section
+            id='readme'
             title='Readme'
             {...this.props}
           >

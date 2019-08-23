@@ -14,6 +14,7 @@ export class DashboardSection extends Component {
 
     return (
       <Section
+        id='dashboard'
         title='Dashboard'
         className={theme(styles, 'dashboard', className)}
         {...rest}

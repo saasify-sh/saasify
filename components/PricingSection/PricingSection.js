@@ -12,6 +12,7 @@ export class PricingSection extends Component {
   render() {
     return (
       <Section
+        id='pricing'
         title='Pricing'
         subtitle={(
           <span>

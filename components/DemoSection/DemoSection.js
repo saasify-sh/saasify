@@ -13,6 +13,7 @@ export class DemoSection extends Component {
       <FinContext.Consumer>
         {deployment => (
           <Section
+            id='demo'
             title='Live Demo'
             desc={(
               <span>

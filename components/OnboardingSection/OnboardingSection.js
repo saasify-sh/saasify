@@ -121,6 +121,7 @@ export class OnboardingSection extends Component {
 
     return (
       <Section
+        id='onboarding'
         title='Onboarding'
         {...rest}
       >

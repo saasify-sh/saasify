@@ -11,6 +11,7 @@ export class HeroSection extends Component {
       <FinContext.Consumer>
         {deployment => (
           <Section
+            id='hero'
             title={deployment.project.saas.heading}
             subtitle={deployment.project.saas.subheading}
             {...this.props}

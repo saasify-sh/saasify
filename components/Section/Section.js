@@ -40,9 +40,17 @@ export class Section extends Component {
       sectionProps.id = id || slugify(title.toLowerCase())
     }
 
+    const themeArgs = [
+      styles,
+      'section',
+      theme(styles, `${sectionProps.id}-section`),
+      inverted && theme(styles, 'inverted'),
+      className
+    ]
+
     return (
       <section
-        className={theme(styles, 'section', theme(styles, sectionProps.id), inverted && theme(styles, 'inverted'), className)}
+        className={theme(...themeArgs)}
         {...sectionProps}
       >
         <div className={theme(styles, 'content', stretch && theme(styles, 'stretch'))}>

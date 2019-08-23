@@ -11,6 +11,7 @@ export class FeaturesSection extends Component {
   render() {
     return (
       <Section
+        id='features'
         title='Features'
         stretch
         {...this.props}

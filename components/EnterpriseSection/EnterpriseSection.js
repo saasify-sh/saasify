@@ -10,6 +10,7 @@ export class EnterpriseSection extends Component {
   render() {
     return (
       <Section
+        id='enterprise'
         title='Enterprise'
         {...this.props}
       >

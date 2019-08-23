@@ -11,6 +11,7 @@ export class BlankSection extends Component {
 
     return (
       <Section
+        id='blank'
         style={{
           height: '8em',
           ...style
