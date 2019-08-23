@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import theme from 'lib/theme'
 
 import {
   NavHeader,
@@ -11,15 +12,15 @@ import styles from './styles.module.css'
 export class TermsPage extends Component {
   render() {
     return (
-      <div className={styles.container}>
+      <div className={theme(styles, 'terms-page')}>
         <NavHeader fixed={true} />
 
-        <div className={styles.content}>
+        <div className={theme(styles, 'content')}>
           <ScrollToTopOnMount />
 
           <h1>Terms of Use</h1>
 
-          <p className={styles.lastModified}>Last Modified: April 9, 2019</p>
+          <p className={theme(styles, 'last-modified')}>Last Modified: April 9, 2019</p>
           <h3><u>Acceptance of the Terms of Use</u></h3>
           <p>These terms of use are entered into by and between You and Fin Inc. (“<strong>Company</strong>,” “<strong>we</strong>,” “<strong>us</strong>,” or “<strong>Fin</strong>”). The following terms and conditions, together with any documents they expressly incorporate by reference (collectively, these “<strong>Terms of Use</strong>”), govern your access to and use of this site, including any content, functionality and services offered on or through functional-income.com (the “<strong>Website</strong>”), whether as a guest or a registered user.</p>
           <p>Please read the Terms of Use carefully before you start to use the Website. By using the Website, you accept and agree to be bound and abide by these Terms of Use and our <a href='/privacy'>Privacy Policy</a>, incorporated herein by reference. &nbsp;If you do not want to agree to these Terms of Use or the Privacy Policy, you must not access or use the Website.</p>

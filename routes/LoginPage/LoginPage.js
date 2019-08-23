@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import theme from 'lib/theme'
 
 import { withRouter } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
@@ -30,12 +31,12 @@ export class LoginPage extends Component {
     }
 
     return (
-      <div className={styles.container}>
+      <div className={theme(styles, 'login-page')}>
         <BackgroundSlideshow />
 
         <NavHeader fixed={true} />
 
-        <Paper className={styles.content}>
+        <Paper className={theme(styles, 'content')}>
           <LoginForm onAuth={this._onAuth} />
         </Paper>
       </div>

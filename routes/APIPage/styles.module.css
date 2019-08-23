@@ -1,4 +1,4 @@
-.container {
+.api-page {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -6,6 +6,6 @@
   color: #fff;
 }
 
-.container p {
+.api-page p {
   color: #333;
 }

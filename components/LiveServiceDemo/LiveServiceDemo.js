@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import cs from 'classnames'
+import theme from 'lib/theme'
 import mem from 'mem'
 import copyTextToClipboard from 'copy-text-to-clipboard'
 import stringifyObject from 'stringify-object'
@@ -46,11 +46,11 @@ export class LiveServiceDemo extends Component {
     const params = this._getParams()
 
     return (
-      <div className={styles.container}>
-        <div className={styles.tabs}>
+      <div className={theme(styles, 'container')}>
+        <div className={theme(styles, 'tabs')}>
           {languages.map((l, i) => (
             <div
-              className={cs(styles.tab, selected === l.label && styles.selectedTab)}
+              className={theme(styles, 'tab', selected === l.label && theme(styles, 'selectedTab'))}
               key={i}
               onClick={this._onClickTabMem(i)}
             >
@@ -59,14 +59,14 @@ export class LiveServiceDemo extends Component {
           ))}
         </div>
 
-        <div className={styles.content}>
+        <div className={theme(styles, 'content')}>
           {languages.map((l, i) => (
             <div
-              className={cs(styles.tabPane, selected === l.label && styles.selectedTabPane)}
+              className={theme(styles, 'tabPane', selected === l.label && theme(styles, 'selectedTabPane'))}
               key={i}
             >
               <CodeBlock
-                className={styles.code}
+                className={theme(styles, 'code')}
                 language={l.language}
                 value={l.code(params).trim()}
               />
@@ -80,7 +80,7 @@ export class LiveServiceDemo extends Component {
             <Button
               icon='copy'
               type='primary'
-              className={styles.copy}
+              className={theme(styles, 'copy')}
               onClick={this._onClickCopy}
             />
           </Tooltip>

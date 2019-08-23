@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import theme from 'lib/theme'
 
 import { Section } from '../Section'
 import { UndrawSVG } from '../UndrawSVG'
@@ -18,7 +19,7 @@ export class EnterpriseSection extends Component {
 
         <UndrawSVG
           name='business_plan'
-          className={styles.illustration}
+          className={theme(styles, 'illustration')}
         />
       </Section>
     )

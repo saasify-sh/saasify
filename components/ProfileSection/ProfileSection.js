@@ -10,6 +10,7 @@ import { observer, inject } from 'mobx-react'
 import { Section } from '../Section'
 
 import API from 'lib/api'
+import theme from 'lib/theme'
 
 import styles from './styles.module.css'
 
@@ -55,12 +56,12 @@ export class ProfileSection extends Component {
           image ? (
             <Avatar
               src={image}
-              className={styles.avatar}
+              className={theme(styles, 'avatar')}
             />
           ) : (
             <Avatar
               icon='user'
-              className={styles.avatar}
+              className={theme(styles, 'avatar')}
             />
           )
         )
@@ -175,7 +176,7 @@ export class ProfileSection extends Component {
         title='Profile'
         {...rest}
       >
-        <div className={styles.body}>
+        <div className={theme(styles, 'body')}>
           <Table
             columns={columns}
             rowKey={record => record.id}

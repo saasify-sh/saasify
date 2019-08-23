@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import cs from 'classnames'
+import theme from 'lib/theme'
 
 import { Link } from 'react-router-dom'
 import { Divider } from 'antd'
@@ -36,16 +37,16 @@ export class PricingPlan extends Component {
       <FinContext.Consumer>
         {({ project }) => (
           <Paper
-            className={cs(styles.plan, className)}
+            className={theme(styles, 'plan', className)}
             {...rest}
           >
-            <h3 className={styles.name}>
+            <h3 className={theme(styles, 'name')}>
               {plan.name} {inline ? 'Plan' : ''}
             </h3>
 
             <Divider />
 
-            <div className={styles.features}>
+            <div className={theme(styles, 'features')}>
               <div />
 
               <div>
@@ -56,7 +57,7 @@ export class PricingPlan extends Component {
                 Rate Limit
               </div>
 
-              <div className={styles.emphasis}>
+              <div className={theme(styles, 'emphasis')}>
                 API Calls
               </div>
 
@@ -69,12 +70,12 @@ export class PricingPlan extends Component {
                   <img
                     alt='unlimited'
                     src={infinity}
-                    className={styles.infinity}
+                    className={theme(styles, 'infinity')}
                   />
                 )}
               </div>
 
-              <div className={styles.emphasis}>
+              <div className={theme(styles, 'emphasis')}>
                 Compute Time
               </div>
 
@@ -87,12 +88,12 @@ export class PricingPlan extends Component {
                   <img
                     alt='unlimited'
                     src={infinity}
-                    className={styles.infinity}
+                    className={theme(styles, 'infinity')}
                   />
                 )}
               </div>
 
-              <div className={styles.emphasis}>
+              <div className={theme(styles, 'emphasis')}>
                 Bandwidth
               </div>
 
@@ -105,7 +106,7 @@ export class PricingPlan extends Component {
                   <img
                     alt='unlimited'
                     src={infinity}
-                    className={styles.infinity}
+                    className={theme(styles, 'infinity')}
                   />
                 )}
               </div>
@@ -113,19 +114,19 @@ export class PricingPlan extends Component {
 
             <Divider />
 
-            <div style={{ color: project.saas.theme['@primary-color'] }}>
+            <div style={{ color: theme['@primary-color'] }}>
               {plan.desc}
             </div>
 
-            <div className={styles.price}>
-              <span className={styles.dollas}>{plan.price}</span> / {plan.interval}
+            <div className={theme(styles, 'price')}>
+              <span className={theme(styles, 'dollas')}>{plan.price}</span> / {plan.interval}
             </div>
 
             {!inline && (
               <Link to={`/signup?plan=${plan.key}`}>
                 <CTAButton
                   type={plan.type}
-                  className={cs(plan.type === 'secondary' && styles.secondaryCTAButton)}
+                  className={cs(plan.type === 'secondary' && theme(styles, 'secondaryCTAButton'))}
                 >
                   Get Started
                 </CTAButton>

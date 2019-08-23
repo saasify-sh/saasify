@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import theme from 'lib/theme'
 
 import {
   NavHeader,
@@ -14,7 +15,7 @@ import styles from './styles.module.css'
 export class PricingPage extends Component {
   render() {
     return (
-      <div className={styles.container}>
+      <div className={theme(styles, 'pricing-page')}>
         <NavHeader />
 
         <PricingSection inverted />

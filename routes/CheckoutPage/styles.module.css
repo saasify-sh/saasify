@@ -1,4 +1,4 @@
-.container {
+.checkout-page {
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -22,7 +22,7 @@
   padding: 2em 2em;
 }
 
-.checkoutForm {
+.checkout-form {
   width: 100%;
   min-width: 320px;
   max-width: 600px;

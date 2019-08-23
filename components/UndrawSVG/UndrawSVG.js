@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import cs from 'classnames'
+import theme from 'lib/theme'
 
 import styles from './styles.module.css'
 
@@ -25,7 +25,7 @@ export class UndrawSVG extends Component {
       <img
         src={uri}
         alt={name}
-        className={cs(styles.undrawSVG, className)}
+        className={theme(styles, 'undrawSVG', className)}
         {...rest}
       />
     )

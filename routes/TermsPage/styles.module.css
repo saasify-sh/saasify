@@ -1,4 +1,4 @@
-.container {
+.terms-page {
   position: relative;
 
   display: flex;
@@ -43,7 +43,7 @@
   margin-bottom: 0.8em;
 }
 
-.content .lastModified {
+.content .last-modified {
   margin-bottom: 1.6em;
 }
 

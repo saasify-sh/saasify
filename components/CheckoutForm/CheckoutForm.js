@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import cs from 'classnames'
+import theme from 'lib/theme'
 
 import {
   StripeProvider,
@@ -79,20 +79,20 @@ class CheckoutFormImpl extends Component {
 
     return (
       <form
-        className={cs(styles.form, className)}
+        className={theme(styles, 'form', className)}
         onSubmit={this._onSubmit}
       >
         {title && (
-          <h2 className={styles.title}>
+          <h2 className={theme(styles, 'title')}>
             {title}
           </h2>
         )}
 
-        <label className={styles.label}>
+        <label className={theme(styles, 'label')}>
           Name
 
           <input
-            className={styles.input}
+            className={theme(styles, 'input')}
             name='name'
             type='text'
             placeholder='John Doe'
@@ -100,7 +100,7 @@ class CheckoutFormImpl extends Component {
           />
         </label>
 
-        <label className={styles.label}>
+        <label className={theme(styles, 'label')}>
           Card Details
 
           <Tooltip
@@ -108,7 +108,7 @@ class CheckoutFormImpl extends Component {
             title='All payment info is securely handled by Stripe.'
           >
             <Icon
-              className={styles.detail}
+              className={theme(styles, 'detail')}
               type='question-circle'
             />
           </Tooltip>
@@ -122,7 +122,7 @@ class CheckoutFormImpl extends Component {
           <Button
             type='primary'
             htmlType='submit'
-            className={styles.submit}
+            className={theme(styles, 'submit')}
             loading={loading}
           >
             {action}

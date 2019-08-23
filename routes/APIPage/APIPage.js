@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import theme from 'lib/theme'
 
 import { RedocStandalone } from 'redoc'
 
@@ -16,7 +17,7 @@ export class APIPage extends Component {
     return (
       <FinContext.Consumer>
         {deployment => (
-          <div className={styles.container}>
+          <div className={theme(styles, 'api-page')}>
             {/*
             <NavHeader fixed={true} />
             */}

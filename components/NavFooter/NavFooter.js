@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import theme from 'lib/theme'
 
 import { Link } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
@@ -19,61 +20,61 @@ export class NavFooter extends Component {
     const { auth } = this.props
 
     return (
-      <footer className={styles.container}>
-        <div className={styles.content}>
-          <div className={styles.detailColumn}>
+      <footer className={theme(styles, 'container')}>
+        <div className={theme(styles, 'content')}>
+          <div className={theme(styles, 'detailColumn')}>
             <Link to='/'>
-              <Logo className={styles.logo} />
+              <Logo className={theme(styles, 'logo')} />
             </Link>
 
-            <div className={styles.detail}>
+            <div className={theme(styles, 'detail')}>
               Brooklyn, NY
             </div>
           </div>
 
           <div>
-            <h3 className={styles.header}>Sitemap</h3>
+            <h3 className={theme(styles, 'header')}>Sitemap</h3>
 
             <ul>
-              <li className={styles.listItem}>
+              <li className={theme(styles, 'listItem')}>
                 <Link
                   to='/'
-                  className={styles.link}
+                  className={theme(styles, 'link')}
                 >
                   Home
                 </Link>
               </li>
 
-              <li className={styles.listItem}>
+              <li className={theme(styles, 'listItem')}>
                 <Link
                   to='/pricing'
-                  className={styles.link}
+                  className={theme(styles, 'link')}
                 >
                   Pricing
                 </Link>
               </li>
 
-              <li className={styles.listItem}>
+              <li className={theme(styles, 'listItem')}>
                 <Link
                   to='/docs'
-                  className={styles.link}
+                  className={theme(styles, 'link')}
                 >
                   Docs
                 </Link>
               </li>
 
-              <li className={styles.listItem}>
+              <li className={theme(styles, 'listItem')}>
                 {auth.isAuthenticated ? (
                   <Link
                     to='/dashboard'
-                    className={styles.link}
+                    className={theme(styles, 'link')}
                   >
                     Dashboard
                   </Link>
                 ) : (
                   <Link
                     to='/signup'
-                    className={styles.link}
+                    className={theme(styles, 'link')}
                   >
                     Get Started
                   </Link>
@@ -83,22 +84,22 @@ export class NavFooter extends Component {
           </div>
 
           <div>
-            <h3 className={styles.header}>Legal</h3>
+            <h3 className={theme(styles, 'header')}>Legal</h3>
 
             <ul>
-              <li className={styles.listItem}>
+              <li className={theme(styles, 'listItem')}>
                 <Link
                   to='/terms'
-                  className={styles.link}
+                  className={theme(styles, 'link')}
                 >
                   Terms
                 </Link>
               </li>
 
-              <li className={styles.listItem}>
+              <li className={theme(styles, 'listItem')}>
                 <Link
                   to='/privacy'
-                  className={styles.link}
+                  className={theme(styles, 'link')}
                 >
                   Privacy
                 </Link>
@@ -107,13 +108,13 @@ export class NavFooter extends Component {
           </div>
 
           <div>
-            <h3 className={styles.header}>Support</h3>
+            <h3 className={theme(styles, 'header')}>Support</h3>
 
             <ul>
-              <li className={styles.listItem}>
+              <li className={theme(styles, 'listItem')}>
                 <a
                   href='mailto:support@functional-income.com'
-                  className={styles.link}
+                  className={theme(styles, 'link')}
                 >
                   Email
                 </a>

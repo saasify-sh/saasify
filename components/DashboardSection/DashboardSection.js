@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import cs from 'classnames'
+import theme from 'lib/theme'
 
 import { Section } from '../Section'
 
@@ -15,7 +15,7 @@ export class DashboardSection extends Component {
     return (
       <Section
         title='Dashboard'
-        className={cs(styles.dashboard, className)}
+        className={theme(styles, 'dashboard', className)}
         {...rest}
       />
     )

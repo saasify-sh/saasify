@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import cs from 'classnames'
+import theme from 'lib/theme'
 import raf from 'raf'
 
 import { Link } from 'react-router-dom'
@@ -53,40 +53,40 @@ export class NavHeader extends Component {
 
     return (
       <header
-        className={cs(styles.container, attached || fixed ? styles.attached : null)}
+        className={theme(styles, 'container', attached || fixed ? theme(styles, 'attached') : null)}
       >
-        <div className={styles.content}>
-          <div className={styles.links}>
+        <div className={theme(styles, 'content')}>
+          <div className={theme(styles, 'links')}>
             <Link
               to='/'
             >
-              <Logo className={styles.logo} />
+              <Logo className={theme(styles, 'logo')} />
             </Link>
 
             <Link
               to='/'
-              className={styles.link}
+              className={theme(styles, 'link')}
             >
               Home
             </Link>
 
             <Link
               to='/pricing'
-              className={styles.link}
+              className={theme(styles, 'link')}
             >
               Pricing
             </Link>
 
             <Link
               to='/docs'
-              className={styles.link}
+              className={theme(styles, 'link')}
             >
               Docs
             </Link>
 
             <a
               href='mailto:support@functional-income.com'
-              className={styles.link}
+              className={theme(styles, 'link')}
             >
               Support
             </a>
@@ -94,7 +94,7 @@ export class NavHeader extends Component {
 
           {auth.isAuthenticated ? (
             <div>
-              <Link to='/logout' className={styles.login}>
+              <Link to='/logout' className={theme(styles, 'login')}>
                 <CTAButton type='secondary' inline>
                   LOGOUT
                 </CTAButton>
@@ -108,7 +108,7 @@ export class NavHeader extends Component {
             </div>
           ) : (
             <div>
-              <Link to='/login' className={styles.login}>
+              <Link to='/login' className={theme(styles, 'login')}>
                 <CTAButton type='secondary' inline>
                   LOGIN
                 </CTAButton>

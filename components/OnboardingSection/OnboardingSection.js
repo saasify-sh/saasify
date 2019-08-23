@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import copyTextToClipboard from 'copy-text-to-clipboard'
+import theme from 'lib/theme'
 
 import { Button, Icon, Result, Steps, Tooltip } from 'antd'
 import { observer, inject } from 'mobx-react'
@@ -72,7 +73,7 @@ export class OnboardingSection extends Component {
             status='success'
             title='Your subscription is ready to use!'
             subTitle='Just add your auth token to your API requests to remove the public rate limits.'
-            className={styles.result}
+            className={theme(styles, 'result')}
           />
         )
       }
@@ -113,7 +114,7 @@ export class OnboardingSection extends Component {
               </Button>
             </>
           )}
-          className={styles.result}
+          className={theme(styles, 'result')}
         />
       )
     }
@@ -123,13 +124,13 @@ export class OnboardingSection extends Component {
         title='Onboarding'
         {...rest}
       >
-        <Paper className={styles.body}>
+        <Paper className={theme(styles, 'body')}>
           {result}
 
           <Steps
             direction='vertical'
             current={step}
-            className={styles.steps}
+            className={theme(styles, 'steps')}
           >
             <Step
               title='Create Account'
@@ -160,7 +161,7 @@ export class OnboardingSection extends Component {
                       >
                         <Button
                           icon={isTokenVisible ? 'eye' : 'eye-invisible'}
-                          className={styles.tokenButton}
+                          className={theme(styles, 'tokenButton')}
                           onClick={this._onClickTokenVisibility}
                         />
                       </Tooltip>

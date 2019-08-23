@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import theme from 'lib/theme'
 
 import { withRouter } from 'react-router-dom'
 import { notification } from 'antd'
@@ -49,18 +50,18 @@ export class CheckoutPage extends Component {
     const unlimited = plans.find(({ key }) => key === 'unlimited')
 
     return (
-      <div className={styles.container}>
+      <div className={theme(styles, 'checkout-page')}>
         <BackgroundSlideshow />
 
         <NavHeader fixed={true} />
 
-        <div className={styles.content}>
+        <div className={theme(styles, 'content')}>
           <PricingPlan
             plan={unlimited}
             inline
           />
 
-          <Paper className={styles.checkoutForm}>
+          <Paper className={theme(styles, 'checkout-form')}>
             <CheckoutForm
               title='Checkout'
               action='SUBSCRIBE'

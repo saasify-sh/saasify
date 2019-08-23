@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import cs from 'classnames'
+import theme from 'lib/theme'
 import slugify from '@sindresorhus/slugify'
 
 import styles from './styles.module.css'
@@ -42,24 +42,24 @@ export class Section extends Component {
 
     return (
       <section
-        className={cs(styles.section, inverted && styles.inverted, className)}
+        className={theme(styles, 'section', theme(styles, sectionProps.id), inverted && theme(styles, 'inverted'), className)}
         {...sectionProps}
       >
-        <div className={cs(styles.content, stretch && styles.stretch)}>
+        <div className={theme(styles, 'content', stretch && theme(styles, 'stretch'))}>
           {title && (
-            <h1 className={styles.title}>
+            <h1 className={theme(styles, 'title')}>
               {title}
             </h1>
           )}
 
           {subtitle && (
-            <h5 className={styles.subtitle}>
+            <h5 className={theme(styles, 'subtitle')}>
               {subtitle}
             </h5>
           )}
 
           {desc && (
-            <p className={styles.desc}>
+            <p className={theme(styles, 'desc')}>
               {desc}
             </p>
           )}

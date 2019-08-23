@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
+import theme from 'lib/theme'
 
 import { CodeBlock } from '../CodeBlock'
 import styles from './styles.module.css'
@@ -24,7 +25,7 @@ export class Markdown extends Component {
 
     return (
       <ReactMarkdown
-        className={styles.markdown}
+        className={theme(styles, 'markdown')}
         source={source}
         renderers={{
           code: CodeBlock,

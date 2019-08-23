@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import theme from 'lib/theme'
 
 import { Section } from '../Section'
 import { UndrawSVG } from '../UndrawSVG'
@@ -19,7 +20,7 @@ export class NotFoundSection extends Component {
       >
         <UndrawSVG
           name='page_not_found'
-          className={styles.illustration}
+          className={theme(styles, 'illustration')}
         />
       </Section>
     )

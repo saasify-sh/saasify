@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import theme from 'lib/theme'
 
 import {
   NavHeader,
@@ -13,7 +14,7 @@ import styles from './styles.module.css'
 export class NotFoundPage extends Component {
   render() {
     return (
-      <div className={styles.container}>
+      <div className={theme(styles, 'not-found-page')}>
         <NavHeader />
 
         <NotFoundSection />

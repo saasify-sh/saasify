@@ -9,6 +9,7 @@ import { Section } from '../Section'
 import { CheckoutForm } from '../CheckoutForm'
 
 import API from 'lib/api'
+import theme from 'lib/theme'
 
 import styles from './styles.module.css'
 
@@ -140,7 +141,7 @@ export class BillingSourcesSection extends Component {
         title='Payment Methods'
         {...rest}
       >
-        <div className={styles.body}>
+        <div className={theme(styles, 'body')}>
           <Table
             columns={this._columns}
             rowKey={record => record.id}
@@ -152,7 +153,7 @@ export class BillingSourcesSection extends Component {
 
           <Button
             type='primary'
-            className={styles.addSourceButton}
+            className={theme(styles, 'addSourceButton')}
             onClick={this._onClickAddNewSourceButton}
           >
             Add New Payment Method
@@ -246,6 +247,12 @@ export class BillingSourcesSection extends Component {
             isLoading: false,
             data,
             hasMoreData
+          })
+        }, (err) => {
+          console.warn(err)
+
+          this.setState({
+            isLoading: false
           })
         })
     }

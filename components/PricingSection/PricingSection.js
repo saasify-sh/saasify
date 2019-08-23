@@ -4,6 +4,7 @@ import { Section } from '../Section'
 import { PricingPlan } from '../PricingPlan'
 
 import plans from 'lib/pricing-plans'
+import theme from 'lib/theme'
 
 import styles from './styles.module.css'
 
@@ -20,7 +21,7 @@ export class PricingSection extends Component {
         stretch
         {...this.props}
       >
-        <div className={styles.plans}>
+        <div className={theme(styles, 'plans')}>
           {plans.map((plan) => (
             <PricingPlan
               key={plan.key}

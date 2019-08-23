@@ -10,6 +10,7 @@ import { observer, inject } from 'mobx-react'
 import { Section } from '../Section'
 
 import API from 'lib/api'
+import theme from 'lib/theme'
 
 import styles from './styles.module.css'
 
@@ -105,7 +106,7 @@ export class InvoicingSection extends Component {
         title='Invoicing'
         {...rest}
       >
-        <div className={styles.body}>
+        <div className={theme(styles, 'body')}>
           <Table
             columns={columns}
             rowKey={record => record.id}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import cs from 'classnames'
+import theme from 'lib/theme'
 
 import { FinContext } from '../FinContext'
 
@@ -18,7 +18,7 @@ export class Logo extends Component {
         {deployment => (
           deployment.project.saas.logo ? (
             <img
-              className={cs(styles.logo, className)}
+              className={theme(styles, 'logo', className)}
               src={deployment.project.saas.logo}
               alt={`${deployment.project.saas.name} Logo`}
               style={{
@@ -29,7 +29,7 @@ export class Logo extends Component {
             />
           ) : (
             <div
-              className={cs(styles.logo, className)}
+              className={theme(styles, 'logo', className)}
               style={style}
               {...rest}
             >

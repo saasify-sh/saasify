@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import cs from 'classnames'
+import theme from 'lib/theme'
 
 import SyntaxHighlighter from 'react-syntax-highlighter/prism'
-import theme from 'react-syntax-highlighter/styles/prism/prism'
+import codeTheme from 'react-syntax-highlighter/styles/prism/prism'
 
 import styles from './styles.module.css'
 
@@ -23,9 +23,9 @@ export class CodeBlock extends Component {
 
     return (
       <SyntaxHighlighter
-        className={cs(className, styles.container)}
+        className={theme(styles, 'code-block', className)}
         language={language}
-        style={theme}
+        style={codeTheme}
       >
         {value}
       </SyntaxHighlighter>

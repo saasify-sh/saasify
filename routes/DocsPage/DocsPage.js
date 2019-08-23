@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import theme from 'lib/theme'
 
 import AuthManager from 'store/AuthManager'
 
@@ -18,7 +19,7 @@ import styles from './styles.module.css'
 export class DocsPage extends Component {
   render() {
     return (
-      <div className={styles.container}>
+      <div className={theme(styles, 'docs-page')}>
         <NavHeader />
 
         <DocsSection inverted />

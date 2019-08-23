@@ -1,4 +1,4 @@
-.container {
+.privacy-page {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@
   margin-bottom: 0.8em;
 }
 
-.content .lastModified {
+.content .last-modified {
   margin-bottom: 1.6em;
 }
 

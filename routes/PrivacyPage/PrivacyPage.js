@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import theme from 'lib/theme'
 
 import {
   NavHeader,
@@ -11,14 +12,14 @@ import styles from './styles.module.css'
 export class PrivacyPage extends Component {
   render() {
     return (
-      <div className={styles.container}>
+      <div className={theme(styles, 'privacy-page')}>
         <NavHeader fixed={true} />
 
-        <div className={styles.content}>
+        <div className={theme(styles, 'content')}>
           <ScrollToTopOnMount />
 
           <h1>Privacy Policy</h1>
-          <p className={styles.lastModified}>Last Modified: April 9, 2019</p>
+          <p className={theme(styles, 'last-modified')}>Last Modified: April 9, 2019</p>
           <p><strong><u>Introduction</u></strong></p>
           <p>At Fin Inc. (<strong>“Company”</strong> or<strong>&nbsp;“We”</strong>), We respect your privacy and are committed to protecting it through our compliance with this policy.</p>
           <p>This policy describes the types of information we may collect from you or that you may provide when you visit the website functional-income.com (our “<strong>Website</strong>”) and our practices for collecting, using, maintaining, protecting, and disclosing that information.</p>

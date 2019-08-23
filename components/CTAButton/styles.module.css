@@ -1,4 +1,4 @@
-.button {
+.cta-button {
   height: initial;
   padding: 12px 24px;
   text-transform: uppercase;
@@ -8,7 +8,7 @@
   border: 2px solid #d23d67;
 }
 
-.button:hover {
+.cta-button:hover {
   border: 2px solid transparent;
 }
 

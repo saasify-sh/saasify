@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import cs from 'classnames'
+import theme from 'lib/theme'
 
 import { inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
@@ -49,16 +49,16 @@ export class SignupForm extends Component {
 
     return (
       <Form
-        className={cs(styles.form, className)}
+        className={theme(styles, 'form', className)}
         onSubmit={this._onSubmit}
       >
-        <h2 className={styles.title}>
+        <h2 className={theme(styles, 'title')}>
           Signup
         </h2>
 
         <FormItem>
           <Button
-            className={styles.submit}
+            className={theme(styles, 'submit')}
             icon='github'
             onClick={this._onClickGitHub}
           >
@@ -120,7 +120,7 @@ export class SignupForm extends Component {
         <Button
           type='primary'
           htmlType='submit'
-          className={styles.submit}
+          className={theme(styles, 'submit')}
           loading={loading}
         >
           Signup!

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import cs from 'classnames'
+import theme from 'lib/theme'
 import { Button } from 'antd'
 
 import styles from './styles.module.css'
@@ -17,7 +17,7 @@ export class CTAButton extends Component {
     return (
       <Button
         type='primary'
-        className={cs(styles.button, this.props.className, styles[type], inline && styles.inline)}
+        className={theme(styles, 'cta-button', className, styles[type], inline && theme(styles, 'inline'))}
         {...rest}
       >
         {children}

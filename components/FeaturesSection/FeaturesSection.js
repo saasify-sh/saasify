@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import theme from 'lib/theme'
 
 import { Section } from '../Section'
 import { UndrawSVG } from '../UndrawSVG'
@@ -14,15 +15,15 @@ export class FeaturesSection extends Component {
         stretch
         {...this.props}
       >
-        <div className={styles.features}>
+        <div className={theme(styles, 'features')}>
           {features.map((feature) => (
             <div
-              className={styles.feature}
+              className={theme(styles, 'feature')}
               key={feature.title}
             >
               <UndrawSVG
                 name={feature.undrawSVG}
-                className={styles.illustration}
+                className={theme(styles, 'illustration')}
               />
 
               <h3>
