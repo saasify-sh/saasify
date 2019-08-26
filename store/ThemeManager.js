@@ -1,4 +1,4 @@
-import { observable } from 'mobx'
+import { autorun, observable, toJS, trace } from 'mobx'
 
 import deployment from '../lib/deployment'
 
@@ -21,9 +21,19 @@ class ThemeManager {
 
     const themeFactory = themes[name]
     this.theme = themeFactory(opts)
-
-    // TODO: update antd less variables
   }
 }
 
-export default observable(new ThemeManager())
+const themeManager = observable(new ThemeManager())
+window.themeManager = themeManager
+
+autorun(() => {
+  trace()
+  console.log('theme', toJS(themeManager.theme))
+
+  // window.less.modifyVars(themeManager.theme)
+}, {
+  name: 'Theme change'
+})
+
+export default themeManager
