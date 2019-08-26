@@ -113,7 +113,7 @@ export class PricingPlan extends Component {
 
         <Divider />
 
-        <div style={{ color: window.themeManager.theme['@primary-color'] }}>
+        <div style={{ color: theme['@primary-color'] }}>
           {plan.desc}
         </div>
 

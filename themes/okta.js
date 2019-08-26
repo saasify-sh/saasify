@@ -1,7 +1,8 @@
 import styles from './okta.module.css'
 
 export const okta = (opts = { }) => {
-  // TODO: make more dynamic based on less variables
+  // TODO: make styles more dynamic based on less variables
+  // TODO: add fonts
   return {
     ...styles,
     '@name': 'okta',

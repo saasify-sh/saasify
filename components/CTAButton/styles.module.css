@@ -5,11 +5,6 @@
   font-size: 14px;
   letter-spacing: 2px;
   cursor: pointer;
-  border: 2px solid #d23d67;
-}
-
-.cta-button:hover {
-  border: 2px solid transparent;
 }
 
 .inline {
@@ -18,13 +13,6 @@
 }
 
 .secondary {
-  background: transparent;
-  border-color: #d23d67;
   color: #fff;
   border-width: 2px;
-}
-
-.secondary:hover {
-  border-color: #d23d67;
-  background: #d23d67;
 }

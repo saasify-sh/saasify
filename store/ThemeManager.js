@@ -27,13 +27,15 @@ class ThemeManager {
 const themeManager = observable(new ThemeManager())
 window.themeManager = themeManager
 
-autorun(() => {
-  trace()
-  console.log('theme', toJS(themeManager.theme))
+if (process.env.NODE_ENV === 'development') {
+  autorun(() => {
+    trace()
+    console.log('theme', toJS(themeManager.theme))
 
-  // window.less.modifyVars(themeManager.theme)
-}, {
-  name: 'Theme change'
-})
+    // window.less.modifyVars(themeManager.theme)
+  }, {
+    name: 'Theme change'
+  })
+}
 
 export default themeManager
