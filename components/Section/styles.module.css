@@ -5,11 +5,6 @@
   align-items: center;
   justify-content: center;
   flex: 1;
-  background: #1e3a54;
-}
-
-.inverted {
-  background: #23303a;
 }
 
 .content {

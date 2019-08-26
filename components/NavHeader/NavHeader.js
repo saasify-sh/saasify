@@ -54,6 +54,9 @@ export class NavHeader extends Component {
     return (
       <header
         className={theme(styles, 'container', attached || fixed ? theme(styles, 'attached') : null)}
+        style={{
+          background: attached || fixed ? theme['@section-fg-color'] : 'transparent'
+        }}
       >
         <div className={theme(styles, 'content')}>
           <div className={theme(styles, 'links')}>

@@ -20,7 +20,12 @@ export class NavFooter extends Component {
     const { auth } = this.props
 
     return (
-      <footer className={theme(styles, 'container')}>
+      <footer
+        className={theme(styles, 'container')}
+        style={{
+          background: theme['@section-fg-color']
+        }}
+      >
         <div className={theme(styles, 'content')}>
           <div className={theme(styles, 'detailColumn')}>
             <Link to='/'>
