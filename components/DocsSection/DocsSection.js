@@ -8,7 +8,6 @@ export class DocsSection extends Component {
       <Section
         id='docs'
         title='Documentation'
-        subtitle='Simple && Straightforward.'
         {...this.props}
       />
     )

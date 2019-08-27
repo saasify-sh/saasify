@@ -103,8 +103,8 @@ export class LiveServiceDemo extends Component {
       service,
       url: service.url,
       token: auth.consumer && auth.consumer.token,
-      exampleJSON: JSON.stringify(service.example),
-      example: stringifyObject(service.example, {
+      exampleJSON: JSON.stringify(service.example || ''),
+      example: stringifyObject(service.example || '', {
         indent: '  '
       })
     }
