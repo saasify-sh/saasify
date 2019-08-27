@@ -7,7 +7,7 @@ export class DocsSection extends Component {
     return (
       <Section
         id='docs'
-        title='API Docs'
+        title='Documentation'
         subtitle='Simple && Straightforward.'
         {...this.props}
       />
