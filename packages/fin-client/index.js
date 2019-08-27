@@ -3,9 +3,9 @@
 const axios = require('axios')
 const qs = require('qs')
 
-const defaultBaseUrl = 'https://api.functional-income.com'
+const defaultBaseUrl = 'https://api.saasify.xyz'
 
-module.exports = class FinClient {
+module.exports = class SaasifyClient {
   constructor (opts = { }) {
     const {
       baseUrl = defaultBaseUrl,

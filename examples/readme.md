@@ -1,10 +1,10 @@
-# Fin
+# Saasify
 
-> [Fin](https://functional-income.com) is the easiest way to launch your own SaaS.
+> [Saasify](https://saasify.xyz) is the easiest way to launch your own SaaS.
 
 ## Examples
 
-- [x] [hello-world](./hello-world) - Simplest possible Fin project.
+- [x] [hello-world](./hello-world) - Simplest possible Saasify project.
 - [x] [imagemin](./imagemin) - Example to optimize images.
 - [x] [puppeteer](./puppeteer) - Example using headless Chromium.
 - [ ] ffmpeg - Example using FFmpeg.
@@ -14,7 +14,7 @@
 
 ## Related
 
-- [fin](https://functional-income.com) - Fin homepage.
+- [saasify](https://saasify.xyz) - Saasify homepage.
 - [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
 
 ## License

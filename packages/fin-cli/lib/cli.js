@@ -2,7 +2,7 @@
 'use strict'
 
 const program = require('commander')
-const FinClient = require('fin-client')
+const SaasifyClient = require('saasify-client')
 
 const { name, version } = require('../package')
 const auth = require('./auth')
@@ -10,7 +10,7 @@ const auth = require('./auth')
 const commands = require('./commands')
 
 module.exports = (argv, opts = { }) => {
-  const client = new FinClient({
+  const client = new SaasifyClient({
     ...opts,
     ...auth.get()
   })
@@ -20,7 +20,7 @@ module.exports = (argv, opts = { }) => {
     .version(version)
     .option('-d, --debug', 'Enable extra debugging output', false)
     .option('-n, --project <name>', 'Project name')
-    .option('-c, --config <path>', 'Path to `fin.json` file (defaults to cwd)')
+    .option('-c, --config <path>', 'Path to `saasify.json` file (defaults to cwd)')
     .option('-C, --no-clipboard', 'Do not attempt to copy URL to clipboard')
 
   for (const command of commands) {

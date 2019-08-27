@@ -1,13 +1,13 @@
-# fin-utils
+# saasify-utils
 
-> Shared utilities for [Fin](https://functional-income.com).
+> Shared utilities for [Saasify](https://saasify.xyz).
 
-[![NPM](https://img.shields.io/npm/v/fin-utils.svg)](https://www.npmjs.com/package/fin-utils) [![Build Status](https://travis-ci.com/functional-incomee/fin.svg?branch=master)](https://travis-ci.com/functional-incomee/fin) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/saasify-utils.svg)](https://www.npmjs.com/package/saasify-utils) [![Build Status](https://travis-ci.com/saasifye/saasify.svg?branch=master)](https://travis-ci.com/saasifye/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install fin-utils
+npm install saasify-utils
 ```
 
 ## Usage
@@ -15,10 +15,10 @@ npm install fin-utils
 #### parseFaasIdentifier
 
 ```js
-const finUtils = require('fin-utils')
+const saasifyUtils = require('saasify-utils')
 
 // parses any FaaS identifier (see the FaaS format below for more examples)
-const parsedInfo = finUtils.parseFaasIdentifier('username/projectName.serviceName@01234567')
+const parsedInfo = saasifyUtils.parseFaasIdentifier('username/projectName.serviceName@01234567')
 
 if (!parsedInfo) {
   console.error('invalid identifier')
@@ -36,8 +36,8 @@ if (!parsedInfo) {
 #### validators
 
 ```js
-const finUtils = require('fin-utils')
-const { validators } = finUtils
+const saasifyUtils = require('saasify-utils')
+const { validators } = saasifyUtils
 
 validators.email('example@gmail.com') // true
 validators.email('foo') // false
@@ -65,7 +65,7 @@ validators.deployment('username/bad%project%20name@ZZ') // false
 
 The most general FaaS identifier fully specifies the deployment and service name.
 
-It *may* include an optional URL prefix such as `http://localhost:5000/1/call/` in *development* or `https://api.functional-income.com/1/call/` in *production*. The parsed result will be the same with or without the full URL prefix.
+It *may* include an optional URL prefix such as `http://localhost:5000/1/call/` in *development* or `https://api.saasify.xyz/1/call/` in *production*. The parsed result will be the same with or without the full URL prefix.
 
 ```
 username/projectName.serviceName@01234567  // explicitly identify a specific deployment (may not be published)
@@ -87,7 +87,7 @@ username/projectName
 
 #### Omitting username
 
-You may optionally leave off the `username/` prefix when referring to your own projects and deployments via the dev [CLI](../fin-cli).
+You may optionally leave off the `username/` prefix when referring to your own projects and deployments via the dev [CLI](../saasify-cli).
 
 ```
 projectName@01234567
@@ -100,19 +100,19 @@ An example of this for the `hello-world` project would look like:
 
 ```sh
 # view all deployments for the authenticated user's hello-world project
-fin ls hello-world
+saasify ls hello-world
 ```
 
 This would be equivalent to:
 
 ```sh
 # view all deployments for my-user-name/hello-world project
-fin ls my-user-name/hello-world
+saasify ls my-user-name/hello-world
 ```
 
 ## Related
 
-- [fin](https://functional-income.com) - Fin is the easiest way to launch your own SaaS.
+- [saasify](https://saasify.xyz) - Saasify is the easiest way to launch your own SaaS.
 - [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
 
 ## License

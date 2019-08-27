@@ -1,10 +1,10 @@
 {
-  "name": "fin-utils",
+  "name": "saasify-utils",
   "version": "1.1.1",
-  "description": "Shared utilities for Fin.",
+  "description": "Shared utilities for Saasify.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "functional-income/fin",
+  "repository": "saasify-xyz/saasify",
   "license": "MIT",
   "scripts": {
     "test": "ava -v && standard"
@@ -18,7 +18,7 @@
     "lambda",
     "serverless",
     "deploy",
-    "fin",
+    "saasify",
     "fts"
   ],
   "devDependencies": {

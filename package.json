@@ -1,8 +1,8 @@
 {
-  "name": "fin",
+  "name": "saasify",
   "private": true,
   "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "functional-income/fin",
+  "repository": "saasify-xyz/saasify",
   "license": "MIT",
   "engines": {
     "node": ">=8"
@@ -13,14 +13,14 @@
     "lambda",
     "serverless",
     "deploy",
-    "fin",
+    "saasify",
     "fts"
   ],
   "scripts": {
     "test": "lerna run test",
     "bootstrap": "lerna bootstrap",
     "publish": "lerna publish",
-    "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') < 0) throw new Error('fin requires yarn for development')\"",
+    "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') < 0) throw new Error('saasify requires yarn for development')\"",
     "postinstall": "run-s bootstrap"
   },
   "devDependencies": {

@@ -1,9 +1,9 @@
 {
-  "name": "fin-example-imagemin",
+  "name": "saasify-example-imagemin",
   "private": true,
   "version": "0.0.0",
-  "description": "Fin example for image optimization",
-  "repository": "functional-income/fin",
+  "description": "Saasify example for image optimization",
+  "repository": "saasify-xyz/saasify",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
   "license": "MIT",
   "dependencies": {

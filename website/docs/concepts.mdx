@@ -16,7 +16,7 @@ By default, every service deployed on Fin is publicly available and rate-limited
 
 #### Project
 
-A `Project` is a collection of related `Services`. It is specified by a Fin config file `fin.json` which has the following format:
+A `Project` is a collection of related `Services`. It is specified by a Fin config file `saasify.json` which has the following format:
 
 ```ts
 class Config {
@@ -44,7 +44,7 @@ class RateLimit {
 }
 ```
 
-An example `fin.json` config file could look like:
+An example `saasify.json` config file could look like:
 
 ```
 {
@@ -65,10 +65,10 @@ This config specifies a `Project` named `hello-world` with a single service gene
 
 You can deploy your `Projects` by creating immutable `Deployments`.
 
-- `fin deploy` creates a new deployment
-- `fin logs` prints logs for a deployment
-- `fin ls` lists existing deployments for a given project
-- `fin rm` removes deployments for a given project
+- `saasify deploy` creates a new deployment
+- `saasify logs` prints logs for a deployment
+- `saasify ls` lists existing deployments for a given project
+- `saasify rm` removes deployments for a given project
 
 ---
 

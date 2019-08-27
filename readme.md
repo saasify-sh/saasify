@@ -1,10 +1,10 @@
-# fin
+# saasify
 
-> [Fin](https://functional-income.com) transforms **serverless functions** into fully functional **SaaS** websites!
+> [Saasify](https://saasify.xyz) transforms **serverless functions** into fully functional **SaaS** websites!
 
-[![NPM](https://img.shields.io/npm/v/fin.svg)](https://www.npmjs.com/package/fin) [![Build Status](https://travis-ci.com/functional-income/fin.svg?branch=master)](https://travis-ci.com/functional-income/fin) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/saasify.svg)](https://www.npmjs.com/package/saasify) [![Build Status](https://travis-ci.com/saasify/saasify.svg?branch=master)](https://travis-ci.com/saasify/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Fin allows makers to:
+Saasify allows makers to:
 
 1) Focus on unique value instead of boilerplate 🔥
 2) Ship in minutes instead of months ✈️
@@ -12,11 +12,11 @@ Fin allows makers to:
 
 ## Status
 
-**As of April, 2019, Fin is an active WIP and is not yet ready for general use.**
+**As of April, 2019, Saasify is an active WIP and is not yet ready for general use.**
 
 The backend and developer CLI are complete, and our team is working hard on an MVP of the template-based SaaS website generation.
 
-If you're interested in OSS sustainability and want to follow along with the progress of Fin, please consider starring the [repo](https://github.com/functional-income/fin) and following us on [ProductHunt](https://www.producthunt.com/upcoming/fin). Thanks! ⭐️
+If you're interested in OSS sustainability and want to follow along with the progress of Saasify, please consider starring the [repo](https://github.com/saasify/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify). Thanks! ⭐️
 
 ## Features
 
@@ -25,18 +25,18 @@ If you're interested in OSS sustainability and want to follow along with the pro
 - **Productive**: Focus on your unique value prop instead of SaaS boilerplate
 - **Standard**: Built with TypeScript + Lambda + Stripe
 - **Compatible**: Generated APIs are usable from any programming language
-- **Automatic**: Fin handles all docs, hosting, billing, accounts, and support for you
+- **Automatic**: Saasify handles all docs, hosting, billing, accounts, and support for you
 - **Efficient**: Start validating product / market fit in minutes instead of months
 
 ## Install
 
-For more documentation and a detailed walkthrough, visit [functional-income.com](https://functional-income.com).
+For more documentation and a detailed walkthrough, visit [saasify.xyz](https://saasify.xyz).
 
 ## Related
 
-- [fin](https://functional-income.com) - Fin homepage.
-- [fin-cli](./packages/fin-cli) - Fin CLI.
-- [fin-client](./packages/fin-client) - Fin HTTP Client.
+- [saasify](https://saasify.xyz) - Saasify homepage.
+- [saasify-cli](./packages/saasify-cli) - Saasify CLI.
+- [saasify-client](./packages/saasify-client) - Saasify HTTP Client.
 - [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
 
 ## License

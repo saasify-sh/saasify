@@ -1,6 +1,6 @@
 # Puppeteer Example
 
-This is a simple Fin project that shows how you can use [headless Chrome](https://pptr.dev) in your serverless functions.
+This is a simple Saasify project that shows how you can use [headless Chrome](https://pptr.dev) in your serverless functions.
 
 ## License
 

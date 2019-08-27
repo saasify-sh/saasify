@@ -2,7 +2,7 @@
 
 const fs = require('fs-extra')
 const { createHttpClient } = require('fts-http-client')
-const { parseFaasIdentifier } = require('fin-utils')
+const { parseFaasIdentifier } = require('saasify-utils')
 
 const handleError = require('../handle-error')
 

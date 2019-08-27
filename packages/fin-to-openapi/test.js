@@ -5,7 +5,7 @@ const parser = require('swagger-parser')
 const path = require('path')
 const test = require('ava')
 
-const finToOpenAPI = require('.')
+const saasifyToOpenAPI = require('.')
 
 const fixtures = globby.sync('./fixtures/*.json')
 
@@ -14,7 +14,7 @@ for (const fixture of fixtures) {
 
   test(name, async (t) => {
     const deployment = require(fixture)
-    const spec = await finToOpenAPI(deployment)
+    const spec = await saasifyToOpenAPI(deployment)
 
     console.log(JSON.stringify(spec, null, 2))
     t.snapshot(spec)

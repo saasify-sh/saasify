@@ -1,9 +1,9 @@
 {
-  "name": "fin-example-puppeteer",
+  "name": "saasify-example-puppeteer",
   "private": true,
   "version": "0.0.0",
-  "description": "Fin example using Puppeteer",
-  "repository": "functional-income/fin",
+  "description": "Saasify example using Puppeteer",
+  "repository": "saasify-xyz/saasify",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
   "license": "MIT",
   "dependencies": {

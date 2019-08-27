@@ -4,7 +4,7 @@ const Ajv = require('ajv')
 const fs = require('fs-extra')
 const isDirectory = require('is-directory')
 const path = require('path')
-const { validators } = require('fin-utils')
+const { validators } = require('saasify-utils')
 
 const configSchema = require('./schemas/config.schema')
 
@@ -18,7 +18,7 @@ module.exports = (program) => {
     throw new Error(`Unable to find config file "${program.config}"`)
   }
 
-  const configFilePath = isDirectory.sync(base) ? path.join(base, 'fin.json') : base
+  const configFilePath = isDirectory.sync(base) ? path.join(base, 'saasify.json') : base
 
   if (!fs.pathExistsSync(configFilePath)) {
     throw new Error(`Unable to find config file "${configFilePath}"`)

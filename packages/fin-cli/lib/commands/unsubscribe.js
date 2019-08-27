@@ -1,7 +1,7 @@
 'use strict'
 
 const { Confirm } = require('enquirer')
-const { parseFaasIdentifier } = require('fin-utils')
+const { parseFaasIdentifier } = require('saasify-utils')
 
 const handleError = require('../handle-error')
 const spinner = require('../spinner')

@@ -1,11 +1,11 @@
 {
-  "name": "fin-website",
+  "name": "saasify-website",
   "private": true,
   "version": "1.0.0",
   "description": "Fin is the easiest way to launch your own SaaS.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "functional-income/fin",
+  "repository": "saasify-xyz/saasify",
   "license": "MIT",
   "scripts": {
     "start": "mdx-go docs",
@@ -13,7 +13,7 @@
     "test": "echo 'TODO'",
     "now-build": "run-p build",
     "deploy": "now",
-    "force-deploy": "run-p deploy && now alias && now rm --safe --yes functional-income"
+    "force-deploy": "run-p deploy && now alias && now rm --safe --yes saasify"
   },
   "engines": {
     "node": ">=8"
@@ -24,7 +24,7 @@
     "lambda",
     "serverless",
     "deploy",
-    "fin",
+    "saasify",
     "fts"
   ],
   "devDependencies": {

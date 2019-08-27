@@ -3,7 +3,7 @@
 const fts = require('fts')
 const path = require('path')
 const pMap = require('p-map')
-const { validators } = require('fin-utils')
+const { validators } = require('saasify-utils')
 
 const parseConfig = require('./parse-config')
 

@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "functional-income",
-  "alias": "functional-income.com",
+  "name": "saasify",
+  "alias": "saasify.xyz",
   "builds": [
     {
       "src": "package.json",

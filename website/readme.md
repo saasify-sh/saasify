@@ -1,16 +1,16 @@
-# fin
+# saasify
 
-> [Fin](https://functional-income.com) is the easiest way to launch your own SaaS.
+> [Fin](https://saasify.xyz) is the easiest way to launch your own SaaS.
 
-[![Build Status](https://travis-ci.com/functional-income/fin.svg?branch=master)](https://travis-ci.com/functional-income/fin) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.com/saasify/saasify.svg?branch=master)](https://travis-ci.com/saasify/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Docs
 
-Check out the main docs at [functional-income.com](https://functional-income.com).
+Check out the main docs at [saasify.xyz](https://saasify.xyz).
 
 ## Related
 
-- [fin](https://functional-income.com) - Fin homepage.
+- [saasify](https://saasify.xyz) - Fin homepage.
 - [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
 
 ## License

@@ -1,6 +1,6 @@
 # imagemin example
 
-This is a simple Fin project that shows how you can use [imagemin](https://github.com/imagemin/imagemin) to create SaaS APIs which perform image optimization.
+This is a simple Saasify project that shows how you can use [imagemin](https://github.com/imagemin/imagemin) to create SaaS APIs which perform image optimization.
 
 ## License
 

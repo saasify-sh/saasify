@@ -2,7 +2,7 @@
 
 const Conf = require('conf')
 const conf = new Conf({
-  projectName: 'fin'
+  projectName: 'saasify'
 })
 
 const keyToken = 'token'

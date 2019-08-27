@@ -22,11 +22,11 @@ module.exports = async (client) => {
 
     if (!code) {
       _reject(code)
-      ctx.body = 'Error authenticated Fin with GitHub.'
+      ctx.body = 'Error authenticated Saasify with GitHub.'
     }
 
     _resolve(code)
-    ctx.body = 'Fin authenticated with GitHub successfully.'
+    ctx.body = 'Saasify authenticated with GitHub successfully.'
   })
 
   let server
@@ -44,7 +44,7 @@ module.exports = async (client) => {
       redirect_uri: `http://localhost:${port}/auth/github`
     }) : ({
       client_id: '6525c812c9b4430147c3',
-      redirect_uri: `https://functional-income.com/auth/github`
+      redirect_uri: `https://saasify.xyz/auth/github`
     })
 
   const opts = (new url.URLSearchParams(config)).toString()

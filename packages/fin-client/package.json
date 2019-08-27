@@ -1,10 +1,10 @@
 {
-  "name": "fin-client",
+  "name": "saasify-client",
   "version": "1.1.3",
-  "description": "Universal HTTP client for Fin.",
+  "description": "Universal HTTP client for Saasify.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "functional-income/fin",
+  "repository": "saasify-xyz/saasify",
   "license": "MIT",
   "scripts": {
     "test": "standard"
@@ -18,7 +18,7 @@
     "lambda",
     "serverless",
     "deploy",
-    "fin",
+    "saasify",
     "fts"
   ],
   "devDependencies": {
