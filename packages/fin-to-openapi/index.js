@@ -156,7 +156,13 @@ module.exports.serviceToPath = async function serviceToPath (service) {
   } = service
 
   const params = await prepareSchema(definition.params.schema)
-  const returns = await prepareSchema(definition.returns.schema)
+  const { schema } = definition.returns
+  const { type, additionalProperties, properties, ...rest } = schema
+  const returnsJsonSchema = {
+    ...rest,
+    ...properties.result
+  }
+  const returns = await prepareSchema(returnsJsonSchema)
 
   const paramsSchema = jsonSchemaToOpenAPI(params)
   const responseSchema = jsonSchemaToOpenAPI(returns)
