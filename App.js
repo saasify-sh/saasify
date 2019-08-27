@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import { observer, Provider } from 'mobx-react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 import {
   AuthenticatedRoute,
@@ -34,10 +35,20 @@ export default class App extends Component {
       return null
     }
 
+    const { saas } = deployment.project
+
     return (
       <Router>
         <Provider auth={AuthManager}>
           <FinContext.Provider value={deployment}>
+            <Helmet>
+              <title>{saas.name}</title>
+
+              {saas.logo && (
+                <link rel='shortcut icon' href={saas.logo} />
+              )}
+            </Helmet>
+
             <Switch>
               <Route exact path='/' component={HomePage} />
 
