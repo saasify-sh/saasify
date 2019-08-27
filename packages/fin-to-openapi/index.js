@@ -20,14 +20,21 @@ module.exports = async function finToOpenAPI (deployment, opts = { }) {
   const spec = {
     openapi: '3.0.2',
     info: {
-      title: deployment.project.id,
+      title: deployment.project.name,
       version: `v${deployment.version}`,
+    termsOfService: '/terms',
+      'contact': {
+        'name': 'API Support',
+        'email': 'support@saasify.xyz'
+      },
+      'license': {
+        'name': 'Apache 2.0',
+        'email': 'https://apache.org/licenses/LICENSE-2.0.html'
+      },
       description: `
 # Introduction
 
-This API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable resource-oriented URLs, accepts [JSON-encoded](http://www.json.org/) request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.'
-
-The API differs for every account as we release new versions and tailor functionality. If you are authenticated, these docs are customized to your version of the API and display your auth token and test data, which only you can see.
+This API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable resource-oriented URLs, accepts [JSON-encoded](http://www.json.org/) request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 
 # Content Type
 
@@ -38,7 +45,7 @@ All requests must be encoded as JSON with the \`Content-Type: application/json\`
 With the public, non-authenticated version of the API, we limit the number of calls you can make over a certain period of time. Rate limits vary and are specified by the following header in all responses:
 
 | Header | Description |
-| --- | --- ]
+| ------ | ----------- |
 | \`X-RateLimit-Limit\` | The maximum number of requests that the consumer is permitted to make. |
 | \`X-RateLimit-Remaining\` | The number of requests remaining in the current rate limit window. |
 | \`X-RateLimit-Reset\` | The time at which the current rate limit window resets in UTC epoch seconds. |
@@ -88,13 +95,13 @@ You can visit your [Dashboard](/dashboard) to manage your API version.
     components: {
       securitySchemes: {
         'API Key': {
-          type: 'API Key',
+          type: 'apiKey',
           description: `Optional API key for authenticated access.
 
 
 Unauthenticated (public) requests are subject to rate limiting. See [pricing](/pricing) for more details on unauthenticated rate limits.
 
-You can view and manage your API key in [Dashboard](/dashboard).
+You can view and manage your API key in the [Dashboard](/dashboard).
 
 Be sure to keep your API key secure! Do not share them in publicly accessible areas such as GitHub, client-side code, and so forth.
 
