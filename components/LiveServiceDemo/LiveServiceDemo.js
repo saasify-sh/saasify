@@ -9,7 +9,8 @@ import { observer, inject } from 'mobx-react'
 import { Button, Tooltip } from 'antd'
 
 import { CodeBlock } from '../CodeBlock'
-import { languages } from './languages'
+
+import getServiceExamples from 'lib/get-service-examples'
 
 import styles from './styles.module.css'
 
@@ -28,7 +29,9 @@ export class LiveServiceDemo extends Component {
     copiedTextToClipboard: false
   }
 
-  _onClickTabMem = mem((i) => () => this._onClickTab(languages[i]))
+  _examples = getServiceExamples(this.props.service, this.props.auth.consumer && this.props.auth.consumer.token)
+
+  _onClickTabMem = mem((i) => () => this._onClickTab(this._examples[i]))
 
   componentWillUnmount() {
     if (this._copyTimeout) {
@@ -43,12 +46,10 @@ export class LiveServiceDemo extends Component {
       copiedTextToClipboard
     } = this.state
 
-    const params = this._getParams()
-
     return (
       <div className={theme(styles, 'container')}>
         <div className={theme(styles, 'tabs')}>
-          {languages.map((l, i) => (
+          {this._examples.map((l, i) => (
             <div
               className={theme(styles, 'tab', selected === l.label && theme(styles, 'selectedTab'))}
               key={i}
@@ -60,7 +61,7 @@ export class LiveServiceDemo extends Component {
         </div>
 
         <div className={theme(styles, 'content')}>
-          {languages.map((l, i) => (
+          {this._examples.map((l, i) => (
             <div
               className={theme(styles, 'tabPane', selected === l.label && theme(styles, 'selectedTabPane'))}
               key={i}
@@ -68,7 +69,7 @@ export class LiveServiceDemo extends Component {
               <CodeBlock
                 className={theme(styles, 'code')}
                 language={l.language}
-                value={l.code(params).trim()}
+                value={l.code}
               />
             </div>
           ))}
@@ -121,10 +122,9 @@ export class LiveServiceDemo extends Component {
       selected
     } = this.state
 
-    const params = this._getParams()
-    const language = languages.find((l) => l.label === selected)
+    const example = this._examples.find((l) => l.label === selected)
 
-    copyTextToClipboard(language.code(params).trim())
+    copyTextToClipboard(example.code)
 
     this.setState({ copiedTextToClipboard: true })
     this._clearCopyTimeout()
