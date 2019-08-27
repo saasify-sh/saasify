@@ -1,5 +1,7 @@
 {
-  "project": "puppeteer-example",
+  "project": {
+    "name": "puppeteer"
+  },
   "id": "puppeteer-example_c204408318ac4c1b",
   "enabled": true,
   "version": "1",

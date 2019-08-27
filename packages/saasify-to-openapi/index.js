@@ -28,8 +28,7 @@ module.exports = async function finToOpenAPI (deployment, opts = { }) {
         'email': 'support@saasify.xyz'
       },
       'license': {
-        'name': 'Apache 2.0',
-        'email': 'https://apache.org/licenses/LICENSE-2.0.html'
+        'name': 'Apache 2.0'
       },
       description: `
 # Introduction

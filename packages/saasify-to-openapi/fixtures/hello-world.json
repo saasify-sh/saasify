@@ -1,5 +1,7 @@
 {
-  "project": "hello-world",
+  "project": {
+    "name": "hello-world"
+  },
   "id": "hello-world_360e148006098c95",
   "enabled": true,
   "version": "1",

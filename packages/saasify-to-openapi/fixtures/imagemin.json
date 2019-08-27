@@ -1,5 +1,7 @@
 {
-  "project": "imagemin",
+  "project": {
+    "name": "imagemin"
+  },
   "url": "http://localhost:5000/1/call/imagemin_516db71baeb64417",
   "id": "imagemin_516db71baeb64417",
   "version": "1",

@@ -37,6 +37,8 @@ For more documentation and a detailed walkthrough, visit [saasify.xyz](https://s
 - [saasify](https://saasify.xyz) - Saasify homepage.
 - [saasify-cli](./packages/saasify-cli) - Saasify CLI.
 - [saasify-client](./packages/saasify-client) - Saasify HTTP Client.
+- [saasify-utils](./packages/saasify-utils) - Shared utilities for Saasify.
+- [saasify-to-openapi](./packages/saasify-to-openapi) - Converts Saasify deployments to OpenAPI specs.
 - [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
 
 ## License
