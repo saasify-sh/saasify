@@ -1,5 +1,5 @@
 <a href="https://saasify.xyz" title="Saasify">
-  <img src="https://raw.githubusercontent.com/saasify-xyz/saasify/master/logo.png" alt="Saasify Logo" width="150" />
+  <img src="https://raw.githubusercontent.com/saasify-xyz/saasify/master/logo.png" alt="Saasify Logo" width="500" />
 </a>
 
 # saasify
