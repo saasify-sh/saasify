@@ -1,8 +1,8 @@
-<a href="https://saasify.xyz" title="Saasify">
+<a href="https://saasify.xyz" title="Saasify" align="center">
   <img src="https://raw.githubusercontent.com/saasify-xyz/saasify/master/logo-white@1024w.png" alt="Saasify Logo" width="500" />
 </a>
 
-# saasify
+# Saasify
 
 > [Saasify](https://saasify.xyz) transforms **serverless functions** into fully functional **SaaS** websites!
 
