@@ -2,7 +2,7 @@
 
 > Shared utilities for [Saasify](https://saasify.xyz).
 
-[![NPM](https://img.shields.io/npm/v/saasify-utils.svg)](https://www.npmjs.com/package/saasify-utils) [![Build Status](https://travis-ci.com/saasifye/saasify.svg?branch=master)](https://travis-ci.com/saasifye/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/saasify-utils.svg)](https://www.npmjs.com/package/saasify-utils) [![Build Status](https://travis-ci.com/saasify-xyz/saasify.svg?branch=master)](https://travis-ci.com/saasify-xyz/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 

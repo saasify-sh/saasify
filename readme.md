@@ -2,7 +2,7 @@
 
 > [Saasify](https://saasify.xyz) transforms **serverless functions** into fully functional **SaaS** websites!
 
-[![NPM](https://img.shields.io/npm/v/saasify.svg)](https://www.npmjs.com/package/saasify) [![Build Status](https://travis-ci.com/saasify/saasify.svg?branch=master)](https://travis-ci.com/saasify/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/saasify.svg)](https://www.npmjs.com/package/saasify) [![Build Status](https://travis-ci.com/saasify-xyz/saasify.svg?branch=master)](https://travis-ci.com/saasify-xyz/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Saasify allows makers to:
 
