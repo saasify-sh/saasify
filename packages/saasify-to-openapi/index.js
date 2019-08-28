@@ -22,13 +22,13 @@ module.exports = async function finToOpenAPI (deployment, opts = { }) {
     info: {
       title: deployment.project.name,
       version: `v${deployment.version}`,
-    termsOfService: '/terms',
-      'contact': {
-        'name': 'API Support',
-        'email': 'support@saasify.xyz'
+      termsOfService: '/terms',
+      contact: {
+        name: 'API Support',
+        email: 'support@saasify.xyz'
       },
-      'license': {
-        'name': 'Apache 2.0'
+      license: {
+        name: 'Apache 2.0'
       },
       description: `
 # Introduction
@@ -49,13 +49,13 @@ With the public, non-authenticated version of the API, we limit the number of ca
 | \`X-RateLimit-Remaining\` | The number of requests remaining in the current rate limit window. |
 | \`X-RateLimit-Reset\` | The time at which the current rate limit window resets in UTC epoch seconds. |
 
-When the rate limit is **exceeded**, an error is returned with the status \"**429 Too Many Requests**\":
+When the rate limit is **exceeded**, an error is returned with the status "**429 Too Many Requests**":
 
 \`\`\`json
 {
-  \"error\": {
-    \"code\": \"too_many_requests\",
-    \"message\": \"Rate limit exceeded\"
+  "error": {
+    "code": "too_many_requests",
+    "message": "Rate limit exceeded"
   }
 }
 \`\`\`
