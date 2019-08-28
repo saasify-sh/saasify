@@ -106,7 +106,7 @@ export class BillingUsageSection extends Component {
         <div className={theme(styles, 'body')}>
           <Table
             columns={columns}
-            rowKey={record => record.id}
+            rowKey={record => record.request.id}
             dataSource={data}
             pagination={pagination}
             loading={loading}

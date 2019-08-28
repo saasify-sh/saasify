@@ -93,7 +93,10 @@ export class CheckoutPage extends Component {
 
       const source = await API.addBillingSource({ source: token.id })
       console.log('checkout source', { source })
-      const consumer = await API.createConsumer({ project: deployment.project.id })
+      const consumer = await API.createConsumer({
+        project: deployment.project.id,
+        deployment: deployment.id
+      })
       console.log('checkout consumer', { source, consumer })
 
       notification.success({
