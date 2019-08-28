@@ -1,18 +1,18 @@
 import { Head } from 'mdx-go'
 
 <Head>
-  <title>Fin Walkthrough</title>
+  <title>Saasify Walkthrough</title>
 </Head>
 
 ## Walkthrough
 
-This walkthrough will give you an overview of the Fin platform by creating an example project and deploying it to Fin.
+This walkthrough will give you an overview of the Saasify platform by creating an example project and deploying it to Saasify.
 
 The result will be a public, monetized API that anyone can call or subscribe to.
 
 #### Getting Started
 
-First you'll need to install the [Fin CLI](https://github.com/saasify/saasify).
+First you'll need to install the [Saasify CLI](https://github.com/saasify/saasify).
 
 ```bash
 npm install -g saasify
@@ -20,10 +20,10 @@ npm install -g saasify
 
 You can check out the available commands via `saasify --help` and run `saasify help <cmd>` to view the sub-help for any given command.
 
-Before we proceed, you'll need to create a Fin account to get started.
+Before we proceed, you'll need to create a Saasify account to get started.
 
 ```bash
-saasify signup --email <travis@example.com> --password password
+saasify signup --email <travis@example.com> --username foobar123 --password password
 ```
 
 #### Creating a Project
@@ -59,7 +59,7 @@ You can deploy your project by running `saasify deploy` from within the director
 saasify deploy
 ```
 
-This will take a minute or so to complete, with the end result being a publicly accessible deployment. The deployment URL will be copied to your clipboard and should resemble `https://api.saasify.xyz/1/call/hello-world_f4a0d67bc61f7b5b`.
+This will take a minute or so to complete, with the end result being a publicly accessible deployment. The deployment URL will be copied to your clipboard and should resemble `https://api.saasify.xyz/1/call/foobar123/hello-world@f4a0d67b`.
 
 #### Using your Deployment
 
@@ -68,29 +68,29 @@ You can now call your services on this live deployment via HTTP. As an example, 
 Via HTTP GET:
 
 ```bash
-> http https://api.saasify.xyz/1/call/hello-world_f4a0d67bc61f7b5b
+> http https://api.saasify.xyz/1/call/foobar123/hello-world@f4a0d67b
 Hello World!
 ```
 
 Via HTTP GET with params:
 
 ```bash
-> http https://api.saasify.xyz/1/call/hello-world_f4a0d67bc61f7b5b?name=Foo
+> http https://api.saasify.xyz/1/call/foobar123/hello-world@f4a0d67b?name=Foo
 Hello Foo!
 ```
 
 Via HTTP POST with params:
 
 ```bash
-> http POST https://api.saasify.xyz/1/call/hello-world_f4a0d67bc61f7b5b name=Nala
+> http POST https://api.saasify.xyz/1/call/foobar123/hello-world@f4a0d67b name=Nala
 Hello Nala!
 ```
 
-Note that because Fin uses [Functional TypeScript](https://github.com/transitive-bullshit/functional-typescript) to define your service endpoints, all parameters and return values are type checked for consistency.
+Note that because Saasify uses [Functional TypeScript](https://github.com/transitive-bullshit/functional-typescript) to define your service endpoints, all parameters and return values are type checked for consistency.
 
-Also note that all of these calls are going through a Fin proxy that rate limits your unauthenticated HTTP requests based on your IP address.
+Also note that all of these calls are going through a Saasify proxy that rate limits your unauthenticated HTTP requests based on your IP address.
 
-If you want to take advantage of Fin's monetization features and usage-based pricing, you'll need to **subscribe** to this project.
+If you want to take advantage of Saasify's monetization features and usage-based pricing, you'll need to **subscribe** to this project.
 
 #### Subscribing to a Project
 
@@ -102,7 +102,7 @@ saasify billing add
 
 This will prompt your for credit card details that will be stored in [Stripe](https://stripe.com).
 
-Note that Fin never transmits or stores your payment info and all payment-related data is securely handled by Stripe.
+Note that Saasify never transmits or stores your payment info and all payment-related data is securely handled by Stripe.
 
 Now that you have a credit card connected to your account with Stripe, you can subscribe to any projects you want to access.
 
@@ -130,7 +130,7 @@ Hello Bob!
 
 #### Next Steps
 
-At this point, you've created your own monetizable SaaS API and subscribed to it. Fin takes care of all the book-keeping in terms of tracking Stripe usage and payouts via [Stripe Connect](https://stripe.com/connect).
+At this point, you've created your own monetizable SaaS API and subscribed to it. Saasify takes care of all the book-keeping in terms of tracking Stripe usage and payouts via [Stripe Connect](https://stripe.com/connect).
 
 The next step would be **publishing** your SaaS project in the form of a fully functional template-based SaaS website, but this functionality is still a WIP.
 

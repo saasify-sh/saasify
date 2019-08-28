@@ -1,8 +1,14 @@
 import { Head } from 'mdx-go'
 
 <Head>
-  <title>Fin FAQ</title>
+  <title>Saasify FAQ</title>
 </Head>
+
+<p align="center">
+  <a href="https://saasify.xyz" title="Saasify">
+    <img src="https://raw.githubusercontent.com/saasify-xyz/saasify/master/logo-white@1024w.png" alt="Saasify Logo" width="500" />
+  </a>
+</p>
 
 # FAQ
 
@@ -10,27 +16,27 @@ import { Head } from 'mdx-go'
 
 TODO
 
-### What is Fin?
+### What is Saasify?
 
 TODO
 
-### How does Fin work?
+### How does Saasify work?
 
 TODO
 
-### How can I make money with Fin?
+### How can I make money with Saasify?
 
 TODO
 
-### What types of OSS projects are a good fit for Fin?
+### What types of OSS projects are a good fit for Saasify?
 
 TODO
 
-### Why did you start Fin?
+### Why did you start Saasify?
 
 TODO
 
-### How does Fin make money?
+### How does Saasify make money?
 
 TODO
 
@@ -46,15 +52,15 @@ As for serverless functions themselves, they allow your code to run on-demand an
 
 more information, see [Functional TypeScript](https://github.com/transitive-bullshit/functional-typescript), [Why Serverless?](https://serverless.com/learn/overview), and an excellent breakdown on the [Tradeoffs that come with Serverless](https://martinfowler.com/articles/serverless.html).
 
-### Can I embed Fin APIs on my own website?
+### Can I embed Saasify APIs on my own website?
 
 There are so many great ways of creating websites these days, from drag & drop template builders like [Squarespace](https://www.squarespace.com) and [Wix](https://www.wix.com) to developing your own via React, Vue, etc.
 
-Our short-term goal is to support publishing SaaS websites via a built-in template, but our long-term goal is definitely to support embedding common SaaS functionality for your Fin APIs on any website.
+Our short-term goal is to support publishing SaaS websites via a built-in template, but our long-term goal is definitely to support embedding common SaaS functionality for your Saasify APIs on any website.
 
 Stay tuned...
 
-### What's the best way to support Fin?
+### What's the best way to support Saasify?
 
 TODO
 
