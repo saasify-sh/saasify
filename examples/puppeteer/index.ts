@@ -1,6 +1,6 @@
-const { HttpResponse} = require('fts-core')
-const chrome = require('chrome-aws-lambda')
-const puppeteer = require('puppeteer-core')
+import { HttpResponse } from 'fts-core'
+import * as chrome from 'chrome-aws-lambda'
+import * as puppeteer from 'puppeteer-core'
 
 type ImageFormat = 'png' | 'jpg'
 
@@ -25,4 +25,3 @@ export default async function getScreenshot(url: string, type: ImageFormat = 'pn
     body: file
   }
 }
-

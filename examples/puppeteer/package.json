@@ -12,6 +12,7 @@
     "puppeteer-core": "^1.19.0"
   },
   "devDependencies": {
-    "@types/node": "^12.6.9"
+    "@types/node": "^12.6.9",
+    "@types/puppeteer": "^1.19.1"
   }
 }
