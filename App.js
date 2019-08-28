@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet'
 
 import {
   AuthenticatedRoute,
-  FinContext
+  SaasifyContext
 } from './components'
 
 import {
@@ -40,7 +40,7 @@ export default class App extends Component {
     return (
       <Router>
         <Provider auth={AuthManager}>
-          <FinContext.Provider value={deployment}>
+          <SaasifyContext.Provider value={deployment}>
             <Helmet>
               <title>{saas.name}</title>
 
@@ -70,7 +70,7 @@ export default class App extends Component {
 
               <Route component={NotFoundPage} />
             </Switch>
-          </FinContext.Provider>
+          </SaasifyContext.Provider>
         </Provider>
       </Router>
     )

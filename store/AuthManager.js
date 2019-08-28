@@ -8,7 +8,7 @@ import deployment from '../lib/deployment'
 
 import { config as githubConfig } from 'lib/auth-github'
 
-const AUTH_STORE_KEY = 'FinAuth'
+const AUTH_STORE_KEY = 'SaasifyAuth'
 
 class AuthManager {
   @observable

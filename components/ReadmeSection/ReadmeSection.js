@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-import { FinContext } from '../FinContext'
+import { SaasifyContext } from '../SaasifyContext'
 import { Section } from '../Section'
 import { Markdown } from '../Markdown'
 
 export class ReadmeSection extends Component {
   render() {
     return (
-      <FinContext.Consumer>
+      <SaasifyContext.Consumer>
         {deployment => deployment.readme ? (
           <Section
             id='readme'
@@ -21,7 +21,7 @@ export class ReadmeSection extends Component {
         ) : (
           null
         )}
-      </FinContext.Consumer>
+      </SaasifyContext.Consumer>
     )
   }
 }

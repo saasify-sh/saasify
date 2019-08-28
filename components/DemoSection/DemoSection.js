@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import { FinContext } from '../FinContext'
+import { SaasifyContext } from '../SaasifyContext'
 import { Section } from '../Section'
 import { LiveServiceDemo } from '../LiveServiceDemo'
 
@@ -10,7 +10,7 @@ import { LiveServiceDemo } from '../LiveServiceDemo'
 export class DemoSection extends Component {
   render() {
     return (
-      <FinContext.Consumer>
+      <SaasifyContext.Consumer>
         {deployment => (
           <Section
             id='demo'
@@ -29,7 +29,7 @@ export class DemoSection extends Component {
             />
           </Section>
         )}
-      </FinContext.Consumer>
+      </SaasifyContext.Consumer>
     )
   }
 }

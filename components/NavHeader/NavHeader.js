@@ -88,7 +88,7 @@ export class NavHeader extends Component {
             </Link>
 
             <a
-              href='mailto:support@functional-income.com'
+              href='mailto:support@saasify.xyz'
               className={theme(styles, 'link')}
             >
               Support

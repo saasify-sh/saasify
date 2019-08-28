@@ -22,7 +22,7 @@ export class TermsPage extends Component {
 
           <p className={theme(styles, 'last-modified')}>Last Modified: April 9, 2019</p>
           <h3><u>Acceptance of the Terms of Use</u></h3>
-          <p>These terms of use are entered into by and between You and Fin Inc. (“<strong>Company</strong>,” “<strong>we</strong>,” “<strong>us</strong>,” or “<strong>Fin</strong>”). The following terms and conditions, together with any documents they expressly incorporate by reference (collectively, these “<strong>Terms of Use</strong>”), govern your access to and use of this site, including any content, functionality and services offered on or through functional-income.com (the “<strong>Website</strong>”), whether as a guest or a registered user.</p>
+          <p>These terms of use are entered into by and between You and Saasify Inc. (“<strong>Company</strong>,” “<strong>we</strong>,” “<strong>us</strong>,” or “<strong>Saasify</strong>”). The following terms and conditions, together with any documents they expressly incorporate by reference (collectively, these “<strong>Terms of Use</strong>”), govern your access to and use of this site, including any content, functionality and services offered on or through saasify.xyz (the “<strong>Website</strong>”), whether as a guest or a registered user.</p>
           <p>Please read the Terms of Use carefully before you start to use the Website. By using the Website, you accept and agree to be bound and abide by these Terms of Use and our <a href='/privacy'>Privacy Policy</a>, incorporated herein by reference. &nbsp;If you do not want to agree to these Terms of Use or the Privacy Policy, you must not access or use the Website.</p>
           <p>This Website is offered and available to users who are 13 years of age or older. By using this Website, you represent and warrant that you are of legal age to form a binding contract with the Company and meet the foregoing eligibility requirements. If you do not meet all of these requirements, you must not access or use the Website.</p>
           <h3><u>Changes to the Terms of Use</u></h3>
@@ -54,11 +54,11 @@ export class TermsPage extends Component {
             <li>Use any illustrations, photographs, video or audio sequences or any graphics separately from the accompanying text.</li>
             <li>Delete or alter any copyright, trademark or other proprietary rights notices from copies of materials from this site.</li>
           </ul>
-          <p>If you are a subscribing organization, you must comply with these Terms, the Privacy Policy and any other agreements between you and Fin that govern your subscription, including pricing terms.</p>
-          <p>If you wish to make any use of material on the Website other than that set out in this section, please address your request to: info@functional-income.com</p>
+          <p>If you are a subscribing organization, you must comply with these Terms, the Privacy Policy and any other agreements between you and Saasify that govern your subscription, including pricing terms.</p>
+          <p>If you wish to make any use of material on the Website other than that set out in this section, please address your request to: info@saasify.xyz</p>
           <p>If you print, copy, modify, download or otherwise use or provide any other person with access to any part of the Website in breach of the Terms of Use, your right to use the Website will cease immediately and you must, at our option, return or destroy any copies of the materials you have made. No right, title or interest in or to the Website or any content on the Website is transferred to you, and all rights not expressly granted are reserved by the Company. Any use of the Website not expressly permitted by these Terms of Use is a breach of these Terms of Use and may violate copyright, trademark and other laws.</p>
           <h3><u>Trademarks</u></h3>
-          <p>The Company name, the terms Fin, the Company logo, tagline and all related names, logos, product and service names, designs and slogans are trademarks of the Company or its affiliates or licensors. You must not use such marks without the prior written permission of the Company. All other names, logos, product and service names, designs and slogans on this Website are the trademarks of their respective owners.</p>
+          <p>The Company name, the terms Saasify, the Company logo, tagline and all related names, logos, product and service names, designs and slogans are trademarks of the Company or its affiliates or licensors. You must not use such marks without the prior written permission of the Company. All other names, logos, product and service names, designs and slogans on this Website are the trademarks of their respective owners.</p>
           <h3><u>Prohibited Uses</u></h3>
           <p>You may use the Website only for lawful purposes and in accordance with these Terms of Use. You agree not to use the Website:</p>
           <ul>
@@ -134,9 +134,9 @@ export class TermsPage extends Component {
           <p>&nbsp;</p>
           <p>Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; COPYRIGHT AGENT</p>
           <p>Attn: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DMCA Notice</p>
-          <p>Company:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fin Inc.</p>
+          <p>Company:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Saasify Inc.</p>
           <p>Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400 S. 4<sup>th</sup> Street, #401, Mailbox #208, Minneapolis, MN 55415</p>
-          <p>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; legal@functional-income.com</p>
+          <p>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; legal@saasify.xyz</p>
           <p>&nbsp;</p>
           <p>If you fail to comply with all of the requirements of Section 512(c)(3) of the DMCA, your DMCA Notice may not be effective.</p>
           <p>Please be aware that if you knowingly materially misrepresent that material or activity on the Website is infringing your copyright, you may be held liable for damages (including costs and attorneys’ fees) under Section 512(f) of the DMCA.</p>
@@ -196,11 +196,11 @@ export class TermsPage extends Component {
           <p>No waiver of by the Company of any term or condition set forth in these Terms of Use shall be deemed a further or continuing waiver of such term or condition or a waiver of any other term or condition, and any failure of the Company to assert a right or provision under these Terms of Use shall not constitute a waiver of such right or provision.</p>
           <p>If any provision of these Terms of Use is held by a court or other tribunal of competent jurisdiction to be invalid, illegal or unenforceable for any reason, such provision shall be eliminated or limited to the minimum extent such that the remaining provisions of the Terms of Use will continue in full force and effect.</p>
           <h3><u>Entire Agreement</u></h3>
-          <p>The Terms of Use, Terms of Sale and our Privacy Policy constitute the sole and entire agreement between you and Fin with respect to the Website and supersede all prior and contemporaneous understandings, agreements, representations and warranties, both written and oral, with respect to the Website.</p>
+          <p>The Terms of Use, Terms of Sale and our Privacy Policy constitute the sole and entire agreement between you and Saasify with respect to the Website and supersede all prior and contemporaneous understandings, agreements, representations and warranties, both written and oral, with respect to the Website.</p>
           <h3><u>Your Comments and Concerns</u></h3>
-          <p>This website is operated by Fin Inc.</p>
+          <p>This website is operated by Saasify Inc.</p>
           <p>All notices of copyright infringement claims should be sent to the copyright agent designated in our Copyright Policy above, in the manner and by the means set forth therein.</p>
-          <p>All other feedback, comments, requests for technical support and other communications relating to the Website should be directed to: info@functional-income.com.</p>
+          <p>All other feedback, comments, requests for technical support and other communications relating to the Website should be directed to: info@saasify.xyz.</p>
         </div>
 
         <NavFooter />

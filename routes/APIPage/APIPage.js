@@ -5,7 +5,7 @@ import { RedocStandalone } from 'redoc'
 
 import {
   // NavHeader,
-  FinContext,
+  SaasifyContext,
   ScrollToTopOnMount,
   NavFooter
 } from 'components'
@@ -15,7 +15,7 @@ import styles from './styles.module.css'
 export class APIPage extends Component {
   render() {
     return (
-      <FinContext.Consumer>
+      <SaasifyContext.Consumer>
         {deployment => (
           <div className={theme(styles, 'api-page')}>
             {/*
@@ -42,7 +42,7 @@ export class APIPage extends Component {
             <NavFooter />
           </div>
         )}
-      </FinContext.Consumer>
+      </SaasifyContext.Consumer>
     )
   }
 }

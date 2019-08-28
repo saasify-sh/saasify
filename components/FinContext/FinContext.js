@@ -1,3 +1,3 @@
 import React from 'react'
 
-export const FinContext = React.createContext(undefined)
+export const SaasifyContext = React.createContext(undefined)

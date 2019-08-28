@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import { FinContext } from '../FinContext'
+import { SaasifyContext } from '../SaasifyContext'
 import { Section } from '../Section'
 import { CTAButton } from '../CTAButton'
 
 export class HeroSection extends Component {
   render() {
     return (
-      <FinContext.Consumer>
+      <SaasifyContext.Consumer>
         {deployment => (
           <Section
             id='hero'
@@ -23,7 +23,7 @@ export class HeroSection extends Component {
             </Link>
           </Section>
         )}
-      </FinContext.Consumer>
+      </SaasifyContext.Consumer>
     )
   }
 }

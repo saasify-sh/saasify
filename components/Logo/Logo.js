@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import theme from 'lib/theme'
 
-import { FinContext } from '../FinContext'
+import { SaasifyContext } from '../SaasifyContext'
 
 import styles from './styles.module.css'
 
@@ -14,7 +14,7 @@ export class Logo extends Component {
     } = this.props
 
     return (
-      <FinContext.Consumer>
+      <SaasifyContext.Consumer>
         {deployment => (
           deployment.project.saas.logo ? (
             <img
@@ -37,7 +37,7 @@ export class Logo extends Component {
             </div>
           )
         )}
-      </FinContext.Consumer>
+      </SaasifyContext.Consumer>
     )
   }
 }
