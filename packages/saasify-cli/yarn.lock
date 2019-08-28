@@ -1797,16 +1797,16 @@ fts-core@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/fts-core/-/fts-core-1.1.0.tgz#b4d77bb1f00fe93dbff063ca0ac20c277bd510ec"
 
-fts-http-client@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/fts-http-client/-/fts-http-client-1.1.1.tgz#c623dc4beef7f6ef00099e6dc359e45f5ebcd4fc"
+fts-http-client@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/fts-http-client/-/fts-http-client-1.1.5.tgz#4a5a0ab4a924bf051592b8db219fb5e24504e366"
   dependencies:
     fts-validator "^1.0.4"
     isomorphic-unfetch "^3.0.0"
 
-fts-http@^1.1.2:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/fts-http/-/fts-http-1.1.4.tgz#bd464c791a2990683beb637c3d582796e645bf5d"
+fts-http@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/fts-http/-/fts-http-1.1.5.tgz#6c60136157685312028aac038d6a0f14ce7ef3b5"
   dependencies:
     accepts "^1.3.5"
     content-type "^1.0.4"
@@ -1827,9 +1827,9 @@ fts-validator@^1.0.4:
     ajv "^6.7.0"
     clone-deep "^4.0.1"
 
-fts@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/fts/-/fts-1.1.1.tgz#95364abaa11f15a3f17b661f42472a1ad3af3a05"
+fts@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/fts/-/fts-1.1.5.tgz#9764d2bd699745741ad2d5ac946e16f1f00e2aa1"
   dependencies:
     ajv "^6.7.0"
     commander "^2.19.0"
@@ -3806,7 +3806,6 @@ rxjs@^6.4.0:
 saasify-client@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.1.4.tgz#00d8d0e1f7cb232a4f658671700d2974dc04e4dc"
-  integrity sha512-x8S+szLYrk2wSuZg2yCMh7ekFxtIOgOkmGDifJBYn/9bgffYWdrg6qIKyp5Ad2DaFr4xE53KKOuqYAhv4zPlJg==
   dependencies:
     axios "^0.18.0"
     qs "^6.6.0"
@@ -3814,7 +3813,6 @@ saasify-client@^1.1.4:
 saasify-utils@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/saasify-utils/-/saasify-utils-1.1.4.tgz#9fa922f088aedccb39d1f512b52944ed1b6c2a48"
-  integrity sha512-AY1chQOGUTQHks1IIvAuvYF6/76ZsHLKa1kdW1GftlJxQedUUhVclEkfbiMElvA7pQPzrwWG9Ptx0PZ49DIkSw==
   dependencies:
     email-validator "^2.0.4"
     is-url-superb "^3.0.0"

@@ -4,6 +4,8 @@ const url = require('url')
 
 const parseFaasUri = require('./parse-faas-uri')
 
+// TODO: if uri ends with `/` then ignore it
+
 // TODO: add unit tests for the URL and namespace handling
 
 module.exports = (identifier, opts = { }) => {
@@ -22,6 +24,10 @@ module.exports = (identifier, opts = { }) => {
     uri = uri.slice('/1/call/'.length)
   } else if (uri.startsWith('/')) {
     uri = uri.slice('/'.length)
+  }
+
+  if (uri.endsWith('/')) {
+    uri = uri.slice(0, uri.length - 1)
   }
 
   if (!uri.length) {
