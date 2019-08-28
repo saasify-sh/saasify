@@ -1,22 +1,19 @@
+import { getOptions } from './options'
 import { HttpResponse } from 'fts-core'
-import * as chrome from 'chrome-aws-lambda'
-import * as puppeteer from 'puppeteer-core'
+import { launch, Page } from 'puppeteer-core'
 
-type ImageFormat = 'png' | 'jpg'
+type ImageFormat = 'png' | 'jpeg'
+
+let _page: Page | null
+
+const isDev = process.env.NOW_REGION === 'dev1'
 
 export default async function getScreenshot(url: string, type: ImageFormat = 'png'): Promise<HttpResponse> {
-  const browser = await puppeteer.launch({
-    args: chrome.args,
-    executablePath: await chrome.executablePath,
-    headless: chrome.headless
-  })
-
-  const page = await browser.newPage()
+  const page = await getPage(isDev)
   await page.goto(url)
-
   const file = await page.screenshot({ type })
-  await browser.close()
 
+  console.log({ file })
   return {
     headers: {
       'Content-Type': (type === 'png' ? 'image/png' : 'image/jpeg')
@@ -24,4 +21,14 @@ export default async function getScreenshot(url: string, type: ImageFormat = 'pn
     statusCode: 200,
     body: file
   }
+}
+
+async function getPage(isDev: boolean) {
+  if (_page) {
+    return _page
+  }
+  const options = await getOptions(isDev)
+  const browser = await launch(options)
+  _page = await browser.newPage()
+  return _page
 }
