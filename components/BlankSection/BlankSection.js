@@ -13,7 +13,7 @@ export class BlankSection extends Component {
       <Section
         id='blank'
         style={{
-          height: '8em',
+          minHeight: '8em',
           ...style
         }}
         {...rest}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import theme from 'lib/theme'
 
+import { Link } from 'react-router-dom'
+
 import AuthManager from 'store/AuthManager'
 
 import {
@@ -10,6 +12,7 @@ import {
   ReadmeSection,
   DemoSection,
   BlankSection,
+  CTAButton,
   CTASection,
   SectionDivider
 } from 'components'
@@ -31,7 +34,13 @@ export class DocsPage extends Component {
         <SectionDivider inverted />
 
         {AuthManager.isAuthenticated ? (
-          <BlankSection inverted />
+          <BlankSection inverted>
+            <Link to='/docs/api'>
+              <CTAButton>
+                View API Reference
+              </CTAButton>
+            </Link>
+          </BlankSection>
         ) : (
           <CTASection inverted />
         )}
