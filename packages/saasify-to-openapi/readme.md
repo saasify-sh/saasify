@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://saasify.xyz" title="Saasify">
+    <img src="https://raw.githubusercontent.com/saasify-xyz/saasify/master/logo-white@1024w.png" alt="Saasify Logo" width="500" />
+  </a>
+</p>
+
 # saasify-to-openapi
 
 > Converts [Saasify](https://saasify.xyz) deployments to [OpenAPI](https://swagger.io/docs/specification/about) specs.
