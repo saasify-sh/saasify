@@ -38,8 +38,6 @@
     "credit-card": "^3.0.2",
     "enquirer": "^2.3.0",
     "fast-stream-to-buffer": "^1.0.0",
-    "saasify-client": "^1.1.3",
-    "saasify-utils": "^0.0.2",
     "find-free-port": "^2.0.0",
     "fs-extra": "^8.1.0",
     "fts": "^1.1.1",
@@ -53,6 +51,8 @@
     "p-map": "^3.0.0",
     "pluralize": "^8.0.0",
     "qs": "^6.8.0",
+    "saasify-client": "^1.1.3",
+    "saasify-utils": "^1.1.3",
     "stripe": "^7.6.0",
     "tempy": "^0.3.0",
     "yazl": "^2.5.1"
