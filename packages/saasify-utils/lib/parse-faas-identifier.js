@@ -41,7 +41,8 @@ module.exports = (identifier, opts = { }) => {
       // add inferred namespace prefix (defaults to authenticated user's username)
       uri = `${namespace}/${uri}`
     } else {
-      throw new Error(`FaaS identifier is missing namespace prefix or you must be authenticated [${uri}]`)
+      // throw new Error(`FaaS identifier is missing namespace prefix or you must be authenticated [${uri}]`)
+      return
     }
   }
 
