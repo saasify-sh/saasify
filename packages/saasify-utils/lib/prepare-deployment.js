@@ -13,7 +13,6 @@ const jsonConfig = { spaces: 2 }
 
 module.exports = async (deployment, data, opts = { }) => {
   const {
-    force = false,
     tempDir = tempy.directory(),
     config = { }
   } = opts

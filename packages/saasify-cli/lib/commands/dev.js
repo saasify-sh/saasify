@@ -1,6 +1,5 @@
 'use strict'
 
-const clipboard = require('clipboardy')
 const { prepareDeployment } = require('saasify-utils')
 
 const handleError = require('../handle-error')
@@ -29,7 +28,7 @@ module.exports = (program, client) => {
         const tempDir = await spinner(
           prepareDeployment({
             ...project,
-            project: `localhost/${project.name}`,
+            project: `localhost/${project.name}`
           }, zipBuffer),
           'Preparing deployment'
         )
