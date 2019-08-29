@@ -6,7 +6,7 @@ import { ImageFormat, Rect } from './types'
 
 const isDev = process.env.NOW_REGION === 'dev1'
 
-// cache the current page / browser between serverless invocations
+// cache the current chrome instance / page between serverless invocations
 let _page: Page | null
 
 export default async function getScreenshot(
@@ -15,18 +15,23 @@ export default async function getScreenshot(
   quality: number = 100,
   fullPage: boolean = false,
   omitBackground: boolean = true,
-  clip: Rect = undefined,
-  gotoOptions: Partial<DirectNavigationOptions> = undefined
+  clip?: Rect,
+  gotoOptions?: DirectNavigationOptions
 ): Promise<HttpResponse> {
   const page = await getPage(isDev)
   await page.goto(url, gotoOptions)
-  const file = await page.screenshot({
+
+  const opts: any = {
     type,
-    quality,
     fullPage,
     omitBackground,
     clip
-  })
+  }
+
+  if (type === 'jpeg') {
+    opts.quality = quality
+  }
+  const file = (await page.screenshot(opts)) as any
 
   return {
     headers: {
