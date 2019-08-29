@@ -1,19 +1,33 @@
 import { getOptions } from './options'
 import { HttpResponse } from 'fts-core'
-import { launch, Page } from 'puppeteer-core'
+import { launch, Page, DirectNavigationOptions } from 'puppeteer-core'
 
-type ImageFormat = 'png' | 'jpeg'
-
-let _page: Page | null
+import { ImageFormat, Rect } from './types'
 
 const isDev = process.env.NOW_REGION === 'dev1'
 
-export default async function getScreenshot(url: string, type: ImageFormat = 'png'): Promise<HttpResponse> {
-  const page = await getPage(isDev)
-  await page.goto(url)
-  const file = await page.screenshot({ type })
+// cache the current page / browser between serverless invocations
+let _page: Page | null
 
-  console.log({ file })
+export default async function getScreenshot(
+  url: string,
+  type: ImageFormat = 'png',
+  quality: number = 100,
+  fullPage: boolean = false,
+  omitBackground: boolean = true,
+  clip: Rect = undefined,
+  gotoOptions: Partial<DirectNavigationOptions> = undefined
+): Promise<HttpResponse> {
+  const page = await getPage(isDev)
+  await page.goto(url, gotoOptions)
+  const file = await page.screenshot({
+    type,
+    quality,
+    fullPage,
+    omitBackground,
+    clip
+  })
+
   return {
     headers: {
       'Content-Type': (type === 'png' ? 'image/png' : 'image/jpeg')
