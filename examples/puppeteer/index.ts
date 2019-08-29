@@ -1,6 +1,11 @@
 import { getOptions } from './options'
 import { HttpResponse } from 'fts-core'
-import { launch, Page, DirectNavigationOptions } from 'puppeteer-core'
+import {
+  launch,
+  Page,
+  DirectNavigationOptions,
+  BinaryScreenShotOptions
+} from 'puppeteer-core'
 
 import { ImageFormat, Rect } from './types'
 
@@ -21,7 +26,7 @@ export default async function getScreenshot(
   const page = await getPage(isDev)
   await page.goto(url, gotoOptions)
 
-  const opts: any = {
+  const opts: BinaryScreenShotOptions = {
     type,
     fullPage,
     omitBackground,
@@ -31,7 +36,8 @@ export default async function getScreenshot(
   if (type === 'jpeg') {
     opts.quality = quality
   }
-  const file = (await page.screenshot(opts)) as any
+
+  const file = await page.screenshot(opts)
 
   return {
     headers: {
