@@ -6,7 +6,7 @@ export const nala = (opts = { }) => {
     '@name': 'nala',
     '@section-fg-color': '#222',
     '@section-bg-color': '#363636',
-    '@primary-color': '#ff5252',
+    // '@primary-color': '#ff5252',
     ...opts,
     fonts: [ 'Oxygen' ]
   }

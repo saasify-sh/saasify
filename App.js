@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+import { toJS } from 'mobx'
 import { observer, Provider } from 'mobx-react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
@@ -27,8 +28,8 @@ import {
 } from './routes'
 
 import AuthManager from './store/AuthManager'
+import ThemeManager from './store/ThemeManager'
 import deployment from './lib/deployment'
-import theme from './lib/theme'
 
 @observer
 export default class App extends Component {
@@ -38,6 +39,9 @@ export default class App extends Component {
     }
 
     const { saas } = deployment.project
+
+    const fonts = toJS(ThemeManager.theme.fonts)
+    console.log(fonts)
 
     return (
       <Router>
@@ -50,21 +54,19 @@ export default class App extends Component {
                 <link rel='shortcut icon' href={saas.logo} />
               )}
 
-              {theme.fonts && (
-                <>
-                  {theme.fonts.map((font) => (
-                    <link
-                      key={font}
-                      href={`https://fonts.googleapis.com/css?family=${font}&display=swap`}
-                      rel='stylesheet'
-                    />
-                  ))}
-                </>
+              {fonts && (
+                fonts.map((font) => (
+                  <link
+                    key={font}
+                    href={`https://fonts.googleapis.com/css?family=${font}&display=swap`}
+                    rel='stylesheet'
+                  />
+                ))
               )}
             </Helmet>
 
             <BodyClassName
-              className={`theme-${theme['@name']}`}
+              className={`theme-${ThemeManager.theme['@name']}`}
             >
               <Switch>
                 <Route exact path='/' component={HomePage} />

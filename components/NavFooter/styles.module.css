@@ -9,8 +9,6 @@
 
   display: flex;
   flex-direction: column;
-
-  color: #fff;
 }
 
 .content > div {
@@ -27,7 +25,6 @@
 }
 
 .header {
-  color: #fff;
   font-size: 1.3em;
   margin-bottom: 1.5em;
 }
@@ -46,10 +43,6 @@
   cursor: pointer;
 }
 
-.link {
-  color: #ccc;
-}
-
 .logo {
   max-height: 48px;
   margin-bottom: 0.7em;
@@ -61,8 +54,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  color: #ccc;
 }
 
 .detail > i {

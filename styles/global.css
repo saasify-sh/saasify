@@ -19,12 +19,12 @@ h1, h2, h3, h4, h5, h6 {
   font-style: normal;
   font-weight: 200;
   font-family: proxima-nova, Helvetica Neue, sans-serif;
-  color: inherit !important;
+  color: initial;
   margin: initial;
 }
 
 p {
-  color: rgb(210, 210, 214);
+  color: #d2d2d6;
   font-size: 16px;
 }
 

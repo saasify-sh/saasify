@@ -1,0 +1,21 @@
+:global(.theme-sadie) {
+  font-family: Manjari, Helvetica, sans-serif;
+  font-weight: 300 !important;
+  color: #222;
+}
+
+:global(.theme-sadie) p {
+  color: #444;
+}
+
+:global(.theme-sadie) h1, :global(.theme-sadie) h2, :global(.theme-sadie) h3, :global(.theme-sadie) h4, :global(.theme-sadie) h5, :global(.theme-sadie) h6 {
+  font-family: Manjari, Helvetica, sans-serif;
+  font-weight: 300 !important;
+  color: #222;
+}
+
+:global(.theme-sadie) :global(.ant-btn-primary) {
+}
+
+.section .subtitle {
+}

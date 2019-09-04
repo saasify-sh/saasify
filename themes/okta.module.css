@@ -1,0 +1,35 @@
+.section .title {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section .subtitle {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+:global(.theme-okta) footer .content {
+  color: #fff;
+}
+
+:global(.theme-okta) footer .header {
+  color: #fff;
+}
+
+:global(.theme-okta) footer .link {
+  color: #ccc;
+}
+
+:global(.theme-okta) footer .detail {
+  color: #ccc;
+}
+
+:global(.theme-okta) header .link,
+:global(.theme-okta) header .link:active,
+:global(.theme-okta) header .link:visited {
+  color: #fff;
+}
+
+:global(.theme-okta) header .link:hover {
+  color: #eb3d48;
+}

@@ -83,19 +83,9 @@
   .link {
     padding: 0;
     margin-left: 2em;
-    color: #fff;
-  }
-
-  .link:active, .link:visited {
-    color: #fff;
   }
 
   .link:hover {
     transition: color 100ms ease;
-    color: #eb3d48;
-  }
-
-  .activeLink.activeLink {
-    color: #fff;
   }
 }
