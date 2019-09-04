@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { observer, Provider } from 'mobx-react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+import BodyClassName from 'react-body-classname'
 
 import {
   AuthenticatedRoute,
@@ -27,6 +28,7 @@ import {
 
 import AuthManager from './store/AuthManager'
 import deployment from './lib/deployment'
+import theme from './lib/theme'
 
 @observer
 export default class App extends Component {
@@ -47,29 +49,45 @@ export default class App extends Component {
               {saas.logo && (
                 <link rel='shortcut icon' href={saas.logo} />
               )}
+
+              {theme.fonts && (
+                <>
+                  {theme.fonts.map((font) => (
+                    <link
+                      key={font}
+                      href={`https://fonts.googleapis.com/css?family=${font}&display=swap`}
+                      rel='stylesheet'
+                    />
+                  ))}
+                </>
+              )}
             </Helmet>
 
-            <Switch>
-              <Route exact path='/' component={HomePage} />
+            <BodyClassName
+              className={`theme-${theme['@name']}`}
+            >
+              <Switch>
+                <Route exact path='/' component={HomePage} />
 
-              <Route path='/pricing' component={PricingPage} />
+                <Route path='/pricing' component={PricingPage} />
 
-              <Route path='/docs/api' component={APIPage} />
-              <Route path='/docs' component={DocsPage} />
+                <Route path='/docs/api' component={APIPage} />
+                <Route path='/docs' component={DocsPage} />
 
-              <Route path='/terms' component={TermsPage} />
-              <Route path='/privacy' component={PrivacyPage} />
+                <Route path='/terms' component={TermsPage} />
+                <Route path='/privacy' component={PrivacyPage} />
 
-              <Route path='/login' component={LoginPage} />
-              <Route path='/signup' component={SignupPage} />
-              <Route path='/auth/github' component={AuthGitHubPage} />
+                <Route path='/login' component={LoginPage} />
+                <Route path='/signup' component={SignupPage} />
+                <Route path='/auth/github' component={AuthGitHubPage} />
 
-              <AuthenticatedRoute path='/dashboard' component={DashboardPage} />
-              <AuthenticatedRoute path='/checkout' component={CheckoutPage} />
-              <AuthenticatedRoute path='/logout' component={LogoutPage} />
+                <AuthenticatedRoute path='/dashboard' component={DashboardPage} />
+                <AuthenticatedRoute path='/checkout' component={CheckoutPage} />
+                <AuthenticatedRoute path='/logout' component={LogoutPage} />
 
-              <Route component={NotFoundPage} />
-            </Switch>
+                <Route component={NotFoundPage} />
+              </Switch>
+            </BodyClassName>
           </SaasifyContext.Provider>
         </Provider>
       </Router>

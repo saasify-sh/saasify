@@ -1,0 +1,14 @@
+:global(.theme-nala) {
+  font-family: Oxygen, Helvetica, sans-serif;
+  font-weight: 300 !important;
+}
+
+:global(.theme-nala) h1, :global(.theme-nala) h2, :global(.theme-nala) h3, :global(.theme-nala) h4, :global(.theme-nala) h5, :global(.theme-nala) h6 {
+  font-family: Oxygen, Helvetica, sans-serif;
+  font-weight: 300 !important;
+}
+
+:global(.theme-nala) :global(.ant-btn-primary) {
+  background-color: #ff5252;
+  border-color: #ff5252;
+}

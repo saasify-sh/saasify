@@ -2,6 +2,8 @@
   position: relative;
   width: 650px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .tabs {

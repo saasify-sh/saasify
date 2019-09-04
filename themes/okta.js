@@ -8,6 +8,7 @@ export const okta = (opts = { }) => {
     '@name': 'okta',
     '@section-fg-color': '#23303a',
     '@section-bg-color': '#1e3a54',
+    '@primary-color': '#d23d67',
     ...opts
   }
 }

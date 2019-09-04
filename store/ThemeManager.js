@@ -34,7 +34,7 @@ if (process.env.NODE_ENV === 'development') {
 
     // window.less.modifyVars(themeManager.theme)
   }, {
-    name: 'Theme change'
+    name: 'Theme change (development)'
   })
 }
 
