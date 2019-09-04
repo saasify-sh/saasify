@@ -17,5 +17,6 @@
 :global(.theme-sadie) :global(.ant-btn-primary) {
 }
 
-.section .subtitle {
+:global(.theme-sadie) .logo {
+  color: #222;
 }
