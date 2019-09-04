@@ -14,7 +14,7 @@ module.exports = async function finToOpenAPI (deployment, opts = { }) {
 
   const paths = await pReduce(deployment.services, async (paths, service) => ({
     ...paths,
-    ...(await module.exports.serviceToPath(service))
+    ...(await module.exports.serviceToPaths(service))
   }), { })
 
   const spec = {
@@ -147,7 +147,7 @@ async function prepareSchema (schema) {
   return pruneCustomKeywords(deref)
 }
 
-module.exports.serviceToPath = async function serviceToPath (service) {
+module.exports.serviceToPaths = async function serviceToPaths (service) {
   const {
     route,
     definition,
@@ -193,7 +193,50 @@ module.exports.serviceToPath = async function serviceToPath (service) {
     post.description = definition.description
   }
 
+  const parameters = [ ]
+
+  for (const [ name, schema ] of Object.entries(paramsSchema.properties)) {
+    const param = {
+      name,
+      schema,
+      in: 'query'
+    }
+
+    if (schema.description) {
+      param.description = schema.description
+    }
+
+    if (schema.$ref) {
+      param.schema = {
+        ...schema,
+        definitions: paramsSchema.definitions
+      }
+    }
+
+    parameters.push(param)
+  }
+
+  const get = {
+    operationId: name,
+    tags: [ 'service' ],
+    parameters,
+    responses: {
+      '200': {
+        description: 'Success',
+        content: {
+          'application/json': {
+            schema: responseSchema
+          }
+        }
+      }
+    }
+  }
+
+  if (definition.description) {
+    get.description = definition.description
+  }
+
   return {
-    [route]: { post }
+    [route]: { post, get }
   }
 }

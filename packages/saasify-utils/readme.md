@@ -67,6 +67,15 @@ validators.deployment('username/goodProjectName@abc123yz') // true
 validators.deployment('username/bad%project%20name@ZZ') // false
 ```
 
+#### prepareDeployment
+
+```js
+const saasifyUtils = require('saasify-utils')
+const { validators } = saasifyUtils
+```
+
+This is used internally to prepare a zip file and metadata about a deployment for serving via [now](https://zeit.co/home).
+
 ## FaaS Identifier Format
 
 The most general FaaS identifier fully specifies the deployment and service name.
