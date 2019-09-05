@@ -2,10 +2,11 @@
   text-align: center;
 }
 
-.name {
+.plan .name {
   font-weight: 700;
   font-size: 2em;
   letter-spacing: 4px;
+  color: rgba(0, 0, 0, 0.85) !important;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
