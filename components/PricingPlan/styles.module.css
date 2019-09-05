@@ -14,11 +14,14 @@
 }
 
 .secondaryCTAButton {
-  color: #000;
+  color: #000 !important;
 }
 
-.secondaryCTAButton:hover {
-  color: #fff;
+.secondaryCTAButton:hover,
+.secondaryCTAButton:active,
+.secondaryCTAButton:focus
+{
+  color: #fff !important;
 }
 
 .price {

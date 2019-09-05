@@ -13,6 +13,6 @@
 }
 
 .secondary {
-  color: #fff;
+  color: #fff !important;
   border-width: 2px;
 }

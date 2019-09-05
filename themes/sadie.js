@@ -1,5 +1,11 @@
 import styles from './sadie.module.css'
 
+// TODO
+// https://colorhunt.co/palette/118331
+// https://colorhunt.co/palette/66116
+// https://colorhunt.co/palette/42676
+// https://colorhunt.co/palette/121977
+
 // https://colorhunt.co/palette/105443
 
 export const sadie = (opts = { }) => {

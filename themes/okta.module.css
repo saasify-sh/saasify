@@ -8,6 +8,14 @@
   color: #fff;
 }
 
+:global(.theme-okta) {
+  color: #fff;
+}
+
+:global(.theme-okta) h1, :global(.theme-okta) h2, :global(.theme-okta) h3, :global(.theme-okta) h4, :global(.theme-okta) h5, :global(.theme-okta) h6 {
+  color: #fff !important;
+}
+
 :global(.theme-okta) footer .content {
   color: #fff;
 }
@@ -32,4 +40,34 @@
 
 :global(.theme-okta) header .link:hover {
   color: #eb3d48;
+}
+
+:global(.theme-okta) a {
+  color: #d23d67;
+}
+
+:global(.theme-okta) a:hover {
+  color: #db6485;
+}
+
+:global(.theme-okta) a:active {
+  color: #c83a62;
+}
+
+:global(.theme-okta) :global(.ant-btn-primary) {
+  background-color: #d23d67;
+  border-color: #d23d67;
+  color: #fff;
+}
+
+:global(.theme-okta) :global(.ant-btn-primary:hover) {
+  background-color: #db6485;
+  border-color: #db6485;
+  color: #fff;
+}
+
+:global(.theme-okta) :global(.ant-btn-primary:active) {
+  background-color: #c83a62;
+  border-color: #c83a62;
+  color: #fff;
 }
