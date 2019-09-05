@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://saasify.sh" title="Saasify">
-    <img src="https://raw.githubusercontent.com/saasify-xyz/saasify/master/logo-white@1024w.png" alt="Saasify Logo" width="500" />
+    <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/logo-white@1024w.png" alt="Saasify Logo" width="500" />
   </a>
 </p>
 
@@ -8,7 +8,7 @@
 
 > Converts [Saasify](https://saasify.sh) deployments to [OpenAPI](https://swagger.io/docs/specification/about) specs.
 
-[![NPM](https://img.shields.io/npm/v/saasify-to-openapi.svg)](https://www.npmjs.com/package/saasify-to-openapi) [![Build Status](https://travis-ci.com/saasify-xyz/saasify.svg?branch=master)](https://travis-ci.com/saasify-xyz/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/saasify-to-openapi.svg)](https://www.npmjs.com/package/saasify-to-openapi) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 

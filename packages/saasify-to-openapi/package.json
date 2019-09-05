@@ -4,7 +4,7 @@
   "description": "Converts Saasify deployments to OpenAPI specs.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "saasify-xyz/saasify",
+  "repository": "saasify-sh/saasify",
   "license": "MIT",
   "scripts": {
     "test": "ava -v && standard"

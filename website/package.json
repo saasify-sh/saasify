@@ -5,7 +5,7 @@
   "description": "Saasify is the easiest way to launch your own SaaS.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "saasify-xyz/saasify",
+  "repository": "saasify-sh/saasify",
   "license": "MIT",
   "scripts": {
     "start": "mdx-go docs",
