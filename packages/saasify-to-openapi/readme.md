@@ -1,12 +1,12 @@
 <p align="center">
-  <a href="https://saasify.xyz" title="Saasify">
+  <a href="https://saasify.sh" title="Saasify">
     <img src="https://raw.githubusercontent.com/saasify-xyz/saasify/master/logo-white@1024w.png" alt="Saasify Logo" width="500" />
   </a>
 </p>
 
 # saasify-to-openapi
 
-> Converts [Saasify](https://saasify.xyz) deployments to [OpenAPI](https://swagger.io/docs/specification/about) specs.
+> Converts [Saasify](https://saasify.sh) deployments to [OpenAPI](https://swagger.io/docs/specification/about) specs.
 
 [![NPM](https://img.shields.io/npm/v/saasify-to-openapi.svg)](https://www.npmjs.com/package/saasify-to-openapi) [![Build Status](https://travis-ci.com/saasify-xyz/saasify.svg?branch=master)](https://travis-ci.com/saasify-xyz/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -47,7 +47,7 @@ Should any of these be injected by the saas client?
 
 ## Related
 
-- [saasify](https://saasify.xyz) - Saasify is the easiest way to launch your own SaaS.
+- [saasify](https://saasify.sh) - Saasify is the easiest way to launch your own SaaS.
 - [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
 - [OpenAPI](https://swagger.io/docs/specification/about) - API specification.
 

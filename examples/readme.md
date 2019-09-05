@@ -1,6 +1,6 @@
 # Saasify
 
-> [Saasify](https://saasify.xyz) is the easiest way to launch your own SaaS.
+> [Saasify](https://saasify.sh) is the easiest way to launch your own SaaS.
 
 ## Examples
 
@@ -14,7 +14,7 @@
 
 ## Related
 
-- [saasify](https://saasify.xyz) - Saasify homepage.
+- [saasify](https://saasify.sh) - Saasify homepage.
 - [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
 
 ## License

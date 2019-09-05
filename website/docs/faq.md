@@ -5,7 +5,7 @@ import { Head } from 'mdx-go'
 </Head>
 
 <p align="center">
-  <a href="https://saasify.xyz" title="Saasify">
+  <a href="https://saasify.sh" title="Saasify">
     <img src="https://raw.githubusercontent.com/saasify-xyz/saasify/master/logo-white@1024w.png" alt="Saasify Logo" width="500" />
   </a>
 </p>

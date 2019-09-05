@@ -44,7 +44,7 @@ module.exports = async (client) => {
       redirect_uri: `http://localhost:${port}/auth/github`
     }) : ({
       client_id: '6525c812c9b4430147c3',
-      redirect_uri: `https://saasify.xyz/auth/github`
+      redirect_uri: `https://saasify.sh/auth/github`
     })
 
   const opts = (new url.URLSearchParams(config)).toString()

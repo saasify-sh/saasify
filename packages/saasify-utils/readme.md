@@ -1,12 +1,12 @@
 <p align="center">
-  <a href="https://saasify.xyz" title="Saasify">
+  <a href="https://saasify.sh" title="Saasify">
     <img src="https://raw.githubusercontent.com/saasify-xyz/saasify/master/logo-white@1024w.png" alt="Saasify Logo" width="500" />
   </a>
 </p>
 
 # saasify-utils
 
-> Shared utilities for [Saasify](https://saasify.xyz).
+> Shared utilities for [Saasify](https://saasify.sh).
 
 [![NPM](https://img.shields.io/npm/v/saasify-utils.svg)](https://www.npmjs.com/package/saasify-utils) [![Build Status](https://travis-ci.com/saasify-xyz/saasify.svg?branch=master)](https://travis-ci.com/saasify-xyz/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -80,7 +80,7 @@ This is used internally to prepare a zip file and metadata about a deployment fo
 
 The most general FaaS identifier fully specifies the deployment and service name.
 
-It *may* include an optional URL prefix such as `http://localhost:5000/1/call/` in *development* or `https://api.saasify.xyz/1/call/` in *production*. The parsed result will be the same with or without the full URL prefix.
+It *may* include an optional URL prefix such as `http://localhost:5000/1/call/` in *development* or `https://api.saasify.sh/1/call/` in *production*. The parsed result will be the same with or without the full URL prefix.
 
 ```
 username/projectName.serviceName@01234567  // explicitly identify a specific deployment (may not be published)
@@ -127,7 +127,7 @@ saasify ls my-user-name/hello-world
 
 ## Related
 
-- [saasify](https://saasify.xyz) - Saasify is the easiest way to launch your own SaaS.
+- [saasify](https://saasify.sh) - Saasify is the easiest way to launch your own SaaS.
 - [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
 
 ## License

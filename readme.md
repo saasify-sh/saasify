@@ -1,10 +1,10 @@
 <p align="center">
-  <a href="https://saasify.xyz" title="Saasify">
+  <a href="https://saasify.sh" title="Saasify">
     <img src="https://raw.githubusercontent.com/saasify-xyz/saasify/master/logo-white@1024w.png" alt="Saasify Logo" width="500" />
   </a>
 </p>
 
-> [Saasify](https://saasify.xyz) transforms **serverless functions** into fully functional **SaaS** websites!
+> [Saasify](https://saasify.sh) transforms **serverless functions** into fully functional **SaaS** websites!
 
 [![NPM](https://img.shields.io/npm/v/saasify.svg)](https://www.npmjs.com/package/saasify) [![Build Status](https://travis-ci.com/saasify-xyz/saasify.svg?branch=master)](https://travis-ci.com/saasify-xyz/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -34,11 +34,11 @@ If you're interested in OSS sustainability and want to follow along with the pro
 
 ## Install
 
-For more documentation and a detailed walkthrough, visit [saasify.xyz](https://saasify.xyz).
+For more documentation and a detailed walkthrough, visit [saasify.sh](https://saasify.sh).
 
 ## Related
 
-- [saasify](https://saasify.xyz) - Saasify homepage.
+- [saasify](https://saasify.sh) - Saasify homepage.
 - [saasify-cli](./packages/saasify-cli) - Saasify CLI.
 - [saasify-client](./packages/saasify-client) - Saasify HTTP Client.
 - [saasify-utils](./packages/saasify-utils) - Shared utilities for Saasify.

@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "saasify",
-  "alias": "saasify.xyz",
+  "alias": "saasify.sh",
   "builds": [
     {
       "src": "package.json",

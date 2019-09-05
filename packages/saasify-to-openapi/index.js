@@ -7,7 +7,7 @@ const { URL } = require('url')
 
 module.exports = async function finToOpenAPI (deployment, opts = { }) {
   const {
-    baseUrl = 'https://api.saasify.xyz'
+    baseUrl = 'https://api.saasify.sh'
   } = opts
 
   // const url = module.exports.normalizeUrl(deployment.url, baseUrl)
@@ -25,7 +25,7 @@ module.exports = async function finToOpenAPI (deployment, opts = { }) {
       termsOfService: '/terms',
       contact: {
         name: 'API Support',
-        email: 'support@saasify.xyz'
+        email: 'support@saasify.sh'
       },
       license: {
         name: 'Apache 2.0'

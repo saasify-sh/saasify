@@ -3,7 +3,7 @@
 const axios = require('axios')
 const qs = require('qs')
 
-const defaultBaseUrl = 'https://api.saasify.xyz'
+const defaultBaseUrl = 'https://api.saasify.sh'
 
 module.exports = class SaasifyClient {
   constructor (opts = { }) {

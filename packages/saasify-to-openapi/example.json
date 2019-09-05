@@ -10,7 +10,7 @@
     "termsOfService": "/terms",
     "contact": {
       "name": "API Support",
-      "email": "support@saasify.xyz"
+      "email": "support@saasify.sh"
     },
     "license": {
       "name": "Apache 2.0",
@@ -59,7 +59,7 @@ TODO
   },
   "servers": [
     {
-      "url": "https://api.saasify.xyz"
+      "url": "https://api.saasify.sh"
     }
   ],
   "tags": [
