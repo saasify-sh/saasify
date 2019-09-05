@@ -118,7 +118,7 @@ export class NavFooter extends Component {
             <ul>
               <li className={theme(styles, 'listItem')}>
                 <a
-                  href='mailto:support@saasify.xyz'
+                  href='mailto:support@saasify.sh'
                   className={theme(styles, 'link')}
                 >
                   Email

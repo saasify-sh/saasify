@@ -15,7 +15,7 @@ export class EnterpriseSection extends Component {
         {...this.props}
       >
         <p>
-          For questions regarding bulk pricing, dedicated support, customization, self-hosting, or other enterprise considerations, please <a href='mailto:info@saasify.xyz'>contact us</a>.
+          For questions regarding bulk pricing, dedicated support, customization, self-hosting, or other enterprise considerations, please <a href='mailto:info@saasify.sh'>contact us</a>.
         </p>
 
         <UndrawSVG
