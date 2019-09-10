@@ -28,14 +28,7 @@ export class APIPage extends Component {
               specUrl={deployment.openApiUrl}
               options={{
                 suppressWarnings: (process.env.NODE_ENV === 'production'),
-                hideLoading: true,
-                theme: {
-                  colors: {
-                    primary: {
-                      main: deployment.project.saas.theme['@primary-color']
-                    }
-                  }
-                }
+                hideLoading: true
               }}
             />
 

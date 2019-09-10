@@ -16,6 +16,10 @@
   color: #fff !important;
 }
 
+:global(.theme-okta) .api-page h1, :global(.theme-okta) .api-page h2, :global(.theme-okta) .api-page h3, :global(.theme-okta) .api-page h4, :global(.theme-okta) .api-page h5, :global(.theme-okta) .api-page h6 {
+  color: #222 !important;
+}
+
 :global(.theme-okta) footer .content {
   color: #fff;
 }
