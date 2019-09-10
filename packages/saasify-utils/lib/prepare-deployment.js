@@ -46,7 +46,7 @@ export default ftsHttp.createHttpHandler(definition, handler)
 
     builds.push({
       src: handlerFileNameExt,
-      use: '@now/node@canary',
+      use: '@now/node@0.12.8',
       config: {
         'maxLambdaSize': '40mb',
         ...config

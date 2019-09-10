@@ -1,0 +1,15 @@
+{
+  "name": "saasify-example-tesseract",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Saasify example using Tesseract",
+  "repository": "saasify-sh/saasify",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "license": "MIT",
+  "dependencies": {
+    "tesseract.js": "^2.0.0-alpha.15"
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.9"
+  }
+}
