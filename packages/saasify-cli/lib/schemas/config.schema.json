@@ -77,8 +77,15 @@
           "title": "input"
         },
         "output": {
-          "type": "number",
-          "title": "output"
+          "title": "output",
+          "oneOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "string"
+            }
+          ]
         },
         "additionalProperties": false
       },
