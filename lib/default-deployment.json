@@ -1,12 +1,6 @@
 {
-  "id": "transitive-bullshit/hello-world@38100a43",
-  "url": "http://localhost:5000/1/call/transitive-bullshit/hello-world@38100a43",
-  "hash": "38100a43",
-  "user": "5d5b477eb5fab1199c927a36",
   "enabled": true,
   "published": false,
-  "openApiUrl": "http://localhost:5000/1/deployments/openapi/transitive-bullshit/hello-world@38100a43",
-  "readme": "IyBUT0RPCgojIyBDb3JlCgotIFsgXSBhZGQgYmFuZHdpZHRoIHRvIHJlcG9ydCB1c2FnZQotIFsgXSBhZGQgc3VwcG9ydCBmb3IgcHVibGlzaGluZyBkZXBsb3ltZW50cwotIFsgXSBhZGQgc3VwcG9ydCBmb3IgZ2VuZXJhdGluZyAvIGludGVncmF0aW5nIHdpdGggc2FhcyBjbGllbnRzCi0gWyBdIGFkZCBzdXBwb3J0IGZvciBkbnMgYWxpYXNpbmcgc2FhcyBjbGllbnRzIHRvIGV4dGVybmFsIGRvbWFpbnMKLSBbIF0gZml4IHN0cmlwZSBpbmNvbnNpc3RlbmN5IHdpdGggdW5pdCBwcmljZSB2cyB1c2FnZSBhbW91bnQgaW4gaW52b2ljZXMKLSBbeF0gc2hvdWxkIHJhdGUgbGltaXQgYW5kIHBheW1lbnQgaW5mbyBiZSBwZXIgcHJvamVjdCwgZGVwbG95bWVudCwgb3Igc2VydmljZT8KLSBbeF0gfn5pbXByb3ZlIGxvZ2dpbmcgb3B0aW9ucyBmb3IgZmFpbGVkIGRlcGxveW1lbnRzIChjdXJyZW50bHkgYSBibGFjayBib3gpfn4KCiMjIFNhYVMgQ2xpZW50CgotIFt4XSBhZGQgdXNhZ2UgZGF0YSB0byBkYXNoYm9hcmQKLSBbIF0gYWRkIGF1dG9nZW5lcmF0ZWQgYXBpIGRvY3MgYC9kb2NzL2FwaWAKLSBbIF0gZml4IGRvY3MgcmVhZG1lCi0gW3hdIGZpeCBzdXBwb3J0ID0+IGVtYWlsCi0gW3hdIH5+YWRkIGZhcX5+Ci0gWyBdIGZpeCBjb2RlIHNuaXBwZXRzIGZvciB2YXJpb3VzIGxhbmd1YWdlcwotIFt4XSBhZGQgYWJpbGl0eSB0byB1bnN1YnNjcmliZSBmcm9tIHBsYW4KLSBbeF0gYWRkIGFiaWxpdHkgdG8gcmVmcmVzaCBjb25zdW1lciBhdXRoIHRva2VuCi0gW3hdIH5+c2hvdyB3aGljaCBwbGFuIGlzIGN1cnJlbnRseSBhY3RpdmUgaW4gcHJpY2luZ35+Ci0gW3hdIH5+YWRkIHZlcnNpb24gLyBwdWJsaXNoZWQgZGVwbG95bWVudCBzZWxlY3Rpb24gdG8gZG9jc35+Ci0gW3hdIH5+YWRkIGZvcmdvdCBwYXNzd29yZCBmbG93fn4KLSBbIF0gcmVtb3ZlIGZvcmdvdCBwYXNzd29yZCBvcHRpb24gZm9yIG5vdwotIFt4XSB+fmFkZCBjb25maXJtIGVtYWlsIGZsb3d+fgotIFt4XSByZW1vdmUgbGluayB0byBsaXZlIGNoYXQKLSBbIF0gYWRkIGJhc2ljIHN1cHBvcnQgZm9yIG1vYmlsZSByZXNwb25zaXZlbmVzcwotIFsgXSBwZXJmb3JtIGJhc2ljIGNyb3NzLWJyb3dzZXIgdGVzdGluZwotIFsgXSBhZGQgYmFzaWMgU0VPIG1hcmt1cAotIFt4XSB+fnVwZGF0ZSB0ZXJtcyBhbmQgcHJpdmFjeSBwb2xpY3l+fgotIFsgXSBhZGQgdXNhZ2UgJCBlc3RpbWF0ZSB0byB1c2FnZSBzZWN0aW9uCi0gW3hdIG1ha2UgcGF5bWVudCBpbmZvIGFuZCByYXRlIGxpbWl0cyBkeW5hbWljIGZyb20gcHJvamVjdAogIC0gbWFrZXIgaGFzIGFiaWxpdHkgdG8gdXBkYXRlIHByaWNpbmcgYXQgZGVwbG95bWVudCBsZXZlbCBiZXR3ZWVuIHZlcnNpb25zCiAgLSBvbGQgc3Vic2NyaWJlcnMgc3RheSBvbiBvbGQgcHJpY2luZz8gZ3JhbmRmYXRoZXJlZCBpbgotIFt4XSB+fmFkZCBhYmlsaXR5IHRvIHVwbG9hZCAvIGNoYW5nZSBwcm9maWxlIGltYWdlfn4KLSBbIF0gYWRkIHVzYWdlICQgY2FsY3VsYXRvciB0byBwcmljaW5nIHNlY3Rpb24KLSBbIF0gYWRkIGFiaWxpdHkgdG8gaGF2ZSBjb3Vwb25zIGZvciBQcm9kdWN0SHVudCB1c2Vycz8KCiMjIE1hcmtldGluZyBTaXRlCgotIFsgXSBleHRyYWN0IGNvbW1vbiBjb21wb25lbnRzIGludG8gcmVhY3QtZmluIGxpYnJhcnkKLSBbIF0gbGFuZGluZyBwYWdlCi0gWyBdIGxpbmtzIHRvIGV4YW1wbGVzCi0gWyBdIGFkZCByZWFjdC11bmRyYXcgbGlicmFyeQotIFsgXSBhZGQgYmFzaWMgZGV2ZWxvcGVyIGRvY3MKLSBbIF0gYWRkIGluaXRpYWwgYmxvZyBwb3N0IGRpc2N1c3Npbmcgd2h5IHdlJ3JlIGJ1aWxkaW5nIGZpbgoKIyMgRGV2b3BzCgotIFsgXSBzZXR1cCBiYXNpYyB1cHRpbWUgbW9uaXRvcgoKIyMgQml6ZGV2CgotIFsgXSBTTyBNVUNICi0gWyBdIGNvbnRhY3Qga2V2aW4gaW4gYSBmZXcgd2Vla3M7IHZlcnkgdmlzdWFsIGRlbW8KICAtIGxvb2sgaW50byBwb3RlbnRpYWwgaHVic3BvdCBBUEkgaW50ZWdyYXRpb25zCgojIyBTYWFTIEFQSXMKCi0gWyBdIGRlY2lkZSBvbiBhbmQgaW1wbGVtZW50IGZpcnN0IEFQSQo=",
   "noAuthRateLimit": {
     "enabled": true,
     "requests": true,
@@ -16,12 +10,35 @@
   "amountPerRequest": 0.0004,
   "amountPerCompute": 0.0034,
   "amountPerBandwidth": 0.2,
+  "hash": "0c360abb",
+  "user": "5d5b477eb5fab1199c927a36",
+  "project": {
+    "description": "Saasify example using Puppeteer",
+    "enabled": true,
+    "_id": "transitive-bullshit/puppeteer-example",
+    "name": "puppeteer-example",
+    "user": "5d5b477eb5fab1199c927a36",
+    "saas": {
+      "name": "puppeteer-example",
+      "heading": "puppeteer-example",
+      "subheading": "Saasify example using Puppeteer",
+      "theme": {
+        "name": "okta"
+      }
+    },
+    "createdAt": "2019-09-11T05:55:47.387Z",
+    "updatedAt": "2019-09-11T05:55:47.387Z",
+    "__v": 0,
+    "id": "transitive-bullshit/puppeteer-example"
+  },
   "version": "1",
+  "readme": "# Puppeteer Example\n\nThis is a simple Saasify project that shows how you can use [headless Chrome](https://pptr.dev) in your serverless functions.\n\n## License\n\nMIT © [Travis Fischer](https://transitivebullsh.it)\n",
+  "authRateLimit": null,
   "services": [
     {
       "timeout": 0,
-      "src": "functions/hello-world.ts",
-      "name": "helloWorld",
+      "src": "index.ts",
+      "name": "getScreenshot",
       "definition": {
         "config": {
           "defaultExport": true,
@@ -30,61 +47,178 @@
         "params": {
           "context": false,
           "order": [
-            "name"
+            "url",
+            "type",
+            "quality",
+            "fullPage",
+            "omitBackground",
+            "clip",
+            "gotoOptions"
           ],
           "schema": {
             "type": "object",
             "properties": {
-              "name": {
+              "url": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "jpeg",
+                  "png"
+                ],
                 "type": "string",
-                "default": "World"
+                "default": "png"
+              },
+              "quality": {
+                "type": "number",
+                "default": 100
+              },
+              "fullPage": {
+                "type": "boolean",
+                "default": false
+              },
+              "omitBackground": {
+                "type": "boolean",
+                "default": true
+              },
+              "clip": {
+                "$ref": "#/definitions/Rect"
+              },
+              "gotoOptions": {
+                "$ref": "#/definitions/DirectNavigationOptions"
               }
             },
             "additionalProperties": false,
             "required": [
-              "name"
+              "fullPage",
+              "omitBackground",
+              "quality",
+              "type",
+              "url"
             ],
+            "definitions": {
+              "Rect": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "width": {
+                    "type": "number"
+                  },
+                  "height": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "height",
+                  "width",
+                  "x",
+                  "y"
+                ]
+              },
+              "DirectNavigationOptions": {
+                "description": "Navigation options for `page.goto`.",
+                "type": "object",
+                "properties": {
+                  "referer": {
+                    "description": "Referer header value.\nIf provided it will take preference over the referer header value set by\n[page.setExtraHTTPHeaders()](#pagesetextrahttpheadersheaders).",
+                    "type": "string"
+                  },
+                  "waitUntil": {
+                    "description": "When to consider navigation succeeded.",
+                    "default": "load Navigation is consider when the `load` event is fired.",
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "enum": [
+                            "domcontentloaded",
+                            "load",
+                            "networkidle0",
+                            "networkidle2"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "enum": [
+                          "domcontentloaded",
+                          "load",
+                          "networkidle0",
+                          "networkidle2"
+                        ],
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "timeout": {
+                    "description": "Maximum navigation time in milliseconds, pass 0 to disable timeout.",
+                    "default": 30000,
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
             "$schema": "http://json-schema.org/draft-07/schema#"
           }
         },
         "returns": {
-          "async": false,
-          "http": false,
+          "async": true,
+          "http": true,
           "schema": {
             "type": "object",
             "properties": {
               "result": {
-                "type": "string"
+                "$ref": "#/definitions/HttpResponse"
               }
             },
             "additionalProperties": false,
+            "definitions": {
+              "HttpResponse": {
+                "description": "Fallback to allow raw HTTP responses that are not type-checked.",
+                "type": "object",
+                "properties": {
+                  "statusCode": {
+                    "type": "number"
+                  },
+                  "headers": {
+                    "$ref": "#/definitions/OutgoingHttpHeaders"
+                  },
+                  "body": {
+                    "description": "Raw data is stored in instances of the Buffer class.\nA Buffer is similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap.  A Buffer cannot be resized.\nValid string encodings: 'ascii'|'utf8'|'utf16le'|'ucs2'(alias of 'utf16le')|'base64'|'binary'(deprecated)|'hex'",
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              },
+              "OutgoingHttpHeaders": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
             "$schema": "http://json-schema.org/draft-07/schema#"
           }
         },
         "version": "1.1.0",
-        "title": "hello-world"
+        "title": "getScreenshot"
       },
-      "route": "/1/call/transitive-bullshit/hello-world@38100a43",
-      "url": "http://localhost:5000/1/call/transitive-bullshit/hello-world@38100a43"
+      "url": "http://localhost:5000/1/call/transitive-bullshit/puppeteer-example@0c360abb"
     }
   ],
-  "createdAt": "2019-08-20T01:20:57.304Z",
-  "updatedAt": "2019-08-20T01:20:57.304Z",
-  "project": {
-    "id": "transitive-bullshit/hello-world",
-    "description": null,
-    "version": "1",
-    "enabled": true,
-    "user": "5d5b477eb5fab1199c927a36",
-    "createdAt": "2019-02-16T17:19:20.047Z",
-    "updatedAt": "2019-04-09T17:07:14.584Z",
-    "saas": {
-      "name": "Hello World!",
-      "heading": "Nala is a baby kitten",
-      "subheading": "She is perfect in every way and loves doing kitty things like taking naps and such.",
-      "theme": {
-        "name": "okta"
-      }
-    }
-  }
+  "createdAt": "2019-09-11T05:55:52.417Z",
+  "updatedAt": "2019-09-11T05:55:52.417Z",
+  "url": "http://localhost:5000/1/call/transitive-bullshit/puppeteer-example@0c360abb",
+  "openApiUrl": "http://localhost:5000/1/deployments/openapi/transitive-bullshit/puppeteer-example@0c360abb",
+  "id": "transitive-bullshit/puppeteer-example@0c360abb"
 }
