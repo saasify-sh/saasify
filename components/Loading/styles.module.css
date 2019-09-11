@@ -1,0 +1,20 @@
+.loading {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  background: #fff;
+}
+
+.title {
+  font-size: 1.4em;
+  margin-bottom: 1.2em;
+}
+
+.loading-icon {
+  color: #222;
+  font-size: 4em;
+}

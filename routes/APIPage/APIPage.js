@@ -1,16 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 import theme from 'lib/theme'
-
-import { RedocStandalone } from 'redoc'
 
 import {
   // NavHeader,
+  Loading,
   SaasifyContext,
   ScrollToTopOnMount,
   NavFooter
 } from 'components'
 
 import styles from './styles.module.css'
+
+const LazyRedoc = React.lazy(() => import('lib/redoc'))
 
 export class APIPage extends Component {
   render() {
@@ -24,13 +25,21 @@ export class APIPage extends Component {
 
             <ScrollToTopOnMount />
 
-            <RedocStandalone
-              specUrl={deployment.openApiUrl}
-              options={{
-                suppressWarnings: (process.env.NODE_ENV === 'production'),
-                hideLoading: true
-              }}
-            />
+            <Suspense
+              fallback={(
+                <Loading
+                  title='Loading API Docs'
+                />
+              )}
+            >
+              <LazyRedoc
+                specUrl={deployment.openApiUrl}
+                options={{
+                  suppressWarnings: (process.env.NODE_ENV === 'production'),
+                  hideLoading: true
+                }}
+              />
+            </Suspense>
 
             <NavFooter />
           </div>
