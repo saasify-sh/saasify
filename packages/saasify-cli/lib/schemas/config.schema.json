@@ -15,6 +15,10 @@
           "type": "string",
           "title": "name"
         },
+        "name": {
+          "type": "string",
+          "title": "description"
+        },
         "alias": {
           "type": "string",
           "title": "alias"

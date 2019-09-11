@@ -4,6 +4,7 @@ const fs = require('fs-extra')
 const fts = require('fts')
 const globby = require('globby')
 const path = require('path')
+const pick = require('lodash.pick')
 const pMap = require('p-map')
 const { validators } = require('saasify-utils')
 
@@ -18,24 +19,47 @@ module.exports = async (program, opts = { }) => {
     concurrency: 1
   })
 
+  const readme = await module.exports.getReadme(config)
+  const pkgInfo = await module.exports.getPackageInfo(config)
+
+  return {
+    ...pkgInfo,
+    ...config,
+    readme,
+    services
+  }
+}
+
+module.exports.getReadme = async (config) => {
   const readmeFiles = await globby('readme.md', {
     cwd: config.root,
     gitignore: true,
     nocase: true
   })
 
-  let readme = ''
   if (readmeFiles.length) {
-    readme = await fs.readFile(readmeFiles[0], 'utf8')
+    return fs.readFile(readmeFiles[0], 'utf8')
   } else {
     console.warn('Unable to find readme.md')
+    return ''
+  }
+}
+
+module.exports.getPackageInfo = async (config) => {
+  const packageJsonPath = path.join(config.root, 'package.json')
+  if (fs.pathExists(packageJsonPath)) {
+    const pkg = await fs.readJson(packageJsonPath)
+
+    return pick(pkg, [
+      'description',
+      'keywords',
+      'repository',
+      'license',
+      'version'
+    ])
   }
 
-  return {
-    ...config,
-    readme,
-    services
-  }
+  return { }
 }
 
 module.exports.generateDefinition = async (service, config, opts) => {
