@@ -19,9 +19,9 @@
     "name": "puppeteer-example",
     "user": "5d5b477eb5fab1199c927a36",
     "saas": {
-      "name": "puppeteer-example",
-      "heading": "puppeteer-example",
-      "subheading": "Saasify example using Puppeteer",
+      "name": "Puppet Master",
+      "heading": "Puppeteer as a Service",
+      "subheading": "Control headless Chrome via SaaS!",
       "theme": {
         "name": "okta"
       }

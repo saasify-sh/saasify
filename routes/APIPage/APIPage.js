@@ -18,28 +18,30 @@ export class APIPage extends Component {
     return (
       <SaasifyContext.Consumer>
         {deployment => (
-          <div className={theme(styles, 'api-page')}>
-            {/*
-            <NavHeader fixed={true} />
-            */}
+          <div>
+            <div className={theme(styles, 'api-page')}>
+              {/*
+              <NavHeader fixed={true} />
+              */}
 
-            <ScrollToTopOnMount />
+              <ScrollToTopOnMount />
 
-            <Suspense
-              fallback={(
-                <Loading
-                  title='Loading API Docs'
+              <Suspense
+                fallback={(
+                  <Loading
+                    title='Loading API Docs'
+                  />
+                )}
+              >
+                <LazyRedoc
+                  specUrl={deployment.openApiUrl}
+                  options={{
+                    suppressWarnings: (process.env.NODE_ENV === 'production'),
+                    hideLoading: true
+                  }}
                 />
-              )}
-            >
-              <LazyRedoc
-                specUrl={deployment.openApiUrl}
-                options={{
-                  suppressWarnings: (process.env.NODE_ENV === 'production'),
-                  hideLoading: true
-                }}
-              />
-            </Suspense>
+              </Suspense>
+            </div>
 
             <NavFooter />
           </div>
