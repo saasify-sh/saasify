@@ -4,8 +4,8 @@ import copyTextToClipboard from 'copy-text-to-clipboard'
 
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
-import { Avatar, Button, Divider, Popconfirm, Table, Tooltip, notification } from 'antd'
 import { observer, inject } from 'mobx-react'
+import { Avatar, Button, Divider, Popconfirm, Table, Tooltip, notification } from 'lib/antd'
 
 import { Section } from '../Section'
 

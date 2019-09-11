@@ -4,8 +4,8 @@ import cs from 'classnames'
 import theme from 'lib/theme'
 
 import { Link } from 'react-router-dom'
-import { Divider } from 'antd'
 import { observer } from 'mobx-react'
+import { Divider } from 'lib/antd'
 
 import { CTAButton } from '../CTAButton'
 import { Paper } from '../Paper'

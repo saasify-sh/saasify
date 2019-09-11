@@ -6,7 +6,7 @@ import copyTextToClipboard from 'copy-text-to-clipboard'
 import stringifyObject from 'stringify-object'
 
 import { observer, inject } from 'mobx-react'
-import { Button, Tooltip } from 'antd'
+import { Button, Tooltip } from 'lib/antd'
 
 import { CodeBlock } from '../CodeBlock'
 

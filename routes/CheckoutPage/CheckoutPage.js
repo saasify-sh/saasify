@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import theme from 'lib/theme'
 
 import { withRouter } from 'react-router-dom'
-import { notification } from 'antd'
+import { notification } from 'lib/antd'
 import { observer, inject } from 'mobx-react'
 import { Redirect } from 'react-router-dom'
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { Button, Divider, Icon, Modal, Table, notification } from 'antd'
+import { Button, Divider, Icon, Modal, Table, notification } from 'lib/antd'
 import { reaction } from 'mobx'
 import { observer, inject } from 'mobx-react'
 

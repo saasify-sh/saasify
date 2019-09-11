@@ -13,7 +13,7 @@ import {
   Icon,
   Input,
   message
-} from 'antd'
+} from 'lib/antd'
 
 import authGitHub from 'lib/auth-github'
 import debug from 'lib/debug'

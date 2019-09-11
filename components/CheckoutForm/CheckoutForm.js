@@ -9,11 +9,7 @@ import {
   injectStripe
 } from 'react-stripe-elements'
 
-import {
-  Button,
-  Icon,
-  Tooltip
-} from 'antd'
+import { Button, Icon, Tooltip } from 'lib/antd'
 
 import env from 'lib/env'
 

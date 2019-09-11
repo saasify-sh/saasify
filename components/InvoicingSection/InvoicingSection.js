@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import titleize from 'titleize'
 
 import { format } from 'date-fns'
-import { Table, Tag } from 'antd'
 import { reaction } from 'mobx'
 import { observer, inject } from 'mobx-react'
+import { Table, Tag } from 'lib/antd'
 
 import { Section } from '../Section'
 

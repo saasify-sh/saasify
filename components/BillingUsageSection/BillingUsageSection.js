@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import { format } from 'date-fns'
-import { Table } from 'antd'
 import { reaction } from 'mobx'
 import { observer, inject } from 'mobx-react'
+import { Table } from 'lib/antd'
 
 import { Section } from '../Section'
 

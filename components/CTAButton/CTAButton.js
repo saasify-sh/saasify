@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import theme from 'lib/theme'
-import { Button } from 'antd'
+import { Button } from 'lib/antd'
 import { observer } from 'mobx-react'
 import Hoverable from 'react-event-as-prop/lib/Hoverable'
 

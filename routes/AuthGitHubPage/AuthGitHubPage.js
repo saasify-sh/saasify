@@ -4,7 +4,7 @@ import qs from 'qs'
 
 import { observer, inject } from 'mobx-react'
 import { Redirect, withRouter } from 'react-router-dom'
-import { message } from 'antd'
+import { message } from 'lib/antd'
 
 import debug from 'lib/debug'
 

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import copyTextToClipboard from 'copy-text-to-clipboard'
 import theme from 'lib/theme'
 
-import { Button, Icon, Result, Steps, Tooltip } from 'antd'
 import { observer, inject } from 'mobx-react'
 import { withRouter, Link } from 'react-router-dom'
+import { Button, Icon, Result, Steps, Tooltip } from 'lib/antd'
 
 import { Section } from '../Section'
 import { Paper } from '../Paper'
