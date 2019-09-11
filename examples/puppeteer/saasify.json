@@ -3,7 +3,21 @@
   "name": "puppeteer-example",
   "services": [
     {
-      "src": "index.ts"
+      "src": "index.ts",
+      "examples": [
+        {
+          "name": "Basic",
+          "input": {
+            "url": "https://google.com"
+          },
+          "output": "google.png"
+        }
+      ]
     }
-  ]
+  ],
+  "saas": {
+    "name": "Puppet Master",
+    "heading": "Puppeteer as a Service",
+    "subheading": "Control headless Chrome via SaaS!"
+  }
 }

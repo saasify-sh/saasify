@@ -23,6 +23,11 @@
           "type": "string",
           "title": "alias"
         },
+        "saas": {
+          "type": "object",
+          "title": "saas",
+          "additionalProperties": true
+        },
         "authRateLimit": {
           "$ref": "#/definitions/RateLimit",
           "title": "authRateLimit"
