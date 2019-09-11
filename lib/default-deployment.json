@@ -37,6 +37,14 @@
   "services": [
     {
       "timeout": 0,
+      "examples": [
+        {
+          "name": "Basic",
+          "input": {
+            "url": "https://google.com"
+          }
+        }
+      ],
       "src": "index.ts",
       "name": "getScreenshot",
       "definition": {
@@ -90,10 +98,6 @@
             },
             "additionalProperties": false,
             "required": [
-              "fullPage",
-              "omitBackground",
-              "quality",
-              "type",
               "url"
             ],
             "definitions": {
