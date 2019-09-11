@@ -67,9 +67,9 @@ This API uses conventional HTTP response codes to indicate the success or failur
 
 # Versioning
 
-All API versions are **immutable** so once you have a working integration, it will always be completely optional to upgrade to newer versions.
+API versions are **immutable** which guarantees that once you have a working integration, it will always be completely optional to upgrade to newer versions.
 
-When we make backwards-incompatible changes to the API, we release new versions following [semver](https://semver.org/). The current version is \`v${deployment.version}\`.
+When we make backwards-incompatible changes to an API, we release new versions following [semver](https://semver.org/). The current version is \`v${deployment.version}\`.
 
 You can visit your [Dashboard](/dashboard) to manage your API version.
 `
@@ -82,7 +82,7 @@ You can visit your [Dashboard](/dashboard) to manage your API version.
     paths,
     security: [
       {
-        apiKey: []
+        'API Key': []
       }
     ],
     tags: [
@@ -95,18 +95,18 @@ You can visit your [Dashboard](/dashboard) to manage your API version.
       securitySchemes: {
         'API Key': {
           type: 'apiKey',
+          name: 'Authorization',
+          in: 'header',
           description: `Optional API key for authenticated access.
 
 
-Unauthenticated (public) requests are subject to rate limiting. See [pricing](/pricing) for more details on unauthenticated rate limits.
+Unauthenticated (public) requests are subject to rate limiting. See [pricing](/pricing) for specifics on these rate limits.
 
 You can view and manage your API key in the [Dashboard](/dashboard).
 
-Be sure to keep your API key secure! Do not share them in publicly accessible areas such as GitHub, client-side code, and so forth.
+Be sure to keep your API key secure. Do not share it in publicly accessible areas such as GitHub, client-side code, and so forth.
 
-All API requests must be made over HTTPS. Calls made over plain HTTP will fail.`,
-          name: 'Authorization',
-          in: 'header'
+All API requests must be made over HTTPS. Calls made over plain HTTP will fail.`
         }
       }
     }
@@ -166,8 +166,26 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   const paramsSchema = jsonSchemaToOpenAPI(params)
   const responseSchema = jsonSchemaToOpenAPI(returns)
 
+  const responses = {
+    '200': {
+      description: 'Success',
+      content: {
+        'application/json': {
+          schema: responseSchema
+        }
+      }
+    },
+    '400': {
+      description: 'Invalid Input'
+    },
+    '429': {
+      description: 'Rate limit exceeded'
+    }
+  }
+
   const post = {
-    operationId: name,
+    operationId: `${name}POST`,
+    summary: `${name} (POST)`,
     tags: [ 'service' ],
     requestBody: {
       required: true,
@@ -177,16 +195,7 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
         }
       }
     },
-    responses: {
-      '200': {
-        description: 'Success',
-        content: {
-          'application/json': {
-            schema: responseSchema
-          }
-        }
-      }
-    }
+    responses
   }
 
   if (definition.description) {
@@ -217,19 +226,11 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   }
 
   const get = {
-    operationId: name,
+    operationId: `${name}GET`,
+    summary: `${name} (GET)`,
     tags: [ 'service' ],
     parameters,
-    responses: {
-      '200': {
-        description: 'Success',
-        content: {
-          'application/json': {
-            schema: responseSchema
-          }
-        }
-      }
-    }
+    responses
   }
 
   if (definition.description) {
