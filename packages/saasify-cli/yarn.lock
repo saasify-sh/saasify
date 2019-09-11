@@ -1099,13 +1099,6 @@ core-util-is@~1.0.0:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
-cors@^2.8.5:
-  version "2.8.5"
-  resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.5.tgz#eac11da51592dd86b9f06f6e7ac293b3df875d29"
-  dependencies:
-    object-assign "^4"
-    vary "^1"
-
 credit-card@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/credit-card/-/credit-card-3.0.2.tgz#6cb5b7647a3394b64b2ed693b4b42879b68f87f3"
@@ -1943,24 +1936,26 @@ fts-core@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/fts-core/-/fts-core-1.1.0.tgz#b4d77bb1f00fe93dbff063ca0ac20c277bd510ec"
 
-fts-http-client@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/fts-http-client/-/fts-http-client-1.1.5.tgz#4a5a0ab4a924bf051592b8db219fb5e24504e366"
+fts-http-client@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/fts-http-client/-/fts-http-client-1.1.7.tgz#f5fb1470df6be00bfd5e1955e420c8bc1dfa18ab"
+  integrity sha512-QgkAxRYjylM9wPposI+RiY9BiPl6+zs8zRQSfJY+E02OqDCwIyvAGIRYyOtDQa2k+YZ553qJ+L+6d9kxvV3oeA==
   dependencies:
     fts-validator "^1.0.4"
     isomorphic-unfetch "^3.0.0"
 
-fts-http@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/fts-http/-/fts-http-1.1.5.tgz#6c60136157685312028aac038d6a0f14ce7ef3b5"
+fts-http@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/fts-http/-/fts-http-1.1.7.tgz#dfee3f89cb3648eb5343ec6dd2309ae2b54d2146"
+  integrity sha512-/naU5USZxpXG03RavykRLAw7YWWFfVXnnDbsj0OAVorrn5AA3qtTR4Y6jNMGoA+2bJYUXrrf0RoV6ouF1gWJiQ==
   dependencies:
     accepts "^1.3.5"
     content-type "^1.0.4"
-    cors "^2.8.5"
     fts-core "^1.1.0"
     fts-validator "^1.0.4"
     is-stream "^1.1.0"
     micro "^9.3.3"
+    micro-cors "^0.1.1"
     parseurl "^1.3.2"
     qs "^6.6.0"
     resolve "^1.10.0"
@@ -1973,9 +1968,10 @@ fts-validator@^1.0.4:
     ajv "^6.7.0"
     clone-deep "^4.0.1"
 
-fts@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/fts/-/fts-1.1.5.tgz#9764d2bd699745741ad2d5ac946e16f1f00e2aa1"
+fts@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/fts/-/fts-1.1.7.tgz#f8b24f4dd27f097a53ec18cb01e77e836a4c50f0"
+  integrity sha512-qK8NoNo6dvIm+dRujNbpaCK3AftCFF0TntDmRxfjV8m3koA1mzJWrPU7xL0I9+kRNyfm9IBTaqud1MzXyEi1Yg==
   dependencies:
     ajv "^6.7.0"
     commander "^2.19.0"
@@ -3081,6 +3077,11 @@ merge2@^1.2.3:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/merge2/-/merge2-1.2.4.tgz#c9269589e6885a60cf80605d9522d4b67ca646e3"
 
+micro-cors@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/micro-cors/-/micro-cors-0.1.1.tgz#af7a480182c114ffd1ada84ad9dffc52bb4f4054"
+  integrity sha512-6WqIahA5sbQR1Gjexp1VuWGFDKbZZleJb/gy1khNGk18a6iN1FdTcr3Q8twaxkV5H94RjxIBjirYbWCehpMBFw==
+
 micro@^9.3.3:
   version "9.3.4"
   resolved "https://registry.yarnpkg.com/micro/-/micro-9.3.4.tgz#745a494e53c8916f64fb6a729f8cbf2a506b35ad"
@@ -3263,7 +3264,7 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.1:
+object-assign@^4.0.1, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
@@ -4033,17 +4034,18 @@ rxjs@^6.4.0:
   dependencies:
     tslib "^1.9.0"
 
-saasify-client@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.1.4.tgz#00d8d0e1f7cb232a4f658671700d2974dc04e4dc"
+saasify-client@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.2.1.tgz#c22d992c399f39d84ce981f094face10804d7e35"
+  integrity sha512-MWzeVzcON306E45OBee9Ee49TRl6XrIn8ZjWcinGeC4XQ3bxRiPQdBYsjdNdPiV6kWxIqsfCEVqMLk0uQo9y9Q==
   dependencies:
     axios "^0.18.0"
     qs "^6.6.0"
 
-saasify-utils@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/saasify-utils/-/saasify-utils-1.2.0.tgz#53bd4cc41acb4b56c0d12677ed50ce01e8fe9005"
-  integrity sha512-432+xvtFTYfczRL75C7rbzzdd/NNIPZ9VzF3cekfXSNXqbsewSEJDry3OR9m9O0QBnLy1RCZnES1xRfeSxcSHQ==
+saasify-utils@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/saasify-utils/-/saasify-utils-1.2.1.tgz#1d2ac843e703cfab205c44e9204cbf2d71c60018"
+  integrity sha512-kQyHuqJ5hS/IFYayNjH5o1/BZV0qWePcvo/yfZPWlfytPfUAvlndQNtGz0sie+kmsoQWcaVDK4Zr8bsbfdRUpg==
   dependencies:
     decompress "^4.2.0"
     decompress-unzip "^4.0.1"
@@ -4817,7 +4819,7 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vary@^1, vary@^1.1.2:
+vary@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
 

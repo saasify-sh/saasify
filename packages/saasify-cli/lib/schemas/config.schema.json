@@ -59,6 +59,29 @@
         "services"
       ]
     },
+    "Example": {
+      "title": "Example",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "name"
+        },
+        "input": {
+          "type": "object",
+          "title": "input"
+        },
+        "output": {
+          "type": "number",
+          "title": "output"
+        },
+        "additionalProperties": false
+      },
+      "required": [
+        "name",
+        "input"
+      ]
+    },
     "Service": {
       "title": "Service",
       "type": "object",
@@ -76,9 +99,12 @@
           "title": "timeout",
           "default": 0
         },
-        "example": {
-          "type": "object",
-          "title": "example"
+        "examples": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Example"
+          },
+          "title": "examples"
         },
         "additionalProperties": false
       },
