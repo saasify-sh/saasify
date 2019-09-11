@@ -1,6 +1,6 @@
 {
   "name": "saasify-client",
-  "version": "1.1.4",
+  "version": "1.2.1",
   "description": "Universal HTTP client for Saasify.",
   "main": "index.js",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
