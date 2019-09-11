@@ -29,8 +29,6 @@ export class LiveServiceDemo extends Component {
     copiedTextToClipboard: false
   }
 
-  _examples = getServiceExamples(this.props.service, this.props.auth.consumer && this.props.auth.consumer.token)
-
   _onClickTabMem = mem((i) => () => this._onClickTab(this._examples[i]))
 
   componentWillUnmount() {
@@ -45,6 +43,8 @@ export class LiveServiceDemo extends Component {
       selected,
       copiedTextToClipboard
     } = this.state
+
+    this._examples = getServiceExamples(this.props.service, this.props.auth.consumer && this.props.auth.consumer.token)
 
     return (
       <div className={theme(styles, 'container')}>

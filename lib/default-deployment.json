@@ -42,7 +42,8 @@
           "name": "Basic",
           "input": {
             "url": "https://google.com"
-          }
+          },
+          "output": "screenshot.png"
         }
       ],
       "src": "index.ts",
