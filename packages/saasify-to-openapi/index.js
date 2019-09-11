@@ -155,7 +155,7 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   } = service
 
   const params = await prepareSchema(definition.params.schema)
-  const { schema } = definition.returns
+  const { schema, http } = definition.returns
   const { type, additionalProperties, properties, ...rest } = schema
   const returnsJsonSchema = {
     ...rest,

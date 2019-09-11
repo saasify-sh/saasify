@@ -42,7 +42,7 @@ module.exports = (program) => {
   }
 
   if (!config.name) {
-    throw new Error(`Missing config name`)
+    throw new Error('Missing config name')
   }
 
   if (!validators.projectName(config.name)) {
@@ -54,7 +54,7 @@ module.exports = (program) => {
   }
 
   if (!config.services || !config.services.length) {
-    throw new Error(`Invalid config, must contain at least one service`)
+    throw new Error('Invalid config, must contain at least one service')
   }
 
   for (const service of config.services) {

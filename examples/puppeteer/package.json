@@ -8,7 +8,6 @@
   "license": "MIT",
   "dependencies": {
     "chrome-aws-lambda": "^1.19.0",
-    "fts-core": "^1.1.0",
     "puppeteer-core": "^1.19.0"
   },
   "devDependencies": {

@@ -1,6 +1,8 @@
 'use strict'
 
+const fs = require('fs-extra')
 const fts = require('fts')
+const globby = require('globby')
 const path = require('path')
 const pMap = require('p-map')
 const { validators } = require('saasify-utils')
@@ -16,8 +18,22 @@ module.exports = async (program, opts = { }) => {
     concurrency: 1
   })
 
+  const readmeFiles = await globby('readme.md', {
+    cwd: config.root,
+    gitignore: true,
+    nocase: true
+  })
+
+  let readme = ''
+  if (readmeFiles.length) {
+    readme = await fs.readFile(readmeFiles[0], 'utf8')
+  } else {
+    console.warn('Unable to find readme.md')
+  }
+
   return {
     ...config,
+    readme,
     services
   }
 }
