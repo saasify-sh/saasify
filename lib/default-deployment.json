@@ -1,6 +1,7 @@
 {
   "enabled": true,
   "published": false,
+  "description": "Saasify example using Puppeteer",
   "noAuthRateLimit": {
     "enabled": true,
     "requests": true,
@@ -10,26 +11,32 @@
   "amountPerRequest": 0.0004,
   "amountPerCompute": 0.0034,
   "amountPerBandwidth": 0.2,
-  "hash": "0c360abb",
-  "description": "Saasify example using Puppeteer",
+  "hash": "34bb6024",
   "user": "5d5b477eb5fab1199c927a36",
   "project": {
     "enabled": true,
     "_id": "transitive-bullshit/puppeteer-example",
+    "description": "Saasify example using Puppeteer",
     "name": "puppeteer-example",
     "user": "5d5b477eb5fab1199c927a36",
+    "saas": {
+      "name": "puppeteer-example",
+      "heading": "puppeteer-example",
+      "subheading": "Saasify example using Puppeteer",
+      "theme": {
+        "name": "okta"
+      }
+    },
     "createdAt": "2019-09-11T05:55:47.387Z",
-    "updatedAt": "2019-09-11T05:55:47.387Z",
+    "updatedAt": "2019-09-11T07:40:42.395Z",
     "__v": 0,
+    "_stripeBandwidthProductTest": "prod_Fn0SHaHWCiotci",
+    "_stripeComputeProductTest": "prod_Fn0S36J63v5rrI",
+    "_stripeRequestProductTest": "prod_Fn0SBonwUcwxEk",
+    "stripeRequestProduct": "prod_Fn0SBonwUcwxEk",
+    "stripeComputeProduct": "prod_Fn0S36J63v5rrI",
+    "stripeBandwidthProduct": "prod_Fn0SHaHWCiotci",
     "id": "transitive-bullshit/puppeteer-example"
-  },
-  "saas": {
-    "name": "Puppet Master",
-    "heading": "Puppeteer as a Service",
-    "subheading": "Control headless Chrome via SaaS!",
-    "theme": {
-      "name": "okta"
-    }
   },
   "version": "1",
   "readme": "# Puppeteer Example\n\nThis is a simple Saasify project that shows how you can use [headless Chrome](https://pptr.dev) in your serverless functions.\n\n## License\n\nMIT © [Travis Fischer](https://transitivebullsh.it)\n",
@@ -41,9 +48,24 @@
         {
           "name": "Basic",
           "input": {
-            "url": "https://google.com"
+            "url": "https://youtube.com"
           },
-          "output": "screenshot.png"
+          "output": "youtube.png"
+        },
+        {
+          "name": "Custom",
+          "input": {
+            "url": "https://github.com",
+            "type": "jpeg",
+            "quality": 90,
+            "viewport": {
+              "width": 1920,
+              "height": 1080,
+              "deviceScaleFactor": 2
+            },
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
+          },
+          "output": "github.jpg"
         }
       ],
       "src": "index.ts",
@@ -62,7 +84,9 @@
             "fullPage",
             "omitBackground",
             "clip",
-            "gotoOptions"
+            "gotoOptions",
+            "viewport",
+            "userAgent"
           ],
           "schema": {
             "type": "object",
@@ -95,6 +119,12 @@
               },
               "gotoOptions": {
                 "$ref": "#/definitions/DirectNavigationOptions"
+              },
+              "viewport": {
+                "$ref": "#/definitions/Viewport"
+              },
+              "userAgent": {
+                "type": "string"
               }
             },
             "additionalProperties": false,
@@ -168,6 +198,44 @@
                   }
                 },
                 "additionalProperties": false
+              },
+              "Viewport": {
+                "type": "object",
+                "properties": {
+                  "width": {
+                    "description": "The page width in pixels.",
+                    "type": "number"
+                  },
+                  "height": {
+                    "description": "The page height in pixels.",
+                    "type": "number"
+                  },
+                  "deviceScaleFactor": {
+                    "description": "Specify device scale factor (can be thought of as dpr).",
+                    "default": 1,
+                    "type": "number"
+                  },
+                  "isMobile": {
+                    "description": "Whether the `meta viewport` tag is taken into account.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "hasTouch": {
+                    "description": "Specifies if viewport supports touch events.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "isLandscape": {
+                    "description": "Specifies if viewport is in landscape mode.",
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "height",
+                  "width"
+                ]
               }
             },
             "$schema": "http://json-schema.org/draft-07/schema#"
@@ -218,12 +286,21 @@
         "version": "1.1.0",
         "title": "getScreenshot"
       },
-      "url": "http://localhost:5000/1/call/transitive-bullshit/puppeteer-example@0c360abb"
+      "url": "http://localhost:5000/1/call/transitive-bullshit/puppeteer-example@34bb6024"
     }
   ],
-  "createdAt": "2019-09-11T05:55:52.417Z",
-  "updatedAt": "2019-09-11T05:55:52.417Z",
-  "url": "http://localhost:5000/1/call/transitive-bullshit/puppeteer-example@0c360abb",
-  "openApiUrl": "http://localhost:5000/1/deployments/openapi/transitive-bullshit/puppeteer-example@0c360abb",
-  "id": "transitive-bullshit/puppeteer-example@0c360abb"
+  "saas": {
+    "name": "Puppet Master",
+    "heading": "Puppeteer as a Service",
+    "subheading": "Control headless Chrome via SaaS!",
+    "theme": {
+      "name": "okta"
+    }
+  },
+  "createdAt": "2019-09-12T17:45:21.321Z",
+  "updatedAt": "2019-09-12T17:45:21.321Z",
+  "url": "http://localhost:5000/1/call/transitive-bullshit/puppeteer-example@34bb6024",
+  "openApiUrl": "http://localhost:5000/1/deployments/openapi/transitive-bullshit/puppeteer-example@34bb6024",
+  "saasUrl": "http://transitive-bullshit_puppeteer-example_34bb6024.localhost:3000",
+  "id": "transitive-bullshit/puppeteer-example@34bb6024"
 }
