@@ -4,7 +4,8 @@ import {
   launch,
   Page,
   DirectNavigationOptions,
-  BinaryScreenShotOptions
+  BinaryScreenShotOptions,
+  Viewport
 } from 'puppeteer-core'
 
 import { ImageFormat, Rect } from './types'
@@ -21,9 +22,16 @@ export default async function getScreenshot(
   fullPage: boolean = false,
   omitBackground: boolean = true,
   clip?: Rect,
-  gotoOptions?: DirectNavigationOptions
+  gotoOptions?: DirectNavigationOptions,
+  viewport?: Viewport,
+  userAgent?: string
 ): Promise<HttpResponse> {
   const page = await getPage(isDev)
+
+  if (viewport || userAgent) {
+    await page.emulate({ viewport, userAgent })
+  }
+
   await page.goto(url, gotoOptions)
 
   const opts: BinaryScreenShotOptions = {
