@@ -28,8 +28,12 @@ export default async function getScreenshot(
 ): Promise<HttpResponse> {
   const page = await getPage(isDev)
 
-  if (viewport || userAgent) {
-    await page.emulate({ viewport, userAgent })
+  if (userAgent) {
+    await page.setUserAgent(userAgent)
+  }
+
+  if (viewport) {
+    await page.setViewport(viewport)
   }
 
   await page.goto(url, gotoOptions)
