@@ -49,12 +49,14 @@ validators.email('example@gmail.com') // true
 validators.email('foo') // false
 
 validators.username('transitive-bullshit') // true
+validators.username('hello_world') // false (no underscores allowed)
 validators.username('foo$86') // false
 
 validators.password('password') // true
 validators.password('a') // false (too short)
 
 validators.projectName('hello-world') // true
+validators.projectName('hello_world') // false (no underscores allowed)
 validators.projectName('%') // false
 
 validators.deploymentHash('abc123yz') // true

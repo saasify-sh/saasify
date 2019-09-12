@@ -4,14 +4,14 @@ const emailValidator = require('email-validator')
 const usernameBlacklist = require('./username-blacklist.json')
 const usernameBlacklistSet = new Set(usernameBlacklist)
 
-exports.usernameRe = /^[a-zA-Z0-9-_]{1,64}$/
+exports.usernameRe = /^[a-zA-Z0-9-]{1,64}$/
 exports.passwordRe = /^.{3,1024}$/
 
-exports.projectNameRe = /^[a-zA-Z0-9-_]{3,64}$/
+exports.projectNameRe = /^[a-zA-Z0-9-]{3,64}$/
 exports.deploymentHashRe = /^[a-z0-9]{8}$/
 
-exports.projectRe = /^[a-zA-Z0-9-_]{1,64}\/[a-zA-Z0-9-_]{3,64}$/
-exports.deploymentRe = /^[a-zA-Z0-9-_]{1,64}\/[a-zA-Z0-9-_]{3,64}@[a-z0-9]{8}$/
+exports.projectRe = /^[a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64}$/
+exports.deploymentRe = /^[a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64}@[a-z0-9]{8}$/
 
 // any valid JavaScript identifier
 exports.serviceRe = /^[a-zA-Z_][a-zA-Z0-9_]*$/

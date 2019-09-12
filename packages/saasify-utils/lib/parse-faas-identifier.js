@@ -30,7 +30,7 @@ module.exports = (identifier, opts = { }) => {
     return
   }
 
-  const hasNamespacePrefix = /^([a-zA-Z0-9-_]{1,64}\/)/.test(uri)
+  const hasNamespacePrefix = /^([a-zA-Z0-9-]{1,64}\/)/.test(uri)
 
   if (!hasNamespacePrefix) {
     if (namespace) {

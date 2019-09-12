@@ -23,8 +23,8 @@ test('username/projectName.serviceName@deployment success', (t) => {
 })
 
 test('username/projectName.serviceName@deployment error', (t) => {
-  error(t, 'foo_bar.foo@01234567')
-  error(t, '%/foo_bar.foo@01234567')
+  error(t, 'foo-bar.foo@01234567')
+  error(t, '%/foo-bar.foo@01234567')
   error(t, 'user/foo^bar.foo@01234567')
   error(t, 'user@foo^bar.foo@01234567')
 })
@@ -59,40 +59,40 @@ test('username/projectName@deployment success', (t) => {
   success(t, 'abc/hello-world@3d2e0fd5')
   success(t, 'a16z/foo-bar@f673db32c')
   success(t, 'foodoo/foo-bar@f673db32c')
-  success(t, 'u/fooBar123-yo_@673db32c')
+  success(t, 'u/fooBar123-yo@673db32c')
 })
 
 test('username/projectName@deployment error', (t) => {
   error(t, '/hello-world@3d2e0fd5')
   error(t, 'foo-bar@f673db32c')
   error(t, 'foodoo/foo@bar@f673db32c')
-  error(t, 'u/fooBar123-yo_@/673db32c')
+  error(t, 'u/fooBar123-yo@/673db32c')
 })
 
 test('username/projectName@version success', (t) => {
   success(t, 'abc/hello-world@1.0.3')
   success(t, 'a16z/foo-bar@latest')
   success(t, 'foodoo/foo-bar@1.0.1')
-  success(t, 'u/fooBar123-yo_@3.2.2234')
+  success(t, 'u/fooBar123-yo@3.2.2234')
 })
 
 test('username/projectName@version error', (t) => {
   error(t, '/hello-world@3d2e0fd5')
   error(t, 'foo-bar@f673db32c')
   error(t, 'foodoo/foo@bar@f673db32c@')
-  error(t, 'u/fooBar123-yo_@/673db32c/')
+  error(t, 'u/fooBar123-yo@/673db32c/')
 })
 
 test('username/projectName success', (t) => {
   success(t, 'abc/hello-world')
   success(t, 'a16z/foo-bar')
   success(t, 'foodoo/foo-bar')
-  success(t, 'u/fooBar123-yo_')
+  success(t, 'u/fooBar123-yo')
 })
 
 test('username/projectName error', (t) => {
   error(t, '/hello-world')
   error(t, 'foo-barc')
   error(t, 'foodoo/foo@bar@')
-  error(t, 'u/fooBar123-yo_@/')
+  error(t, 'u/fooBar123-yo@/')
 })

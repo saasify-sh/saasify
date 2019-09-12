@@ -2,29 +2,29 @@
 
 // namespace/projectName.serviceName@deploymentHash
 // project.serviceName@deploymentHash
-const projectServiceDeploymentRe = /^([a-zA-Z0-9-_]{1,64}\/[a-zA-Z0-9-_]{3,64})\.([a-zA-Z_][a-zA-Z0-9_]*)@([a-z0-9]{8})$/
+const projectServiceDeploymentRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})\.([a-zA-Z_][a-zA-Z0-9_]*)@([a-z0-9]{8})$/
 
 // namespace/projectName.serviceName@version
 // project.serviceName@version
-const projectServiceVersionRe = /^([a-zA-Z0-9-_]{1,64}\/[a-zA-Z0-9-_]{3,64})\.([a-zA-Z_][a-zA-Z0-9_]*)@([^/?@]+)$/
+const projectServiceVersionRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})\.([a-zA-Z_][a-zA-Z0-9_]*)@([^/?@]+)$/
 
 // namespace/projectName.serviceName
 // project.serviceName (latest version)
-const projectServiceRe = /^([a-zA-Z0-9-_]{1,64}\/[a-zA-Z0-9-_]{3,64})\.([a-zA-Z_][a-zA-Z0-9_]*)$/
+const projectServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})\.([a-zA-Z_][a-zA-Z0-9_]*)$/
 
 // ---
 
 // namespace/projectName@deploymentHash
 // project@deploymentHash
-const projectDeploymentRe = /^([a-zA-Z0-9-_]{1,64}\/[a-zA-Z0-9-_]{3,64})@([a-z0-9]{8})$/
+const projectDeploymentRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([a-z0-9]{8})$/
 
 // namespace/projectName@version
 // project@version
-const projectVersionRe = /^([a-zA-Z0-9-_]{1,64}\/[a-zA-Z0-9-_]{3,64})@([^/?@]+)$/
+const projectVersionRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([^/?@]+)$/
 
 // namespace/projectName
 // project (latest version)
-const projectRe = /^([a-zA-Z0-9-_]{1,64}\/[a-zA-Z0-9-_]{3,64})$/
+const projectRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})$/
 
 module.exports = (uri) => {
   // ---
