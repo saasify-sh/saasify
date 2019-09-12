@@ -8,9 +8,24 @@
         {
           "name": "Basic",
           "input": {
-            "url": "https://google.com"
+            "url": "https://youtube.com"
           },
-          "output": "google.png"
+          "output": "youtube.png"
+        },
+        {
+          "name": "Custom",
+          "input": {
+            "url": "https://github.com",
+            "type": "jpeg",
+            "quality": 90,
+            "viewport": {
+              "width": 1920,
+              "height": 1080,
+              "deviceScaleFactor": 2
+            },
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
+          },
+          "output": "github.jpg"
         }
       ]
     }
