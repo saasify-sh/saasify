@@ -12,8 +12,8 @@ export class HeroSection extends Component {
         {deployment => (
           <Section
             id='hero'
-            title={deployment.project.saas.heading}
-            subtitle={deployment.project.saas.subheading}
+            title={deployment.saas.heading}
+            subtitle={deployment.saas.subheading}
             {...this.props}
           >
             <Link to='/signup'>

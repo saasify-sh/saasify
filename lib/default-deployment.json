@@ -11,25 +11,25 @@
   "amountPerCompute": 0.0034,
   "amountPerBandwidth": 0.2,
   "hash": "0c360abb",
+  "description": "Saasify example using Puppeteer",
   "user": "5d5b477eb5fab1199c927a36",
   "project": {
-    "description": "Saasify example using Puppeteer",
     "enabled": true,
     "_id": "transitive-bullshit/puppeteer-example",
     "name": "puppeteer-example",
     "user": "5d5b477eb5fab1199c927a36",
-    "saas": {
-      "name": "Puppet Master",
-      "heading": "Puppeteer as a Service",
-      "subheading": "Control headless Chrome via SaaS!",
-      "theme": {
-        "name": "okta"
-      }
-    },
     "createdAt": "2019-09-11T05:55:47.387Z",
     "updatedAt": "2019-09-11T05:55:47.387Z",
     "__v": 0,
     "id": "transitive-bullshit/puppeteer-example"
+  },
+  "saas": {
+    "name": "Puppet Master",
+    "heading": "Puppeteer as a Service",
+    "subheading": "Control headless Chrome via SaaS!",
+    "theme": {
+      "name": "okta"
+    }
   },
   "version": "1",
   "readme": "# Puppeteer Example\n\nThis is a simple Saasify project that shows how you can use [headless Chrome](https://pptr.dev) in your serverless functions.\n\n## License\n\nMIT © [Travis Fischer](https://transitivebullsh.it)\n",

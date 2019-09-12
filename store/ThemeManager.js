@@ -13,7 +13,7 @@ class ThemeManager {
   theme
 
   constructor() {
-    this.setTheme(deployment.project.saas.theme)
+    this.setTheme(deployment.saas.theme)
   }
 
   setTheme = (opts) => {

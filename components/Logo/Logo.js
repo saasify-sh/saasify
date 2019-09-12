@@ -16,11 +16,11 @@ export class Logo extends Component {
     return (
       <SaasifyContext.Consumer>
         {deployment => (
-          deployment.project.saas.logo ? (
+          deployment.saas.logo ? (
             <img
               className={theme(styles, 'logo', className)}
-              src={deployment.project.saas.logo}
-              alt={`${deployment.project.saas.name} Logo`}
+              src={deployment.saas.logo}
+              alt={`${deployment.saas.name} Logo`}
               style={{
                 maxWidth: '3em',
                 ...style
@@ -33,7 +33,7 @@ export class Logo extends Component {
               style={style}
               {...rest}
             >
-              {deployment.project.saas.name}
+              {deployment.saas.name}
             </div>
           )
         )}
