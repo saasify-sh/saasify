@@ -38,10 +38,9 @@ export default class App extends Component {
       return null
     }
 
-    const { saas } = deployment.project
+    const { saas } = deployment
 
     const fonts = toJS(ThemeManager.theme.fonts)
-    console.log(fonts)
 
     return (
       <Router>

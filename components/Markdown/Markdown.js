@@ -27,6 +27,8 @@ export class Markdown extends Component {
       <ReactMarkdown
         className={theme(styles, 'markdown')}
         source={source}
+        escapeHtml={false}
+        linkTarget='_blank'
         renderers={{
           code: CodeBlock,
           ...renderers
