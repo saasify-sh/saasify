@@ -25,12 +25,21 @@ module.exports = async (deployment, data, opts = { }) => {
 
   const builds = []
   const routes = []
+  const serviceNames = new Set()
 
   for (const service of deployment.services) {
     const srcPath = path.relative(tempDir, path.resolve(tempDir, service.src.replace('.ts', '')))
 
     const definitionData = JSON.stringify(service.definition, null, 2)
     const serviceName = service.name
+
+    if (serviceNames.has(serviceName)) {
+      const err = new Error(`Duplicate service name "${serviceName}"`)
+      err.statusCode = 400
+      throw err
+    } else {
+      serviceNames.add(serviceName)
+    }
 
     const handlerFileName = `__handler__${serviceName}`
     const handlerFileNameExt = `${handlerFileName}.ts`
