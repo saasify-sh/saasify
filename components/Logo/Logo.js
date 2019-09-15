@@ -23,7 +23,7 @@ export class Logo extends Component {
               alt={`${deployment.saas.name} Logo`}
               style={{
                 maxWidth: '3em',
-                minHeight: 64,
+                height: 64,
                 ...style
               }}
               {...rest}
