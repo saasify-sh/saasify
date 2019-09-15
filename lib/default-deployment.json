@@ -11,7 +11,7 @@
   "amountPerRequest": 0.0004,
   "amountPerCompute": 0.0034,
   "amountPerBandwidth": 0.2,
-  "hash": "dcd4fffd",
+  "hash": "aeadee07",
   "user": "5d5b477eb5fab1199c927a36",
   "project": {
     "enabled": true,
@@ -19,12 +19,18 @@
     "name": "puppet-master",
     "user": "5d5b477eb5fab1199c927a36",
     "createdAt": "2019-09-13T19:46:34.124Z",
-    "updatedAt": "2019-09-13T19:46:34.124Z",
+    "updatedAt": "2019-09-13T23:11:59.854Z",
     "__v": 0,
+    "_stripeBandwidthProductTest": "prod_Fnzv5x0OzZhZ6g",
+    "_stripeComputeProductTest": "prod_FnzviG89MRFNRk",
+    "_stripeRequestProductTest": "prod_FnzvEbbcLlFR5A",
+    "stripeRequestProduct": "prod_FnzvEbbcLlFR5A",
+    "stripeComputeProduct": "prod_FnzviG89MRFNRk",
+    "stripeBandwidthProduct": "prod_Fnzv5x0OzZhZ6g",
     "id": "transitive-bullshit/puppet-master"
   },
   "version": "1",
-  "readme": "# Puppet Master\n\n> [Puppeteer](https://pptr.dev) as a [service](https://puppet-master.sh).\n\n<p align=\"center\">\n  <a href=\"https://puppet-master.sh\" title=\"Puppet Master\">\n    <img src=\"https://raw.githubusercontent.com/saasify-sh/puppet-master/master/media/puppeteer-logo.png\" alt=\"Puppeteer Logo\" width=\"200\" />\n  </a>\n</p>\n\n## Features\n\n- **Simple**: Quick to setup and integrate\n- **Standard**: Just HTTPS + JSON APIs\n- **Managed**: Hosted via serverless functions\n- **Scalable**: Scales up or down to any capacity\n- **Usage based**: Pay only for what you use\n- **Focused**: We only do one thing and do it well\n- **Sensible defaults**: With lots of customizability\n- **Immutable deployments**: All updates are optional\n\n## Contents\n\n\n\n## Introduction\n\nTODO\n\n## Functions\n\n### Screenshot\n\nNavigates to a page and captures a screenshot via Puppeteer's [Page.screenshot](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagescreenshotoptions).\n\nAll Puppeteer options are supported.\n\nReturns an image as either `image/png` or `image/jpeg` depending on the `type` parameter.\n\n### Pdf\n\nNavigates to a page and captures a PDF via Puppeteer's [Page.pdf](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagepdfoptions).\n\nAll Puppeteer options are supported.\n\nReturns a PDF as `application/pdf`.\n\n## Common Options\n\nIn addition to the standard parameters, all functions optionally accept a set of additional common options.\n\n- [viewport](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagesetviewportviewport) - Set the browser window's viewport dimensions and/or resolution.\n- [userAgent](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagesetuseragentuseragent) - Set the browser's [user-agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).\n  - Useful to trick websites into displaying different content or styles based on an emulated device.\n  - See also [avoiding detection](#avoiding-detection).\n- [gotoOptions](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagegotourl-options) - Customize the `Page.goto` navigation options.\n  - Useful when you need to customize behavior around when Puppeteer considers a page navigation \"finished\".\n- [emulateDevice](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pageemulateoptions) - Make it look like the screenshot was taken on the specified device.\n  - Use the `name` property from one of the built-in [devices](https://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js).\n  - Overrides `viewport` and `userAgent`.\n\n## Avoiding Detection\n\nTODO\n- Some websites go to great lengths to\n\n## FAQ\n\n### Where can I find some example user agent strings?\n\nTODO\nhttps://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js\n\n### Why are my screenshots blurry?\n\nTry setting [viewport.deviceScaleFactor](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagesetviewportviewport) to `2` to emulate a retina display.\n\n### Debugging\n\nTODO: run locally via `saasify dev` and non-headless in debug mode\n\n## License\n\nMIT © [Travis Fischer](https://transitivebullsh.it)\n",
+  "readme": "# Puppet Master\n\n> [Puppeteer](https://pptr.dev) as a [service](https://puppet-master.sh).\n\n<p align=\"center\">\n  <a href=\"https://puppet-master.sh\" title=\"Puppet Master\">\n    <img src=\"https://raw.githubusercontent.com/saasify-sh/puppet-master/master/media/puppeteer-logo.png\" alt=\"Puppeteer Logo\" width=\"200\" />\n  </a>\n</p>\n\n## Features\n\n- **Simple**: Quick to setup and integrate\n- **Standard**: Just HTTPS + JSON\n- **Managed**: Hosted via serverless functions\n- **Scalable**: Scales up or down to any capacity\n- **Usage based**: Pay only for what you use\n- **Focused**: We only do one thing and do it well\n- **Sensible defaults**: With lots of customizability\n- **Immutable deployments**: All API updates are optional\n\n## Contents\n\nTODO: table of contents\n\n\n## Introduction\n\nTODO\n\n## Functions\n\n### Screenshot\n\nNavigates to a page and captures a screenshot via Puppeteer's [Page.screenshot](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagescreenshotoptions).\n\nAll Puppeteer options are supported.\n\nReturns an image as either `image/png` or `image/jpeg` depending on the `type` parameter.\n\n### Pdf\n\nNavigates to a page and captures a PDF via Puppeteer's [Page.pdf](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagepdfoptions).\n\nAll Puppeteer options are supported.\n\nReturns a PDF as `application/pdf`.\n\n### Common Options\n\nIn addition to the standard parameters, all functions optionally accept a set of additional common options.\n\n- [viewport](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagesetviewportviewport) - Set the browser window's viewport dimensions and/or resolution.\n- [userAgent](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagesetuseragentuseragent) - Set the browser's [user-agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).\n  - Useful to trick websites into displaying different content or styles based on an emulated device.\n  - See also [avoiding detection](#avoiding-detection).\n- [gotoOptions](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagegotourl-options) - Customize the `Page.goto` navigation options.\n  - Useful when you need to customize behavior around when Puppeteer considers a page navigation \"finished\".\n- [emulateDevice](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pageemulateoptions) - Make it look like the screenshot was taken on the specified device.\n  - Use the `name` property from one of the built-in [devices](https://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js).\n  - Overrides `viewport` and `userAgent`.\n\n## Avoiding Detection\n\nTODO\n- Some websites go to great lengths to\n\n## FAQ\n\n### Where can I find some example user agent strings?\n\nTODO\nhttps://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js\n\n### Why are my screenshots blurry?\n\nTry setting [viewport.deviceScaleFactor](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagesetviewportviewport) to `2` to emulate a retina display.\n\n### Debugging\n\nTODO: run locally via `saasify dev` and non-headless in debug mode\n\n## License\n\nMIT © [Travis Fischer](https://transitivebullsh.it)\n",
   "authRateLimit": null,
   "services": [
     {
@@ -54,7 +60,7 @@
         }
       ],
       "src": "src/screenshot.ts",
-      "name": "getScreenshot",
+      "name": "screenshot",
       "definition": {
         "config": {
           "defaultExport": true,
@@ -284,10 +290,10 @@
           }
         },
         "version": "1.1.0",
-        "title": "getScreenshot",
+        "title": "screenshot",
         "description": "Navigates to a page and captures a screenshot via Puppeteer's [Page.screenshot](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagescreenshotoptions)."
       },
-      "url": "http://localhost:5000/1/call/transitive-bullshit/puppet-master.getScreenshot@dcd4fffd"
+      "url": "http://localhost:5000/1/call/transitive-bullshit/puppet-master.screenshot@aeadee07"
     },
     {
       "timeout": 0,
@@ -315,7 +321,7 @@
         }
       ],
       "src": "src/pdf.ts",
-      "name": "getPdf",
+      "name": "pdf",
       "definition": {
         "config": {
           "defaultExport": true,
@@ -590,24 +596,27 @@
           }
         },
         "version": "1.1.0",
-        "title": "getPdf",
+        "title": "pdf",
         "description": "Navigates to a page and captures a PDF via Puppeteer's [Page.pdf](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagepdfoptions)."
       },
-      "url": "http://localhost:5000/1/call/transitive-bullshit/puppet-master.getPdf@dcd4fffd"
+      "url": "http://localhost:5000/1/call/transitive-bullshit/puppet-master.pdf@aeadee07"
     }
   ],
   "saas": {
     "name": "Puppet Master",
     "heading": "Puppeteer as a Service",
     "subheading": "Control headless Chrome via simple SaaS APIs!",
+    "logo": "https://storage.googleapis.com/saasify-uploads-prod/transitive-bullshit/puppet-master/aeadee07/saas-logo.svg",
+    "favicon": "https://storage.googleapis.com/saasify-uploads-prod/transitive-bullshit/puppet-master/aeadee07/saas-favicon.ico",
     "theme": {
       "name": "okta"
-    }
+    },
+    "faviconSizes": "192x192 96x96 72x72 48x48 32x32"
   },
-  "createdAt": "2019-09-13T20:10:06.304Z",
-  "updatedAt": "2019-09-13T20:10:06.304Z",
-  "url": "http://localhost:5000/1/call/transitive-bullshit/puppet-master@dcd4fffd",
-  "openApiUrl": "http://localhost:5000/1/deployments/openapi/transitive-bullshit/puppet-master@dcd4fffd",
-  "saasUrl": "http://transitive-bullshit_puppet-master_dcd4fffd.localhost:3000",
-  "id": "transitive-bullshit/puppet-master@dcd4fffd"
+  "createdAt": "2019-09-15T09:27:23.133Z",
+  "updatedAt": "2019-09-15T09:27:23.133Z",
+  "url": "http://localhost:5000/1/call/transitive-bullshit/puppet-master@aeadee07",
+  "openApiUrl": "http://localhost:5000/1/deployments/openapi/transitive-bullshit/puppet-master@aeadee07",
+  "saasUrl": "http://transitive-bullshit_puppet-master_aeadee07.localhost:3000",
+  "id": "transitive-bullshit/puppet-master@aeadee07"
 }
