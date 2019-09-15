@@ -19,7 +19,7 @@ export class APIPage extends Component {
       <SaasifyContext.Consumer>
         {deployment => (
           <div>
-            <div className={theme(styles, 'api-page')}>
+            <div className={theme(styles, 'api-page', theme.light)}>
               {/*
               <NavHeader fixed={true} />
               */}

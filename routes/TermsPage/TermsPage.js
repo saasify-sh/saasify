@@ -12,7 +12,7 @@ import styles from './styles.module.css'
 export class TermsPage extends Component {
   render() {
     return (
-      <div className={theme(styles, 'terms-page')}>
+      <div className={theme(styles, 'terms-page', theme.light)}>
         <NavHeader fixed={true} />
 
         <div className={theme(styles, 'content')}>

@@ -49,7 +49,7 @@ export class SignupForm extends Component {
 
     return (
       <Form
-        className={theme(styles, 'form', className)}
+        className={theme(styles, 'form', theme.light, className)}
         onSubmit={this._onSubmit}
       >
         <h2 className={theme(styles, 'title')}>

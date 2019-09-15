@@ -12,7 +12,7 @@ import styles from './styles.module.css'
 export class PrivacyPage extends Component {
   render() {
     return (
-      <div className={theme(styles, 'privacy-page')}>
+      <div className={theme(styles, 'privacy-page', theme.light)}>
         <NavHeader fixed={true} />
 
         <div className={theme(styles, 'content')}>

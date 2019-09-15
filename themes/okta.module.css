@@ -12,11 +12,15 @@
   color: #fff;
 }
 
+:global(.theme-okta) .light {
+  color: #222;
+}
+
 :global(.theme-okta) h1, :global(.theme-okta) h2, :global(.theme-okta) h3, :global(.theme-okta) h4, :global(.theme-okta) h5, :global(.theme-okta) h6 {
   color: #fff !important;
 }
 
-:global(.theme-okta) .api-page h1, :global(.theme-okta) .api-page h2, :global(.theme-okta) .api-page h3, :global(.theme-okta) .api-page h4, :global(.theme-okta) .api-page h5, :global(.theme-okta) .api-page h6 {
+:global(.theme-okta) .light h1, :global(.theme-okta) .light h2, :global(.theme-okta) .light h3, :global(.theme-okta) .light h4, :global(.theme-okta) .light h5, :global(.theme-okta) .light h6 {
   color: #222 !important;
 }
 
