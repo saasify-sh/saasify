@@ -8,6 +8,7 @@ const spinner = require('../spinner')
 module.exports = (program, client) => {
   program
     .command('login')
+    .alias('signin')
     .description('Logs into your account')
     .option('-e, --email <email>', 'account email')
     .option('-u, --username <username>', 'account username')

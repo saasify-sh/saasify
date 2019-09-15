@@ -4,6 +4,7 @@ const findFreePort = require('find-free-port')
 const Koa = require('koa')
 const open = require('open')
 const url = require('url')
+const qs = require('qs')
 
 module.exports = async (client) => {
   let _resolve
@@ -14,7 +15,7 @@ module.exports = async (client) => {
     _reject = reject
   })
 
-  const [port] = await findFreePort(3000)
+  const [port] = await findFreePort(6013)
   const app = new Koa()
   app.use(async (ctx) => {
     const { searchParams } = new url.URL(`${ctx.request.origin}${ctx.request.url}`)
@@ -26,7 +27,7 @@ module.exports = async (client) => {
     }
 
     _resolve(code)
-    ctx.body = 'Saasify authenticated with GitHub successfully.'
+    ctx.body = 'Saasify authenticated with GitHub successfully. You may now close this window.'
   })
 
   let server
@@ -37,14 +38,14 @@ module.exports = async (client) => {
     })
   })
 
-  // TODO: handle production usage auth redirection properly
+  const redirectUri = `http://localhost:${port}/auth/github`
   const config = client.baseUrl.indexOf('localhost') >= 0
     ? ({
       client_id: '86d73532d0105da51a4d',
-      redirect_uri: `http://localhost:${port}/auth/github`
+      redirect_uri: redirectUri
     }) : ({
       client_id: '6525c812c9b4430147c3',
-      redirect_uri: `https://saasify.sh/auth/github`
+      redirect_uri: `https://auth.saasify.sh/?${qs.stringify({ uri: redirectUri })}`
     })
 
   const opts = (new url.URLSearchParams(config)).toString()

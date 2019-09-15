@@ -2377,7 +2377,7 @@ is-buffer@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
 
-is-buffer@^2.0.0, is-buffer@^2.0.2:
+is-buffer@^2.0.0, is-buffer@^2.0.2, is-buffer@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-2.0.3.tgz#4ecf3fcf749cbd1e472689e109ac66261a25e725"
 
@@ -4034,18 +4034,20 @@ rxjs@^6.4.0:
   dependencies:
     tslib "^1.9.0"
 
-saasify-client@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.2.1.tgz#c22d992c399f39d84ce981f094face10804d7e35"
-  integrity sha512-MWzeVzcON306E45OBee9Ee49TRl6XrIn8ZjWcinGeC4XQ3bxRiPQdBYsjdNdPiV6kWxIqsfCEVqMLk0uQo9y9Q==
+saasify-client@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.3.2.tgz#41db2028ea84edb72f6b00f45fdebf4aa8385f9d"
+  integrity sha512-dhb4oHp3HbisqV9ZMqkpdbBs55qiwP+FmFr8pxZVRzxcD6tAc6zwav46X1/KVCQCDTr8occt/YIfx8f2I2un+A==
   dependencies:
     axios "^0.18.0"
+    is-buffer "^2.0.3"
+    is-stream "^2.0.0"
     qs "^6.6.0"
 
-saasify-utils@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/saasify-utils/-/saasify-utils-1.2.1.tgz#1d2ac843e703cfab205c44e9204cbf2d71c60018"
-  integrity sha512-kQyHuqJ5hS/IFYayNjH5o1/BZV0qWePcvo/yfZPWlfytPfUAvlndQNtGz0sie+kmsoQWcaVDK4Zr8bsbfdRUpg==
+saasify-utils@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/saasify-utils/-/saasify-utils-1.3.1.tgz#cb36da193b8c3786e2ed87826268a5b57eb046fb"
+  integrity sha512-mQknfs0oaJNARYqpFZJg7Syign0GmxmPLd0KgxWxC57Uva/cau9MEm5NewWxtKNa6rtR23l72/sfcth/e65Yzg==
   dependencies:
     decompress "^4.2.0"
     decompress-unzip "^4.0.1"

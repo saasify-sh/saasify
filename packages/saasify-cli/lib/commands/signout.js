@@ -6,6 +6,7 @@ const handleError = require('../handle-error')
 module.exports = (program, client) => {
   program
     .command('logout')
+    .alias('signout')
     .description('Logs out of your account')
     .action(async () => {
       try {
