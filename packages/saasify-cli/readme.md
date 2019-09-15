@@ -18,7 +18,7 @@ Saasify allows makers to:
 
 ## Status
 
-**As of August, 2019, Saasify is an active WIP and is not yet ready for general use.**
+**As of September, 2019, Saasify is an active WIP and is not yet ready for general use.**
 
 The backend and developer CLI are complete, and our team is working hard on an MVP of the template-based SaaS website generation.
 
