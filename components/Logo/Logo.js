@@ -21,11 +21,7 @@ export class Logo extends Component {
               className={theme(styles, 'logo', className)}
               src={deployment.saas.logo}
               alt={`${deployment.saas.name} Logo`}
-              style={{
-                maxWidth: '3em',
-                height: 64,
-                ...style
-              }}
+              style={style}
               {...rest}
             />
           ) : (
