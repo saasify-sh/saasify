@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "is-buffer": "^2.0.3",
+    "is-stream": "^2.0.0",
     "qs": "^6.6.0"
   }
 }

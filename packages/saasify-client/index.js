@@ -2,6 +2,8 @@
 
 const axios = require('axios')
 const qs = require('qs')
+const isBuffer = require('is-buffer')
+const isStream = require('is-stream')
 
 const defaultBaseUrl = 'https://api.saasify.sh'
 
@@ -328,7 +330,7 @@ module.exports = class SaasifyClient {
    * - [Buffer](https://nodejs.org/api/buffer.html) in Node.js
    * - [Stream](https://nodejs.org/api/stream.html) in Node.js
    */
-  async upload(input, opts = { }) {
+  async upload (input, opts = { }) {
     let type = opts.type
     let name = opts.name
 
@@ -375,7 +377,7 @@ module.exports = class SaasifyClient {
     return url
   }
 
-  async _getUploadRequest(data) {
+  async _getUploadRequest (data) {
     return this._request({
       url: `/1/uploads`,
       method: 'post',
