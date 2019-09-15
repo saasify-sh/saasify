@@ -319,6 +319,70 @@ module.exports = class SaasifyClient {
   }
 
   // --------------------------------------------------------------------------
+  // Uploads
+  // --------------------------------------------------------------------------
+
+  /**
+   * @param {File|Buffer|Stream} input - Data to upload
+   * - [File](https://developer.mozilla.org/en-US/docs/Web/API/File) in browser
+   * - [Buffer](https://nodejs.org/api/buffer.html) in Node.js
+   * - [Stream](https://nodejs.org/api/stream.html) in Node.js
+   */
+  async upload(input, opts = { }) {
+    let type = opts.type
+    let name = opts.name
+
+    if (!isBuffer(input) && !isStream(input)) {
+      type = input.type
+      name = input.name
+    }
+
+    if (!type) {
+      throw new Error('upload requires a valid mime type')
+    }
+
+    const {
+      key,
+      uploadUrl,
+      url
+    } = await this._getUploadRequest({
+      type,
+      name
+    })
+
+    console.log('upload', { key, uploadUrl, url, type, name })
+
+    await axios.put(uploadUrl, input, {
+      onUploadProgress: (event) => {
+        if (opts.onUploadProgress) {
+          const progress = Math.floor((event.loaded * 100) / event.total)
+          opts.onUploadProgress(progress)
+        }
+      },
+      headers: {
+        'content-type': type
+      }
+    })
+
+    await this._request({
+      url: `/1/uploads/finalize`,
+      method: 'put',
+      data: {
+        key
+      }
+    })
+
+    return url
+  }
+
+  async _getUploadRequest(data) {
+    return this._request({
+      url: `/1/uploads`,
+      method: 'post',
+      data
+    }).then(res => res.data)
+  }
+  // --------------------------------------------------------------------------
   // Checkout
   // --------------------------------------------------------------------------
 
