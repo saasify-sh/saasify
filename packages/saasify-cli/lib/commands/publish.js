@@ -50,7 +50,7 @@ module.exports = (program, client) => {
         const version = await prompt.run()
 
         const deployment = await spinner(
-          client.publishDeployment(deploymentId),
+          client.publishDeployment(deploymentId, { version }),
           `Publishing deployment [${deploymentId}] as version "${version}"`
         )
 
