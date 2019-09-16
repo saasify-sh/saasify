@@ -66,7 +66,9 @@ export class SignupForm extends Component {
           </Button>
         </FormItem>
 
-        <Divider />
+        <Divider>
+          Or
+        </Divider>
 
         <FormItem>
           {getFieldDecorator('email', {

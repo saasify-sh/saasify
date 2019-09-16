@@ -66,7 +66,9 @@ export class LoginForm extends Component {
           </Button>
         </FormItem>
 
-        <Divider />
+        <Divider>
+          Or
+        </Divider>
 
         <FormItem>
           {getFieldDecorator('username', {
