@@ -24,6 +24,7 @@ module.exports = (program, client) => {
 
         const { projectId: project } = parsedFaas
 
+        // TODO: this needs updating with a specific deployment
         const consumer = await spinner(
           client.createConsumer({ project }),
           `Creating subscription to project [${project}]`

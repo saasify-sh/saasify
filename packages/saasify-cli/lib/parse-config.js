@@ -4,6 +4,7 @@ const Ajv = require('ajv')
 const fs = require('fs-extra')
 const isDirectory = require('is-directory')
 const path = require('path')
+const semver = require('semver')
 const { validators } = require('saasify-utils')
 
 const configSchema = require('./schemas/config.schema')
@@ -49,8 +50,12 @@ module.exports = (program) => {
     throw new Error(`Invalid config name [${config.name}] (regex ${validators.projectNameRe})`)
   }
 
-  if (config.version !== 1) {
-    throw new Error(`Invalid config version "${config.version}"`)
+  if (config.saasifyVersion !== 1) {
+    throw new Error(`Invalid config saasifyVersion "${config.saasifyVersion}"`)
+  }
+
+  if (!semver.valid(config.version)) {
+    throw new Error(`Invalid config semver version "${config.version}"`)
   }
 
   if (!config.services || !config.services.length) {

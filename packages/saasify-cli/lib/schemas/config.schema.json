@@ -6,10 +6,15 @@
       "title": "Config",
       "type": "object",
       "properties": {
-        "version": {
+        "saasifyVersion": {
           "type": "number",
-          "title": "version",
+          "title": "saasifyVersion",
           "default": 1
+        },
+        "version": {
+          "type": "string",
+          "title": "version",
+          "default": "0.1.0"
         },
         "name": {
           "type": "string",

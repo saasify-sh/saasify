@@ -71,7 +71,7 @@ module.exports = (program, client) => {
         }
 
         if (!service) {
-          console.error(`Error invalid service`)
+          console.error('Error invalid service')
           process.exit(1)
         }
 

@@ -243,6 +243,14 @@ module.exports = class SaasifyClient {
     }).then(res => res.data)
   }
 
+  async publishDeployment (deploymentId, data) {
+    return this._request({
+      url: `/1/deployments/publish/${deploymentId}`,
+      method: 'put',
+      data
+    }).then(res => res.data)
+  }
+
   // --------------------------------------------------------------------------
   // Logs
   // --------------------------------------------------------------------------

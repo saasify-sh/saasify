@@ -4,7 +4,7 @@ const stripe = require('./services/stripe')
 
 module.exports = async (data) => {
   if (!data.expDate) {
-    throw new Error(`Please define a expiration date for your card`)
+    throw new Error('Please define a expiration date for your card')
   }
 
   const card = {
