@@ -3,7 +3,7 @@
   "version": "1.3.2",
   "description": "Developer CLI for Saasify. Saasify is the easiest way to launch your own SaaS.",
   "main": "index.js",
-  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
   "license": "MIT",
   "bin": {

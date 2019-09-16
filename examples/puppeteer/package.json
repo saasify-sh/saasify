@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "description": "Saasify example using Puppeteer",
   "repository": "saasify-sh/saasify",
-  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "author": "Saasify <dev@saasify.sh>",
   "license": "MIT",
   "dependencies": {
     "chrome-aws-lambda": "^1.19.0",

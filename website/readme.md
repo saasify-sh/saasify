@@ -21,4 +21,4 @@ Check out the main docs at [saasify.sh](https://saasify.sh).
 
 ## License
 
-MIT © [Travis Fischer](https://transitivebullsh.it)
+MIT © [Saasify](https://saasify.sh)

@@ -4,4 +4,4 @@ This is a simple Saasify project that shows how you can use [Tesseract](https://
 
 ## License
 
-MIT © [Travis Fischer](https://transitivebullsh.it)
+MIT © [Saasify](https://saasify.sh)

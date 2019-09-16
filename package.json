@@ -1,7 +1,7 @@
 {
   "name": "saasify",
   "private": true,
-  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
   "license": "MIT",
   "engines": {

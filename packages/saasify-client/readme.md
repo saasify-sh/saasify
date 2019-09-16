@@ -35,4 +35,4 @@ await client.signin({ username, password })
 
 ## License
 
-MIT © [Travis Fischer](https://transitivebullsh.it)
+MIT © [Saasify](https://saasify.sh)

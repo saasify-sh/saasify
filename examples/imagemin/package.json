@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "description": "Saasify example for image optimization",
   "repository": "saasify-sh/saasify",
-  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "author": "Saasify <dev@saasify.sh>",
   "license": "MIT",
   "dependencies": {
     "file-type": "^12.1.0",

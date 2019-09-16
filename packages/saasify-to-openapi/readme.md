@@ -53,4 +53,4 @@ Should any of these be injected by the saas client?
 
 ## License
 
-MIT © [Travis Fischer](https://transitivebullsh.it)
+MIT © [Saasify](https://saasify.sh)

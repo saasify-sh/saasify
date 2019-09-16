@@ -134,4 +134,4 @@ saasify ls my-user-name/hello-world
 
 ## License
 
-MIT © [Travis Fischer](https://transitivebullsh.it)
+MIT © [Saasify](https://saasify.sh)

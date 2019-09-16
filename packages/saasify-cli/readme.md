@@ -81,4 +81,4 @@ For more documentation and a detailed walkthrough, visit [saasify.sh](https://sa
 
 ## License
 
-MIT © [Travis Fischer](https://transitivebullsh.it)
+MIT © [Saasify](https://saasify.sh)
