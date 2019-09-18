@@ -44,6 +44,7 @@ export default class App extends Component {
     const { saas } = deployment
 
     const fonts = toJS(ThemeManager.theme.fonts)
+    const desc = saas.heading && `${saas.heading} \n${saas.subheading}`
 
     return (
       <Router>
@@ -54,6 +55,10 @@ export default class App extends Component {
 
               {saas.favicon && (
                 <link rel='shortcut icon' href={saas.favicon} />
+              )}
+
+              {desc && (
+                <meta name='description' content={desc} />
               )}
 
               {fonts && (
