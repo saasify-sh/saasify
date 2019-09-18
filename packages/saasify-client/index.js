@@ -162,6 +162,14 @@ module.exports = class SaasifyClient {
     }).then(res => res.data)
   }
 
+  async getProjectByAlias (alias, opts = { }) {
+    const querystring = qs.stringify(opts)
+
+    return this._request({
+      url: `/1/projects/alias/${alias}?${querystring}`
+    }).then(res => res.data)
+  }
+
   // --------------------------------------------------------------------------
   // Consumers
   // --------------------------------------------------------------------------

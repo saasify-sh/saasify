@@ -54,7 +54,7 @@ module.exports = (program, client) => {
           `Publishing deployment [${deploymentId}] as version "${version}"`
         )
 
-        console.log(JSON.stringify(deployment, null, 2))
+        console.log(deployment.project.aliasUrl || deployment.project.saasUrl)
       } catch (err) {
         handleError(err)
       }
