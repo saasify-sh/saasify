@@ -41,20 +41,21 @@
           "$ref": "#/definitions/RateLimit",
           "title": "noAuthRateLimit"
         },
+        "amountPerBase": {
+          "type": "number",
+          "title": "amountPerBase"
+        },
         "amountPerRequest": {
           "type": "number",
-          "title": "amountPerRequest",
-          "default": 0.0004
+          "title": "amountPerRequest"
         },
         "amountPerCompute": {
           "type": "number",
-          "title": "amountPerCompute",
-          "default": 0.0034
+          "title": "amountPerCompute"
         },
         "amountPerBandwidth": {
           "type": "number",
-          "title": "amountPerBandwidth",
-          "default": 0.2
+          "title": "amountPerBandwidth"
         },
         "services": {
           "type": "array",
