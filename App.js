@@ -49,8 +49,8 @@ export default class App extends Component {
             <Helmet>
               <title>{saas.name}</title>
 
-              {saas.logo && (
-                <link rel='shortcut icon' href={saas.logo} />
+              {saas.favicon && (
+                <link rel='shortcut icon' href={saas.favicon} />
               )}
 
               {fonts && (
