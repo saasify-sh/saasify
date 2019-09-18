@@ -8,7 +8,8 @@ import BodyClassName from 'react-body-classname'
 
 import {
   AuthenticatedRoute,
-  SaasifyContext
+  SaasifyContext,
+  Loading
 } from './components'
 
 import {
@@ -35,7 +36,9 @@ import deployment from './lib/deployment'
 export default class App extends Component {
   render() {
     if (AuthManager.isBootstrapping) {
-      return null
+      return (
+        <Loading />
+      )
     }
 
     const { saas } = deployment

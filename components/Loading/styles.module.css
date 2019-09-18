@@ -5,8 +5,8 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-
-  background: #fff;
+  min-height: 100vh;
+  background: #23303a;
 }
 
 .title {
@@ -15,6 +15,6 @@
 }
 
 .loading-icon {
-  color: #222;
+  color: #fff;
   font-size: 4em;
 }
