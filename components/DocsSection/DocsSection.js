@@ -9,7 +9,7 @@ export class DocsSection extends Component {
     return (
       <Section
         id='docs'
-        title='Documentation'
+        title='Docs'
         {...this.props}
       >
         <Link to='/docs/api'>

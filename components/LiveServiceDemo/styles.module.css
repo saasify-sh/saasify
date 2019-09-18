@@ -1,6 +1,7 @@
 .container {
   position: relative;
   width: 650px;
+  max-width: 100%;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -65,4 +66,10 @@
   position: absolute;
   bottom: 1em;
   right: 1em;
+}
+
+@media only screen and (max-width: 767px) {
+  .code {
+    height: 20em;
+  }
 }

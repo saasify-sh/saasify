@@ -96,7 +96,7 @@ export class NavHeader extends Component {
           </div>
 
           {auth.isAuthenticated ? (
-            <div>
+            <div className={theme(styles, 'actions')}>
               <Link to='/logout' className={theme(styles, 'login')}>
                 <CTAButton type='secondary' inline>
                   LOGOUT
@@ -110,7 +110,7 @@ export class NavHeader extends Component {
               </Link>
             </div>
           ) : (
-            <div>
+            <div className={theme(styles, 'actions')}>
               <Link to='/login' className={theme(styles, 'login')}>
                 <CTAButton type='secondary' inline>
                   LOGIN

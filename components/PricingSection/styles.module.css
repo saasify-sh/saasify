@@ -8,3 +8,9 @@
   align-items: center;
   justify-content: space-evenly;
 }
+
+@media only screen and (max-width: 767px) {
+  .plan:not(first-child) {
+    margin-top: 1em;
+  }
+}

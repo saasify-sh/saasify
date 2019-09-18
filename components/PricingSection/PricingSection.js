@@ -27,6 +27,7 @@ export class PricingSection extends Component {
         <div className={theme(styles, 'plans')}>
           {plans.map((plan) => (
             <PricingPlan
+              className={theme(styles, 'plan')}
               key={plan.key}
               plan={plan}
             />

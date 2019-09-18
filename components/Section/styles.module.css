@@ -57,3 +57,13 @@ body header + section:first-of-type .title {
   letter-spacing: 4px;
   text-transform: uppercase;
 }
+
+@media only screen and (max-width: 767px) {
+  body header + section:first-of-type .content {
+    padding-top: 164px;
+  }
+
+  .content {
+    padding: 3em 0.5em;
+  }
+}
