@@ -89,7 +89,7 @@ export class SectionDivider extends Component {
           ref={this._canvasRef}
           style={{
             width: '100%',
-            height: '100%'
+            height: '101%'
           }}
         />
       </div>
