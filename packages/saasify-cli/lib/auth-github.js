@@ -23,11 +23,12 @@ module.exports = async (client) => {
 
     if (!code) {
       _reject(code)
-      ctx.body = 'Error authenticated Saasify with GitHub.'
+      ctx.body = 'Error authenticating Saasify with GitHub. 😭'
+      return
     }
 
     _resolve(code)
-    ctx.body = 'Saasify authenticated with GitHub successfully. You may now close this window.'
+    ctx.body = 'Saasify authenticated with GitHub successfully. You may now close this window. 😀'
   })
 
   let server
