@@ -39,17 +39,22 @@ module.exports = async (client) => {
   })
 
   const redirectUri = `http://localhost:${port}/auth/github`
+  const redirect_uri = `https://auth.saasify.sh/?${qs.stringify({ uri: redirectUri })}`
   const config = client.baseUrl.indexOf('localhost') >= 0
     ? ({
       client_id: '86d73532d0105da51a4d',
-      redirect_uri: redirectUri
+      redirect_uri
     }) : ({
       client_id: '6525c812c9b4430147c3',
-      redirect_uri: `https://auth.saasify.sh/?${qs.stringify({ uri: redirectUri })}`
+      redirect_uri
     })
 
-  const opts = (new url.URLSearchParams(config)).toString()
-  open(`https://github.com/login/oauth/authorize?${opts}`)
+  const scope = 'read:user user:email'
+  const params = (new url.URLSearchParams({
+    ...config,
+    scope
+  })).toString()
+  open(`https://github.com/login/oauth/authorize?${params}`)
   const code = await serverP
 
   await new Promise((resolve, reject) => {
