@@ -79,3 +79,14 @@
   border-color: #c83a62;
   color: #fff;
 }
+
+:global(.theme-okta) :global(#readme) code {
+  background: #0788cc;
+  color: #fff;
+}
+
+:global(.theme-okta) :global(#readme) pre {
+  background: #0788cc !important;
+  color: #fff !important;
+  border: 1px solid #eee;
+}
