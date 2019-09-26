@@ -1,22 +1,30 @@
 // NOTE: this is just a pseudocode reference for now
 
 class Config {
-  version?: number = 1
+  saasifyVersion?: number = 1
+  version?: string = 0.1.0
   name?: string
-  alias?: string
-  amountPerRequest?: number = 0.0004
-  amountPerCompute?: number = 0.0034
-  amountPerBandwidth?: number = 0.2
+  amountPerBase?: number = 99
+  amountPerRequest?: number = 0.04
+  amountPerCompute?: number = 0.34
+  amountPerBandwidth?: number = 20
   authRateLimit?: RateLimit
   noAuthRateLimit?: RateLimit
   services: Service[]
+  saas?: object
 }
 
 class Service {
   src: string
   name?: string
-  timeout?: number = 300000
-  example?: object
+  timeout?: number = 0
+  examples?: Example[]
+}
+
+class Example {
+  name: string
+  input: object
+  output?: string | object
 }
 
 class RateLimit {
