@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://saasify.sh" title="Saasify">
-    <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/logo-vert-white@4x.png" alt="Saasify Logo" width="400" />
+    <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/logo-vert-white@4x.png" alt="Saasify Logo" width="256" />
   </a>
 </p>
 
