@@ -1,3 +1,7 @@
+<a href="https://github.com/transitive-bullshit/functional-typescript" title="Functional TypeScript" style="display: inline-block; margin: 0 auto 2em; text-align: center; width: 100%;">
+  <img src="https://raw.githubusercontent.com/transitive-bullshit/functional-typescript/master/logo.png" alt="FTS Logo" width="150" />
+</a>
+
 # Functions
 
 Services in Saasify v1 are built on top of standard TypeScript functions which are transformed into type-safe serverless endpoints using [FTS](https://github.com/transitive-bullshit/functional-typescript).
@@ -74,7 +78,7 @@ Saasify v1 uses [FTS](https://github.com/transitive-bullshit/functional-typescri
 
 While this cuts down significantly on the manual work required to document and host serverless functions, sometimes this process fails for some combination of types.
 
-If you're experiencing a spec error either from FTS or OpenAPI, please [open an issue]() and let us know along with as much accompanying information as possible (including your source code).
+If you're experiencing a spec error either from FTS or OpenAPI, please [open an issue](https://github.com/saasify-sh/saasify/issues/new) and let us know along with as much accompanying information as possible (including your source code).
 
 In the future, the TypeScript requirement and reliance on FTS will be relaxed, but for now it provides by far the quickest and easiest way to self-document your SaaS APIs.
 
@@ -99,10 +103,6 @@ Serverless functions allow your code to run on-demand and scale automatically bo
 For more information, see [Why Serverless?](https://serverless.com/learn/overview), and an excellent breakdown on the [Tradeoffs that come with Serverless](https://martinfowler.com/articles/serverless.html).
 
 ### Why FTS?
-
-<a href="https://github.com/transitive-bullshit/functional-typescript" title="Functional TypeScript">
-  <img src="https://raw.githubusercontent.com/transitive-bullshit/functional-typescript/master/logo.png" alt="FTS Logo" width="150" />
-</a>
 
 The serverless space has seen such rapid growth that tooling, especially across different cloud providers, has struggled to keep up. One of the major disadvantages of using serverless functions at the moment is that each cloud provider has their own conventions and gotchas, which can quickly lead to vendor lock-in.
 
