@@ -31,14 +31,10 @@
 - Guides
   - [Use Cases](use-cases.md)
   - [Serverless Tips](serverless-tips.md)
-    - dbs, etc
-  - [Marketing](marketing.md) - what to do once launched
+  - [Marketing](marketing.md)
 
 - Support
   - [Support](support.md)
-    - Chat
-    - GitHub
-    - Email
   - [Roadmap](roadmap.md)
   - [Open Source](open-source.md)
   - [FAQ](faq.md)

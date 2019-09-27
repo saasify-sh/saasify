@@ -12,7 +12,7 @@ Saasify is aiming to bridge the gap between this discrepancy by reducing the bar
 
 ## OSS Community
 
-While it is our sincere hope that Saasify will help with this problem, we're aware that there is likely no silver bullet solution that will work for everyone when faced with such a complex problem. Towards that end, we hope to work with others in the OSS community who have similar goals and motivations to make sustainable OSS funding a reality as a community.
+While it is our sincere hope that Saasify will help with the problem of OSS sustainability, we're aware that there is likely no silver bullet solution that will work for everyone when faced with such a complex problem. Towards that end, we hope to work with others in the OSS community who have similar goals and motivations to make sustainable OSS funding a reality.
 
 If you're an OSS author who's struggled to find balance or has needed to find a day job to sustain their OSS work, we'd love to hear from you! Please don't hesitate to [get in touch](mailto:info@saasify.sh) && thanks!
 

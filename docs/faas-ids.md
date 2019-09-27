@@ -81,4 +81,4 @@ validators.deployment('username/bad%project%20name@ZZ') // false
 
 ## Source
 
-Check out [parse-faas-uri.js](https://github.com/saasify-sh/saasify/master/packages/packages/saasify-utils/lib/parse-faas-uri.js) and [validators.js](https://github.com/saasify-sh/saasify/master/packages/packages/saasify-utils/lib/validators.js) for the specific regular expressions used to parse and validate FaaS identifiers.
+Check out [parse-faas-uri.js](https://github.com/saasify-sh/saasify/blob/master/packages/saasify-utils/lib/parse-faas-uri.js) and [validators.js](https://github.com/saasify-sh/saasify/blob/master/packages/saasify-utils/lib/validators.js) for the specific regular expressions used to parse and validate FaaS identifiers.

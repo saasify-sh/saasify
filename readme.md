@@ -20,7 +20,7 @@ Saasify allows makers to:
 
 The backend and developer CLI are complete, and our team is working hard on an MVP of the template-based SaaS website generation.
 
-If you're interested in OSS sustainability and want to follow along with the progress of Saasify, please consider starring the [repo](https://github.com/saasify/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2). Thanks! ⭐️
+If you're interested in OSS sustainability and want to follow along with the progress of Saasify, please consider starring the [repo](https://github.com/saasify-sh/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2). Thanks! ⭐️
 
 ## Features
 

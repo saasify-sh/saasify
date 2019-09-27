@@ -10,9 +10,9 @@
 
 Saasify allows makers to:
 
-1) Focus on unique value instead of boilerplate 🔥
-2) Ship in minutes instead of months ✈️
-3) Monetize OSS ⭐️
+1. Focus on unique value instead of boilerplate 🔥
+2. Ship in minutes instead of months ✈️
+3. Monetize OSS ⭐️
 
 ## Features
 
@@ -26,16 +26,12 @@ Saasify allows makers to:
 
 ## Getting Started
 
-Please visit the [quick start](./quick-start) to get started creating your own fully functional SaaS products or visit the [showcase](./showcase.md) to get a feel for the types of products you can built with Saasify.
+Please visit the [quick start](./quick-start) to get started creating your own fully functional SaaS products or visit the [showcase](./showcase.md) to get a feel for the types of products you can build with Saasify.
+
+You may also want to check out our [mission](./mission.md) to learn more about our values and motivations when it comes to open source sustainability.
 
 ## Status
 
 **As of September, 2019, Saasify is an active WIP and is not yet ready for general use.**
 
-If you're interested in OSS sustainability and want to follow along with the progress of Saasify, please consider starring the [repo](https://github.com/saasify/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2). Thanks! ⭐️
-
-You may also want to check out our [mission](./mission.md) to learn more about our values and motivations when it comes to open source sustainability.
-
-## License
-
-MIT © [Saasify](https://saasify.sh)
+If you're interested in OSS sustainability and want to follow along with the progress of Saasify, please consider starring the [repo](https://github.com/saasify-sh/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2). Thanks! ⭐️
