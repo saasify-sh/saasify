@@ -10,3 +10,9 @@
 .subtitle {
   margin: 2rem 0 3rem !important;
 }
+
+.img-404 {
+  width: 80%;
+  min-width: 320px;
+  margin: 4em 0;
+}
