@@ -34,13 +34,13 @@ If you're interested in OSS sustainability and want to follow along with the pro
 
 ## Install
 
-```bash
+```
 npm install -g saasify
 ```
 
 ## Usage
 
-```bash
+```
 Usage: saasify [options] [command]
 
 Options:
@@ -53,11 +53,11 @@ Options:
 
 Commands:
   cc|billing <command> [id]                            Manages your credit cards and billing methods
-  call [options] <service> [args...]                   Invokes a given service
   debug [path]                                         Prints information about a local project
   deploy [options] [path]                              Creates a new deployment
   dev [options] [path]                                 Starts a local dev server for debugging your deployments
   help [cmd]                                           Displays usage info for [cmd]
+  init [options] [project-name]                        Creates a new project based on a template
   ls|list [project]                                    Lists deployments
   logs [options] <url|deployment>                      Prints the logs for a given deployment
   publish <deploymentId|deploymentUrl>                 Creates a subscription to a project (requires a valid billing source)
