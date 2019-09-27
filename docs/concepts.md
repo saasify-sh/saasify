@@ -68,7 +68,7 @@ See [./configuration.md] for more details on configuring projects.
 
 ## Deployment
 
-Every time you deploy a `Project`, you create an immutable `Deployment`.
+Every time you deploy a `Project`, you create an **immutable** `Deployment`.
 
 Relevant CLI commands:
 

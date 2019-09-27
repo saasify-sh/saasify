@@ -8,6 +8,7 @@ This is a high-level roadmap of the largest features planned for Saasify in the 
   - Add support for secrets and environment variables
   - Add support for more flexible billing models
   - Add support for custom tsconfig.json
+  - Add support for Stripe Connect payouts
 
 - SaaS Client
   - Add more templates

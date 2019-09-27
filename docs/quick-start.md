@@ -107,7 +107,7 @@ saasify billing add
 
 This will prompt you for credit card details that are stored in [Stripe](https://stripe.com).
 
->! Note that Saasify never transmits or stores your payment info on its servers. All payment-related data is securely handled by Stripe.
+!> Note that Saasify never transmits or stores your payment info on its servers. All payment-related data is securely handled by Stripe.
 
 Now that you have a credit card connected to your account with Stripe, you can subscribe to any projects you want to access.
 
