@@ -1,3 +1,7 @@
+# TODO
+
+## Pages
+
   - [Pricing](pricing.md)
   - [Publishing](publishing.md)
   - [Saasify API](saasify-api.md)
@@ -19,3 +23,8 @@
 
 
   - [FAQ](faq.md)
+
+## Misc
+
+- [ ] add relevant undraw graphics
+- [ ] download all JS and CSS assets locally

@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://saasify.sh" title="Saasify">
+    <img src="/_media/logo.png" alt="Saasify Logo" width="256" />
+  </a>
+</p>
+
 # Roadmap
 
 This is a high-level roadmap of the largest features planned for Saasify in the next 6 months. A more detailed, public roadmap will be posted soon.

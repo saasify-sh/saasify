@@ -1,12 +1,12 @@
 <p align="center">
   <a href="https://saasify.sh" title="Saasify">
-    <img src="/_media/logo-vert-white@4x.png" alt="Saasify Logo" width="256" />
+    <img src="/_media/logo.png" alt="Saasify Logo" width="256" />
   </a>
 </p>
 
 # Workflow
 
-This page dives a bit deeper into the maker development workflow from creating new projects, to local development, to deploying and publishing your deployments, and finally to launching your own SaaS products.
+This page dives a bit deeper into the development workflow from creating new projects, to local development, to deploying and publishing your deployments, and finally to launching your own SaaS products.
 
 This will be a more in-depth version of the [quick start](./quick-start.md), so if you haven't read that already, we recommend starting there first.
 

@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://saasify.sh" title="Saasify">
-    <img src="/_media/logo-vert-white@4x.png" alt="Saasify Logo" width="256" />
+    <img src="/_media/logo.png" alt="Saasify Logo" width="256" />
   </a>
 </p>
 
@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://puppet-master.sh" title="Puppet Master">
-    <img src="https://raw.githubusercontent.com/saasify-sh/puppet-master/master/media/logo.svg" alt="Puppet Master Logo" width="200" />
+    <img src="https://storage.googleapis.com/saasify-uploads-prod/transitive-bullshit/puppet-master/b0c5c30c/saas-logo.svg" alt="Puppet Master Logo" width="200" />
   </a>
 </p>
 

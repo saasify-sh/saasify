@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://saasify.sh" title="Saasify">
+    <img src="/_media/logo.png" alt="Saasify Logo" width="256" />
+  </a>
+</p>
+
 # Support
 
 As an early adopter of Saasify, you are trusting us with your business. We are committed to delivering the best customer experience possible.
