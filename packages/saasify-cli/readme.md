@@ -18,9 +18,9 @@ Saasify allows makers to:
 
 ## Status
 
-**As of September, 2019, Saasify is an active WIP and is not yet ready for general use.**
+**As of September, 2019, Saasify is in beta and is ready for general use.**
 
-If you're interested in OSS sustainability and want to follow along with the progress of Saasify, please consider starring the [repo](https://github.com/saasify/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2). Thanks! ⭐️
+If you're interested in OSS sustainability and want to follow along with our progress, please consider starring the [repo](https://github.com/saasify-sh/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2).
 
 ## Features
 
