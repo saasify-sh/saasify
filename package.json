@@ -7,6 +7,15 @@
   "engines": {
     "node": ">=8"
   },
+  "scripts": {
+    "docs": "docsify serve docs",
+    "deploy": "cd docs && now --prod && now rm --safe --yes saasify",
+    "test": "lerna run test",
+    "bootstrap": "lerna bootstrap",
+    "publish": "lerna publish",
+    "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') < 0) throw new Error('saasify requires yarn for development')\"",
+    "postinstall": "run-s bootstrap"
+  },
   "keywords": [
     "faas",
     "saas",
@@ -16,14 +25,8 @@
     "saasify",
     "fts"
   ],
-  "scripts": {
-    "test": "lerna run test",
-    "bootstrap": "lerna bootstrap",
-    "publish": "lerna publish",
-    "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') < 0) throw new Error('saasify requires yarn for development')\"",
-    "postinstall": "run-s bootstrap"
-  },
   "devDependencies": {
+    "docsify": "^4.9.4",
     "lerna": "^3.13.4",
     "npm-run-all": "^4.1.5"
   }
