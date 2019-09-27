@@ -4,9 +4,7 @@
   </a>
 </p>
 
-<h2 align="center" class='subtitle'>Easiest way to launch your own SaaS</h2>
-
-<br />
+<h2 align="center" style="margin: 2rem 0 3rem">Easiest way to launch your own SaaS</h2>
 
 [![NPM](https://img.shields.io/npm/v/saasify.svg)](https://www.npmjs.com/package/saasify) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
