@@ -14,7 +14,7 @@ Here is an example auto-generated OpenAPI [spec](https://api.saasify.sh/1/deploy
 
 By default, all generated service endpoints are available via `HTTP GET` with query parameters as well as `HTTP POST` with `application/json` encoded body parameters.
 
-!> All API requests must be made over HTTPS. Calls made over plain HTTP will fail.
+!> All API requests must be made over HTTPS. Calls made to the production API over plain HTTP will fail. The one exception to this is when debugging your project locally via `saasify dev`, in which case all `localhost` API calls must be made over HTTP.
 
 ## Content Type
 
