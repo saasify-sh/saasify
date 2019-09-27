@@ -3,17 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Saasify docs">
+  <meta name="description" content="Saasify is the easiest way to launch your own SaaS!">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-  <link rel="icon" href="_media/favicon.ico">
+  <link rel="icon" href="_media/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="_media/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="_assets/vue.css">
-
-<style>
-.sidebar > h1 {
-  margin: 0 2em;
-}
-</style>
+  <link rel="stylesheet" href="_assets/styles.css">
 
   <title>Saasify</title>
 </head>
@@ -24,7 +20,7 @@
   <script>
     window.$docsify = {
       name: 'Saasify',
-      nameLink: '/',
+      nameLink: '/#/README',
       repo: 'saasify-sh/saasify',
       homepage: 'readme.md',
       relativePath: true,
@@ -36,9 +32,10 @@
       alias: {
         '/.*/_navbar.md': '/_navbar.md'
       },
-      logo: '/_media/logo.png',
+      logo: '/_media/logo512w.png',
       loadSidebar: true,
       subMaxLevel: 2,
+      maxLevel: 3,
       plugins: [
         function (hook, vm) {
           hook.beforeEach(function (html) {
@@ -50,8 +47,8 @@
             } else {
               url = 'https://github.com/saasify-sh/saasify/blob/master/docs/' + vm.route.file
             }
-            const editHtml = '[:memo: Edit Document](' + url + ')\n'
-            return html + '\n\n----\n\n' + editHtml
+            const editHtml = '<p align="center"><a href="' + url + '">📝 Edit this document</a></p>\n'
+            return html + '\n\n' + editHtml
           })
         }
       ]
@@ -61,7 +58,9 @@
   <script src="_assets/docsify.min.js"></script>
   <script src="_assets/search.min.js"></script>
   <script src="_assets/zoom-image.min.js"></script>
-  <script src="_assets/docsify-copy-code"></script>
+  <script src="_assets/docsify-copy-code.min.js"></script>
+  <script src="_assets/docsify-pagination.min.js"></script>
+  <script src="_assets/ga.min.js"></script>
   <script src="_assets/prism-bash.min.js"></script>
   <script src="_assets/prism-javascript.min.js"></script>
   <script src="_assets/prism-typescript.min.js"></script>

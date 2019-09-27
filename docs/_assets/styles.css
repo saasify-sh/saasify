@@ -1,0 +1,12 @@
+.sidebar > h1 {
+  margin: 0 2em;
+}
+
+.sidebar .app-name-link img {
+  max-width: 50%;
+  margin-bottom: 1em;
+}
+
+.subtitle {
+  margin: 2rem 0 3rem !important;
+}

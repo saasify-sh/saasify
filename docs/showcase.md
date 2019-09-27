@@ -4,13 +4,13 @@
 
 ## Puppet Master
 
+> [Puppeteer](https://pptr.dev) as a service ([source code](https://github.com/saasify-sh/puppet-master)).
+
 <p align="center">
   <a href="https://puppet-master.sh" title="Puppet Master">
     <img src="https://storage.googleapis.com/saasify-uploads-prod/transitive-bullshit/puppet-master/b0c5c30c/saas-logo.svg" alt="Puppet Master Logo" width="200" />
   </a>
 </p>
-
-> [Puppeteer](https://pptr.dev) as a service ([source code](https://github.com/saasify-sh/puppet-master)).
 
 ## Examples
 

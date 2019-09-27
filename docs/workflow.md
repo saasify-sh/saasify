@@ -108,7 +108,7 @@ This will prompt you for a version number following [semver](https://semver.org)
 
 Once published, your auto-generated SaaS web client will be available at `https://<username>_<project-name>.saasify.sh`. For example, [https://transitive-bullshit_puppet-master.saasify.sh](https://transitive-bullshit_puppet-master.saasify.sh).
 
-!> TODO: discuss aliasing saas web client to a custom domain
+?> TODO: discuss aliasing saas web client to a custom domain
 
 <p align="center">
   <img src="/_media/undraw/maker_launch.svg" alt="Launching!" width="200" />

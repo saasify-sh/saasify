@@ -1,8 +1,8 @@
 [header](_header.md ':include')
 
-# FaaS Identifiers
+# FaaS IDs
 
-## FaaS Identifier Format
+## ID Format
 
 The most general FaaS identifier fully specifies the deployment and service name.
 

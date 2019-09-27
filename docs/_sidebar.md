@@ -1,8 +1,9 @@
-- Overview
+- Getting Started
+  - [Overview](readme.md)
   - [Quick Start](quick-start.md)
   - [Workflow](workflow.md)
-  - [Showcase](showcase.md)
   - [Concepts](concepts.md)
+  - [Showcase](showcase.md)
   - [Mission](mission.md)
 
 - Platform
