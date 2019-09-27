@@ -6,7 +6,7 @@
 
 Services in Saasify v1 are built on top of standard TypeScript functions which are transformed into type-safe serverless endpoints using [FTS](https://github.com/transitive-bullshit/functional-typescript).
 
-!> This all goes on under the hood. **All you have to do is understand and write TypeScript**.
+!> This all happens under the hood. **All you have to do is understand and write TypeScript**.
 
 ## Basic Example
 
@@ -17,7 +17,7 @@ export default (name = 'World') => {
 }
 ```
 
-To view the full source for this example, visit [hello-world](https://github.com/saasify-sh/saasify/master/examples/hello-world).
+To view the full source for this example, visit [hello-world](https://github.com/saasify-sh/saasify/tree/master/examples/hello-world).
 
 ## Advanced Example
 
@@ -31,11 +31,13 @@ To view the full source for this example, visit [puppet-master](https://github.c
 
 ## Best Practices
 
-Any valid TypeScript function may be used as the source for a service. It should be either the default export of the source `ts` file or there should only be one named export in the file.
+Any valid TypeScript function may be used as the source for a service. It should either be the default export of the source `ts` file or there should only be one named export in the file.
 
 We recommend limiting top-level TypeScript functions to one export per source file.
 
 Aside from that, you can use / import any valid TypeScript, including from third-party NPM modules. Just install them normally to your project's `package.json` file.
+
+Note that Saasify currently doesn't support custom `tsconfig` files.
 
 ## Parameters
 
@@ -82,7 +84,7 @@ Saasify v1 uses [FTS](https://github.com/transitive-bullshit/functional-typescri
 
 While this cuts down significantly on the manual work required to document and host serverless functions, sometimes this process fails for some combination of types.
 
-If you're experiencing a spec error either from FTS or OpenAPI, please [open an issue](https://github.com/saasify-sh/saasify/issues/new) and let us know along with as much accompanying information as possible (including your source code).
+If you're experiencing a spec error either from FTS or OpenAPI, please [open an issue](https://github.com/saasify-sh/saasify/issues) and let us know along with as much accompanying information as possible (including your source code).
 
 In the future, the TypeScript requirement and reliance on FTS will be relaxed, but for now it provides by far the quickest and easiest way to self-document your SaaS APIs.
 
@@ -108,7 +110,7 @@ Symlinks will not be followed during deployment, so make sure that any dependenc
 
 Serverless functions allow your code to run on-demand and scale automatically both infinitely upwards and down to zero. They are great at minimizing cost in terms of infrastructure and engineering time, largely due to removing operational overhead and reducing the surface area for potential errors.
 
-For more information, see [Why Serverless?](https://serverless.com/learn/overview), and an excellent breakdown on the [Tradeoffs that come with Serverless](https://martinfowler.com/articles/serverless.html).
+For more information, see [Why Serverless?](https://serverless.com/learn/why), and an excellent breakdown on the [Tradeoffs that come with Serverless](https://martinfowler.com/articles/serverless.html).
 
 ### Why FTS?
 

@@ -6,13 +6,12 @@ This is a high-level roadmap of the largest features planned for Saasify in the 
 
 ## Core
 
-- Add support for docker services
-- Add support for python services
 - Add support for secrets and environment variables
 - Add support for more flexible billing models
+- Add support for docker services
+- Add support for python services
 - Add support for custom tsconfig.json
 - Add support for Stripe Connect payouts
-
 
 ## SaaS Client
 
@@ -23,5 +22,5 @@ This is a high-level roadmap of the largest features planned for Saasify in the 
 - Marketing site for [saasify.sh](https://saasify.sh)
 
 <p align="center">
-  <img src="/_media/undraw/scrum_board.svg" alt="FAQ" width="200" />
+  <img src="/_media/undraw/scrum_board.svg" alt="Roadmap" width="200" />
 </p>
