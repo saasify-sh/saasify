@@ -24,7 +24,7 @@ username/projectName@1.0.0
 username/projectName
 ```
 
-## Omitting username
+## Omitting Username
 
 You may optionally leave off the `username/` prefix when referring to your own projects and deployments via the dev [CLI](../saasify-cli).
 
@@ -49,7 +49,7 @@ This would be equivalent to:
 saasify ls my-user-name/hello-world
 ```
 
-## validators
+## Validators
 
 ```js
 const saasifyUtils = require('saasify-utils')
