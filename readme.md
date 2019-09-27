@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h2 align="center">Easiest way to launch your own SaaS</h2>
+<h2 align="center" style="border: 0; margin: 1em 0 2em;">Easiest way to launch your own SaaS</h2>
 
 &nbsp;
 
