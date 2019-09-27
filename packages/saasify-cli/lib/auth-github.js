@@ -40,6 +40,7 @@ module.exports = async (client) => {
   })
 
   const redirectUri = `http://localhost:${port}/auth/github`
+  // eslint-disable-next-line
   const redirect_uri = `https://auth.saasify.sh/?${qs.stringify({ uri: redirectUri })}`
   const config = client.baseUrl.indexOf('localhost') >= 0
     ? ({

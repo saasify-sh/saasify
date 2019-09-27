@@ -9,7 +9,7 @@ const auth = require('./auth')
 
 const commands = require('./commands')
 
-module.exports = (argv, opts = { }) => {
+module.exports = async (argv, opts = { }) => {
   const client = new SaasifyClient({
     ...opts,
     ...auth.get()
@@ -24,7 +24,7 @@ module.exports = (argv, opts = { }) => {
     .option('-C, --no-clipboard', 'Do not attempt to copy URL to clipboard')
 
   for (const command of commands) {
-    command(program, client)
+    await Promise.resolve(command(program, client))
   }
 
   program.on('command:*', () => {
