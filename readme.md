@@ -46,7 +46,9 @@ You may also want to check out our [mission](https://saasify.sh/#/mission) to le
 
 **As of September, 2019, Saasify is in beta and ready for general use.**
 
-If you're interested in OSS sustainability and want to follow along with our progress, please consider starring the [repo](https://github.com/saasify-sh/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2). Thanks! ⭐️
+If you're interested in OSS sustainability and want to follow along with our progress, please consider starring the [repo](https://github.com/saasify-sh/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2).
+
+Thanks! ⭐️
 
 ## License
 
