@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://saasify.sh" title="Saasify">
+    <img src="/_media/logo-vert-white@4x.png" alt="Saasify Logo" width="256" />
+  </a>
+</p>
+
 # Quick Start
 
 This quick start will give you an overview of the Saasify platform by creating an example project and deploying it to Saasify.

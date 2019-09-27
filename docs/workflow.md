@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://saasify.sh" title="Saasify">
+    <img src="/_media/logo-vert-white@4x.png" alt="Saasify Logo" width="256" />
+  </a>
+</p>
+
 # Workflow
 
 This page gives an overview of the development workflow from creating new projects, to local development, to deploying and publishing your deployments, and finally to launching your own SaaS products.

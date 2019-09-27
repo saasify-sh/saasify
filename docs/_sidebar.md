@@ -5,7 +5,7 @@
   - [Concepts](concepts.md)
   - [Mission](mission.md)
 
-- Platform Reference
+- Platform
   - [CLI](cli.md)
   - [Configuration](configuration.md)
   - [Functions](functions.md)
