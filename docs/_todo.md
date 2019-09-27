@@ -26,5 +26,6 @@
 
 ## Misc
 
-- [ ] add relevant undraw graphics
-- [ ] download all JS and CSS assets locally
+- [ ] use history router and @now/static-build
+- [x] add relevant undraw graphics
+- [x] download all JS and CSS assets locally
