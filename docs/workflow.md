@@ -41,6 +41,10 @@ For more verbose debugging output, you can enable debug mode.
 saasify dev --debug
 ```
 
+<p align="center">
+  <img src="/_media/undraw/bug_fixing.svg" alt="Debugging" width="200" />
+</p>
+
 ## Deploying your Project
 
 Once you're happy with your project, you'll want to deploy it to the cloud.
@@ -88,7 +92,11 @@ Also note that all of these calls are going through a Saasify proxy that rate li
 
 You can preview hte auto-generated SaaS web client for any deployment by visiting `https://<username>_<project-name>_<deployment-hash>.saasify.sh`. For example, [https://transitive-bullshit_puppet-master.saasify_b0c5c30c.sh](https://transitive-bullshit_puppet-master.saasify.sh).
 
-## Publishing a Deployment
+<p align="center">
+  <img src="/_media/undraw/confirmation.svg" alt="Deployments" width="200" />
+</p>
+
+## Publishing your Deployment
 
 Once you're happy with your remote deployment, it's time to publish it which allows other developers to find and subscribe to your project's API.
 

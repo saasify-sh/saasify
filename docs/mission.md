@@ -20,10 +20,14 @@ Saasify is aiming to bridge the gap between this discrepancy by reducing the bar
 
 While it is our sincere hope that Saasify will help with the problem of OSS sustainability, we're aware that there is likely no silver bullet solution that will work for everyone when faced with such a complex problem. Towards that end, we hope to work with others in the OSS community who have similar goals and motivations to make sustainable OSS funding a reality.
 
-If you're an OSS author who's struggled to find balance or has needed to find a day job to sustain their OSS work, we'd love to hear from you! Please don't hesitate to [get in touch](mailto:info@saasify.sh) && thanks!
+If you're an OSS author who's struggled to find balance or has needed to find a day job to sustain your OSS work, we'd love to hear from you! Please don't hesitate to [get in touch](mailto:info@saasify.sh) && thanks!
 
 Here are some of our OSS friends: 🥰
 
 - [Codefund](https://codefund.io)
 - [Gitcoin](https://gitcoin.co)
 - [GitHub](https://github.com)
+
+<p align="center">
+  <img src="/_media/undraw/community.svg" alt="OSS Community" width="200" />
+</p>
