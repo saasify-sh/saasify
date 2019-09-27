@@ -65,14 +65,14 @@ module.exports = async (opts) => {
         name: 'license',
         message: 'License',
         default: opts.license
-      },
+      } /*,
       {
         type: 'list',
         name: 'template',
         message: 'Template?',
         choices: ['typescript'],
         default: opts.template
-      }
+      }*/
     ])
 
     config.set('author', info.author)
