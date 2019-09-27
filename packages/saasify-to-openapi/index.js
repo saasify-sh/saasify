@@ -33,7 +33,7 @@ module.exports = async function finToOpenAPI (deployment, opts = { }) {
       description: `
 # Introduction
 
-This API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable resource-oriented URLs, accepts [JSON-encoded](http://www.json.org/) request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+This API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API accepts [JSON-encoded](http://www.json.org/) request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 
 # Content Type
 

@@ -6,7 +6,7 @@
 
 # Workflow
 
-This page gives an overview of the development workflow from creating new projects, to local development, to deploying and publishing your deployments, and finally to launching your own SaaS products.
+This page dives a bit deeper into the maker development workflow from creating new projects, to local development, to deploying and publishing your deployments, and finally to launching your own SaaS products.
 
 This will be a more in-depth version of the [quick start](./quick-start.md), so if you haven't read that already, we recommend starting there first.
 
@@ -97,7 +97,7 @@ Once you're happy with your remote deployment, it's time to publish it which all
 saasify publish <deployment-id>
 ```
 
-This will prompt you for a version number following [semver]() format. Version numbers must increase with each published version, and changes to pricing require a major version update.
+This will prompt you for a version number following [semver](https://semver.org) format. Version numbers must increase with each published version, and changes to pricing require a major version update.
 
 Once published, your auto-generated SaaS web client will be available at `https://<username>_<project-name>.saasify.sh`. For example, [https://transitive-bullshit_puppet-master.saasify.sh](https://transitive-bullshit_puppet-master.saasify.sh).
 

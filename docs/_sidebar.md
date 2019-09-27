@@ -12,10 +12,10 @@
   - [CORS](cors.md)
   - [FaaS IDs](faas-ids.md)
   - [Billing](billing.md)
+  - [Services](services.md)
 <!-- TODO
   - [Pricing](pricing.md)
   - [Publishing](publishing.md)
-  - [OpenAPI](openapi.md)
   - [Saasify API](saasify-api.md)
   - [Rate Limits](rate-limits.md)
   - [ZEIT Now](zeit-now.md)

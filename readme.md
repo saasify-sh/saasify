@@ -10,17 +10,9 @@
 
 Saasify allows makers to:
 
-1) Focus on unique value instead of boilerplate 🔥
-2) Ship in minutes instead of months ✈️
-3) Monetize OSS ⭐️
-
-## Status
-
-**As of September, 2019, Saasify is an active WIP and is not yet ready for general use.**
-
-The backend and developer CLI are complete, and our team is working hard on an MVP of the template-based SaaS website generation.
-
-If you're interested in OSS sustainability and want to follow along with the progress of Saasify, please consider starring the [repo](https://github.com/saasify-sh/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2). Thanks! ⭐️
+1. Focus on unique value instead of boilerplate 🔥
+2. Ship in minutes instead of months ✈️
+3. Monetize OSS ⭐️
 
 ## Features
 
@@ -32,18 +24,15 @@ If you're interested in OSS sustainability and want to follow along with the pro
 - **Automatic**: Saasify handles all docs, hosting, billing, accounts, and support for you
 - **Efficient**: Start validating product / market fit in minutes instead of months
 
-## Install
+## Getting Started
 
 For more documentation and a detailed walkthrough, visit [saasify.sh](https://saasify.sh).
 
-## Related
+## Status
 
-- [saasify](https://saasify.sh) - Saasify homepage.
-- [saasify-cli](./packages/saasify-cli) - Saasify CLI.
-- [saasify-client](./packages/saasify-client) - Saasify HTTP Client.
-- [saasify-utils](./packages/saasify-utils) - Shared utilities for Saasify.
-- [saasify-to-openapi](./packages/saasify-to-openapi) - Converts Saasify deployments to OpenAPI specs.
-- [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
+**As of September, 2019, Saasify is an active WIP and is not yet ready for general use.**
+
+If you're interested in OSS sustainability and want to follow along with the progress of Saasify, please consider starring the [repo](https://github.com/saasify-sh/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2). Thanks! ⭐️
 
 ## License
 

@@ -16,6 +16,8 @@ Services conform to the [Functional TypeScript](https://github.com/transitive-bu
 
 By default, every service deployed on Saasify is publicly available and rate-limited by IP address. Other developers can *subscribe* to your Project's API in order to gain access to higher rate limits and usage-based pricing.
 
+See [services](./services.md) for more detail on auto-generated service endpoints.
+
 ## Project
 
 A `Project` is a collection of related `Services`. It is specified by a Saasify config file `saasify.json` which has the following format:
