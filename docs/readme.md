@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="https://saasify.sh" title="Saasify">
-    <img src="/_media/logo.png" alt="Saasify Logo" width="256" />
-  </a>
-</p>
+[header](_header.md ':include')
 
 > [Saasify](https://saasify.sh) transforms **serverless functions** into fully functional **SaaS** websites!
 

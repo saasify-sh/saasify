@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="https://saasify.sh" title="Saasify">
-    <img src="/_media/logo.png" alt="Saasify Logo" width="256" />
-  </a>
-</p>
+[header](_header.md ':include')
 
 # Workflow
 
@@ -16,7 +12,7 @@ Let's get started!
 
 To create a new project, either copy and paste from the [template]() manualy or use the `saasify init` command.
 
-```bash
+```
 saasify init <project-name>
 ```
 
@@ -27,13 +23,13 @@ This will create a folder `<project-name>` containing the following files:
 - `.gitignore` - Standard [gitignore] file. Any files or folders referenced in this file will
 - `index.ts` - Default source file to start writing your first service.
 
->! Any files or folders referenced in your `.gitignore` file will be ignored during deployment. By default, this includes build directories like `node_modules`. When dealing with more complicated deployments, it's important to keep your service size small in order to speed up serverless invocations.
+!> Any files or folders referenced in your `.gitignore` will be ignored during deployment. By default, this includes build directories like `node_modules`. When dealing with more complicated deployments, it's important to keep your service size small in order to speed up serverless invocations.
 
 ## Developing your Project Locally
 
 The main workflow you'll want to use while developing your services will be `saasify dev`, which wraps `now dev` to run a local webserver which closely mirrors how your services will function in production.
 
-```bash
+```
 saasify dev
 ```
 
@@ -41,7 +37,7 @@ This is also a great opportunity to add debug-focused environment variables such
 
 For more verbose debugging output, you can enable debug mode.
 
-```bash
+```
 saasify dev --debug
 ```
 
@@ -49,11 +45,15 @@ saasify dev --debug
 
 Once you're happy with your project, you'll want to deploy it to the cloud.
 
-```bash
+```
 saasify deploy
 ```
 
 All deployments are immutable, and you can create as many deployments as you want.
+
+<p align="center">
+  <img src="/_media/undraw/logistics.svg" alt="Deployments" width="200" />
+</p>
 
 ## Calling your Deployment
 
@@ -63,21 +63,21 @@ You can now call your services on this live deployment via HTTP. As an example, 
 
 Via HTTP GET:
 
-```bash
+```
 > http https://api.saasify.sh/1/call/username/hello-world@f4a0d67b
 Hello World!
 ```
 
 Via HTTP GET with query params:
 
-```bash
+```
 > http https://api.saasify.sh/1/call/username/hello-world@f4a0d67b?name=Foo
 Hello Foo!
 ```
 
 Via HTTP POST with body params:
 
-```bash
+```
 > http POST https://api.saasify.sh/1/call/username/hello-world@f4a0d67b name=Nala
 Hello Nala!
 ```
@@ -87,7 +87,6 @@ Note that because Saasify uses [Functional TypeScript](https://github.com/transi
 Also note that all of these calls are going through a Saasify proxy that rate limits your unauthenticated HTTP requests based on your IP address.
 
 You can preview hte auto-generated SaaS web client for any deployment by visiting `https://<username>_<project-name>_<deployment-hash>.saasify.sh`. For example, [https://transitive-bullshit_puppet-master.saasify_b0c5c30c.sh](https://transitive-bullshit_puppet-master.saasify.sh).
-
 
 ## Publishing a Deployment
 
@@ -101,7 +100,11 @@ This will prompt you for a version number following [semver](https://semver.org)
 
 Once published, your auto-generated SaaS web client will be available at `https://<username>_<project-name>.saasify.sh`. For example, [https://transitive-bullshit_puppet-master.saasify.sh](https://transitive-bullshit_puppet-master.saasify.sh).
 
->! TODO: discuss aliasing saas web client to a custom domain
+!> TODO: discuss aliasing saas web client to a custom domain
+
+<p align="center">
+  <img src="/_media/undraw/maker_launch.svg" alt="Launching!" width="200" />
+</p>
 
 ## Next Steps
 
@@ -113,3 +116,7 @@ Here are some recommendations to get started:
 
 - If your SaaS project is based on an open source library, we recommend posting a link to the hosted SaaS version of your library on your open source repo and/or site.
 - Posting a `curl` example as answers to relevant questions on Stackoverflow and GitHub issues can be a great way to give developers a taste of your solution to a common problem. We recommend searching through and posting helpful comments on Stackoverflow, StackExchange, Reddit, GitHub, HackerNews, ProductHunt, etc.
+
+<p align="center">
+  <img src="/_media/undraw/code_review.svg" alt="Workflow" width="200" />
+</p>

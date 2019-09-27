@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="https://saasify.sh" title="Saasify">
-    <img src="/_media/logo.png" alt="Saasify Logo" width="256" />
-  </a>
-</p>
+[header](_header.md ':include')
 
 # Concepts
 
@@ -98,3 +94,7 @@ A `Consumer` maps a `User` to a `Project` via a SaaS subscription. Every time a 
 One User may have zero or more `Consumers` depending on the number of projects subscriptions they have.
 
 One Project may have zero or more `Consumers` depending on how many users have subscribed to the project.
+
+<p align="center">
+  <img src="/_media/undraw/creative_thinking.svg" alt="Creative thinking" width="200" />
+</p>

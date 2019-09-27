@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="https://saasify.sh" title="Saasify">
-    <img src="/_media/logo.png" alt="Saasify Logo" width="256" />
-  </a>
-</p>
+[header](_header.md ':include')
 
 # Mission
 
@@ -15,6 +11,10 @@ Patreon & Open Collective help with a very small percentage of this problem beca
 Contrast this with the standard SaaS API business model of paying based on usage that aligns much more naturally with how businesses actually pay for software critical to their core business needs.
 
 Saasify is aiming to bridge the gap between this discrepancy by reducing the barrier to entry for developers who are interested in earning passive income via SaaS.
+
+<p align="center">
+  <img src="/_media/undraw/open_source.svg" alt="Open Source Software" width="200" />
+</p>
 
 ## OSS Community
 

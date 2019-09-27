@@ -1,3 +1,5 @@
+[header](_header.md ':include')
+
 # CORS
 
 All services allow for very permissive [CORS](https://enable-cors.org) (Cross Origin Resource Sharing).

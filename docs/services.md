@@ -1,3 +1,5 @@
+[header](_header.md ':include')
+
 # Services
 
 All generated service endpoints are organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). They accept [JSON-encoded](http://www.json.org/) request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs.
@@ -53,6 +55,10 @@ All published deployment versions are **immutable** which guarantees that once a
 
 When making backwards-incompatible changes to a project or changing pricing, you are required to publish a new major version following standard [semver](https://semver.org) conventions.
 
+<p align="center">
+  <img src="/_media/undraw/version_control.svg" alt="API Version Control" width="200" />
+</p>
+
 ## Auth Tokens
 
 All service endpoints accept an optional auth token for authenticated access.
@@ -62,3 +68,7 @@ Unauthenticated (public) requests are subject to rate limiting.
 Subscribers can view and manage their auth token(s) in their client dashboard.
 
 Be sure to keep your auth tokens secure. Do not share it in publicly accessible areas such as GitHub, client-side code, and so forth.
+
+<p align="center">
+  <img src="/_media/undraw/security.svg" alt="Security" width="200" />
+</p>

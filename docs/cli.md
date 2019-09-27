@@ -1,3 +1,5 @@
+[header](_header.md ':include')
+
 # CLI
 
 > [Saasify CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli)
@@ -10,7 +12,7 @@ npm install -g saasify
 
 ## Usage
 
-```bash
+```
 Usage: saasify [options] [command]
 
 Options:

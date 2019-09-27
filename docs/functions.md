@@ -25,6 +25,10 @@ To view the full source for this example, visit [hello-world](https://github.com
 
 To view the full source for this example, visit [puppet-master](https://github.com/saasify-sh/puppet-master).
 
+<p align="center">
+  <img src="/_media/undraw/programming.svg" alt="Programming" width="200" />
+</p>
+
 ## Best Practices
 
 Any valid TypeScript function may be used as the source for a service. It should be either the default export of the source `ts` file or there should only be one named export in the file.

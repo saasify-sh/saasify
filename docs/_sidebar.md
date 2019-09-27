@@ -9,10 +9,10 @@
   - [CLI](cli.md)
   - [Configuration](configuration.md)
   - [Functions](functions.md)
-  - [CORS](cors.md)
+  - [Services](services.md)
   - [FaaS IDs](faas-ids.md)
   - [Billing](billing.md)
-  - [Services](services.md)
+  - [CORS](cors.md)
 
 - Support
   - [Support](support.md)

@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="https://saasify.sh" title="Saasify">
-    <img src="/_media/logo.png" alt="Saasify Logo" width="256" />
-  </a>
-</p>
+[header](_header.md ':include')
 
 # Support
 
@@ -21,3 +17,7 @@ If you encounter a problem with the platform at any point, please feel free to [
 ## Email
 
 Want to chat or jump on a call? Feel free to reach out for general info [info@saasify.sh](mailto:info@saasify.sh) or dedicated support [support@saasify.sh](mailto:support@saasify.sh).
+
+<p align="center">
+  <img src="/_media/undraw/questions.svg" alt="FAQ" width="200" />
+</p>
