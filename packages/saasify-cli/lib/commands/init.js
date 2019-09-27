@@ -2,9 +2,9 @@
 
 const handleError = require('../handle-error')
 
-const getDefaultTemplateParams = require('../get-default-template-params')
-const promptTemplateParams = require('../prompt-template-params')
-const initTemplate = require('../init-template')
+const getDefaultTemplateParams = require('../template/get-default-params')
+const promptTemplateParams = require('../template/prompt-params')
+const initTemplate = require('../template/init')
 
 module.exports = async (program, client) => {
   const defaults = await getDefaultTemplateParams()

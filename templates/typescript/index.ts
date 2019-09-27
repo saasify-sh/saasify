@@ -1,3 +1,3 @@
-export default async function hello (name = 'World'): Promise<string> => {
+export default async (name = 'World'): Promise<string> => {
   return `Hello ${name}!`
 }

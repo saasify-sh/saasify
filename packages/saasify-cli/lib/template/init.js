@@ -10,8 +10,8 @@ const pEachSeries = require('p-each-series')
 const pify = require('pify')
 const tempy = require('tempy')
 
-const spinner = require('./spinner')
-const pkg = require('../package')
+const spinner = require('../spinner')
+const pkg = require('../../package')
 
 const templateRepo = 'https://github.com/saasify-sh/saasify.git'
 

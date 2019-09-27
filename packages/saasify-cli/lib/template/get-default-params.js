@@ -4,7 +4,7 @@ const getGitConfigPath = require('git-config-path')
 const githubUsername = require('github-username')
 const parseGitConfig = require('parse-git-config')
 
-const config = require('./config')
+const config = require('../config')
 
 module.exports = async () => {
   const defaults = {

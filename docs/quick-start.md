@@ -24,7 +24,22 @@ saasify signup
 
 ## Creating a Project
 
-Now let's create our first `Project`. Create a new directory containing these two files:
+Use the `saasify init` command to create a new project.
+
+```
+saasify init [project-name]
+```
+
+This will create a new folder `<project-name>` containing the following files:
+
+- `saasify.json` - Config file describing your project, source files, billing, and example usage.
+- `index.ts` - Default source file to start writing your first service.
+- `package.json` - Normal NPM package config with `private` set to `true`. Feel free to install any packages your project needs normally via `npm install --save` or `yarn add`. Note that the deployment process defaults to using `yarn`.
+- `.gitignore` - Standard [gitignore] file. Any files or folders referenced in this file will
+
+!> Any files or folders referenced in your `.gitignore` will be ignored during deployment. By default, this includes build directories like `node_modules`. When dealing with more complicated deployments, it's important to keep your service size small in order to speed up serverless invocations.
+
+The two most important files should look similar to this:
 
 *(saasify.json)*
 ```json
@@ -32,16 +47,15 @@ Now let's create our first `Project`. Create a new directory containing these tw
   "name": "hello-world",
   "services": [
     {
-      "src": "hello-world.ts",
-      "name": "helloWorld"
+      "src": "index.ts"
     }
   ]
 }
 ```
 
-*(hello-world.ts)*
+*(index.ts)*
 ```ts
-export default (name = 'World') => {
+export default async (name = 'World'): Promise<string> => {
   return `Hello ${name}!`
 }
 ```

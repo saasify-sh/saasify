@@ -3,7 +3,7 @@
 const inquirer = require('inquirer')
 const { validators } = require('saasify-utils')
 
-const config = require('./config')
+const config = require('../config')
 
 module.exports = async (opts) => {
   const {
