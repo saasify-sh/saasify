@@ -6,7 +6,7 @@
 
 ## Install
 
-```bash
+```
 npm install -g saasify
 ```
 

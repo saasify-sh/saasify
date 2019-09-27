@@ -86,6 +86,10 @@ If you're experiencing a spec error either from FTS or OpenAPI, please [open an 
 
 In the future, the TypeScript requirement and reliance on FTS will be relaxed, but for now it provides by far the quickest and easiest way to self-document your SaaS APIs.
 
+<p align="center">
+  <img src="/_media/undraw/qa_engineers.svg" alt="Troubleshooting" width="200" />
+</p>
+
 ## Known Issues
 
 The following type will fail to generate a correct OpenAPI spec due to its ambiguous nature when dealing with untyped, string inputs like query parameters.
