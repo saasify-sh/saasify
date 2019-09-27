@@ -1,0 +1,15 @@
+{
+  "name": "{{name}}",
+  "private": true,
+  "version": "0.1.0",
+  "description": "{{description}}",
+  "author": "{{author}}",
+  "license": "{{license}}",
+  "repository": "{{repo}}",
+  "engines": {
+    "node": ">=8"
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.9"
+  }
+}
