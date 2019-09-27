@@ -1,36 +1,6 @@
-<p align="center">
-  <a href="https://saasify.sh" title="Saasify">
-    <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/logo-white@1024w.png" alt="Saasify Logo" width="500" />
-  </a>
-</p>
+# CLI
 
-# Saasify
-
-> [Saasify](https://saasify.sh) transforms **serverless functions** into fully functional **SaaS** websites!
-
-[![NPM](https://img.shields.io/npm/v/saasify.svg)](https://www.npmjs.com/package/saasify) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
-Saasify allows makers to:
-
-1) Focus on unique value instead of boilerplate 🔥
-2) Ship in minutes instead of months ✈️
-3) Monetize OSS ⭐️
-
-## Status
-
-**As of September, 2019, Saasify is an active WIP and is not yet ready for general use.**
-
-If you're interested in OSS sustainability and want to follow along with the progress of Saasify, please consider starring the [repo](https://github.com/saasify/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2). Thanks! ⭐️
-
-## Features
-
--   **$$$**: Monetize your open source projects!
--   **Simple**: Quick to setup your own SaaS
--   **Productive**: Focus on your unique value prop instead of SaaS boilerplate
--   **Standard**: Built with TypeScript + Lambda + Stripe
--   **Compatible**: Generated APIs are usable from any programming language
--   **Automatic**: Saasify handles all docs, hosting, billing, accounts, and support for you
--   **Efficient**: Start validating product / market fit in minutes instead of months
+> [Saasify CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli)
 
 ## Install
 
@@ -69,16 +39,3 @@ Commands:
   unsubscribe [options] <project>                      Unsubscribes from a project
   whoami                                               Prints information about the current user
 ```
-
-## Walkthrough
-
-For more documentation and a detailed walkthrough, visit [saasify.sh](https://saasify.sh).
-
-## Related
-
--   [saasify](https://saasify.sh) - Saasify homepage.
--   [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
-
-## License
-
-MIT © [Saasify](https://saasify.sh)

@@ -10,6 +10,8 @@ To quickly check whether or not your `saasify.json` file is valid, you can run `
 
 `saasify.json` should be a valid JSON file that validates against the following TypeScript pseudocode:
 
+!> This config may look complicated, but most fields are optional. Start with a really simple config that just specifies your `services` and only customize further once you're ready to publish your SaaS product.
+
 ```ts
 class Config {
   saasifyVersion?: number = 1

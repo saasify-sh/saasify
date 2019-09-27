@@ -16,7 +16,6 @@
   - [CORS](cors.md)
   - [Saasify API](saasify-api.md)
   - [FaaS Ids](faas-ids.md)
-  - [Debugging](debugging.md)
   - [Rate Limits](rate-limits.md)
   - [ZEIT Now](zeit-now.md)
 
