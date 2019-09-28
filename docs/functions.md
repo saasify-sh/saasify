@@ -84,9 +84,9 @@ Saasify v1 uses [FTS](https://github.com/transitive-bullshit/functional-typescri
 
 While this cuts down significantly on the manual work required to document and host serverless functions, sometimes this process fails for some combination of types.
 
-If you're experiencing a spec error either from FTS or OpenAPI, please [open an issue](https://github.com/saasify-sh/saasify/issues) and let us know along with as much accompanying information as possible (including your source code).
+If you're experiencing a spec error either from FTS or OpenAPI, please [open an issue](https://github.com/saasify-sh/saasify/issues) and let us know along with as much accompanying information as possible (preferably including a link to your source code).
 
-In the future, the TypeScript requirement and reliance on FTS will be relaxed, but for now it provides by far the quickest and easiest way to self-document your SaaS APIs.
+In the future, the TypeScript requirement and reliance on FTS will be relaxed, but for now it provides the quickest and easiest way to self-document your SaaS APIs.
 
 <p align="center">
   <img src="/_media/undraw/qa_engineers.svg" alt="Troubleshooting" width="200" />

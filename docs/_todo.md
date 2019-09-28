@@ -27,5 +27,6 @@
 ## Misc
 
 - [ ] use history router and @now/static-build
+  - or mount at different basePath
 - [x] add relevant undraw graphics
 - [x] download all JS and CSS assets locally

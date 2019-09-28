@@ -14,7 +14,7 @@ To quickly check whether or not your `saasify.json` file is valid, you can run `
 
 ## Specification
 
-`saasify.json` should be a valid JSON file that validates against the following TypeScript pseudocode:
+`saasify.json` should be a valid JSON file that conforms to the following TypeScript pseudocode:
 
 !> This config may look complicated, but most fields are optional. Start with a really simple config that just specifies your `services` and only customize further once you're ready to publish your SaaS product.
 
@@ -165,7 +165,7 @@ Project name. If not provided, this will default to the containing folder's name
 
 #### saasifyVersion
 
-Optional platform version. Only version currently is `1`.
+Optional platform version. The only allowable value is currently `1`.
 
 #### version
 
