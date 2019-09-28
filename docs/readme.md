@@ -26,6 +26,10 @@ This allows makers to:
 2. Ship and start evaluating product / market fit in minutes instead of months ✈️
 3. Monetize OSS ⭐️
 
+<p align="center">
+  <img src="/_media/undraw/business_shop.svg" alt="Online shop" width="200" />
+</p>
+
 ## Features
 
 - **$$$**: Monetize your open source projects!
@@ -41,6 +45,10 @@ This allows makers to:
 Check out the [quick start](https://saasify.sh/#/quick-start) to get started creating your own SaaS products or visit the [showcase](https://saasify.sh/#/showcase) to get a feel for the types of products you can build with Saasify.
 
 You may also want to check out our [mission](https://saasify.sh/#/mission) to learn more about Saasify and **open source sustainability**.
+
+<p align="center">
+  <img src="/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
+</p>
 
 ## Status
 

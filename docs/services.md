@@ -61,13 +61,9 @@ When making backwards-incompatible changes to a project or changing pricing, you
 
 ## Auth Tokens
 
-All service endpoints accept an optional auth token for authenticated access.
+All service endpoints accept an optional auth token for authenticated access. Unauthenticated (public) requests are subject to rate limiting.
 
-Unauthenticated (public) requests are subject to rate limiting.
-
-Subscribers can view and manage their auth token(s) in their client dashboard.
-
-Be sure to keep your auth tokens secure. Do not share it in publicly accessible areas such as GitHub, client-side code, and so forth.
+Subscribers can view and manage their auth token(s) in their client dashboard. Be sure to keep your auth tokens secure. Do not share them in publicly accessible areas such as GitHub, client-side code, and so forth.
 
 <p align="center">
   <img src="/_media/undraw/security.svg" alt="Security" width="200" />
