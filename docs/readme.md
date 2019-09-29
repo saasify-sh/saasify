@@ -10,7 +10,7 @@
 
 At its core, Saasify transforms **serverless functions** into fully functional **SaaS** websites.
 
-You can think of it as the "Shopify for SaaS". Just like how Shopify allows anyone to create their own e-commerce business online, Saasify allows any developer to easily create their own SaaS API business.
+You can think of it as "Shopify for SaaS". Just like how Shopify allows anyone to create their own e-commerce business online, Saasify allows any developer to easily create their own SaaS API business.
 
 ## Demo
 
