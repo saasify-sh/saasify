@@ -12,8 +12,8 @@
   - [Functions](functions.md)
   - [Services](services.md)
   - [FaaS IDs](faas-ids.md)
-  - [Billing](billing.md)
   - [CORS](cors.md)
+  - [Pricing](pricing.md)
 
 - Support
   - [Support](support.md)

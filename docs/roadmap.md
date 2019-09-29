@@ -2,7 +2,9 @@
 
 # Roadmap
 
-This is a high-level roadmap of the largest features planned for Saasify in the next 6 months. A more detailed, public roadmap will be posted soon.
+You can check out our detailed **[public roadmap on Trello](https://trello.com/b/0I0V0NEM/saasify)**.
+
+Here is a condensed version of the largest features planned for Saasify in the next 6 months.
 
 ## Core
 

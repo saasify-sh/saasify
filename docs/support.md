@@ -16,7 +16,11 @@ If you encounter a problem with the platform at any point, please feel free to [
 
 ## Email
 
-Want to chat or jump on a call? Feel free to reach out for general info [info@saasify.sh](mailto:info@saasify.sh) or dedicated support [support@saasify.sh](mailto:support@saasify.sh).
+Feel free to reach out for general info [info@saasify.sh](mailto:info@saasify.sh) or dedicated support [support@saasify.sh](mailto:support@saasify.sh).
+
+## Call
+
+Want to discuss custom pricing or schedule a call to get started? Please don't hesitate to [schedule a call](https://calendly.com/travis-fischer) with us to discuss!
 
 <p align="center">
   <img src="./_media/undraw/questions.svg" alt="FAQ" width="200" />
