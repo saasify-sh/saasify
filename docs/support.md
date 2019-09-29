@@ -20,7 +20,7 @@ Feel free to reach out for general info [info@saasify.sh](mailto:info@saasify.sh
 
 ## Call
 
-Want to discuss custom pricing or schedule a call to get started? Please don't hesitate to [schedule a call](https://calendly.com/travis-fischer) with us to discuss!
+Want to discuss a potential SaaS product, custom pricing, or how best to get started? Please don't hesitate to [schedule a call](https://calendly.com/travis-fischer) with us to discuss!
 
 <p align="center">
   <img src="./_media/undraw/questions.svg" alt="FAQ" width="200" />

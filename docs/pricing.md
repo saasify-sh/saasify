@@ -2,7 +2,7 @@
 
 # Pricing
 
-!> Saasify is an early beta and we're still figuring out an ideal pricing solution. If you're interested in being an early adopter, we're very open to working with you to figure out a pricing solution that will work for you while still covering for our fixed costs. Please don't hesitate to [schedule a call](https://calendly.com/travis-fischer) with us to discuss!
+!> Saasify is an early beta and we're still figuring out an ideal pricing solution. If you're interested in being an early adopter, we're very open to working with you to figure out a pricing solution that will work for you while still covering our fixed costs. Please don't hesitate to [schedule a call](https://calendly.com/travis-fischer) with us to discuss!
 
 The Saasify platform's default pricing is to take **20%** of all revenue generated from SaaS subscriptions. This is used to pay for Stripe fees, hosting costs, support, and continued product development.
 
