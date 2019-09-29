@@ -87,5 +87,5 @@ Check out [parse-faas-uri.js](https://github.com/saasify-sh/saasify/blob/master/
 
 
 <p align="center">
-  <img src="/_media/undraw/functions.svg" alt="Functions" width="200" />
+  <img src="./_media/undraw/functions.svg" alt="Functions" width="200" />
 </p>

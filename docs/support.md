@@ -19,5 +19,5 @@ If you encounter a problem with the platform at any point, please feel free to [
 Want to chat or jump on a call? Feel free to reach out for general info [info@saasify.sh](mailto:info@saasify.sh) or dedicated support [support@saasify.sh](mailto:support@saasify.sh).
 
 <p align="center">
-  <img src="/_media/undraw/questions.svg" alt="FAQ" width="200" />
+  <img src="./_media/undraw/questions.svg" alt="FAQ" width="200" />
 </p>

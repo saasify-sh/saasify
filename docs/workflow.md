@@ -114,7 +114,7 @@ Also note that all of these calls are going through a Saasify proxy that rate li
 You can preview hte auto-generated SaaS web client for any deployment by visiting `https://<username>_<project-name>_<deployment-hash>.saasify.sh`. For example, [https://transitive-bullshit_puppet-master.saasify_b0c5c30c.sh](https://transitive-bullshit_puppet-master.saasify.sh).
 
 <p align="center">
-  <img src="/_media/undraw/confirmation.svg" alt="Deployments" width="200" />
+  <img src="./_media/undraw/confirmation.svg" alt="Deployments" width="200" />
 </p>
 
 ## Publishing your Deployment
@@ -132,7 +132,7 @@ Once published, your auto-generated SaaS web client will be available at `https:
 ?> TODO: discuss aliasing saas web client to a custom domain
 
 <p align="center">
-  <img src="/_media/undraw/maker_launch.svg" alt="Launching!" width="200" />
+  <img src="./_media/undraw/maker_launch.svg" alt="Launching!" width="200" />
 </p>
 
 ## Next Steps
@@ -147,5 +147,5 @@ Here are some recommendations to get started:
 - Posting a `curl` example as answers to relevant questions on Stackoverflow and GitHub issues can be a great way to give developers a taste of your solution to a common problem. We recommend searching through and posting helpful comments on Stackoverflow, StackExchange, Reddit, GitHub, HackerNews, ProductHunt, etc.
 
 <p align="center">
-  <img src="/_media/undraw/code_review.svg" alt="Workflow" width="200" />
+  <img src="./_media/undraw/code_review.svg" alt="Workflow" width="200" />
 </p>

@@ -22,5 +22,5 @@ This is a high-level roadmap of the largest features planned for Saasify in the 
 - Marketing site for [saasify.sh](https://saasify.sh)
 
 <p align="center">
-  <img src="/_media/undraw/scrum_board.svg" alt="Roadmap" width="200" />
+  <img src="./_media/undraw/scrum_board.svg" alt="Roadmap" width="200" />
 </p>

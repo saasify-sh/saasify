@@ -56,7 +56,7 @@ All published deployment versions are **immutable** which guarantees that once a
 When making backwards-incompatible changes to a project or changing pricing, you are required to publish a new major version following standard [semver](https://semver.org) conventions.
 
 <p align="center">
-  <img src="/_media/undraw/version_control.svg" alt="API Version Control" width="200" />
+  <img src="./_media/undraw/version_control.svg" alt="API Version Control" width="200" />
 </p>
 
 ## Auth Tokens
@@ -66,5 +66,5 @@ All service endpoints accept an optional auth token for authenticated access. Un
 Subscribers can view and manage their auth token(s) in their client dashboard. Be sure to keep your auth tokens secure. Do not share them in publicly accessible areas such as GitHub, client-side code, and so forth.
 
 <p align="center">
-  <img src="/_media/undraw/security.svg" alt="Security" width="200" />
+  <img src="./_media/undraw/security.svg" alt="Security" width="200" />
 </p>

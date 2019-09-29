@@ -9,7 +9,7 @@ Project files are named `saasify.json` and should be placed at the root of your 
 To quickly check whether or not your `saasify.json` file is valid, you can run `saasify debug` from within your project's directory or run `saasify debug <path-to-saasify.json>`.
 
 <p align="center">
-  <img src="/_media/undraw/bug_fixing.svg" alt="Debugging" width="200" />
+  <img src="./_media/undraw/bug_fixing.svg" alt="Debugging" width="200" />
 </p>
 
 ## Specification
@@ -278,5 +278,5 @@ For more detail on writing these serverless functions, see [functions](./functio
 They may optionally include `name`, `examples`, and a custom `timeout`.
 
 <p align="center">
-  <img src="/_media/undraw/product_teardown.svg" alt="Configuration" width="200" />
+  <img src="./_media/undraw/product_teardown.svg" alt="Configuration" width="200" />
 </p>

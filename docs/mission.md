@@ -13,7 +13,7 @@ Contrast this with the standard SaaS API business model of paying based on usage
 Saasify is aiming to bridge the gap between this discrepancy by reducing the barrier to entry for developers who are interested in earning passive income via SaaS.
 
 <p align="center">
-  <img src="/_media/undraw/open_source.svg" alt="Open Source Software" width="200" />
+  <img src="./_media/undraw/open_source.svg" alt="Open Source Software" width="200" />
 </p>
 
 ## OSS Community
@@ -29,5 +29,5 @@ Here are some of our OSS friends: 🥰
 - [GitHub](https://github.com)
 
 <p align="center">
-  <img src="/_media/undraw/community.svg" alt="OSS Community" width="200" />
+  <img src="./_media/undraw/community.svg" alt="OSS Community" width="200" />
 </p>

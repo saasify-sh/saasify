@@ -26,7 +26,7 @@ To view the full source for this example, visit [hello-world](https://github.com
 To view the full source for this example, visit [puppet-master](https://github.com/saasify-sh/puppet-master).
 
 <p align="center">
-  <img src="/_media/undraw/programming.svg" alt="Programming" width="200" />
+  <img src="./_media/undraw/programming.svg" alt="Programming" width="200" />
 </p>
 
 ## Best Practices
@@ -89,7 +89,7 @@ If you're experiencing a spec error either from FTS or OpenAPI, please [open an 
 In the future, the TypeScript requirement and reliance on FTS will be relaxed, but for now it provides the quickest and easiest way to self-document your SaaS APIs.
 
 <p align="center">
-  <img src="/_media/undraw/qa_engineers.svg" alt="Troubleshooting" width="200" />
+  <img src="./_media/undraw/qa_engineers.svg" alt="Troubleshooting" width="200" />
 </p>
 
 ## Known Issues

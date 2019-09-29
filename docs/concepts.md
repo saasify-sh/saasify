@@ -96,5 +96,5 @@ One User may have zero or more `Consumers` depending on the number of projects s
 One Project may have zero or more `Consumers` depending on how many users have subscribed to the project.
 
 <p align="center">
-  <img src="/_media/undraw/creative_thinking.svg" alt="Creative thinking" width="200" />
+  <img src="./_media/undraw/creative_thinking.svg" alt="Creative thinking" width="200" />
 </p>

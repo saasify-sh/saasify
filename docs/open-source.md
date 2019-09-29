@@ -14,5 +14,5 @@ OSS sustainability is at the heart of why we started building Saasify. Please ch
 - [functional-typescript](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
 
 <p align="center">
-  <img src="/_media/undraw/code_typing.svg" alt="Open Source Software" width="200" />
+  <img src="./_media/undraw/code_typing.svg" alt="Open Source Software" width="200" />
 </p>

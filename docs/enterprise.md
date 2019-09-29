@@ -15,5 +15,5 @@ This includes:
 - Security audits
 
 <p align="center">
-  <img src="/_media/undraw/all_the_data.svg" alt="All the data" width="200" />
+  <img src="./_media/undraw/all_the_data.svg" alt="All the data" width="200" />
 </p>

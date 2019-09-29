@@ -52,7 +52,7 @@ export default async (name = 'World'): Promise<string> => {
 ```
 
 <p align="center">
-  <img src="/_media/undraw/working_remotely.svg" alt="Working remotely" width="200" />
+  <img src="./_media/undraw/working_remotely.svg" alt="Working remotely" width="200" />
 </p>
 
 ## Developing your Project Locally
@@ -76,7 +76,7 @@ saasify deploy
 This will take a minute or so to complete, with the end result being a publicly accessible deployment. The deployment URL will be copied to your clipboard and should resemble `https://api.saasify.sh/1/call/username/hello-world@f4a0d67b`.
 
 <p align="center">
-  <img src="/_media/undraw/logistics.svg" alt="Deployments" width="200" />
+  <img src="./_media/undraw/logistics.svg" alt="Deployments" width="200" />
 </p>
 
 ## Calling your Deployment
@@ -113,7 +113,7 @@ Also note that all of these calls are going through a Saasify proxy that rate li
 If you want to take advantage of Saasify's monetization features and usage-based pricing, you'll need to **subscribe** to this project.
 
 <p align="center">
-  <img src="/_media/undraw/confirmation.svg" alt="Deployments" width="200" />
+  <img src="./_media/undraw/confirmation.svg" alt="Deployments" width="200" />
 </p>
 
 ## Subscribing to a Project
@@ -153,7 +153,7 @@ Hello Bob!
 ```
 
 <p align="center">
-  <img src="/_media/undraw/make_it_rain.svg" alt="Deployments" width="200" />
+  <img src="./_media/undraw/make_it_rain.svg" alt="Deployments" width="200" />
 </p>
 
 ## Next Steps
