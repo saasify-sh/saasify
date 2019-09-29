@@ -16,3 +16,11 @@
   min-width: 320px;
   margin: 4em 0;
 }
+
+.footer-edit {
+  margin: 3em 0 !important;
+}
+
+.docsify-pagination-container {
+  margin-top: 3em !important;
+}

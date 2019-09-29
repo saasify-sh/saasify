@@ -49,7 +49,12 @@
             } else {
               url = 'https://github.com/saasify-sh/saasify/blob/master/docs/' + vm.route.file
             }
-            const editHtml = '<p align="center"><a href="' + url + '" target="_blank">📝 Edit this document<\/a><\/p>\n'
+
+            const editHtml = `
+<p align="center" class="footer-edit">
+  <a href="${url}" target="_blank">📝 Edit this document<\/a>
+<\/p>
+`
             return html + '\n\n' + editHtml
           })
         }
