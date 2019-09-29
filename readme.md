@@ -27,7 +27,7 @@ It allows makers to:
 3. Monetize OSS ⭐️
 
 <p align="center">
-  <img src="https://saasify.sh/_media/undraw/scrum_board.svg" alt="Online shop" width="200" />
+  <img src="https://saasify.sh/_media/undraw/business_shop.svg" alt="Online shop" width="200" />
 </p>
 
 ## Features

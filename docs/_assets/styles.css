@@ -24,3 +24,8 @@
 .docsify-pagination-container {
   margin-top: 3em !important;
 }
+
+.docsify-copy-code-button {
+  font-size: 0.9em !important;
+  border-radius: 2px !important;
+}
