@@ -1,16 +1,16 @@
 <p align="center">
   <a href="https://saasify.sh" title="Saasify">
-    <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/logo-vert-white@4x.png" alt="Saasify Logo" width="256" />
+    <img src="https://saasify.sh/_media/logo.png" alt="Saasify Logo" width="256" />
   </a>
 </p>
 
-<h2 align="center" class='subtitle'>Easiest way to launch your own SaaS</h2>
+<h2 align="center" class='subtitle'>The easiest way to launch your own SaaS</h2>
 
 [![NPM](https://img.shields.io/npm/v/saasify.svg)](https://www.npmjs.com/package/saasify) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 At its core, Saasify transforms **serverless functions** into fully functional **SaaS** websites.
 
-You can think of us as the "Shopify for SaaS". Just like how Shopify allows anyone to create their own e-commerce business online, Saasify allows any developer to easily create their own SaaS API business.
+You can think of this platform as the "Shopify for SaaS". Just like how Shopify allows anyone to create their own e-commerce business online, Saasify allows any developer to easily create their own SaaS API business.
 
 ## Demo
 
@@ -18,27 +18,27 @@ Here is a fully functional [example SaaS website](https://puppet-master.sh ':tar
 
 ## Why Saasify?
 
-Saasify is the perfect solution for developers who want to earn passive income.
+Saasify is an ideal solution for developers who want to earn passive income.
 
-This allows makers to:
+It allows makers to:
 
 1. Focus only on unique value instead of boilerplate 🔥
 2. Ship and start evaluating product / market fit in minutes instead of months ✈️
 3. Monetize OSS ⭐️
 
 <p align="center">
-  <img src="/_media/undraw/business_shop.svg" alt="Online shop" width="200" />
+  <img src="https://saasify.sh/_media/undraw/scrum_board.svg" alt="Online shop" width="200" />
 </p>
 
 ## Features
 
-- **$$$**: Monetize your open source projects!
-- **Simple**: Quick to setup your own SaaS
-- **Productive**: Focus on your unique value prop instead of SaaS boilerplate
-- **Standard**: Built with TypeScript + Lambda + Stripe
-- **Compatible**: Generated APIs are usable from any programming language
-- **Automatic**: Saasify handles all docs, hosting, billing, accounts, and support for you
-- **Efficient**: Start validating product / market fit in minutes instead of months
+- 💰 Monetize your open source projects!
+- ⚡️️ Simple & quick to setup your own SaaS
+- 🔥 Focus on your unique value instead of boilerplate
+- 💯 Built with TypeScript + Lambda + Stripe
+- 💎 Generated APIs are compatible with any programming language
+- 🤖 Saasify generates all docs, hosting, billing, accounts, and legal for you
+- 🚀 Start validating product / market fit in minutes instead of months
 
 ## Getting Started
 
@@ -47,7 +47,7 @@ Check out the [quick start](https://saasify.sh/#/quick-start) to get started cre
 You may also want to check out our [mission](https://saasify.sh/#/mission) to learn more about Saasify and **open source sustainability**.
 
 <p align="center">
-  <img src="/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
+  <img src="https://saasify.sh/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
 </p>
 
 ## Status
