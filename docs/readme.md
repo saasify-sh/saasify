@@ -10,7 +10,7 @@
 
 At its core, Saasify transforms **serverless functions** into fully functional **SaaS** websites.
 
-You can think of it as "Shopify for SaaS". Just like how Shopify allows anyone to create their own e-commerce business online, Saasify allows any developer to easily create their own SaaS API business.
+You can think of it as the "Shopify for SaaS". Just like how Shopify allows anyone to create their own e-commerce business online, Saasify allows any developer to easily create their own SaaS API business.
 
 ## Demo
 
@@ -42,9 +42,9 @@ It allows makers to:
 
 ## Getting Started
 
-Check out the [quick start](https://saasify.sh/#/quick-start) to get started creating your own SaaS products or visit the [showcase](https://saasify.sh/#/showcase) to get a feel for the types of products you can build with Saasify.
+Check out the [quick start](./quick-start.md) to get started creating your own SaaS products or visit the [showcase](./showcase.md) to get a feel for the types of products you can build with Saasify.
 
-You may also want to check out our [mission](https://saasify.sh/#/mission) to learn more about Saasify and **open source sustainability**.
+You may also want to check out our [mission](./mission.md) to learn more about Saasify and **open source sustainability**.
 
 <p align="center">
   <img src="https://saasify.sh/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
