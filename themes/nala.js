@@ -8,6 +8,6 @@ export const nala = (opts = { }) => {
     '@section-bg-color': '#363636',
     // '@primary-color': '#ff5252',
     ...opts,
-    fonts: [ 'Oxygen' ]
+    fonts: ['Oxygen']
   }
 }

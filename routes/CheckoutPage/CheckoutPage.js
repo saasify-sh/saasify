@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import theme from 'lib/theme'
 
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { notification } from 'lib/antd'
 import { observer, inject } from 'mobx-react'
-import { Redirect } from 'react-router-dom'
 
 import plans from 'lib/pricing-plans'
 
@@ -53,7 +52,7 @@ export class CheckoutPage extends Component {
       <div className={theme(styles, 'checkout-page')}>
         <BackgroundSlideshow />
 
-        <NavHeader fixed={true} />
+        <NavHeader fixed />
 
         <div className={theme(styles, 'content')}>
           <PricingPlan
@@ -101,7 +100,7 @@ export class CheckoutPage extends Component {
 
       notification.success({
         message: 'Subscription Created',
-        description: `Your subscription has been created successfully. You may now use your auth token in API requests.`
+        description: 'Your subscription has been created successfully. You may now use your auth token in API requests.'
       })
 
       this.props.auth.consumer = consumer

@@ -12,7 +12,7 @@ import { Redirect, Route } from 'react-router-dom'
 @observer
 export class AuthenticatedRoute extends Component {
   static propTypes = {
-    component: PropTypes.oneOfType([ PropTypes.func, PropTypes.object ]).isRequired,
+    component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
     auth: PropTypes.object.isRequired,
     redirect: PropTypes.string
   }

@@ -219,7 +219,7 @@ export class ProfileSection extends Component {
 
         notification.success({
           message: 'Subscription canceled',
-          description: `Your subscription has been canceled. Any outstanding charges will be charged at the end of the current billing cycle.`
+          description: 'Your subscription has been canceled. Any outstanding charges will be charged at the end of the current billing cycle.'
         })
 
         this.setState({ isLoadingUnsubscribe: false })
@@ -245,7 +245,7 @@ export class ProfileSection extends Component {
 
         notification.success({
           message: 'Auth token refreshed',
-          description: `Your auth token has been refreshed. Your old token is now invalid.`
+          description: 'Your auth token has been refreshed. Your old token is now invalid.'
         })
 
         this.setState({ isLoadingRefreshAuthToken: false })

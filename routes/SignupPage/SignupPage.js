@@ -21,8 +21,7 @@ import styles from './styles.module.css'
 @observer
 export class SignupPage extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired
   }
 
   render() {
@@ -34,7 +33,7 @@ export class SignupPage extends Component {
       <div className={theme(styles, 'signup-page')}>
         <BackgroundSlideshow />
 
-        <NavHeader fixed={true} />
+        <NavHeader fixed />
 
         <Paper className={theme(styles, 'content')}>
           <SignupForm onAuth={this._onAuth} />

@@ -16,6 +16,6 @@ export const sadie = (opts = { }) => {
     '@section-bg-color': '#f6f6f6',
     // '@primary-color': '#8785a2',
     ...opts,
-    fonts: [ 'Manjari' ]
+    fonts: ['Manjari']
   }
 }

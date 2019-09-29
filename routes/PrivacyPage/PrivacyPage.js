@@ -13,7 +13,7 @@ export class PrivacyPage extends Component {
   render() {
     return (
       <div className={theme(styles, 'privacy-page', theme.light)}>
-        <NavHeader fixed={true} />
+        <NavHeader fixed />
 
         <div className={theme(styles, 'content')}>
           <ScrollToTopOnMount />

@@ -13,7 +13,7 @@ export class TermsPage extends Component {
   render() {
     return (
       <div className={theme(styles, 'terms-page', theme.light)}>
-        <NavHeader fixed={true} />
+        <NavHeader fixed />
 
         <div className={theme(styles, 'content')}>
           <ScrollToTopOnMount />

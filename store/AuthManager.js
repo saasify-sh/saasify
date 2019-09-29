@@ -59,7 +59,7 @@ class AuthManager {
   }
 
   async signout() {
-    debug(`AuthManager.signout`)
+    debug('AuthManager.signout')
 
     API.signout()
     await LocalStore.remove(AUTH_STORE_KEY)
@@ -68,7 +68,7 @@ class AuthManager {
   }
 
   async authWithGitHub(opts) {
-    debug(`AuthManager.authWithGitHub`)
+    debug('AuthManager.authWithGitHub')
     const auth = await API.authWithGitHub({
       ...githubConfig,
       ...opts
@@ -79,7 +79,7 @@ class AuthManager {
   }
 
   async authWithFacebook(opts) {
-    debug(`AuthManager.authWithFacebook`)
+    debug('AuthManager.authWithFacebook')
     const auth = await API.authWithFacebook(opts)
 
     await LocalStore.set(AUTH_STORE_KEY, auth)
@@ -98,6 +98,7 @@ autorun(() => {
       .then((consumer) => {
         authManager.consumer = consumer
       }, (err) => {
+        console.warn(err)
         authManager.consumer = null
       })
   } else {

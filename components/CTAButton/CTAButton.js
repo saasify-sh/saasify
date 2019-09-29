@@ -26,7 +26,7 @@ export class CTAButton extends Component {
       : 'transparent'
 
     const ownStyle = {
-      border: `2px solid ${borderColor}`,
+      border: `2px solid ${borderColor}`
     }
 
     if (type === 'secondary') {
