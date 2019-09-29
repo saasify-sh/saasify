@@ -63,7 +63,7 @@ saasify dev --debug
 ```
 
 <p align="center">
-  <img src="/_media/undraw/bug_fixing.svg" alt="Debugging" width="200" />
+  <img src="./_media/undraw/bug_fixing.svg" alt="Debugging" width="200" />
 </p>
 
 ## Deploying your Project
@@ -77,7 +77,7 @@ saasify deploy
 All deployments are immutable, and you can create as many deployments as you want.
 
 <p align="center">
-  <img src="/_media/undraw/logistics.svg" alt="Deployments" width="200" />
+  <img src="./_media/undraw/logistics.svg" alt="Deployments" width="200" />
 </p>
 
 ## Calling your Deployment
