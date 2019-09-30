@@ -13,12 +13,8 @@ module.exports = (program, client) => {
       try {
         switch (cmd) {
           case 'ls': {
-            const [
-              secrets
-            ] = await spinner(
-              Promise.all([
-                client.listSecrets(),
-              ]),
+            const secrets = await spinner(
+              client.listSecrets(),
               'Getting secrets'
             )
 
