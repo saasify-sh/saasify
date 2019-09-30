@@ -7,6 +7,7 @@
 - [x] [hello-world](./hello-world) - Simplest possible Saasify project.
 - [x] [imagemin](./imagemin) - Example to optimize images.
 - [x] [puppeteer](./puppeteer) - Example using headless Chromium.
+- [x] [coupons](./coupons) - Example which enables the use of coupons.
 - [ ] ffmpeg - Example using FFmpeg.
 - [ ] tensorflow - Example using machine learning via Tensorflow.
 

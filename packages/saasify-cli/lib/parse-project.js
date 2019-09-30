@@ -40,14 +40,15 @@ module.exports.getReadme = async (config) => {
   if (readmeFiles.length) {
     return fs.readFile(readmeFiles[0], 'utf8')
   } else {
-    console.warn('Unable to find readme.md')
+    console.warn('Unable to find readme')
     return ''
   }
 }
 
 module.exports.getPackageInfo = async (config) => {
   const packageJsonPath = path.join(config.root, 'package.json')
-  if (fs.pathExists(packageJsonPath)) {
+
+  if (fs.pathExistsSync(packageJsonPath)) {
     const pkg = await fs.readJson(packageJsonPath)
 
     return pick(pkg, [

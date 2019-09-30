@@ -11,6 +11,7 @@ class Config {
   authRateLimit?: RateLimit
   noAuthRateLimit?: RateLimit
   services: Service[]
+  coupons?: Coupon[]
   saas?: object
 }
 
@@ -31,4 +32,20 @@ class RateLimit {
   requests?: boolean = true
   requestsInterval?: number = 60000
   requestsMaxPerInterval?: number = 1000
+}
+
+class Coupon {
+  id: string
+  name?: string
+
+  currency?: string
+
+  amount_off?: number
+  percent_off?: number
+
+  duration: string
+  duration_in_months?: number
+
+  redeem_by?: string
+  max_redemptions?: number
 }
