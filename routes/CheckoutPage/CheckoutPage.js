@@ -105,7 +105,7 @@ export class CheckoutPage extends Component {
       )
 
       if (activeCoupon) {
-        // TODO: check if activeCoupon is valid
+        // TODO: check if activeCoupon is valid and use it in UI
         console.log('active coupon', activeCoupon)
       }
 
