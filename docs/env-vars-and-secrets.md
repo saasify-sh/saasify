@@ -1,3 +1,5 @@
+[header](_header.md ':include')
+
 # Environment Variables & Secrets
 
 !> Saasify uses the exact same process, format, and restrictions as [ZEIT now](https://zeit.co/docs/v2/serverless-functions/env-and-secrets/) for configuring environment variables and secrets. Everything in their [docs](https://zeit.co/docs/v2/serverless-functions/env-and-secrets/) applies to Saasify; just switch the `now` CLI command with `saasify`.
