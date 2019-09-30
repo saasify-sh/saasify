@@ -10,8 +10,9 @@ import {
 } from 'react-stripe-elements'
 
 import { Button, Icon, Tooltip } from 'lib/antd'
-
 import env from 'lib/env'
+
+import { SaasifyContext } from '../SaasifyContext'
 
 import styles from './styles.module.css'
 
@@ -44,13 +45,18 @@ export class CheckoutForm extends Component {
 
   render() {
     return (
-      <StripeProvider apiKey={env.stripePublicKey}>
-        <Elements>
-          <CheckoutFormImpl
-            {...this.props}
-          />
-        </Elements>
-      </StripeProvider>
+      <SaasifyContext.Consumer>
+        {deployment => (
+          <StripeProvider apiKey={env.stripePublicKey}>
+            <Elements>
+              <CheckoutFormImpl
+                {...this.props}
+                deployment={deployment}
+              />
+            </Elements>
+          </StripeProvider>
+        )}
+      </SaasifyContext.Consumer>
     )
   }
 }
@@ -58,6 +64,7 @@ export class CheckoutForm extends Component {
 @injectStripe
 class CheckoutFormImpl extends Component {
   static propTypes = {
+    deployment: PropTypes.object.isRequired,
     stripe: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
     loading: PropTypes.bool,
@@ -71,11 +78,11 @@ class CheckoutFormImpl extends Component {
   }
 
   render() {
-    const { loading, title, action, className } = this.props
+    const { deployment, loading, title, action, className } = this.props
 
     return (
       <form
-        className={theme(styles, 'form', className)}
+        className={theme(styles, 'form', className, theme(styles, 'light'))}
         onSubmit={this._onSubmit}
       >
         {title && (
@@ -114,6 +121,19 @@ class CheckoutFormImpl extends Component {
           />
         </label>
 
+        {deployment.coupons && deployment.coupons.length > 0 && (
+          <label className={theme(styles, 'label')}>
+            Promo Code
+
+            <input
+              className={theme(styles, 'input')}
+              name='coupon'
+              type='text'
+              placeholder=''
+            />
+          </label>
+        )}
+
         {action && (
           <Button
             type='primary'
@@ -132,6 +152,7 @@ class CheckoutFormImpl extends Component {
     e.preventDefault()
 
     const name = e.target.name.value
-    this.props.onSubmit({ name, stripe: this.props.stripe })
+    const coupon = e.target.coupon && e.target.coupon.value
+    this.props.onSubmit({ name, coupon, stripe: this.props.stripe })
   }
 }

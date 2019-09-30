@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import theme from 'lib/theme'
+import qs from 'qs'
 
 import { withRouter, Redirect } from 'react-router-dom'
 import { notification } from 'lib/antd'
 import { observer, inject } from 'mobx-react'
 
 import plans from 'lib/pricing-plans'
+import theme from 'lib/theme'
 
 import {
   PricingPlan,
@@ -73,7 +74,7 @@ export class CheckoutPage extends Component {
     )
   }
 
-  _onSubmit = async ({ name, stripe }) => {
+  _onSubmit = async ({ name, coupon, stripe }) => {
     this.setState({ loading: true })
 
     try {
@@ -94,9 +95,19 @@ export class CheckoutPage extends Component {
       console.log('checkout source', { source })
       const consumer = await API.createConsumer({
         project: deployment.project.id,
-        deployment: deployment.id
+        deployment: deployment.id,
+        coupon
       })
       console.log('checkout consumer', { source, consumer })
+
+      const activeCoupon = coupon && (
+        (deployment.coupons || []).find((c) => c.id === coupon)
+      )
+
+      if (activeCoupon) {
+        // TODO: check if activeCoupon is valid
+        console.log('active coupon', activeCoupon)
+      }
 
       notification.success({
         message: 'Subscription Created',
@@ -104,7 +115,8 @@ export class CheckoutPage extends Component {
       })
 
       this.props.auth.consumer = consumer
-      this.props.history.replace('/dashboard?success=true')
+      const querystring = qs.stringify({ success: true, coupon })
+      this.props.history.replace(`/dashboard?${querystring}`)
     } catch (err) {
       notification.error({
         message: 'Error initializing subscription',
