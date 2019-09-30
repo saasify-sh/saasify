@@ -9,6 +9,8 @@ import ReactDOM from 'react-dom'
 
 import App from './App'
 
+import './lib/bootstrap'
+
 // import * as serviceWorker from 'lib/service-worker'
 // serviceWorker.unregister()
 
