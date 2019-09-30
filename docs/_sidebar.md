@@ -13,6 +13,7 @@
   - [Services](services.md)
   - [FaaS IDs](faas-ids.md)
   - [CORS](cors.md)
+  - [Environment Variables & Secrets](env-vars-and-secrets.md)
   - [Pricing](pricing.md)
 
 - Support

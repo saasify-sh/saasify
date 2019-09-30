@@ -30,6 +30,8 @@ class Config {
   authRateLimit?: RateLimit
   noAuthRateLimit?: RateLimit
   saas?: SaaS
+  build?: object
+  env?: object
   services: Service[]
 }
 
@@ -151,6 +153,10 @@ This config file contains examples for each service as well as some customizatio
     "repo": "https://github.com/saasify-sh/puppet-master",
     "logo": "./media/logo.svg",
     "favicon": "./media/favicon.ico"
+  },
+  "env": {
+    "EXAMPLE_DYNAMIC_ENV_VAR": "@my-dynamic-secret",
+    "EXAMPLE_STATIC_ENV_VAR": "foobar"
   }
 }
 ```
@@ -216,6 +222,18 @@ Defaults to the following:
 Optional `RateLimit` info for authenticated users.
 
 By default, all authenticated rate limits are disabled.
+
+#### env
+
+Environment variables passed to all of this project's services at runtime.
+
+See the guide on [environment variables & secrets](./env-vars-and-secrets.md) for more info.
+
+#### build.env
+
+Environment variables passed to all of this project's services at build time.
+
+See the guide on [environment variables & secrets](./env-vars-and-secrets.md) for more info.
 
 #### saas
 
