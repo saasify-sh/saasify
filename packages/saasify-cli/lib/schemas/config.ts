@@ -35,11 +35,9 @@ class RateLimit {
 }
 
 class Coupon {
-  id: string
   name?: string
 
   currency?: string
-
   amount_off?: number
   percent_off?: number
 

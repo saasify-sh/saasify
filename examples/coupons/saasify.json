@@ -7,7 +7,6 @@
   ],
   "coupons": [
     {
-      "id": "free-trial-2019",
       "duration": "once",
       "percent_off": 100
     }
