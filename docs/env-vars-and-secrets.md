@@ -36,13 +36,13 @@ To **rename a Secret**, use the following command:
 saasify secrets rename <secret-name> <new-name>
 ```
 
-To list all Secrets, use the following command:
+To list all of your Secrets, use the following command:
 
 ```
 saasify secrets ls
 ```
 
-!> Note that Secrets must be unique within your user account. Secrets may be shared across your projects, but you may only have one value for any given Secret. Secrets are only accessible to deployments owned by the user who created them.
+!> Note that Secret names must be unique within your user account. Secrets may be shared across your projects, but you may only have one value for any given Secret. Also note that Secrets are only accessible to deployments owned by the user who created them.
 
 ## Runtime Environment Variables
 
