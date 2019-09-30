@@ -337,6 +337,44 @@ module.exports = class SaasifyClient {
   }
 
   // --------------------------------------------------------------------------
+  // Secrets
+  // --------------------------------------------------------------------------
+
+  async listSecrets () {
+    return this._request({
+      url: `/1/secrets`
+    }).then(res => res.data)
+  }
+
+  async addSecret (name, value) {
+    return this._request({
+      url: `/1/secrets`,
+      method: 'post',
+      data: {
+        name,
+        value
+      }
+    }).then(res => res.data)
+  }
+
+  async removeSecret (name) {
+    return this._request({
+      url: `/1/secrets/${name}`,
+      method: 'delete'
+    }).then(res => res.data)
+  }
+
+  async renameSecret (name, newName) {
+    return this._request({
+      url: `/1/secrets/${name}`,
+      method: 'put',
+      data: {
+        name: newName
+      }
+    }).then(res => res.data)
+  }
+
+  // --------------------------------------------------------------------------
   // Uploads
   // --------------------------------------------------------------------------
 

@@ -86,6 +86,10 @@ export default ftsHttp.createHttpHandler(definition, handler)
   await fs.writeJson(nowConfigPath, {
     version: 2,
     name: deployment.project,
+    build: {
+      env: transformEnv(deployment.user, (deployment.build && deployment.build.env) || { })
+    },
+    env: transformEnv(deployment.user, deployment.env || { }),
     builds,
     routes
   }, jsonConfig)
@@ -116,4 +120,16 @@ export default ftsHttp.createHttpHandler(definition, handler)
   await fs.writeJson(npmConfigPath, npmConfig, jsonConfig)
 
   return tempDir
+}
+
+const transformEnv = function (userId, env = { }) {
+  return Object.entries(env)
+    .reduce((acc, [ key, value ]) => {
+      if (value.startsWith('@')) {
+        value = `@${userId}-${value.substr(1)}`
+      }
+
+      acc[key] = value
+      return acc
+    }, { })
 }

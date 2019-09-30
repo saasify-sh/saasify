@@ -28,6 +28,16 @@
           "type": "string",
           "title": "alias"
         },
+        "build": {
+          "type": "object",
+          "title": "build",
+          "additionalProperties": true
+        },
+        "env": {
+          "type": "object",
+          "title": "env",
+          "additionalProperties": true
+        },
         "saas": {
           "type": "object",
           "title": "saas",

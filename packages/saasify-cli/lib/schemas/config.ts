@@ -12,6 +12,8 @@ class Config {
   noAuthRateLimit?: RateLimit
   services: Service[]
   coupons?: Coupon[]
+  build?: object
+  env?: object
   saas?: object
 }
 
