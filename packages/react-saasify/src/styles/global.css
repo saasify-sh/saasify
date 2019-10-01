@@ -1,0 +1,38 @@
+/* PostCSS reset */
+@import-normalize;
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  color: #d2d2d6;
+  font-family: proxima-nova, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+body {
+  padding: 0 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-style: initial;
+  font-style: normal;
+  font-weight: 200;
+  font-family: proxima-nova, Helvetica Neue, sans-serif;
+  color: initial;
+  margin: initial;
+}
+
+p {
+  color: #d2d2d6;
+  font-size: 16px;
+}
+
+:global(.ant-form-item:last-child) {
+  margin-bottom: 0;
+}
+
+a[href="https://github.com/Redocly/redoc"] {
+  display: none !important;
+}

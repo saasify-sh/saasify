@@ -1,0 +1,28 @@
+.checkout-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 66px 0 0;
+}
+
+.content {
+  position: relative;
+  z-index: 100;
+
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+
+  padding: 2em 2em;
+}
+
+.checkout-form {
+  width: 100%;
+  min-width: 320px;
+  max-width: 600px;
+}

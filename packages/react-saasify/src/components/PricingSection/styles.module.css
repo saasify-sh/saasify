@@ -1,0 +1,16 @@
+.plans {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto 2em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@media only screen and (max-width: 767px) {
+  .plan:not(first-child) {
+    margin-top: 1em;
+  }
+}

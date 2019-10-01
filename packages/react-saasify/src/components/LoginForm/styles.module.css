@@ -1,0 +1,25 @@
+.form {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-weight: 400;
+  font-size: 2.5em;
+  margin: 0 0 24px;
+}
+
+.forgot {
+  float: right;
+}
+
+.submit {
+  width: 100%;
+  padding: 0.4em 1em;
+  height: initial;
+}
+
+:global(.ant-form-item) {
+  margin-bottom: 16px;
+}

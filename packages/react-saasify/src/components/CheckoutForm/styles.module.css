@@ -1,0 +1,61 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.title {
+  text-align: center;
+  font-weight: 400;
+  font-size: 2.5em;
+  margin: 0 0 1em;
+}
+
+.submit {
+  align-self: center;
+  padding: 0.8em 2em;
+  margin-top: 1em;
+  height: initial;
+}
+
+.label {
+  color: #444;
+  font-weight: 300;
+  letter-spacing: 0.025em;
+}
+
+.input,
+:global(.StripeElement) {
+  display: block;
+  margin: 10px 0 20px 0;
+  padding: 10px 14px;
+  width: 100%;
+  font-size: 1em;
+  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px, rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+  border: 0;
+  outline: 0;
+  border-radius: 4px;
+  background: white;
+}
+
+.input::placeholder {
+  color: #aab7c4;
+}
+
+.input:focus,
+:global(.StripeElement--focus) {
+  box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
+}
+
+:global(.StripeElement.IdealBankElement),
+:global(.StripeElement.PaymentRequestButton) {
+  padding: 0;
+}
+
+.detail {
+  margin-left: 0.5em;
+  cursor: pointer;
+  font-size: 1.2em;
+}

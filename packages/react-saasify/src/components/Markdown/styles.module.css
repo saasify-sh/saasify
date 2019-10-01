@@ -1,0 +1,214 @@
+.markdown {
+  font-size: 14px;
+}
+
+.highlight {
+  line-height: 1.5;
+}
+
+.markdown img {
+  max-width: ~"calc(100% - 32px)";
+}
+
+.markdown p > img {
+  margin: 34px 0;
+  box-shadow: 0 8px 20px rgba(143, 168, 191, 0.35);
+}
+
+.markdown h1 {
+  color: #0d1a26;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 8px;
+  font-size: 30px;
+}
+
+.markdown h1 .subtitle {
+  margin-left: 12px;
+}
+
+.markdown h2 {
+  font-size: 24px;
+}
+
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  color: #0d1a26;
+  margin: 1.6em 0 0.6em;
+  font-weight: 500;
+  clear: both;
+}
+
+.markdown h3 { font-size: 18px; }
+.markdown h4 { font-size: 16px; }
+.markdown h5 { font-size: 14px; }
+.markdown h6 { font-size: 12px; }
+
+.markdown hr {
+  height: 1px;
+  border: 0;
+  background: #ebedf0;
+  margin: 72px 0;
+  clear: both;
+}
+
+.markdown p,
+.markdown pre {
+  margin: 1em 0;
+}
+
+.markdown ul {
+  padding-left: 1.5em;
+}
+
+.markdown ul > li {
+  list-style-type: circle;
+  margin-left: 20px;
+  padding-left: 4px;
+  &:empty {
+    display: none;
+  }
+}
+
+.markdown ol > li {
+  list-style-type: decimal;
+  margin-left: 20px;
+  padding-left: 4px;
+}
+
+.markdown ul > li > p,
+.markdown ol > li > p {
+  margin: 0.2em 0;
+}
+
+.markdown code {
+  margin: 0 1px;
+  background: #f2f4f5;
+  padding: .2em .4em;
+  border-radius: 3px;
+  font-size: .9em;
+  border: 1px solid #eee;
+}
+
+.markdown pre {
+  border-radius: 2px;
+  background: #f2f4f5;
+  font-family: "Lucida Console", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+.markdown pre code {
+  border: none;
+  background: #f2f4f5;
+  margin: 0;
+  padding: 0;
+  font-size: 95%;
+  color: #314659;
+  overflow: auto;
+}
+
+.markdown strong,
+.markdown b {
+  font-weight: 500;
+}
+
+.markdown > table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #ebedf0;
+  width: 100%;
+  margin: 8px 0 16px;
+}
+
+.markdown > table th {
+  white-space: nowrap;
+  color: #5c6b77;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.markdown > table th,
+.markdown > table td {
+  border: 1px solid #ebedf0;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown blockquote {
+  color: #697b8c;
+  border-left: 4px solid #ebedf0;
+  padding-left: 0.8em;
+  margin: 1em 0;
+}
+
+.markdown blockquote p {
+  margin: 0;
+}
+
+.markdown .anchor {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-left: 8px;
+}
+
+.markdown .waiting {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.markdown a.edit-button {
+  display: inline-block;
+  margin-left: 10px;
+  height: 12px;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.markdown a.edit-button i:hover {
+  color: #1890ff;
+}
+
+.markdown a.edit-button .anticon {
+  display: block;
+  font-size: 16px;
+}
+
+.markdown h1:hover .anchor,
+.markdown h2:hover .anchor,
+.markdown h3:hover .anchor,
+.markdown h4:hover .anchor,
+.markdown h5:hover .anchor,
+.markdown h6:hover .anchor {
+  opacity: 1;
+  display: inline-block;
+}
+
+.markdown > br,
+.markdown > p > br {
+  clear: both;
+}
+
+.markdown table {
+  font-size: 14px;
+}
+
+.markdown table td:first-child {
+  font-weight: 500;
+  width: 20%;
+  font-family: "Lucida Console", Consolas, Menlo, Courier, monospace;
+}
+
+.markdown table td:nth-child(3) {
+  width: 22%;
+  font-size: 12px;
+  font-family: "Lucida Console", Consolas, Menlo, Courier, monospace;
+}
+
+.markdown table td:last-child {
+  width: 13%;
+  font-size: 12px;
+  font-family: "Lucida Console", Consolas, Menlo, Courier, monospace;
+}

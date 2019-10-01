@@ -1,0 +1,16 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 1080px;
+  width: 100%;
+}
+
+.body :global(.ant-table-body) {
+  background: #fff;
+}
+
+.addSourceButton {
+  margin-top: 1em;
+  align-self: flex-end;
+}

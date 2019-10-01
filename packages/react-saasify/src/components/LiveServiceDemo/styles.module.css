@@ -1,0 +1,75 @@
+.container {
+  position: relative;
+  width: 650px;
+  max-width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.tabs {
+  background: #dbdbdb;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+  display: flex;
+  flex-direction: row;
+
+  color: #333;
+
+  font-size: 0.9em;
+  padding: 0 2em;
+  user-select: none;
+}
+
+.tab {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  cursor: pointer;
+  padding: 0.3em 1em;
+  background: transparent;
+}
+
+.tab:hover {
+  background: #ebebeb;
+}
+
+.selectedTab {
+  background: #f5f2f0;
+}
+
+.selectedTab:hover {
+  background: #f5f2f0;
+}
+
+.content {
+  position: relative;
+  font-size: 0.85em;
+}
+
+.tabPane {
+  display: none;
+}
+
+.selectedTabPane {
+  display: block;
+}
+
+.code {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  height: 396px;
+  overflow-y: auto;
+}
+
+.copy {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
+@media only screen and (max-width: 767px) {
+  .code {
+    height: 20em;
+  }
+}

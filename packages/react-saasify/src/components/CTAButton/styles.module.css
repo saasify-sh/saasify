@@ -1,0 +1,18 @@
+.cta-button {
+  height: initial;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.inline {
+  padding: 6px 24px;
+  font-size: 12px;
+}
+
+.secondary {
+  color: #fff !important;
+  border-width: 2px;
+}

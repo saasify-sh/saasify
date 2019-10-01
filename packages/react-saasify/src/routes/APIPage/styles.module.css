@@ -1,0 +1,10 @@
+.api-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.api-page p {
+  color: #333;
+}

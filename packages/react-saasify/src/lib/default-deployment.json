@@ -1,0 +1,642 @@
+{
+  "enabled": true,
+  "published": true,
+  "description": "Puppeteer as a service",
+  "noAuthRateLimit": {
+    "enabled": true,
+    "requests": true,
+    "requestsInterval": 3600,
+    "requestsMaxPerInterval": 10
+  },
+  "amountPerBase": 99,
+  "amountPerRequest": 0.04,
+  "amountPerCompute": 0.34,
+  "amountPerBandwidth": 20,
+  "hash": "b0c5c30c",
+  "user": "5d5b477eb5fab1199c927a36",
+  "project": {
+    "enabled": true,
+    "_id": "transitive-bullshit/puppet-master",
+    "alias": "puppet-master.sh",
+    "name": "puppet-master",
+    "user": "5d5b477eb5fab1199c927a36",
+    "createdAt": "2019-09-13T19:46:34.124Z",
+    "updatedAt": "2019-09-18T23:01:24.109Z",
+    "__v": 2,
+    "_stripeBandwidthProductTest": "prod_Fnzv5x0OzZhZ6g",
+    "_stripeComputeProductTest": "prod_FnzviG89MRFNRk",
+    "_stripeRequestProductTest": "prod_FnzvEbbcLlFR5A",
+    "lastPublishedDeployment": "transitive-bullshit/puppet-master@b0c5c30c",
+    "lastPublishedVersion": "0.1.1",
+    "publishedVersions": [
+      {
+        "_id": "5d7f08a26b45c46a41c25fda",
+        "deployment": "transitive-bullshit/puppet-master@ba17f216",
+        "version": "0.1.0"
+      },
+      {
+        "deployment": "transitive-bullshit/puppet-master@b0c5c30c",
+        "version": "0.1.1"
+      }
+    ],
+    "_stripeBandwidthProductLive": "prod_Fpoxhv01dSfzTl",
+    "_stripeComputeProductLive": "prod_FpoxYFIK2neWdq",
+    "_stripeRequestProductLive": "prod_FpoxrMKLWYNAEz",
+    "stripeRequestProduct": "prod_FnzvEbbcLlFR5A",
+    "stripeComputeProduct": "prod_FnzviG89MRFNRk",
+    "stripeBandwidthProduct": "prod_Fnzv5x0OzZhZ6g",
+    "saasUrl": "http://transitive-bullshit_puppet-master.localhost:3000",
+    "aliasUrl": "https://puppet-master.sh",
+    "id": "transitive-bullshit/puppet-master"
+  },
+  "version": "0.1.1",
+  "readme": "# Puppet Master\n\n> [Puppeteer](https://pptr.dev) as a [service](https://puppet-master.sh).\n\n<p align=\"center\">\n  <a href=\"https://puppet-master.sh\" title=\"Puppet Master\">\n    <img src=\"https://raw.githubusercontent.com/saasify-sh/puppet-master/master/media/puppeteer-logo.png\" alt=\"Puppeteer Logo\" width=\"200\" />\n  </a>\n</p>\n\n## Features\n\n- **Simple**: Quick to setup and integrate\n- **Standard**: Just HTTPS + JSON\n- **Managed**: Hosted via serverless functions\n- **Scalable**: Scales to any capacity\n- **Usage based**: Pay only for what you use\n- **Focused**: We only do one thing and do it well\n- **Immutable deployments**: All API updates are optional\n\n## Contents\n\n<!-- toc -->\n\n- [Introduction](#introduction)\n- [Functions](#functions)\n  * [Screenshot](#screenshot)\n  * [Pdf](#pdf)\n  * [Common Options](#common-options)\n- [FAQ](#faq)\n  * [Why are my screenshots blurry?](#why-are-my-screenshots-blurry)\n  * [How is this project different from other alternatives?](#how-is-this-project-different-from-other-alternatives)\n  * [The functionality I need is missing.](#the-functionality-i-need-is-missing)\n  * [How do subscriptions work?](#how-do-subscriptions-work)\n  * [This project is great! How can I help out?](#this-project-is-great-how-can-i-help-out)\n  * [How can I debug potential issues with the API?](#how-can-i-debug-potential-issues-with-the-api)\n- [License](#license)\n\n<!-- tocstop -->\n\n## Introduction\n\nPuppet Master provides hosted, serverless SaaS APIs for controlling headless chrome in the cloud.\n\nOur goal is to make it really simple for developers to scale automated browser workflows via [Puppeteer](https://pptr.dev).\n\n## Functions\n\n### Screenshot\n\nNavigates to a page and captures a screenshot via Puppeteer's [Page.screenshot](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagescreenshotoptions).\n\nAll Puppeteer options are supported.\n\nReturns an image as either `image/png` or `image/jpeg` depending on the `type` parameter.\n\n### Pdf\n\nNavigates to a page and captures a PDF via Puppeteer's [Page.pdf](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagepdfoptions).\n\nAll Puppeteer options are supported.\n\nReturns a PDF as `application/pdf`.\n\n### Common Options\n\nIn addition to the standard parameters, all functions optionally accept a set of additional common options.\n\n- [viewport](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagesetviewportviewport) - Set the browser window's viewport dimensions and/or resolution.\n- [userAgent](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagesetuseragentuseragent) - Set the browser's [user-agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).\n  - Useful to trick websites into displaying different content or styles based on an emulated device.\n- [gotoOptions](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagegotourl-options) - Customize the `Page.goto` navigation options.\n  - Useful when you need to customize behavior around when Puppeteer considers a page navigation \"finished\".\n- [emulateDevice](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pageemulateoptions) - Make it look like the screenshot was taken on the specified device.\n  - Use the `name` property from one of the built-in [devices](https://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js).\n  - Overrides `viewport` and `userAgent`.\n\n## FAQ\n\n### Why are my screenshots blurry?\n\nTry setting [viewport.deviceScaleFactor](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagesetviewportviewport) to `2` to emulate a retina display.\n\n### How is this project different from other alternatives?\n\nThe differences can be broken down into two areas:\n\n**Functionality**\n\n- We use serverless functions to provide maximum scalability while minimizing cost.\n- This also means that you only pay for what you actually use.\n- You could set this up yourself, but headless chrome is a resource hog and who wants to setup and manage another async task queue?\n- We also allow you to run functions locally which is essential for debugging.\n\n**Philisophy**\n\nThe core motivation behind this project lies in trying to tackle the problem of open source sustainability.\n\nTowards that end, every aspect of this SaaS product aside from the core functionality was generated automatically via [Saasify](https://saasify.sh), the Shopify for SaaS. That includes the template-based marketing website, OpenAPI-based API docs, serverless function hosting, user account management, usage-based billing integration, legal docs, and support.\n\nIt's our hope that by greatly simplifying and automating the process of launching SaaS APIs, open source authors will be much more inclined to monetize their work and help to sustain their passion while still holding true to the underlying nature of OSS.\n\nPuppet Master is therefore a SaaS product that is fully generated from the source code in this repository. If you know how to create an open source TypeScript project like this one, you're already 95% of your way towards creating your own monetizable SaaS product!\n\n### The functionality I need is missing.\n\nWe're actively looking for feedback and feature suggestions.\n\nPlease [contact us](mailto:support@saasify.sh) or open an issue on this repo.\n\nThanks!\n\n### How do subscriptions work?\n\nAll APIs come with a free public tier that is rate-limited so you can test things out before signing up for a subscription.\n\nSaasify uses [Stripe](https://stripe.com) to securely handle all payments, subscriptions, and invoices.\n\nWe use usage-based, metered subscriptions that charge fractions of a cent depending on three factors:\n\n- Number of authenticated API calls\n- Aggregate compute time\n- Bandwidth in / out\n\nSigning up for a subscription starts a weekly billing cycle. Note that you will only be charged for what you use.\n\nSee [pricing](/pricing) for more details.\n\n### This project is great! How can I help out?\n\nCollaboration is what makes open source truly powerful! If you're interested in working on Puppet Master or have an idea for your own Saasify product, please [contact us](mailto:info@saasify.sh) to learn more. Thanks!\n\n### How can I debug potential issues with the API?\n\nIf your API calls are not working or returning unexpected results, the best way to troubleshoot is to try and reproduce your issue by running the project locally.\n\n- Clone this repository\n- Install `saasify` globally via `npm install -g saasify`\n- Run `saasify dev` at the repo root specifying an additional environment variable `PUPPET_MASTER_DEBUG`\n\n```\nPUPPET_MASTER_DEBUG=1 saasify dev\n```\n\nThis will run the deployment locally with a non-headless browser and `slowMo` set to `1000`.\n\nThen just change the URL you're calling to be the corresponding `localhost` URL and investigate the issue.\n\n## License\n\nMIT © [Saasify](https://saasify.sh)\n",
+  "authRateLimit": null,
+  "services": [
+    {
+      "timeout": 0,
+      "examples": [
+        {
+          "name": "Basic",
+          "input": {
+            "url": "https://youtube.com"
+          },
+          "output": "youtube.png"
+        },
+        {
+          "name": "Custom",
+          "input": {
+            "url": "https://github.com",
+            "type": "jpeg",
+            "quality": 90,
+            "viewport": {
+              "width": 1920,
+              "height": 1080,
+              "deviceScaleFactor": 2
+            },
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
+          },
+          "output": "github.jpg"
+        }
+      ],
+      "src": "src/screenshot.ts",
+      "name": "screenshot",
+      "definition": {
+        "config": {
+          "defaultExport": true,
+          "language": "typescript"
+        },
+        "params": {
+          "context": false,
+          "order": [
+            "url",
+            "type",
+            "quality",
+            "fullPage",
+            "omitBackground",
+            "clip",
+            "gotoOptions",
+            "viewport",
+            "userAgent",
+            "emulateDevice"
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "description": "URL to navigate page to. The url should include scheme, e.g. `https://`.",
+                "type": "string"
+              },
+              "type": {
+                "description": "Specify screenshot type, can be either `jpeg` or `png`.",
+                "enum": [
+                  "jpeg",
+                  "png"
+                ],
+                "type": "string",
+                "default": "png"
+              },
+              "quality": {
+                "description": "The quality of the image, between 0-100. Not applicable to `png` images.",
+                "type": "number",
+                "default": 100
+              },
+              "fullPage": {
+                "description": "When `true`, takes a screenshot of the full scrollable page.",
+                "type": "boolean",
+                "default": false
+              },
+              "omitBackground": {
+                "description": "Hides default white background and allows capturing screenshots with transparency.",
+                "type": "boolean",
+                "default": true
+              },
+              "clip": {
+                "$ref": "#/definitions/Rect",
+                "description": "An object which specifies clipping region of the page."
+              },
+              "gotoOptions": {
+                "$ref": "#/definitions/DirectNavigationOptions",
+                "description": "Customize the `Page.goto` navigation options."
+              },
+              "viewport": {
+                "$ref": "#/definitions/Viewport",
+                "description": "Set the browser window's viewport dimensions and/or resolution."
+              },
+              "userAgent": {
+                "description": "Set the browser's [user-agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).",
+                "type": "string"
+              },
+              "emulateDevice": {
+                "description": "Make it look like the screenshot was taken on the specified device.\n- Use the `name` property from one of the built-in [devices](https://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js).\n- Overrides `viewport` and `userAgent`.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "url"
+            ],
+            "definitions": {
+              "Rect": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "width": {
+                    "type": "number"
+                  },
+                  "height": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "height",
+                  "width",
+                  "x",
+                  "y"
+                ]
+              },
+              "DirectNavigationOptions": {
+                "description": "Navigation options for `page.goto`.",
+                "type": "object",
+                "properties": {
+                  "referer": {
+                    "description": "Referer header value.\nIf provided it will take preference over the referer header value set by\n[page.setExtraHTTPHeaders()](#pagesetextrahttpheadersheaders).",
+                    "type": "string"
+                  },
+                  "waitUntil": {
+                    "description": "When to consider navigation succeeded.",
+                    "default": "load Navigation is consider when the `load` event is fired.",
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "enum": [
+                            "domcontentloaded",
+                            "load",
+                            "networkidle0",
+                            "networkidle2"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "enum": [
+                          "domcontentloaded",
+                          "load",
+                          "networkidle0",
+                          "networkidle2"
+                        ],
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "timeout": {
+                    "description": "Maximum navigation time in milliseconds, pass 0 to disable timeout.",
+                    "default": 30000,
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "Viewport": {
+                "type": "object",
+                "properties": {
+                  "width": {
+                    "description": "The page width in pixels.",
+                    "type": "number"
+                  },
+                  "height": {
+                    "description": "The page height in pixels.",
+                    "type": "number"
+                  },
+                  "deviceScaleFactor": {
+                    "description": "Specify device scale factor (can be thought of as dpr).",
+                    "default": 1,
+                    "type": "number"
+                  },
+                  "isMobile": {
+                    "description": "Whether the `meta viewport` tag is taken into account.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "hasTouch": {
+                    "description": "Specifies if viewport supports touch events.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "isLandscape": {
+                    "description": "Specifies if viewport is in landscape mode.",
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "height",
+                  "width"
+                ]
+              }
+            },
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "returns": {
+          "async": true,
+          "http": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "$ref": "#/definitions/HttpResponse",
+                "description": "Image as either `image/png` or `image/jpeg` depending on the `type` parameter."
+              }
+            },
+            "additionalProperties": false,
+            "definitions": {
+              "HttpResponse": {
+                "description": "Fallback to allow raw HTTP responses that are not type-checked.",
+                "type": "object",
+                "properties": {
+                  "statusCode": {
+                    "type": "number"
+                  },
+                  "headers": {
+                    "$ref": "#/definitions/OutgoingHttpHeaders"
+                  },
+                  "body": {
+                    "description": "Raw data is stored in instances of the Buffer class.\nA Buffer is similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap.  A Buffer cannot be resized.\nValid string encodings: 'ascii'|'utf8'|'utf16le'|'ucs2'(alias of 'utf16le')|'base64'|'binary'(deprecated)|'hex'",
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              },
+              "OutgoingHttpHeaders": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "version": "1.1.0",
+        "title": "screenshot",
+        "description": "Navigates to a page and captures a screenshot via Puppeteer's [Page.screenshot](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagescreenshotoptions)."
+      },
+      "url": "http://localhost:5000/1/call/transitive-bullshit/puppet-master.screenshot@b0c5c30c"
+    },
+    {
+      "timeout": 0,
+      "examples": [
+        {
+          "name": "Basic",
+          "input": {
+            "url": "https://producthunt.com"
+          },
+          "output": "producthunt.pdf"
+        },
+        {
+          "name": "Custom",
+          "input": {
+            "url": "https://producthunt.com",
+            "viewport": {
+              "width": 1920,
+              "height": 1080,
+              "deviceScaleFactor": 2
+            },
+            "displayHeaderFooter": true,
+            "format": "A0"
+          },
+          "output": "producthunt.pdf"
+        }
+      ],
+      "src": "src/pdf.ts",
+      "name": "pdf",
+      "definition": {
+        "config": {
+          "defaultExport": true,
+          "language": "typescript"
+        },
+        "params": {
+          "context": false,
+          "order": [
+            "url",
+            "scale",
+            "displayHeaderFooter",
+            "headerTemplate",
+            "footerTemplate",
+            "printBackground",
+            "landscape",
+            "pageRanges",
+            "format",
+            "width",
+            "height",
+            "margin",
+            "preferCSSPageSize",
+            "gotoOptions",
+            "viewport",
+            "userAgent",
+            "emulateDevice"
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "description": "URL to navigate page to. The url should include scheme, e.g. `https://`.",
+                "type": "string"
+              },
+              "scale": {
+                "description": "Scale of the webpage rendering.",
+                "type": "number",
+                "default": 1
+              },
+              "displayHeaderFooter": {
+                "description": "Display header and footer.",
+                "type": "boolean",
+                "default": false
+              },
+              "headerTemplate": {
+                "description": "HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them:\n- `date` formatted print date\n- `title` document title\n- `url` document location\n- `pageNumber` current page number\n- `totalPages` total pages in the document",
+                "type": "string"
+              },
+              "footerTemplate": {
+                "description": "HTML template for the print footer. Should be valid HTML markup with following classes used to inject printing values into them:\n- `date` formatted print date\n- `title` document title\n- `url` document location\n- `pageNumber` current page number\n- `totalPages` total pages in the document",
+                "type": "string"
+              },
+              "printBackground": {
+                "description": "Print background graphics.",
+                "type": "boolean",
+                "default": false
+              },
+              "landscape": {
+                "description": "Paper orientation.",
+                "type": "boolean",
+                "default": false
+              },
+              "pageRanges": {
+                "description": "Paper ranges to print, e.g., `1-5, 8, 11-13`. Default is `''` which means print all pages.",
+                "type": "string",
+                "default": ""
+              },
+              "format": {
+                "description": "Paper format. If set, takes priority over width or height options.",
+                "enum": [
+                  "A0",
+                  "A1",
+                  "A2",
+                  "A3",
+                  "A4",
+                  "A5",
+                  "A6",
+                  "Ledger",
+                  "Legal",
+                  "Letter",
+                  "Tabloid"
+                ],
+                "type": "string",
+                "default": "Letter"
+              },
+              "width": {
+                "description": "Paper width.",
+                "type": "number"
+              },
+              "height": {
+                "description": "Paper height.",
+                "type": "number"
+              },
+              "margin": {
+                "$ref": "#/definitions/Margin",
+                "description": "Paper margins, defaults to none."
+              },
+              "preferCSSPageSize": {
+                "description": "Give any CSS @page size declared in the page priority over what is declared in width and\nheight or format options. Defaults to `false` which will scale the content to fit the paper size.",
+                "type": "boolean",
+                "default": false
+              },
+              "gotoOptions": {
+                "$ref": "#/definitions/DirectNavigationOptions",
+                "description": "Customize the `Page.goto` navigation options."
+              },
+              "viewport": {
+                "$ref": "#/definitions/Viewport",
+                "description": "Set the browser window's viewport dimensions and/or resolution."
+              },
+              "userAgent": {
+                "description": "Set the browser's [user-agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).",
+                "type": "string"
+              },
+              "emulateDevice": {
+                "description": "Make it look like the screenshot was taken on the specified device.\n- Use the `name` property from one of the built-in [devices](https://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js).\n- Overrides `viewport` and `userAgent`.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "url"
+            ],
+            "definitions": {
+              "Margin": {
+                "type": "object",
+                "properties": {
+                  "top": {
+                    "description": "Top margin.",
+                    "type": "number"
+                  },
+                  "right": {
+                    "description": "Right margin.",
+                    "type": "number"
+                  },
+                  "bottom": {
+                    "description": "Bottom margin.",
+                    "type": "number"
+                  },
+                  "left": {
+                    "description": "Left margin.",
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "DirectNavigationOptions": {
+                "description": "Navigation options for `page.goto`.",
+                "type": "object",
+                "properties": {
+                  "referer": {
+                    "description": "Referer header value.\nIf provided it will take preference over the referer header value set by\n[page.setExtraHTTPHeaders()](#pagesetextrahttpheadersheaders).",
+                    "type": "string"
+                  },
+                  "waitUntil": {
+                    "description": "When to consider navigation succeeded.",
+                    "default": "load Navigation is consider when the `load` event is fired.",
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "enum": [
+                            "domcontentloaded",
+                            "load",
+                            "networkidle0",
+                            "networkidle2"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      {
+                        "enum": [
+                          "domcontentloaded",
+                          "load",
+                          "networkidle0",
+                          "networkidle2"
+                        ],
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "timeout": {
+                    "description": "Maximum navigation time in milliseconds, pass 0 to disable timeout.",
+                    "default": 30000,
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "Viewport": {
+                "type": "object",
+                "properties": {
+                  "width": {
+                    "description": "The page width in pixels.",
+                    "type": "number"
+                  },
+                  "height": {
+                    "description": "The page height in pixels.",
+                    "type": "number"
+                  },
+                  "deviceScaleFactor": {
+                    "description": "Specify device scale factor (can be thought of as dpr).",
+                    "default": 1,
+                    "type": "number"
+                  },
+                  "isMobile": {
+                    "description": "Whether the `meta viewport` tag is taken into account.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "hasTouch": {
+                    "description": "Specifies if viewport supports touch events.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "isLandscape": {
+                    "description": "Specifies if viewport is in landscape mode.",
+                    "default": false,
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "height",
+                  "width"
+                ]
+              }
+            },
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "returns": {
+          "async": true,
+          "http": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "$ref": "#/definitions/HttpResponse",
+                "description": "PDF as `application/pdf`."
+              }
+            },
+            "additionalProperties": false,
+            "definitions": {
+              "HttpResponse": {
+                "description": "Fallback to allow raw HTTP responses that are not type-checked.",
+                "type": "object",
+                "properties": {
+                  "statusCode": {
+                    "type": "number"
+                  },
+                  "headers": {
+                    "$ref": "#/definitions/OutgoingHttpHeaders"
+                  },
+                  "body": {
+                    "description": "Raw data is stored in instances of the Buffer class.\nA Buffer is similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap.  A Buffer cannot be resized.\nValid string encodings: 'ascii'|'utf8'|'utf16le'|'ucs2'(alias of 'utf16le')|'base64'|'binary'(deprecated)|'hex'",
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              },
+              "OutgoingHttpHeaders": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "version": "1.1.0",
+        "title": "pdf",
+        "description": "Navigates to a page and captures a PDF via Puppeteer's [Page.pdf](https://pptr.dev/#?product=Puppeteer&version=v1.19.0&show=api-pagepdfoptions)."
+      },
+      "url": "http://localhost:5000/1/call/transitive-bullshit/puppet-master.pdf@b0c5c30c"
+    }
+  ],
+  "saas": {
+    "name": "Puppet Master",
+    "heading": "Puppeteer as a Service",
+    "subheading": "Control headless Chrome via a simple SaaS API!",
+    "logo": "https://storage.googleapis.com/saasify-uploads-prod/transitive-bullshit/puppet-master/b0c5c30c/saas-logo.svg",
+    "favicon": "https://storage.googleapis.com/saasify-uploads-prod/transitive-bullshit/puppet-master/b0c5c30c/saas-favicon.ico",
+    "theme": {
+      "name": "okta"
+    },
+    "faviconSizes": "192x192 96x96 72x72 48x48 32x32"
+  },
+  "createdAt": "2019-09-18T22:55:27.845Z",
+  "updatedAt": "2019-09-18T23:01:24.035Z",
+  "url": "http://localhost:5000/1/call/transitive-bullshit/puppet-master@b0c5c30c",
+  "openApiUrl": "http://localhost:5000/1/deployments/openapi/transitive-bullshit/puppet-master@b0c5c30c",
+  "saasUrl": "http://transitive-bullshit_puppet-master_b0c5c30c.localhost:3000",
+  "id": "transitive-bullshit/puppet-master@b0c5c30c"
+}
