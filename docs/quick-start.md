@@ -65,7 +65,7 @@ saasify dev
 
 This is a simple wrapper for `now dev`. Saasify uses ZEIT [now](https://zeit.co/now) heavily under the hood.
 
-!> Note that `saasify dev` is one of the most useful commands available. It's much easier to develope and debug your services locally before deploying them remotely.
+!> Note that `saasify dev` is one of the most useful commands available. It's much easier to develop and debug your services locally before deploying them remotely.
 
 ## Deploying your Project
 
