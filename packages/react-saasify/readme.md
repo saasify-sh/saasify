@@ -8,7 +8,7 @@
 
 > React components for [Saasify](https://saasify.sh) web clients.
 
-[![NPM](https://img.shields.io/npm/v/react-saasify.svg)](https://www.npmjs.com/package/react-saasify) [![Build Status](https://travis-ci.com/saasify/saasify.svg?branch=master)](https://travis-ci.com/saasify/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-saasify.svg)](https://www.npmjs.com/package/react-saasify) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
