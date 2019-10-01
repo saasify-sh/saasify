@@ -1,3 +1,4 @@
 import _debug from 'debug'
 
-export default _debug('app')
+export const debug = _debug('app')
+export default debug

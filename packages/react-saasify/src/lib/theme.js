@@ -45,4 +45,5 @@ decorate(themeUtil, variables.reduce((acc, k) => {
   return acc
 }, { }))
 
+export const theme = themeUtil
 export default themeUtil

@@ -4,13 +4,11 @@ import debug from 'lib/debug'
 import API from 'lib/api'
 import LocalStore from 'store/LocalStore'
 
-import deployment from '../lib/deployment'
-
 import { config as githubConfig } from 'lib/auth-github'
 
 const AUTH_STORE_KEY = 'SaasifyAuth'
 
-class AuthManager {
+class AuthManagerClass {
   @observable
   auth = null
 
@@ -87,23 +85,11 @@ class AuthManager {
   }
 }
 
-const authManager = observable(new AuthManager())
+export const AuthManager = observable(new AuthManagerClass())
 
 autorun(() => {
-  API.user = authManager.auth && authManager.auth.user
-  API.token = authManager.auth && authManager.auth.token
-
-  if (authManager.isAuthenticated) {
-    API.getConsumerByProject(deployment.project.id)
-      .then((consumer) => {
-        authManager.consumer = consumer
-      }, (err) => {
-        console.warn(err)
-        authManager.consumer = null
-      })
-  } else {
-    authManager.consumer = null
-  }
+  API.user = AuthManager.auth && AuthManager.auth.user
+  API.token = AuthManager.auth && AuthManager.auth.token
 })
 
-export default authManager
+export default AuthManager

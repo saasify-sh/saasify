@@ -1,5 +1,5 @@
-import { message } from 'lib/antd'
-import debug from 'lib/debug'
+import { message } from './antd'
+import debug from './debug'
 
 export default {
   info: (s) => {

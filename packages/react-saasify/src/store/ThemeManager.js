@@ -1,20 +1,14 @@
 import { autorun, observable, toJS, trace } from 'mobx'
 
-import deployment from '../lib/deployment'
-
 // TODO: dynamically import themes to reduce bundle size
 // (low priority until / unless we have a lot more themes)
 import * as themes from '../themes'
 
 const DEFAULT_THEME = 'okta'
 
-class ThemeManager {
+class ThemeManagerClass {
   @observable
   theme
-
-  constructor() {
-    this.setTheme(deployment.saas.theme)
-  }
 
   setTheme = (opts) => {
     const { name = DEFAULT_THEME } = opts
@@ -24,18 +18,18 @@ class ThemeManager {
   }
 }
 
-const themeManager = observable(new ThemeManager())
-window.themeManager = themeManager
+export const ThemeManager = observable(new ThemeManagerClass())
+window.ThemeManager = ThemeManager
 
 if (process.env.NODE_ENV === 'development') {
   autorun(() => {
     trace()
-    console.log('theme', toJS(themeManager.theme))
+    console.log('theme', toJS(ThemeManager.theme))
 
-    // window.less.modifyVars(themeManager.theme)
+    // window.less.modifyVars(ThemeManager.theme)
   }, {
     name: 'Theme change (development)'
   })
 }
 
-export default themeManager
+export default ThemeManager
