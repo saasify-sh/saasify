@@ -1,6 +1,6 @@
 {
   "name": "react-saasify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React components for Saasify web clients.",
   "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
@@ -43,6 +43,7 @@
     "date-fns": "^2.4.1",
     "debug": "^4.1.1",
     "delay": "^4.3.0",
+    "indent-string": "^4.0.0",
     "localforage": "^1.7.3",
     "mem": "^5.1.1",
     "mustache": "^3.1.0",
