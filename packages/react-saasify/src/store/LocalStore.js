@@ -29,3 +29,5 @@ export default class LocalStore {
     return localforage.removeItem(...args)
   }
 }
+
+export { LocalStore }

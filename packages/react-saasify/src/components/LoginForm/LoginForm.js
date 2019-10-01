@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import theme from 'lib/theme'
@@ -47,6 +49,9 @@ export class LoginForm extends Component {
     const { getFieldDecorator } = this.props.form
     const { loading } = this.state
 
+    const iconUser = <Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />
+    const iconLock = <Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />
+
     return (
       <Form
         className={theme(styles, 'form', theme.light, className)}
@@ -75,9 +80,7 @@ export class LoginForm extends Component {
             rules: [{ required: true, message: 'Please enter your username or email.' }]
           })(
             <Input
-              prefix={
-                <Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />
-              }
+              prefix={iconUser}
               placeholder='Username'
             />
           )}
@@ -88,9 +91,7 @@ export class LoginForm extends Component {
             rules: [{ required: true, message: 'Please enter your password.' }]
           })(
             <Input
-              prefix={
-                <Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />
-              }
+              prefix={iconLock}
               type='password'
               placeholder='Password'
             />

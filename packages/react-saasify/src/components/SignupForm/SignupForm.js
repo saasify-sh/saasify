@@ -47,6 +47,9 @@ export class SignupForm extends Component {
     const { getFieldDecorator } = this.props.form
     const { loading } = this.state
 
+    const iconUser = <Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />
+    const iconLock = <Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />
+
     return (
       <Form
         className={theme(styles, 'form', theme.light, className)}
@@ -75,9 +78,7 @@ export class SignupForm extends Component {
             rules: [{ required: true, message: 'Please enter your email.' }]
           })(
             <Input
-              prefix={
-                <Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />
-              }
+              prefix={iconUser}
               placeholder='Email'
             />
           )}
@@ -88,9 +89,7 @@ export class SignupForm extends Component {
             rules: [{ required: true, message: 'Please enter a username.' }]
           })(
             <Input
-              prefix={
-                <Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />
-              }
+              prefix={iconUser}
               placeholder='Username'
             />
           )}
@@ -101,9 +100,7 @@ export class SignupForm extends Component {
             rules: [{ required: true, message: 'Please enter a password.' }]
           })(
             <Input
-              prefix={
-                <Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />
-              }
+              prefix={iconLock}
               type='password'
               placeholder='Password'
             />

@@ -8,15 +8,17 @@ import styles from './styles.module.css'
 
 export class NotFoundSection extends Component {
   render() {
+    const subtitle = (
+      <span>
+        Uh-oh, it looks like the page you're looking for doesn't exist.
+      </span>
+    )
+
     return (
       <Section
         id='not-found'
         title='Page Not Found'
-        subtitle={(
-          <span>
-            Uh-oh, it looks like the page you're looking for doesn't exist.
-          </span>
-        )}
+        subtitle={subtitle}
         {...this.props}
       >
         <UndrawSVG
