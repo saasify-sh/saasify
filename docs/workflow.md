@@ -111,7 +111,7 @@ Note that because Saasify uses [Functional TypeScript](https://github.com/transi
 
 Also note that all of these calls are going through a Saasify proxy that rate limits your unauthenticated HTTP requests based on your IP address.
 
-You can preview hte auto-generated SaaS web client for any deployment by visiting `https://<username>_<project-name>_<deployment-hash>.saasify.sh`. For example, [https://transitive-bullshit_puppet-master.saasify_b0c5c30c.sh](https://transitive-bullshit_puppet-master.saasify.sh).
+You can preview the auto-generated SaaS web client for any deployment by visiting `https://<username>_<project-name>_<deployment-hash>.saasify.sh`. For example, [https://transitive-bullshit_puppet-master_b0c5c30c.saasify.sh](https://transitive-bullshit_puppet-master_b0c5c30c.saasify.sh).
 
 <p align="center">
   <img src="./_media/undraw/confirmation.svg" alt="Deployments" width="200" />

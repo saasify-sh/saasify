@@ -21,3 +21,7 @@
 - [puppeteer](https://github.com/saasify-sh/saasify/tree/master/examples/puppeteer) - Example using headless Chrome.
 
 ...More to come soon!
+
+## Build your own
+
+Have an idea or an OSS project that you'd like to monetize, but not sure where to start? Feel free to contact us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI). ✌️

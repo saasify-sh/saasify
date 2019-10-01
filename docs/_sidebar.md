@@ -12,7 +12,8 @@
   - [Functions](functions.md)
   - [Services](services.md)
   - [FaaS IDs](faas-ids.md)
-  - [Environment Variables & Secrets](env-vars-and-secrets.md)
+  - [Env Vars & Secrets](env-vars-and-secrets.md)
+  - [SaaS Client](saas-client.md)
   - [CORS](cors.md)
   - [Pricing](pricing.md)
 
