@@ -22,7 +22,7 @@ npm install --save react-saasify
 
 ## Related
 
-- [saasify](https://saasify.sh) - Saasify is the easiest way to launch your own SaaS.
+- [saasify](https://saasify.sh) - Saasify is the easiest way to monetize your OSS projects!
 
 ## License
 
