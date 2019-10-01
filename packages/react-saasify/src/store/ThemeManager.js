@@ -8,7 +8,7 @@ const DEFAULT_THEME = 'okta'
 
 class ThemeManagerClass {
   @observable
-  theme
+  theme = { }
 
   setTheme = (opts) => {
     const { name = DEFAULT_THEME } = opts

@@ -21,7 +21,7 @@ const columns = [
     dataIndex: 'request.period.start',
     render: (timestamp) => (
       timestamp
-        ? format(new Date(timestamp * 1000), 'MM/DD/YYYY')
+        ? format(new Date(timestamp * 1000), 'MM/dd/yyyy')
         : ''
     )
   },
@@ -30,7 +30,7 @@ const columns = [
     dataIndex: 'request.period.end',
     render: (timestamp) => (
       timestamp
-        ? format(new Date(timestamp * 1000), 'MM/DD/YYYY')
+        ? format(new Date(timestamp * 1000), 'MM/dd/yyyy')
         : 'Current'
     )
   },

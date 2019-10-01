@@ -78,7 +78,7 @@ export class ProfileSection extends Component {
         title: 'Joined',
         dataIndex: 'joined',
         render: (date) => (
-          format(new Date(date), 'MM/DD/YYYY')
+          format(new Date(date), 'MM/dd/yyyy')
         )
       },
       {
@@ -93,7 +93,7 @@ export class ProfileSection extends Component {
         title: 'Subscribed',
         dataIndex: 'subscribed',
         render: (date) => (
-          date ? format(new Date(date), 'MM/DD/YYYY') : ''
+          date ? format(new Date(date), 'MM/dd/yyyy') : ''
         )
       },
       */

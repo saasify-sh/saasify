@@ -1,3 +1,9 @@
+import React from 'react'
+
+// TODO: this is a bit hacky...
+// see https://github.com/developit/microbundle/issues/376
+global.h = React.createElement.bind(React)
+
 export * from './components'
 
 export * from './lib/antd'

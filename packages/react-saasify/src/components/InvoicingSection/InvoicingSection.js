@@ -31,7 +31,7 @@ const columns = [
     title: 'Date',
     dataIndex: 'created',
     render: (timestamp) => (
-      format(new Date(timestamp * 1000), 'MM/DD/YYYY')
+      format(new Date(timestamp * 1000), 'MM/dd/yyyy')
     )
   },
   {
