@@ -68,7 +68,7 @@ An example `saasify.json` config file could look like:
 
 This config specifies a `Project` named `hello-world` with a single service generated from the specified `src` TypeScript file relative to the project root. All pricing and rate limits will use platform defaults.
 
-See [./configuration.md] for more details on configuring projects.
+See [configuration](./configuration.md) for more details on configuring projects.
 
 ## Deployment
 
