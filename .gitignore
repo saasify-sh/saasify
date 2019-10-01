@@ -64,4 +64,5 @@ keys/
 master.json
 
 .next
+build
 dist

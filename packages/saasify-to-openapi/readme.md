@@ -13,7 +13,7 @@
 ## Install
 
 ```bash
-npm install saasify-to-openapi
+npm install --save saasify-to-openapi
 ```
 
 ## Usage

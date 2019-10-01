@@ -13,7 +13,7 @@
 ## Install
 
 ```bash
-npm install saasify-utils
+npm install --save saasify-utils
 ```
 
 ## Usage

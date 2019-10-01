@@ -13,7 +13,7 @@
 ## Install
 
 ```bash
-npm install saasify-client
+npm install --save saasify-client
 ```
 
 ## Usage
