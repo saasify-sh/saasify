@@ -4,6 +4,12 @@
 
 One of Saasify's most powerful features is the ability to generate fully functional, standalone SaaS client websites that allow any developer to learn about and subscribe to your APIs.
 
+Here is a screenshot of an [example](https://puppet-master.sh) SaaS client.
+
+<p align="center">
+  <img src="./_media/saas-client-example.jpg" alt="SaaS client example" width="400" />
+</p>
+
 ## Deployments
 
 Each deployment has its own, unique web client which you can access via its `saasUrl` property.
