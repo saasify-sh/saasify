@@ -28,7 +28,7 @@ In these examples, the username is `transitive-bullshit`, the project name is `p
 
 Once you're ready to launch your SaaS product, you may want to use DNS to alias your generated SaaS web client to a custom domain.
 
-For example, the most recent published deployment for the `puppet-master` project from above has been aliased to be available at [https://puppet-master.sh](https://puppet-master.sh).
+For example, the most recent published deployment for the `puppet-master` project from above has been aliased to [https://puppet-master.sh](https://puppet-master.sh).
 
 - Using a custom domain will enhance your product's credibility in the eyes of potential users.
 - The underlying API endpoints will still point to `https://api.saasify.sh`.
