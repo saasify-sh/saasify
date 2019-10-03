@@ -9,7 +9,7 @@
   },
   "scripts": {
     "docs": "docsify serve docs",
-    "deploy": "cd docs && now --prod && now rm --safe --yes saasify",
+    "deploy": "cd docs && now --prod && now rm --safe --yes saasify || echo 'done'",
     "test": "lerna run test",
     "bootstrap": "lerna bootstrap",
     "publish": "lerna publish",

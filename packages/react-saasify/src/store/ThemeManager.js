@@ -1,25 +1,45 @@
 import { autorun, observable, toJS, trace } from 'mobx'
 
-// TODO: dynamically import themes to reduce bundle size
-// (low priority until / unless we have a lot more themes)
 import * as themes from '../themes'
-
-const DEFAULT_THEME = 'okta'
 
 class ThemeManagerClass {
   @observable
   theme = { }
 
-  setTheme = (opts) => {
-    const { name = DEFAULT_THEME } = opts
+  _themes = { }
 
-    const themeFactory = themes[name]
-    this.theme = themeFactory(opts)
+  registerTheme = (name, themeFactory) => {
+    console.log('register theme', name)
+
+    this._themes[name] = themeFactory
+  }
+
+  setTheme = (opts) => {
+    let name
+
+    if (typeof opts === 'object') {
+      name = opts.name
+    } else {
+      name = opts
+      opts = { }
+    }
+
+    const themeFactory = name && this._themes[name]
+    if (themeFactory) {
+      this.theme = themeFactory(opts)
+    } else {
+      console.warn(`ThemeManager.setTheme(${name}) theme not found`)
+      console.warn('Must call ThemeManager.registerTheme first')
+    }
   }
 }
 
 export const ThemeManager = observable(new ThemeManagerClass())
 window.ThemeManager = ThemeManager
+
+for (const [k, v] of Object.entries(themes)) {
+  ThemeManager.registerTheme(k, v)
+}
 
 if (process.env.NODE_ENV === 'development') {
   autorun(() => {

@@ -22,7 +22,7 @@ export class NavFooter extends Component {
 
     return (
       <SaasifyContext.Consumer>
-        {deployment => (
+        {config => (
           <footer
             className={theme(styles, 'container')}
             style={{
@@ -128,10 +128,10 @@ export class NavFooter extends Component {
                     </a>
                   </li>
 
-                  {deployment.saas.repo && (
+                  {config.repo && (
                     <li className={theme(styles, 'listItem')}>
                       <a
-                        href={deployment.saas.repo}
+                        href={config.repo}
                         className={theme(styles, 'link')}
                       >
                         GitHub

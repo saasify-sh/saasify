@@ -46,12 +46,12 @@ export class CheckoutForm extends Component {
   render() {
     return (
       <SaasifyContext.Consumer>
-        {deployment => (
+        {config => (
           <StripeProvider apiKey={env.stripePublicKey}>
             <Elements>
               <CheckoutFormImpl
                 {...this.props}
-                deployment={deployment}
+                config={config}
               />
             </Elements>
           </StripeProvider>
@@ -64,7 +64,7 @@ export class CheckoutForm extends Component {
 @injectStripe
 class CheckoutFormImpl extends Component {
   static propTypes = {
-    deployment: PropTypes.object.isRequired,
+    config: PropTypes.object.isRequired,
     stripe: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
     loading: PropTypes.bool,
@@ -78,7 +78,7 @@ class CheckoutFormImpl extends Component {
   }
 
   render() {
-    const { deployment, loading, title, action, className } = this.props
+    const { config, loading, title, action, className } = this.props
 
     return (
       <form
@@ -121,7 +121,7 @@ class CheckoutFormImpl extends Component {
           />
         </label>
 
-        {deployment.coupons && deployment.coupons.length > 0 && (
+        {config.coupons && config.coupons.length > 0 && (
           <label className={theme(styles, 'label')}>
             Promo Code
 
