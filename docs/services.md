@@ -8,7 +8,7 @@ All generated service endpoints are organized around [REST](http://en.wikipedia.
 
 Every deployment comes with a corresponding [OpenAPI spec](https://swagger.io/specification) that fully describes its service endpoints.
 
-Here is an example auto-generated OpenAPI [spec](https://api.saasify.sh/1/deployments/openapi/transitive-bullshit/puppet-master@b0c5c30c), as well as its corresponding [docs](https://puppet-master.sh/api/docs). These docs are available for every SaaS web client, and they use [Redoc](https://github.com/Redocly/redoc) to display the OpenAPI spec for any given deployment.
+Here is an example auto-generated OpenAPI [spec](https://api.saasify.sh/1/deployments/openapi/transitive-bullshit/puppet-master@b0c5c30c), as well as its corresponding [docs](https://puppet-master.sh/docs/api). These docs are available for every SaaS web client, and they use [Redoc](https://github.com/Redocly/redoc) to display the OpenAPI spec for any given deployment.
 
 !> Note that [OpenAPI](https://swagger.io/specification) was previously called Swagger.
 

@@ -1,8 +1,7 @@
 # TODO
 
 ## Pages
-
-  - [Pricing](pricing.md)
+  - [Supported Languages](languages.md)
   - [Publishing](publishing.md)
   - [Saasify API](saasify-api.md)
   - [Rate Limits](rate-limits.md)

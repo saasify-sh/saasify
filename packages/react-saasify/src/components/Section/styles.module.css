@@ -30,8 +30,6 @@
 
 .subtitle {
   margin: 0 auto 64px;
-  max-width: 500px;
-
   text-align: center;
   font-size: 20px;
   font-weight: 400;
@@ -46,16 +44,6 @@
 
 body header + section:first-of-type .content {
   padding: 140px 16px 3em;
-}
-
-body header + section:first-of-type .title {
-  margin: 0 0 64px;
-
-  font-weight: 700;
-  font-size: 44px;
-  line-height: 64px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
 }
 
 @media only screen and (max-width: 767px) {

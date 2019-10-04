@@ -4,89 +4,110 @@
 }
 
 .section .subtitle {
+  max-width: 500px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   color: #fff;
 }
 
-:global(.theme-okta) {
+.theme-okta {
   color: #fff;
 }
 
-:global(.theme-okta) .light {
+.light {
   color: #222;
 }
 
-:global(.theme-okta) h1, :global(.theme-okta) h2, :global(.theme-okta) h3, :global(.theme-okta) h4, :global(.theme-okta) h5, :global(.theme-okta) h6 {
+.theme-okta h1, .theme-okta h2, .theme-okta h3, .theme-okta h4, .theme-okta h5, .theme-okta h6 {
   color: #fff !important;
 }
 
-:global(.theme-okta) .light h1, :global(.theme-okta) .light h2, :global(.theme-okta) .light h3, :global(.theme-okta) .light h4, :global(.theme-okta) .light h5, :global(.theme-okta) .light h6 {
+.theme-okta .light h1, .theme-okta .light h2, .theme-okta .light h3, .theme-okta .light h4, .theme-okta .light h5, .theme-okta .light h6 {
   color: #222 !important;
 }
 
-:global(.theme-okta) footer .content {
+.theme-okta footer .content {
   color: #fff;
 }
 
-:global(.theme-okta) footer .header {
+.theme-okta footer .header {
   color: #fff;
 }
 
-:global(.theme-okta) footer .link {
+.theme-okta footer .link {
   color: #ccc;
 }
 
-:global(.theme-okta) footer .detail {
+.theme-okta footer .detail {
   color: #ccc;
 }
 
-:global(.theme-okta) header .link,
-:global(.theme-okta) header .link:active,
-:global(.theme-okta) header .link:visited {
+.theme-okta header .link,
+.theme-okta header .link:active,
+.theme-okta header .link:visited {
   color: #fff;
 }
 
-:global(.theme-okta) header .link:hover {
+.theme-okta header .link:hover {
   color: #eb3d48;
 }
 
-:global(.theme-okta) a {
+.theme-okta a {
   color: #d23d67;
 }
 
-:global(.theme-okta) a:hover {
+.theme-okta a:hover {
   color: #db6485;
 }
 
-:global(.theme-okta) a:active {
+.theme-okta a:active {
   color: #c83a62;
 }
 
-:global(.theme-okta) :global(.ant-btn-primary) {
+.theme-okta :global(.ant-btn-primary) {
   background-color: #d23d67;
   border-color: #d23d67;
   color: #fff;
 }
 
-:global(.theme-okta) :global(.ant-btn-primary:hover) {
+.theme-okta :global(.ant-btn-primary:hover) {
   background-color: #db6485;
   border-color: #db6485;
   color: #fff;
 }
 
-:global(.theme-okta) :global(.ant-btn-primary:active) {
+.theme-okta :global(.ant-btn-primary:active) {
   background-color: #c83a62;
   border-color: #c83a62;
   color: #fff;
 }
 
-:global(.theme-okta) :global(#readme) code {
+.theme-okta :global(#readme) code {
   background: #0788cc;
   color: #fff;
 }
 
-:global(.theme-okta) :global(#readme) pre {
+.theme-okta :global(#readme) pre {
   background: #0788cc !important;
   color: #fff !important;
   border: 1px solid #eee;
+}
+
+body header + section:first-of-type .title {
+  margin: 0 0 64px;
+
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 64px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 767px) {
+  body header + section:first-of-type .content {
+    padding-top: 164px;
+  }
+
+  .content {
+    padding: 3em 0.5em;
+  }
 }
