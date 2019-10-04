@@ -9,8 +9,6 @@
 
 .content {
   width: 100%;
-  max-width: 1280px;
-  padding: 3em 2em;
   flex: 1;
 
   display: flex;

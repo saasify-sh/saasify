@@ -9,6 +9,11 @@
   color: #fff;
 }
 
+.section .content {
+  max-width: 1280px;
+  padding: 3em 2em;
+}
+
 .theme-okta {
   color: #fff;
 }
