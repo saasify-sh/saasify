@@ -97,6 +97,10 @@
   border: 1px solid #eee;
 }
 
+.cta-button.secondary {
+  color: #fff !important;
+}
+
 body header + section:first-of-type .title {
   margin: 0 0 64px;
 

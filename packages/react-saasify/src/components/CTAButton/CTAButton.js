@@ -12,7 +12,7 @@ export class CTAButton extends Component {
   render() {
     const {
       hovered,
-      type,
+      type = 'primary',
       inline,
       className,
       children,
@@ -37,7 +37,7 @@ export class CTAButton extends Component {
 
     return (
       <Button
-        type='primary'
+        type={type}
         className={theme(styles, 'cta-button', className, styles[type], inline && theme(styles, 'inline'))}
         style={{
           ...ownStyle,

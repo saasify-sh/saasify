@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import theme from 'lib/theme'
 
-import { Link } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 
+import Link from './Link'
 import { SaasifyContext } from '../SaasifyContext'
 import { Logo } from '../Logo'
 
@@ -40,106 +40,31 @@ export class NavFooter extends Component {
                 </div>
               </div>
 
-              <div>
-                <h3 className={theme(styles, 'header')}>Sitemap</h3>
+              {config.footer.columns.map((column) => (
+                <div key={column.label}>
+                  <h3 className={theme(styles, 'header')}>{column.label}</h3>
 
-                <ul>
-                  <li className={theme(styles, 'listItem')}>
-                    <Link
-                      to='/'
-                      className={theme(styles, 'link')}
-                    >
-                      Home
-                    </Link>
-                  </li>
+                  <ul>
+                    {column.links.map((link) => {
+                      if (typeof link === 'function') {
+                        link = link({ config, auth })
+                        if (!link) return null
+                      }
 
-                  <li className={theme(styles, 'listItem')}>
-                    <Link
-                      to='/pricing'
-                      className={theme(styles, 'link')}
-                    >
-                      Pricing
-                    </Link>
-                  </li>
-
-                  <li className={theme(styles, 'listItem')}>
-                    <Link
-                      to='/docs'
-                      className={theme(styles, 'link')}
-                    >
-                      Docs
-                    </Link>
-                  </li>
-
-                  <li className={theme(styles, 'listItem')}>
-                    {auth.isAuthenticated ? (
-                      <Link
-                        to='/dashboard'
-                        className={theme(styles, 'link')}
-                      >
-                        Dashboard
-                      </Link>
-                    ) : (
-                      <Link
-                        to='/signup'
-                        className={theme(styles, 'link')}
-                      >
-                        Get Started
-                      </Link>
-                    )}
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className={theme(styles, 'header')}>Legal</h3>
-
-                <ul>
-                  <li className={theme(styles, 'listItem')}>
-                    <Link
-                      to='/terms'
-                      className={theme(styles, 'link')}
-                    >
-                      Terms
-                    </Link>
-                  </li>
-
-                  <li className={theme(styles, 'listItem')}>
-                    <Link
-                      to='/privacy'
-                      className={theme(styles, 'link')}
-                    >
-                      Privacy
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className={theme(styles, 'header')}>Support</h3>
-
-                <ul>
-                  <li className={theme(styles, 'listItem')}>
-                    <a
-                      href='mailto:support@saasify.sh'
-                      className={theme(styles, 'link')}
-                    >
-                      Email
-                    </a>
-                  </li>
-
-                  {config.repo && (
-                    <li className={theme(styles, 'listItem')}>
-                      <a
-                        href={config.repo}
-                        className={theme(styles, 'link')}
-                      >
-                        GitHub
-                      </a>
-                    </li>
-                  )}
-                </ul>
-              </div>
+                      return (
+                        <li
+                          key={link.to || link.href}
+                          className={theme(styles, 'listItem')}
+                        >
+                          <Link
+                            {...link}
+                          />
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+              ))}
             </div>
           </footer>
         )}

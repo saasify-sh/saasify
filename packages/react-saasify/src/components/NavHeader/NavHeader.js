@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import theme from 'lib/theme'
 import raf from 'raf'
 
-import { Link } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 
 import { CTAButton } from '../CTAButton'
 import { Logo } from '../Logo'
+import { SaasifyContext } from '../SaasifyContext'
 
+import Link from './Link'
 import styles from './styles.module.css'
 
 const isServer = (typeof window === 'undefined')
@@ -52,80 +53,70 @@ export class NavHeader extends Component {
     const { attached } = this.state
 
     return (
-      <header
-        className={theme(styles, 'container', attached || fixed ? theme(styles, 'attached') : null)}
-        style={{
-          background: attached || fixed ? theme['@section-fg-color'] : 'transparent'
-        }}
-      >
-        <div className={theme(styles, 'content')}>
-          <div className={theme(styles, 'links')}>
-            <Link
-              to='/'
-            >
-              <Logo className={theme(styles, 'logo')} />
-            </Link>
+      <SaasifyContext.Consumer>
+        {config => (
+          <header
+            className={theme(styles, 'container', attached || fixed ? theme(styles, 'attached') : null)}
+            style={{
+              background: attached || fixed ? theme['@section-fg-color'] : 'transparent'
+            }}
+          >
+            <div className={theme(styles, 'content')}>
+              <div className={theme(styles, 'links')}>
+                <Link
+                  to='/'
+                >
+                  <Logo className={theme(styles, 'logo')} />
+                </Link>
 
-            <Link
-              to='/'
-              className={theme(styles, 'link')}
-            >
-              Home
-            </Link>
+                {config.header.links.map((link) => {
+                  if (typeof link === 'function') {
+                    link = link({ config, auth, fixed, attached })
+                    if (!link) return null
+                  }
 
-            <Link
-              to='/pricing'
-              className={theme(styles, 'link')}
-            >
-              Pricing
-            </Link>
+                  return (
+                    <Link
+                      key={link.to || link.href}
+                      {...link}
+                    />
+                  )
+                })}
+              </div>
 
-            <Link
-              to='/docs'
-              className={theme(styles, 'link')}
-            >
-              Docs
-            </Link>
+              {auth.isAuthenticated ? (
+                <div className={theme(styles, 'actions')}>
+                  <Link to='/logout' className={theme(styles, 'login')}>
+                    <CTAButton type='secondary' inline>
+                      LOGOUT
+                    </CTAButton>
+                  </Link>
 
-            <a
-              href='mailto:support@saasify.sh'
-              className={theme(styles, 'link')}
-            >
-              Support
-            </a>
-          </div>
+                  <Link to='/dashboard'>
+                    <CTAButton type='primary' inline>
+                      DASHBOARD
+                    </CTAButton>
+                  </Link>
+                </div>
+              ) : (
+                <div className={theme(styles, 'actions')}>
+                  <Link to='/login' className={theme(styles, 'login')}>
+                    <CTAButton type='secondary' inline>
+                      LOGIN
+                    </CTAButton>
+                  </Link>
 
-          {auth.isAuthenticated ? (
-            <div className={theme(styles, 'actions')}>
-              <Link to='/logout' className={theme(styles, 'login')}>
-                <CTAButton type='secondary' inline>
-                  LOGOUT
-                </CTAButton>
-              </Link>
-
-              <Link to='/dashboard'>
-                <CTAButton type='primary' inline>
-                  DASHBOARD
-                </CTAButton>
-              </Link>
+                  <Link to='/signup'>
+                    <CTAButton type='primary' inline>
+                      SIGNUP
+                    </CTAButton>
+                  </Link>
+                </div>
+              )}
             </div>
-          ) : (
-            <div className={theme(styles, 'actions')}>
-              <Link to='/login' className={theme(styles, 'login')}>
-                <CTAButton type='secondary' inline>
-                  LOGIN
-                </CTAButton>
-              </Link>
-
-              <Link to='/signup'>
-                <CTAButton type='primary' inline>
-                  SIGNUP
-                </CTAButton>
-              </Link>
-            </div>
-          )}
-        </div>
-      </header>
+          </header>
+        )}
+      </SaasifyContext.Consumer>
     )
   }
 

@@ -88,6 +88,10 @@
   transition: color 100ms ease;
 }
 
+.actions {
+  display: flex;
+}
+
 @media only screen and (max-width: 767px) {
   .logo {
     margin-right: 0;
@@ -105,7 +109,6 @@
   }
 
   .actions {
-    display: flex;
     width: 100%;
     justify-content: space-around;
     margin-top: 0.5em;

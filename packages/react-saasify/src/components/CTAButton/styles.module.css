@@ -5,14 +5,10 @@
   font-size: 14px;
   letter-spacing: 2px;
   cursor: pointer;
+  border-width: 2px;
 }
 
 .inline {
   padding: 6px 24px;
   font-size: 12px;
-}
-
-.secondary {
-  color: #fff !important;
-  border-width: 2px;
 }
