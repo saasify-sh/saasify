@@ -4,7 +4,7 @@
 
 > **Saasify's mission is to make it easier for open source authors to fund their passion.**
 
-OSS is extremely powerful and there is a huge disparity in the market between how passionate many developers are about OSS and how valuable it is to almost every business in existence versus how practical it is to make even a basic living off of it.
+OSS is an extremely powerful and rewarding outlet for developers to innovate outside of traditional academic and corporate careers. The problem, however, is the huge disparity that exists in the market between how passionate many developers are about OSS and how valuable it is to almost every business in existence versus how practical it is to make even a basic living off of it.
 
 Patreon & Open Collective help with a very small percentage of this problem because the business model of voluntarily giving back to OSS projects & authors is inherently weak.
 
