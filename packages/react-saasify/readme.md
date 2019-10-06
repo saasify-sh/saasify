@@ -18,7 +18,85 @@ npm install --save react-saasify
 
 ## Usage
 
-**TODO**
+`react-saasify` exposes lots of useful components that are used across Saasify web clients, but the most important one is the `Section` component.
+
+Every web client is broken up into Sections that encapsulate a single message, action, or purpose. Example Sections include `HeroSection`, `DocsSection`, `FeaturesSection`, etc.
+
+Here's an example implementation of the `HeroSection` on Saasify's [homepage](https://saasify.sh).
+
+```js
+import {
+  CTAButton,
+  Section,
+  theme
+} from 'react-saasify'
+
+import styles from './styles.module.css'
+
+export class HeroSection extends Component {
+  render() {
+    return (
+      <Section
+        id='hero'
+        title='Monetize Your OSS Projects'
+        subtitle='The platform for monetizable serverless functions that empower the open source authors you love.'
+        className={theme(styles, 'hero')}
+      >
+        <CTAButton>
+          Get Started
+        </CTAButton>
+      </Section>
+    )
+  }
+}
+```
+
+#### Components
+
+```
+import {
+  AuthenticatedRoute,
+
+  LoginForm,
+  SignupForm,
+  CheckoutForm,
+
+  SaasifyContext,
+
+  NavHeader,
+  NavFooter,
+
+  ProfileSection,
+  DashboardSection,
+  InvoicingSection,
+  BillingSourcesSection,
+  BillingUsageSection,
+  NotFoundSection,
+  BlankSection,
+
+  Section,
+  SectionDivider,
+
+  CodeBlock,
+  LiveServiceDemo,
+  PricingPlan,
+  CTAButton,
+
+  Markdown,
+  UndrawSVG,
+  Logo,
+  BackgroundSlideshow,
+  ScrollToTopOnMount,
+  Paper,
+  Loading
+} from 'react-saasify'
+```
+
+#### Themes
+
+`react-saasify` provides support for dynamically changing the theme. Note that themes can only apply custom styles They aren't currently capable of modifying content aside from loading additional fonts.
+
+See the list of themes in `src/themes/` for examples.
 
 ## Related
 
