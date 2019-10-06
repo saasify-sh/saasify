@@ -113,7 +113,7 @@ export default ftsHttp.createHttpHandler(definition, handler)
 
   // TODO: remove 'fts' as a dependency
   dependencies.fts = '^1'
-  dependencies['fts-http'] = '^1.1.7'
+  dependencies['fts-http'] = '^1.1.8'
   devDependencies['@types/node'] = 'latest'
   npmConfig.dependencies = dependencies
   npmConfig.devDependencies = devDependencies
