@@ -8,17 +8,29 @@ const path = require('path')
 
 const streamToBuffer = require('./stream-to-buffer')
 
-module.exports = async (program, deployment) => {
+module.exports = async (program, deployment, zipEnv = false) => {
   const files = await globby('**/*', {
     cwd: deployment.root,
     gitignore: true
   })
 
+  const envFiles = zipEnv
+    ? await globby('.env', {
+        cwd: deployment.root,
+        gitignore: false
+      })
+    : []
+
+  const allFiles = [
+    ...files,
+    ...envFiles
+  ]
+
   const mtime = new Date(1540000000000)
   const zipFile = new ZipFile()
 
   const zipBuffer = await new Promise((resolve, reject) => {
-    files
+    allFiles
       .sort()
       .forEach((file) => {
         const filePath = path.join(deployment.root, file)

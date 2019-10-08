@@ -23,7 +23,7 @@ module.exports = (program, client) => {
           console.log(JSON.stringify(project, null, 2))
         }
 
-        const zipBuffer = await zipProject(program, project)
+        const zipBuffer = await zipProject(program, project, true)
 
         const tempDir = await spinner(
           prepareDeployment({
