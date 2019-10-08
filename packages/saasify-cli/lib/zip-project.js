@@ -14,12 +14,14 @@ module.exports = async (program, deployment, zipEnv = false) => {
     gitignore: true
   })
 
-  const envFiles = zipEnv
-    ? await globby('.env', {
-        cwd: deployment.root,
-        gitignore: false
-      })
-    : []
+  const envFiles = zipEnv ? (
+    await globby('.env', {
+      cwd: deployment.root,
+      gitignore: false
+    })
+  ) : (
+    []
+  )
 
   const allFiles = [
     ...files,
