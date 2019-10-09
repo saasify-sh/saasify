@@ -41,6 +41,8 @@ module.exports = (program, client) => {
           tempDir
         ]
 
+        // TODO: ZEIT now includes caching between successive runs which we lose
+        // by always creating a fresh tempDir
         await now('dev', args, { cwd: tempDir })
       } catch (err) {
         handleError(err)

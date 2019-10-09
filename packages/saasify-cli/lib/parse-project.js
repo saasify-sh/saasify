@@ -8,6 +8,7 @@ const pick = require('lodash.pick')
 const pMap = require('p-map')
 const { validators } = require('saasify-utils')
 
+const getExtension = require('./get-extension')
 const parseConfig = require('./parse-config')
 
 module.exports = async (program, opts = { }) => {
@@ -65,8 +66,20 @@ module.exports.getPackageInfo = async (config) => {
 
 module.exports.generateDefinition = async (service, config, opts) => {
   const src = path.resolve(config.root, service.src)
-  console.log(`parsing service ${path.relative(process.cwd(), src)}`)
-  const definition = await fts.generateDefinition(src, opts)
+  const srcRelative = path.relative(process.cwd(), src)
+  console.log(service.src, getExtension(service.src))
+  const ext = getExtension(service.src).toLowerCase()
+  console.log(`parsing service ${srcRelative}`)
+
+  let definition
+
+  if (ext === 'ts' || ext === 'tsx' || ext === 'js') {
+    definition = await fts.generateDefinition(src, opts)
+  } else if (ext === 'py') {
+    // TODO
+  } else {
+    throw new Error(`Invalid service type "${ext}" [${src}]`)
+  }
 
   if (!service.name) {
     service.name = definition.title

@@ -1,0 +1,8 @@
+{
+  "name": "python-fastapi",
+  "services": [
+    {
+      "src": "main.py"
+    }
+  ]
+}
