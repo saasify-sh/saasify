@@ -67,8 +67,7 @@ module.exports.getPackageInfo = async (config) => {
 module.exports.generateDefinition = async (service, config, opts) => {
   const src = path.resolve(config.root, service.src)
   const srcRelative = path.relative(process.cwd(), src)
-  console.log(service.src, getExtension(service.src))
-  const ext = getExtension(service.src).toLowerCase()
+  const ext = getExtension(service.src)
   console.log(`parsing service ${srcRelative}`)
 
   let definition

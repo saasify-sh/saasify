@@ -35,7 +35,7 @@ module.exports = async (deployment, data, opts = { }) => {
 
     if (ext === 'ts' || ext === 'tsx' || ext === 'js') {
       if (language && language !== 'ts') {
-        const err = new Error('Mixing service languages is not supported')
+        const err = new Error('Mixing service languages is not currently supported')
         err.statusCode = 400
         throw err
       }
@@ -89,7 +89,7 @@ module.exports = async (deployment, data, opts = { }) => {
       }
     } else if (ext === 'py') {
       if (language && language !== 'py') {
-        const err = new Error('Mixing service languages is not supported')
+        const err = new Error('Mixing service languages is not currently supported')
         err.statusCode = 400
         throw err
       }

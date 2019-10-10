@@ -1,53 +1,53 @@
 'use strict'
 
-// namespace/projectName.serviceName@deploymentHash
-// project.serviceName@deploymentHash
-const projectServiceDeploymentRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})\.([a-zA-Z_][a-zA-Z0-9_]*)@([a-z0-9]{8})$/
+// namespace/projectName@deploymentHash/serviceName
+// project@deploymentHash/serviceName
+const projectDeploymentServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([a-z0-9]{8})\/([a-zA-Z_][a-zA-Z0-9_]*)$/
 
-// namespace/projectName.serviceName@version
-// project.serviceName@version
-const projectServiceVersionRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})\.([a-zA-Z_][a-zA-Z0-9_]*)@([^/?@]+)$/
+// namespace/projectName@version/serviceName
+// project@version/serviceName
+const projectVersionServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([^/?@]+)\/([a-zA-Z_][a-zA-Z0-9_]*)$/
 
-// namespace/projectName.serviceName
-// project.serviceName (latest version)
-const projectServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})\.([a-zA-Z_][a-zA-Z0-9_]*)$/
+// namespace/projectName/serviceName
+// project/serviceName (latest version)
+const projectServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})\/([a-zA-Z_][a-zA-Z0-9_]*)$/
 
 // ---
 
 // namespace/projectName@deploymentHash
 // project@deploymentHash
-const projectDeploymentRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([a-z0-9]{8})$/
+const projectDeploymentRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([a-z0-9]{8})\/?$/
 
 // namespace/projectName@version
 // project@version
-const projectVersionRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([^/?@]+)$/
+const projectVersionRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([^/?@]+)\/?$/
 
 // namespace/projectName
 // project (latest version)
-const projectRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})$/
+const projectRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})\/?$/
 
 module.exports = (uri) => {
   // ---
   // test cases where serviceName is explicitly specified
   // ---
 
-  const psdMatch = uri.match(projectServiceDeploymentRe)
+  const psdMatch = uri.match(projectDeploymentServiceRe)
 
   if (psdMatch) {
     return {
       projectId: psdMatch[1],
-      serviceName: psdMatch[2],
-      deploymentHash: psdMatch[3]
+      deploymentHash: psdMatch[2],
+      serviceName: psdMatch[3]
     }
   }
 
-  const psvMatch = uri.match(projectServiceVersionRe)
+  const psvMatch = uri.match(projectVersionServiceRe)
 
   if (psvMatch) {
     return {
       projectId: psvMatch[1],
-      serviceName: psvMatch[2],
-      version: psvMatch[3]
+      version: psvMatch[2],
+      serviceName: psvMatch[3]
     }
   }
 

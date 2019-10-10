@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = (filename) => filename.split('.').slice(-1)[0]
+const path = equire('path')
+
+module.exports = (filename) => path.extname(filename).substr(1).toLowerCase()
