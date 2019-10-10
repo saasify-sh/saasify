@@ -50,7 +50,7 @@ test('username/projectName/serviceName success', (t) => {
 
 test('username/projectName/serviceName error', (t) => {
   error(t, '@/foo_bar/foo')
-  error(t, 'foo-bar/foo')
+  error(t, 'foo-bar/foo\\/')
   error(t, 'user/_/foo')
   error(t, 'user/a 1/foo')
 })
@@ -60,6 +60,7 @@ test('username/projectName@deployment success', (t) => {
   success(t, 'a16z/foo-bar@f673db32c')
   success(t, 'foodoo/foo-bar@f673db32c')
   success(t, 'u/fooBar123-yo@673db32c')
+  success(t, 'username/foo-bar@01234567/')
 })
 
 test('username/projectName@deployment error', (t) => {
@@ -74,6 +75,7 @@ test('username/projectName@version success', (t) => {
   success(t, 'a16z/foo-bar@latest')
   success(t, 'foodoo/foo-bar@1.0.1')
   success(t, 'u/fooBar123-yo@3.2.2234')
+  success(t, 'username/foo-bar@1.0.3/')
 })
 
 test('username/projectName@version error', (t) => {
@@ -88,6 +90,7 @@ test('username/projectName success', (t) => {
   success(t, 'a16z/foo-bar')
   success(t, 'foodoo/foo-bar')
   success(t, 'u/fooBar123-yo')
+  success(t, 'abc/hello-world/')
 })
 
 test('username/projectName error', (t) => {
