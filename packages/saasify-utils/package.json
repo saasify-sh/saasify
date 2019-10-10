@@ -31,6 +31,8 @@
     "email-validator": "^2.0.4",
     "fs-extra": "^8.1.0",
     "is-url-superb": "^3.0.0",
+    "semver": "^6.3.0",
+    "swagger-parser": "^8.0.1",
     "tempy": "^0.3.0"
   },
   "ava": {

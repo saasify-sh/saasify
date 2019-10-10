@@ -1,12 +1,13 @@
 'use strict'
 
 const { prepareDeployment } = require('saasify-utils')
+const tempy = require('tempy')
 
 const handleError = require('../handle-error')
 const parseProject = require('../parse-project')
 const spinner = require('../spinner')
 const zipProject = require('../zip-project')
-
+const serveProjectLocal = require('../serve-project-local')
 const now = require('../services/now')
 
 module.exports = (program, client) => {
@@ -18,32 +19,18 @@ module.exports = (program, client) => {
       if (arg) program.config = arg
 
       try {
-        const project = await parseProject(program)
+        const tempDir = tempy.directory()
+        const project = await parseProject(program, {
+          tempDir
+        })
         if (program.debug) {
           console.log(JSON.stringify(project, null, 2))
         }
 
-        const zipBuffer = await zipProject(program, project, true)
-
-        const tempDir = await spinner(
-          prepareDeployment({
-            ...project,
-            project: `localhost/${project.name}`
-          }, zipBuffer),
-          'Preparing deployment'
-        )
-
-        const hasListen = (opts.listen !== undefined)
-        const args = [
-          program.debug && '--debug',
-          hasListen && '--listen',
-          hasListen && opts.listen,
+        await serveProjectLocal(program, project, {
+          ...opts,
           tempDir
-        ]
-
-        // TODO: ZEIT now includes caching between successive runs which we lose
-        // by always creating a fresh tempDir
-        await now('dev', args, { cwd: tempDir })
+        })
       } catch (err) {
         handleError(err)
       }
