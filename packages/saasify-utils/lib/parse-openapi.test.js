@@ -1,7 +1,7 @@
 'use strict'
 
 const test = require('ava')
-const validate = require('./parse-openapi-spec')
+const validate = require('./parse-openapi')
 
 const fixtureSuccess0 = require('../fixtures/openapi-success-0.json')
 const fixtureError0 = require('../fixtures/openapi-error-0.json')

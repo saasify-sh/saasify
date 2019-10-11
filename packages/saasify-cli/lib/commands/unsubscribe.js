@@ -53,7 +53,7 @@ module.exports = (program, client) => {
 
         console.log(`Successfully unsubscribed from project [${consumer.project}]`)
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }

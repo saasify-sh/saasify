@@ -175,7 +175,7 @@ module.exports = (program, client) => {
           }
         }
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }

@@ -36,7 +36,7 @@ module.exports = (program, client) => {
 
         console.log(JSON.stringify(consumer, null, 2))
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }

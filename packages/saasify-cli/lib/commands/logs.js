@@ -29,7 +29,7 @@ module.exports = (program, client) => {
 
         console.log(logs)
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }

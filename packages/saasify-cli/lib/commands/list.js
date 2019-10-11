@@ -56,7 +56,7 @@ module.exports = (program, client) => {
         // TODO: better output formatting
         console.log(JSON.stringify(sortedProjects, null, 2))
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }

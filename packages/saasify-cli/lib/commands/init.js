@@ -47,7 +47,7 @@ module.exports = async (program, client) => {
         console.log()
         console.log(dest)
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }

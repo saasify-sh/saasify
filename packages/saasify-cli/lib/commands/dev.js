@@ -32,7 +32,7 @@ module.exports = (program, client) => {
           tempDir
         })
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }

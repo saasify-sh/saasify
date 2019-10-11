@@ -29,7 +29,7 @@ module.exports = (program, client) => {
         auth.signin({ user, token })
         console.log(JSON.stringify(user, null, 2))
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }
