@@ -9,8 +9,9 @@ const adaptors = require('./adaptors')
 
 module.exports = async (program, opts = { }) => {
   const config = parseConfig(program)
-
   let adaptor
+
+  // figure out which language adaptor this project uses
   for (const service of config.services) {
     const ext = getExtension(service.src)
     let current
@@ -28,9 +29,14 @@ module.exports = async (program, opts = { }) => {
     }
 
     adaptor = current
+
+    // store the adaptor on the service for future reference
     service.adaptor = adaptor
   }
 
+  // perform any adaptor-specific project initialization
+  // for typescript, this infers FTS definitions from service source files
+  // for python, this infers the OpenAPI spec via FastAPI
   const project = await adaptors[adaptor]({
     ...opts,
     program,
@@ -55,7 +61,7 @@ module.exports.getReadme = async (config) => {
   if (readmeFiles.length) {
     return fs.readFile(readmeFiles[0], 'utf8')
   } else {
-    console.warn('Unable to find readme')
+    console.warn('Unable to find project readme')
     return ''
   }
 }
