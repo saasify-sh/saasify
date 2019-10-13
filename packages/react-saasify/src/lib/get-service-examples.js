@@ -51,8 +51,10 @@ export default (service, token) => {
 
     // TODO: curl isHttp "> out.png" is hardcoded...
     // need to differentiate between http output content types
-    data.hasOutput = (service.definition.returns.http && typeof example.output === 'string')
+    data.hasOutput = (service.definition && service.definition.returns.http && typeof example.output === 'string')
     data.output = example.output
+  } else {
+    return []
   }
 
   // --------------------------------------------------------------
