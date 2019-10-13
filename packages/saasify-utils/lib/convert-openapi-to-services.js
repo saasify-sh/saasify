@@ -1,7 +1,5 @@
 'use strict'
 
-const validators = require('./validators')
-
 module.exports = async (api, source) => {
   const services = []
 
