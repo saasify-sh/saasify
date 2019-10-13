@@ -29,9 +29,6 @@ module.exports = async (program, opts = { }) => {
     }
 
     adaptor = current
-
-    // store the adaptor on the service for future reference
-    service.adaptor = adaptor
   }
 
   // perform any adaptor-specific project initialization
@@ -42,6 +39,11 @@ module.exports = async (program, opts = { }) => {
     program,
     config
   })
+
+  for (const service of project.services) {
+    // store the adaptor on the service for future reference
+    service.adaptor = adaptor
+  }
 
   const readme = await module.exports.getReadme(config)
 

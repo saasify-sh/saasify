@@ -111,6 +111,7 @@ module.exports = async (deployment, data, opts = { }) => {
       })
 
       // TODO: restrict python to a single entry service
+      break
     } else {
       const err = new Error(`Unsupported service type "${service.src}"`)
       err.statusCode = 400
