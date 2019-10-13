@@ -28,6 +28,7 @@ module.exports = async (program, opts = { }) => {
     }
 
     adaptor = current
+    service.adaptor = adaptor
   }
 
   const project = await adaptors[adaptor]({

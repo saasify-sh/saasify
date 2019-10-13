@@ -11,6 +11,7 @@ module.exports = async (opts) => {
   const {
     program,
     config,
+    serveProjectLocal,
     ...rest
   } = opts
 

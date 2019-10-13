@@ -1,14 +1,10 @@
 'use strict'
 
-const { prepareDeployment } = require('saasify-utils')
 const tempy = require('tempy')
 
 const handleError = require('../handle-error')
 const parseProject = require('../parse-project')
-const spinner = require('../spinner')
-const zipProject = require('../zip-project')
 const serveProjectLocal = require('../serve-project-local')
-const now = require('../services/now')
 
 module.exports = (program, client) => {
   program
@@ -21,16 +17,20 @@ module.exports = (program, client) => {
       try {
         const tempDir = tempy.directory()
         const project = await parseProject(program, {
+          serveProjectLocal: false,
           tempDir
         })
+
         if (program.debug) {
           console.log(JSON.stringify(project, null, 2))
         }
 
-        await serveProjectLocal(program, project, {
+        const serve = await serveProjectLocal(program, project, {
           ...opts,
           tempDir
         })
+
+        await serve()
       } catch (err) {
         handleError(program, err)
       }

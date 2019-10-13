@@ -15,7 +15,10 @@ module.exports = (command, args, opts = { }) => {
     ...rest
   } = opts
 
-  console.log('now', argv.join(' '))
+  if (pipe) {
+    console.log('now', argv.join(' '))
+  }
+
   const child = execa(NOW_PATH, argv, {
     reject: false,
     ...rest
