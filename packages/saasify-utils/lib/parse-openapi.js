@@ -1,5 +1,6 @@
 'use strict'
 
+const cloneDeep = require('clone-deep')
 const parser = require('swagger-parser')
 const semver = require('semver')
 
@@ -26,7 +27,7 @@ const httpMethodWhitelist = [
 
 module.exports = async (spec) => {
   const bundle = await parser.bundle(spec)
-  const api = await parser.dereference(spec)
+  const api = await parser.dereference(cloneDeep(spec))
 
   if (semver.major(api.openapi) !== 3) {
     throw new Error('OpenAPI spec must conform to version 3')

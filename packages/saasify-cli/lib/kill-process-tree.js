@@ -19,8 +19,6 @@ module.exports = async (pid, signal = 'SIGKILL', opts = { }) => {
     // TODO: don't ignore other pidtree errors
   }
 
-  console.log(pid, pids)
-
   await pMap(pids, async (pid) => killPID(pid, signal), {
     concurrency
   })
