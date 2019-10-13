@@ -167,7 +167,7 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   const responseSchema = jsonSchemaToOpenAPI(returns)
 
   const responses = {
-    '200': {
+    200: {
       description: 'Success',
       content: {
         'application/json': {
@@ -175,10 +175,10 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
         }
       }
     },
-    '400': {
+    400: {
       description: 'Invalid Input'
     },
-    '429': {
+    429: {
       description: 'Rate limit exceeded'
     }
   }
@@ -186,7 +186,7 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   const post = {
     operationId: `${name}POST`,
     summary: `${name} (POST)`,
-    tags: [ 'service' ],
+    tags: ['service'],
     requestBody: {
       required: true,
       content: {
@@ -202,9 +202,9 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
     post.description = definition.description
   }
 
-  const parameters = [ ]
+  const parameters = []
 
-  for (const [ name, schema ] of Object.entries(paramsSchema.properties)) {
+  for (const [name, schema] of Object.entries(paramsSchema.properties)) {
     const param = {
       name,
       schema,
@@ -228,7 +228,7 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   const get = {
     operationId: `${name}GET`,
     summary: `${name} (GET)`,
-    tags: [ 'service' ],
+    tags: ['service'],
     parameters,
     responses
   }
