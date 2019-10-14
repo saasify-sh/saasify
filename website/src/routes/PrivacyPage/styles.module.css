@@ -1,0 +1,51 @@
+.privacy-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.content {
+  padding-bottom: 40px;
+  width: 80%;
+  min-width: 250px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.content p {
+  color: #222;
+}
+
+.content h1 {
+  font-size: 2.4em;
+  margin-bottom: 0.25em;
+}
+
+.content h2 {
+  font-size: 2.0em;
+  margin-bottom: 1.3em;
+}
+
+.content h3 {
+  font-size: 1.6em;
+  margin-bottom: 1.1em;
+}
+
+.content h4 {
+  font-size: 1.2em;
+}
+
+.content p, .content h4, .content ul {
+  margin-bottom: 0.8em;
+}
+
+.content .last-modified {
+  margin-bottom: 1.6em;
+}
+
+.content ul {
+  margin-left: 32px;
+}

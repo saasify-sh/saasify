@@ -1,0 +1,156 @@
+.logo {
+  width: initial;
+  height: 48px;
+}
+
+.section {
+  padding: 2em;
+}
+
+.section .content {
+  max-width: 1024px;
+}
+
+.section .title {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section .subtitle {
+  max-width: 767px;
+  margin-bottom: 48px;
+}
+
+.hero.section {
+  min-height: 100vh;
+}
+
+.hero .content {
+  max-width: unset;
+  padding: 0 !important;
+  justify-content: center;
+  background: url('../assets/lhs.svg') 0 50% / 25% no-repeat, url('../assets/rhs.svg') 100% 50% / 25% no-repeat;
+}
+
+.theme-clean header.container {
+  position: static;
+  padding: 32px 24px 0;
+}
+
+.theme-clean header.attached {
+  box-shadow: unset;
+}
+
+.terms-page, .privacy-page {
+  padding: 0 !important;
+}
+
+.hero .content .cta-button {
+  margin-bottom: 3em;
+}
+
+@media only screen and (max-width: 1024px) {
+  .hero .content {
+    background: url('../assets/lhs.svg') 0 50% / 15% no-repeat, url('../assets/rhs.svg') 100% 50% / 15% no-repeat;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .hero .content {
+    background: unset;
+  }
+}
+
+/*
+.section .title {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section .subtitle {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+
+:global(.theme-clean) {
+  color: #fff;
+}
+
+:global(.theme-clean) .light {
+  color: #222;
+}
+
+:global(.theme-clean) h1, :global(.theme-clean) h2, :global(.theme-clean) h3, :global(.theme-clean) h4, :global(.theme-clean) h5, :global(.theme-clean) h6 {
+  color: #fff !important;
+}
+
+:global(.theme-clean) .light h1, :global(.theme-clean) .light h2, :global(.theme-clean) .light h3, :global(.theme-clean) .light h4, :global(.theme-clean) .light h5, :global(.theme-clean) .light h6 {
+  color: #222 !important;
+}
+
+:global(.theme-clean) footer .content {
+  color: #fff;
+}
+
+:global(.theme-clean) footer .header {
+  color: #fff;
+}
+
+:global(.theme-clean) footer .link {
+  color: #ccc;
+}
+
+:global(.theme-clean) footer .detail {
+  color: #ccc;
+}
+
+:global(.theme-clean) header .link,
+:global(.theme-clean) header .link:active,
+:global(.theme-clean) header .link:visited {
+  color: #fff;
+}
+
+:global(.theme-clean) header .link:hover {
+  color: #eb3d48;
+}
+
+:global(.theme-clean) a {
+  color: #d23d67;
+}
+
+:global(.theme-clean) a:hover {
+  color: #db6485;
+}
+
+:global(.theme-clean) a:active {
+  color: #c83a62;
+}
+
+:global(.theme-clean) :global(.ant-btn-primary) {
+  background-color: #d23d67;
+  border-color: #d23d67;
+  color: #fff;
+}
+
+:global(.theme-clean) :global(.ant-btn-primary:hover) {
+  background-color: #db6485;
+  border-color: #db6485;
+  color: #fff;
+}
+
+:global(.theme-clean) :global(.ant-btn-primary:active) {
+  background-color: #c83a62;
+  border-color: #c83a62;
+  color: #fff;
+}
+
+:global(.theme-clean) :global(#readme) code {
+  background: #0788cc;
+  color: #fff;
+}
+
+:global(.theme-clean) :global(#readme) pre {
+  background: #0788cc !important;
+  color: #fff !important;
+  border: 1px solid #eee;
+}
+*/

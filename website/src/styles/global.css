@@ -1,0 +1,34 @@
+/* PostCSS reset */
+@import-normalize;
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  color: #222;
+  font-family: proxima-nova, Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+body {
+  padding: 0 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-style: initial;
+  font-style: normal;
+  font-weight: 200;
+  font-family: proxima-nova, Helvetica Neue, sans-serif;
+  color: initial;
+  margin: initial;
+}
+
+p {
+  color: #222;
+  font-size: 16px;
+}
+
+:global(.ant-form-item:last-child) {
+  margin-bottom: 0;
+}
