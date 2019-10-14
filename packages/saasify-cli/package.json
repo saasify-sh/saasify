@@ -1,6 +1,6 @@
 {
   "name": "saasify",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Developer CLI for Saasify. Saasify is the easiest way to launch your own SaaS.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
