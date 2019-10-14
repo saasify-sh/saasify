@@ -21,7 +21,7 @@ To view the full source for this example, visit [hello-world](https://github.com
 
 ## Advanced Example
 
-[screenshot.ts](screenshot.ts ':include :type=code')
+[screenshot.ts](./includes/screenshot.ts ':include :type=code')
 
 To view the full source for this example, visit [puppet-master](https://github.com/saasify-sh/puppet-master).
 

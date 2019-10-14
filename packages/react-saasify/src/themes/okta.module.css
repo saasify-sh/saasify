@@ -97,6 +97,7 @@
   border: 1px solid #eee;
 }
 
+/* TODO: cta-button ghost should have dark text */
 .cta-button {
   color: #fff !important;
 }

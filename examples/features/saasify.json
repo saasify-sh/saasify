@@ -1,0 +1,37 @@
+{
+  "name": "hello-world-features",
+  "services": [
+    {
+      "src": "index.ts"
+    }
+  ],
+  "saas": {
+    "features": [
+      {
+        "name": "Amazing",
+        "desc": "This example uses custom features.",
+        "icon": "media/startup.svg"
+      },
+      {
+        "name": "Kittens!",
+        "desc": "Each feature can have a name, desc, and icon.",
+        "icon": "media/cat-in-space.svg"
+      },
+      {
+        "name": "Uploads",
+        "desc": "You can upload your own feature icons.",
+        "icon": "media/support-team.svg"
+      },
+      {
+        "name": "Undraw",
+        "desc": "This feature uses a built-in Undraw SVG.",
+        "icon": "on_the_office"
+      },
+      {
+        "name": "External",
+        "desc": "This feature uses an externally hosted SVG.",
+        "icon": "https://image.flaticon.com/icons/svg/2137/2137658.svg"
+      }
+    ]
+  }
+}

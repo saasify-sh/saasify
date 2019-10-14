@@ -1,0 +1,70 @@
+{
+  "name": "puppet-master",
+  "services": [
+    {
+      "src": "src/screenshot.ts",
+      "examples": [
+        {
+          "name": "Basic",
+          "input": {
+            "url": "https://youtube.com"
+          },
+          "output": "youtube.png"
+        },
+        {
+          "name": "Custom",
+          "input": {
+            "url": "https://github.com",
+            "type": "jpeg",
+            "quality": 90,
+            "viewport": {
+              "width": 1920,
+              "height": 1080,
+              "deviceScaleFactor": 2
+            },
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
+          },
+          "output": "github.jpg"
+        }
+      ]
+    },
+    {
+      "src": "src/pdf.ts",
+      "examples": [
+        {
+          "name": "Basic",
+          "input": {
+            "url": "https://producthunt.com"
+          },
+          "output": "producthunt.pdf"
+        },
+        {
+          "name": "Custom",
+          "input": {
+            "url": "https://producthunt.com",
+            "viewport": {
+              "width": 1920,
+              "height": 1080,
+              "deviceScaleFactor": 2
+            },
+            "displayHeaderFooter": true,
+            "format": "A0"
+          },
+          "output": "producthunt.pdf"
+        }
+      ]
+    }
+  ],
+  "saas": {
+    "name": "Puppet Master",
+    "heading": "Puppeteer as a Service",
+    "subheading": "Control headless Chrome via a simple SaaS API!",
+    "repo": "https://github.com/saasify-sh/puppet-master",
+    "logo": "./media/logo.svg",
+    "favicon": "./media/favicon.ico"
+  },
+  "env": {
+    "EXAMPLE_DYNAMIC_ENV_VAR": "@my-dynamic-secret",
+    "EXAMPLE_STATIC_ENV_VAR": "foobar"
+  }
+}

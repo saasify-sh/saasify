@@ -14,6 +14,5 @@ export default ({ location }) => {
     state: location.pathname
   })
 
-  console.log('auth github', opts)
   window.location = `https://github.com/login/oauth/authorize?${opts}`
 }

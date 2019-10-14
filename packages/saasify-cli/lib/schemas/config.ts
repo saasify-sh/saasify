@@ -12,11 +12,11 @@ class Config {
   amountPerBandwidth?: number = 20
   authRateLimit?: RateLimit
   noAuthRateLimit?: RateLimit
-  services: Service[]
   coupons?: Coupon[]
   build?: object
   env?: object
   saas?: object
+  services: Service[]
 }
 
 class Service {

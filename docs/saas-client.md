@@ -40,7 +40,7 @@ For example, the most recent published deployment for the `puppet-master` projec
 
 You can currently customize basic aspects of your SaaS web client via your `saasify.json` config file.
 
-See [config.saas](/#/configuration?id=saas) for the list of customizable properties.
+See [config.saas](./configuration.md#saas) for the list of customizable properties.
 
 To summarize, we currently allow you to customize:
 
@@ -48,6 +48,7 @@ To summarize, we currently allow you to customize:
 - GitHub repo URL
 - Homepage hero heading text
 - Homepage hero subheading text
+- Homepage list of features
 - Logo (png or svg)
 - Favicon (png or ico)
 - Theme name
