@@ -38,7 +38,7 @@ export class CTAButton extends Component {
     return (
       <Button
         type={type}
-        className={theme(styles, 'cta-button', className, styles[type], inline && theme(styles, 'inline'))}
+        className={theme(styles, 'cta-button', className, type, styles[type], inline && theme(styles, 'inline'))}
         style={{
           ...ownStyle,
           ...style

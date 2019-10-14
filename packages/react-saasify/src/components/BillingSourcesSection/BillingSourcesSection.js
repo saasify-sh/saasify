@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import { Button, Divider, Icon, Modal, Table, notification } from 'lib/antd'
@@ -82,7 +82,7 @@ export class BillingSourcesSection extends Component {
       title: 'Actions',
       key: 'actions',
       render: (card) => (
-        <>
+        <Fragment>
           <Button
             type='link'
             disabled={card.default}
@@ -100,7 +100,7 @@ export class BillingSourcesSection extends Component {
           >
             Set Default
           </Button>
-        </>
+        </Fragment>
       )
     }
   ]

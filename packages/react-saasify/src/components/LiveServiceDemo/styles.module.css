@@ -1,4 +1,4 @@
-.container {
+.live-service-demo {
   position: relative;
   width: 650px;
   max-width: 100%;
@@ -34,24 +34,24 @@
   background: #ebebeb;
 }
 
-.selectedTab {
+.selected-tab {
+  background: #fff;
+}
+
+.selected-tab:hover {
   background: #f5f2f0;
 }
 
-.selectedTab:hover {
-  background: #f5f2f0;
-}
-
-.content {
+.tab-content {
   position: relative;
   font-size: 0.85em;
 }
 
-.tabPane {
+.tab-pane {
   display: none;
 }
 
-.selectedTabPane {
+.selected-tab-pane {
   display: block;
 }
 

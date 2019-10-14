@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import copyTextToClipboard from 'copy-text-to-clipboard'
 
@@ -120,7 +120,7 @@ export class ProfileSection extends Component {
         key: 'actions',
         render: (token) => (
           hasSubscription ? (
-            <>
+            <Fragment>
               <Button
                 type='ghost'
                 icon='reload'
@@ -146,7 +146,7 @@ export class ProfileSection extends Component {
                   Unsubscribe
                 </Button>
               </Popconfirm>
-            </>
+            </Fragment>
           ) : (
             <Button
               type='primary'

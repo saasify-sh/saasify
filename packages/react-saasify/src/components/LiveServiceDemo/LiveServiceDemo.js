@@ -47,11 +47,11 @@ export class LiveServiceDemo extends Component {
     this._examples = getServiceExamples(this.props.service, this.props.auth.consumer && this.props.auth.consumer.token)
 
     return (
-      <div className={theme(styles, 'container')}>
+      <div className={theme(styles, 'live-service-demo')}>
         <div className={theme(styles, 'tabs')}>
           {this._examples.map((l, i) => (
             <div
-              className={theme(styles, 'tab', selected === l.label && theme(styles, 'selectedTab'))}
+              className={theme(styles, 'tab', selected === l.label && theme(styles, 'selected-tab'))}
               key={i}
               onClick={this._onClickTabMem(i)}
             >
@@ -60,10 +60,10 @@ export class LiveServiceDemo extends Component {
           ))}
         </div>
 
-        <div className={theme(styles, 'content')}>
+        <div className={theme(styles, 'tab-content')}>
           {this._examples.map((l, i) => (
             <div
-              className={theme(styles, 'tabPane', selected === l.label && theme(styles, 'selectedTabPane'))}
+              className={theme(styles, 'tab-pane', selected === l.label && theme(styles, 'selected-tab-pane'))}
               key={i}
             >
               <CodeBlock

@@ -1,4 +1,6 @@
-// NOTE: this is just a pseudocode reference for now
+// NOTE: this is just a convenient pseudocode reference that should be kept
+// in sync with the corresponding JSON Schema. The JSON Schema is actually
+// used as the source of truth for validation within the saasify cli.
 
 class Config {
   saasifyVersion?: number = 1
@@ -34,6 +36,30 @@ class RateLimit {
   requests?: boolean = true
   requestsInterval?: number = 60000
   requestsMaxPerInterval?: number = 1000
+}
+
+class SaaS {
+  name?: string
+  repo?: string
+  heading?: string
+  subheading?: string
+  logo?: string
+  favicon?: string
+  features?: Feature[]
+  theme?: Theme
+}
+
+class Theme {
+  name?: string
+  '@primary-color'?: string
+  '@section-bg-color'?: string
+  '@section-fg-color'?: string
+}
+
+class Feature {
+  name: string
+  desc: string
+  icon: string
 }
 
 class Coupon {
