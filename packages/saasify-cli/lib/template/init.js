@@ -95,10 +95,12 @@ module.exports.initGitRepo = async (opts) => {
     template
   } = opts
 
+  const commitMessage = `init ${template} template (${pkg.name}@${pkg.version})`
+
   const cmds = [
     ['git', 'init'],
     ['git', 'add', '.'],
-    ['git', 'commit', '-m', `init ${pkg.name}@${pkg.version} ${template}`]
+    ['git', 'commit', '-m', commitMessage]
   ]
 
   return pEachSeries(cmds, async (cmd) => {

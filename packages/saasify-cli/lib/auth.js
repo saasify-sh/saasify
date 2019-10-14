@@ -1,9 +1,6 @@
 'use strict'
 
-const Conf = require('conf')
-const conf = new Conf({
-  projectName: 'saasify'
-})
+const conf = require('./config')
 
 const keyToken = 'token'
 const keyUser = 'user'
