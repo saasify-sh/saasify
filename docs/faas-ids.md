@@ -9,15 +9,15 @@ The most general FaaS identifier fully specifies the deployment and service name
 It *may* include an optional URL prefix such as `http://localhost:5000/1/call/` in *development* or `https://api.saasify.sh/1/call/` in *production*. The parsed result will be the same with or without the full URL prefix.
 
 ```
-username/projectName.serviceName@01234567  // explicitly identify a specific deployment (may not be published)
-username/projectName.serviceName@latest    // explicitly identify the latest published deployment
-username/projectName.serviceName@1.0.0     // explicitly identify a published deployment with a specific version
-username/projectName.serviceName           // implicitly identify the latest published deployment
+username/projectName@01234567/serviceName  // explicitly identify a specific deployment (may not be published)
+username/projectName@latest/serviceName    // explicitly identify the latest published deployment
+username/projectName@1.0.0/serviceName     // explicitly identify a published deployment with a specific version
+username/projectName/serviceName           // implicitly identify the latest published deployment
 ```
 
 ---
 
-If no `serviceName` is specified, it is assumed that the deployment only has a single service and errors if this is not the case.
+If no `serviceName` is specified, it is assumed that the deployment either has a single service or has a service registered at the root `/` path and errors if this is not the case.
 
 ```
 username/projectName@01234567
@@ -26,7 +26,7 @@ username/projectName@1.0.0
 username/projectName
 ```
 
-## Omitting Username
+#### Omitting username
 
 You may optionally leave off the `username/` prefix when referring to your own projects and deployments via the dev [CLI](../saasify-cli).
 
