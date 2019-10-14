@@ -5,7 +5,7 @@ const path = require('path')
 
 const NOW_PATH = path.resolve(__dirname, '../../node_modules/.bin/now')
 
-module.exports = async (command, args, opts = { }) => {
+module.exports = (command, args, opts = { }) => {
   const argv = [
     command
   ].concat(args.filter(Boolean))
@@ -15,8 +15,12 @@ module.exports = async (command, args, opts = { }) => {
     ...rest
   } = opts
 
-  console.log('now', argv.join(' '))
+  if (pipe) {
+    console.log('now', argv.join(' '))
+  }
+
   const child = execa(NOW_PATH, argv, {
+    reject: false,
     ...rest
   })
 
@@ -25,10 +29,5 @@ module.exports = async (command, args, opts = { }) => {
     child.stderr.pipe(process.stderr)
   }
 
-  try {
-    const result = await child
-    return result
-  } catch (err) {
-    return err
-  }
+  return child
 }

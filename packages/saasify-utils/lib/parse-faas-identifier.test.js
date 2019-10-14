@@ -17,39 +17,39 @@ const error = (t, ...args) => {
 }
 
 test('URL prefix success', (t) => {
-  success(t, 'https://api.saasify.sh/1/call/username/foo-bar.foo@01234567')
-  success(t, '/1/call/username/foo-bar.foo@01234567')
-  success(t, '/username/foo-bar.foo@01234567')
+  success(t, 'https://api.saasify.sh/1/call/username/foo-bar@01234567/foo')
+  success(t, '/1/call/username/foo-bar@01234567/foo')
+  success(t, '/username/foo-bar@01234567/foo')
 })
 
 test('URL prefix error', (t) => {
-  error(t, 'https://api.saasify.sh/2/proxy/username/foo-bar.foo@01234567')
-  error(t, '/call/username/foo-bar.foo@01234567')
-  error(t, '//username/foo-bar.foo@01234567')
+  error(t, 'https://api.saasify.sh/2/proxy/username/foo-bar@01234567/foo')
+  error(t, '/call/username/foo-bar@01234567/foo')
+  error(t, '//username/foo-bar@01234567/foo')
 })
 
 test('URL suffix success', (t) => {
-  success(t, 'username/foo-bar.foo@01234567/')
+  success(t, 'username/foo-bar@01234567/foo/')
 })
 
 test('URL suffix error', (t) => {
-  error(t, 'username/foo-bar.foo@01234567/abc')
+  error(t, 'username/foo-bar@01234567/foo/abc')
 })
 
 test('URL prefix and suffix success', (t) => {
-  success(t, 'https://api.saasify.sh/1/call/username/foo-bar.foo@01234567/')
+  success(t, 'https://api.saasify.sh/1/call/username/foo-bar@01234567/foo/')
 })
 
 test('namespace success', (t) => {
-  success(t, 'https://api.saasify.sh/1/call/foo-bar.foo@01234567', { namespace: 'username' })
-  success(t, '/1/call/foo-bar.foo@01234567', { namespace: 'username' })
-  success(t, '/foo-bar.foo@01234567', { namespace: 'username' })
-  success(t, '/foo-bar.foo@01234567/', { namespace: 'username' })
+  success(t, 'https://api.saasify.sh/1/call/foo-bar@01234567/foo', { namespace: 'username' })
+  success(t, '/1/call/foo-bar@01234567/foo', { namespace: 'username' })
+  success(t, '/foo-bar@01234567/foo', { namespace: 'username' })
+  success(t, '/foo-bar@01234567/foo/', { namespace: 'username' })
 })
 
 test('namespace error', (t) => {
-  error(t, 'https://api.saasify.sh/1/call/foo-bar.foo@01234567')
-  error(t, '/1/call/foo-bar.foo@01234567')
-  error(t, '/foo-bar.foo@01234567')
-  error(t, '/foo-bar.foo@01234567/')
+  error(t, 'https://api.saasify.sh/1/call/foo-bar@01234567/foo')
+  error(t, '/1/call/foo-bar@01234567/foo')
+  error(t, '/foo-bar@01234567/foo')
+  error(t, '/foo-bar@01234567/foo/')
 })

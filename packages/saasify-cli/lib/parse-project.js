@@ -1,32 +1,55 @@
 'use strict'
 
 const fs = require('fs-extra')
-const fts = require('fts')
 const globby = require('globby')
-const path = require('path')
-const pick = require('lodash.pick')
-const pMap = require('p-map')
-const { validators } = require('saasify-utils')
 
+const getExtension = require('./get-extension')
 const parseConfig = require('./parse-config')
+const adaptors = require('./adaptors')
 
 module.exports = async (program, opts = { }) => {
   const config = parseConfig(program)
+  let adaptor
 
-  const services = await pMap(config.services, async (service) => {
-    return module.exports.generateDefinition(service, config, opts)
-  }, {
-    concurrency: 1
+  // figure out which language adaptor this project uses
+  for (const service of config.services) {
+    const ext = getExtension(service.src)
+    let current
+
+    if (ext === 'ts' || ext === 'tsx' || ext === 'js') {
+      current = 'typescript'
+    } else if (ext === 'py') {
+      current = 'python'
+    } else {
+      throw new Error(`Unsupported service type "${ext}" [${service.src}]`)
+    }
+
+    if (adaptor && current !== adaptor) {
+      throw new Error(`Unsupported service type "${ext}" [${service.src}]`)
+    }
+
+    adaptor = current
+  }
+
+  // perform any adaptor-specific project initialization
+  // for typescript, this infers FTS definitions from service source files
+  // for python, this infers the OpenAPI spec via FastAPI
+  const project = await adaptors[adaptor]({
+    ...opts,
+    program,
+    config
   })
 
+  for (const service of project.services) {
+    // store the adaptor on the service for future reference
+    service.adaptor = adaptor
+  }
+
   const readme = await module.exports.getReadme(config)
-  const pkgInfo = await module.exports.getPackageInfo(config)
 
   return {
-    ...pkgInfo,
-    ...config,
-    readme,
-    services
+    ...project,
+    readme
   }
 }
 
@@ -40,44 +63,7 @@ module.exports.getReadme = async (config) => {
   if (readmeFiles.length) {
     return fs.readFile(readmeFiles[0], 'utf8')
   } else {
-    console.warn('Unable to find readme')
+    console.warn('Unable to find project readme')
     return ''
-  }
-}
-
-module.exports.getPackageInfo = async (config) => {
-  const packageJsonPath = path.join(config.root, 'package.json')
-
-  if (fs.pathExistsSync(packageJsonPath)) {
-    const pkg = await fs.readJson(packageJsonPath)
-
-    return pick(pkg, [
-      'description',
-      'keywords',
-      'repository',
-      'license',
-      'version'
-    ])
-  }
-
-  return { }
-}
-
-module.exports.generateDefinition = async (service, config, opts) => {
-  const src = path.resolve(config.root, service.src)
-  console.log(`parsing service ${path.relative(process.cwd(), src)}`)
-  const definition = await fts.generateDefinition(src, opts)
-
-  if (!service.name) {
-    service.name = definition.title
-
-    if (!validators.service(service.name)) {
-      throw new Error(`Invalid service name [${service.name}] (must be a valid JavaScript function identifier ${validators.serviceRe})`)
-    }
-  }
-
-  return {
-    ...service,
-    definition
   }
 }

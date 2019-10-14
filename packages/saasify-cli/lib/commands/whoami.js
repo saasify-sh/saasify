@@ -12,7 +12,7 @@ module.exports = (program, client) => {
       try {
         console.log(client.user)
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }

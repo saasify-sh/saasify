@@ -8,10 +8,9 @@ Here is a condensed version of the largest features planned for Saasify in the n
 
 ## Core
 
-- Add support for secrets and environment variables
 - Add support for more flexible billing models
-- Add support for docker services
 - Add support for python services
+- Add support for docker services
 - Add support for custom tsconfig.json
 - Add support for Stripe Connect payouts
 

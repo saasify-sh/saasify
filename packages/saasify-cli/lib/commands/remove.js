@@ -66,7 +66,7 @@ module.exports = (program, client) => {
 
         console.log(`Deleted ${deployments.length} ${deploymentsLabel}`)
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }

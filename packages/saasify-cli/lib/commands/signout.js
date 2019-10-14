@@ -12,7 +12,7 @@ module.exports = (program, client) => {
       try {
         auth.signout()
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }

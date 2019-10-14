@@ -1,6 +1,6 @@
 {
   "name": "saasify-utils",
-  "version": "1.5.5",
+  "version": "1.6.0",
   "description": "Shared utilities for Saasify.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
@@ -26,11 +26,14 @@
     "standard": "^12.0.1"
   },
   "dependencies": {
+    "clone-deep": "^4.0.1",
     "decompress": "^4.2.0",
     "decompress-unzip": "^4.0.1",
     "email-validator": "^2.0.4",
     "fs-extra": "^8.1.0",
     "is-url-superb": "^3.0.0",
+    "semver": "^6.3.0",
+    "swagger-parser": "^8.0.1",
     "tempy": "^0.3.0"
   },
   "ava": {

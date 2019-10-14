@@ -11,7 +11,7 @@ It *may* include an optional URL prefix such as `http://localhost:5000/1/call/` 
 ```
 username/projectName.serviceName@01234567  // explicitly identify a specific deployment (may not be published)
 username/projectName.serviceName@latest    // explicitly identify the latest published deployment
-username/projectName.serviceName@1.0.0     // explicitly identify a the published deployment with a specific version
+username/projectName.serviceName@1.0.0     // explicitly identify a published deployment with a specific version
 username/projectName.serviceName           // implicitly identify the latest published deployment
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "react-saasify",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "description": "React components for Saasify web clients.",
   "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
@@ -28,16 +28,7 @@
     "test": "eslint src"
   },
   "devDependencies": {
-    "@saasify/microbundle": "^0.13.1",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.5.1",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-config-standard-react": "^9.2.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.15.0",
-    "eslint-plugin-standard": "^4.0.1"
+    "@saasify/microbundle": "^0.13.1"
   },
   "dependencies": {
     "@sindresorhus/slugify": "^0.9.1",
@@ -61,7 +52,7 @@
     "react-sizeme": "^2.6.7",
     "react-stripe-elements": "^5.0.1",
     "react-syntax-highlighter": "^11.0.2",
-    "saasify-client": "^1.5.4",
+    "saasify-client": "^1.6.0",
     "stringify-object": "^3.3.0",
     "titleize": "^2.1.0"
   },

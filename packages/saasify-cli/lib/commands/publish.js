@@ -56,7 +56,7 @@ module.exports = (program, client) => {
 
         console.log(deployment.project.aliasUrl || deployment.project.saasUrl)
       } catch (err) {
-        handleError(err)
+        handleError(program, err)
       }
     })
 }
