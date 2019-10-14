@@ -34,6 +34,13 @@ module.exports = async (opts) => {
   } else {
     const info = await inquirer.prompt([
       {
+        type: 'list',
+        name: 'template',
+        message: 'Template?',
+        choices: ['typescript', 'python'],
+        default: opts.template
+      },
+      {
         type: 'input',
         name: 'name',
         message: 'Project Name',

@@ -1,0 +1,8 @@
+{
+  "name": "{{name}}",
+  "services": [
+    {
+      "src": "main.py"
+    }
+  ]
+}
