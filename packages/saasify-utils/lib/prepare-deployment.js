@@ -69,9 +69,11 @@ module.exports = async (deployment, data, opts = { }) => {
 
       builds.push({
         src: handlerFileNameExt,
+        // TODO: update @now/node to latest
         use: '@now/node@0.12.8',
         config: {
           'maxLambdaSize': '40mb',
+          ...(service.config || { }),
           ...config
         }
       })
@@ -101,6 +103,7 @@ module.exports = async (deployment, data, opts = { }) => {
         use: '@now/python',
         config: {
           'maxLambdaSize': '40mb',
+          ...(service.config || { }),
           ...config
         }
       })
@@ -159,7 +162,9 @@ module.exports = async (deployment, data, opts = { }) => {
     // TODO: remove 'fts' as a dependency
     dependencies.fts = '^1'
     dependencies['fts-http'] = '^1.1.8'
-    devDependencies['@types/node'] = 'latest'
+    if (!devDependencies['@types/node']) {
+      devDependencies['@types/node'] = 'latest'
+    }
     npmConfig.dependencies = dependencies
     npmConfig.devDependencies = devDependencies
     await fs.writeJson(npmConfigPath, npmConfig, jsonConfig)

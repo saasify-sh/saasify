@@ -2,7 +2,12 @@
   "name": "imagemin",
   "services": [
     {
-      "src": "index.ts"
+      "src": "index.ts",
+      "config": {
+        "includeFiles": [
+          "nala.jpg"
+        ]
+      }
     }
   ]
 }

@@ -20,7 +20,7 @@ Here is a fully functional [example SaaS website](https://puppet-master.sh ':tar
 
 We built Saasify as an ideal solution for developers who want to earn passive income.
 
-By making it extremely simple to create SaaS APIs, we're creating new opportunities for developers to monetize their work. And the best part is that this business model scales naturally as usage increases, which means the more popular your project becomes, the more money you can earn!
+By making it extremely simple to create SaaS APIs, we're creating new opportunities for developers to monetize their work. And the best part is that this business model scales naturally with usage, which means the more popular your project becomes, the more money you can earn!
 
 In a nutshell, we allow makers to:
 
