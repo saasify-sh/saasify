@@ -69,7 +69,6 @@ module.exports = async (deployment, data, opts = { }) => {
 
       builds.push({
         src: handlerFileNameExt,
-        // TODO: update @now/node to latest
         use: '@now/node@1.0.1',
         config: {
           maxLambdaSize: '40mb',
@@ -100,7 +99,7 @@ module.exports = async (deployment, data, opts = { }) => {
 
       builds.push({
         src: service.src,
-        use: '@now/python',
+        use: '@now/python@0.3.1',
         config: {
           'maxLambdaSize': '40mb',
           ...(service.config || { }),
