@@ -70,9 +70,9 @@ module.exports = async (deployment, data, opts = { }) => {
       builds.push({
         src: handlerFileNameExt,
         // TODO: update @now/node to latest
-        use: '@now/node@0.12.8',
+        use: '@now/node@1.0.1',
         config: {
-          'maxLambdaSize': '40mb',
+          maxLambdaSize: '40mb',
           ...(service.config || { }),
           ...config
         }
