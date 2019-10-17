@@ -1,0 +1,8 @@
+{
+  "name": "python-vader-sentiment-analysis",
+  "services": [
+    {
+      "src": "main.py"
+    }
+  ]
+}

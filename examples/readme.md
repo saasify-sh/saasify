@@ -13,6 +13,7 @@
 
 - [x] [imagemin](./imagemin) - Example of image optimization.
 - [x] [puppeteer](./puppeteer) - Example using headless Chromium.
+- [x] [sentiment](./sentiment) - Example using python sentiment analysis with pipenv.
 - [ ] ffmpeg - Example using FFmpeg.
 - [ ] tensorflow - Example using machine learning via Tensorflow.
 
