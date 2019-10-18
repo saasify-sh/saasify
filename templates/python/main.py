@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
 
 app = FastAPI()
 
-@app.get("/")
+
+@app.get("/{name}")
 def hello(name: str = "World"):
-  return 'Hello ' + name + '!'
+    return f"Hello {name}!"
