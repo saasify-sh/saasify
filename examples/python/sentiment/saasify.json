@@ -1,5 +1,5 @@
 {
-  "name": "python-fastapi",
+  "name": "python-sentiment-analysis",
   "services": [
     {
       "src": "main.py"

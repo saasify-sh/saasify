@@ -1,5 +1,5 @@
 {
-  "name": "python-vader-sentiment-analysis",
+  "name": "python-hello-world",
   "services": [
     {
       "src": "main.py"
