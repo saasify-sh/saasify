@@ -6,9 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-fastapi = "==0.42.0"
-pydantic = "==0.32.2"
-starlette = "==0.12.9"
+fastapi = "*"
 vadersentiment = "*"
 
 [requires]
