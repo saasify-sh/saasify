@@ -14,6 +14,6 @@ app = FastAPI()
 analyzer = SentimentIntensityAnalyzer()
 
 
-@app.get("/", response_model=PolarityScores)
+@app.post("/", response_model=PolarityScores)
 def sentiment(phrase: str):
     return analyzer.polarity_scores(phrase)
