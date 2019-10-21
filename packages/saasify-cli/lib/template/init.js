@@ -57,10 +57,10 @@ module.exports = async (opts) => {
   )
 
   if (git) {
-    const isWithinGitRepo = isGitRepo(process.cwd())
+    const isInsideGitRepo = isGitRepo(process.cwd())
 
-    if (isWithinGitRepo) {
-      console.log('Skipping git init because project is already within a git repo')
+    if (isInsideGitRepo) {
+      console.log('Skipping git init because project is already inside a git repo')
     } else {
       await spinner(
         module.exports.initGitRepo({
