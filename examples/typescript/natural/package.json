@@ -1,0 +1,19 @@
+{
+  "name": "natural",
+  "private": true,
+  "version": "0.1.0",
+  "description": "NLP Toolkit",
+  "author": "transitive-bullshit",
+  "license": "MIT",
+  "repository": "saasify-sh/saasify",
+  "engines": {
+    "node": ">=8"
+  },
+  "devDependencies": {
+    "@types/natural": "^0.6.1",
+    "@types/node": "^12.6.9"
+  },
+  "dependencies": {
+    "natural": "^0.6.3"
+  }
+}

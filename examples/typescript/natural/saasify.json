@@ -1,0 +1,8 @@
+{
+  "name": "natural",
+  "services": [
+    {
+      "src": "tokenize.ts"
+    }
+  ]
+}
