@@ -48,7 +48,7 @@
       "src": "./src/sentiment.ts",
       "config": {
         "includeFiles": [
-          "./node_modules/afinn-165/*",
+          "./node_modules/afinn-165/**/*",
           "./node_modules/natural/**/*"
         ]
       }
@@ -82,6 +82,15 @@
       "config": {
         "includeFiles": [
           "./node_modules/natural/**/*"
+        ]
+      }
+    },
+    {
+      "src": "./src/lookup.ts",
+      "config": {
+        "includeFiles": [
+          "./node_modules/natural/**/*",
+          "./node_modules/wordnet-db/**/*"
         ]
       }
     }

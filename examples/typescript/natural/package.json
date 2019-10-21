@@ -14,6 +14,8 @@
     "@types/node": "^12.6.9"
   },
   "dependencies": {
-    "natural": "^0.6.3"
+    "natural": "^0.6.3",
+    "word-list": "^3.1.0",
+    "wordnet-db": "^3.1.11"
   }
 }

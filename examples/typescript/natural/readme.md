@@ -1,6 +1,8 @@
 # natural
 
-> Saasified version of [natural](https://github.com/NaturalNode/natural), an NLP Toolkit.
+> Saasified version of the [natural](https://github.com/NaturalNode/natural) NLP Toolkit.
+
+Note that the majority of the proceeds from this hosted API go back to the open source maintainers behind the amazing [natural](https://github.com/NaturalNode/natural) project.
 
 This SaaS project was bootstrapped with [Saasify](https://saasify.sh).
 
