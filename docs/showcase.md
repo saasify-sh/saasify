@@ -4,7 +4,7 @@
 
 ## Puppet Master
 
-> [Puppeteer](https://pptr.dev) as a service ([source code](https://github.com/saasify-sh/puppet-master)).
+> [Puppeteer as a service](https://puppet-master.sh) ([source code](https://github.com/saasify-sh/puppet-master)).
 
 <p align="center">
   <a href="https://puppet-master.sh" title="Puppet Master">
