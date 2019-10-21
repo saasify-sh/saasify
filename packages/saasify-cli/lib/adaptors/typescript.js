@@ -15,6 +15,8 @@ module.exports = async (opts) => {
     ...rest
   } = opts
 
+  // TODO: Concurrency within a single process doesn't work here because TS compiler
+  // is CPU-bound. Explore workarounds to speed up multi-service projects.
   const services = await pMap(config.services, async (service) => {
     return module.exports.generateDefinition(program, service, config, rest)
   }, {
