@@ -12,8 +12,6 @@
   </a>
 </p>
 
-?> TODO: add more production examples
-
 ## Examples
 
 ### TypeScript
