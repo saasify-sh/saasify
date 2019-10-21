@@ -183,6 +183,11 @@
           },
           "title": "examples"
         },
+        "config": {
+          "type": "object",
+          "title": "config",
+          "additionalProperties": true
+        },
         "additionalProperties": false
       },
       "required": [

@@ -24,6 +24,7 @@ class Service {
   name?: string
   timeout?: number = 0
   examples?: Example[]
+  config?: object
 }
 
 class Example {

@@ -2,7 +2,88 @@
   "name": "natural",
   "services": [
     {
-      "src": "tokenize.ts"
+      "src": "./src/approx-string-search.ts"
+    },
+    {
+      "src": "./src/distance.ts",
+      "config": {
+        "includeFiles": [
+          "./node_modules/natural/**/*"
+        ]
+      }
+    },
+    {
+      "src": "./src/singularize.ts",
+      "config": {
+        "includeFiles": [
+          "./node_modules/natural/**/*"
+        ]
+      }
+    },
+    {
+      "src": "./src/pluralize.ts",
+      "config": {
+        "includeFiles": [
+          "./node_modules/natural/**/*"
+        ]
+      }
+    },
+    {
+      "src": "./src/nth.ts",
+      "config": {
+        "includeFiles": [
+          "./node_modules/natural/**/*"
+        ]
+      }
+    },
+    {
+      "src": "./src/phonetics.ts",
+      "config": {
+        "includeFiles": [
+          "./node_modules/natural/**/*"
+        ]
+      }
+    },
+    {
+      "src": "./src/sentiment.ts",
+      "config": {
+        "includeFiles": [
+          "./node_modules/afinn-165/*",
+          "./node_modules/natural/**/*"
+        ]
+      }
+    },
+    {
+      "src": "./src/stem.ts",
+      "config": {
+        "includeFiles": [
+          "./node_modules/natural/**/*"
+        ]
+      }
+    },
+    {
+      "src": "./src/tokenize.ts",
+      "config": {
+        "includeFiles": [
+          "./node_modules/natural/**/*"
+        ]
+      }
+    },
+    {
+      "src": "./src/n-grams.ts",
+      "config": {
+        "includeFiles": [
+          "./node_modules/natural/**/*"
+        ]
+      }
+    },
+    {
+      "src": "./src/n-grams-zh.ts",
+      "config": {
+        "includeFiles": [
+          "./node_modules/natural/**/*"
+        ]
+      }
     }
   ]
 }

@@ -4,59 +4,59 @@ type Tokenizer = 'word' | 'word-punct' | 'sentence' | 'case' | 'orthography' | '
 
 declare module 'natural' {
   class SentenceTokenizer implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class CaseTokenizer implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class OrthographyTokenizer implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class AggressiveTokenizerFa implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class AggressiveTokenizerFr implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class AggressiveTokenizerRu implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class AggressiveTokenizerEs implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class AggressiveTokenizerIt implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class AggressiveTokenizerPl implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class AggressiveTokenizerPt implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class AggressiveTokenizerNo implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class AggressiveTokenizerSv implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class AggressiveTokenizerVi implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 
   class TokenizerJa implements natural.Tokenizer {
-    tokenize(text: string): string[];
+    tokenize(text: string): string[]
   }
 }
 
@@ -119,7 +119,7 @@ export function tokenize (text: string, tokenizer: Tokenizer = 'word'): string[]
       impl = new natural.TokenizerJa()
       break
     default:
-      throw new Error(`invalid tokenizer "$`)
+      throw new Error(`invalid tokenizer "${tokenizer}"`)
   }
 
   return impl.tokenize(text)
