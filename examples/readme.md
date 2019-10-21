@@ -8,6 +8,7 @@
 
 - [hello-world](./typescript/hello-world) - Simplest possible TypeScript project.
 - [imagemin](./typescript/imagemin) - Image optimization.
+- [natural](./typescript/natural) - NLP toolkit wrapping the [natural](https://github.com/NaturalNode/natural) library.
 - [puppeteer](./typescript/puppeteer) - Screenshots with headless chromium.
 
 ### Python
