@@ -18,23 +18,23 @@
 
 ### TypeScript
 
-- [hello-world](https://github.com/saasify-sh/saasify/tree/master/typescript/hello-world) - Simplest possible TypeScript project.
-- [imagemin](https://github.com/saasify-sh/saasify/tree/master/typescript/imagemin) - Image optimization.
-- [natural](https://github.com/saasify-sh/saasify/tree/master/typescript/natural) - NLP toolkit wrapping the [natural](https://github.com/NaturalNode/natural) library.
-- [puppeteer](https://github.com/saasify-sh/saasify/tree/master/typescript/puppeteer) - Screenshots with headless chromium.
+- [hello-world](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/hello-world) - Simplest possible TypeScript project.
+- [imagemin](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin) - Image optimization.
+- [natural](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/natural) - NLP toolkit wrapping the [natural](https://github.com/NaturalNode/natural) library.
+- [puppeteer](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/puppeteer) - Screenshots with headless chromium.
 
 ### Python
 
-- [hello-world](https://github.com/saasify-sh/saasify/tree/master/python/hello-world) - Simplest possible python project.
-- [sentiment](https://github.com/saasify-sh/saasify/tree/master/python/sentiment) - Sentiment analysis with pipenv.
+- [hello-world](https://github.com/saasify-sh/saasify/tree/master/examples/python/hello-world) - Simplest possible python project.
+- [sentiment](https://github.com/saasify-sh/saasify/tree/master/examples/python/sentiment) - Sentiment analysis with pipenv.
 
 ### Features
 
 These examples show how to use different Saasify platform features.
 
-- [coupons](https://github.com/saasify-sh/saasify/tree/master/typescript/coupons) - Shows the use of coupons.
-- [secrets](https://github.com/saasify-sh/saasify/tree/master/typescript/secrets) - Shows the use of environment variable secrets.
-- [features](https://github.com/saasify-sh/saasify/tree/master/typescript/features) - Shows how to customize the SaaS client features section.
+- [coupons](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/coupons) - Shows the use of coupons.
+- [secrets](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/secrets) - Shows the use of environment variable secrets.
+- [features](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/features) - Shows how to customize the SaaS client features section.
 
 ...More to come soon!
 
