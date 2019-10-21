@@ -3,6 +3,7 @@
 const { prepareDeployment } = require('saasify-utils')
 const tempy = require('tempy')
 
+const installPackageDeps = require('./install-package-deps')
 const spinner = require('./spinner')
 const zipProject = require('./zip-project')
 
@@ -26,6 +27,11 @@ module.exports = async (program, project, opts = { }) => {
     }),
     'Preparing deployment'
   )
+
+  // TODO: make this cleaner as part of the adaptor
+  if (project.services[0].adaptor === 'typescript') {
+    await installPackageDeps(program, tempDir)
+  }
 
   const hasListen = (listen !== undefined)
   const args = [

@@ -9,6 +9,7 @@ const path = require('path')
 const pEachSeries = require('p-each-series')
 const pify = require('pify')
 const tempy = require('tempy')
+const isGitRepo = require('is-git-repository')
 
 const spinner = require('../spinner')
 const pkg = require('../../package')
@@ -56,13 +57,19 @@ module.exports = async (opts) => {
   )
 
   if (git) {
-    await spinner(
-      module.exports.initGitRepo({
-        ...opts,
-        dest
-      }),
-      'Initializing git repo'
-    )
+    const isWithinGitRepo = isGitRepo(process.cwd())
+
+    if (isWithinGitRepo) {
+      console.log('Skipping git init because project is already within a git repo')
+    } else {
+      await spinner(
+        module.exports.initGitRepo({
+          ...opts,
+          dest
+        }),
+        'Initializing git repo'
+      )
+    }
   }
 
   return dest
