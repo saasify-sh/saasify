@@ -136,12 +136,12 @@ body {
 
 .lhs {
   border-right: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 0.6em;
+  padding: 0.7em;
   line-height: 1em;
 }
 
 .rhs {
-  padding: 0.6em;
+  padding: 0.7em;
   line-height: 1em;
 }
 
