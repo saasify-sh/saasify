@@ -12,7 +12,7 @@
 
 ## Example
 
-[![Puppet Master](https://badges.saasify.sh/?text=Use%20Puppet%20Master%20API)](https://puppet-master.sh)
+[![Puppet Master](https://badges.saasify.sh?text=Use%20Puppet%20Master%20API)](https://puppet-master.sh)
 
 - Badge URL: [https://badges.saasify.sh/?text=Use%20Puppet%20Master%20API](https://badges.saasify.sh/?text=Use%20Puppet%20Master%20API)
 - Project URL: [https://puppet-master.sh](https://puppet-master.sh)
@@ -27,7 +27,7 @@ Parameters:
 
 ![Badge with defaults](https://badges.saasify.sh)
 
-![Badge with custom text](https://badges.saasify.sh/text=Custom%20CTA)
+![Badge with custom text](https://badges.saasify.sh?text=Custom%20CTA)
 
 All images are immutable and cached via our global CDN. While there may be a short 1-2s delay the first time a badge is generated, subsequent requests should resolve near instantly.
 
