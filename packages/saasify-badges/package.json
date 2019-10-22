@@ -1,0 +1,45 @@
+{
+  "name": "saasify-badges",
+  "version": "0.1.0",
+  "description": "Dynamic readme badges for Saasify projects.",
+  "private": true,
+  "main": "lib/render-badge.js",
+  "author": "Saasify <dev@saasify.sh>",
+  "repository": "saasify-sh/saasify",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "now --prod && now rm --safe --yes saasify-badges || echo 'done'",
+    "test": "standard index.js lib/render-badge.js"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "faas",
+    "saas",
+    "lambda",
+    "serverless",
+    "deploy",
+    "saasify",
+    "badge",
+    "shield",
+    "puppeteer",
+    "render",
+    "text",
+    "html",
+    "imagemagick",
+    "pango",
+    "font",
+    "image",
+    "png",
+    "fontfaceobserver"
+  ],
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "css-in-js-utils": "^3.0.2",
+    "ow": "^0.6.0",
+    "puppeteer-serverless": "^0.2.0"
+  }
+}

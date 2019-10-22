@@ -1,0 +1,21 @@
+{
+  "name": "saasify-badges",
+  "alias": "badges.saasify.sh",
+  "public": true,
+  "version": 2,
+  "regions": ["all"],
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node",
+      "config": {
+        "includeFiles": [
+          "lib/*.js"
+        ]
+      }
+    }
+  ],
+  "routes": [
+    { "src": "/(.+)", "dest": "index.js" }
+  ]
+}
