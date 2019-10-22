@@ -25,6 +25,8 @@ class Service {
   timeout?: number = 0
   examples?: Example[]
   config?: object
+  GET?: boolean
+  POST?: boolean
 }
 
 class Example {

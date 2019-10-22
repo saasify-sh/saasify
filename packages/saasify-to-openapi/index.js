@@ -119,7 +119,17 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
     get.description = definition.description
   }
 
+  const result = { }
+
+  if (service.GET !== false) {
+    result.get = get
+  }
+
+  if (service.POST !== false) {
+    result.post = post
+  }
+
   return {
-    [route]: { post, get }
+    [route]: result
   }
 }

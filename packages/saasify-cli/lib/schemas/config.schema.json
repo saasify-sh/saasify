@@ -188,6 +188,14 @@
           "title": "config",
           "additionalProperties": true
         },
+        "GET": {
+          "type": "boolean",
+          "title": "GET"
+        },
+        "POST": {
+          "type": "boolean",
+          "title": "POST"
+        },
         "additionalProperties": false
       },
       "required": [
