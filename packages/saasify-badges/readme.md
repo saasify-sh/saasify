@@ -41,6 +41,12 @@ These badges are intended to be used alongside saasified versions of open source
 
 Check out [Saasify](http://saasify.sh) for more info on getting started!
 
+## Related
+
+- [shields.io](https://shields.io/) - Concise, consistent, and legible badges in SVG and raster format.
+- [puppeteer-render-text](https://github.com/transitive-bullshit/puppeteer-render-text) - Robust text renderer using headless chrome.
+- [saasify](https://saasify.sh) - The easiest way to launch your own SaaS!
+
 ## License
 
 MIT © [Saasify](https://saasify.sh)
