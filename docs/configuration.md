@@ -41,6 +41,8 @@ class Service {
   name?: string
   timeout?: number = 0
   examples?: Example[]
+  GET?: boolean
+  POST?: boolean
 }
 
 class Example {
@@ -253,6 +255,8 @@ For more detail on writing these serverless functions, see [functions](./functio
 `Service` objects **require** a valid `src` property that points to a TypeSript file with a single function export. The path to the file should be relative to the folder containing the project config file.
 
 They may optionally include `name`, `examples`, and a custom `timeout`.
+
+You may set `GET: false` or `POST: false` disable a HTTP method for a service. Otherwise, by default, TypeScript services will support both GET and POST, and Python services will support whichever HTTP methods are specified in the source file.
 
 <p align="center">
   <img src="./_media/undraw/product_teardown.svg" alt="Configuration" width="200" />
