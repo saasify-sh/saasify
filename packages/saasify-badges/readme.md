@@ -25,7 +25,7 @@ Parameters:
   - `text` is a URI-encoded string of text to display on the badge.
   - `type` defines the output image format (either `png` or `jpeg`).
 
-![Badge with defaults](https://badges.saasify.sh&cache=1)
+![Badge with defaults](https://badges.saasify.sh?cache=1)
 
 ![Badge with custom text](https://badges.saasify.sh?text=Custom%20CTA&cache=1)
 
