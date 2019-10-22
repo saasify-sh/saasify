@@ -256,7 +256,7 @@ For more detail on writing these serverless functions, see [functions](./functio
 
 They may optionally include `name`, `examples`, and a custom `timeout`.
 
-You may set `GET: false` or `POST: false` disable a HTTP method for a service. Otherwise, by default, TypeScript services will support both GET and POST, and Python services will support whichever HTTP methods are specified in the source file.
+You may optionally set `GET: false` or `POST: false` to disable a HTTP method for a service. Otherwise, by default, TypeScript services will support both GET and POST, and Python services will support whichever HTTP methods are specified in the source file.
 
 <p align="center">
   <img src="./_media/undraw/product_teardown.svg" alt="Configuration" width="200" />
