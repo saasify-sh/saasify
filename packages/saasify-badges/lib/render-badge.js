@@ -131,15 +131,18 @@ body {
 .wrapper {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .lhs {
   border-right: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 0.7em;
+  padding: 0.6em;
+  line-height: 1em;
 }
 
 .rhs {
-  padding: 0.7em;
+  padding: 0.6em;
+  line-height: 1em;
 }
 
   ${inject.style || ''}
@@ -175,7 +178,7 @@ ${inject.body || ''}
   page.on('error', console.error)
 
   await page.setViewport({
-    deviceScaleFactor: 1,
+    deviceScaleFactor: 2,
     width: width || 640,
     height: height || 480
   })

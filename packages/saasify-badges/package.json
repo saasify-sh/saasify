@@ -40,6 +40,7 @@
   "dependencies": {
     "css-in-js-utils": "^3.0.2",
     "ow": "^0.6.0",
-    "puppeteer-serverless": "^0.2.0"
+    "puppeteer-serverless": "^0.2.0",
+    "sharp": "^0.23.1"
   }
 }
