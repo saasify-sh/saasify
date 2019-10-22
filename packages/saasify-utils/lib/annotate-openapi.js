@@ -62,10 +62,10 @@ When the rate limit is **exceeded**, an error is returned with the status "**429
 
 \`\`\`json
 {
-"error": {
-  "code": "too_many_requests",
-  "message": "Rate limit exceeded"
-}
+  "error": {
+    "code": "too_many_requests",
+    "message": "Rate limit exceeded"
+  }
 }
 \`\`\`
 
