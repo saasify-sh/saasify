@@ -8,7 +8,7 @@
 
 > Dynamic readme badges for [Saasify](https://saasify.sh) projects.
 
-[![NPM](https://img.shields.io/npm/v/saasify-badges.svg)](https://www.npmjs.com/package/saasify-badges) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Example
 
