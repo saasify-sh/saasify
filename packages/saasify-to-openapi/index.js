@@ -106,6 +106,10 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
       }
     }
 
+    if (paramsSchema.required && paramsSchema.required.indexOf(name) >= 0) {
+      param.required = true
+    }
+
     parameters.push(param)
   }
 

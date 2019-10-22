@@ -1,23 +1,23 @@
 {
   "project": {
-    "name": "puppeteer"
+    "name": "hello-world-required-query-param"
   },
-  "id": "puppeteer-example_c204408318ac4c1b",
+  "id": "hello-world-required-query-param_360e148006098c95",
   "enabled": true,
   "version": "1",
-  "url": "http://localhost:5000/1/call/puppeteer-example_c204408318ac4c1b",
+  "url": "http://localhost:5000/1/call/hello-world-required-query-param_360e148006098c95",
   "user": "5c5a35cc1cd684a8f5fc93fa",
   "amountPerRequest": 1,
   "amountPerCompute": 1,
-  "createdAt": "2019-04-17T20:21:40.971Z",
-  "updatedAt": "2019-04-17T20:21:40.971Z",
+  "createdAt": "2019-04-09T17:07:14.546Z",
+  "updatedAt": "2019-04-09T17:07:14.546Z",
   "services": [
     {
       "route": "/",
       "timeout": 0,
       "enabled": true,
       "src": "index.ts",
-      "name": "getScreenshot",
+      "name": "helloWorld",
       "definition": {
         "config": {
           "defaultExport": true,
@@ -26,38 +26,24 @@
         "params": {
           "context": false,
           "order": [
-            "url",
-            "type"
+            "name"
           ],
           "schema": {
             "type": "object",
             "properties": {
-              "url": {
+              "name": {
                 "type": "string"
-              },
-              "type": {
-                "$ref": "#/definitions/ImageFormat",
-                "default": "png"
               }
             },
             "additionalProperties": false,
             "required": [
-              "url"
+              "name"
             ],
-            "definitions": {
-              "ImageFormat": {
-                "enum": [
-                  "jpg",
-                  "png"
-                ],
-                "type": "string"
-              }
-            },
             "$schema": "http://json-schema.org/draft-07/schema#"
           }
         },
         "returns": {
-          "async": true,
+          "async": false,
           "schema": {
             "type": "object",
             "properties": {
@@ -70,7 +56,7 @@
           }
         },
         "version": "1.0.9",
-        "title": "getScreenshot"
+        "title": "index"
       }
     }
   ]
