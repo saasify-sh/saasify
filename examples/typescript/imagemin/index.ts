@@ -1,4 +1,4 @@
-import { HttpResponse} from 'fts-core'
+import { HttpResponse } from 'fts-core'
 import fileType from 'file-type'
 import * as fs from 'fs'
 import imageminPngquant from 'imagemin-pngquant'
