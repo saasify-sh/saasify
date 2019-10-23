@@ -17,7 +17,7 @@ export class HeroSection extends Component {
       <Section
         id='hero'
         title='Monetize Your OSS Projects'
-        subtitle='The platform for monetizable serverless functions that empower the open source authors you love.'
+        subtitle='The SaaS platform for serverless functions that empower the open source authors you love.'
         className={theme(null, 'hero', className)}
         {...rest}
       >

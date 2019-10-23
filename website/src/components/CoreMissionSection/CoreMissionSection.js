@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import {
   Section,
+  Paper,
   theme
 } from 'react-saasify'
 
@@ -21,25 +22,37 @@ export class CoreMissionSection extends Component {
         className={theme(styles, 'mission', className)}
         {...rest}
       >
-        <div className={theme(styles, 'mission-statement')}>
-          Saasify's mission is to make it easier for open source authors to fund their passion.
-        </div>
+        <Paper className={theme(styles, 'mission-wrapper')}>
+          <div className={theme(styles, 'mission-statement')}>
+            Our mission is to provide sustainable funding for open source.
+          </div>
 
-        <p className={theme(styles, 'mission-body')}>
-          OSS is an extremely powerful and rewarding outlet for developers to innovate outside of traditional academic and corporate careers. The problem, however, is the huge disparity that exists in the market between how passionate many developers are about OSS and how valuable it is to almost every business in existence versus how practical it is to make even a basic living off of it.
-        </p>
+          <p className={theme(styles, 'mission-body')}>
+            If you've ever struggled to make a living working on open source, we hear you.
+          </p>
 
-        <p className={theme(styles, 'mission-body')}>
-          Patreon &amp; Open Collective help with a very small percentage of this problem because the business model of voluntarily giving back to OSS projects &amp; authors is inherently weak.
-        </p>
+          <p className={theme(styles, 'mission-body')}>
+            Open source can be extremely powerful and rewarding, but there is a huge problem that exists in the market between how valuable open source is to every business in existence versus how difficult it is for OSS developers to capture any of that value.
+          </p>
 
-        <p className={theme(styles, 'mission-body')}>
-          Contrast this with the standard SaaS API business model of paying based on usage that aligns much more naturally with how businesses actually pay for software critical to their core business needs.
-        </p>
+          <p className={theme(styles, 'mission-body')}>
+            Patreon and donations help with a very small percentage of this problem because the business model of voluntarily giving back to OSS is inherently weak.
+          </p>
 
-        <p className={theme(styles, 'mission-body')}>
-          Saasify is aiming to bridge the gap between this discrepancy by reducing the barrier to entry for developers who are interested in earning passive income via SaaS.
-        </p>
+          <p className={theme(styles, 'mission-body')}>
+            Contrast this with the standard SaaS API business model of paying based on usage that aligns much more naturally with how businesses actually pay for software critical to their core business needs.
+          </p>
+
+          <p className={theme(styles, 'mission-body')}>
+            Saasify is aiming to bridge the gap between this disparity by reducing the barrier to entry for developers who are interested in earning passive income via SaaS.
+          </p>
+
+          <p className={theme(styles, 'mission-body')}>
+            Travis Fischer
+            <br />
+            Founder
+          </p>
+        </Paper>
       </Section>
     )
   }

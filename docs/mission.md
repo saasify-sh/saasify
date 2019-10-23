@@ -2,7 +2,7 @@
 
 # Mission
 
-> **Saasify's mission is to make it easier for open source authors to fund their passion.**
+> **Our mission is to provide sustainable funding for open source.**
 
 OSS is an extremely powerful and rewarding outlet for developers to innovate. The problem, however, is the huge disparity that exists in the market between how passionate developers are about OSS and how valuable it is to almost every business in existence versus how practical it is to make even a basic living off of it.
 

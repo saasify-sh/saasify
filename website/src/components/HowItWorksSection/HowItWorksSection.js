@@ -54,7 +54,7 @@ export class HowItWorksSection extends Component {
             </h3>
 
             <p>
-              Deploy your project to AWS with the Saasify CLI. We autogenerate a fully functional SaaS website for your project that handles all billing, accounts, docs, hosting, and more.
+              Deploy your project to AWS with our CLI. We autogenerate a customizable SaaS website for you that handles all billing, accounts, docs, hosting, and more.
             </p>
           </div>
         </div>
@@ -66,7 +66,7 @@ export class HowItWorksSection extends Component {
             </h3>
 
             <p>
-              You collect 80% of all revenue your API makes via Stripe Connect. Saasify acts as a buffer between you and paying customers, taking care of all bizdev, marketing, and support requests, so you can focus on what you do best!
+              You collect 80% of all revenue your API makes via Stripe Connect. Saasify acts as a buffer between you and paying customers, taking care of all bizdev, marketing, and support requests, so you can focus on what you do best.
             </p>
           </div>
 

@@ -41,12 +41,8 @@ const saasifyContext = {
         to: '/docs'
       },
       {
-        children: 'Blog',
-        href: 'https://blog.saasify.sh'
-      },
-      {
         children: 'Slack',
-        to: '/slack'
+        href: 'https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI'
       },
       {
         children: 'GitHub',
@@ -71,10 +67,6 @@ const saasifyContext = {
           {
             label: 'Docs',
             to: '/docs'
-          },
-          {
-            label: 'Blog',
-            href: 'https://blog.saasify.sh'
           }
         ]
       },
@@ -96,7 +88,7 @@ const saasifyContext = {
         links: [
           {
             label: 'Slack',
-            to: '/slack'
+            href: 'https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI'
           },
           {
             label: 'Email',
