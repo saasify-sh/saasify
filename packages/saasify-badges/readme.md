@@ -12,7 +12,6 @@
 
 ## Example
 
-[![Puppet Master](https://badges.saasify.sh?text=Use%20Puppet%20Master%20API&cache=3)]()
 <a href="https://puppet-master.sh">
   <img
     src="https://badges.saasify.sh?cache=3"
