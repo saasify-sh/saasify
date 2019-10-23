@@ -12,10 +12,16 @@
 
 ## Example
 
-[![Puppet Master](https://badges.saasify.sh?text=Use%20Puppet%20Master%20API&cache=2)](https://puppet-master.sh)
+[![Puppet Master](https://badges.saasify.sh?text=Use%20Puppet%20Master%20API&cache=3)]()
+<a href="https://puppet-master.sh">
+  <img
+    src="https://badges.saasify.sh?cache=3"
+    height="40"
+    alt="Puppet Master"
+  />
+</a>
 
 - Badge URL: [https://badges.saasify.sh/?text=Use%20Puppet%20Master%20API](https://badges.saasify.sh/?text=Use%20Puppet%20Master%20API)
-- Project URL: [https://puppet-master.sh](https://puppet-master.sh)
 
 ## Usage
 
@@ -25,9 +31,21 @@ Parameters:
   - `text` is a URI-encoded string of text to display on the badge.
   - `type` defines the output image format (either `png` or `jpeg`).
 
-![Badge with defaults](https://badges.saasify.sh?cache=2)
+<img
+  src="https://badges.saasify.sh?cache=3"
+  height="40"
+  alt="Badge with default text"
+/>
 
-![Badge with custom text](https://badges.saasify.sh?text=Custom%20CTA&cache=2)
+- Badge URL: [https://badges.saasify.sh](https://badges.saasify.sh)
+
+<img
+  src="https://badges.saasify.sh?text=Custom%20CTA&cache=3"
+  height="40"
+  alt="Badge with custom text"
+/>
+
+- Badge URL: [https://badges.saasify.sh?text=Custom%20CTA](https://badges.saasify.sh?text=Custom%20CTA)
 
 All images are immutable and cached via our global CDN. While there may be a short 1-2s delay the first time a badge is generated, subsequent requests should resolve near instantly.
 

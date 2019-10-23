@@ -1,7 +1,6 @@
 'use strict'
 
 const renderBadge = require('./lib/render-badge')
-const sharp = require('sharp')
 
 module.exports = async (req, res) => {
   const {
@@ -9,7 +8,7 @@ module.exports = async (req, res) => {
     type = 'png'
   } = req.query
 
-  const buffer = await renderBadge({
+  const badge = await renderBadge({
     text,
     type,
     loadGoogleFont: true,
@@ -17,13 +16,6 @@ module.exports = async (req, res) => {
       fontFamily: 'Lato'
     }
   })
-
-  const image = sharp(buffer)
-  const meta = await image
-    .metadata()
-  const badge = await image
-    .resize({ width: (meta.width / 2) | 0 })
-    .toBuffer()
 
   res.statusCode = 200
   res.setHeader('Content-Type', `image/${type}`)
