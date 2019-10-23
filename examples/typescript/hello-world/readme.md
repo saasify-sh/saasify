@@ -1,3 +1,11 @@
 # Hello World
 
-This is a very simple Saasify project with a single TypeScript serverless function that implements the classic "Hello World!".
+This is a very simple Saasify project with a single TypeScript function that implements the classic "Hello World!".
+
+<a href="https://saasify.sh">
+  <img
+    src="https://badges.saasify.sh"
+    height="40"
+    alt="Hosted API"
+  />
+</a>
