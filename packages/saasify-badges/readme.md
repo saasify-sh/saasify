@@ -14,13 +14,23 @@
 
 <a href="https://puppet-master.sh">
   <img
-    src="https://badges.saasify.sh?cache=3"
+    src="https://badges.saasify.sh?text=Use%20Puppet%20Master%20API"
     height="40"
     alt="Puppet Master"
   />
 </a>
 
-- Badge URL: [https://badges.saasify.sh/?text=Use%20Puppet%20Master%20API](https://badges.saasify.sh/?text=Use%20Puppet%20Master%20API)
+- Badge URL: [https://badges.saasify.sh?text=Use%20Puppet%20Master%20API](https://badges.saasify.sh?text=Use%20Puppet%20Master%20API)
+
+```html
+<a href="https://puppet-master.sh">
+  <img
+    src="https://badges.saasify.sh?text=Use%20Puppet%20Master%20API"
+    height="40"
+    alt="Puppet Master"
+  />
+</a>
+```
 
 ## Usage
 
