@@ -1,0 +1,8 @@
+{
+  "name": "image-to-ascii",
+  "services": [
+    {
+      "src": "index.ts"
+    }
+  ]
+}

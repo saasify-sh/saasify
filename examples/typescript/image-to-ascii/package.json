@@ -1,0 +1,19 @@
+{
+  "name": "image-to-ascii",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Powered by Saasify",
+  "author": "Saasify <dev@saasify.sh>",
+  "license": "MIT",
+  "repository": "saasify-sh/saasify",
+  "engines": {
+    "node": ">=8"
+  },
+  "devDependencies": {
+    "@types/node": "^12.6.9"
+  },
+  "dependencies": {
+    "image-to-ascii": "^3.0.12",
+    "pify": "^4.0.1"
+  }
+}
