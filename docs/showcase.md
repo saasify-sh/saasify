@@ -20,6 +20,7 @@
 - [imagemin](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin) - Image optimization.
 - [natural](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/natural) - NLP toolkit wrapping the [natural](https://github.com/NaturalNode/natural) library.
 - [puppeteer](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/puppeteer) - Screenshots with headless chromium.
+- [text-to-ascii-art](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/text-to-ascii-art) - Converts text to ascii art.
 
 ### Python
 

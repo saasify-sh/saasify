@@ -1,0 +1,16 @@
+{
+  "name": "text-to-ascii-art",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Converts text to ascii art (powered by Saasify).",
+  "author": "Saasify <dev@saasify.sh>",
+  "license": "MIT",
+  "repository": "saasify-sh/saasify",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "figlet": "^1.2.4",
+    "pify": "^4.0.1"
+  }
+}

@@ -10,6 +10,7 @@
 - [imagemin](./typescript/imagemin) - Image optimization.
 - [natural](./typescript/natural) - NLP toolkit wrapping the [natural](https://github.com/NaturalNode/natural) library.
 - [puppeteer](./typescript/puppeteer) - Screenshots with headless chromium.
+- [text-to-ascii-art](./typescript/text-to-ascii-art) - Converts text to ascii art.
 
 ### Python
 
