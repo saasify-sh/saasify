@@ -19,7 +19,8 @@
                 "op": "webp"
               }
             ]
-          }
+          },
+          "output": "result.webp"
         }
       ]
     }
