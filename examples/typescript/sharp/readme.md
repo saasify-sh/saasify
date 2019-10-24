@@ -22,7 +22,7 @@ The following examples can all be invoked with the following curl template by ch
 curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.jpeg
 ```
 
-#### Download image
+### Download image
 
 ```
 curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.png
@@ -37,7 +37,7 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 
 <img src="./examples/1.png" width="128" />
 
-#### Convert png to jpeg
+### Convert png to jpeg
 
 ```
 curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.jpg
@@ -59,7 +59,7 @@ Here's this example as a GET request: [`/?input=https://octodex.github.com/image
 
 <img src="./examples/2.jpg" width="128" />
 
-#### Resize and convert to webp
+### Resize and convert to webp
 
 ```
 curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.webp
@@ -86,7 +86,7 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 
 <img src="./examples/3.webp" width="128" />
 
-#### Blur and then flip vertically
+### Blur and then flip vertically
 
 ```
 curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.png
@@ -109,7 +109,7 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 
 <img src="./examples/4.png" width="128" />
 
-#### Tint, remove alpha, and convert to custom png
+### Tint, remove alpha, and convert to custom png
 
 ```
 curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.png
