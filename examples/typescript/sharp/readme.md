@@ -19,13 +19,15 @@ Note that the majority of the revenue from this hosted API goes back to the open
 The following examples can all be invoked with the following curl template by changing out the `example.json` file:
 
 ```
-curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.jpeg
+curl -X POST -d '@example.json' \
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142'
 ```
 
 ### Download image
 
 ```
-curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.png
+curl -X POST -d '@example.json' -o out.png \
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142'
 ```
 
 *example.json*
@@ -40,7 +42,8 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 ### Convert png to jpeg
 
 ```
-curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.jpg
+curl -X POST -d '@example.json' -o out.jpg \
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142'
 ```
 
 *example.json*
@@ -62,7 +65,8 @@ Here's this example as a GET request: [`/?input=https://octodex.github.com/image
 ### Resize and convert to webp
 
 ```
-curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.webp
+curl -X POST -d '@example.json' -o out.webp \
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142'
 ```
 
 *example.json*
@@ -90,7 +94,8 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 ### Blur and then flip vertically
 
 ```
-curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.png
+curl -X POST -d '@example.json' -o out.png \
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142'
 ```
 
 *example.json*
@@ -114,7 +119,8 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 ### Tint, remove alpha, and convert to custom png
 
 ```
-curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.png
+curl -X POST -d '@example.json' -o out.png \
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142'
 ```
 
 *example.json*
@@ -144,7 +150,8 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 ### Get image metadata
 
 ```
-curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.json
+curl -X POST -d '@example.json' -o out.json \
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142'
 ```
 
 *example.json*
