@@ -1,5 +1,5 @@
 {
-  "name": "text-to-ascii-art",
+  "name": "sharp",
   "services": [
     {
       "src": "index.ts"

@@ -1,7 +1,7 @@
 import { HttpResponse } from 'fts-core'
-import fileType from 'file-type'
-import pMap from 'p-map'
-import sharp from 'sharp'
+import fileType = require('file-type')
+import pMap = require('p-map')
+import sharp = require('sharp')
 
 import { getImage } from './get-image'
 
@@ -86,11 +86,11 @@ interface ImageOperationRotate extends ImageOperation {
 }
 
 interface ImageOperationFlip extends ImageOperation {
-  flip: boolean = true
+  flip?: boolean
 }
 
 interface ImageOperationFlop extends ImageOperation {
-  flop: boolean = true
+  flop?: boolean
 }
 
 interface ImageOperationSharpen extends ImageOperation {
@@ -180,6 +180,43 @@ interface ImageOperationBandBool extends ImageOperation {
   boolOp: string
 }
 
+type AnyImageOperation =
+  ImageOperation |
+  ImageOperationLimitInputPixels |
+  ImageOperationWithMetadata |
+  ImageOperationJpeg |
+  ImageOperationPng |
+  ImageOperationWebp |
+  ImageOperationTiff |
+  ImageOperationResize |
+  ImageOperationExtend |
+  ImageOperationExtract |
+  ImageOperationTrim |
+  ImageOperationComposite |
+  ImageOperationRotate |
+  ImageOperationFlip |
+  ImageOperationFlop |
+  ImageOperationSharpen |
+  ImageOperationMedian |
+  ImageOperationBlur |
+  ImageOperationFlatten |
+  ImageOperationGamma |
+  ImageOperationNegate |
+  ImageOperationNormalize |
+  ImageOperationConvolve |
+  ImageOperationThreshold |
+  ImageOperationBoolean |
+  ImageOperationLinear |
+  ImageOperationRecomb |
+  ImageOperationModulate |
+  ImageOperationTint |
+  ImageOperationGreyscale |
+  ImageOperationToColorSpace |
+  ImageOperationRemoveAlpha |
+  ImageOperationEnsureAlpha |
+  ImageOperationExtractChannel |
+  ImageOperationBandBool
+
 function getInlineImage (input: string | Buffer | {create: sharp.Create}) {
   if (typeof input === 'string') {
     return getImage(input)
@@ -191,8 +228,10 @@ function getInlineImage (input: string | Buffer | {create: sharp.Create}) {
 export default async function process(
   input?: string,
   options?: sharp.SharpOptions,
-  ops?: ImageOperation[]
+  ops?: AnyImageOperation[]
 ): Promise<HttpResponse> {
+  console.log({ input, ops, options })
+
   let pipeline
 
   if (input) {
@@ -202,7 +241,7 @@ export default async function process(
     pipeline = sharp(options)
   } else {
     const err = new Error(`Must provide either an "input" url or "options.create" to create an image from scratch`)
-    err.statusCode = 400
+    // err.statusCode = 400
     throw err
   }
 
@@ -211,7 +250,7 @@ export default async function process(
   function ensurePipelineIsImage (op: ImageOperationType) {
     if (!pipelineIsImage) {
       const err = new Error(`Error processing operations at operation "${op}"`)
-      err.statusCode = 400
+      // err.statusCode = 400
       throw err
     }
   }
@@ -221,23 +260,26 @@ export default async function process(
       switch (imageOperation.op) {
         // Input
 
-        case 'stats':
+        case 'stats': {
           ensurePipelineIsImage(imageOperation.op)
           pipeline = pipeline.stats()
           pipelineIsImage = false
           break
+        }
 
         case 'metadata':
-        case 'meta':
+        case 'meta': {
           ensurePipelineIsImage(imageOperation.op)
           pipeline = pipeline.stats()
           pipelineIsImage = false
           break
+        }
 
         case 'limitInputPixels': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationLimitInputPixels)
           pipeline = pipeline.limitInputPixels(op.limit)
+          break
         }
 
         // Output
@@ -246,29 +288,34 @@ export default async function process(
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationWithMetadata)
           pipeline = pipeline.withMetadata(op.options)
+          break
         }
 
         case 'jpeg': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationJpeg)
           pipeline = pipeline.jpeg(op.options)
+          break
         }
 
         case 'png': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationPng)
           pipeline = pipeline.jpeg(op.options)
+          break
         }
 
         case 'webp': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationWebp)
           pipeline = pipeline.webp(op.options)
+          break
         }
 
         case 'raw': {
           ensurePipelineIsImage(imageOperation.op)
           pipeline = pipeline.raw()
+          break
         }
 
         // Resizing
@@ -277,24 +324,28 @@ export default async function process(
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationResize)
           pipeline = pipeline.resize(op.options)
+          break
         }
 
         case 'extend': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationExtend)
-          pipeline = pipeline.extend.(op.options)
+          pipeline = pipeline.extend(op.options)
+          break
         }
 
         case 'extract': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationExtract)
           pipeline = pipeline.extract(op.region)
+          break
         }
 
         case 'trim': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationTrim)
           pipeline = pipeline.trim(op.threshold)
+          break
         }
 
         // Compositing
@@ -309,6 +360,7 @@ export default async function process(
             concurrency: 3
           })
           pipeline = pipeline.composite(images)
+          break
         }
 
         // Image Manipulation
@@ -317,97 +369,113 @@ export default async function process(
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationRotate)
           pipeline = pipeline.rotate(op.angle, op.options)
+          break
         }
 
         case 'flip': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationFlip)
           pipeline = pipeline.flip(op.flip)
+          break
         }
 
         case 'flop': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationFlop)
           pipeline = pipeline.flop(op.flop)
+          break
         }
 
         case 'sharpen': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationSharpen)
           pipeline = pipeline.sharpen(op.sigma, op.flat, op.jagged)
+          break
         }
 
         case 'median': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationMedian)
           pipeline = pipeline.median(op.size)
+          break
         }
 
         case 'blur': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationBlur)
           pipeline = pipeline.blur(op.sigma)
+          break
         }
 
         case 'flatten': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationFlatten)
           pipeline = pipeline.flatten(op.flatten)
+          break
         }
 
         case 'gamma': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationGamma)
           pipeline = pipeline.gamma(op.gamma)
+          break
         }
 
         case 'negate': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationNegate)
           pipeline = pipeline.negate(op.negate)
+          break
         }
 
         case 'normalise':
         case 'normalize': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationNormalize)
-          pipeline = pipeline.(op.normalize)
+          pipeline = pipeline.normalize(op.normalize)
+          break
         }
 
         case 'convolve': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationConvolve)
           pipeline = pipeline.convolve(op.kernel)
+          break
         }
 
         case 'threshold': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationThreshold)
           pipeline = pipeline.threshold(op.threshold, op.options)
+          break
         }
 
         case 'boolean': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationBoolean)
           pipeline = pipeline.boolean(op.operand, op.operator, op.options)
+          break
         }
 
         case 'linear': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationLinear)
           pipeline = pipeline.linear(op.a, op.b)
+          break
         }
 
         case 'recomb': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationRecomb)
           pipeline = pipeline.recomb(op.inputMatrix)
+          break
         }
 
         case 'modulate': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationModulate)
           pipeline = pipeline.modulate(op.options)
+          break
         }
 
         // Color Manipulation
@@ -416,13 +484,15 @@ export default async function process(
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationTint)
           pipeline = pipeline.tint(op.rgb)
+          break
         }
 
         case 'grayscale':
         case 'greyscale': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationGreyscale)
-          pipeline = pipeline.(op.greyscale)
+          pipeline = pipeline.greyscale(op.greyscale)
+          break
         }
 
         case 'toColourSpace':
@@ -432,7 +502,8 @@ export default async function process(
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationToColorSpace)
           const colorSpace: string = op.colorspace || op.colorSpace || op.colourspace || op.colourSpace
-          pipeline = pipeline.(colorSpace || undefined)
+          pipeline = pipeline.toColorspace(colorSpace || undefined)
+          break
         }
 
         // Channel Manipulation
@@ -441,30 +512,34 @@ export default async function process(
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationRemoveAlpha)
           pipeline = pipeline.removeAlpha()
+          break
         }
 
         case 'ensureAlpha': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationEnsureAlpha)
           pipeline = pipeline.ensureAlpha()
+          break
         }
 
         case 'extractChannel': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationExtractChannel)
           pipeline = pipeline.extractChannel(op.channel)
+          break
         }
 
         case 'bandBool':
         case 'bandbool': {
           ensurePipelineIsImage(imageOperation.op)
           const op = (imageOperation as ImageOperationBandBool)
-          pipeline = pipeline.(op.boolOp)
+          pipeline = pipeline.bandbool(op.boolOp)
+          break
         }
 
         default: {
           const err = new Error(`Unsupported image operation "${imageOperation.op}"`)
-          err.statusCode = 400
+          // err.statusCode = 400
           throw err
         }
       }
