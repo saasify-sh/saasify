@@ -32,7 +32,7 @@ export class CoreMissionSection extends Component {
           </p>
 
           <p className={theme(styles, 'mission-body')}>
-            Open source can be extremely powerful and rewarding, but there is a huge problem that exists in the market between how valuable open source is to every business in existence versus how difficult it is for OSS developers to capture any of that value.
+            OSS can be extremely powerful and rewarding, but there is a huge problem that exists in the market between how valuable open source is to every business in existence versus how difficult it is for OSS developers to actually capture any of that value.
           </p>
 
           <p className={theme(styles, 'mission-body')}>

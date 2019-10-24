@@ -4,13 +4,15 @@
 
 > **Our mission is to provide sustainable funding for open source.**
 
-OSS is an extremely powerful and rewarding outlet for developers to innovate. The problem, however, is the huge disparity that exists in the market between how passionate developers are about OSS and how valuable it is to almost every business in existence versus how practical it is to make even a basic living off of it.
+If you've ever struggled to make a living working on open source, we hear you.
 
-Patreon & Open Collective help with a very small percentage of this problem because the business model of voluntarily giving back to OSS projects & authors is inherently weak.
+OSS can be extremely powerful and rewarding, but there is a huge problem that exists in the market between how valuable open source is to every business in existence versus how difficult it is for OSS developers to actually capture any of that value.
+
+Patreon and donations help with a very small percentage of this problem because the business model of voluntarily giving back to OSS is inherently weak.
 
 Contrast this with the standard SaaS API business model of paying based on usage that aligns much more naturally with how businesses actually pay for software critical to their core business needs.
 
-Saasify is aiming to bridge the gap between this discrepancy by reducing the barrier to entry for developers who are interested in earning passive income via SaaS.
+Saasify is aiming to bridge the gap between this disparity by reducing the barrier to entry for developers who are interested in earning passive income via SaaS.
 
 <p align="center">
   <img src="./_media/undraw/open_source.svg" alt="Open Source Software" width="200" />
