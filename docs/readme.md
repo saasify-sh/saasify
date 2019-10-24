@@ -6,11 +6,9 @@
 
 <h2 align="center" class='subtitle'>Monetize your OSS projects!</h2>
 
+<img src="/_media/saasify-how-it-works.png" alt="How Saasify Works" />
+
 [![NPM](https://img.shields.io/npm/v/saasify.svg)](https://www.npmjs.com/package/saasify) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
-At its core, Saasify transforms **serverless functions** into fully functional **SaaS** websites.
-
-You can think of Saasify as the "Shopify for SaaS". Just like how Shopify allows anyone to create their own e-commerce business online, Saasify allows any developer to quickly & easily create their own SaaS API business.
 
 ## Demo
 
@@ -69,7 +67,7 @@ You may also want to check out our [mission](./mission.md) to learn more about S
 
 **As of September, 2019, Saasify is in beta and is ready for general use.**
 
-If you're interested in OSS sustainability and want to follow along with our progress, please consider starring the [repo](https://github.com/saasify-sh/saasify) and following us on [ProductHunt](https://www.producthunt.com/upcoming/saasify-2).
+If you're interested in OSS sustainability and want to follow along with our progress, please consider starring the [repo](https://github.com/saasify-sh/saasify) and joining us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI).
 
 Thanks! ⭐️
 
