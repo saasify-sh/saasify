@@ -14,71 +14,6 @@ Note that the majority of the revenue from this hosted API goes back to the open
   />
 </a>
 
-## Image Operations
-
-The following `sharp` image operations are supported:
-
-### Input
-
-- [x] [metadata](https://sharp.pixelplumbing.com/en/stable/api-input/#metadata)
-- [x] [stats](https://sharp.pixelplumbing.com/en/stable/api-input/#stats)
-- [x] [limitinputpixels](https://sharp.pixelplumbing.com/en/stable/api-input/#limitinputpixels)
-
-### Output
-
-- [x] [withMetadata](https://sharp.pixelplumbing.com/en/stable/api-output/#withmetadata)
-- [x] [jpeg](https://sharp.pixelplumbing.com/en/stable/api-output/#jpeg)
-- [x] [png](https://sharp.pixelplumbing.com/en/stable/api-output/#png)
-- [x] [webp](https://sharp.pixelplumbing.com/en/stable/api-output/#webp)
-- [x] [tiff](https://sharp.pixelplumbing.com/en/stable/api-output/#tiff)
-- [x] [raw](https://sharp.pixelplumbing.com/en/stable/api-output/#raw)
-- [ ] [heif](https://sharp.pixelplumbing.com/en/stable/api-output/#heif)
-- [ ] [tile](https://sharp.pixelplumbing.com/en/stable/api-output/#tile)
-
-### Resizing
-
-- [x] [resize](https://sharp.pixelplumbing.com/en/stable/api-resize/#resize)
-- [x] [extend](https://sharp.pixelplumbing.com/en/stable/api-resize/#extend)
-- [x] [extract](https://sharp.pixelplumbing.com/en/stable/api-resize/#extract)
-- [x] [trim](https://sharp.pixelplumbing.com/en/stable/api-resize/#trim)
-
-### Compositing
-
-- [x] [composite](https://sharp.pixelplumbing.com/en/stable/api-composite/)
-
-### Image Manipulation
-
-- [x] [rotate](https://sharp.pixelplumbing.com/en/stable/api-operation/#rotate)
-- [x] [flip](https://sharp.pixelplumbing.com/en/stable/api-operation/#flip)
-- [x] [flop](https://sharp.pixelplumbing.com/en/stable/api-operation/#flop)
-- [x] [sharpen](https://sharp.pixelplumbing.com/en/stable/api-operation/#sharpen)
-- [x] [median](https://sharp.pixelplumbing.com/en/stable/api-operation/#median)
-- [x] [blur](https://sharp.pixelplumbing.com/en/stable/api-operation/#blur)
-- [x] [flatten](https://sharp.pixelplumbing.com/en/stable/api-operation/#flatten)
-- [x] [gamma](https://sharp.pixelplumbing.com/en/stable/api-operation/#gamma)
-- [x] [negate](https://sharp.pixelplumbing.com/en/stable/api-operation/#negate)
-- [x] [normalize](https://sharp.pixelplumbing.com/en/stable/api-operation/#normalize)
-- [x] [convolve](https://sharp.pixelplumbing.com/en/stable/api-operation/#convolve)
-- [x] [threshold](https://sharp.pixelplumbing.com/en/stable/api-operation/#threshold)
-- [x] [boolean](https://sharp.pixelplumbing.com/en/stable/api-operation/#)
-- [x] [linear](https://sharp.pixelplumbing.com/en/stable/api-operation/#linear)
-- [x] [recomb](https://sharp.pixelplumbing.com/en/stable/api-operation/#recomb)
-- [x] [modulate](https://sharp.pixelplumbing.com/en/stable/api-operation/#modulate)
-
-### Color Manipulation
-
-- [x] [tint](https://sharp.pixelplumbing.com/en/stable/api-colour/#tint)
-- [x] [greyscale](https://sharp.pixelplumbing.com/en/stable/api-colour/#greyscale)
-- [x] [toColorspace](https://sharp.pixelplumbing.com/en/stable/api-colour/#tocolorspace)
-
-### Channel Manipulation
-
-- [x] [removeAlpha](https://sharp.pixelplumbing.com/en/stable/api-channel/#removealpha)
-- [x] [ensureAlpha](https://sharp.pixelplumbing.com/en/stable/api-channel/#ensurealpha)
-- [x] [extractChannel](https://sharp.pixelplumbing.com/en/stable/api-channel/#extractChannel)
-- [ ] [joinChannel](https://sharp.pixelplumbing.com/en/stable/api-channel/#joinchannel)
-- [x] [bandBool](https://sharp.pixelplumbing.com/en/stable/api-channel/#bandbool)
-
 ## Examples
 
 The following examples can all be invoked with the following curl template by changing out the `example.json` file:
@@ -240,6 +175,71 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
   "hasAlpha": true
 }
 ```
+
+## Image Operations
+
+The following [sharp](https://sharp.pixelplumbing.com/en/stable/) image operations are supported:
+
+### Input
+
+- [x] [metadata](https://sharp.pixelplumbing.com/en/stable/api-input/#metadata)
+- [x] [stats](https://sharp.pixelplumbing.com/en/stable/api-input/#stats)
+- [x] [limitinputpixels](https://sharp.pixelplumbing.com/en/stable/api-input/#limitinputpixels)
+
+### Output
+
+- [x] [withMetadata](https://sharp.pixelplumbing.com/en/stable/api-output/#withmetadata)
+- [x] [jpeg](https://sharp.pixelplumbing.com/en/stable/api-output/#jpeg)
+- [x] [png](https://sharp.pixelplumbing.com/en/stable/api-output/#png)
+- [x] [webp](https://sharp.pixelplumbing.com/en/stable/api-output/#webp)
+- [x] [tiff](https://sharp.pixelplumbing.com/en/stable/api-output/#tiff)
+- [x] [raw](https://sharp.pixelplumbing.com/en/stable/api-output/#raw)
+- [ ] [heif](https://sharp.pixelplumbing.com/en/stable/api-output/#heif)
+- [ ] [tile](https://sharp.pixelplumbing.com/en/stable/api-output/#tile)
+
+### Resizing
+
+- [x] [resize](https://sharp.pixelplumbing.com/en/stable/api-resize/#resize)
+- [x] [extend](https://sharp.pixelplumbing.com/en/stable/api-resize/#extend)
+- [x] [extract](https://sharp.pixelplumbing.com/en/stable/api-resize/#extract)
+- [x] [trim](https://sharp.pixelplumbing.com/en/stable/api-resize/#trim)
+
+### Compositing
+
+- [x] [composite](https://sharp.pixelplumbing.com/en/stable/api-composite/)
+
+### Image Manipulation
+
+- [x] [rotate](https://sharp.pixelplumbing.com/en/stable/api-operation/#rotate)
+- [x] [flip](https://sharp.pixelplumbing.com/en/stable/api-operation/#flip)
+- [x] [flop](https://sharp.pixelplumbing.com/en/stable/api-operation/#flop)
+- [x] [sharpen](https://sharp.pixelplumbing.com/en/stable/api-operation/#sharpen)
+- [x] [median](https://sharp.pixelplumbing.com/en/stable/api-operation/#median)
+- [x] [blur](https://sharp.pixelplumbing.com/en/stable/api-operation/#blur)
+- [x] [flatten](https://sharp.pixelplumbing.com/en/stable/api-operation/#flatten)
+- [x] [gamma](https://sharp.pixelplumbing.com/en/stable/api-operation/#gamma)
+- [x] [negate](https://sharp.pixelplumbing.com/en/stable/api-operation/#negate)
+- [x] [normalize](https://sharp.pixelplumbing.com/en/stable/api-operation/#normalize)
+- [x] [convolve](https://sharp.pixelplumbing.com/en/stable/api-operation/#convolve)
+- [x] [threshold](https://sharp.pixelplumbing.com/en/stable/api-operation/#threshold)
+- [x] [boolean](https://sharp.pixelplumbing.com/en/stable/api-operation/#)
+- [x] [linear](https://sharp.pixelplumbing.com/en/stable/api-operation/#linear)
+- [x] [recomb](https://sharp.pixelplumbing.com/en/stable/api-operation/#recomb)
+- [x] [modulate](https://sharp.pixelplumbing.com/en/stable/api-operation/#modulate)
+
+### Color Manipulation
+
+- [x] [tint](https://sharp.pixelplumbing.com/en/stable/api-colour/#tint)
+- [x] [greyscale](https://sharp.pixelplumbing.com/en/stable/api-colour/#greyscale)
+- [x] [toColorspace](https://sharp.pixelplumbing.com/en/stable/api-colour/#tocolorspace)
+
+### Channel Manipulation
+
+- [x] [removeAlpha](https://sharp.pixelplumbing.com/en/stable/api-channel/#removealpha)
+- [x] [ensureAlpha](https://sharp.pixelplumbing.com/en/stable/api-channel/#ensurealpha)
+- [x] [extractChannel](https://sharp.pixelplumbing.com/en/stable/api-channel/#extractChannel)
+- [ ] [joinChannel](https://sharp.pixelplumbing.com/en/stable/api-channel/#joinchannel)
+- [x] [bandBool](https://sharp.pixelplumbing.com/en/stable/api-channel/#bandbool)
 
 ## License
 
