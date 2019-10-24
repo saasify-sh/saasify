@@ -42,7 +42,7 @@ Some example use cases include:
 - Data transformations
 - General algorithms
 
-Have an idea or an OSS project that you'd like to monetize, but not sure where to start? Feel free to contact us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI). ✌️
+Have an idea or an OSS project that you'd like to monetize, but not sure where to start? Feel free to contact us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY). ✌️
 
 ## Features
 
@@ -67,7 +67,7 @@ You may also want to check out our [mission](./mission.md) to learn more about S
 
 **As of September, 2019, Saasify is in beta and is ready for general use.**
 
-If you're interested in OSS sustainability and want to follow along with our progress, please consider starring the [repo](https://github.com/saasify-sh/saasify) and joining us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI).
+If you're interested in OSS sustainability and want to follow along with our progress, please consider starring the [repo](https://github.com/saasify-sh/saasify) and joining us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY).
 
 Thanks! ⭐️
 
