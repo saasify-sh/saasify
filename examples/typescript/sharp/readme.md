@@ -6,7 +6,7 @@ This project provides a hosted, SaaS version of [sharp](https://github.com/lovel
 
 Note that the majority of the revenue from this hosted API goes back to the open source maintainers behind the original project.
 
-<a href="https://transitive-bullshit_sharp_9a3686cd.saasify.sh">
+<a href="https://transitive-bullshit_sharp_9a3686cd.saasify.sh" target="_blank">
   <img
     src="https://badges.saasify.sh"
     height="40"
