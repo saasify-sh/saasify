@@ -82,7 +82,7 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 }
 ```
 
-<img src="./examples/3.png" width="128" />
+<img src="./examples/3.webp" width="128" />
 
 #### Blur and then flip vertically
 
