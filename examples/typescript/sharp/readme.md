@@ -1,12 +1,12 @@
 # sharp
 
-> Common library for image manipulation.
+> Powerful SaaS API for image conversion and manipulation.
 
 This project provides a hosted, SaaS version of [sharp](https://github.com/lovell/sharp) by [Lovell Fuller](https://github.com/lovell).
 
 Note that the majority of the revenue from this hosted API goes back to the open source maintainers behind the original project.
 
-<a href="https://transitive-bullshit_sharp_9a3686cd.saasify.sh" target="_blank">
+<a href="https://transitive-bullshit_sharp_d90e513e.saasify.sh">
   <img
     src="https://badges.saasify.sh"
     height="40"
@@ -20,14 +20,14 @@ The following examples can all be invoked with the following curl template by ch
 
 ```
 curl -X POST -d '@example.json' \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e'
 ```
 
 ### Download image
 
 ```
 curl -X POST -d '@example.json' -o out.png \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e'
 ```
 
 *example.json*
@@ -43,7 +43,7 @@ curl -X POST -d '@example.json' -o out.png \
 
 ```
 curl -X POST -d '@example.json' -o out.jpg \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e'
 ```
 
 *example.json*
@@ -58,7 +58,7 @@ curl -X POST -d '@example.json' -o out.jpg \
 }
 ```
 
-Here's this example as a GET request: [`/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg`](https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg).
+Here's this example as a GET request: [`/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg`](https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg).
 
 <img src="./examples/2.jpg" width="128" />
 
@@ -66,7 +66,7 @@ Here's this example as a GET request: [`/?input=https://octodex.github.com/image
 
 ```
 curl -X POST -d '@example.json' -o out.webp \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e'
 ```
 
 *example.json*
@@ -95,7 +95,7 @@ curl -X POST -d '@example.json' -o out.webp \
 
 ```
 curl -X POST -d '@example.json' -o out.png \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e'
 ```
 
 *example.json*
@@ -120,7 +120,7 @@ curl -X POST -d '@example.json' -o out.png \
 
 ```
 curl -X POST -d '@example.json' -o out.png \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e'
 ```
 
 *example.json*
@@ -151,7 +151,7 @@ curl -X POST -d '@example.json' -o out.png \
 
 ```
 curl -X POST -d '@example.json' -o out.json \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'
+  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e'
 ```
 
 *example.json*

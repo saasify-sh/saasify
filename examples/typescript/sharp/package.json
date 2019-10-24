@@ -2,7 +2,7 @@
   "name": "sharp",
   "private": true,
   "version": "0.1.0",
-  "description": "Common image manipulation.",
+  "description": "Powerful SaaS API for image conversion and manipulation.",
   "author": "Saasify <dev@saasify.sh>",
   "license": "MIT",
   "repository": "saasify-sh/saasify",
