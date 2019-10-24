@@ -37,6 +37,41 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 
 <img src="./examples/1.png" width="128" />
 
+### Get image metadata
+
+```
+curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.json
+```
+
+*example.json*
+```json
+{
+  "input": "https://octodex.github.com/images/original.png",
+  "ops": [
+    {
+      "op": "metadata"
+    }
+  ]
+}
+```
+
+*output (JSON)*
+```json
+{
+  format: 'png',
+  size: 36582,
+  width: 896,
+  height: 896,
+  space: 'srgb',
+  channels: 4,
+  depth: 'uchar',
+  density: 72,
+  isProgressive: false,
+  hasProfile: false,
+  hasAlpha: true
+}
+```
+
 ### Convert png to jpeg
 
 ```
@@ -65,6 +100,7 @@ Here's this example as a GET request: [`/?input=https://octodex.github.com/image
 curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.webp
 ```
 
+*example.json*
 ```
 {
   "input": "https://octodex.github.com/images/original.png",
@@ -92,6 +128,7 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.png
 ```
 
+*example.json*
 ```
 {
   "input": "https://octodex.github.com/images/original.png",
@@ -115,6 +152,7 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullshit/sharp@2fd6a142' > out.png
 ```
 
+*example.json*
 ```
 {
   "input": "https://octodex.github.com/images/original.png",
@@ -138,11 +176,47 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 
 <img src="./examples/5.png" width="128" />
 
-## TODO
+## Status
 
-The following `sharp` operations are not supported:
+The following `sharp` operations are supported:
 
-- [ ] `heif`
+### Input
+- [ ] [metadata](https://sharp.pixelplumbing.com/en/stable/api-input/#metadata)
+- [ ] [stats](https://sharp.pixelplumbing.com/en/stable/api-input/#stats)
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
+- [ ] ``
 - [ ] `tile`
 - [ ] `joinChannel`
 

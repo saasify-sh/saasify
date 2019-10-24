@@ -7,7 +7,7 @@ import { getImage } from './get-image'
 
 type ImageOperationType =
   // Input
-  'stats' | 'metadata' | 'meta' | 'limitInputPixels' |
+  'metadata' | 'stats' | 'meta' | 'limitInputPixels' |
 
   // Output
   'withMetadata' | 'jpeg' | 'png' | 'webp' | 'tiff' | 'raw' |
@@ -260,15 +260,15 @@ export default async function process(
       switch (imageOperation.op) {
         // Input
 
-        case 'stats': {
+        case 'metadata':
+        case 'meta': {
           ensurePipelineIsImage(imageOperation.op)
-          pipeline = pipeline.stats()
+          pipeline = pipeline.metadata()
           pipelineIsImage = false
           break
         }
 
-        case 'metadata':
-        case 'meta': {
+        case 'stats': {
           ensurePipelineIsImage(imageOperation.op)
           pipeline = pipeline.stats()
           pipelineIsImage = false
@@ -559,6 +559,7 @@ export default async function process(
     contentType = type.mime
   } else {
     body = await pipeline
+    console.log(body)
     contentType = 'application/json'
   }
 

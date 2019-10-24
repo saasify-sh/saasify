@@ -1,0 +1,16 @@
+{
+  "input": "https://octodex.github.com/images/original.png",
+  "ops": [
+    {
+      "op": "resize",
+      "options": {
+        "width": 220,
+        "height": 128,
+        "fit": "contain"
+      }
+    },
+    {
+      "op": "webp"
+    }
+  ]
+}
