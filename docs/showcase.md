@@ -18,9 +18,10 @@
 
 - [hello-world](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/hello-world) - Simplest possible TypeScript project.
 - [imagemin](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin) - Image optimization.
-- [natural](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/natural) - NLP toolkit wrapping the [natural](https://github.com/NaturalNode/natural) library.
 - [puppeteer](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/puppeteer) - Screenshots with headless chromium.
 - [text-to-ascii-art](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/text-to-ascii-art) - Converts text to ascii art.
+- [natural](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/natural) - NLP toolkit wrapping the [natural](https://github.com/NaturalNode/natural) NPM module.
+- [sharp](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/sharp) - Powerful image processing and conversion swiss army knife wrapping the [sharp](https://github.com/lovell/sharp) NPM module.
 
 ### Python
 

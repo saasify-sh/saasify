@@ -8,9 +8,10 @@
 
 - [hello-world](./typescript/hello-world) - Simplest possible TypeScript project.
 - [imagemin](./typescript/imagemin) - Image optimization.
-- [natural](./typescript/natural) - NLP toolkit wrapping the [natural](https://github.com/NaturalNode/natural) library.
 - [puppeteer](./typescript/puppeteer) - Screenshots with headless chromium.
 - [text-to-ascii-art](./typescript/text-to-ascii-art) - Converts text to ascii art.
+- [natural](./typescript/natural) - NLP toolkit wrapping the [natural](https://github.com/NaturalNode/natural) NPM module.
+- [sharp](./typescript/sharp) - Powerful image processing and conversion swiss army knife wrapping the [sharp](https://github.com/lovell/sharp) NPM module.
 
 ### Python
 
