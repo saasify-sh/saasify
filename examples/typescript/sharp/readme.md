@@ -58,17 +58,17 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
 *output (JSON)*
 ```json
 {
-  format: 'png',
-  size: 36582,
-  width: 896,
-  height: 896,
-  space: 'srgb',
-  channels: 4,
-  depth: 'uchar',
-  density: 72,
-  isProgressive: false,
-  hasProfile: false,
-  hasAlpha: true
+  "format": "png",
+  "size": 36582,
+  "width": 896,
+  "height": 896,
+  "space": "srgb",
+  "channels": 4,
+  "depth": "uchar",
+  "density": 72,
+  "isProgressive": false,
+  "hasProfile": false,
+  "hasAlpha": true
 }
 ```
 
