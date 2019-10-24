@@ -1,0 +1,22 @@
+{
+  "name": "sharp",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Common image manipulation.",
+  "author": "Saasify <dev@saasify.sh>",
+  "license": "MIT",
+  "repository": "saasify-sh/saasify",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "file-type": "^12.3.1",
+    "fts-core": "^1.1.0",
+    "got": "^9.6.0",
+    "p-map": "^3.0.0",
+    "sharp": "^0.23.1"
+  },
+  "devDependencies": {
+    "@types/sharp": "^0.23.0"
+  }
+}

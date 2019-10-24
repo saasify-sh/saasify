@@ -1,0 +1,8 @@
+{
+  "name": "text-to-ascii-art",
+  "services": [
+    {
+      "src": "index.ts"
+    }
+  ]
+}

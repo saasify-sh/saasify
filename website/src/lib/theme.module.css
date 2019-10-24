@@ -38,6 +38,7 @@
 
 .theme-clean header.attached {
   box-shadow: unset;
+  background: transparent !important;
 }
 
 .terms-page, .privacy-page {
