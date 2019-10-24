@@ -10,7 +10,7 @@
   <img
     src="https://saasify.sh/_media/saasify-how-it-works.png"
     alt="How Saasify Works"
-    width="720"
+    width="760"
   />
 </p>
 
