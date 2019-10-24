@@ -73,8 +73,8 @@ curl -X POST -d '@example.json' 'https://api.saasify.sh/1/call/transitive-bullsh
       "op": "resize",
       "options": {
         "width": 220,
-        "height": 64,
-        "fit": "cover"
+        "height": 128,
+        "fit": "contain"
       }
     },
     {
