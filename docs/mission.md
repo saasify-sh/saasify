@@ -6,7 +6,7 @@
 
 If you've ever struggled to make a living working on open source, we hear you.
 
-OSS can be extremely powerful and rewarding, but there is a huge problem that exists in the market between how valuable open source is to every business in existence versus how difficult it is for OSS developers to actually capture any of that value.
+OSS can be extremely powerful and rewarding, but there is a huge problem that exists in the market between how valuable open source is to every business in existence versus how difficult it is for OSS developers to capture any of that value.
 
 Patreon and donations help with a very small percentage of this problem because the business model of voluntarily giving back to OSS is inherently weak.
 
