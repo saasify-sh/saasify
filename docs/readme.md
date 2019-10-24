@@ -6,7 +6,7 @@
 
 <h2 align="center" class='subtitle'>Monetize your OSS projects!</h2>
 
-<img src="/_media/saasify-how-it-works.png" alt="How Saasify Works" />
+<img src="https://saasify.sh/_media/saasify-how-it-works.png" alt="How Saasify Works" />
 
 [![NPM](https://img.shields.io/npm/v/saasify.svg)](https://www.npmjs.com/package/saasify) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
