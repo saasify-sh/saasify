@@ -56,13 +56,13 @@ Have an idea or an OSS project that you'd like to monetize, but not sure where t
 - ⚡️️ Simple & quick to setup your own SaaS
 - 🔥 Focus on your unique value instead of boilerplate
 - 💯 Built with TypeScript + Lambda + Stripe
-- 💎 Creates standard REST APIs
-- 🤖 Generates all docs, hosting, billing, and accounts for you
+- 💎 Creates standard OpenAPI REST APIs
+- 🤖 Handles all docs, hosting, billing, and accounts for you
 - 🚀 Begin monetizing in minutes!
 
 ## Getting Started
 
-Check out the [quick start](https://saasify.sh/#/quick-start) to get started creating your own SaaS products or visit the [showcase](https://saasify.sh/#/showcase) to get a feel for the types of products you can build with Saasify.
+Check out the [quick start](https://saasify.sh/#/quick-start) guide to get started creating your own SaaS products or visit the [showcase](https://saasify.sh/#/showcase) to get a feel for the types of products you can build with Saasify.
 
 You may also want to check out our [mission](https://saasify.sh/#/mission) to learn more about Saasify and **open source sustainability**.
 

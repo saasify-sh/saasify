@@ -40,7 +40,7 @@ module.exports = async (spec, deployment, opts = { }) => {
       name: 'Apache 2.0'
     },
     description: `
-${deployment.readme}
+${deployment.readme || ''}
 
 # Introduction
 
