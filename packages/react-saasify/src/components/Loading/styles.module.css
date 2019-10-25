@@ -9,13 +9,13 @@
   background: #23303a;
 }
 
-.title {
+.loading .title {
   font-size: 1.4em;
-  margin-bottom: 1.2em;
+  margin-bottom: 1.5em;
   color: #fff !important;
 }
 
-.loading-icon {
+.loading .loading-icon {
   color: #fff;
   font-size: 4em;
 }

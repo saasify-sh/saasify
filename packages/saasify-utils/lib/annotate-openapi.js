@@ -40,6 +40,8 @@ module.exports = async (spec, deployment, opts = { }) => {
       name: 'Apache 2.0'
     },
     description: `
+${deployment.readme}
+
 # Introduction
 
 This API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API accepts [JSON-encoded](http://www.json.org/) request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
@@ -82,6 +84,14 @@ When we make backwards-incompatible changes to an API, we release new versions f
 
 You can visit your [Dashboard](/dashboard) to manage your API version.
 `
+  }
+
+  if (deployment.saas.logo) {
+    api.info['x-logo'] = {
+      url: deployment.saas.logo,
+      altText: deployment.project.name,
+      href: '/'
+    }
   }
 
   api.components = {
