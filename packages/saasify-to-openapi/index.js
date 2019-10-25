@@ -34,15 +34,66 @@ function pruneCustomKeywords (schema) {
     delete schema.coerceFrom
     Object.values(schema).forEach(pruneCustomKeywords)
   }
+}
 
-  return schema
+function pruneTypes (schema) {
+  if (Array.isArray(schema)) {
+    schema.forEach(pruneTypes)
+  } else if (typeof schema === 'object') {
+    for (const [key, value] of Object.entries(schema)) {
+      if (key === 'type') {
+        if (Array.isArray(value)) {
+          // OpenAPI doesn't support certain ambiguous oneOf types like:
+          // - number | boolean
+          // - number | string
+          // - string | boolean
+          const types = {
+            number: 0,
+            string: 0,
+            boolean: 0
+          }
+
+          for (const v of value) {
+            types[v]++
+          }
+
+          if (types.number + types.string + types.boolean >= 2) {
+            if (types.string) {
+              schema[key] = 'string'
+            } else if (types.number) {
+              schema[key] = 'number'
+            } else {
+              schema[key] = 'boolean'
+            }
+          }
+        }
+
+        if (schema.items && Array.isArray(schema.items)) {
+          // TODO: figure out a better fallback type for these cases
+          // a variable-length array is commonly used for numbers but could also be used
+          // for strings, booleans, etc.
+          schema.items = { type: 'number' }
+          delete schema.additionalItems
+        }
+      }
+
+      pruneTypes(value)
+    }
+  }
 }
 
 async function prepareSchema (schema) {
   const deref = await jsonSchemaRefParser.dereference(schema)
   // all $refs have been replaced directly, so remove any indirect definitions
   delete deref.definitions
-  return pruneCustomKeywords(deref)
+
+  // prune custom FTS keywords
+  pruneCustomKeywords(deref)
+
+  // prune incompatible types
+  pruneTypes(deref)
+
+  return deref
 }
 
 module.exports.serviceToPaths = async function serviceToPaths (service) {
@@ -52,16 +103,43 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   } = service
 
   const params = await prepareSchema(definition.params.schema)
-  const { schema } = definition.returns
+  const { http, schema } = definition.returns
   const { type, additionalProperties, properties, ...rest } = schema
-  const returnsJsonSchema = {
-    ...rest,
-    ...properties.result
-  }
-  const returns = await prepareSchema(returnsJsonSchema)
-
   const paramsSchema = jsonSchemaToOpenAPI(params)
-  const responseSchema = jsonSchemaToOpenAPI(returns)
+  let responseSchema
+
+  if (http) {
+    responseSchema = {
+      description: 'Raw HTTP response.',
+      type: 'object',
+      properties: {
+        statusCode: {
+          type: 'number'
+        },
+        headers: {
+          type: 'object',
+          additionalProperties: {
+            type: 'string'
+          }
+        },
+        body: {
+          description: 'Raw response body which can be interpreted using the standard `Content-Type` header.',
+          type: 'array',
+          items: {
+            type: 'number'
+          }
+        }
+      },
+      additionalProperties: false
+    }
+  } else {
+    const returnsJsonSchema = {
+      ...rest,
+      ...properties.result
+    }
+    const returns = await prepareSchema(returnsJsonSchema)
+    responseSchema = jsonSchemaToOpenAPI(returns)
+  }
 
   const responses = {
     200: {
