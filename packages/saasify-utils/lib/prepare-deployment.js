@@ -160,7 +160,7 @@ module.exports = async (deployment, data, opts = { }) => {
 
     // TODO: remove 'fts' as a dependency
     dependencies.fts = '^1'
-    dependencies['fts-http'] = '^1.1.8'
+    dependencies['fts-http'] = '^1.2.1'
     if (!devDependencies['@types/node']) {
       devDependencies['@types/node'] = 'latest'
     }

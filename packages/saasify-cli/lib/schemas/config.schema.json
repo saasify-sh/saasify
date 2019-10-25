@@ -196,6 +196,11 @@
           "type": "boolean",
           "title": "POST"
         },
+        "headers": {
+          "type": "object",
+          "title": "headers",
+          "additionalProperties": true
+        },
         "additionalProperties": false
       },
       "required": [

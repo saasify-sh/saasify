@@ -27,6 +27,7 @@ class Service {
   config?: object
   GET?: boolean
   POST?: boolean
+  headers?: object
 }
 
 class Example {

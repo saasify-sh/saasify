@@ -1108,6 +1108,14 @@ core-util-is@~1.0.0:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
+cors@^2.8.5:
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.5.tgz#eac11da51592dd86b9f06f6e7ac293b3df875d29"
+  integrity sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==
+  dependencies:
+    object-assign "^4"
+    vary "^1"
+
 credit-card@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/credit-card/-/credit-card-3.0.2.tgz#6cb5b7647a3394b64b2ed693b4b42879b68f87f3"
@@ -1972,21 +1980,24 @@ fts-core@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/fts-core/-/fts-core-1.1.0.tgz#b4d77bb1f00fe93dbff063ca0ac20c277bd510ec"
 
-fts-http-client@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/fts-http-client/-/fts-http-client-1.1.8.tgz#ceb38e2566d24ca659db70ee5523a6a412902294"
-  integrity sha512-4/VQOt/m4i+nrnuVHXN0K4DCS9puxS+A5rZ3KRb5qqYqp2VzaN3HuD2dARd/4LWDQ6fn69qPcwtztV4tjs0XUQ==
+fts-http-client@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/fts-http-client/-/fts-http-client-1.2.1.tgz#d5ca7b8cc2ec047d6ded688c8e71e7eedb9591a0"
+  integrity sha512-g2/HtzjXsmk9Q0WOLXIDIzDH2yrMYIIhLqpa012d0VQ0GVGcueq1wJ1UOIoD3wJUSiatFzRhPYQR11X4tIGY0Q==
   dependencies:
+    fts "^1.2.0"
     fts-validator "^1.0.4"
     isomorphic-unfetch "^3.0.0"
 
-fts-http@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/fts-http/-/fts-http-1.1.8.tgz#424a1a2601ff8b2680746889c568b3c574a11411"
-  integrity sha512-3X19Bd0w+s2+SwfDK6S3lgz/VgnEdXPx5Lwg3n1/juRJRX3ouLYc66Y0WWznoDwGT8LMhzLmMyC8wx0W0WdhfQ==
+fts-http@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/fts-http/-/fts-http-1.2.1.tgz#d81fe1d43ef8db3889b3705a3cc60d05526e1450"
+  integrity sha512-VjMK/vEscjNJ4pP9qL13ZFczgWCytnW9T/2E0/ZvOcOuVCTow4WHW0vvxWaNSBpPVXgPren6+XwM3xnICnMsCg==
   dependencies:
     accepts "^1.3.5"
     content-type "^1.0.4"
+    cors "^2.8.5"
+    fts "^1.2.0"
     fts-core "^1.1.0"
     fts-validator "^1.0.4"
     is-stream "^1.1.0"
@@ -2004,10 +2015,10 @@ fts-validator@^1.0.4:
     ajv "^6.7.0"
     clone-deep "^4.0.1"
 
-fts@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/fts/-/fts-1.1.8.tgz#a21996018e61b5f03085d1e704e947902d9db3ae"
-  integrity sha512-+D4zKC3k4l4qjPf5HW1Gi2N7hNPWZW2/fIyPzc9zaqD7ZSwVIRURLf5Ri/WbV+JGD/WfUBidqdnthPQ1pWwzWA==
+fts@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/fts/-/fts-1.2.0.tgz#29103fc477d75f04f021ff52389e997eb9f48445"
+  integrity sha512-jpDpoE+4qqEkL7ciKuorkJX63Sxv3BrHM0tR57Cc67FGYW+Arvu5+VlYQYt3osJhYUABCR0TA01ls3wb2UWqLA==
   dependencies:
     ajv "^6.7.0"
     commander "^2.19.0"
@@ -3397,7 +3408,7 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-object-assign@^4.0.1, object-assign@^4.1.1:
+object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
@@ -5043,7 +5054,7 @@ validator@^11.0.0:
   resolved "https://registry.yarnpkg.com/validator/-/validator-11.1.0.tgz#ac18cac42e0aa5902b603d7a5d9b7827e2346ac4"
   integrity sha512-qiQ5ktdO7CD6C/5/mYV4jku/7qnqzjrxb3C/Q5wR3vGGinHTgJZN/TdFT3ZX4vXhX2R1PXx42fB1cn5W+uJ4lg==
 
-vary@^1.1.2:
+vary@^1, vary@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
 
