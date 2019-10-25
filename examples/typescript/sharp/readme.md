@@ -37,7 +37,7 @@ curl -X POST -d '@example.json' -o out.png \
   'https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e'
 ```
 
-<img src="./examples/1.png" width="128" />
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/1.png" width="128" />
 
 ### Convert png to jpeg
 
@@ -60,7 +60,7 @@ curl -X POST -d '@example.json' -o out.jpg \
 
 Here's this example as a GET request: [`/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg`](https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg).
 
-<img src="./examples/2.jpg" width="128" />
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/2.jpg" width="128" />
 
 ### Resize and convert to webp
 
@@ -89,7 +89,7 @@ curl -X POST -d '@example.json' -o out.webp \
   'https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e'
 ```
 
-<img src="./examples/3.webp" width="128" />
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/3.webp" width="128" />
 
 ### Blur and then flip vertically
 
@@ -114,7 +114,7 @@ curl -X POST -d '@example.json' -o out.png \
   'https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e'
 ```
 
-<img src="./examples/4.png" width="128" />
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/4.png" width="128" />
 
 ### Tint, remove alpha, and convert to custom png
 
@@ -145,7 +145,7 @@ curl -X POST -d '@example.json' -o out.png \
   'https://api.saasify.sh/1/call/transitive-bullshit/sharp@d90e513e'
 ```
 
-<img src="./examples/5.png" width="128" />
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/5.png" width="128" />
 
 ### Get image metadata
 
