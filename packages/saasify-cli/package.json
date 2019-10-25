@@ -70,6 +70,7 @@
     "saasify-client": "^1.7.1",
     "saasify-utils": "^1.7.5",
     "semver": "^6.3.0",
+    "slash": "^3.0.0",
     "stripe": "^7.6.0",
     "tempy": "^0.3.0",
     "yazl": "^2.5.1"

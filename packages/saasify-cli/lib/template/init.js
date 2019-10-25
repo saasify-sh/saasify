@@ -10,6 +10,7 @@ const pEachSeries = require('p-each-series')
 const pify = require('pify')
 const tempy = require('tempy')
 const isGitRepo = require('is-git-repository')
+const slash = require('slash')
 
 const spinner = require('../spinner')
 const pkg = require('../../package')
@@ -39,7 +40,7 @@ module.exports = async (opts) => {
 
   const source = path.join(temp, 'templates', template)
   // TODO: verify source template exists
-  const files = await globby(source, { dot: true })
+  const files = await globby(slash(source), { dot: true })
   // TODO: verify that source files is non-empty
 
   await fs.mkdirp(dest)
