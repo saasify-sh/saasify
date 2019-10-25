@@ -5,7 +5,7 @@
   "description": "Powerful SaaS API for image conversion and manipulation.",
   "author": "Saasify <dev@saasify.sh>",
   "license": "MIT",
-  "repository": "saasify-sh/saasify",
+  "repository": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/sharp",
   "engines": {
     "node": ">=8"
   },
