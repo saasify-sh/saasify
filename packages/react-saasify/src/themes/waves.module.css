@@ -12,8 +12,8 @@
   --space-xl: 32px;
   --space-xxl: 48px;
   --space-xxxl: 64px;
-  --side-gutter-half: var(--space-l);
-  --side-gutter: var(--space-xxl);
+  --side-gutter-half: var(--space-m);
+  --side-gutter: var(--space-xl);
   --font-family: 'Avenir Next';
 
   --line-height-m: 1.375;
