@@ -9,6 +9,8 @@
   --space-m: 16px;
   --space-l: 24px;
   --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-xxxl: 64px;
   --side-gutter-half: var(--space-s);
   --side-gutter: var(--space-m);
   --font-family: 'Avenir Next';
@@ -42,6 +44,8 @@ strong {
  */
 
 .section {
+  margin-bottom: var(--space-xxl);
+  margin-top: var(--space-xxl);
   padding: var(--side-gutter);
 }
 
@@ -61,6 +65,10 @@ strong {
   padding: 0 !important;
 }
 
+.section-divider {
+  display: none;
+}
+
 /* 
  * Home page
  * ----------------------------
@@ -69,6 +77,7 @@ strong {
 .home-page .hero-section,
 .home-page .demo-section {
   height: 85vh;
+  margin-top: 0;
   min-height: 500px;
   padding-top: 96px;
   width: 50%;
