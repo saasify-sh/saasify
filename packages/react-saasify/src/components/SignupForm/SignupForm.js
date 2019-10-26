@@ -56,7 +56,7 @@ export class SignupForm extends Component {
         onSubmit={this._onSubmit}
       >
         <h2 className={theme(styles, 'title')}>
-          Signup
+          Sign up
         </h2>
 
         <FormItem>
@@ -65,7 +65,7 @@ export class SignupForm extends Component {
             icon='github'
             onClick={this._onClickGitHub}
           >
-            Signup with GitHub
+            Sign up with GitHub
           </Button>
         </FormItem>
 
@@ -122,7 +122,7 @@ export class SignupForm extends Component {
           className={theme(styles, 'submit')}
           loading={loading}
         >
-          Signup!
+          Sign up
         </Button>
       </Form>
     )

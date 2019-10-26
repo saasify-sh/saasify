@@ -88,13 +88,13 @@ export class NavHeader extends Component {
                 <div className={theme(styles, 'actions')}>
                   <Link to='/logout' className={theme(styles, 'login')}>
                     <CTAButton type='secondary' inline>
-                      LOGOUT
+                      Log out
                     </CTAButton>
                   </Link>
 
                   <Link to='/dashboard'>
                     <CTAButton type='primary' inline>
-                      DASHBOARD
+                      Dashboard
                     </CTAButton>
                   </Link>
                 </div>
@@ -102,13 +102,13 @@ export class NavHeader extends Component {
                 <div className={theme(styles, 'actions')}>
                   <Link to='/login' className={theme(styles, 'login')}>
                     <CTAButton type='secondary' inline>
-                      LOGIN
+                      Log in
                     </CTAButton>
                   </Link>
 
                   <Link to='/signup'>
                     <CTAButton type='primary' inline>
-                      SIGNUP
+                      Get started
                     </CTAButton>
                   </Link>
                 </div>
