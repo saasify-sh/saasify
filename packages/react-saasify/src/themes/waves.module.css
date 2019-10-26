@@ -34,6 +34,10 @@
   font-weight: 400 !important;
 }
 
+p {
+  color: var(--color-fg);
+}
+
 strong {
   font-weight: 600;
 }
@@ -147,6 +151,44 @@ strong {
 }
 
 /* 
+ * Home page, Features section
+ * ----------------------------
+ */
+
+.home-page .features-section .title,
+.home-page .features-section .desc {
+  display: none;
+}
+
+.features {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+}
+
+.feature {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 220px;
+}
+
+.feature .illustration {
+  max-height: 120px !important;
+  width: 220px;
+}
+
+.feature h3 {
+  font-weight: 600 !important;
+}
+
+/* 
+ * Home page, CTA section
+ * ----------------------------
+ */
+
+.home-page .section:last-of-type {
+  display: none;
+}
+
+/* 
  * Pricing page
  * ----------------------------
  */
@@ -223,6 +265,27 @@ header.attached {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   padding-bottom: var(--space-s) !important;
   padding-top: var(--space-s) !important;
+}
+
+/* 
+ * Footer
+ * ----------------------------
+ */
+
+footer {
+  background-color: #f9f9fb !important;
+  border-top: 1px solid #efefef;
+}
+
+footer .detail,
+footer .header {
+  color: var(--color-fg) !important;
+  opacity: 0.7;
+}
+
+footer .link {
+  color: var(--color-fg) !important;
+  opacity: 0.7;
 }
 
 /* 
