@@ -23,6 +23,7 @@
 .theme-waves {
   color: #fff;
   font-family: var(--font-family);
+  font-size: 16px;
 }
 
 .theme-waves * {
@@ -35,8 +36,9 @@
 .theme-waves h4,
 .theme-waves h5,
 .theme-waves h6 {
+  color: var(--color-fg);
   font-family: var(--font-family);
-  font-weight: 400 !important;
+  font-weight: 400;
 }
 
 p {
@@ -123,6 +125,7 @@ strong {
   margin: 0;
   margin-bottom: var(--space-m);
   max-width: 460px;
+  font-weight: 400;
   text-align: left;
 }
 
@@ -456,7 +459,6 @@ footer .link:hover {
 
 .pricing-section .title {
   font-size: 40px;
-  font-weight: 600 !important;
   line-height: var(--line-height-m);
   margin-top: var(--space-xxxl);
   margin-bottom: var(--space-s);
