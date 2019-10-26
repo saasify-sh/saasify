@@ -433,37 +433,3 @@ footer .link:hover {
   top: -100%;
   height: calc(194% + 100px);
 }
-
-/*
- *-------------------------------------
- */
-
-.light {
-  /* color: #222; */
-}
-
-.theme-waves footer .content {
-  color: #fff;
-}
-
-.theme-waves footer .header {
-  color: #fff;
-}
-
-.theme-waves footer .link {
-  color: #ccc;
-}
-
-.theme-waves footer .detail {
-  color: #ccc;
-}
-
-.theme-waves header .link,
-.theme-waves header .link:active,
-.theme-waves header .link:visited {
-  color: #fff;
-}
-
-.theme-waves header .link:hover {
-  color: #eb3d48;
-}
