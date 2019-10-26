@@ -43,6 +43,7 @@ p {
   color: var(--color-fg);
 }
 
+b,
 strong {
   font-weight: 600;
 }
@@ -61,6 +62,7 @@ strong {
 .section .title {
   font-size: 48px;
   font-weight: 600;
+  position: relative;
 }
 
 .section .subtitle {
@@ -72,6 +74,7 @@ strong {
 .section .content {
   max-width: var(--max-width);
   padding: 0 !important;
+  z-index: 1;
 }
 
 .section-divider {
@@ -165,22 +168,22 @@ strong {
   display: none;
 }
 
-.features {
+.features-section .features {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
 }
 
-.feature {
+.features-section .feature {
   margin-left: auto;
   margin-right: auto;
   max-width: 220px;
 }
 
-.feature .illustration {
+.features-section .feature .illustration {
   max-height: 120px !important;
   width: 220px;
 }
 
-.feature h3 {
+.features-section .feature h3 {
   font-weight: 600 !important;
 }
 
@@ -346,6 +349,10 @@ footer .link:hover {
   filter: var(--filter-tint);
 }
 
+.cta-button:global(.secondary):hover {
+  color: var(--color-primary) !important;
+}
+
 /*
  * Code Block
  * ----------------------------
@@ -428,4 +435,122 @@ footer .link:hover {
   left: 0;
   position: absolute;
   width: 100vw;
+}
+
+/*
+ * Pricing plans
+ * ----------------------------
+ */
+
+.pricing-section {
+  margin-top: 0;
+}
+
+.pricing-section::before {
+  height: calc(50% + 250px) !important;
+}
+
+.pricing-section::after {
+  top: calc(50% + 100px);
+}
+
+.pricing-section .title {
+  font-size: 40px;
+  font-weight: 600 !important;
+  line-height: var(--line-height-m);
+  margin-top: var(--space-xxxl);
+  margin-bottom: var(--space-s);
+}
+
+.pricing-section .subtitle {
+  font-size: 28px;
+  line-height: var(--line-height-m);
+  margin-bottom: var(--space-xxxl);
+}
+
+.pricing-section .plans {
+  justify-content: space-around;
+  margin: 0;
+  margin-top: var(--space-s);
+}
+
+.pricing-section .plan {
+  border-radius: 10px;
+  box-shadow: 0 7px 18px 0 rgba(210, 210, 210, 0.5);
+  margin: var(--space-l);
+  margin-top: 0;
+  max-width: 450px;
+  padding: var(--space-xl);
+  width: 100%;
+}
+
+.pricing-section .plan h3 {
+  font-size: 32px;
+  letter-spacing: initial;
+  line-height: var(--line-height-m);
+  font-weight: 600 !important;
+  margin-bottom: var(--space-l);
+  text-shadow: none;
+}
+
+.pricing-section .plan > :global(.ant-divider) {
+  display: none;
+}
+
+.pricing-section .plan .features {
+  font-size: 22px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: var(--space-l);
+}
+
+.pricing-section .plan .features div:nth-of-type(1),
+.pricing-section .plan .features div:nth-of-type(2),
+.pricing-section .plan .features div:nth-of-type(3),
+.pricing-section .plan:first-of-type .features div:nth-of-type(3n + 2),
+.pricing-section .plan:last-of-type .features div:nth-of-type(3n + 3) {
+  display: none;
+}
+
+/* Label */
+.pricing-section .plan .features div:nth-of-type(3n + 1) {
+  color: #696969;
+  font-weight: 600;
+}
+
+/* Value */
+.pricing-section .plan:first-of-type .features div:nth-of-type(3n + 3),
+.pricing-section .plan:last-of-type .features div:nth-of-type(3n + 2) {
+  color: black;
+  font-weight: 600;
+  opacity: 0.4;
+  text-align: right;
+}
+
+.pricing-section .plan .cta-button {
+  width: 100%;
+}
+
+.pricing-section .plan:first-of-type .cta-button {
+  content: 'test';
+}
+
+.pricing-section .plan > div:nth-last-of-type(2) {
+  display: none;
+}
+
+.pricing-section .plan .price {
+  align-items: baseline;
+  color: #9e9e9e;
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 22px;
+  margin-bottom: var(--space-m);
+}
+
+.pricing-section .plan .price .dollas {
+  color: var(--color-fg);
+  font-size: 32px;
+  font-weight: 600;
+  margin-right: var(--space-s);
 }
