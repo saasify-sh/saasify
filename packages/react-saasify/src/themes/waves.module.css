@@ -556,3 +556,8 @@ footer .link:hover {
   font-weight: 600;
   margin-right: var(--space-s);
 }
+
+.enterprise-section .content {
+  max-width: 600px;
+  text-align: center;
+}
