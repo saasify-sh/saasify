@@ -1,7 +1,8 @@
 :root {
   /* TODO add postcss to resolve vars for IE11 */
   --color-primary: #5061cb;
-  --color-fg: rgb(58, 58, 58);
+  --filter-tint: saturate(102%) hue-rotate(10deg);
+  --color-fg: #3a3a3a;
   --max-width: 1108px;
   --max-width-half: 554px;
   --space-xs: 4px;
@@ -22,6 +23,10 @@
 .theme-waves {
   color: #fff;
   font-family: var(--font-family);
+}
+
+.theme-waves * {
+  transition: all 250ms ease;
 }
 
 .theme-waves h1,
@@ -223,6 +228,11 @@ header.container .link {
   font-weight: 500;
 }
 
+header.container .link:hover {
+  color: var(--color-primary) !important;
+  filter: var(--filter-tint);
+}
+
 header.container .links .link {
   margin-left: var(--space-xl);
   margin-right: var(--space-xl);
@@ -288,6 +298,12 @@ footer .link {
   opacity: 0.7;
 }
 
+footer .link:hover {
+  color: var(--color-primary) !important;
+  filter: var(--filter-tint);
+  opacity: 1;
+}
+
 /*
  * CTAs
  * ----------------------------
@@ -296,27 +312,38 @@ footer .link {
   color: var(--color-primary);
 }
 
+.theme-waves a:hover {
+  filter: var(--filter-tint);
+}
+
 /* TODO: cta-button ghost should have dark text */
 .cta-button,
 .cta-button.inline {
-  background: var(--color-primary);
-  border-width: 1px !important;
+  border: var(--color-primary) solid 1px !important;
   font-size: 16px !important;
   font-weight: 500;
   letter-spacing: normal !important;
   text-transform: none !important;
+  text-shadow: none;
   padding-bottom: var(--space-s);
   padding-top: var(--space-s);
   padding-left: var(--space-xl);
   padding-right: var(--space-xl);
 }
 
-.cta-button.primary {
+.cta-button:global(.primary) {
+  background: var(--color-primary) !important;
   color: white !important;
 }
 
-.cta-button.secondary {
+.cta-button:global(.secondary) {
+  background: transparent !important;
   color: var(--color-primary) !important;
+}
+
+.cta-button:hover {
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.11), 0 3px 6px rgba(0, 0, 0, 0.08);
+  filter: var(--filter-tint);
 }
 
 /*
