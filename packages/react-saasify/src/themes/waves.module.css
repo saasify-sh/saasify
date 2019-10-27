@@ -248,6 +248,14 @@ strong {
 }
 
 /*
+ * Login page
+ * ----------------------------
+ */
+.login-page header.container {
+  position: absolute !important;
+}
+
+/*
  * NavHeader
  * ----------------------------
  */
