@@ -596,7 +596,7 @@ footer .link:hover {
 }
 
 .pricing-section .plans {
-  justify-content: space-around;
+  justify-content: center;
   margin: 0;
   margin-top: var(--space-s);
 }
@@ -606,7 +606,7 @@ footer .link:hover {
   box-shadow: 0 7px 18px 0 rgba(210, 210, 210, 0.5);
   margin: 0;
   margin-bottom: var(--space-xxl);
-  max-width: 450px;
+  max-width: 400px;
   padding: var(--space-xl);
   width: 100%;
 }
