@@ -525,7 +525,7 @@ footer .link:hover {
 }
 
 .pricing-section .plan h3 {
-  font-size: 32px;
+  font-size: 28px;
   letter-spacing: initial;
   line-height: var(--line-height-m);
   font-weight: 600 !important;
@@ -538,7 +538,7 @@ footer .link:hover {
 }
 
 .pricing-section .plan .features {
-  font-size: 22px;
+  font-size: 18px;
   grid-template-columns: 1fr 1fr;
   margin-bottom: var(--space-l);
 }
@@ -554,7 +554,7 @@ footer .link:hover {
 /* Label */
 .pricing-section .plan .features div:nth-of-type(3n + 1) {
   color: #696969;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 /* Value */
@@ -562,7 +562,7 @@ footer .link:hover {
 .pricing-section .plan:last-of-type .features div:nth-of-type(3n + 2) {
   color: black;
   font-weight: 600;
-  opacity: 0.4;
+  opacity: 0.6;
   text-align: right;
 }
 
@@ -584,13 +584,13 @@ footer .link:hover {
   display: flex;
   justify-content: center;
   font-weight: 500;
-  font-size: 22px;
+  font-size: 18px;
   margin-bottom: var(--space-m);
 }
 
 .pricing-section .plan .price .dollas {
   color: var(--color-fg);
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
   margin-right: var(--space-s);
 }
