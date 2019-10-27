@@ -69,7 +69,7 @@ strong {
 }
 
 .section .subtitle {
-  color: #3a3a3a;
+  color: var(--color-fg);
   font-size: 24px;
   opacity: 0.9;
 }
@@ -92,13 +92,13 @@ strong {
 .home-page .hero-section {
   height: 60vh;
   margin-top: 0;
-  padding-top: 210px;
+  padding-top: 150px;
 }
 
 @media (min-width: 48em) {
   .home-page .hero-section,
   .home-page .demo-section {
-    height: 85vh;
+    height: 90vh;
     min-height: 500px;
     width: 50%;
     z-index: 1;
