@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400&display=swap');
+
 :root {
   /* TODO add postcss to resolve vars for IE11 */
   --color-primary: #5061cb;
@@ -14,7 +16,7 @@
   --space-xxxl: 64px;
   --side-gutter-half: var(--space-m);
   --side-gutter: var(--space-xl);
-  --font-family: 'Avenir Next';
+  --font-family: 'Avenir Next', 'Lato', 'Helvetica Neue', sans-serif;
   --transition-all: all 250ms ease;
   --transition-all-fast: all 125ms ease;
 
