@@ -15,6 +15,8 @@
   --side-gutter-half: var(--space-m);
   --side-gutter: var(--space-xl);
   --font-family: 'Avenir Next';
+  --transition-all: all 250ms ease;
+  --transition-all-fast: all 125ms ease;
 
   --line-height-m: 1.375;
   --line-height-l: 1.42;
@@ -24,10 +26,6 @@
   color: #fff;
   font-family: var(--font-family);
   font-size: 16px;
-}
-
-.theme-waves * {
-  transition: all 250ms ease;
 }
 
 .theme-waves h1,
@@ -259,6 +257,7 @@ header.container {
   padding-left: var(--side-gutter) !important;
   padding-right: var(--side-gutter) !important;
   padding-top: var(--space-l) !important;
+  transition: var(--transition-all-fast) !important;
 }
 
 header.container .links {
@@ -353,10 +352,12 @@ footer .link:hover {
  */
 .theme-waves a {
   color: var(--color-primary);
+  transition: var(--transition-all);
 }
 
 .theme-waves a:hover {
   filter: var(--filter-tint);
+  transition: var(--transition-all);
 }
 
 /* TODO: cta-button ghost should have dark text */
@@ -372,6 +373,7 @@ footer .link:hover {
   padding-top: var(--space-s);
   padding-left: var(--space-xl);
   padding-right: var(--space-xl);
+  transition: var(--transition-all);
 }
 
 .cta-button:global(.primary) {
