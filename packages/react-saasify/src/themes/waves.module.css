@@ -58,7 +58,8 @@ strong {
 .section {
   margin-bottom: var(--space-xxl);
   margin-top: var(--space-xxl);
-  padding: var(--side-gutter);
+  padding-left: var(--side-gutter);
+  padding-right: var(--side-gutter);
 }
 
 .section .title {
@@ -97,7 +98,7 @@ strong {
 @media (min-width: 48em) {
   .home-page .hero-section,
   .home-page .demo-section {
-    min-height: 85vh;
+    height: 85vh;
     min-height: 500px;
     width: 50%;
     z-index: 1;
@@ -117,6 +118,7 @@ strong {
 @media (min-width: 48em) {
   .home-page .hero-section {
     padding-right: 0;
+    padding-bottom: var(--space-xxxl);
   }
 }
 
