@@ -390,7 +390,8 @@ footer .link:hover {
 }
 
 .cta-button:global(.secondary):hover {
-  color: var(--color-primary) !important;
+  background: var(--color-primary) !important;
+  color: white !important;
 }
 
 /*
