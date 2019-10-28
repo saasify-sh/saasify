@@ -37,11 +37,18 @@ export class LiveServiceDemo extends Component {
 
   render() {
     const {
+      service,
+      auth
+    } = this.props
+
+    const {
       selected,
       copiedTextToClipboard
     } = this.state
 
-    this._examples = getServiceExamples(this.props.service, this.props.auth.consumer && this.props.auth.consumer.token)
+    this._examples = getServiceExamples(service, auth.consumer && auth.consumer.token, {
+      method: service.POST ? 'POST' : 'GET'
+    })
 
     return (
       <div className={theme(styles, 'live-service-demo')}>
