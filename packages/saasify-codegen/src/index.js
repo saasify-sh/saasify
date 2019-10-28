@@ -1,5 +1,3 @@
-// TODO: move to separate package saasify-codegen
-//
 // TODO: python and ruby example params seem off
 // TODO: add token if given for python and ruby
 // TODO: add support for GET vs POST requests
