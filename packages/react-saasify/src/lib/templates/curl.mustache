@@ -1,5 +1,0 @@
-curl --request POST \
-  --url '{{{service.url}}}' \
-  --header 'content-type: application/json' \
-{{#token}}  --header 'authorization: {{token}}' \
-{{/token}}  --data '{{{exampleJSON}}}'{{#output}} > {{output}}{{/output}}

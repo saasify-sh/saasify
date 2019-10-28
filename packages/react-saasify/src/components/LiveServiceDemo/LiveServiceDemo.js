@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import theme from 'lib/theme'
 import mem from 'mem'
 import copyTextToClipboard from 'copy-text-to-clipboard'
-import stringifyObject from 'stringify-object'
 
 import { observer, inject } from 'mobx-react'
 import { Button, Tooltip } from 'lib/antd'
@@ -18,8 +17,6 @@ import styles from './styles.module.css'
 @observer
 export class LiveServiceDemo extends Component {
   static propTypes = {
-    project: PropTypes.object.isRequired,
-    deployment: PropTypes.object.isRequired,
     service: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired
   }
@@ -88,27 +85,6 @@ export class LiveServiceDemo extends Component {
         </div>
       </div>
     )
-  }
-
-  _getParams () {
-    const {
-      project,
-      deployment,
-      service,
-      auth
-    } = this.props
-
-    return {
-      project,
-      deployment,
-      service,
-      url: service.url,
-      token: auth.consumer && auth.consumer.token,
-      exampleJSON: JSON.stringify(service.example || ''),
-      example: stringifyObject(service.example || '', {
-        indent: '  '
-      })
-    }
   }
 
   _onClickTab = (language) => {
