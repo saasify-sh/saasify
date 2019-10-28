@@ -37,5 +37,9 @@
     "indent-string": "^4.0.0",
     "mustache": "^3.1.0",
     "stringify-object": "^3.3.0"
+  },
+  "ava": {
+    "failFast": true,
+    "snapshotDir": "./.snapshots"
   }
 }
