@@ -1,7 +1,7 @@
 import requests
 
 url = "{{{service.url}}}"
-payload = "{{{exampleJSON}}}"
+payload = {{{exampleJSON}}}
 response = requests.post(url, json=payload)
 
 with open("youtube.png", "wb") as out:
