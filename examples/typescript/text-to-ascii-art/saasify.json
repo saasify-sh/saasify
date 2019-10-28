@@ -2,7 +2,98 @@
   "name": "text-to-ascii-art",
   "services": [
     {
-      "src": "index.ts"
+      "src": "index.ts",
+      "examples": [
+        {
+          "name": "Ghost",
+          "input": {
+            "text": "Boo!",
+            "font": "Ghost"
+          }
+        },
+        {
+          "name": "Big Money-noe",
+          "input": {
+            "text": "Saasify",
+            "font": "Big Money-noe"
+          }
+        },
+        {
+          "name": "ANSI Shadow",
+          "input": {
+            "text": "Saasify",
+            "font": "ANSI Shadow"
+          }
+        },
+        {
+          "name": "Bloody",
+          "input": {
+            "text": "Saasify",
+            "font": "Bloody"
+          }
+        },
+        {
+          "name": "Alligator",
+          "input": {
+            "text": "Saasify",
+            "font": "Alligator"
+          }
+        },
+        {
+          "name": "Alligator2",
+          "input": {
+            "text": "Saasify",
+            "font": "Alligator2"
+          }
+        },
+        {
+          "name": "Banner3-D",
+          "input": {
+            "text": "Saasify",
+            "font": "Banner3-D"
+          }
+        },
+        {
+          "name": "Georgia11",
+          "input": {
+            "text": "Saasify",
+            "font": "Georgia11"
+          }
+        },
+        {
+          "name": "Roman",
+          "input": {
+            "text": "Saasify",
+            "font": "Roman"
+          }
+        },
+        {
+          "name": "Poison",
+          "input": {
+            "text": "Saasify",
+            "font": "Poison"
+          }
+        },
+        {
+          "name": "Small Poison",
+          "input": {
+            "text": "Saasify",
+            "font": "Small Poison"
+          }
+        },
+        {
+          "name": "Doh",
+          "input": {
+            "text": "Saasify",
+            "font": "Doh"
+          }
+        }
+      ]
     }
-  ]
+  ],
+  "saas": {
+    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/text-to-ascii-art",
+    "logo": "./media/logo.svg",
+    "favicon": "./media/favicon.ico"
+  }
 }
