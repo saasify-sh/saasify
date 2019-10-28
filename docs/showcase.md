@@ -26,7 +26,7 @@ Wraps the [puppeteer](https://github.com/GoogleChrome/puppeteer) NPM module by [
 
 Powerful SaaS API for image conversion and manipulation. ([source code](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/sharp)).
 
-Wraps the [sharp](https://github.com/lovell/sharp) NPM module by [Lovell Fuller](https://github.com/lovell).
+Wraps the [sharp](https://github.com/lovell/sharp) NPM module by [Lovell Fuller](https://github.com/lovell)
 
 <a href="https://transitive-bullshit_sharp_4caa3e85.saasify.sh" target="_blank">
   <img
@@ -70,4 +70,4 @@ These examples show how to use different Saasify platform features.
 
 ## Build your own
 
-Have an idea or an OSS project that you'd like to monetize, but not sure where to start? Feel free to contact us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI). ✌️
+Have an idea or an OSS project that you'd like to monetize, but not sure where to start? Feel free to contact us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY). ✌️
