@@ -26,6 +26,7 @@
     }
   ],
   "saas": {
-    "logo": "./media/logo.svg"
+    "logo": "./media/logo.svg",
+    "favicon": "./media/favicon.ico"
   }
 }
