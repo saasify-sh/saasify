@@ -6,34 +6,32 @@
 import indent from 'indent-string'
 import mustache from 'mustache'
 import stringifyObject from 'stringify-object'
+import qs from 'qs'
 
 import raw from 'raw.macro'
-
-const curl = raw('./templates/curl.mustache')
-const node = raw('./templates/node.mustache')
-const python = raw('./templates/python.mustache')
-const ruby = raw('./templates/ruby.mustache')
 
 const languages = [
   {
     language: 'bash',
     label: 'cURL',
-    template: curl
+    templateGET: raw('./templates/GET/curl.mustache'),
+    templatePOST: raw('./templates/POST/curl.mustache')
   },
   {
     language: 'javascript',
     label: 'Node.js',
-    template: node
+    templateGET: raw('./templates/GET/node.mustache'),
+    templatePOST: raw('./templates/POST/node.mustache')
   },
   {
     language: 'python',
     label: 'Python',
-    template: python
+    templatePOST: raw('./templates/POST/python.mustache')
   },
   {
     language: 'ruby',
     label: 'Ruby',
-    template: ruby
+    templatePOST: raw('./templates/POST/ruby.mustache')
   }
 ]
 
@@ -43,7 +41,9 @@ export default (service, token, opts = { }) => {
     example = service.examples[0]
   } = opts
 
-  if (method !== 'POST') {
+  console.log('codegen', method)
+
+  if (method !== 'POST' && method !== 'GET') {
     throw new Error(`TODO: support service codegen for method "${method}"`)
   }
 
@@ -60,6 +60,7 @@ export default (service, token, opts = { }) => {
   data.exampleJSON = JSON.stringify(example.input)
   data.example = stringifyObject(example.input, { indent: '  ' })
   data.exampleNodeJSON = indent(data.example, 1, { indent: '  ' }).slice(2)
+  data.exampleQuery = qs.stringify(example.input)
 
   // TODO: curl isHttp "> out.png" is hardcoded...
   // need to differentiate between http output content types
@@ -72,9 +73,13 @@ export default (service, token, opts = { }) => {
   // --------------------------------------------------------------
 
   return languages.map((l) => {
-    const { language, label, template } = l
-    const code = mustache.render(template, data).trim()
+    const template = l[`template${method}`]
 
-    return { code, language, label }
-  })
+    if (template) {
+      const code = mustache.render(template, data).trim()
+      const { language, label } = l
+
+      return { code, language, label }
+    }
+  }).filter(Boolean)
 }

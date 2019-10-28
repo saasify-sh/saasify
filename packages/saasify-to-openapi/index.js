@@ -239,6 +239,18 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
     responses
   }
 
+  if (examples) {
+    const samples = codegen(service, null, {
+      method: 'GET'
+    })
+
+    get['x-code-samples'] = samples.map((sample) => ({
+      lang: sample.language,
+      label: sample.label,
+      source: sample.code
+    }))
+  }
+
   if (definition.description) {
     post.description = definition.description
     get.description = definition.description

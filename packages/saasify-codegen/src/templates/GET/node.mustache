@@ -1,0 +1,16 @@
+const request = require('request')
+
+const options = {
+  url: '{{{service.url}}}',{{#token}}
+  headers: {
+    'authorization': '{{token}}'
+  },{{/token}}
+  qs: {{{exampleNodeJSON}}},
+  json: true
+}
+
+request(options, (error, response, body) => {
+  if (error) throw new Error(error)
+
+  console.log(body)
+})

@@ -1,0 +1,4 @@
+curl {{#output}}-o {{output}} {{/output}}\
+  --url '{{{service.url}}}?{{{exampleQuery}}}' \
+  --header 'content-type: application/json'{{#token}} \
+  --header 'authorization: {{token}}'{{/token}}
