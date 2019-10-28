@@ -1,6 +1,7 @@
 // TODO: python and ruby example params seem off
 // TODO: add token if given for python and ruby
 // TODO: add support for GET vs POST requests
+// TODO: update result format to match format of redoc's x-code-samples
 
 import indent from 'indent-string'
 import mustache from 'mustache'
@@ -36,25 +37,34 @@ const languages = [
   }
 ]
 
-export default (service, token) => {
-  const example = service.examples[0]
+export default (service, token, opts = { }) => {
+  const {
+    method = 'POST',
+    example = service.examples[0]
+  } = opts
+
+  if (method !== 'POST') {
+    throw new Error(`TODO: support service codegen for method "${method}"`)
+  }
+
+  if (!example) {
+    console.warn(`Codegen received empty example for service "${service.name}"`)
+    return []
+  }
+
   const data = {
     service,
     token
   }
 
-  if (example) {
-    data.exampleJSON = JSON.stringify(example.input)
-    data.example = stringifyObject(example.input, { indent: '  ' })
-    data.exampleNodeJSON = indent(data.example, 1, { indent: '  ' }).slice(2)
+  data.exampleJSON = JSON.stringify(example.input)
+  data.example = stringifyObject(example.input, { indent: '  ' })
+  data.exampleNodeJSON = indent(data.example, 1, { indent: '  ' }).slice(2)
 
-    // TODO: curl isHttp "> out.png" is hardcoded...
-    // need to differentiate between http output content types
-    data.hasOutput = (service.definition && service.definition.returns.http && typeof example.output === 'string')
-    data.output = example.output
-  } else {
-    return []
-  }
+  // TODO: curl isHttp "> out.png" is hardcoded...
+  // need to differentiate between http output content types
+  data.hasOutput = (service.definition && service.definition.returns.http && typeof example.output === 'string')
+  data.output = example.output
 
   // --------------------------------------------------------------
   // WARNING: mustache templates do NOT work with live reload.

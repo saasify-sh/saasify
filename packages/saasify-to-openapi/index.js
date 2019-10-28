@@ -3,6 +3,7 @@
 const jsonSchemaToOpenAPI = require('json-schema-to-openapi-schema')
 const jsonSchemaRefParser = require('json-schema-ref-parser')
 const pReduce = require('p-reduce')
+const codegen = require('saasify-codegen')
 
 module.exports = async function saasifyToOpenAPI (deployment, opts = { }) {
   const paths = await pReduce(deployment.services, async (paths, service) => ({
@@ -106,6 +107,41 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   const { http, schema } = definition.returns
   const { type, additionalProperties, properties, ...rest } = schema
   const paramsSchema = jsonSchemaToOpenAPI(params)
+  let examplesOrdered
+  let examples
+
+  if (service.examples) {
+    examplesOrdered = service.examples
+      .filter((example) => !example.inputContentType || example.inputContentType === 'application/json')
+
+    if (examplesOrdered.length) {
+      examples = examplesOrdered
+        .reduce((acc, example) => ({
+          ...acc,
+          [example.name]: example.input
+        }), { })
+
+      // infer example values for all parameters from the list of provided example inputs
+      for (const [name, schema] of Object.entries(paramsSchema.properties)) {
+        let found = false
+
+        for (const example of Object.values(examples)) {
+          for (const [key, value] of Object.entries(example)) {
+            if (key === name) {
+              schema.example = value
+              found = true
+              break
+            }
+          }
+
+          if (found) {
+            break
+          }
+        }
+      }
+    }
+  }
+
   let responses
 
   if (http) {
@@ -155,6 +191,20 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
       }
     },
     responses
+  }
+
+  if (examples) {
+    const samples = codegen(service, null, {
+      method: 'POST'
+    })
+
+    post['x-code-samples'] = samples.map((sample) => ({
+      lang: sample.language,
+      label: sample.label,
+      source: sample.code
+    }))
+
+    post.requestBody.content['application/json'].example = examplesOrdered[0].input
   }
 
   const parameters = []
