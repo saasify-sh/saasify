@@ -4,11 +4,41 @@
 
 ## Puppet Master
 
-> [Puppeteer as a service](https://puppet-master.sh) ([source code](https://github.com/saasify-sh/puppet-master)).
+Headless Chrome as a [service](https://puppet-master.sh). ([source code](https://github.com/saasify-sh/puppet-master))
+
+Wraps the [puppeteer](https://github.com/GoogleChrome/puppeteer) NPM module by [Google Chrome](https://github.com/GoogleChrome).
+
+<a href="https://puppet-master.sh" target="_blank">
+  <img
+    src="https://badges.saasify.sh?text=Try%20Puppet%20Master%20API"
+    height="40"
+    alt="Try Puppet Master API"
+  />
+</a>
 
 <p align="center">
-  <a href="https://puppet-master.sh" title="Puppet Master">
+  <a href="https://puppet-master.sh" title="Puppet Master" target="_blank">
     <img src="https://storage.googleapis.com/saasify-uploads-prod/transitive-bullshit/puppet-master/b0c5c30c/saas-logo.svg" alt="Puppet Master Logo" width="200" />
+  </a>
+</p>
+
+## Sharp
+
+Powerful SaaS API for image conversion and manipulation. ([source code](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/sharp)).
+
+Wraps the [sharp](https://github.com/lovell/sharp) NPM module by [Lovell Fuller](https://github.com/lovell).
+
+<a href="https://transitive-bullshit_sharp_4caa3e85.saasify.sh" target="_blank">
+  <img
+    src="https://badges.saasify.sh?text=Try%20Sharp%20API"
+    height="40"
+    alt="Try Sharp API"
+  />
+</a>
+
+<p align="center">
+  <a href="https://transitive-bullshit_sharp_4caa3e85.saasify.sh/" title="Sharp" target="_blank">
+    <img src="https://storage.googleapis.com/saasify-uploads-prod/4692dbd3bc4f9aab721f2e7c0a6f36139ce91feb.svg" alt="Sharp Logo" width="200" />
   </a>
 </p>
 
