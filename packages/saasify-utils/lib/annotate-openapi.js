@@ -36,9 +36,6 @@ module.exports = async (spec, deployment, opts = { }) => {
       name: 'API Support',
       email: 'support@saasify.sh'
     },
-    license: {
-      name: 'Apache 2.0'
-    },
     description: `
 ${deployment.readme || ''}
 
