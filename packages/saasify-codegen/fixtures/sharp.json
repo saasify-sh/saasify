@@ -1,0 +1,1669 @@
+{
+  "enabled": true,
+  "published": false,
+  "description": "Powerful SaaS API for image conversion and manipulation.",
+  "noAuthRateLimit": {
+    "enabled": true,
+    "requests": true,
+    "requestsInterval": 3600,
+    "requestsMaxPerInterval": 10
+  },
+  "amountPerBase": 99,
+  "amountPerRequest": 0.04,
+  "amountPerCompute": 0.34,
+  "amountPerBandwidth": 20,
+  "hash": "d90e513e",
+  "user": "5d5b477eb5fab1199c927a36",
+  "project": {
+    "enabled": true,
+    "_id": "transitive-bullshit/sharp",
+    "name": "sharp",
+    "user": "5d5b477eb5fab1199c927a36",
+    "publishedVersions": [],
+    "createdAt": "2019-10-24T06:15:34.191Z",
+    "updatedAt": "2019-10-24T06:15:34.191Z",
+    "__v": 0,
+    "saasUrl": "http://transitive-bullshit_sharp.localhost:3000",
+    "id": "transitive-bullshit/sharp"
+  },
+  "version": "0.1.0",
+  "readme": "# sharp\n\n> Powerful SaaS API for image conversion and manipulation.\n\nThis project provides a hosted, SaaS version of [sharp](https://github.com/lovell/sharp) by [Lovell Fuller](https://github.com/lovell).\n\nNote that the majority of the revenue from this hosted API goes back to the open source maintainers behind the original project.\n\n<a href=\"https://transitive-bullshit_sharp_9a3686cd.saasify.sh\">\n  <img\n    src=\"https://badges.saasify.sh\"\n    height=\"40\"\n    alt=\"Use Hosted API\"\n  />\n</a>\n\n## Examples\n\nThe following examples can all be invoked with the following curl template by changing out the `example.json` file:\n\n```\ncurl -X POST -d '@example.json' \\\n  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'\n```\n\n### Download image\n\n```\ncurl -X POST -d '@example.json' -o out.png \\\n  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'\n```\n\n*example.json*\n```json\n{\n  \"input\": \"https://octodex.github.com/images/original.png\"\n}\n```\n\n<img src=\"./examples/1.png\" width=\"128\" />\n\n### Convert png to jpeg\n\n```\ncurl -X POST -d '@example.json' -o out.jpg \\\n  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'\n```\n\n*example.json*\n```json\n{\n  \"input\": \"https://octodex.github.com/images/original.png\",\n  \"ops\": [\n    {\n      \"op\": \"jpeg\"\n    }\n  ]\n}\n```\n\nHere's this example as a GET request: [`/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg`](https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg).\n\n<img src=\"./examples/2.jpg\" width=\"128\" />\n\n### Resize and convert to webp\n\n```\ncurl -X POST -d '@example.json' -o out.webp \\\n  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'\n```\n\n*example.json*\n```\n{\n  \"input\": \"https://octodex.github.com/images/original.png\",\n  \"ops\": [\n    {\n      \"op\": \"resize\",\n      \"options\": {\n        \"width\": 220,\n        \"height\": 128,\n        \"fit\": \"contain\"\n      }\n    },\n    {\n      \"op\": \"webp\"\n    }\n  ]\n}\n```\n\n<img src=\"./examples/3.webp\" width=\"128\" />\n\n### Blur and then flip vertically\n\n```\ncurl -X POST -d '@example.json' -o out.png \\\n  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'\n```\n\n*example.json*\n```\n{\n  \"input\": \"https://octodex.github.com/images/original.png\",\n  \"ops\": [\n    {\n      \"op\": \"blur\",\n      \"sigma\": 10\n    },\n    {\n      \"op\": \"flip\"\n    }\n  ]\n}\n```\n\n<img src=\"./examples/4.png\" width=\"128\" />\n\n### Tint, remove alpha, and convert to custom png\n\n```\ncurl -X POST -d '@example.json' -o out.png \\\n  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'\n```\n\n*example.json*\n```\n{\n  \"input\": \"https://octodex.github.com/images/original.png\",\n  \"ops\": [\n    {\n      \"op\": \"tint\",\n      \"rgb\": \"#7743CE\"\n    },\n    {\n      \"op\": \"removeAlpha\"\n    },\n    {\n      \"op\": \"png\",\n      \"options\": {\n        \"compressionLevel\": 7\n      }\n    }\n  ]\n}\n```\n\n<img src=\"./examples/5.png\" width=\"128\" />\n\n### Get image metadata\n\n```\ncurl -X POST -d '@example.json' -o out.json \\\n  'https://api.saasify.sh/1/call/transitive-bullshit/sharp@9a3686cd'\n```\n\n*example.json*\n```json\n{\n  \"input\": \"https://octodex.github.com/images/original.png\",\n  \"ops\": [\n    {\n      \"op\": \"metadata\"\n    }\n  ]\n}\n```\n\n*output (JSON)*\n```json\n{\n  \"format\": \"png\",\n  \"size\": 36582,\n  \"width\": 896,\n  \"height\": 896,\n  \"space\": \"srgb\",\n  \"channels\": 4,\n  \"depth\": \"uchar\",\n  \"density\": 72,\n  \"isProgressive\": false,\n  \"hasProfile\": false,\n  \"hasAlpha\": true\n}\n```\n\n## Image Operations\n\nThe following [sharp](https://sharp.pixelplumbing.com/en/stable/) image operations are supported.\n\nAll `op` names and parameters mirror the sharp docs exactly.\n\n### Input\n\n- [x] [metadata](https://sharp.pixelplumbing.com/en/stable/api-input/#metadata)\n- [x] [stats](https://sharp.pixelplumbing.com/en/stable/api-input/#stats)\n- [x] [limitinputpixels](https://sharp.pixelplumbing.com/en/stable/api-input/#limitinputpixels)\n\n### Output\n\n- [x] [withMetadata](https://sharp.pixelplumbing.com/en/stable/api-output/#withmetadata)\n- [x] [jpeg](https://sharp.pixelplumbing.com/en/stable/api-output/#jpeg)\n- [x] [png](https://sharp.pixelplumbing.com/en/stable/api-output/#png)\n- [x] [webp](https://sharp.pixelplumbing.com/en/stable/api-output/#webp)\n- [x] [tiff](https://sharp.pixelplumbing.com/en/stable/api-output/#tiff)\n- [x] [raw](https://sharp.pixelplumbing.com/en/stable/api-output/#raw)\n- [ ] [heif](https://sharp.pixelplumbing.com/en/stable/api-output/#heif)\n- [ ] [tile](https://sharp.pixelplumbing.com/en/stable/api-output/#tile)\n\n### Resizing\n\n- [x] [resize](https://sharp.pixelplumbing.com/en/stable/api-resize/#resize)\n- [x] [extend](https://sharp.pixelplumbing.com/en/stable/api-resize/#extend)\n- [x] [extract](https://sharp.pixelplumbing.com/en/stable/api-resize/#extract)\n- [x] [trim](https://sharp.pixelplumbing.com/en/stable/api-resize/#trim)\n\n### Compositing\n\n- [x] [composite](https://sharp.pixelplumbing.com/en/stable/api-composite/)\n\n### Image Manipulation\n\n- [x] [rotate](https://sharp.pixelplumbing.com/en/stable/api-operation/#rotate)\n- [x] [flip](https://sharp.pixelplumbing.com/en/stable/api-operation/#flip)\n- [x] [flop](https://sharp.pixelplumbing.com/en/stable/api-operation/#flop)\n- [x] [sharpen](https://sharp.pixelplumbing.com/en/stable/api-operation/#sharpen)\n- [x] [median](https://sharp.pixelplumbing.com/en/stable/api-operation/#median)\n- [x] [blur](https://sharp.pixelplumbing.com/en/stable/api-operation/#blur)\n- [x] [flatten](https://sharp.pixelplumbing.com/en/stable/api-operation/#flatten)\n- [x] [gamma](https://sharp.pixelplumbing.com/en/stable/api-operation/#gamma)\n- [x] [negate](https://sharp.pixelplumbing.com/en/stable/api-operation/#negate)\n- [x] [normalize](https://sharp.pixelplumbing.com/en/stable/api-operation/#normalize)\n- [x] [convolve](https://sharp.pixelplumbing.com/en/stable/api-operation/#convolve)\n- [x] [threshold](https://sharp.pixelplumbing.com/en/stable/api-operation/#threshold)\n- [x] [boolean](https://sharp.pixelplumbing.com/en/stable/api-operation/#)\n- [x] [linear](https://sharp.pixelplumbing.com/en/stable/api-operation/#linear)\n- [x] [recomb](https://sharp.pixelplumbing.com/en/stable/api-operation/#recomb)\n- [x] [modulate](https://sharp.pixelplumbing.com/en/stable/api-operation/#modulate)\n\n### Color Manipulation\n\n- [x] [tint](https://sharp.pixelplumbing.com/en/stable/api-colour/#tint)\n- [x] [greyscale](https://sharp.pixelplumbing.com/en/stable/api-colour/#greyscale)\n- [x] [toColorspace](https://sharp.pixelplumbing.com/en/stable/api-colour/#tocolorspace)\n\n### Channel Manipulation\n\n- [x] [removeAlpha](https://sharp.pixelplumbing.com/en/stable/api-channel/#removealpha)\n- [x] [ensureAlpha](https://sharp.pixelplumbing.com/en/stable/api-channel/#ensurealpha)\n- [x] [extractChannel](https://sharp.pixelplumbing.com/en/stable/api-channel/#extractChannel)\n- [ ] [joinChannel](https://sharp.pixelplumbing.com/en/stable/api-channel/#joinchannel)\n- [x] [bandBool](https://sharp.pixelplumbing.com/en/stable/api-channel/#bandbool)\n\n## License\n\nThis SaaS project was bootstrapped with [Saasify](https://saasify.sh).\n\nMIT © [Saasify](https://saasify.sh)\n",
+  "authRateLimit": null,
+  "services": [
+    {
+      "name": "process",
+      "timeout": 0,
+      "adaptor": "typescript",
+      "GET": true,
+      "POST": true,
+      "examples": [
+        {
+          "name": "Resize",
+          "input": {
+            "input": "https://octodex.github.com/images/original.png",
+            "ops": [
+              {
+                "op": "resize",
+                "options": {
+                  "width": 220
+                }
+              },
+              {
+                "op": "webp"
+              }
+            ]
+          },
+          "output": "result.webp"
+        }
+      ],
+      "config": {},
+      "headers": {},
+      "src": "index.ts",
+      "definition": {
+        "config": {
+          "defaultExport": true,
+          "language": "typescript"
+        },
+        "params": {
+          "context": false,
+          "order": [
+            "input",
+            "options",
+            "ops"
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "input": {
+                "type": "string"
+              },
+              "options": {
+                "$ref": "#/definitions/SharpOptions"
+              },
+              "ops": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/definitions/ImageOperation"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationLimitInputPixels"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationWithMetadata"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationJpeg"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationPng"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationWebp"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationTiff"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationResize"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationExtend"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationExtract"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationTrim"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationComposite"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationRotate"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationFlip"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationFlop"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationSharpen"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationMedian"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationBlur"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationFlatten"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationGamma"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationNegate"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationNormalize"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationConvolve"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationThreshold"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationBoolean"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationLinear"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationRecomb"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationModulate"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationTint"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationGreyscale"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationToColorSpace"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationRemoveAlpha"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationEnsureAlpha"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationExtractChannel"
+                    },
+                    {
+                      "$ref": "#/definitions/ImageOperationBandBool"
+                    }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false,
+            "definitions": {
+              "SharpOptions": {
+                "type": "object",
+                "properties": {
+                  "failOnError": {
+                    "description": "By default halt processing and raise an error when loading invalid images.\nSet this flag to false if you'd rather apply a \"best effort\" to decode images,\neven if the data is corrupt or invalid. (optional, default true)\n(optional, default true)",
+                    "type": "boolean"
+                  },
+                  "density": {
+                    "description": "Number representing the DPI for vector images. (optional, default 72)",
+                    "type": "number"
+                  },
+                  "pages": {
+                    "description": "Number of pages to extract for multi-page input (GIF, TIFF, PDF), use -1 for all pages",
+                    "type": "number"
+                  },
+                  "page": {
+                    "description": "Page number to start extracting from for multi-page input (GIF, TIFF, PDF), zero based. (optional, default 0)",
+                    "type": "number"
+                  },
+                  "raw": {
+                    "$ref": "#/definitions/Raw",
+                    "description": "Describes raw pixel input image data. See raw() for pixel ordering."
+                  },
+                  "create": {
+                    "$ref": "#/definitions/Create",
+                    "description": "Describes a new image to be created."
+                  }
+                },
+                "additionalProperties": false
+              },
+              "Raw": {
+                "type": "object",
+                "properties": {
+                  "width": {
+                    "type": "number"
+                  },
+                  "height": {
+                    "type": "number"
+                  },
+                  "channels": {
+                    "enum": [
+                      1,
+                      2,
+                      3,
+                      4
+                    ],
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "channels",
+                  "height",
+                  "width"
+                ]
+              },
+              "Create": {
+                "type": "object",
+                "properties": {
+                  "width": {
+                    "description": "Number of pixels wide.",
+                    "type": "number"
+                  },
+                  "height": {
+                    "description": "Number of pixels high.",
+                    "type": "number"
+                  },
+                  "channels": {
+                    "description": "Number of bands e.g. 3 for RGB, 4 for RGBA",
+                    "enum": [
+                      3,
+                      4
+                    ],
+                    "type": "number"
+                  },
+                  "background": {
+                    "description": "Parsed by the [color](https://www.npmjs.org/package/color) module to extract values for red, green, blue and alpha.",
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/RGBA"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "background",
+                  "channels",
+                  "height",
+                  "width"
+                ]
+              },
+              "RGBA": {
+                "type": "object",
+                "properties": {
+                  "r": {
+                    "type": "number"
+                  },
+                  "g": {
+                    "type": "number"
+                  },
+                  "b": {
+                    "type": "number"
+                  },
+                  "alpha": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ImageOperation": {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationType": {
+                "enum": [
+                  "bandBool",
+                  "bandbool",
+                  "blur",
+                  "boolean",
+                  "composite",
+                  "convolve",
+                  "ensureAlpha",
+                  "extend",
+                  "extract",
+                  "extractChannel",
+                  "flatten",
+                  "flip",
+                  "flop",
+                  "gamma",
+                  "grayscale",
+                  "greyscale",
+                  "jpeg",
+                  "limitInputPixels",
+                  "linear",
+                  "median",
+                  "meta",
+                  "metadata",
+                  "modulate",
+                  "negate",
+                  "normalise",
+                  "normalize",
+                  "png",
+                  "raw",
+                  "recomb",
+                  "removeAlpha",
+                  "resize",
+                  "rotate",
+                  "sharpen",
+                  "stats",
+                  "threshold",
+                  "tiff",
+                  "tint",
+                  "toColorSpace",
+                  "toColorspace",
+                  "toColourSpace",
+                  "toColourspace",
+                  "trim",
+                  "webp",
+                  "withMetadata"
+                ],
+                "type": "string"
+              },
+              "ImageOperationLimitInputPixels": {
+                "type": "object",
+                "properties": {
+                  "limit": {
+                    "type": "number"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "limit",
+                  "op"
+                ]
+              },
+              "ImageOperationWithMetadata": {
+                "type": "object",
+                "properties": {
+                  "options": {
+                    "$ref": "#/definitions/WriteableMetadata"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "WriteableMetadata": {
+                "type": "object",
+                "properties": {
+                  "orientation": {
+                    "description": "Number value of the EXIF Orientation header, if present",
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ImageOperationJpeg": {
+                "type": "object",
+                "properties": {
+                  "options": {
+                    "$ref": "#/definitions/JpegOptions"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "JpegOptions": {
+                "type": "object",
+                "properties": {
+                  "progressive": {
+                    "description": "Use progressive (interlace) scan (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "chromaSubsampling": {
+                    "description": "Set to '4:4:4' to prevent chroma subsampling when quality <= 90 (optional, default '4:2:0')",
+                    "type": "string"
+                  },
+                  "trellisQuantisation": {
+                    "description": "Apply trellis quantisation, requires mozjpeg (optional, default  false)",
+                    "type": "boolean"
+                  },
+                  "overshootDeringing": {
+                    "description": "Apply overshoot deringing, requires mozjpeg (optional, default  false)",
+                    "type": "boolean"
+                  },
+                  "optimiseScans": {
+                    "description": "Optimise progressive scans, forces progressive, requires mozjpeg (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "optimizeScans": {
+                    "description": "Alternative spelling of optimiseScans (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "optimiseCoding": {
+                    "description": "Optimise Huffman coding tables (optional, default true)",
+                    "type": "boolean"
+                  },
+                  "optimizeCoding": {
+                    "description": "Alternative spelling of optimiseCoding (optional, default true)",
+                    "type": "boolean"
+                  },
+                  "quantisationTable": {
+                    "description": "Quantization table to use, integer 0-8, requires mozjpeg (optional, default 0)",
+                    "type": "number"
+                  },
+                  "quantizationTable": {
+                    "description": "Alternative spelling of quantisationTable (optional, default 0)",
+                    "type": "number"
+                  },
+                  "quality": {
+                    "description": "Quality, integer 1-100 (optional, default 80)",
+                    "type": "number"
+                  },
+                  "force": {
+                    "description": "Force format output, otherwise attempt to use input format (optional, default true)",
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ImageOperationPng": {
+                "type": "object",
+                "properties": {
+                  "options": {
+                    "$ref": "#/definitions/PngOptions"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "PngOptions": {
+                "type": "object",
+                "properties": {
+                  "progressive": {
+                    "description": "Use progressive (interlace) scan (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "compressionLevel": {
+                    "description": "zlib compression level, 0-9 (optional, default 9)",
+                    "type": "number"
+                  },
+                  "adaptiveFiltering": {
+                    "description": "use adaptive row filtering (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "force": {
+                    "description": "Force PNG output, otherwise attempt to use input format (optional, default  true)",
+                    "type": "boolean"
+                  },
+                  "quality": {
+                    "description": "use the lowest number of colours needed to achieve given quality, requires libimagequant (optional, default `100`)",
+                    "type": "number"
+                  },
+                  "palette": {
+                    "description": "Quantise to a palette-based image with alpha transparency support, requires libimagequant (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "colours": {
+                    "description": "Maximum number of palette entries, requires libimagequant (optional, default 256)",
+                    "type": "number"
+                  },
+                  "colors": {
+                    "description": "Alternative Spelling of \"colours\". Maximum number of palette entries, requires libimagequant (optional, default 256)",
+                    "type": "number"
+                  },
+                  "dither": {
+                    "description": "Level of Floyd-Steinberg error diffusion, requires libimagequant (optional, default 1.0)",
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ImageOperationWebp": {
+                "type": "object",
+                "properties": {
+                  "options": {
+                    "$ref": "#/definitions/WebpOptions"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "WebpOptions": {
+                "type": "object",
+                "properties": {
+                  "alphaQuality": {
+                    "description": "Quality of alpha layer, number from 0-100 (optional, default 100)",
+                    "type": "number"
+                  },
+                  "lossless": {
+                    "description": "Use lossless compression mode (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "nearLossless": {
+                    "description": "Use near_lossless compression mode (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "smartSubsample": {
+                    "description": "Use high quality chroma subsampling (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "reductionEffort": {
+                    "description": "Level of CPU effort to reduce file size, integer 0-6 (optional, default 4)",
+                    "type": "number"
+                  },
+                  "quality": {
+                    "description": "Quality, integer 1-100 (optional, default 80)",
+                    "type": "number"
+                  },
+                  "force": {
+                    "description": "Force format output, otherwise attempt to use input format (optional, default true)",
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ImageOperationTiff": {
+                "type": "object",
+                "properties": {
+                  "options": {
+                    "$ref": "#/definitions/TiffOptions"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "TiffOptions": {
+                "type": "object",
+                "properties": {
+                  "compression": {
+                    "description": "Compression options: lzw, deflate, jpeg, ccittfax4 (optional, default 'jpeg')",
+                    "type": "string"
+                  },
+                  "predictor": {
+                    "description": "Compression predictor options: none, horizontal, float (optional, default 'horizontal')",
+                    "type": "string"
+                  },
+                  "xres": {
+                    "description": "Horizontal resolution in pixels/mm (optional, default 1.0)",
+                    "type": "number"
+                  },
+                  "yres": {
+                    "description": "Vertical resolution in pixels/mm (optional, default 1.0)",
+                    "type": "number"
+                  },
+                  "squash": {
+                    "description": "Squash 8-bit images down to 1 bit (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "quality": {
+                    "description": "Quality, integer 1-100 (optional, default 80)",
+                    "type": "number"
+                  },
+                  "force": {
+                    "description": "Force format output, otherwise attempt to use input format (optional, default true)",
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ImageOperationResize": {
+                "type": "object",
+                "properties": {
+                  "options": {
+                    "$ref": "#/definitions/ResizeOptions"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ResizeOptions": {
+                "type": "object",
+                "properties": {
+                  "width": {
+                    "description": "Alternative means of specifying width. If both are present this take priority.",
+                    "type": "number"
+                  },
+                  "height": {
+                    "description": "Alternative means of specifying height. If both are present this take priority.",
+                    "type": "number"
+                  },
+                  "fit": {
+                    "description": "How the image should be resized to fit both provided dimensions, one of cover, contain, fill, inside or outside. (optional, default 'cover')",
+                    "enum": [
+                      "contain",
+                      "cover",
+                      "fill",
+                      "inside",
+                      "outside"
+                    ],
+                    "type": "string"
+                  },
+                  "position": {
+                    "description": "Position, gravity or strategy to use when fit is cover or contain. (optional, default 'centre')",
+                    "type": "string"
+                  },
+                  "background": {
+                    "description": "Background colour when using a fit of contain, parsed by the color module, defaults to black without transparency. (optional, default {r:0,g:0,b:0,alpha:1})",
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/RGBA"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "kernel": {
+                    "description": "The kernel to use for image reduction. (optional, default 'lanczos3')",
+                    "enum": [
+                      "cubic",
+                      "lanczos2",
+                      "lanczos3",
+                      "mitchell",
+                      "nearest"
+                    ],
+                    "type": "string"
+                  },
+                  "withoutEnlargement": {
+                    "description": "Do not enlarge if the width or height are already less than the specified dimensions, equivalent to GraphicsMagick's > geometry option. (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "fastShrinkOnLoad": {
+                    "description": "Take greater advantage of the JPEG and WebP shrink-on-load feature, which can lead to a slight moiré pattern on some images. (optional, default true)",
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ImageOperationExtend": {
+                "type": "object",
+                "properties": {
+                  "options": {
+                    "$ref": "#/definitions/ExtendOptions"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ExtendOptions": {
+                "type": "object",
+                "properties": {
+                  "top": {
+                    "type": "number"
+                  },
+                  "left": {
+                    "type": "number"
+                  },
+                  "bottom": {
+                    "type": "number"
+                  },
+                  "right": {
+                    "type": "number"
+                  },
+                  "background": {
+                    "description": "Background colour, parsed by the color module, defaults to black without transparency. (optional, default {r:0,g:0,b:0,alpha:1})",
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/RGBA"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ImageOperationExtract": {
+                "type": "object",
+                "properties": {
+                  "region": {
+                    "$ref": "#/definitions/Region"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op",
+                  "region"
+                ]
+              },
+              "Region": {
+                "type": "object",
+                "properties": {
+                  "left": {
+                    "description": "zero-indexed offset from left edge",
+                    "type": "number"
+                  },
+                  "top": {
+                    "description": "zero-indexed offset from top edge",
+                    "type": "number"
+                  },
+                  "width": {
+                    "description": "dimension of extracted image",
+                    "type": "number"
+                  },
+                  "height": {
+                    "description": "dimension of extracted image",
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "height",
+                  "left",
+                  "top",
+                  "width"
+                ]
+              },
+              "ImageOperationTrim": {
+                "type": "object",
+                "properties": {
+                  "threshold": {
+                    "type": "number"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationComposite": {
+                "type": "object",
+                "properties": {
+                  "images": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/OverlayOptions"
+                    }
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "images",
+                  "op"
+                ]
+              },
+              "OverlayOptions": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "description": "Buffer containing image data, String containing the path to an image file, or Create object",
+                    "anyOf": [
+                      {
+                        "description": "Raw data is stored in instances of the Buffer class.\nA Buffer is similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap.  A Buffer cannot be resized.\nValid string encodings: 'ascii'|'utf8'|'utf16le'|'ucs2'(alias of 'utf16le')|'base64'|'binary'(deprecated)|'hex'",
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "create": {
+                            "$ref": "#/definitions/Create"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "create"
+                        ]
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "blend": {
+                    "$ref": "#/definitions/sharp.Blend",
+                    "description": "how to blend this image with the image below. (optional, default `'over'`)"
+                  },
+                  "gravity": {
+                    "description": "gravity at which to place the overlay. (optional, default 'centre')",
+                    "type": "string"
+                  },
+                  "top": {
+                    "description": "the pixel offset from the top edge.",
+                    "type": "number"
+                  },
+                  "left": {
+                    "description": "the pixel offset from the left edge.",
+                    "type": "number"
+                  },
+                  "tile": {
+                    "description": "set to true to repeat the overlay image across the entire image with the given  gravity. (optional, default false)",
+                    "type": "boolean"
+                  },
+                  "density": {
+                    "description": "number representing the DPI for vector overlay image. (optional, default 72)",
+                    "type": "number"
+                  },
+                  "raw": {
+                    "$ref": "#/definitions/Raw",
+                    "description": "describes overlay when using raw pixel data."
+                  },
+                  "premultiplied": {
+                    "description": "Set to true to avoid premultipling the image below. Equivalent to the --premultiplied vips option.",
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "sharp.Blend": {
+                "enum": [
+                  "add",
+                  "atop",
+                  "clear",
+                  "colour-burn",
+                  "colour-dodge",
+                  "darken",
+                  "dest",
+                  "dest-atop",
+                  "dest-in",
+                  "dest-out",
+                  "dest-over",
+                  "difference",
+                  "exclusion",
+                  "hard-light",
+                  "in",
+                  "lighten",
+                  "multiply",
+                  "out",
+                  "over",
+                  "overlay",
+                  "saturate",
+                  "screen",
+                  "soft-light",
+                  "source",
+                  "xor"
+                ],
+                "type": "string"
+              },
+              "ImageOperationRotate": {
+                "type": "object",
+                "properties": {
+                  "angle": {
+                    "type": "number"
+                  },
+                  "options": {
+                    "$ref": "#/definitions/RotateOptions"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "RotateOptions": {
+                "type": "object",
+                "properties": {
+                  "background": {
+                    "description": "parsed by the color module to extract values for red, green, blue and alpha. (optional, default \"#000000\")",
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/RGBA"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ImageOperationFlip": {
+                "type": "object",
+                "properties": {
+                  "flip": {
+                    "type": "boolean"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationFlop": {
+                "type": "object",
+                "properties": {
+                  "flop": {
+                    "type": "boolean"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationSharpen": {
+                "type": "object",
+                "properties": {
+                  "sigma": {
+                    "type": "number"
+                  },
+                  "flat": {
+                    "type": "number"
+                  },
+                  "jagged": {
+                    "type": "number"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationMedian": {
+                "type": "object",
+                "properties": {
+                  "size": {
+                    "type": "number"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationBlur": {
+                "type": "object",
+                "properties": {
+                  "sigma": {
+                    "type": "number"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationFlatten": {
+                "type": "object",
+                "properties": {
+                  "flatten": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/FlattenOptions"
+                      },
+                      {
+                        "type": "boolean"
+                      }
+                    ]
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "FlattenOptions": {
+                "type": "object",
+                "properties": {
+                  "background": {
+                    "description": "background colour, parsed by the color module, defaults to black. (optional, default {r:0,g:0,b:0})",
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/RGBA"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ImageOperationGamma": {
+                "type": "object",
+                "properties": {
+                  "gamma": {
+                    "type": "number"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationNegate": {
+                "type": "object",
+                "properties": {
+                  "negate": {
+                    "type": "boolean"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationNormalize": {
+                "type": "object",
+                "properties": {
+                  "normalize": {
+                    "type": "boolean"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationConvolve": {
+                "type": "object",
+                "properties": {
+                  "kernel": {
+                    "$ref": "#/definitions/Kernel"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "kernel",
+                  "op"
+                ]
+              },
+              "Kernel": {
+                "type": "object",
+                "properties": {
+                  "width": {
+                    "description": "width of the kernel in pixels.",
+                    "type": "number"
+                  },
+                  "height": {
+                    "description": "height of the kernel in pixels.",
+                    "type": "number"
+                  },
+                  "kernel": {
+                    "description": "Array of length width*height containing the kernel values.",
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  "scale": {
+                    "description": "the scale of the kernel in pixels. (optional, default sum)",
+                    "type": "number"
+                  },
+                  "offset": {
+                    "description": "the offset of the kernel in pixels. (optional, default 0)",
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "height",
+                  "kernel",
+                  "width"
+                ]
+              },
+              "ImageOperationThreshold": {
+                "type": "object",
+                "properties": {
+                  "threshold": {
+                    "type": "number"
+                  },
+                  "options": {
+                    "$ref": "#/definitions/ThresholdOptions"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ThresholdOptions": {
+                "type": "object",
+                "properties": {
+                  "greyscale": {
+                    "description": "convert to single channel greyscale. (optional, default true)",
+                    "type": "boolean"
+                  },
+                  "grayscale": {
+                    "description": "alternative spelling for greyscale. (optional, default true)",
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "ImageOperationBoolean": {
+                "type": "object",
+                "properties": {
+                  "operand": {
+                    "type": "string"
+                  },
+                  "operator": {
+                    "type": "string"
+                  },
+                  "options": {
+                    "type": "object",
+                    "properties": {
+                      "raw": {
+                        "$ref": "#/definitions/Raw"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "raw"
+                    ]
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op",
+                  "operand",
+                  "operator"
+                ]
+              },
+              "ImageOperationLinear": {
+                "type": "object",
+                "properties": {
+                  "a": {
+                    "type": "number"
+                  },
+                  "b": {
+                    "type": "number"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationRecomb": {
+                "type": "object",
+                "properties": {
+                  "inputMatrix": {
+                    "type": "array",
+                    "items": [
+                      {
+                        "type": "array",
+                        "items": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ],
+                        "minItems": 3,
+                        "additionalItems": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "array",
+                        "items": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ],
+                        "minItems": 3,
+                        "additionalItems": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "array",
+                        "items": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "number"
+                          }
+                        ],
+                        "minItems": 3,
+                        "additionalItems": {
+                          "anyOf": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "minItems": 3,
+                    "additionalItems": {
+                      "anyOf": [
+                        {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "minItems": 3,
+                          "additionalItems": {
+                            "anyOf": [
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "minItems": 3,
+                          "additionalItems": {
+                            "anyOf": [
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "type": "array",
+                          "items": [
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            },
+                            {
+                              "type": "number"
+                            }
+                          ],
+                          "minItems": 3,
+                          "additionalItems": {
+                            "anyOf": [
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "number"
+                              },
+                              {
+                                "type": "number"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "inputMatrix",
+                  "op"
+                ]
+              },
+              "ImageOperationModulate": {
+                "type": "object",
+                "properties": {
+                  "options": {
+                    "type": "object",
+                    "properties": {
+                      "brightness": {
+                        "type": "number"
+                      },
+                      "saturation": {
+                        "type": "number"
+                      },
+                      "hue": {
+                        "type": "number"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationTint": {
+                "type": "object",
+                "properties": {
+                  "rgb": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/RGBA"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op",
+                  "rgb"
+                ]
+              },
+              "ImageOperationGreyscale": {
+                "type": "object",
+                "properties": {
+                  "greyscale": {
+                    "type": "boolean"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationToColorSpace": {
+                "type": "object",
+                "properties": {
+                  "colourspace": {
+                    "type": "string"
+                  },
+                  "colorspace": {
+                    "type": "string"
+                  },
+                  "colourSpace": {
+                    "type": "string"
+                  },
+                  "colorSpace": {
+                    "type": "string"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationRemoveAlpha": {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationEnsureAlpha": {
+                "type": "object",
+                "properties": {
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "op"
+                ]
+              },
+              "ImageOperationExtractChannel": {
+                "type": "object",
+                "properties": {
+                  "channel": {
+                    "type": "number"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "channel",
+                  "op"
+                ]
+              },
+              "ImageOperationBandBool": {
+                "type": "object",
+                "properties": {
+                  "boolOp": {
+                    "type": "string"
+                  },
+                  "op": {
+                    "$ref": "#/definitions/ImageOperationType"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "boolOp",
+                  "op"
+                ]
+              }
+            },
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "returns": {
+          "async": true,
+          "http": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "$ref": "#/definitions/HttpResponse"
+              }
+            },
+            "additionalProperties": false,
+            "definitions": {
+              "HttpResponse": {
+                "description": "Fallback to allow raw HTTP responses that are not type-checked.",
+                "type": "object",
+                "properties": {
+                  "statusCode": {
+                    "type": "number"
+                  },
+                  "headers": {
+                    "$ref": "#/definitions/OutgoingHttpHeaders"
+                  },
+                  "body": {
+                    "description": "Raw data is stored in instances of the Buffer class.\nA Buffer is similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap.  A Buffer cannot be resized.\nValid string encodings: 'ascii'|'utf8'|'utf16le'|'ucs2'(alias of 'utf16le')|'base64'|'binary'(deprecated)|'hex'",
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              },
+              "OutgoingHttpHeaders": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                }
+              }
+            },
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "version": "1.1.0",
+        "title": "process"
+      },
+      "url": "http://localhost:5000/1/call/transitive-bullshit/sharp@d90e513e",
+      "route": "/1/call/transitive-bullshit/sharp@d90e513e"
+    }
+  ],
+  "build": null,
+  "env": null,
+  "saas": {
+    "features": [],
+    "name": "sharp",
+    "heading": "sharp",
+    "subheading": "Powerful SaaS API for image conversion and manipulation.",
+    "theme": {
+      "name": "okta"
+    },
+    "logo": null,
+    "favicon": null
+  },
+  "createdAt": "2019-10-24T07:39:09.778Z",
+  "updatedAt": "2019-10-24T07:39:09.778Z",
+  "coupons": [],
+  "url": "http://localhost:5000/1/call/transitive-bullshit/sharp@d90e513e",
+  "openApiUrl": "http://localhost:5000/1/deployments/openapi/transitive-bullshit/sharp@d90e513e",
+  "saasUrl": "http://transitive-bullshit_sharp_d90e513e.localhost:3000",
+  "id": "transitive-bullshit/sharp@d90e513e"
+}

@@ -1,0 +1,7 @@
+import requests
+
+url = "{{{service.url}}}"
+payload = "{{{example}}}"
+response = requests.request("POST", url, data=payload)
+
+print(response.text)
