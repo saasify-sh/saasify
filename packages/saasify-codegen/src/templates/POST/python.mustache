@@ -1,7 +1,8 @@
 import requests
 
 url = "{{{service.url}}}"
-payload = "{{{example}}}"
-response = requests.request("POST", url, data=payload)
+payload = "{{{exampleJSON}}}"
+response = requests.post(url, json=payload)
 
-print(response.text)
+with open("youtube.png", "wb") as out:
+    out.write(response.content)

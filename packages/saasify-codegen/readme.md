@@ -13,12 +13,17 @@
 ## Install
 
 ```bash
-npm install --save saasify-codegen
+yarn install
 ```
 
 ## Usage
 
-TODO
+Update any of the templates and run below commands for testing the new
+templates.
+
+- `npx ava -u` Creates new templates
+- `yarn build` Build from the new templates
+- `yarn test` Runs test for every template
 
 ## License
 

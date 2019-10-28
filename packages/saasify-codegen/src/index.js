@@ -1,5 +1,6 @@
-// TODO: python and ruby example params are broken
+// TODO: python and ruby example params seem off
 // TODO: add token if given for python and ruby
+// TODO: add support for GET vs POST requests
 // TODO: update result format to match format of redoc's x-code-samples
 
 import indent from 'indent-string'
@@ -28,6 +29,11 @@ const languages = [
     templatePOST: raw('./templates/POST/python.mustache')
   },
   {
+    language: 'go',
+    label: 'Go',
+    templatePOST: raw('./templates/POST/go.mustache')
+  },
+  {
     language: 'ruby',
     label: 'Ruby',
     templatePOST: raw('./templates/POST/ruby.mustache')
@@ -39,6 +45,8 @@ export default (service, token, opts = { }) => {
     method = 'POST',
     example = service.examples[0]
   } = opts
+
+  console.log('codegen', method)
 
   if (method !== 'POST' && method !== 'GET') {
     throw new Error(`TODO: support service codegen for method "${method}"`)
