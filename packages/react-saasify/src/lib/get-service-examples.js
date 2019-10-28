@@ -9,6 +9,7 @@ import mustache from 'mustache'
 import stringifyObject from 'stringify-object'
 
 import raw from 'raw.macro'
+
 const curl = raw('./templates/curl.mustache')
 const node = raw('./templates/node.mustache')
 const python = raw('./templates/python.mustache')

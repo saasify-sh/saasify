@@ -110,6 +110,14 @@
             }
           ]
         },
+        "inputContentType": {
+          "type": "string",
+          "title": "inputContentType"
+        },
+        "outputContentType": {
+          "type": "string",
+          "title": "outputContentType"
+        },
         "additionalProperties": false
       },
       "required": [

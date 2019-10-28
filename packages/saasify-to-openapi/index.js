@@ -106,31 +106,24 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   const { http, schema } = definition.returns
   const { type, additionalProperties, properties, ...rest } = schema
   const paramsSchema = jsonSchemaToOpenAPI(params)
-  let responseSchema
+  let responses
 
   if (http) {
-    responseSchema = {
-      description: 'Raw HTTP response.',
-      type: 'object',
-      properties: {
-        statusCode: {
-          type: 'number'
-        },
-        headers: {
-          type: 'object',
-          additionalProperties: {
-            type: 'string'
-          }
-        },
-        body: {
-          description: 'Raw response body which can be interpreted using the standard `Content-Type` header.',
-          type: 'array',
-          items: {
-            type: 'number'
+    const responseSchema = {
+      type: 'string',
+      format: 'binary',
+      description: 'Raw HTTP response body which can be interpreted using the standard `Content-Type` header.'
+    }
+
+    responses = {
+      200: {
+        description: 'Success',
+        content: {
+          '*/*': {
+            schema: responseSchema
           }
         }
-      },
-      additionalProperties: false
+      }
     }
   } else {
     const returnsJsonSchema = {
@@ -138,15 +131,15 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
       ...properties.result
     }
     const returns = await prepareSchema(returnsJsonSchema)
-    responseSchema = jsonSchemaToOpenAPI(returns)
-  }
+    const responseSchema = jsonSchemaToOpenAPI(returns)
 
-  const responses = {
-    200: {
-      description: 'Success',
-      content: {
-        'application/json': {
-          schema: responseSchema
+    responses = {
+      200: {
+        description: 'Success',
+        content: {
+          'application/json': {
+            schema: responseSchema
+          }
         }
       }
     }
