@@ -1,18 +1,21 @@
-const request = require('request')
+const request = require('request');
+const fs = require('fs');
 
 const options = {
   method: 'POST',
   url: '{{{service.url}}}',
   headers: {
-    'content-type': 'application/json'{{#token}},
-    'authorization': '{{token}}'{{/token}}
+    'content-type': 'application/json',
   },
-  body: {{{exampleNodeJSON}}},
-  json: true
-}
+  body: {
+    {{{exampleNodeJSON}}}
+  },
+  json: true,
+  encoding: null
+};
 
 request(options, (error, response, body) => {
   if (error) throw new Error(error)
 
-  console.log(body)
-})
+  fs.writeFileSync('youtube.png', body);
+});
