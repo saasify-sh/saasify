@@ -34,6 +34,8 @@ class Example {
   name: string
   input: object
   output?: string | object
+  inputContentType?: string = 'application/json'
+  outputContentType?: string = 'application/json'
 }
 
 class RateLimit {

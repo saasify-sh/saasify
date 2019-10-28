@@ -87,6 +87,7 @@ class AuthManagerClass {
 
 export const AuthManager = observable(new AuthManagerClass())
 
+// keep API authentication in sync with AuthManager state
 autorun(() => {
   API.user = AuthManager.auth && AuthManager.auth.user
   API.token = AuthManager.auth && AuthManager.auth.token

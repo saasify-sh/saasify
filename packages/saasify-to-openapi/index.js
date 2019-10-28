@@ -3,6 +3,7 @@
 const jsonSchemaToOpenAPI = require('json-schema-to-openapi-schema')
 const jsonSchemaRefParser = require('json-schema-ref-parser')
 const pReduce = require('p-reduce')
+const codegen = require('saasify-codegen')
 
 module.exports = async function saasifyToOpenAPI (deployment, opts = { }) {
   const paths = await pReduce(deployment.services, async (paths, service) => ({
@@ -106,31 +107,59 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   const { http, schema } = definition.returns
   const { type, additionalProperties, properties, ...rest } = schema
   const paramsSchema = jsonSchemaToOpenAPI(params)
-  let responseSchema
+  let examplesOrdered
+  let examples
 
-  if (http) {
-    responseSchema = {
-      description: 'Raw HTTP response.',
-      type: 'object',
-      properties: {
-        statusCode: {
-          type: 'number'
-        },
-        headers: {
-          type: 'object',
-          additionalProperties: {
-            type: 'string'
+  if (service.examples) {
+    examplesOrdered = service.examples
+      .filter((example) => !example.inputContentType || example.inputContentType === 'application/json')
+
+    if (examplesOrdered.length) {
+      examples = examplesOrdered
+        .reduce((acc, example) => ({
+          ...acc,
+          [example.name]: example.input
+        }), { })
+
+      // infer example values for all parameters from the list of provided example inputs
+      for (const [name, schema] of Object.entries(paramsSchema.properties)) {
+        let found = false
+
+        for (const example of Object.values(examples)) {
+          for (const [key, value] of Object.entries(example)) {
+            if (key === name) {
+              schema.example = value
+              found = true
+              break
+            }
           }
-        },
-        body: {
-          description: 'Raw response body which can be interpreted using the standard `Content-Type` header.',
-          type: 'array',
-          items: {
-            type: 'number'
+
+          if (found) {
+            break
           }
         }
-      },
-      additionalProperties: false
+      }
+    }
+  }
+
+  let responses
+
+  if (http) {
+    const responseSchema = {
+      type: 'string',
+      format: 'binary',
+      description: 'Raw HTTP response body which can be interpreted using the standard `Content-Type` header.'
+    }
+
+    responses = {
+      200: {
+        description: 'Success',
+        content: {
+          '*/*': {
+            schema: responseSchema
+          }
+        }
+      }
     }
   } else {
     const returnsJsonSchema = {
@@ -138,15 +167,15 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
       ...properties.result
     }
     const returns = await prepareSchema(returnsJsonSchema)
-    responseSchema = jsonSchemaToOpenAPI(returns)
-  }
+    const responseSchema = jsonSchemaToOpenAPI(returns)
 
-  const responses = {
-    200: {
-      description: 'Success',
-      content: {
-        'application/json': {
-          schema: responseSchema
+    responses = {
+      200: {
+        description: 'Success',
+        content: {
+          'application/json': {
+            schema: responseSchema
+          }
         }
       }
     }
@@ -162,6 +191,20 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
       }
     },
     responses
+  }
+
+  if (examples) {
+    const samples = codegen(service, null, {
+      method: 'POST'
+    })
+
+    post['x-code-samples'] = samples.map((sample) => ({
+      lang: sample.language,
+      label: sample.label,
+      source: sample.code
+    }))
+
+    post.requestBody.content['application/json'].example = examplesOrdered[0].input
   }
 
   const parameters = []
@@ -194,6 +237,18 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   const get = {
     parameters,
     responses
+  }
+
+  if (examples) {
+    const samples = codegen(service, null, {
+      method: 'GET'
+    })
+
+    get['x-code-samples'] = samples.map((sample) => ({
+      lang: sample.language,
+      label: sample.label,
+      source: sample.code
+    }))
   }
 
   if (definition.description) {

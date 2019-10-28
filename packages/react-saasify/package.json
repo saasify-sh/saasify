@@ -1,6 +1,6 @@
 {
   "name": "react-saasify",
-  "version": "1.7.5",
+  "version": "1.7.12",
   "description": "React components for Saasify web clients.",
   "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
@@ -25,10 +25,11 @@
     "build": "microbundle --no-compress --format modern,cjs",
     "start": "microbundle watch --no-compress --format modern,cjs",
     "dev": "yarn start",
-    "test": "eslint src"
+    "prepublish": "yarn build",
+    "test": "yarn build && eslint src"
   },
   "devDependencies": {
-    "@saasify/microbundle": "^0.13.1"
+    "@saasify/microbundle": "^0.13.2"
   },
   "dependencies": {
     "@sindresorhus/slugify": "^0.9.1",
@@ -38,22 +39,19 @@
     "date-fns": "^2.4.1",
     "debug": "^4.1.1",
     "delay": "^4.3.0",
-    "indent-string": "^4.0.0",
     "localforage": "^1.7.3",
     "mem": "^5.1.1",
-    "mustache": "^3.1.0",
     "qs": "^6.9.0",
     "raf": "^3.4.1",
     "random": "^2.1.1",
-    "raw.macro": "^0.3.0",
     "react-background-slideshow": "^1.0.4",
     "react-event-as-prop": "^1.0.0",
     "react-markdown": "^4.2.2",
     "react-sizeme": "^2.6.7",
     "react-stripe-elements": "^5.0.1",
     "react-syntax-highlighter": "^11.0.2",
-    "saasify-client": "^1.7.1",
-    "stringify-object": "^3.3.0",
+    "saasify-client": "^1.7.9",
+    "saasify-codegen": "^1.7.12",
     "titleize": "^2.1.0"
   },
   "peerDependencies": {

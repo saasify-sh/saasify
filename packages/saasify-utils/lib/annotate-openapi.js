@@ -5,7 +5,8 @@ const cloneDeep = require('clone-deep')
 const nameRe = /\/([^/]*)$/
 
 /**
- * Annotates a valid OpenAPI spec with
+ * Annotates a valid OpenAPI spec with extra metadata mostly specific to
+ * Saasify's SaaS web client and [Redoc](https://github.com/Redocly/redoc).
  */
 module.exports = async (spec, deployment, opts = { }) => {
   const {
@@ -35,9 +36,6 @@ module.exports = async (spec, deployment, opts = { }) => {
     contact: {
       name: 'API Support',
       email: 'support@saasify.sh'
-    },
-    license: {
-      name: 'Apache 2.0'
     },
     description: `
 ${deployment.readme || ''}

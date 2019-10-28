@@ -9,7 +9,9 @@ class ThemeManagerClass {
   _themes = { }
 
   registerTheme = (name, themeFactory) => {
-    console.log('register theme', name)
+    if (process.env.NODE_ENV === 'development') {
+      console.log('register theme', name)
+    }
 
     this._themes[name] = themeFactory
   }
