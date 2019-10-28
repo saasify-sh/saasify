@@ -24,5 +24,8 @@
         }
       ]
     }
-  ]
+  ],
+  "saas": {
+    "logo": "./media/logo.svg"
+  }
 }
