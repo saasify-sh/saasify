@@ -2,7 +2,6 @@
 
 :root {
   /* TODO add postcss to resolve vars for IE11 */
-  --color-primary: #5061cb;
   --filter-tint: saturate(102%) hue-rotate(10deg);
   --color-fg: #3a3a3a;
   --max-width: 1108px;
