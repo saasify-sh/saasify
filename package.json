@@ -38,5 +38,14 @@
     "eslint-plugin-standard": "^4.0.1",
     "lerna": "^3.13.4",
     "npm-run-all": "^4.1.5"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "semi": false,
+    "tabWidth": 2,
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "arrowParens": "always"
   }
 }
