@@ -1,0 +1,29 @@
+package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"io"
+	"net/http"
+	"os"
+)
+
+func main() {
+	message := map[string]interface{}{
+		{{{exampleJSON}}},
+	}
+
+	bytesRepresentation, _ := json.Marshal(message)
+
+	resp, _ := http.Post("{{{service.url}}}", "application/json", bytes.NewBuffer(bytesRepresentation))
+
+{{#hasFileOutput}}
+	out, _ := os.Create("{{output}}")
+
+	_, _ = io.Copy(out, resp.Body)
+{{/hasFileOutput}}{{^hasFileOutput}}
+	out, _ := os.Create("result.json")
+
+	_, _ = io.Copy(out, resp.Body)
+{{/hasFileOutput}}
+}

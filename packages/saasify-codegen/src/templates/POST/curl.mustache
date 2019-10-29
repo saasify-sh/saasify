@@ -1,5 +1,5 @@
-curl --request POST \
+curl --request POST{{#hasFileOutput}} -o '{{output}}'{{/hasFileOutput}} \
   --url '{{{service.url}}}' \
   --header 'content-type: application/json' \
 {{#token}}  --header 'authorization: {{token}}' \
-{{/token}}  --data '{{{exampleJSON}}}'{{#output}} -o {{output}}{{/output}}
+{{/token}}  --data '{{{exampleJSON}}}'

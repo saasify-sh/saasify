@@ -1,5 +1,6 @@
-// TODO: python and ruby example params are broken
+// TODO: python and ruby example params seem off
 // TODO: add token if given for python and ruby
+// TODO: add support for GET vs POST requests
 // TODO: update result format to match format of redoc's x-code-samples
 
 import indent from 'indent-string'
@@ -28,10 +29,18 @@ const languages = [
     templatePOST: raw('./templates/POST/python.mustache')
   },
   {
+    language: 'go',
+    label: 'Go',
+    templatePOST: raw('./templates/POST/go.mustache')
+  }
+  // TODO: fix ruby template
+  /*
+  {
     language: 'ruby',
     label: 'Ruby',
     templatePOST: raw('./templates/POST/ruby.mustache')
   }
+  */
 ]
 
 export default (service, token, opts = { }) => {
@@ -59,9 +68,7 @@ export default (service, token, opts = { }) => {
   data.exampleNodeJSON = indent(data.example, 1, { indent: '  ' }).slice(2)
   data.exampleQuery = qs.stringify(example.input)
 
-  // TODO: curl isHttp "> out.png" is hardcoded...
-  // need to differentiate between http output content types
-  data.hasOutput = (service.definition && service.definition.returns.http && typeof example.output === 'string')
+  data.hasFileOutput = (service.definition && service.definition.returns.http && typeof example.output === 'string')
   data.output = example.output
 
   // --------------------------------------------------------------

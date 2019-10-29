@@ -1,7 +1,12 @@
 import requests
 
 url = "{{{service.url}}}"
-payload = "{{{example}}}"
-response = requests.request("POST", url, data=payload)
+payload = {{{exampleJSON}}}
+response = requests.post(url, json=payload)
 
+{{#hasFileOutput}}
+with open("{{output}}", "wb") as out:
+    out.write(response.content)
+{{/hasFileOutput}}{{^hasFileOutput}}
 print(response.text)
+{{/hasFileOutput}}

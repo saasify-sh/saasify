@@ -13,12 +13,15 @@
 ## Install
 
 ```bash
-npm install --save saasify-codegen
+yarn install
 ```
 
 ## Usage
 
-TODO
+- `yarn build` Build source to `dist/`
+- `yarn start` Build source to `dist/` with watch flag
+- `yarn test` Runs unit tests
+- `npx ava -u` Runs unit tests and updates test snapshots
 
 ## License
 
