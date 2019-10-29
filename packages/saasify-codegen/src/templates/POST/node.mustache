@@ -7,15 +7,14 @@ const options = {
   headers: {
     'content-type': 'application/json',
   },
-  body: {
-    {{{exampleNodeJSON}}}
-  },
+  body: {{{exampleNodeJSON}}},
   json: true{{#hasFileOutput}},
   encoding: null{{/hasFileOutput}}
 }
 
 request(options, (error, response, body) => {
   if (error) throw new Error(error)
+
   {{#hasFileOutput}}
   fs.writeFileSync('{{output}}', body){{/hasFileOutput}}{{^hasFileOutput}}
   console.log(body){{/hasFileOutput}}

@@ -30,8 +30,10 @@ class ThemeManagerClass {
     if (themeFactory) {
       this.theme = themeFactory(opts)
     } else {
-      console.warn(`ThemeManager.setTheme(${name}) theme not found`)
-      console.warn('Must call ThemeManager.registerTheme first')
+      console.error()
+      console.error(`ThemeManager.setTheme(${name}) theme not found`)
+      console.error('Must call ThemeManager.registerTheme first')
+      console.error()
     }
   }
 }
