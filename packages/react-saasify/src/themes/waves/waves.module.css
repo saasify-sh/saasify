@@ -67,10 +67,18 @@
   position: relative;
 }
 
+.theme-waves .section:first-of-type .title {
+  color: var(--hero-color);
+}
+
 .theme-waves .section .subtitle {
   color: var(--color-fg);
   font-size: 24px;
   opacity: 0.9;
+}
+
+.theme-waves .section:first-of-type .subtitle {
+  color: var(--hero-color);
 }
 
 .theme-waves .section .content {
@@ -259,7 +267,7 @@
  * ----------------------------
  */
 .theme-waves header.container {
-  border-bottom: 1px solid #e1e1e1;
+  border-bottom: var(--nav-border-width) solid #e1e1e1;
   padding: 0;
   padding-bottom: var(--space-m);
   padding-left: var(--side-gutter);
@@ -280,7 +288,7 @@
 }
 
 .theme-waves header.container .link {
-  color: var(--color-fg) !important;
+  color: var(--hero-color) !important;
   font-size: 18px;
   font-weight: 500;
 }
@@ -380,8 +388,17 @@
   }
 }
 
+.theme-waves header.attached .link {
+  color: var(--color-fg) !important;
+}
+
 .theme-waves header .logo {
   max-height: 48px;
+}
+
+.theme-waves header:not(.attached) .cta-button:global(.secondary):not(:hover) {
+  border-color: var(--color-nav-secondary-cta) !important;
+  color: var(--color-nav-secondary-cta) !important;
 }
 
 /*
@@ -527,37 +544,42 @@
  */
 
 .theme-waves .section:first-of-type::before {
-  background-image: linear-gradient(104deg, #fcfcfc 13%, #f5f7fb 91%);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: top;
   content: '';
   position: absolute;
-  height: calc(100% + 100px);
-  min-height: 500px;
+  height: calc(100% + 250px);
+  min-height: 100vh;
   left: 0;
-  top: -50px;
+  top: -188px;
   width: 100vw;
 }
 
 @media (min-width: 48em) {
   .theme-waves .section:first-of-type::before {
-    top: -150px;
+    height: calc(100% + 100px);
+    min-height: 500px;
+    top: -118px;
   }
 }
 
 .theme-waves .section:first-of-type::after {
-  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='1440px' height='274px' viewBox='0 0 1440 274' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com --%3E%3Ctitle%3EArtboard%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cdefs%3E%3Cpath d='M1440,94.937049 L1440,274 L0,274 L0,68 C163.333342,95.1394992 375.993354,127.635219 637.980036,165.48716 C899.966717,203.339101 1167.30671,179.822397 1440,94.937049 Z' id='path-1'%3E%3C/path%3E%3Cfilter x='-5.7%25' y='-51.7%25' width='111.5%25' height='180.1%25' filterUnits='objectBoundingBox' id='filter-2'%3E%3CfeOffset dx='0' dy='-24' in='SourceAlpha' result='shadowOffsetOuter1'%3E%3C/feOffset%3E%3CfeGaussianBlur stdDeviation='23.5' in='shadowOffsetOuter1' result='shadowBlurOuter1'%3E%3C/feGaussianBlur%3E%3CfeColorMatrix values='0 0 0 0 0.889011549 0 0 0 0 0.889011549 0 0 0 0 0.889011549 0 0 0 0.5 0' type='matrix' in='shadowBlurOuter1'%3E%3C/feColorMatrix%3E%3C/filter%3E%3C/defs%3E%3Cg id='Artboard' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Combined-Shape'%3E%3Cuse fill='black' fill-opacity='1' filter='url(%23filter-2)' xlink:href='%23path-1'%3E%3C/use%3E%3Cuse fill='%23FFFFFF' fill-rule='evenodd' xlink:href='%23path-1'%3E%3C/use%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: var(--background-image-wave);
   background-position: center;
   background-size: cover;
-  bottom: -125px;
   content: '';
   height: 260px !important;
   left: 0;
   position: absolute;
+  top: calc(100% - 113px);
   width: 100vw;
 }
 
 @media (min-width: 48em) {
   .theme-waves .section:first-of-type::after {
-    bottom: -32px;
+    bottom: -64px;
+    top: auto;
   }
 }
 
@@ -581,12 +603,13 @@
 }
 
 .theme-waves .pricing-section::after {
-  top: calc(50% - 225px);
+  top: calc(50% - 225px) !important;
 }
 
 @media (min-width: 48em) {
   .theme-waves .pricing-section::after {
-    top: calc(50% - 75px);
+    bottom: 150px !important;
+    top: auto !important;
   }
 }
 
