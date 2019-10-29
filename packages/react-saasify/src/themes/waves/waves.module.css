@@ -262,8 +262,43 @@
  * Login page
  * ----------------------------
  */
-.theme-waves .login-page header.container {
-  position: absolute !important;
+
+.theme-waves .login-page {
+  background: #f7f7f7;
+}
+
+.theme-waves .login-page :global(.box-gallery) {
+  display: none;
+}
+
+.theme-waves .login-page .title {
+  font-weight: 500;
+}
+
+.theme-waves .login-page .content {
+  background: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.theme-waves .login-page .content .form {
+  background: white;
+  border-radius: var(--space-s);
+  box-shadow: 0 7px 18px 0 rgba(210, 210, 210, 0.5);
+  margin: 0;
+  padding: var(--space-l);
+  width: 100%;
+}
+
+.theme-waves .login-page .content .form > button.submit {
+  margin-bottom: var(--space-m);
+}
+
+.theme-waves .login-page .content .form :global(.ant-form-item) {
+  text-align: left;
 }
 
 /*
@@ -448,7 +483,8 @@
 
 /* TODO: cta-button ghost should have dark text */
 .theme-waves .cta-button,
-.theme-waves .cta-button.inline {
+.theme-waves .cta-button.inline,
+.theme-waves button.submit {
   border: var(--color-primary) solid 1px !important;
   border-radius: var(--border-radius);
   font-size: 16px !important;
@@ -463,7 +499,8 @@
   transition: var(--transition-all);
 }
 
-.theme-waves .cta-button:global(.primary) {
+.theme-waves .cta-button:global(.primary),
+.theme-waves button.submit {
   background: var(--color-primary) !important;
   color: white !important;
 }
@@ -473,7 +510,8 @@
   color: var(--color-primary) !important;
 }
 
-.theme-waves .cta-button:hover {
+.theme-waves .cta-button:hover,
+.theme-waves button.submit:hover {
   box-shadow: 0 7px 14px rgba(50, 50, 93, 0.11), 0 3px 6px rgba(0, 0, 0, 0.08);
   filter: var(--filter-tint);
 }
