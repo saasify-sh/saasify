@@ -263,19 +263,23 @@
  * ----------------------------
  */
 
-.theme-waves .login-page {
+.theme-waves .login-page,
+.theme-waves .signup-page {
   background: #f7f7f7;
 }
 
-.theme-waves .login-page :global(.box-gallery) {
+.theme-waves .login-page :global(.box-gallery),
+.theme-waves .signup-page :global(.box-gallery) {
   display: none;
 }
 
-.theme-waves .login-page .title {
+.theme-waves .login-page .title,
+.theme-waves .signup-page .title {
   font-weight: 500;
 }
 
-.theme-waves .login-page .content {
+.theme-waves .login-page .content,
+.theme-waves .signup-page .content {
   background: none;
   box-shadow: none;
   display: flex;
@@ -284,7 +288,8 @@
   text-align: center;
 }
 
-.theme-waves .login-page .content .form {
+.theme-waves .login-page .content .form,
+.theme-waves .signup-page .content .form {
   background: white;
   border-radius: var(--space-s);
   box-shadow: 0 7px 18px 0 rgba(210, 210, 210, 0.5);
@@ -297,7 +302,8 @@
   margin-bottom: var(--space-m);
 }
 
-.theme-waves .login-page .content .form :global(.ant-form-item) {
+.theme-waves .login-page .content .form :global(.ant-form-item),
+.theme-waves .signup-page .content .form :global(.ant-form-item) {
   text-align: left;
 }
 
