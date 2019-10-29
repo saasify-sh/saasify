@@ -23,6 +23,10 @@
   --line-height-l: 1.42;
 }
 
+::selection {
+  background: var(--color-primary);
+}
+
 .theme-waves {
   color: #fff;
   font-family: var(--font-family);
