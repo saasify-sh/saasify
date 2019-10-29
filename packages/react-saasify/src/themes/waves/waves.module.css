@@ -533,6 +533,12 @@
   overflow: hidden;
 }
 
+@media (min-width: 48em) {
+  .theme-waves .live-service-demo {
+    margin-top: var(--space-xl);
+  }
+}
+
 .theme-waves .live-service-demo .tabs:before {
   align-self: center;
   color: #ffffff90;
