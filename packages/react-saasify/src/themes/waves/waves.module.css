@@ -53,6 +53,13 @@
   font-weight: 600;
 }
 
+.theme-waves .paper {
+  border-radius: 10px;
+  box-shadow: 0 7px 18px 0 rgba(210, 210, 210, 0.5);
+  margin: 0;
+  padding: var(--space-xl);
+}
+
 /*
  * Section
  * ----------------------------
@@ -308,6 +315,14 @@
 }
 
 /*
+ * Dashboard
+ * ----------------------------
+ */
+.theme-waves .dashboard-page .section:first-of-type::after {
+  bottom: -140px;
+}
+
+/*
  * NavHeader
  * ----------------------------
  */
@@ -489,11 +504,12 @@
 /* TODO: cta-button ghost should have dark text */
 .theme-waves .cta-button,
 .theme-waves .cta-button.inline,
-.theme-waves button.submit {
+.theme-waves :global(.ant-btn) {
   border: var(--color-primary) solid 1px !important;
   border-radius: var(--border-radius);
   font-size: 16px !important;
   font-weight: 500;
+  height: auto;
   letter-spacing: normal !important;
   text-transform: none !important;
   text-shadow: none;
@@ -505,7 +521,7 @@
 }
 
 .theme-waves .cta-button:global(.primary),
-.theme-waves button.submit {
+.theme-waves :global(.ant-btn) {
   background: var(--color-primary) !important;
   color: white !important;
 }
@@ -516,7 +532,7 @@
 }
 
 .theme-waves .cta-button:hover,
-.theme-waves button.submit:hover {
+.theme-waves :global(.ant-btn):hover {
   box-shadow: 0 7px 14px rgba(50, 50, 93, 0.11), 0 3px 6px rgba(0, 0, 0, 0.08);
   filter: var(--filter-tint);
 }
@@ -692,12 +708,8 @@
 }
 
 .theme-waves .pricing-section .plan {
-  border-radius: 10px;
-  box-shadow: 0 7px 18px 0 rgba(210, 210, 210, 0.5);
-  margin: 0;
   margin-bottom: var(--space-xxl);
   max-width: 400px;
-  padding: var(--space-xl);
   width: 100%;
 }
 
