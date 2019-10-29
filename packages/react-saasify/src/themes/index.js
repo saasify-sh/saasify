@@ -1,3 +1,5 @@
 export * from './okta'
 export * from './sadie'
-export * from './waves'
+
+// TODO: this is temporary until some issues with the waves theme are fixed
+// export * from './waves'
