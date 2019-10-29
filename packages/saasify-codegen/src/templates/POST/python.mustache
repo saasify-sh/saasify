@@ -4,5 +4,9 @@ url = "{{{service.url}}}"
 payload = {{{exampleJSON}}}
 response = requests.post(url, json=payload)
 
-with open("youtube.png", "wb") as out:
+{{#hasFileOutput}}
+with open("{{output}}", "wb") as out:
     out.write(response.content)
+{{/hasFileOutput}}{{^hasFileOutput}}
+print(response.text)
+{{/hasFileOutput}}

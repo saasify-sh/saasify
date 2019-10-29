@@ -1,5 +1,5 @@
-const request = require('request');
-const fs = require('fs');
+const request = require('request')
+const fs = require('fs')
 
 const options = {
   method: 'POST',
@@ -10,12 +10,13 @@ const options = {
   body: {
     {{{exampleNodeJSON}}}
   },
-  json: true,
-  encoding: null
-};
+  json: true{{#hasFileOutput}},
+  encoding: null{{/hasFileOutput}}
+}
 
 request(options, (error, response, body) => {
   if (error) throw new Error(error)
-
-  fs.writeFileSync('youtube.png', body);
-});
+  {{#hasFileOutput}}
+  fs.writeFileSync('{{output}}', body){{/hasFileOutput}}{{^hasFileOutput}}
+  console.log(body){{/hasFileOutput}}
+})

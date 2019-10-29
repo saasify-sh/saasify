@@ -17,7 +17,13 @@ func main() {
 
 	resp, _ := http.Post("{{{service.url}}}", "application/json", bytes.NewBuffer(bytesRepresentation))
 
-	out, _ := os.Create("youtube.png")
+{{#hasFileOutput}}
+	out, _ := os.Create("{{output}}")
 
 	_, _ = io.Copy(out, resp.Body)
+{{/hasFileOutput}}{{^hasFileOutput}}
+	out, _ := os.Create("result.json")
+
+	_, _ = io.Copy(out, resp.Body)
+{{/hasFileOutput}}
 }

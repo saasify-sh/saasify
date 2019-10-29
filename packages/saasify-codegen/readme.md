@@ -18,12 +18,10 @@ yarn install
 
 ## Usage
 
-Update any of the templates and run below commands for testing the new
-templates.
-
-- `npx ava -u` Creates new templates
-- `yarn build` Build from the new templates
-- `yarn test` Runs test for every template
+- `yarn build` Build source to `dist/`
+- `yarn start` Build source to `dist/` with watch flag
+- `yarn test` Runs unit tests
+- `npx ava -u` Runs unit tests and updates test snapshots
 
 ## License
 

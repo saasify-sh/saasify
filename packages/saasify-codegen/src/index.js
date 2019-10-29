@@ -32,12 +32,15 @@ const languages = [
     language: 'go',
     label: 'Go',
     templatePOST: raw('./templates/POST/go.mustache')
-  },
+  }
+  // TODO: fix ruby template
+  /*
   {
     language: 'ruby',
     label: 'Ruby',
     templatePOST: raw('./templates/POST/ruby.mustache')
   }
+  */
 ]
 
 export default (service, token, opts = { }) => {
@@ -45,8 +48,6 @@ export default (service, token, opts = { }) => {
     method = 'POST',
     example = service.examples[0]
   } = opts
-
-  console.log('codegen', method)
 
   if (method !== 'POST' && method !== 'GET') {
     throw new Error(`TODO: support service codegen for method "${method}"`)
@@ -67,9 +68,7 @@ export default (service, token, opts = { }) => {
   data.exampleNodeJSON = indent(data.example, 1, { indent: '  ' }).slice(2)
   data.exampleQuery = qs.stringify(example.input)
 
-  // TODO: curl isHttp "> out.png" is hardcoded...
-  // need to differentiate between http output content types
-  data.hasOutput = (service.definition && service.definition.returns.http && typeof example.output === 'string')
+  data.hasFileOutput = (service.definition && service.definition.returns.http && typeof example.output === 'string')
   data.output = example.output
 
   // --------------------------------------------------------------
