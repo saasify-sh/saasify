@@ -429,6 +429,7 @@
 .theme-waves .cta-button,
 .theme-waves .cta-button.inline {
   border: var(--color-primary) solid 1px !important;
+  border-radius: var(--border-radius);
   font-size: 16px !important;
   font-weight: 500;
   letter-spacing: normal !important;
