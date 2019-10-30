@@ -23,7 +23,7 @@
   --line-height-l: 1.42;
 }
 
-::selection {
+.theme-waves ::selection {
   background: var(--color-primary);
 }
 
