@@ -31,6 +31,7 @@
   color: #fff;
   font-family: var(--font-family);
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 .theme-waves h1,
@@ -491,6 +492,7 @@
  * CTAs
  * ----------------------------
  */
+
 .theme-waves a {
   color: var(--color-primary);
   transition: var(--transition-all);
@@ -542,10 +544,17 @@
   color: white !important;
 }
 
+.theme-waves :global(.ant-btn-icon-only) {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
 /*
  * Code Block
  * ----------------------------
  */
+
 .theme-waves .live-service-demo {
   background-image: linear-gradient(174deg, #6e60e1 0%, #1b3b87 93%);
   border-radius: 8px;
@@ -578,7 +587,7 @@
   padding-top: var(--space-m);
   padding-left: var(--space-l);
   padding-right: var(--space-l);
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .theme-waves .live-service-demo .tabs .tab:first-of-type {
@@ -595,6 +604,11 @@
   background: transparent;
   color: #ffffff;
   font-weight: 600;
+}
+
+.theme-waves .live-service-demo .tab-content {
+  max-height: 30vh;
+  overflow-y: auto;
 }
 
 .theme-waves .code-block {
