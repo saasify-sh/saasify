@@ -103,10 +103,49 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
     definition
   } = service
 
-  const params = await prepareSchema(definition.params.schema)
-  const { http, schema } = definition.returns
-  const { type, additionalProperties, properties, ...rest } = schema
-  const paramsSchema = jsonSchemaToOpenAPI(params)
+  const result = { }
+
+  // ---------------------------------------------------------------------------
+  // Parameters
+  // ---------------------------------------------------------------------------
+
+  const { http: isRawHttpRequest = false, schema: paramsSchema } = definition.params
+  let requestBody
+  let requestSchema
+
+  if (isRawHttpRequest) {
+    requestSchema = {
+      type: 'string',
+      format: 'binary',
+      description: 'Raw HTTP request body which can be interpreted using the standard `Content-Type` header.'
+    }
+
+    requestBody = {
+      required: true,
+      content: {
+        '*/*': {
+          schema: requestSchema
+        }
+      }
+    }
+  } else {
+    const params = await prepareSchema(paramsSchema)
+    requestSchema = jsonSchemaToOpenAPI(params)
+
+    requestBody = {
+      required: true,
+      content: {
+        'application/json': {
+          schema: requestSchema
+        }
+      }
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Example Usage
+  // ---------------------------------------------------------------------------
+
   let examplesOrdered
   let examples
 
@@ -122,7 +161,7 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
         }), { })
 
       // infer example values for all parameters from the list of provided example inputs
-      for (const [name, schema] of Object.entries(paramsSchema.properties)) {
+      for (const [name, schema] of Object.entries(requestSchema.properties)) {
         let found = false
 
         for (const example of Object.values(examples)) {
@@ -142,9 +181,15 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
     }
   }
 
+  // ---------------------------------------------------------------------------
+  // Responses
+  // ---------------------------------------------------------------------------
+
+  const { http: isRawHttpResponse = false, schema: responseSchema } = definition.returns
+  const { type, additionalProperties, properties, ...rest } = responseSchema
   let responses
 
-  if (http) {
+  if (isRawHttpResponse) {
     const responseSchema = {
       type: 'string',
       format: 'binary',
@@ -155,6 +200,7 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
       200: {
         description: 'Success',
         content: {
+          // TODO: support restriction response content-types via OpenAPI `produces` prop
           '*/*': {
             schema: responseSchema
           }
@@ -181,89 +227,93 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
     }
   }
 
-  const post = {
-    requestBody: {
-      required: true,
-      content: {
-        'application/json': {
-          schema: paramsSchema
-        }
-      }
-    },
-    responses
-  }
-
-  if (examples) {
-    const samples = codegen(service, null, {
-      method: 'POST'
-    })
-
-    post['x-code-samples'] = samples.map((sample) => ({
-      lang: sample.language,
-      label: sample.label,
-      source: sample.code
-    }))
-
-    post.requestBody.content['application/json'].example = examplesOrdered[0].input
-  }
-
-  const parameters = []
-
-  for (const [name, schema] of Object.entries(paramsSchema.properties)) {
-    const param = {
-      name,
-      schema,
-      in: 'query'
-    }
-
-    if (schema.description) {
-      param.description = schema.description
-    }
-
-    if (schema.$ref) {
-      param.schema = {
-        ...schema,
-        definitions: paramsSchema.definitions
-      }
-    }
-
-    if (paramsSchema.required && paramsSchema.required.indexOf(name) >= 0) {
-      param.required = true
-    }
-
-    parameters.push(param)
-  }
-
-  const get = {
-    parameters,
-    responses
-  }
-
-  if (examples) {
-    const samples = codegen(service, null, {
-      method: 'GET'
-    })
-
-    get['x-code-samples'] = samples.map((sample) => ({
-      lang: sample.language,
-      label: sample.label,
-      source: sample.code
-    }))
-  }
-
-  if (definition.description) {
-    post.description = definition.description
-    get.description = definition.description
-  }
-
-  const result = { }
-
-  if (service.GET !== false) {
-    result.get = get
-  }
+  // ---------------------------------------------------------------------------
+  // POST Operation
+  // ---------------------------------------------------------------------------
 
   if (service.POST !== false) {
+    const post = {
+      requestBody,
+      responses
+    }
+
+    if (examples) {
+      const samples = codegen(service, null, {
+        method: 'POST'
+      })
+
+      post['x-code-samples'] = samples.map((sample) => ({
+        lang: sample.language,
+        label: sample.label,
+        source: sample.code
+      }))
+
+      if (!isRawHttpRequest) {
+        post.requestBody.content['application/json'].example = examplesOrdered[0].input
+      }
+    }
+
+    if (definition.description) {
+      post.description = definition.description
+    }
+
     result.post = post
+  }
+
+  // ---------------------------------------------------------------------------
+  // GET Operation
+  // ---------------------------------------------------------------------------
+
+  if (service.GET !== false) {
+    const parameters = []
+
+    for (const [name, schema] of Object.entries(requestSchema.properties)) {
+      const param = {
+        name,
+        schema,
+        in: 'query'
+      }
+
+      if (schema.description) {
+        param.description = schema.description
+      }
+
+      if (schema.$ref) {
+        param.schema = {
+          ...schema,
+          definitions: requestSchema.definitions
+        }
+      }
+
+      if (requestSchema.required && requestSchema.required.indexOf(name) >= 0) {
+        param.required = true
+      }
+
+      parameters.push(param)
+    }
+
+    const get = {
+      parameters,
+      responses
+    }
+
+    if (examples) {
+      const samples = codegen(service, null, {
+        method: 'GET'
+      })
+
+      get['x-code-samples'] = samples.map((sample) => ({
+        lang: sample.language,
+        label: sample.label,
+        source: sample.code
+      }))
+    }
+
+    if (definition.description) {
+      get.description = definition.description
+    }
+
+    result.get = get
   }
 
   return {
