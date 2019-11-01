@@ -28,7 +28,7 @@ username/projectName
 
 #### Omitting username
 
-You may optionally leave off the `username/` prefix when referring to your own projects and deployments via the dev [CLI](../saasify-cli).
+You may optionally leave off the `username/` prefix when referring to your own projects and deployments via the dev [CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli).
 
 ```
 projectName@01234567
