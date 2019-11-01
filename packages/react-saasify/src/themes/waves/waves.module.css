@@ -23,9 +23,11 @@
   --line-height-l: 1.42;
 }
 
+/*
 .theme-waves ::selection {
   background: var(--color-primary);
 }
+*/
 
 .theme-waves {
   color: #fff;
