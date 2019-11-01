@@ -16,7 +16,8 @@ const jsonConfig = { spaces: 2 }
 module.exports = async (deployment, data, opts = { }) => {
   const {
     tempDir = tempy.directory(),
-    config = { }
+    config = { },
+    debug = false
   } = opts
 
   await decompress(data, tempDir, {
@@ -62,7 +63,7 @@ module.exports = async (deployment, data, opts = { }) => {
   import * as ftsHttp from 'fts-http'
   import * as handler from './${srcPath}'
   const definition = ${definitionData}
-  export default ftsHttp.createHttpHandler(definition, handler)
+  export default ftsHttp.createHttpHandler(definition, handler, { debug: ${!!debug} })
   `
 
       fs.writeFileSync(handlerPath, handler, 'utf8')
@@ -160,10 +161,12 @@ module.exports = async (deployment, data, opts = { }) => {
 
     // TODO: remove 'fts' as a dependency
     dependencies.fts = '^1'
-    dependencies['fts-http'] = '^1.3.0'
+    dependencies['fts-http'] = '^1.3.1'
+
     if (!devDependencies['@types/node']) {
       devDependencies['@types/node'] = 'latest'
     }
+
     npmConfig.dependencies = dependencies
     npmConfig.devDependencies = devDependencies
     await fs.writeJson(npmConfigPath, npmConfig, jsonConfig)

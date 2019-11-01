@@ -67,6 +67,9 @@ export default async function optimizeImage(input: Buffer): Promise<HttpResponse
   let pipelines: Pipeline[]
 
   if (!inputType || !(pipelines = mimeTypeToPipelines[inputType.mime])) {
+    console.log({ inputType })
+    console.log(input)
+    console.log(input.byteLength)
     throw new Error('unsupported media type')
   }
 

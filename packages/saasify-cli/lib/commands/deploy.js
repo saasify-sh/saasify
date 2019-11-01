@@ -28,6 +28,7 @@ module.exports = (program, client) => {
           client.createDeployment({
             ...project,
             force: opts.force,
+            debug: !!program.debug,
             data: zipBuffer.toString('base64')
           }),
           'Creating deployment'

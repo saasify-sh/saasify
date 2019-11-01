@@ -6,6 +6,7 @@ class Config {
   saasifyVersion?: number = 1
   version?: string = 0.1.0
   name?: string
+  description?: string
   amountPerBase?: number = 99
   amountPerRequest?: number = 0.04
   amountPerCompute?: number = 0.34
