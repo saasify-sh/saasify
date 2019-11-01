@@ -1,13 +1,22 @@
 import { HttpResponse } from 'fts-core'
+import { HttpContext } from 'fts-http'
 import fileType from 'file-type'
-import * as fs from 'fs'
+import imagemin from 'imagemin'
 import imageminPngquant from 'imagemin-pngquant'
+import imageminOptipng from 'imagemin-optipng'
+import imageminPngcrush from 'imagemin-pngcrush'
 import imageminJpegtran from 'imagemin-jpegtran'
+import imageminMozjpeg from 'imagemin-mozjpeg'
 import imageminWebp from 'imagemin-webp'
 import imageminSvgo from 'imagemin-svgo'
+import imageminGifsicle from 'imagemin-gifsicle'
+import pMap from 'p-map'
 import pPipe from 'p-pipe'
 
-const image = fs.readFileSync('./nala.jpg')
+// TODO:
+// - https://github.com/imagemin/imagemin-jpegoptim
+// - https://github.com/imagemin/imagemin-zopfli
+// - https://github.com/imagemin/imagemin-advpng
 
 // workaround instead of using `imagemin.buffer` directly until this ZEIT now bug is fixed
 // https://spectrum.chat/zeit/now/cannot-find-module-nodelib-fs-stat~62fe9614-fd8c-4f25-ade4-8f6fd4f611c2
@@ -24,25 +33,73 @@ const imageminBuffer = async (input: Buffer, {plugins = []} = {}): Promise<Buffe
 	return ((pPipe(...plugins)(input) as any) as Buffer)
 }
 
-export default async function optimizeImage(): Promise<HttpResponse> {
-  const data = await imageminBuffer(image, {
-    plugins: [
-      imageminJpegtran(),
-      imageminPngquant(),
-      imageminWebp(),
-      imageminSvgo()
-    ]
-	})
+interface Pipeline {
+  name: string
+  plugins: imagemin.Plugin[]
+}
 
-  const type = fileType(data)
+interface PipelineMap {
+  [type: string]: Pipeline[]
+}
 
-  if (!type) {
+const mimeTypeToPipelines: PipelineMap = {
+  'image/png': [
+    { name: 'pngquant', plugins: [ imageminPngquant() ] },
+    { name: 'optipng', plugins: [ imageminOptipng() ] },
+    { name: 'pngcrush', plugins: [ imageminPngcrush() ] }
+  ],
+  'image/jpeg': [
+    { name: 'jpegtran, mozjpeg', plugins: [ imageminJpegtran(), imageminMozjpeg() ] }
+  ],
+  'image/webp': [
+    { name: 'webp', plugins: [ imageminWebp() ] }
+  ],
+  'image/svg+xml': [
+    { name: 'svgo', plugins: [ imageminSvgo() ] }
+  ],
+  'image/gif': [
+    { name: 'gifsicle', plugins: [ imageminGifsicle() ] }
+  ]
+}
+
+export default async function optimizeImage(input: Buffer): Promise<HttpResponse> {
+  const inputType = fileType(input)
+  let pipelines: Pipeline[]
+
+  if (!inputType || !(pipelines = mimeTypeToPipelines[inputType.mime])) {
     throw new Error('unsupported media type')
   }
 
+  let body = input
+  let bestPipeline = 'identity'
+  console.log({ inputType, pipeline: 'identity', length: body.byteLength })
+
+  await pMap(pipelines, async (pipeline) => {
+    try {
+      const result = await imageminBuffer(input, pipeline)
+      console.log({ pipeline: pipeline.name, length: result.byteLength })
+
+      if (result.byteLength < body.byteLength) {
+        body = result
+        bestPipeline = pipeline.name
+      }
+    } catch (err) {
+      console.error(`error processing pipeline "${pipeline.name}"`, err)
+    }
+  }, {
+    concurrency: 2
+  })
+
+  const outputType = fileType(body)
+
+  console.log({ outputType, pipeline: bestPipeline, length: body.byteLength })
+  if (!outputType) {
+    throw new Error('unsupported media outputType')
+  }
+
   return {
-    headers: { 'Content-Type': type.mime },
+    headers: { 'Content-Type': outputType.mime },
     statusCode: 200,
-    body: data
+    body
   }
 }
