@@ -29,8 +29,15 @@ This API supports the following image formats:
 ### PNG
 
 ```
-curl --data-binary "@./media/test-0.png" -o out.png \
-  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@6a7d90e3.saasify.sh'
+curl --data-binary '@./media/test-0.png' -o out.png \
+  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@6a7d90e3'
+```
+
+### JPEG
+
+```
+curl --data-binary '@./media/nala.jpg' -o out.jpg \
+  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@6a7d90e3'
 ```
 
 ## License

@@ -18,6 +18,15 @@ import pPipe from 'p-pipe'
 // - https://github.com/imagemin/imagemin-zopfli
 // - https://github.com/imagemin/imagemin-advpng
 
+interface Pipeline {
+  name: string
+  plugins: imagemin.Plugin[]
+}
+
+interface PipelineMap {
+  [type: string]: Pipeline[]
+}
+
 // workaround instead of using `imagemin.buffer` directly until this ZEIT now bug is fixed
 // https://spectrum.chat/zeit/now/cannot-find-module-nodelib-fs-stat~62fe9614-fd8c-4f25-ade4-8f6fd4f611c2
 // (this happens when we import imagemin which transitively imports fast-glob)
@@ -31,15 +40,6 @@ const imageminBuffer = async (input: Buffer, {plugins = []} = {}): Promise<Buffe
 	}
 
 	return ((pPipe(...plugins)(input) as any) as Buffer)
-}
-
-interface Pipeline {
-  name: string
-  plugins: imagemin.Plugin[]
-}
-
-interface PipelineMap {
-  [type: string]: Pipeline[]
 }
 
 const mimeTypeToPipelines: PipelineMap = {
@@ -70,7 +70,7 @@ export default async function optimizeImage(input: Buffer): Promise<HttpResponse
     console.log({ inputType })
     console.log(input)
     console.log(input.byteLength)
-    throw new Error('unsupported media type')
+    throw new Error('unsupported media type\n')
   }
 
   let body = input
@@ -97,7 +97,7 @@ export default async function optimizeImage(input: Buffer): Promise<HttpResponse
 
   console.log({ outputType, pipeline: bestPipeline, length: body.byteLength })
   if (!outputType) {
-    throw new Error('unsupported media outputType')
+    throw new Error('unsupported media outputType\n')
   }
 
   return {
