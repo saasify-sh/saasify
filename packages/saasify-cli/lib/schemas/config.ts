@@ -53,6 +53,7 @@ class SaaS {
   logo?: string
   favicon?: string
   features?: Feature[]
+  sections?: object
   theme?: Theme
 }
 
