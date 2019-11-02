@@ -30,13 +30,13 @@ We recommend using either the `url` or `base64` versions because they come with 
 
 ## Examples
 
-The following examples all use the `/removeBgUrl` endpoint and pass a remove image URL to process.
+The following examples all use the `/removeBgUrl` endpoint and pass a remote image URL to process.
 
 ### Person
 
 ```
 curl --request POST -o 'girl-no-bg.png' \
-  --url 'https://api.saasify.sh/1/call/transitive-bullshit/remove-bg@b439a3e6/removeBgUrl' \
+  --url 'https://api.saasify.sh/1/call/transitive-bullshit/remove-bg/removeBgUrl' \
   --header 'content-type: application/json' \
   --data '{"url":"https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/cc.jpg"}'
 ```
@@ -50,7 +50,7 @@ curl --request POST -o 'girl-no-bg.png' \
 
 ```
 curl --request POST -o 'pg-no-bg.png' \
-  --url 'https://api.saasify.sh/1/call/transitive-bullshit/remove-bg@b439a3e6/removeBgUrl' \
+  --url 'https://api.saasify.sh/1/call/transitive-bullshit/remove-bg/removeBgUrl' \
   --header 'content-type: application/json' \
   --data '{"url":"https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/pg.jpg"}'
 ```
@@ -64,7 +64,7 @@ curl --request POST -o 'pg-no-bg.png' \
 
 ```
 curl --request POST -o 'jb-no-bg.png' \
-  --url 'https://api.saasify.sh/1/call/transitive-bullshit/remove-bg@b439a3e6/removeBgUrl' \
+  --url 'https://api.saasify.sh/1/call/transitive-bullshit/remove-bg/removeBgUrl' \
   --header 'content-type: application/json' \
   --data '{"url":"https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/jb.jpg"}'
 ```
