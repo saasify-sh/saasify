@@ -35,6 +35,7 @@ curl --data-binary '@./media/test-0.png' -o out.png \
 
 - Before: 71834 bytes
 - After: 29579 bytes
+- Savings: 59%
 
 All PNG optimizations use **lossless** settings.
 
@@ -49,6 +50,7 @@ curl --data-binary '@./media/nala.jpg' -o out.jpg \
 
 - Before: 110069 bytes
 - After: 92544 bytes
+- Savings: 16%
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/media/nala-out.jpg" width="128" />
 
