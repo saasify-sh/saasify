@@ -1,0 +1,23 @@
+{
+  "name": "remove-bg",
+  "description": "Smart image background removal! 🤯",
+  "services": [
+    {
+      "src": "src/url.ts"
+    },
+    {
+      "src": "src/base64.ts"
+    },
+    {
+      "src": "src/raw.ts"
+    }
+  ],
+  "env": {
+    "REMOVE_BG_API_KEY": "@remove-bg-api-key"
+  },
+  "saas": {
+    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/remove-bg",
+    "logo": "media/logo.svg",
+    "favicon": "media/favicon.ico"
+  }
+}
