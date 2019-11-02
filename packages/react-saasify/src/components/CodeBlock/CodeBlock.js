@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import theme from 'lib/theme'
 
-import { SyntaxHighlighter, theme as codeTheme } from 'lib/react-syntax-highlighter'
+import { SyntaxHighlighter, theme as defaultCodeTheme } from 'lib/react-syntax-highlighter'
 
 import styles from './styles.module.css'
 
@@ -19,6 +19,8 @@ export class CodeBlock extends Component {
       value,
       className
     } = this.props
+
+    const { codeTheme = defaultCodeTheme } = theme
 
     return (
       <SyntaxHighlighter
