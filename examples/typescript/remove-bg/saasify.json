@@ -3,12 +3,17 @@
   "description": "Smart image background removal! 🤯",
   "amountPerBase": 999,
   "amountPerRequest": 50,
+  "noAuthRateLimit": {
+    "requests": true,
+    "requestsInterval": 86400,
+    "requestsMaxPerInterval": 5
+  },
   "services": [
     {
       "src": "src/url.ts",
       "examples": [
         {
-          "name": "Girl",
+          "name": "Person",
           "input": {
             "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/cc.jpg"
           },
@@ -16,11 +21,11 @@
           "outputContentType": "image/png"
         },
         {
-          "name": "Shoe",
+          "name": "Product",
           "input": {
             "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/pg.jpg"
           },
-          "output": "shoe-no-bg.png",
+          "output": "pg-no-bg.png",
           "outputContentType": "image/png"
         },
         {
