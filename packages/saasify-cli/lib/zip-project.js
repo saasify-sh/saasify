@@ -25,14 +25,10 @@ module.exports = async (program, deployment, zipEnv = false) => {
     []
   )
 
-  const allFiles = [
-    ...files,
-    ...envFiles
-  ]
-
   const ignoredFiles = await getIgnoredFiles(program, deployment)
 
-  const allFilesFiltered = ignoredFiles.filter(allFiles)
+  const allFilesFiltered = ignoredFiles.filter(files)
+    .concat(envFiles)
 
   const mtime = new Date(1540000000000)
   const zipFile = new ZipFile()
