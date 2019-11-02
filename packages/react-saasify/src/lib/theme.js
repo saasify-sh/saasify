@@ -16,6 +16,7 @@ const variables = [
 
   // common custom styles
   'light',
+  'codeTheme',
 
   // antd
   '@primary-color',
