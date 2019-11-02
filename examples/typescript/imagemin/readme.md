@@ -24,8 +24,6 @@ This API supports the following image formats:
 - `svg`
 - `gif`
 
-
-
 ## Examples
 
 The following examples pass binary images as the body of POST requests. Try them out yourself by replacing the image path with your own local test images.

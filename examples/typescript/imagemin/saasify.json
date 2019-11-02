@@ -3,12 +3,33 @@
   "description": "Image optimization as a service",
   "services": [
     {
-      "src": "index.ts"
+      "src": "src/url.ts",
+      "examples": [
+        {
+          "name": "PNG",
+          "input": {
+            "url": "https://octodex.github.com/images/original.png"
+          },
+          "output": "optimized.png",
+          "outputContentType": "image/png"
+        },
+        {
+          "name": "JPEG",
+          "input": {
+            "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/examples/nala.jpg"
+          },
+          "output": "optimized.jpg",
+          "outputContentType": "image/jpeg"
+        }
+      ]
+    },
+    {
+      "src": "src/index.ts"
     }
   ],
   "saas": {
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin",
-    "logo": "./media/logo.svg",
-    "favicon": "./media/favicon.ico"
+    "logo": "media/logo.svg",
+    "favicon": "media/favicon.ico"
   }
 }
