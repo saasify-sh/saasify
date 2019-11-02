@@ -84,17 +84,17 @@ function pruneDeployment (deployment, verbose) {
   if (!verbose) {
     deployment = pick(deployment, [
       'id',
+      'description',
+      'version',
+      'project',
+      'user',
       'createdAt',
       'updatedAt',
       'url',
-      'openApiUrl',
       'saasUrl',
+      'openApiUrl',
       'enabled',
       'published',
-      'user',
-      'project',
-      'version',
-      'description',
       'services'
     ])
 
