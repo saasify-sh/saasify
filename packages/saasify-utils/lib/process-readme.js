@@ -16,7 +16,7 @@ module.exports = (readme) => {
           const firstHeading = find(tree, (node) => node.type === 'heading')
           const h1s = findAllAfter(tree, firstH1, isH1)
 
-          if (h1s && h1s.length || (firstHeading !== firstH1)) {
+          if ((h1s && h1s.length) || (firstHeading !== firstH1)) {
             // indent all headings
             visit(tree, (node) => {
               if (node.type === 'heading') {
