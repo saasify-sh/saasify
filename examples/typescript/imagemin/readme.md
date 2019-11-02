@@ -33,12 +33,24 @@ curl --data-binary '@./media/test-0.png' -o out.png \
   'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@6a7d90e3'
 ```
 
+- Before: 71834 bytes
+- After: 29579 bytes
+
+All PNG optimizations use **lossless** settings.
+
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/media/test-0-out.png" width="128" />
+
 ### JPEG
 
 ```
 curl --data-binary '@./media/nala.jpg' -o out.jpg \
   'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@6a7d90e3'
 ```
+
+- Before: 110069 bytes
+- After: 92544 bytes
+
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/media/nala-out.jpg" width="128" />
 
 ## License
 
