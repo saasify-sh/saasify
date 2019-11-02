@@ -1,8 +1,14 @@
 {
   "name": "imagemin",
+  "description": "Image optimization as a service",
   "services": [
     {
       "src": "index.ts"
     }
-  ]
+  ],
+  "saas": {
+    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin",
+    "logo": "./media/logo.svg",
+    "favicon": "./media/favicon.ico"
+  }
 }

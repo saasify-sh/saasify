@@ -24,7 +24,13 @@ This API supports the following image formats:
 - `svg`
 - `gif`
 
+
+
 ## Examples
+
+The following examples pass binary images as the body of POST requests. Try them out yourself by replacing the image path with your own local test images.
+
+See the following [docs](https://ec.haxx.se/http-post.html#posting-binary) for more info on curl's `--data-binary` option.
 
 ### PNG
 
@@ -37,7 +43,7 @@ curl --data-binary '@./media/test-0.png' -o out.png \
 - After: 29579 bytes
 - Savings: 59%
 
-All PNG optimizations use **lossless** settings.
+All PNG optimizations make a best effort to remain **lossless**.
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/media/test-0-out.png" width="128" />
 
