@@ -16,7 +16,7 @@
         {
           "name": "JPEG",
           "input": {
-            "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/examples/nala.jpg"
+            "url": "https://avatars2.githubusercontent.com/u/552829"
           },
           "output": "optimized.jpg",
           "outputContentType": "image/jpeg"
