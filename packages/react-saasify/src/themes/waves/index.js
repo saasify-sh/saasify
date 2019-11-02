@@ -2,6 +2,7 @@ import styles from './waves.module.css'
 import cv from 'css-var'
 import waveSvg from './assets/wave.svg'
 import waveShadowedSvg from './assets/wave-shadowed.svg'
+import codeTheme from 'react-syntax-highlighter/dist/esm/styles/hljs/vs2015'
 
 export const waves = ({
   backgroundImage,
@@ -34,6 +35,7 @@ export const waves = ({
     '@section-fg-color': '#FFFFFF',
     '@section-bg-color': '#FFFFFF',
     '@primary-color': color,
+    codeTheme,
     ...opts
   }
 }
