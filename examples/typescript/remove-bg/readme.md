@@ -32,7 +32,7 @@ We recommend using either the `url` or `base64` versions because they come with 
 
 The following examples all use the `/removeBgUrl` endpoint and pass a remote image URL to process.
 
-### Person
+### Person Example
 
 ```
 curl --request POST -o 'girl-no-bg.png' \
@@ -46,7 +46,7 @@ curl --request POST -o 'girl-no-bg.png' \
   <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/girl-no-bg.png" width="256" />
 </p>
 
-### Product
+### Product Example
 
 ```
 curl --request POST -o 'pg-no-bg.png' \
@@ -60,7 +60,7 @@ curl --request POST -o 'pg-no-bg.png' \
   <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/pg-no-bg.png" width="256" />
 </p>
 
-### Car
+### Car Example
 
 ```
 curl --request POST -o 'jb-no-bg.png' \
