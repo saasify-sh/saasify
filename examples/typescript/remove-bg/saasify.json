@@ -1,6 +1,6 @@
 {
   "name": "remove-bg",
-  "description": "Smart image background removal! 🤯",
+  "description": "Smart image background removal",
   "amountPerBase": 999,
   "amountPerRequest": 50,
   "noAuthRateLimit": {
@@ -49,8 +49,14 @@
     "REMOVE_BG_API_KEY": "@remove-bg-api-key"
   },
   "saas": {
+    "name": "Remove BG",
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/remove-bg",
     "logo": "media/logo.svg",
-    "favicon": "media/favicon.ico"
+    "favicon": "media/favicon.ico",
+    "sections": {
+      "hero": {
+        "image": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/media/splash-0.jpg"
+      }
+    }
   }
 }

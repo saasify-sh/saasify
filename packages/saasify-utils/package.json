@@ -32,9 +32,13 @@
     "email-validator": "^2.0.4",
     "fs-extra": "^8.1.0",
     "is-url-superb": "^3.0.0",
+    "remark": "^11.0.1",
     "semver": "^6.3.0",
     "swagger-parser": "^8.0.1",
-    "tempy": "^0.3.0"
+    "tempy": "^0.3.0",
+    "unist-util-filter": "^2.0.0",
+    "unist-util-find": "^1.0.1",
+    "unist-util-find-all-after": "^1.0.4"
   },
   "ava": {
     "snapshotDir": "./.snapshots"
