@@ -2335,7 +2335,7 @@ ignore@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
 
-ignore@^5.0.0, ignore@^5.1.1:
+ignore@^5.0.0, ignore@^5.1.1, ignore@^5.1.4:
   version "5.1.4"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.4.tgz#84b7b3dbe64552b6ef0eca99f6743dbec6d97adf"
 
@@ -4252,10 +4252,10 @@ saasify-client@^1.7.13:
     is-stream "^2.0.0"
     qs "^6.6.0"
 
-saasify-utils@^1.7.17:
-  version "1.7.17"
-  resolved "https://registry.yarnpkg.com/saasify-utils/-/saasify-utils-1.7.17.tgz#2f697f2b2036f108a8078da0c4bc0203a91f3343"
-  integrity sha512-vyBO0ipaSFh+vvxW5KQm/LqTQdc8rOoHJ+RGNXCtUpZ1BW7BTNTItsDRp3I8sjHhLNENgAQ5+WadaGU6dZRrzg==
+saasify-utils@^1.7.19:
+  version "1.7.19"
+  resolved "https://registry.yarnpkg.com/saasify-utils/-/saasify-utils-1.7.19.tgz#10a794ea10fb457ce47daabb2d8b031e68d30c2c"
+  integrity sha512-gOQZYnzpno4PVSldmxi2pTwvIxPaqOiyAcL/DBsw0Da2jRs6JxXmYiFNu+Ksy+FxMJQYF8n8kkjjZjT68OrN8Q==
   dependencies:
     clone-deep "^4.0.1"
     decompress "^4.2.0"
