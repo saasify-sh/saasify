@@ -6,7 +6,7 @@ This project provides a hosted, SaaS version of [imagemin](https://github.com/im
 
 Note that the majority of the revenue from this hosted API goes back to the open source maintainers behind the original project.
 
-<a href="https://transitive-bullshit_imagemin_ac142684.saasify.sh">
+<a href="https://transitive-bullshit_imagemin_d9e48361.saasify.sh">
   <img
     src="https://badges.saasify.sh"
     height="40"
@@ -34,7 +34,7 @@ See the following [docs](https://ec.haxx.se/http-post.html#posting-binary) for m
 
 ```
 curl --data-binary '@./examples/test-0.png' -o out.png \
-  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@ac142684'
+  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@d9e48361'
 ```
 
 - Before: 71834 bytes
@@ -49,7 +49,7 @@ All PNG optimizations make a best effort to remain **lossless**.
 
 ```
 curl --data-binary '@./examples/nala.jpg' -o out.jpg \
-  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@ac142684'
+  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@d9e48361'
 ```
 
 - Before: 110069 bytes
