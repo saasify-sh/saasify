@@ -1,5 +1,8 @@
 'use strict'
 
+const { parseFaasIdentifier } = require('saasify-utils')
+const pick = require('lodash.pick')
+
 const handleError = require('../handle-error')
 const spinner = require('../spinner')
 
@@ -8,28 +11,44 @@ module.exports = (program, client) => {
     .command('ls [project]')
     .alias('list')
     .description('Lists deployments')
+    .option('-v, --verbose', 'Display full deployments', false)
     .action(async (arg, opts) => {
       program.requireAuthentication()
 
       try {
         const query = { }
+        let label = 'Fetching all projects and deployments'
 
         if (arg) {
-          query.project = arg
+          const parsedFaas = parseFaasIdentifier(arg, {
+            namespace: client.user.username
+          })
+
+          if (!parsedFaas) {
+            throw new Error(`Invalid project identifier [${arg}]`)
+          }
+
+          if (parsedFaas.deploymentHash) {
+            query._id = parsedFaas.deploymentId
+            label = `Fetching deployment [${query.id}]`
+          } else {
+            query.project = parsedFaas.projectId
+            label = `Fetching deployments for project [${query.project}]`
+          }
         }
 
         const deployments = await spinner(
           client.listDeployments(query),
-          arg
-            ? `Fetching deployments for project [${arg}]`
-            : 'Fetching all projects and deployments'
+          label
         )
 
         const projects = { }
         const sortedProjects = []
 
         // aggregate deployments by project
-        for (const deployment of deployments) {
+        for (let deployment of deployments) {
+          deployment = pruneDeployment(deployment, opts.verbose)
+
           const { project } = deployment
           if (!projects[project]) {
             projects[project] = []
@@ -59,4 +78,45 @@ module.exports = (program, client) => {
         handleError(program, err)
       }
     })
+}
+
+function pruneDeployment (deployment, verbose) {
+  if (!verbose) {
+    deployment = pick(deployment, [
+      'id',
+      'createdAt',
+      'updatedAt',
+      'url',
+      'openApiUrl',
+      'saasUrl',
+      'enabled',
+      'published',
+      'user',
+      'project',
+      'version',
+      'description',
+      'services'
+    ])
+
+    deployment.services = deployment.services
+      .map((service) => pruneService(service, verbose))
+  }
+
+  return deployment
+}
+
+function pruneService (service, verbose) {
+  if (verbose) {
+    return service
+  } else {
+    return pick(service, [
+      'name',
+      'adaptor',
+      'GET',
+      'POST',
+      'src',
+      'url',
+      'route'
+    ])
+  }
 }
