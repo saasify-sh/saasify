@@ -3,7 +3,25 @@
   "description": "Smart image background removal! 🤯",
   "services": [
     {
-      "src": "src/url.ts"
+      "src": "src/url.ts",
+      "examples": [
+        {
+          "name": "Girl",
+          "input": {
+            "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/cc.jpg"
+          },
+          "output": "girl-no-bg.png",
+          "outputContentType": "image/png"
+        },
+        {
+          "name": "Shoe",
+          "input": {
+            "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/pg.jpg"
+          },
+          "output": "shoe-no-bg.png",
+          "outputContentType": "image/png"
+        }
+      ]
     },
     {
       "src": "src/base64.ts"
