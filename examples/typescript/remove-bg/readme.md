@@ -4,20 +4,20 @@
 
 <a href="https://transitive-bullshit_remove-bg.saasify.sh">
   <img
-    src="https://badges.saasify.sh"
-    height="40"
-    alt="Use Hosted API"
-  />
-</a>
-
-<a href="https://transitive-bullshit_remove-bg.saasify.sh">
-  <img
     src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/media/splash-0.jpg"
     alt="Image Background Removal Example"
   />
 </a>
 
 ## Usage
+
+<a href="https://transitive-bullshit_remove-bg.saasify.sh">
+  <img
+    src="https://badges.saasify.sh"
+    height="40"
+    alt="Use Hosted API"
+  />
+</a>
 
 This API supports the following image formats:
 
