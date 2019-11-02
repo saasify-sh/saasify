@@ -1,6 +1,8 @@
 {
   "name": "remove-bg",
   "description": "Smart image background removal! 🤯",
+  "amountPerBase": 999,
+  "amountPerRequest": 50,
   "services": [
     {
       "src": "src/url.ts",
@@ -19,6 +21,14 @@
             "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/pg.jpg"
           },
           "output": "shoe-no-bg.png",
+          "outputContentType": "image/png"
+        },
+        {
+          "name": "Car",
+          "input": {
+            "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/jb.jpg"
+          },
+          "output": "car-no-bg.png",
           "outputContentType": "image/png"
         }
       ]

@@ -22,6 +22,18 @@ This API supports the following image formats:
 - `png`
 - `jpg` / `jpeg`
 
+## URL Image Examples
+
+TODO
+
+## Base64 Image Examples
+
+TODO
+
+## Raw Image Examples
+
+TODO
+
 ## Examples
 
 <img
