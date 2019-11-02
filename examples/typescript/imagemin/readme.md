@@ -6,7 +6,7 @@ This project provides a hosted, SaaS version of [imagemin](https://github.com/im
 
 Note that the majority of the revenue from this hosted API goes back to the open source maintainers behind the original project.
 
-<a href="https://transitive-bullshit_imagemin_d9e48361.saasify.sh">
+<a href="https://transitive-bullshit_imagemin.saasify.sh">
   <img
     src="https://badges.saasify.sh"
     height="40"
@@ -34,7 +34,7 @@ Try them out yourself by replacing the `url` parameter with your own image URLs.
 
 ```
 curl --request POST -o 'optimized.png' \
-  --url 'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@d9e48361/optimizeImageUrl' \
+  --url 'https://api.saasify.sh/1/call/transitive-bullshit/imagemin/optimizeImageUrl' \
   --header 'content-type: application/json' \
   --data '{"url":"https://octodex.github.com/images/original.png"}'
 ```
@@ -51,9 +51,9 @@ All PNG optimizations make a best effort to remain **lossless**.
 
 ```
 curl --request POST -o 'optimized.jpg' \
-  --url 'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@d9e48361/optimizeImageUrl' \
+  --url 'https://api.saasify.sh/1/call/transitive-bullshit/imagemin/optimizeImageUrl' \
   --header 'content-type: application/json' \
-  --data '{"url":"https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/examples/nala-out.jpg"}'
+  --data '{"url":"https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/examples/nala.jpg"}'
 ```
 
 - Before: 110069 bytes
@@ -72,7 +72,7 @@ See the following [docs](https://ec.haxx.se/http-post.html#posting-binary) for m
 
 ```
 curl --data-binary '@./examples/test-0.png' -o out.png \
-  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@d9e48361/optimizeImage'
+  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin/optimizeImage'
 ```
 
 - Before: 71834 bytes
@@ -87,7 +87,7 @@ All PNG optimizations make a best effort to remain **lossless**.
 
 ```
 curl --data-binary '@./examples/nala.jpg' -o out.jpg \
-  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@d9e48361/optimizeImage'
+  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin/optimizeImage'
 ```
 
 - Before: 110069 bytes
