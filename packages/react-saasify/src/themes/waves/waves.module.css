@@ -567,7 +567,7 @@
 
 @media (min-width: 48em) {
   .theme-waves .live-service-demo {
-    margin-top: var(--space-xl);
+    margin-top: var(--space-xxxl);
   }
 }
 
