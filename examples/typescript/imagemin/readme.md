@@ -6,7 +6,7 @@ This project provides a hosted, SaaS version of [imagemin](https://github.com/im
 
 Note that the majority of the revenue from this hosted API goes back to the open source maintainers behind the original project.
 
-<a href="https://transitive-bullshit_imagemin_6a7d90e3.saasify.sh">
+<a href="https://transitive-bullshit_imagemin_683fec17.saasify.sh">
   <img
     src="https://badges.saasify.sh"
     height="40"
@@ -35,8 +35,8 @@ See the following [docs](https://ec.haxx.se/http-post.html#posting-binary) for m
 ### PNG
 
 ```
-curl --data-binary '@./media/test-0.png' -o out.png \
-  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@6a7d90e3'
+curl --data-binary '@./examples/test-0.png' -o out.png \
+  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@683fec17'
 ```
 
 - Before: 71834 bytes
@@ -45,20 +45,20 @@ curl --data-binary '@./media/test-0.png' -o out.png \
 
 All PNG optimizations make a best effort to remain **lossless**.
 
-<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/media/test-0-out.png" width="128" />
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/examples/test-0-out.png" width="128" />
 
 ### JPEG
 
 ```
-curl --data-binary '@./media/nala.jpg' -o out.jpg \
-  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@6a7d90e3'
+curl --data-binary '@./examples/nala.jpg' -o out.jpg \
+  'https://api.saasify.sh/1/call/transitive-bullshit/imagemin@683fec17'
 ```
 
 - Before: 110069 bytes
 - After: 92544 bytes
 - Savings: 16%
 
-<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/media/nala-out.jpg" width="128" />
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/examples/nala-out.jpg" width="128" />
 
 ## License
 
