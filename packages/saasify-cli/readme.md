@@ -56,7 +56,7 @@ Commands:
   dev [options] [path]                                 Starts a local dev server for debugging your deployments
   help [cmd]                                           Displays usage info for [cmd]
   init [options] [project-name]                        Creates a new project based on a template
-  ls|list [project]                                    Lists deployments
+  ls|list [options] [project]                          Lists deployments
   logs [options] <url|deployment>                      Prints the logs for a given deployment
   publish <deploymentId|deploymentUrl>                 Creates a subscription to a project (requires a valid billing source)
   rm|remove [options] [deploymentId|deploymentUrl...]  Removes deployments
@@ -65,6 +65,7 @@ Commands:
   logout|signout                                       Logs out of your account
   signup [options]                                     Creates a new account
   subscribe <project>                                  Subscribes to a project (requires a valid billing source)
+  teams <command> [arg]                                Manages your teams (ls, add, invite, switch)
   unsubscribe [options] <project>                      Unsubscribes from a project
   whoami                                               Prints information about the current user
 ```

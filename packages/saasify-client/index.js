@@ -12,12 +12,16 @@ module.exports = class SaasifyClient {
     const {
       baseUrl = defaultBaseUrl,
       user,
-      token
+      token,
+      teamId,
+      teamSlug
     } = opts
 
     this._baseUrl = baseUrl
     this._user = user
     this._token = token
+    this._teamId = teamId
+    this._teamSlug = teamSlug
 
     if (!!user !== !!token) {
       throw new Error('user must be passed if and only if token is passed')
@@ -30,12 +34,24 @@ module.exports = class SaasifyClient {
     return !!this._token
   }
 
+  get user () {
+    return this._user
+  }
+
   get token () {
     return this._token
   }
 
-  get user () {
-    return this._user
+  get teamId () {
+    return this._teamId
+  }
+
+  get teamSlug () {
+    return this._teamSlug
+  }
+
+  get baseUrl () {
+    return this._baseUrl
   }
 
   set user (user) {
@@ -48,8 +64,9 @@ module.exports = class SaasifyClient {
     this._reset()
   }
 
-  get baseUrl () {
-    return this._baseUrl
+  set teamId (teamId) {
+    this._teamId = teamId
+    this._reset()
   }
 
   // --------------------------------------------------------------------------
@@ -60,6 +77,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/auth/signin`,
       method: 'put',
+      params: this._params,
       data: {
         username,
         password
@@ -68,6 +86,8 @@ module.exports = class SaasifyClient {
       .then((data) => {
         this._token = data.token
         this._user = data.user
+        this._teamId = undefined
+        this._teamSlug = undefined
         return data
       })
   }
@@ -76,11 +96,14 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/auth/signup`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
       .then((data) => {
         this._token = data.token
         this._user = data.user
+        this._teamId = undefined
+        this._teamSlug = undefined
         return data
       })
   }
@@ -89,24 +112,14 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/auth/github`,
       method: 'put',
+      params: this._params,
       data
     }).then(res => res.data)
       .then((data) => {
         this._token = data.token
         this._user = data.user
-        return data
-      })
-  }
-
-  async authWithFacebook (data) {
-    return this._request({
-      url: `/1/auth/facebook`,
-      method: 'put',
-      data
-    }).then(res => res.data)
-      .then((data) => {
-        this._token = data.token
-        this._user = data.user
+        this._teamId = undefined
+        this._teamSlug = undefined
         return data
       })
   }
@@ -114,6 +127,8 @@ module.exports = class SaasifyClient {
   async signout () {
     this._token = null
     this._user = null
+    this._teamId = undefined
+    this._teamSlug = undefined
   }
 
   // --------------------------------------------------------------------------
@@ -122,7 +137,8 @@ module.exports = class SaasifyClient {
 
   async getMe () {
     return this._request({
-      url: `/1/me`
+      url: `/1/me`,
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -130,6 +146,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/me`,
       method: 'put',
+      params: this._params,
       data
     }).then(res => res.data)
   }
@@ -142,15 +159,18 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/projects`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
   }
 
   async getProject (id, opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/projects/${id}?${querystring}`
+      url: `/1/projects/${id}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
@@ -158,15 +178,18 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/projects/${project.id}`,
       method: 'put',
+      params: this._params,
       data: project
     }).then(res => res.data)
   }
 
   async getProjectByAlias (alias, opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/projects/alias/${alias}?${querystring}`
+      url: `/1/projects/alias/${alias}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
@@ -178,19 +201,22 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/consumers`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
   }
 
   async getConsumer (id) {
     return this._request({
-      url: `/1/consumers/${id}`
+      url: `/1/consumers/${id}`,
+      params: this._params
     }).then(res => res.data)
   }
 
   async removeConsumer (consumer) {
     return this._request({
       url: `/1/consumers/${consumer.id}`,
+      params: this._params,
       method: 'delete'
     }).then(res => res.data)
   }
@@ -198,13 +224,15 @@ module.exports = class SaasifyClient {
   async updateConsumer (consumer) {
     return this._request({
       url: `/1/consumers/${consumer.id}`,
+      params: this._params,
       method: 'put'
     }).then(res => res.data)
   }
 
   async getConsumerByProject (projectId) {
     return this._request({
-      url: `/1/consumers/projects/${projectId}`
+      url: `/1/consumers/projects/${projectId}`,
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -216,15 +244,18 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/deployments`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
   }
 
   async getDeployment (id, opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/deployments/${id}?${querystring}`
+      url: `/1/deployments/${id}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
@@ -232,6 +263,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/deployments/${deployment.id}`,
       method: 'put',
+      params: this._params,
       data: deployment
     }).then(res => res.data)
   }
@@ -239,15 +271,19 @@ module.exports = class SaasifyClient {
   async removeDeployment (id) {
     return this._request({
       url: `/1/deployments/${id}`,
-      method: 'delete'
+      method: 'delete',
+      params: this._params
     }).then(res => res.data)
   }
 
   async listDeployments (where = { }, opts = { }) {
-    const querystring = qs.stringify({ where, ...opts })
-
     return this._request({
-      url: `/1/deployments?${querystring}`
+      url: `/1/deployments`,
+      params: {
+        ...this._params,
+        where,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
@@ -255,7 +291,85 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/deployments/publish/${deploymentId}`,
       method: 'put',
+      params: this._params,
       data
+    }).then(res => res.data)
+  }
+
+  // --------------------------------------------------------------------------
+  // Teams
+  // --------------------------------------------------------------------------
+
+  async createTeam (data) {
+    return this._request({
+      url: `/1/teams`,
+      method: 'post',
+      params: this._params,
+      data
+    }).then(res => res.data)
+  }
+
+  async getTeam (id, opts = { }) {
+    return this._request({
+      url: `/1/teams/${id}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
+    }).then(res => res.data)
+  }
+
+  async updateTeam (team) {
+    return this._request({
+      url: `/1/teams/${team.id}`,
+      method: 'put',
+      params: this._params,
+      data: team
+    }).then(res => res.data)
+  }
+
+  async removeTeam (teamId) {
+    return this._request({
+      url: `/1/teams/${teamId}`,
+      params: this._params,
+      method: 'delete'
+    }).then(res => res.data)
+  }
+
+  async listTeams (where = { }, opts = { }) {
+    return this._request({
+      url: `/1/teams`,
+      params: {
+        ...this._params,
+        where,
+        ...opts
+      }
+    }).then(res => res.data)
+  }
+
+  async inviteTeamMember (teamId, member) {
+    return this._request({
+      url: `/1/teams/${teamId}/members`,
+      method: 'post',
+      params: this._params,
+      data: member
+    }).then(res => res.data)
+  }
+
+  async updateTeamMember (teamId, member) {
+    return this._request({
+      url: `/1/teams/${teamId}/members/${member.username}`,
+      method: 'put',
+      params: this._params,
+      data: member
+    }).then(res => res.data)
+  }
+
+  async removeTeamMember (teamId, member) {
+    return this._request({
+      url: `/1/teams/${teamId}/members/${member.username}`,
+      params: this._params,
+      method: 'delete'
     }).then(res => res.data)
   }
 
@@ -267,6 +381,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/logs`,
       method: 'put',
+      params: this._params,
       data: {
         ...opts,
         identifier
@@ -280,13 +395,15 @@ module.exports = class SaasifyClient {
 
   async getBilling () {
     return this._request({
-      url: `/1/billing`
+      url: `/1/billing`,
+      params: this._params
     }).then(res => res.data)
   }
 
   async listBillingSources () {
     return this._request({
-      url: `/1/billing/sources`
+      url: `/1/billing/sources`,
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -294,6 +411,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/billing/sources`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
   }
@@ -301,38 +419,46 @@ module.exports = class SaasifyClient {
   async removeBillingSource (id) {
     return this._request({
       url: `/1/billing/sources/${id}`,
-      method: 'delete'
+      method: 'delete',
+      params: this._params
     }).then(res => res.data)
   }
 
   async setDefaultBillingSource (id) {
     return this._request({
       url: `/1/billing/sources/${id}/set-default`,
-      method: 'put'
+      method: 'put',
+      params: this._params
     }).then(res => res.data)
   }
 
   async listBillingInvoices (opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/billing/invoices?${querystring}`
+      url: `/1/billing/invoices`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
   async listBillingInvoicesForConsumer (consumer, opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/billing/invoices/${consumer.id}?${querystring}`
+      url: `/1/billing/invoices/${consumer.id}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
   async listBillingUsageForConsumer (consumer, opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/billing/usage/${consumer.id}?${querystring}`
+      url: `/1/billing/usage/${consumer.id}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
@@ -342,7 +468,8 @@ module.exports = class SaasifyClient {
 
   async listSecrets () {
     return this._request({
-      url: `/1/secrets`
+      url: `/1/secrets`,
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -350,6 +477,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/secrets`,
       method: 'post',
+      params: this._params,
       data: {
         name,
         value
@@ -360,7 +488,8 @@ module.exports = class SaasifyClient {
   async removeSecret (name) {
     return this._request({
       url: `/1/secrets/${name}`,
-      method: 'delete'
+      method: 'delete',
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -368,6 +497,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/secrets/${name}`,
       method: 'put',
+      params: this._params,
       data: {
         name: newName
       }
@@ -435,22 +565,10 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/uploads`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
   }
-  // --------------------------------------------------------------------------
-  // Checkout
-  // --------------------------------------------------------------------------
-
-  /* TODO: currently not supported for plans with usage_type=metered
-  async createCheckoutSession (data) {
-    return this._request({
-      url: `/1/billing/checkout`,
-      method: 'post',
-      data
-    }).then(res => res.data)
-  }
-  */
 
   // --------------------------------------------------------------------------
   // Internal
@@ -458,15 +576,23 @@ module.exports = class SaasifyClient {
 
   _reset () {
     const headers = {}
+    this._params = {}
 
     if (this._token) {
       headers.authorization = `Bearer ${this._token}`
     }
 
+    if (this._teamId) {
+      this._params.teamId = this._teamId
+    }
+
     this._request = axios.create({
       baseURL: this._baseUrl,
       responseType: 'json',
-      headers
+      headers,
+      paramsSerializer: (params) => {
+        return qs.stringify(params)
+      }
     })
   }
 }
