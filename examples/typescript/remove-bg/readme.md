@@ -2,7 +2,7 @@
 
 > Smart image background removal! 🤯
 
-<a href="https://transitive-bullshit_remove-bg.saasify.sh">
+<a href="https://dev_remove-bg.saasify.sh">
   <img
     src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/media/splash-0.jpg"
     alt="Image Background Removal Example"
@@ -11,7 +11,7 @@
 
 ## Usage
 
-<a href="https://transitive-bullshit_remove-bg.saasify.sh">
+<a href="https://dev_remove-bg.saasify.sh">
   <img
     src="https://badges.saasify.sh"
     height="40"
@@ -36,7 +36,7 @@ The following examples all use the `/removeBgUrl` endpoint and pass a remote ima
 
 ```
 curl --request POST -o 'girl-no-bg.png' \
-  --url 'https://api.saasify.sh/1/call/transitive-bullshit/remove-bg/removeBgUrl' \
+  --url 'https://api.saasify.sh/1/call/dev/remove-bg/removeBgUrl' \
   --header 'content-type: application/json' \
   --data '{"url":"https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/cc.jpg"}'
 ```
@@ -50,7 +50,7 @@ curl --request POST -o 'girl-no-bg.png' \
 
 ```
 curl --request POST -o 'pg-no-bg.png' \
-  --url 'https://api.saasify.sh/1/call/transitive-bullshit/remove-bg/removeBgUrl' \
+  --url 'https://api.saasify.sh/1/call/dev/remove-bg/removeBgUrl' \
   --header 'content-type: application/json' \
   --data '{"url":"https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/pg.jpg"}'
 ```
@@ -64,7 +64,7 @@ curl --request POST -o 'pg-no-bg.png' \
 
 ```
 curl --request POST -o 'jb-no-bg.png' \
-  --url 'https://api.saasify.sh/1/call/transitive-bullshit/remove-bg/removeBgUrl' \
+  --url 'https://api.saasify.sh/1/call/dev/remove-bg/removeBgUrl' \
   --header 'content-type: application/json' \
   --data '{"url":"https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/jb.jpg"}'
 ```
