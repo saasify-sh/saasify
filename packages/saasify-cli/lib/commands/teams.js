@@ -12,7 +12,7 @@ const defaultUserTeam = { }
 module.exports = (program, client) => {
   program
     .command('teams <command> [arg]')
-    .description('Manages your teams (ls, add, invite)')
+    .description('Manages your teams (ls, add, invite, switch)')
     .action(async (cmd, arg) => {
       program.requireAuthentication()
 
@@ -172,9 +172,9 @@ module.exports = (program, client) => {
 
           default: {
             if (!cmd) {
-              console.error('error: must specify a team command (ls, add, invite)')
+              console.error('error: must specify a team command (ls, add, invite, switch)')
             } else {
-              console.error(`error: invalid team command [${cmd}] (ls, add, invite)`)
+              console.error(`error: invalid team command [${cmd}] (ls, add, invite, switch)`)
             }
 
             process.exit(1)
