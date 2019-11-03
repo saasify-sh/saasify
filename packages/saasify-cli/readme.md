@@ -60,7 +60,7 @@ Commands:
   logs [options] <url|deployment>                      Prints the logs for a given deployment
   publish <deploymentId|deploymentUrl>                 Creates a subscription to a project (requires a valid billing source)
   rm|remove [options] [deploymentId|deploymentUrl...]  Removes deployments
-  secrets <command> [name] [value]                      Manages your secret environment variables
+  secrets <command> [name] [value]                     Manages your secret environment variables
   login|signin [options]                               Logs into your account
   logout|signout                                       Logs out of your account
   signup [options]                                     Creates a new account
