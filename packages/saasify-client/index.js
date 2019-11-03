@@ -12,12 +12,14 @@ module.exports = class SaasifyClient {
     const {
       baseUrl = defaultBaseUrl,
       user,
-      token
+      token,
+      teamId
     } = opts
 
     this._baseUrl = baseUrl
     this._user = user
     this._token = token
+    this._teamId = teamId
 
     if (!!user !== !!token) {
       throw new Error('user must be passed if and only if token is passed')
@@ -30,12 +32,16 @@ module.exports = class SaasifyClient {
     return !!this._token
   }
 
+  get user () {
+    return this._user
+  }
+
   get token () {
     return this._token
   }
 
-  get user () {
-    return this._user
+  get teamId () {
+    return this._teamId
   }
 
   set user (user) {
@@ -50,6 +56,11 @@ module.exports = class SaasifyClient {
 
   get baseUrl () {
     return this._baseUrl
+  }
+
+  set teamId (teamId) {
+    this._teamId = teamId
+    this._reset()
   }
 
   // --------------------------------------------------------------------------
@@ -98,22 +109,10 @@ module.exports = class SaasifyClient {
       })
   }
 
-  async authWithFacebook (data) {
-    return this._request({
-      url: `/1/auth/facebook`,
-      method: 'put',
-      data
-    }).then(res => res.data)
-      .then((data) => {
-        this._token = data.token
-        this._user = data.user
-        return data
-      })
-  }
-
   async signout () {
     this._token = null
     this._user = null
+    this._teamId = null
   }
 
   // --------------------------------------------------------------------------
@@ -142,15 +141,18 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/projects`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
   }
 
   async getProject (id, opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/projects/${id}?${querystring}`
+      url: `/1/projects/${id}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
@@ -163,10 +165,12 @@ module.exports = class SaasifyClient {
   }
 
   async getProjectByAlias (alias, opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/projects/alias/${alias}?${querystring}`
+      url: `/1/projects/alias/${alias}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
@@ -221,10 +225,12 @@ module.exports = class SaasifyClient {
   }
 
   async getDeployment (id, opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/deployments/${id}?${querystring}`
+      url: `/1/deployments/${id}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
@@ -244,10 +250,13 @@ module.exports = class SaasifyClient {
   }
 
   async listDeployments (where = { }, opts = { }) {
-    const querystring = qs.stringify({ where, ...opts })
-
     return this._request({
-      url: `/1/deployments?${querystring}`
+      url: `/1/deployments`,
+      params: {
+        ...this._params,
+        where,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
@@ -256,6 +265,77 @@ module.exports = class SaasifyClient {
       url: `/1/deployments/publish/${deploymentId}`,
       method: 'put',
       data
+    }).then(res => res.data)
+  }
+
+  // --------------------------------------------------------------------------
+  // Teams
+  // --------------------------------------------------------------------------
+
+  async createTeam (data) {
+    return this._request({
+      url: `/1/teams`,
+      method: 'post',
+      data
+    }).then(res => res.data)
+  }
+
+  async getTeam (id, opts = { }) {
+    return this._request({
+      url: `/1/teams/${id}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
+    }).then(res => res.data)
+  }
+
+  async updateTeam (deployment) {
+    return this._request({
+      url: `/1/teams/${deployment.id}`,
+      method: 'put',
+      data: deployment
+    }).then(res => res.data)
+  }
+
+  async removeTeam (id) {
+    return this._request({
+      url: `/1/teams/${id}`,
+      method: 'delete'
+    }).then(res => res.data)
+  }
+
+  async listTeams (where = { }, opts = { }) {
+    return this._request({
+      url: `/1/teams`,
+      params: {
+        ...this._params,
+        where,
+        ...opts
+      }
+    }).then(res => res.data)
+  }
+
+  async inviteTeamMember (team, member) {
+    return this._request({
+      url: `/1/teams/${team.slug}/members`,
+      method: 'post',
+      data: member
+    }).then(res => res.data)
+  }
+
+  async updateTeamMember (team, member) {
+    return this._request({
+      url: `/1/teams/${team.slug}/members/${member.username}`,
+      method: 'put',
+      data: member
+    }).then(res => res.data)
+  }
+
+  async removeTeamMember (team, member) {
+    return this._request({
+      url: `/1/teams/${team.slug}/members/${member.username}`,
+      method: 'delete'
     }).then(res => res.data)
   }
 
@@ -313,26 +393,32 @@ module.exports = class SaasifyClient {
   }
 
   async listBillingInvoices (opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/billing/invoices?${querystring}`
+      url: `/1/billing/invoices`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
   async listBillingInvoicesForConsumer (consumer, opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/billing/invoices/${consumer.id}?${querystring}`
+      url: `/1/billing/invoices/${consumer.id}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
   async listBillingUsageForConsumer (consumer, opts = { }) {
-    const querystring = qs.stringify(opts)
-
     return this._request({
-      url: `/1/billing/usage/${consumer.id}?${querystring}`
+      url: `/1/billing/usage/${consumer.id}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then(res => res.data)
   }
 
@@ -458,15 +544,23 @@ module.exports = class SaasifyClient {
 
   _reset () {
     const headers = {}
+    this._params = {}
 
     if (this._token) {
       headers.authorization = `Bearer ${this._token}`
     }
 
+    if (this._teamId) {
+      this._params.teamId = this._teamId
+    }
+
     this._request = axios.create({
       baseURL: this._baseUrl,
       responseType: 'json',
-      headers
+      headers,
+      paramsSerializer: (params) => {
+        return qs.stringify(params)
+      }
     })
   }
 }
