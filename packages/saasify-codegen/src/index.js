@@ -1,6 +1,4 @@
-// TODO: python and ruby example params seem off
 // TODO: add token if given for python and ruby
-// TODO: add support for GET vs POST requests
 // TODO: update result format to match format of redoc's x-code-samples
 
 import indent from 'indent-string'
