@@ -77,6 +77,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/auth/signin`,
       method: 'put',
+      params: this._params,
       data: {
         username,
         password
@@ -95,6 +96,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/auth/signup`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
       .then((data) => {
@@ -110,6 +112,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/auth/github`,
       method: 'put',
+      params: this._params,
       data
     }).then(res => res.data)
       .then((data) => {
@@ -134,7 +137,8 @@ module.exports = class SaasifyClient {
 
   async getMe () {
     return this._request({
-      url: `/1/me`
+      url: `/1/me`,
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -142,6 +146,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/me`,
       method: 'put',
+      params: this._params,
       data
     }).then(res => res.data)
   }
@@ -173,6 +178,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/projects/${project.id}`,
       method: 'put',
+      params: this._params,
       data: project
     }).then(res => res.data)
   }
@@ -195,19 +201,22 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/consumers`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
   }
 
   async getConsumer (id) {
     return this._request({
-      url: `/1/consumers/${id}`
+      url: `/1/consumers/${id}`,
+      params: this._params
     }).then(res => res.data)
   }
 
   async removeConsumer (consumer) {
     return this._request({
       url: `/1/consumers/${consumer.id}`,
+      params: this._params,
       method: 'delete'
     }).then(res => res.data)
   }
@@ -215,13 +224,15 @@ module.exports = class SaasifyClient {
   async updateConsumer (consumer) {
     return this._request({
       url: `/1/consumers/${consumer.id}`,
+      params: this._params,
       method: 'put'
     }).then(res => res.data)
   }
 
   async getConsumerByProject (projectId) {
     return this._request({
-      url: `/1/consumers/projects/${projectId}`
+      url: `/1/consumers/projects/${projectId}`,
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -233,6 +244,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/deployments`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
   }
@@ -251,6 +263,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/deployments/${deployment.id}`,
       method: 'put',
+      params: this._params,
       data: deployment
     }).then(res => res.data)
   }
@@ -258,7 +271,8 @@ module.exports = class SaasifyClient {
   async removeDeployment (id) {
     return this._request({
       url: `/1/deployments/${id}`,
-      method: 'delete'
+      method: 'delete',
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -277,6 +291,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/deployments/publish/${deploymentId}`,
       method: 'put',
+      params: this._params,
       data
     }).then(res => res.data)
   }
@@ -366,6 +381,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/logs`,
       method: 'put',
+      params: this._params,
       data: {
         ...opts,
         identifier
@@ -379,13 +395,15 @@ module.exports = class SaasifyClient {
 
   async getBilling () {
     return this._request({
-      url: `/1/billing`
+      url: `/1/billing`,
+      params: this._params
     }).then(res => res.data)
   }
 
   async listBillingSources () {
     return this._request({
-      url: `/1/billing/sources`
+      url: `/1/billing/sources`,
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -393,6 +411,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/billing/sources`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
   }
@@ -400,14 +419,16 @@ module.exports = class SaasifyClient {
   async removeBillingSource (id) {
     return this._request({
       url: `/1/billing/sources/${id}`,
-      method: 'delete'
+      method: 'delete',
+      params: this._params
     }).then(res => res.data)
   }
 
   async setDefaultBillingSource (id) {
     return this._request({
       url: `/1/billing/sources/${id}/set-default`,
-      method: 'put'
+      method: 'put',
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -447,7 +468,8 @@ module.exports = class SaasifyClient {
 
   async listSecrets () {
     return this._request({
-      url: `/1/secrets`
+      url: `/1/secrets`,
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -455,6 +477,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/secrets`,
       method: 'post',
+      params: this._params,
       data: {
         name,
         value
@@ -465,7 +488,8 @@ module.exports = class SaasifyClient {
   async removeSecret (name) {
     return this._request({
       url: `/1/secrets/${name}`,
-      method: 'delete'
+      method: 'delete',
+      params: this._params
     }).then(res => res.data)
   }
 
@@ -473,6 +497,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/secrets/${name}`,
       method: 'put',
+      params: this._params,
       data: {
         name: newName
       }
@@ -540,6 +565,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/uploads`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
   }
