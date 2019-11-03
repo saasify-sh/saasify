@@ -13,13 +13,15 @@ module.exports = class SaasifyClient {
       baseUrl = defaultBaseUrl,
       user,
       token,
-      teamId
+      teamId,
+      teamSlug
     } = opts
 
     this._baseUrl = baseUrl
     this._user = user
     this._token = token
     this._teamId = teamId
+    this._teamSlug = teamSlug
 
     if (!!user !== !!token) {
       throw new Error('user must be passed if and only if token is passed')
@@ -44,6 +46,14 @@ module.exports = class SaasifyClient {
     return this._teamId
   }
 
+  get teamSlug () {
+    return this._teamSlug
+  }
+
+  get baseUrl () {
+    return this._baseUrl
+  }
+
   set user (user) {
     this._user = user
     this._reset()
@@ -52,10 +62,6 @@ module.exports = class SaasifyClient {
   set token (token) {
     this._token = token
     this._reset()
-  }
-
-  get baseUrl () {
-    return this._baseUrl
   }
 
   set teamId (teamId) {
@@ -79,6 +85,8 @@ module.exports = class SaasifyClient {
       .then((data) => {
         this._token = data.token
         this._user = data.user
+        this._teamId = undefined
+        this._teamSlug = undefined
         return data
       })
   }
@@ -92,6 +100,8 @@ module.exports = class SaasifyClient {
       .then((data) => {
         this._token = data.token
         this._user = data.user
+        this._teamId = undefined
+        this._teamSlug = undefined
         return data
       })
   }
@@ -105,6 +115,8 @@ module.exports = class SaasifyClient {
       .then((data) => {
         this._token = data.token
         this._user = data.user
+        this._teamId = undefined
+        this._teamSlug = undefined
         return data
       })
   }
@@ -112,7 +124,8 @@ module.exports = class SaasifyClient {
   async signout () {
     this._token = null
     this._user = null
-    this._teamId = null
+    this._teamId = undefined
+    this._teamSlug = undefined
   }
 
   // --------------------------------------------------------------------------
@@ -276,6 +289,7 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/teams`,
       method: 'post',
+      params: this._params,
       data
     }).then(res => res.data)
   }
@@ -290,17 +304,19 @@ module.exports = class SaasifyClient {
     }).then(res => res.data)
   }
 
-  async updateTeam (deployment) {
+  async updateTeam (team) {
     return this._request({
-      url: `/1/teams/${deployment.id}`,
+      url: `/1/teams/${team.id}`,
       method: 'put',
-      data: deployment
+      params: this._params,
+      data: team
     }).then(res => res.data)
   }
 
-  async removeTeam (id) {
+  async removeTeam (teamId) {
     return this._request({
-      url: `/1/teams/${id}`,
+      url: `/1/teams/${teamId}`,
+      params: this._params,
       method: 'delete'
     }).then(res => res.data)
   }
@@ -316,25 +332,28 @@ module.exports = class SaasifyClient {
     }).then(res => res.data)
   }
 
-  async inviteTeamMember (team, member) {
+  async inviteTeamMember (teamId, member) {
     return this._request({
-      url: `/1/teams/${team.slug}/members`,
+      url: `/1/teams/${teamId}/members`,
       method: 'post',
+      params: this._params,
       data: member
     }).then(res => res.data)
   }
 
-  async updateTeamMember (team, member) {
+  async updateTeamMember (teamId, member) {
     return this._request({
-      url: `/1/teams/${team.slug}/members/${member.username}`,
+      url: `/1/teams/${teamId}/members/${member.username}`,
       method: 'put',
+      params: this._params,
       data: member
     }).then(res => res.data)
   }
 
-  async removeTeamMember (team, member) {
+  async removeTeamMember (teamId, member) {
     return this._request({
-      url: `/1/teams/${team.slug}/members/${member.username}`,
+      url: `/1/teams/${teamId}/members/${member.username}`,
+      params: this._params,
       method: 'delete'
     }).then(res => res.data)
   }

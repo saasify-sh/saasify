@@ -23,6 +23,8 @@ module.exports = async (argv, opts = { }) => {
     .option('-c, --config <path>', 'Path to `saasify.json` file (defaults to cwd)')
     .option('-C, --no-clipboard', 'Do not attempt to copy URL to clipboard')
 
+  // TODO: add ability to set client.teamId in global program options
+
   for (const command of commands) {
     await Promise.resolve(command(program, client))
   }
