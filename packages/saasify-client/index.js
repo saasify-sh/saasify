@@ -524,19 +524,6 @@ module.exports = class SaasifyClient {
       data
     }).then(res => res.data)
   }
-  // --------------------------------------------------------------------------
-  // Checkout
-  // --------------------------------------------------------------------------
-
-  /* TODO: currently not supported for plans with usage_type=metered
-  async createCheckoutSession (data) {
-    return this._request({
-      url: `/1/billing/checkout`,
-      method: 'post',
-      data
-    }).then(res => res.data)
-  }
-  */
 
   // --------------------------------------------------------------------------
   // Internal
