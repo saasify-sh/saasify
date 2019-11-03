@@ -82,7 +82,10 @@ module.exports = (program, client) => {
 
             if (arg === client.teamId) {
               auth.switchTeam(defaultUserTeam)
+
+              // TODO: make the client handling of team less error-prone
               client.teamId = undefined
+              client.teamSlug = undefined
             }
             */
 
