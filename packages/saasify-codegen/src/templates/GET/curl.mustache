@@ -1,3 +1,3 @@
 curl {{#hasFileOutput}}-o '{{output}}' {{/hasFileOutput}}\
-  --url '{{{service.url}}}?{{{exampleQuery}}}'{{#token}} \
-  --header 'authorization: {{token}}'{{/token}}
+  '{{{service.url}}}?{{{exampleQuery}}}'{{#token}} \
+  -H 'authorization: {{token}}'{{/token}}

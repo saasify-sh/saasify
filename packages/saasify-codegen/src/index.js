@@ -63,10 +63,14 @@ export default (service, token, opts = { }) => {
     token
   }
 
-  data.exampleJSON = JSON.stringify(example.input)
-  data.example = stringifyObject(example.input, { indent: '  ' })
-  data.exampleNodeJSON = indent(data.example, 1, { indent: '  ' }).slice(2)
   data.exampleQuery = qs.stringify(example.input)
+  data.exampleJSON = JSON.stringify(example.input)
+  data.exampleJSONPretty = JSON.stringify(example.input, null, 2)
+
+  // stringifyObject returns the JSON without all the extra quotes around keys
+  // and using single quotes for string values
+  data.exampleJSONBare = stringifyObject(example.input, { indent: '  ' })
+  data.exampleJSONBareIndented = indent(data.exampleJSONBare, 1, { indent: '  ' }).slice(2)
 
   data.hasFileOutput = (service.definition && service.definition.returns.http && typeof example.output === 'string')
   data.output = example.output

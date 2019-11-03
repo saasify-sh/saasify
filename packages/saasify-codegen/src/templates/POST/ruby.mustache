@@ -7,7 +7,7 @@ http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 
 request = Net::HTTP::Post.new(url)
-request.body = "{{{example}}}"
+request.body = "{{{exampleJSONBare}}}"
 
 response = http.request(request)
 puts response.read_body
