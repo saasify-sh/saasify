@@ -67,6 +67,8 @@ export class NavHeader extends Component {
                   to='/'
                 >
                   <Logo className={theme(styles, 'logo')} />
+
+                  <span className={theme(styles, 'logo-text')}>{config.name}</span>
                 </Link>
 
                 {config.header.links.map((link) => {
