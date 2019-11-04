@@ -608,7 +608,9 @@
 }
 
 .theme-waves .live-service-demo .tab-content {
-  max-height: 30vh;
+  max-height: 50vh;
+  padding-bottom: 42px;
+  position: static;
   overflow-y: auto;
 }
 
@@ -620,6 +622,16 @@
   padding: var(--space-m) !important;
   padding-left: var(--space-l) !important;
   padding-right: var(--space-l) !important;
+}
+
+.theme-waves .live-service-demo .copy {
+  background: white !important;
+  border: none !important;
+  color: var(--color-fg) !important;
+  opacity: 0.6;
+}
+.theme-waves .live-service-demo .copy:hover {
+  opacity: 1;
 }
 
 /*
