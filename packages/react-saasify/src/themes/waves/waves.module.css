@@ -53,7 +53,7 @@
 
 .theme-waves b,
 .theme-waves strong {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .theme-waves .paper {
@@ -77,7 +77,6 @@
 
 .theme-waves .section .title {
   font-size: 48px;
-  font-weight: 600;
   position: relative;
 }
 
