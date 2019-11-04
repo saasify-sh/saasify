@@ -118,7 +118,7 @@
 @media (min-width: 48em) {
   .theme-waves .home-page .hero-section,
   .home-page .demo-section {
-    height: 90vh;
+    height: calc(100vh - 48px);
     margin-top: 0;
     min-height: 500px;
     width: 50%;
@@ -663,7 +663,7 @@
 
 @media (min-width: 48em) {
   .theme-waves .section:first-of-type::after {
-    bottom: -64px;
+    bottom: -32px;
     top: auto;
   }
 }
