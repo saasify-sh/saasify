@@ -438,19 +438,19 @@
 }
 
 .theme-waves header.attached {
-  background: transparent;
+  background: transparent !important;
   box-shadow: none;
 }
 
 @media (min-width: 48em) {
   .theme-waves header.attached {
-    background: white;
+    background: white !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   }
-}
 
-.theme-waves header.attached .link {
-  color: var(--color-fg) !important;
+  .theme-waves header.attached .link {
+    color: var(--color-fg) !important;
+  }
 }
 
 .theme-waves header .logo {
