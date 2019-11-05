@@ -24,17 +24,19 @@ If you're interested in OSS sustainability and want to follow along with our pro
 
 ## Features
 
--   **$$$**: Monetize your open source projects!
--   **Simple**: Quick to setup your own SaaS
--   **Productive**: Focus on your unique value prop instead of SaaS boilerplate
--   **Standard**: Built with TypeScript + Lambda + Stripe
--   **Compatible**: Generated APIs are usable from any programming language
--   **Automatic**: Saasify handles all docs, hosting, billing, accounts, and support for you
--   **Efficient**: Start validating product / market fit in minutes instead of months
+- **$$$**: Monetize your open source projects!
+- **Simple**: Quick to setup your own SaaS
+- **Productive**: Focus on your unique value prop instead of SaaS boilerplate
+- **Standard**: Built with TypeScript + Lambda + Stripe
+- **Compatible**: Generated APIs are usable from any programming language
+- **Automatic**: Saasify handles all docs, hosting, billing, accounts, and support for you
+- **Efficient**: Start validating product / market fit in minutes instead of months
 
 ## Install
 
-    npm install -g saasify
+```
+npm install -g saasify
+```
 
 ## Usage
 
@@ -76,8 +78,8 @@ For more documentation and a detailed walkthrough, visit [saasify.sh](https://sa
 
 ## Related
 
--   [saasify](https://saasify.sh) - Saasify homepage.
--   [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
+- [saasify](https://saasify.sh) - Saasify homepage.
+- [fts](https://github.com/transitive-bullshit/functional-typescript) - TypeScript standard for rock solid serverless functions.
 
 ## License
 
