@@ -25,7 +25,7 @@ module.exports = async (spec, deployment, opts = { }) => {
   api.tags = [
     {
       name: 'service',
-      'x-displayName': 'Services'
+      'x-displayName': 'APIs'
     }
   ]
 
