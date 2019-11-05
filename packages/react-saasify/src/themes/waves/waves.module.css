@@ -447,6 +447,10 @@
   max-height: 48px;
 }
 
+.theme-waves header .logo-text {
+  font-weight: 600;
+}
+
 .theme-waves
   header:not(.attached):not(.expanded)
   .cta-button:global(.secondary):not(:hover) {
