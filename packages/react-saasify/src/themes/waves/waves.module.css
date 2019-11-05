@@ -95,6 +95,7 @@
 }
 
 .theme-waves .section .content {
+  flex: initial;
   max-width: var(--max-width);
   padding: 0 !important;
   z-index: 1;
@@ -145,6 +146,7 @@
 .theme-waves .home-page .hero-section .content {
   align-items: center;
   justify-content: center;
+  flex: 1 1;
 }
 
 @media (min-width: 48em) {
