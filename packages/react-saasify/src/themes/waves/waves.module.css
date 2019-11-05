@@ -335,14 +335,8 @@
   padding-left: var(--side-gutter);
   padding-right: var(--side-gutter);
   padding-top: var(--space-m);
-  position: initial;
+  position: sticky;
   transition: var(--transition-all-fast);
-}
-
-@media (min-width: 48em) {
-  .theme-waves header.container {
-    position: sticky;
-  }
 }
 
 .theme-waves header.container .links {
@@ -353,6 +347,7 @@
   color: var(--hero-color) !important;
   font-size: 18px;
   font-weight: 500;
+  margin-right: var(--space-xl);
 }
 
 .theme-waves header.container .link:hover {
@@ -371,24 +366,23 @@
   margin-left: 0;
 }
 
-.theme-waves header.container .links .link:nth-of-type(4) {
+.theme-waves header.container .links .link:nth-of-type(3) {
   display: none;
 }
 
-.theme-waves header.container .links .link:nth-of-type(2) {
+.theme-waves header.container .links .link:nth-of-type(1) {
   order: 2;
   opacity: 0.9;
 }
 
-.theme-waves header.container .links .link:nth-of-type(3) {
+.theme-waves header.container .links .link:nth-of-type(2) {
   margin-left: auto;
-  margin-right: var(--space-xl);
+  margin-right: var(--space-xxxl);
   order: 1;
   opacity: 0.9;
 }
 
 .theme-waves header.container .actions {
-  margin-top: var(--space-m);
   justify-content: initial;
 }
 
@@ -413,6 +407,7 @@
 
 .theme-waves header.container .actions .link:last-of-type {
   margin-left: var(--space-s);
+  margin-right: 0;
 }
 
 @media (min-width: 48em) {
@@ -438,16 +433,11 @@
 }
 
 .theme-waves header.attached {
-  background: transparent !important;
-  box-shadow: none;
+  background: white !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 @media (min-width: 48em) {
-  .theme-waves header.attached {
-    background: white !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  }
-
   .theme-waves header.attached .link {
     color: var(--color-fg) !important;
   }
@@ -457,9 +447,18 @@
   max-height: 48px;
 }
 
-.theme-waves header:not(.attached) .cta-button:global(.secondary):not(:hover) {
+.theme-waves
+  header:not(.attached):not(.expanded)
+  .cta-button:global(.secondary):not(:hover) {
   border-color: var(--color-nav-secondary-cta) !important;
   color: var(--color-nav-secondary-cta) !important;
+}
+
+.theme-waves header.attached .logo-text:not(:hover),
+.theme-waves header.attached .links .link:not(:hover),
+.theme-waves header.expanded .logo-text:not(:hover),
+.theme-waves header.expanded .links .link:not(:hover) {
+  color: var(--color-fg) !important;
 }
 
 /*
