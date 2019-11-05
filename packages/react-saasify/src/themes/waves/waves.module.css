@@ -478,12 +478,12 @@
 .theme-waves footer .detail,
 .theme-waves footer .header {
   color: var(--color-fg) !important;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .theme-waves footer .link {
   color: var(--color-fg) !important;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .theme-waves footer .link:hover {
