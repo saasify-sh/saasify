@@ -8,20 +8,34 @@ export const waves = ({
   backgroundImage,
   buttonStyle = 'normal',
   color = '#5061CB',
+  gradient = true,
+  gradientDark = false,
+  wave = true,
   ...opts
 } = {}) => {
   // Define root CSS vars
+
+  const gradientTop = gradientDark
+    ? 'rgba(0,0,0,0.35)'
+    : 'rgba(158,143,143,0.50)'
+
   cv({
     'border-radius': buttonStyle === 'rounded' ? '100px' : '4px',
     'color-primary': color,
 
     // Adjust based on background image
     'background-image': backgroundImage
-      ? `linear-gradient(180deg, rgba(158,143,143,0.50) 0%, rgba(0,0,0,0.50) 100%), url(${backgroundImage})`
+      ? `${
+          gradient
+            ? `linear-gradient(180deg, ${gradientTop} 0%, rgba(0,0,0,0.50) 100%), `
+            : ''
+        }url(${backgroundImage})`
       : 'linear-gradient(104deg, #fcfcfc 13%, #f5f7fb 91%)',
-    'background-image-wave': backgroundImage
-      ? `url(${waveSvg})`
-      : `url(${waveShadowedSvg})`,
+    'background-image-wave': wave
+      ? backgroundImage
+        ? `url(${waveSvg})`
+        : `url(${waveShadowedSvg})`
+      : '',
     'color-nav-secondary-cta': backgroundImage ? 'white' : color,
     'hero-color': backgroundImage ? 'white' : '#3a3a3a',
     'nav-border-width': backgroundImage ? '0px' : '1px'

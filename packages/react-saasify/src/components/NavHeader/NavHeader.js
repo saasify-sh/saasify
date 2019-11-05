@@ -27,7 +27,8 @@ export class NavHeader extends Component {
   }
 
   state = {
-    attached: (isServer || window.scrollY > 0)
+    attached: (isServer || window.scrollY > 0),
+    expanded: false
   }
 
   componentDidMount() {
@@ -48,71 +49,94 @@ export class NavHeader extends Component {
     }
   }
 
+  handleToggleExpanded = () => {
+    this.setState({
+      expanded: !this.state.expanded
+    })
+  }
+
   render() {
     const { auth, fixed } = this.props
-    const { attached } = this.state
+    const { attached, expanded } = this.state
 
     return (
       <SaasifyContext.Consumer>
         {config => (
           <header
-            className={theme(styles, 'container', attached || fixed ? theme(styles, 'attached') : null)}
+            className={theme(
+              styles,
+              'container',
+              attached || fixed ? theme(styles, 'attached') : null,
+              expanded ? theme(styles, 'expanded') : null
+            )}
             style={{
-              background: attached || fixed ? theme['@section-fg-color'] : 'transparent'
+              background: attached || fixed || expanded ? theme['@section-fg-color'] : 'transparent'
             }}
           >
             <div className={theme(styles, 'content')}>
-              <div className={theme(styles, 'links')}>
+              <div className={theme(styles, 'primary')}>
                 <Link
                   to='/'
                 >
                   <Logo className={theme(styles, 'logo')} />
+
+                  <span className={theme(styles, 'logo-text')}>{config.name}</span>
                 </Link>
 
-                {config.header.links.map((link) => {
-                  if (typeof link === 'function') {
-                    link = link({ config, auth, fixed, attached })
-                    if (!link) return null
-                  }
-
-                  return (
-                    <Link
-                      key={link.to || link.href}
-                      {...link}
-                    />
-                  )
-                })}
+                <div className={theme(styles, 'burger')}>
+                  <CTAButton type='secondary' inline onClick={this.handleToggleExpanded}>
+                    Menu
+                  </CTAButton>
+                </div>
               </div>
 
-              {auth.isAuthenticated ? (
-                <div className={theme(styles, 'actions')}>
-                  <Link to='/logout' className={theme(styles, 'login')}>
-                    <CTAButton type='secondary' inline>
-                      Log out
-                    </CTAButton>
-                  </Link>
+              <div className={theme(styles, 'content-body')}>
+                <div className={theme(styles, 'links')}>
+                  {config.header.links.map((link) => {
+                    if (typeof link === 'function') {
+                      link = link({ config, auth, fixed, attached })
+                      if (!link) return null
+                    }
 
-                  <Link to='/dashboard'>
-                    <CTAButton type='primary' inline>
-                      Dashboard
-                    </CTAButton>
-                  </Link>
+                    return (
+                      <Link
+                        key={link.to || link.href}
+                        {...link}
+                      />
+                    )
+                  })}
                 </div>
-              ) : (
-                <div className={theme(styles, 'actions')}>
-                  <Link to='/login' className={theme(styles, 'login')}>
-                    <CTAButton type='secondary' inline>
-                      Log in
-                    </CTAButton>
-                  </Link>
 
-                  <Link to='/signup'>
-                    <CTAButton type='primary' inline>
-                      Get started
-                    </CTAButton>
-                  </Link>
-                </div>
-              )}
+                {auth.isAuthenticated ? (
+                  <div className={theme(styles, 'actions')}>
+                    <Link to='/logout' className={theme(styles, 'login')}>
+                      <CTAButton type='secondary' inline>
+                        Log out
+                      </CTAButton>
+                    </Link>
+
+                    <Link to='/dashboard'>
+                      <CTAButton type='primary' inline>
+                        Dashboard
+                      </CTAButton>
+                    </Link>
+                  </div>
+                ) : (
+                  <div className={theme(styles, 'actions')}>
+                    <Link to='/login' className={theme(styles, 'login')}>
+                      <CTAButton type='secondary' inline>
+                        Log in
+                      </CTAButton>
+                    </Link>
+
+                    <Link to='/signup'>
+                      <CTAButton type='primary' inline>
+                        Get started
+                      </CTAButton>
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           </header>
         )}
