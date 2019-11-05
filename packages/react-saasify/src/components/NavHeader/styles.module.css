@@ -6,8 +6,6 @@
   z-index: 10;
 
   padding: 6px 12px;
-
-  transition: all 400ms ease;
 }
 
 .content {
@@ -17,13 +15,24 @@
 
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
+}
+
+.content-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
 }
 
 .attached {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.primary {
+  align-items: center;
+  display: flex;
 }
 
 .logo {
@@ -38,6 +47,7 @@
   font-size: 22px;
   margin-right: 32px;
   font-weight: bolder;
+  white-space: nowrap;
 }
 
 .links {
@@ -57,7 +67,6 @@
 }
 
 .container {
-  justify-content: space-around;
   padding: 16px 24px;
 }
 
@@ -79,7 +88,7 @@
 
 .link {
   padding: 0;
-  margin-left: 2em;
+  margin-right: 32px;
 }
 
 .link:hover {
@@ -88,31 +97,92 @@
 
 .actions {
   display: flex;
+  margin-left: auto;
+}
+
+.actions .link {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.actions .link:first-of-type {
+  margin-left: 0;
+}
+
+.actions .link:last-of-type {
+  margin-right: 0;
+}
+
+.burger {
+  display: none;
 }
 
 @media only screen and (max-width: 767px) {
-  .logo {
-    margin-right: 0;
-  }
-
   .links {
+    display: block;
+    margin-top: 24px;
+    margin-bottom: 8px;
     width: 100%;
-    justify-content: space-around;
   }
 
   .link {
     padding: 0;
     margin-left: 0.2em;
-    font-size: 1em;
+    margin-bottom: 8px;
+    font-size: 16px;
   }
 
   .actions {
     width: 100%;
-    justify-content: space-around;
     margin-top: 0.5em;
+  }
+
+  .actions .link {
+    width: 100%;
+  }
+
+  .actions .link:first-of-type {
+    margin-left: 0px;
+  }
+
+  .actions .link button {
+    width: 100%;
   }
 
   .container {
     padding: 12px;
+  }
+
+  .content {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .content-body {
+    display: none;
+  }
+
+  .expanded .content-body {
+    display: flex;
+  }
+
+  .logo,
+  .logo-text,
+  .burger {
+    margin-bottom: 0px;
+  }
+
+  .primary {
+    width: 100%;
+  }
+
+  .primary .link {
+    margin-bottom: 0;
+  }
+
+  .burger {
+    display: block;
+    margin-left: auto;
   }
 }

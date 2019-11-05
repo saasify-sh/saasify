@@ -114,7 +114,7 @@ body header + section:first-of-type .title {
 
 @media only screen and (max-width: 767px) {
   body header + section:first-of-type .content {
-    padding-top: 164px;
+    padding-top: 124px;
   }
 
   .content {
