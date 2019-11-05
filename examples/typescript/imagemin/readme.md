@@ -4,7 +4,7 @@
 
 This project provides a hosted, SaaS version of [imagemin](https://github.com/imagemin/imagemin).
 
-Note that the majority of the revenue from this hosted API goes back to the open source maintainers behind the original project.
+If you are the original author of [imagemin](https://github.com/imagemin/imagemin) and would like to claim the majority of the revenue, please [get in touch](mailto:dev@saasify.sh).
 
 <a href="https://transitive-bullshit_imagemin.saasify.sh">
   <img

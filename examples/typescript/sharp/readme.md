@@ -4,7 +4,7 @@
 
 This project provides a hosted, SaaS version of [sharp](https://github.com/lovell/sharp) by [Lovell Fuller](https://github.com/lovell).
 
-Note that the majority of the revenue from this hosted API goes back to the open source maintainers behind the original project.
+If you are the original author of [sharp](https://github.com/lovell/sharp) and would like to claim the majority of the revenue, please [get in touch](mailto:dev@saasify.sh).
 
 <a href="https://transitive-bullshit_sharp.saasify.sh">
   <img
