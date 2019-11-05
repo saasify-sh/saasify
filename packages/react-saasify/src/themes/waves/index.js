@@ -11,6 +11,7 @@ export const waves = ({
   gradient = true,
   gradientDark = false,
   wave = true,
+  codeBlockDark = false,
   ...opts
 } = {}) => {
   // Define root CSS vars
@@ -37,6 +38,10 @@ export const waves = ({
         : `url(${waveShadowedSvg})`
       : '',
     'color-nav-secondary-cta': backgroundImage ? 'white' : color,
+    'code-block-background': codeBlockDark
+      ? '#1E1E1E'
+      : 'linear-gradient(174deg, #6e60e1 0%, #1b3b87 93%)',
+    'code-block-shadow-color': codeBlockDark ? '#1E1E1E95' : '#392ab195',
     'hero-color': backgroundImage ? 'white' : '#3a3a3a',
     'nav-border-width': backgroundImage ? '0px' : '1px'
   })
