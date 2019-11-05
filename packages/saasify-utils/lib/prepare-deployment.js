@@ -128,13 +128,14 @@ module.exports = async (deployment, data, opts = { }) => {
     console.log(`warn: overriding "${nowConfigName}"`)
   }
 
+  const prefix = deployment.team || deployment.user
   await fs.writeJson(nowConfigPath, {
     version: 2,
     name: deployment.project,
     build: {
-      env: transformEnv(deployment.user, (deployment.build && deployment.build.env) || { })
+      env: transformEnv(prefix, (deployment.build && deployment.build.env) || { })
     },
-    env: transformEnv(deployment.user, deployment.env || { }),
+    env: transformEnv(prefix, deployment.env || { }),
     builds,
     routes
   }, jsonConfig)

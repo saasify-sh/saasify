@@ -107,6 +107,9 @@
             },
             {
               "type": "string"
+            },
+            {
+              "type": "array"
             }
           ]
         },

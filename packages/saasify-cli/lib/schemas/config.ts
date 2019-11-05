@@ -34,7 +34,7 @@ class Service {
 class Example {
   name: string
   input: object
-  output?: string | object
+  output?: any
   inputContentType?: string = 'application/json'
   outputContentType?: string = 'application/json'
 }
