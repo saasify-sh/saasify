@@ -379,8 +379,32 @@
  * Dashboard
  * ----------------------------
  */
+.theme-waves .dashboard-page,
+.theme-waves .dashboard-page .section {
+  background: #f7f7f7 !important;
+}
+
+.theme-waves .dashboard-page .section:first-of-type::before {
+  display: none;
+}
+
+.theme-waves .dashboard-page .dashboard-section .title {
+  color: var(--color-fg);
+  font-weight: 600;
+  font-size: 48px;
+}
+
 .theme-waves .dashboard-page .section:first-of-type::after {
-  bottom: -140px;
+  display: none;
+}
+
+.theme-waves .dashboard-page .onboarding-section {
+  margin-top: 0;
+}
+
+.theme-waves .dashboard-page .section:not(.dashboard-section) .title {
+  font-weight: 600;
+  font-size: 22px;
 }
 
 /*
