@@ -95,6 +95,10 @@
           "type": "string",
           "title": "name"
         },
+        "description": {
+          "type": "string",
+          "title": "description"
+        },
         "input": {
           "type": "object",
           "title": "input"
