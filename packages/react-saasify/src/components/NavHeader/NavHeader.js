@@ -111,7 +111,7 @@ export class NavHeader extends Component {
                   <div className={theme(styles, 'actions')}>
                     <Link to='/logout' className={theme(styles, 'login')}>
                       <CTAButton type='secondary' inline>
-                        Log out
+                        Log Out
                       </CTAButton>
                     </Link>
 
@@ -125,13 +125,13 @@ export class NavHeader extends Component {
                   <div className={theme(styles, 'actions')}>
                     <Link to='/login' className={theme(styles, 'login')}>
                       <CTAButton type='secondary' inline>
-                        Log in
+                        Log In
                       </CTAButton>
                     </Link>
 
                     <Link to='/signup'>
                       <CTAButton type='primary' inline>
-                        Get started
+                        Get Started
                       </CTAButton>
                     </Link>
                   </div>
