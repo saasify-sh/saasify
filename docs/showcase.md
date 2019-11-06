@@ -36,7 +36,7 @@ Summarize any webpage or article automagically. ([source code](https://github.co
 
 <p align="center">
   <a href="https://t.saasify.sh/" title="Sharp" target="_blank">
-    <img src="https://storage.googleapis.com/saasify-uploads-prod/4692dbd3bc4f9aab721f2e7c0a6f36139ce91feb.svg" alt="Sharp Logo" width="200" />
+    <img src="https://storage.googleapis.com/saasify-uploads-prod/5e1486463b461509199b75d45e88ee760253c535.svg" alt="Synopsis Logo" width="200" />
   </a>
 </p>
 
