@@ -22,13 +22,31 @@ Wraps the [puppeteer](https://github.com/GoogleChrome/puppeteer) NPM module by [
   </a>
 </p>
 
+## Synopsis
+
+Summarize any webpage or article automagically. ([source code](https://github.com/saasify-sh/synopsis)).
+
+<a href="https://synopsis.saasify.sh" target="_blank">
+  <img
+    src="https://badges.saasify.sh?text=Try%20Synopsis%20API"
+    height="40"
+    alt="Try Synopsis API"
+  />
+</a>
+
+<p align="center">
+  <a href="https://t.saasify.sh/" title="Sharp" target="_blank">
+    <img src="https://storage.googleapis.com/saasify-uploads-prod/4692dbd3bc4f9aab721f2e7c0a6f36139ce91feb.svg" alt="Sharp Logo" width="200" />
+  </a>
+</p>
+
 ## Sharp
 
 Powerful SaaS API for image conversion and manipulation. ([source code](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/sharp)).
 
 Wraps the [sharp](https://github.com/lovell/sharp) NPM module by [Lovell Fuller](https://github.com/lovell)
 
-<a href="https://transitive-bullshit_sharp_4caa3e85.saasify.sh" target="_blank">
+<a href="https://dev_sharp.saasify.sh" target="_blank">
   <img
     src="https://badges.saasify.sh?text=Try%20Sharp%20API"
     height="40"
