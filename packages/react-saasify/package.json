@@ -1,6 +1,6 @@
 {
   "name": "react-saasify",
-  "version": "1.8.6",
+  "version": "1.9.0",
   "description": "React components for Saasify web clients.",
   "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
