@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import cs from 'classnames'
 import theme from 'lib/theme'
@@ -48,67 +48,77 @@ export class PricingPlan extends Component {
         <div className={theme(styles, 'features')}>
           <div />
 
-          <div>
+          <div className={theme(styles, 'column')}>
             Price
           </div>
 
-          <div>
+          <div className={theme(styles, 'column')}>
             Rate Limit
           </div>
 
-          <div className={theme(styles, 'emphasis')}>
-            API Calls
-          </div>
+          {plan.requests && (
+            <Fragment>
+              <div className={theme(styles, 'emphasis')}>
+                API Calls
+              </div>
 
-          <div>
-            {plan.requests.price}
-          </div>
+              <div>
+                {plan.requests.price}
+              </div>
 
-          <div>
-            {plan.requests.rateLimit || (
-              <img
-                alt='unlimited'
-                src={infinity}
-                className={theme(styles, 'infinity')}
-              />
-            )}
-          </div>
+              {plan.requests.rateLimit || (
+                <img
+                  alt='unlimited'
+                  src={infinity}
+                  className={theme(styles, 'infinity')}
+                />
+              )}
+            </Fragment>
+          )}
 
-          <div className={theme(styles, 'emphasis')}>
-            Compute Time
-          </div>
+          {plan.compute && (
+            <Fragment>
+              <div className={theme(styles, 'emphasis')}>
+                Compute Time
+              </div>
 
-          <div>
-            {plan.compute.price}
-          </div>
+              <div>
+                {plan.compute.price}
+              </div>
 
-          <div>
-            {plan.compute.rateLimit || (
-              <img
-                alt='unlimited'
-                src={infinity}
-                className={theme(styles, 'infinity')}
-              />
-            )}
-          </div>
+              <div>
+                {plan.compute.rateLimit || (
+                  <img
+                    alt='unlimited'
+                    src={infinity}
+                    className={theme(styles, 'infinity')}
+                  />
+                )}
+              </div>
+            </Fragment>
+          )}
 
-          <div className={theme(styles, 'emphasis')}>
-            Bandwidth
-          </div>
+          {plan.bandwidth && (
+            <Fragment>
+              <div className={theme(styles, 'emphasis')}>
+                Bandwidth
+              </div>
 
-          <div>
-            {plan.bandwidth.price}
-          </div>
+              <div>
+                {plan.bandwidth.price}
+              </div>
 
-          <div>
-            {plan.bandwidth.rateLimit || (
-              <img
-                alt='unlimited'
-                src={infinity}
-                className={theme(styles, 'infinity')}
-              />
-            )}
-          </div>
+              <div>
+                {plan.bandwidth.rateLimit || (
+                  <img
+                    alt='unlimited'
+                    src={infinity}
+                    className={theme(styles, 'infinity')}
+                  />
+                )}
+              </div>
+            </Fragment>
+          )}
         </div>
 
         <Divider />
@@ -127,7 +137,7 @@ export class PricingPlan extends Component {
               type={plan.type}
               className={cs(plan.type === 'secondary' && theme(styles, 'secondaryCTAButton'))}
             >
-              Get started with {plan.name}
+              Get Started
             </CTAButton>
           </Link>
         )}
