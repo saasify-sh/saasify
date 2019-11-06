@@ -90,11 +90,7 @@ export default (service, token, opts = { }) => {
   }).filter(Boolean)
 
   return {
-    name: example.name,
-    input: example.input,
-    inputContentType: example.inputContentType,
-    output: example.output,
-    outputContentType: example.outputContentType,
+    ...example,
     hasFileOutput: data.hasFileOutput,
     snippets
   }
