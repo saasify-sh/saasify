@@ -776,6 +776,10 @@
   margin-top: 0;
 }
 
+.theme-waves .pricing-section .title {
+  font-weight: 600;
+}
+
 .theme-waves .pricing-section::before {
   height: calc(50% + 0px) !important;
 }
