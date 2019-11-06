@@ -143,7 +143,7 @@ export class ProfileSection extends Component {
                   type='default'
                   loading={isLoadingUnsubscribe}
                 >
-                  Unsubscribe
+                  Downgrade
                 </Button>
               </Popconfirm>
             </Fragment>
@@ -152,7 +152,7 @@ export class ProfileSection extends Component {
               type='primary'
               href='/checkout?plan=unlimited'
             >
-              Subscribe
+              Upgrade
             </Button>
           )
         )
