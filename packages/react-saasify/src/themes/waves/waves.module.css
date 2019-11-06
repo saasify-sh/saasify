@@ -264,7 +264,7 @@
  */
 
 .theme-waves .pricing-page .pricing-section {
-  height: 85vh;
+  height: auto;
   min-height: 500px;
   z-index: 1;
 }
