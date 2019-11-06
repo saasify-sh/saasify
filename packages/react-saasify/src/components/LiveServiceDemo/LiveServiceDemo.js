@@ -54,6 +54,9 @@ export class LiveServiceDemo extends Component {
       method: service.POST ? 'POST' : 'GET'
     })
 
+    console.log(this._example)
+    console.log(this._example.description)
+
     let renderedOutput = output
 
     if (output) {
@@ -115,31 +118,46 @@ export class LiveServiceDemo extends Component {
             </Fragment>
           )}
 
-          {this._example.output && !this._example.hasFileOutput && (
+          <div className={theme(styles, 'icons')}>
+            {this._example.output && !this._example.hasFileOutput && (
+              <Tooltip
+                placement='top'
+                title={output ? 'Clear output' : (running ? 'Running...' : 'Run Demo')}
+              >
+                <Button
+                  icon={output ? 'close' : (running ? 'loading' : 'caret-right')}
+                  type='primary'
+                  className={theme(styles, 'run')}
+                  onClick={this._onClickRun}
+                />
+              </Tooltip>
+            )}
+
+            {this._example.description && (
+              <Tooltip
+                placement='top'
+                title={this._example.description}
+              >
+                <Button
+                  icon='info'
+                  type='primary'
+                  className={theme(styles, 'info')}
+                />
+              </Tooltip>
+            )}
+
             <Tooltip
               placement='top'
-              title={output ? 'Clear output' : (running ? 'Running...' : 'Run Demo')}
+              title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
             >
               <Button
-                icon={output ? 'close' : (running ? 'loading' : 'caret-right')}
+                icon='copy'
                 type='primary'
-                className={theme(styles, 'run')}
-                onClick={this._onClickRun}
+                className={theme(styles, 'copy')}
+                onClick={this._onClickCopy}
               />
             </Tooltip>
-          )}
-
-          <Tooltip
-            placement='top'
-            title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
-          >
-            <Button
-              icon='copy'
-              type='primary'
-              className={theme(styles, 'copy')}
-              onClick={this._onClickCopy}
-            />
-          </Tooltip>
+          </div>
         </div>
       </div>
     )

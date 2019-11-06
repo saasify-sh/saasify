@@ -715,6 +715,7 @@
   padding-right: var(--space-l) !important;
 }
 
+.theme-waves .live-service-demo .info,
 .theme-waves .live-service-demo .copy {
   background: white !important;
   border: none !important;
