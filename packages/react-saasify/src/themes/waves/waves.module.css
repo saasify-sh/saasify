@@ -284,7 +284,10 @@
 }
 
 .theme-waves .checkout-page .title {
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: var(--space-m);
+  text-align: left;
 }
 
 .theme-waves .checkout-page > .content {
@@ -301,7 +304,7 @@
     align-items: flex-start;
     justify-content: center;
     flex-direction: row;
-    padding-top: 25vh;
+    padding-top: var(--space-xxl);
   }
 }
 
