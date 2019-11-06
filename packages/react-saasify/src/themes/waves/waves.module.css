@@ -615,7 +615,8 @@
   color: white !important;
 }
 
-.theme-waves .cta-button:global(.secondary) {
+.theme-waves .cta-button:global(.secondary),
+.theme-waves :global(.ant-btn-secondary) {
   background: transparent !important;
   color: var(--color-primary) !important;
 }
@@ -626,7 +627,8 @@
   filter: var(--filter-tint);
 }
 
-.theme-waves .cta-button:global(.secondary):hover {
+.theme-waves .cta-button:global(.secondary):hover,
+.theme-waves :global(.ant-btn-secondary):hover {
   background: var(--color-primary) !important;
   color: white !important;
 }
