@@ -14,7 +14,5 @@ const options = {
 request(options, (error, response, body) => {
   if (error) throw new Error(error)
 
-  {{#hasFileOutput}}
-  fs.writeFileSync('{{output}}', body){{/hasFileOutput}}{{^hasFileOutput}}
-  console.log(body){{/hasFileOutput}}
+  {{#hasFileOutput}}fs.writeFileSync('{{output}}', body){{/hasFileOutput}}{{^hasFileOutput}}console.log(body){{/hasFileOutput}}
 })

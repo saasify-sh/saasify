@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import theme from 'lib/theme'
 import mem from 'mem'
 import copyTextToClipboard from 'copy-text-to-clipboard'
 
 import { observer, inject } from 'mobx-react'
-import { Button, Tooltip } from 'lib/antd'
+import { Button, Divider, Tooltip } from 'lib/antd'
 
 import { CodeBlock } from '../CodeBlock'
 
@@ -23,10 +23,11 @@ export class LiveServiceDemo extends Component {
 
   state = {
     selected: 'cURL',
-    copiedTextToClipboard: false
+    copiedTextToClipboard: false,
+    running: null
   }
 
-  _onClickTabMem = mem((i) => () => this._onClickTab(this._examples[i]))
+  _onClickTabMem = mem((i) => () => this._onClickTab(this._example.snippets[i]))
 
   componentWillUnmount() {
     if (this._copyTimeout) {
@@ -43,17 +44,41 @@ export class LiveServiceDemo extends Component {
 
     const {
       selected,
-      copiedTextToClipboard
+      copiedTextToClipboard,
+      running,
+      output,
+      outputContentType
     } = this.state
 
-    this._examples = getServiceExamples(service, auth.consumer && auth.consumer.token, {
+    this._example = getServiceExamples(service, auth.consumer && auth.consumer.token, {
       method: service.POST ? 'POST' : 'GET'
     })
+
+    let renderedOutput = output
+
+    if (output) {
+      if (outputContentType === 'application/json') {
+        renderedOutput = (
+          <CodeBlock
+            className={theme(styles, 'code')}
+            language='json'
+            value={JSON.stringify(output, null, 2)}
+          />
+        )
+      } else if (outputContentType.startsWith('image')) {
+        renderedOutput = (
+          <img
+            alt={this._example.name || 'Example output'}
+            src={output}
+          />
+        )
+      }
+    }
 
     return (
       <div className={theme(styles, 'live-service-demo')}>
         <div className={theme(styles, 'tabs')}>
-          {this._examples.map((l, i) => (
+          {this._example.snippets.map((l, i) => (
             <div
               className={theme(styles, 'tab', selected === l.label && theme(styles, 'selected-tab'))}
               key={i}
@@ -65,7 +90,7 @@ export class LiveServiceDemo extends Component {
         </div>
 
         <div className={theme(styles, 'tab-content')}>
-          {this._examples.map((l, i) => (
+          {this._example.snippets.map((l, i) => (
             <div
               className={theme(styles, 'tab-pane', selected === l.label && theme(styles, 'selected-tab-pane'))}
               key={i}
@@ -77,6 +102,32 @@ export class LiveServiceDemo extends Component {
               />
             </div>
           ))}
+
+          {output && (
+            <Fragment>
+              <Divider />
+
+              <div
+                className={theme(styles, 'output')}
+              >
+                {renderedOutput}
+              </div>
+            </Fragment>
+          )}
+
+          {this._example.output && !this._example.hasFileOutput && (
+            <Tooltip
+              placement='top'
+              title={output ? 'Clear output' : (running ? 'Running...' : 'Run Demo')}
+            >
+              <Button
+                icon={output ? 'close' : (running ? 'loading' : 'caret-right')}
+                type='primary'
+                className={theme(styles, 'run')}
+                onClick={this._onClickRun}
+              />
+            </Tooltip>
+          )}
 
           <Tooltip
             placement='top'
@@ -105,9 +156,9 @@ export class LiveServiceDemo extends Component {
       selected
     } = this.state
 
-    const example = this._examples.find((l) => l.label === selected)
+    const snippet = this._example.snippets.find((l) => l.label === selected)
 
-    copyTextToClipboard(example.code)
+    copyTextToClipboard(snippet.code)
 
     this.setState({ copiedTextToClipboard: true })
     this._clearCopyTimeout()
@@ -123,6 +174,39 @@ export class LiveServiceDemo extends Component {
     if (this._copyTimeout) {
       clearTimeout(this._copyTimeout)
       this._copyTimeout = null
+    }
+  }
+
+  _onClickRun = () => {
+    if (this.state.output) {
+      this.setState({
+        output: null,
+        outputContentType: null
+      })
+    } else {
+      this.setState({
+        running: true,
+        output: null,
+        outputContentType: null
+      })
+      this._clearRunTimeout()
+      this._runTimeout = setTimeout(this._onRunTimeout, 1000)
+    }
+  }
+
+  _onRunTimeout = () => {
+    this._clearRunTimeout()
+    this.setState({
+      running: false,
+      output: this._example.output,
+      outputContentType: this._example.outputContentType
+    })
+  }
+
+  _clearRunTimeout = () => {
+    if (this._runTimeout) {
+      clearTimeout(this._runTimeout)
+      this._runTimeout = null
     }
   }
 }

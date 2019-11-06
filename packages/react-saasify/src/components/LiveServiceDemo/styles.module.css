@@ -49,6 +49,7 @@
 
 .tab-pane {
   display: none;
+  cursor: text;
 }
 
 .selected-tab-pane {
@@ -62,10 +63,23 @@
   overflow: hidden !important;
 }
 
+.run {
+  position: absolute;
+  bottom: 1em;
+  right: calc(2em + 32px);
+}
+
 .copy {
   position: absolute;
   bottom: 1em;
   right: 1em;
+}
+
+.output {
+}
+
+.output img {
+  max-width: 100%;
 }
 
 @media only screen and (max-width: 767px) {

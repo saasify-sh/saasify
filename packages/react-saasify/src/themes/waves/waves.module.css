@@ -700,7 +700,7 @@
 
 .theme-waves .live-service-demo .tab-content {
   max-height: 50vh;
-  padding-bottom: 42px;
+  padding-bottom: var(--space-l);
   position: static;
   overflow-y: auto;
 }

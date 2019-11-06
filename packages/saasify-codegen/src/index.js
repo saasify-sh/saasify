@@ -78,7 +78,7 @@ export default (service, token, opts = { }) => {
   // Restart the dev server each time you make a change.
   // --------------------------------------------------------------
 
-  return languages.map((l) => {
+  const snippets = languages.map((l) => {
     const template = l[`template${method}`]
 
     if (template) {
@@ -88,4 +88,14 @@ export default (service, token, opts = { }) => {
       return { code, language, label }
     }
   }).filter(Boolean)
+
+  return {
+    name: example.name,
+    input: example.input,
+    inputContentType: example.inputContentType,
+    output: example.output,
+    outputContentType: example.outputContentType,
+    hasFileOutput: data.hasFileOutput,
+    snippets
+  }
 }

@@ -238,11 +238,11 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
     }
 
     if (examples) {
-      const samples = codegen(service, null, {
+      const example = codegen(service, null, {
         method: 'POST'
       })
 
-      post['x-code-samples'] = samples.map((sample) => ({
+      post['x-code-samples'] = example.snippets.map((sample) => ({
         lang: sample.language,
         label: sample.label,
         source: sample.code
@@ -298,11 +298,11 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
     }
 
     if (examples) {
-      const samples = codegen(service, null, {
+      const example = codegen(service, null, {
         method: 'GET'
       })
 
-      get['x-code-samples'] = samples.map((sample) => ({
+      get['x-code-samples'] = example.snippets.map((sample) => ({
         lang: sample.language,
         label: sample.label,
         source: sample.code
