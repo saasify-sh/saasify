@@ -1,6 +1,6 @@
 {
   "name": "saasify-codegen",
-  "version": "1.8.1",
+  "version": "1.8.6",
   "description": "Codegen for saasify services.",
   "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
