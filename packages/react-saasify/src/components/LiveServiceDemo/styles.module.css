@@ -78,6 +78,10 @@
   cursor: pointer;
 }
 
+.copy {
+  height: 100% !important;
+}
+
 .output img {
   margin: 0 24px;
   max-width: 100%;
@@ -87,4 +91,73 @@
   .code {
     height: 20em;
   }
+}
+
+.api-playground {
+  padding: 24px;
+  padding-bottom: 28px;
+  padding-top: 20px;
+}
+
+.footer {
+  align-items: center;
+  background-color: #49587950;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.footer__service {
+  margin-top: -4px;
+}
+
+.footer__service__path {
+  align-items: center;
+  color: #9c9c9c;
+  display: flex;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier,
+    monospace;
+  line-height: 1;
+}
+
+.footer__service__name {
+  color: #ce9f89;
+  font-weight: bold;
+}
+
+.footer__actions {
+  display: flex;
+  margin-left: auto;
+}
+
+.footer__action {
+  margin-left: var(--space-s);
+}
+
+.footer__service__badge {
+  border-radius: 4px;
+  color: white;
+  margin-right: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 6px;
+  padding-bottom: 4px;
+}
+
+.footer__service__badge--GET {
+  background: #9bd092;
+}
+
+.footer__service__badge--POST {
+  background: #508fcb;
+}
+
+.footer__service__example-description {
+  color: #cbcbcb;
+  font-size: 12px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
