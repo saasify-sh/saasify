@@ -47,6 +47,7 @@
     "random": "^2.1.1",
     "react-background-slideshow": "^1.0.4",
     "react-event-as-prop": "^1.0.0",
+    "react-from-json": "^0.6.0",
     "react-markdown": "^4.2.2",
     "react-sizeme": "^2.6.7",
     "react-stripe-elements": "^5.0.1",

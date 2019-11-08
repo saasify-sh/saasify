@@ -8,6 +8,7 @@ import { observer, inject } from 'mobx-react'
 import { Button, Divider, Tooltip } from 'lib/antd'
 
 import { CodeBlock } from '../CodeBlock'
+import { ServiceForm } from '../ServiceForm'
 
 import getServiceExamples from 'lib/get-service-examples'
 
@@ -22,11 +23,12 @@ export class LiveServiceDemo extends Component {
   }
 
   state = {
-    selected: 'cURL',
+    selected: 'Playground',
     copiedTextToClipboard: false,
     running: null
   }
 
+  _onClickPlaygroundTabMem = mem(() => () => this._onClickTab({ label: 'Playground' }))
   _onClickTabMem = mem((i) => () => this._onClickTab(this._example.snippets[i]))
 
   componentWillUnmount() {
@@ -81,6 +83,12 @@ export class LiveServiceDemo extends Component {
     return (
       <div className={theme(styles, 'live-service-demo')}>
         <div className={theme(styles, 'tabs')}>
+          <div
+            className={theme(styles, 'tab', selected === 'Playground' && theme(styles, 'selected-tab'))}
+            onClick={this._onClickPlaygroundTabMem()}
+          >
+              Playground
+          </div>
           {this._example.snippets.map((l, i) => (
             <div
               className={theme(styles, 'tab', selected === l.label && theme(styles, 'selected-tab'))}
@@ -93,6 +101,13 @@ export class LiveServiceDemo extends Component {
         </div>
 
         <div className={theme(styles, 'tab-content')}>
+          <div
+            className={theme(styles, 'tab-pane', selected === 'Playground' && theme(styles, 'selected-tab-pane'))}
+          >
+            <div className={theme(styles, 'api-playground')}>
+              <ServiceForm restrictToFirstExample service={service} />
+            </div>
+          </div>
           {this._example.snippets.map((l, i) => (
             <div
               className={theme(styles, 'tab-pane', selected === l.label && theme(styles, 'selected-tab-pane'))}
@@ -117,46 +132,59 @@ export class LiveServiceDemo extends Component {
               </div>
             </Fragment>
           )}
+        </div>
 
-          <div className={theme(styles, 'icons')}>
-            {this._example.output && !this._example.hasFileOutput && (
-              <Tooltip
-                placement='top'
-                title={output ? 'Clear output' : (running ? 'Running...' : 'Run Demo')}
-              >
-                <Button
-                  icon={output ? 'close' : (running ? 'loading' : 'caret-right')}
-                  type='primary'
-                  className={theme(styles, 'run')}
-                  onClick={this._onClickRun}
-                />
-              </Tooltip>
-            )}
+        <div className={theme(styles, 'footer')}>
 
+          <div className={theme(styles, 'footer__service')}>
             {this._example.description && (
-              <Tooltip
-                placement='top'
-                title={this._example.description}
-              >
-                <Button
-                  icon='info'
-                  type='primary'
-                  className={theme(styles, 'info')}
-                />
-              </Tooltip>
+              <div className={theme(styles, 'footer__service__example-description')}>
+                Example - {this._example.description}
+              </div>
             )}
 
-            <Tooltip
-              placement='top'
-              title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
-            >
-              <Button
-                icon='copy'
-                type='primary'
-                className={theme(styles, 'copy')}
-                onClick={this._onClickCopy}
-              />
-            </Tooltip>
+            <div className={theme(styles, 'footer__service__path')}>
+              <div
+                className={theme(
+                  styles,
+                  'footer__service__badge',
+                  theme(
+                    styles,
+                    `footer__service__badge--${service.POST ? 'POST' : 'GET'}`
+                  )
+                )}
+              >
+                {service.POST ? 'POST' : 'GET'}
+              </div>
+
+              /
+              <div className={theme(styles, 'footer__service__name')}>
+                {service.name}
+              </div>
+            </div>
+          </div>
+
+          <div className={theme(styles, 'footer__actions')}>
+            {selected !== 'Playground' && (
+              <div className={theme(styles, 'footer__action')}>
+                <Tooltip
+                  placement='top'
+                  title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
+                >
+                  <Button
+                    icon='copy'
+                    type='primary'
+                    className={theme(styles, 'copy')}
+                    onClick={this._onClickCopy}
+                  />
+                </Tooltip>
+              </div>
+            )}
+            <div className={theme(styles, 'footer__action')}>
+              <Button onClick={this._onClickRun} type='primary' loading={running}>
+                Run example
+              </Button>
+            </div>
           </div>
         </div>
       </div>
