@@ -72,7 +72,7 @@ module.exports = async (deployment, data, opts = { }) => {
         src: handlerFileNameExt,
         use: '@now/node@1.0.1',
         config: {
-          maxLambdaSize: '40mb',
+          maxLambdaSize: '50mb',
           ...(service.config || { }),
           ...config
         }
@@ -102,7 +102,7 @@ module.exports = async (deployment, data, opts = { }) => {
         src: service.src,
         use: '@now/python@0.3.1',
         config: {
-          'maxLambdaSize': '40mb',
+          'maxLambdaSize': '50mb',
           ...(service.config || { }),
           ...config
         }

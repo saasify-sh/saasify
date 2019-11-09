@@ -4,7 +4,17 @@
   "alias": "wordcloud",
   "services": [
     {
-      "src": "main.py"
+      "src": "main.py",
+      "examples": [
+        {
+          "name": "The Onion Example",
+          "input": {
+            "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347"
+          },
+          "output": "out.png",
+          "outputContentType": "image/png"
+        }
+      ]
     }
   ],
   "amountPerBase": 99,
