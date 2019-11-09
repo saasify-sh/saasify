@@ -4,7 +4,7 @@
   "alias": "wordcloud",
   "services": [
     {
-      "src": "./main.py"
+      "src": "main.py"
     }
   ],
   "amountPerBase": 99,
@@ -24,8 +24,6 @@
     "heading": "**Generate stylistic wordclouds from any webpage.**",
     "subheading": "TODO",
     "repo": "https://github.com/saasify-sh/wordcloud",
-    "logo": "./media/logo.svg",
-    "favicon": "./media/favicon.ico",
     "theme": {
       "name": "waves",
       "backgroundImage": "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80",

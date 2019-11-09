@@ -74,10 +74,10 @@ module.exports.extractOpenAPI = async (opts) => {
   const child = serve()
 
   // TODO: is this delay necessary to wait before now dev is listening on the port?
-  await delay(1000)
+  await delay(5000)
 
   const url = `http://localhost:${port}/openapi.json`
-  const { body: spec } = await got(url, { json: true })
+  const { body: spec } = await got(url, { json: true, retry: { limit: 5 } })
   console.log('openapi', spec)
 
   await killProcessTree(child.pid)
