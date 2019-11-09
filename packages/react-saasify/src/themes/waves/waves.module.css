@@ -647,6 +647,11 @@
  * ----------------------------
  */
 
+.theme-waves .demo-section .content {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 .theme-waves .live-service-demo {
   background: var(--code-block-background);
   border-radius: 8px;
@@ -699,8 +704,7 @@
 }
 
 .theme-waves .live-service-demo .tab-content {
-  max-height: 50vh;
-  padding-bottom: var(--space-l);
+  max-height: 25vh;
   position: static;
   overflow-y: auto;
 }
@@ -722,8 +726,14 @@
   color: var(--color-fg) !important;
   opacity: 0.6;
 }
+
 .theme-waves .live-service-demo .copy:hover {
   opacity: 1;
+}
+
+.theme-waves .live-service-demo :global(.ant-btn-secondary):not(:hover) {
+  border-color: white !important;
+  color: white !important;
 }
 
 /*
