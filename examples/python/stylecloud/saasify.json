@@ -1,8 +1,39 @@
 {
-  "name": "stylecloud",
+  "name": "wordcloud",
+  "description": "Generate stylistic wordclouds from any webpage.",
+  "alias": "wordcloud",
   "services": [
     {
-      "src": "main.py"
+      "src": "./main.py"
     }
-  ]
+  ],
+  "amountPerBase": 99,
+  "amountPerRequest": 0.2,
+  "amountPerCompute": 0,
+  "amountPerBandwidth": 0,
+  "noAuthRateLimit": {
+    "requests": true,
+    "requestsInterval": 3600,
+    "requestsMaxPerInterval": 10
+  },
+  "env": {
+    "DIFFBOT_TOKEN": "@diffbot-token"
+  },
+  "saas": {
+    "name": "Word Cloud",
+    "heading": "**Generate stylistic wordclouds from any webpage.**",
+    "subheading": "TODO.",
+    "repo": "https://github.com/saasify-sh/wordcloud",
+    "logo": "./media/logo.svg",
+    "favicon": "./media/favicon.ico",
+    "theme": {
+      "name": "waves",
+      "backgroundImage": "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80",
+      "buttonStyle": "rounded",
+      "color": "#2097e2",
+      "wave": false,
+      "gradientDark": false,
+      "codeBlockDark": true
+    }
+  }
 }

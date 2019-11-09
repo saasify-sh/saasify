@@ -11,6 +11,8 @@ stylecloud = "*"
 requests = "*"
 uvicorn = "*"
 aiofiles = "*"
+diffbot = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
