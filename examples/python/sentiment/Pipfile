@@ -8,6 +8,9 @@ verify_ssl = true
 [packages]
 fastapi = "*"
 vadersentiment = "*"
+uvicorn = "*"
+requests = "*"
+email-validator = "*"
 
 [requires]
 python_version = "3.7"

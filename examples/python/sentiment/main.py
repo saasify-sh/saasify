@@ -10,10 +10,15 @@ class PolarityScores(BaseModel):
     neg: float
 
 
+class Request(BaseModel):
+    phrase: str
+
+
 app = FastAPI()
 analyzer = SentimentIntensityAnalyzer()
 
 
 @app.post("/", response_model=PolarityScores)
-def sentiment(phrase: str):
-    return analyzer.polarity_scores(phrase)
+def sentiment(request: Request):
+    print(request)
+    return analyzer.polarity_scores(request.phrase)
