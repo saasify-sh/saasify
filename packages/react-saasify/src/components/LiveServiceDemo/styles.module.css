@@ -1,10 +1,11 @@
 .live-service-demo {
+  background: white;
   position: relative;
   width: 650px;
   max-width: 100%;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .tabs {
@@ -57,8 +58,6 @@
 }
 
 .code {
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
   height: 396px;
   overflow: hidden !important;
 }
@@ -114,7 +113,7 @@
 
 .footer__service__path {
   align-items: center;
-  color: #9c9c9c;
+  color: #4a4a4a;
   display: flex;
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier,
     monospace;
@@ -154,7 +153,7 @@
 }
 
 .footer__service__example-description {
-  color: #cbcbcb;
+  color: #4a4a4a;
   font-size: 12px;
   margin-bottom: 4px;
   text-transform: uppercase;
