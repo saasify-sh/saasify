@@ -736,6 +736,18 @@
   color: white !important;
 }
 
+.theme-waves .live-service-demo .footer__service__path {
+  color: #9c9c9c;
+}
+
+.theme-waves .live-service-demo .footer__service__example-description {
+  color: #cbcbcb;
+}
+
+.theme-waves .live-service-demo .service-form__input-label {
+  color: #c7c7c7;
+}
+
 /*
  * BG
  * ----------------------------
