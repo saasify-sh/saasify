@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import theme from 'lib/theme'
 import mem from 'mem'
 import copyTextToClipboard from 'copy-text-to-clipboard'
 
 import { observer, inject } from 'mobx-react'
-import { Button, Divider, Tooltip } from 'lib/antd'
+import { Button, Tooltip } from 'lib/antd'
 
 import { CodeBlock } from '../CodeBlock'
 import { ServiceForm } from '../ServiceForm'
@@ -13,6 +13,9 @@ import { ServiceForm } from '../ServiceForm'
 import getServiceExamples from 'lib/get-service-examples'
 
 import styles from './styles.module.css'
+
+// Using import seems to cause circular dependency
+const request = require('request')
 
 @inject('auth')
 @observer
@@ -25,7 +28,8 @@ export class LiveServiceDemo extends Component {
   state = {
     selected: 'Playground',
     copiedTextToClipboard: false,
-    running: null
+    running: null,
+    values: {}
   }
 
   _onClickPlaygroundTabMem = mem(() => () => this._onClickTab({ label: 'Playground' }))
@@ -56,9 +60,6 @@ export class LiveServiceDemo extends Component {
       method: service.POST ? 'POST' : 'GET'
     })
 
-    console.log(this._example)
-    console.log(this._example.description)
-
     let renderedOutput = output
 
     if (output) {
@@ -71,10 +72,12 @@ export class LiveServiceDemo extends Component {
           />
         )
       } else if (outputContentType.startsWith('image')) {
+        const dataUrl = 'data:' + outputContentType + ';base64,' + Buffer.from(output).toString('base64')
+
         renderedOutput = (
           <img
             alt={this._example.name || 'Example output'}
-            src={output}
+            src={dataUrl}
           />
         )
       }
@@ -105,7 +108,11 @@ export class LiveServiceDemo extends Component {
             className={theme(styles, 'tab-pane', selected === 'Playground' && theme(styles, 'selected-tab-pane'))}
           >
             <div className={theme(styles, 'api-playground')}>
-              <ServiceForm restrictToFirstExample service={service} />
+              <ServiceForm
+                onChange={this._handlePlaygroundChange}
+                restrictToFirstExample
+                service={service}
+              />
             </div>
           </div>
           {this._example.snippets.map((l, i) => (
@@ -120,18 +127,6 @@ export class LiveServiceDemo extends Component {
               />
             </div>
           ))}
-
-          {output && (
-            <Fragment>
-              <Divider />
-
-              <div
-                className={theme(styles, 'output')}
-              >
-                {renderedOutput}
-              </div>
-            </Fragment>
-          )}
         </div>
 
         <div className={theme(styles, 'footer')}>
@@ -187,6 +182,14 @@ export class LiveServiceDemo extends Component {
             </div>
           </div>
         </div>
+
+        {output && (
+          <div
+            className={theme(styles, 'output')}
+          >
+            {renderedOutput}
+          </div>
+        )}
       </div>
     )
   }
@@ -224,35 +227,55 @@ export class LiveServiceDemo extends Component {
   }
 
   _onClickRun = () => {
-    if (this.state.output) {
-      this.setState({
-        output: null,
-        outputContentType: null
-      })
-    } else {
-      this.setState({
-        running: true,
-        output: null,
-        outputContentType: null
-      })
-      this._clearRunTimeout()
-      this._runTimeout = setTimeout(this._onRunTimeout, 1000)
-    }
-  }
+    const { auth, service } = this.props
 
-  _onRunTimeout = () => {
-    this._clearRunTimeout()
+    const authHeaders = {}
+
+    if (auth.consumer) {
+      authHeaders.authorization = auth.consumer.token
+    };
+
+    const data = {
+      ...this._example.input,
+      ...this.state.values
+    }
+
+    const payload = {}
+
+    if (service.POST) {
+      payload.body = data
+    } else {
+      payload.qs = data
+    }
+
+    const options = {
+      method: service.POST ? 'POST' : 'GET',
+      url: service.url,
+      headers: {
+        'content-type': 'application/json',
+        ...authHeaders
+      },
+      ...payload,
+      json: true,
+      encoding: null
+    }
+
     this.setState({
-      running: false,
-      output: this._example.output,
-      outputContentType: this._example.outputContentType
+      running: true
+    })
+
+    request(options, (error, response, body) => {
+      if (error) throw new Error(error)
+
+      this.setState({
+        running: false,
+        output: body,
+        outputContentType: response.headers['content-type']
+      })
     })
   }
 
-  _clearRunTimeout = () => {
-    if (this._runTimeout) {
-      clearTimeout(this._runTimeout)
-      this._runTimeout = null
-    }
+  _handlePlaygroundChange = (values) => {
+    this.setState({ values })
   }
 }
