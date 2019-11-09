@@ -1,0 +1,8 @@
+{
+  "name": "stylecloud",
+  "services": [
+    {
+      "src": "main.py"
+    }
+  ]
+}
