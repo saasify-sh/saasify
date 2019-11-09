@@ -22,7 +22,7 @@
   "saas": {
     "name": "Word Cloud",
     "heading": "**Generate stylistic wordclouds from any webpage.**",
-    "subheading": "TODO.",
+    "subheading": "TODO",
     "repo": "https://github.com/saasify-sh/wordcloud",
     "logo": "./media/logo.svg",
     "favicon": "./media/favicon.ico",
