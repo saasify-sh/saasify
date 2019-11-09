@@ -647,11 +647,6 @@
  * ----------------------------
  */
 
-.theme-waves .demo-section .content {
-  border-radius: 8px;
-  overflow: hidden;
-}
-
 .theme-waves .live-service-demo {
   background: var(--code-block-background);
   border-radius: 8px;
