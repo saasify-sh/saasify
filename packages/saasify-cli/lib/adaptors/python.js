@@ -3,6 +3,7 @@
 const delay = require('delay')
 const findFreePort = require('find-free-port')
 const got = require('got')
+const pRetry = require('p-retry')
 const path = require('path')
 const {
   parseOpenAPI,
@@ -74,10 +75,10 @@ module.exports.extractOpenAPI = async (opts) => {
   const child = serve()
 
   // TODO: is this delay necessary to wait before now dev is listening on the port?
-  await delay(5000)
+  await delay(2000)
 
   const url = `http://localhost:${port}/openapi.json`
-  const { body: spec } = await got(url, { json: true, retry: { limit: 5 } })
+  const { body: spec } = await module.exports.fetchOpenAPI(url, { json: true })
   console.log('openapi', spec)
 
   await killProcessTree(child.pid)
@@ -85,4 +86,12 @@ module.exports.extractOpenAPI = async (opts) => {
   await child
 
   return spec
+}
+
+module.exports.fetchOpenAPI = async (url, opts = { }) => {
+  return pRetry(() => got(url, opts), {
+    retries: 6,
+    factor: 1.8,
+    maxTimeout: 5000
+  })
 }

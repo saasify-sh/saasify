@@ -320,6 +320,11 @@
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
 
+"@types/retry@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/@types/retry/-/retry-0.12.0.tgz#2b35eccfcee7d38cd72ad99232fbd58bffb3c84d"
+  integrity sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==
+
 "@types/unist@*", "@types/unist@^2.0.0", "@types/unist@^2.0.2":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"
@@ -3692,6 +3697,14 @@ p-map@^3.0.0:
   dependencies:
     aggregate-error "^3.0.0"
 
+p-retry@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/p-retry/-/p-retry-4.2.0.tgz#ea9066c6b44f23cab4cd42f6147cdbbc6604da5d"
+  integrity sha512-jPH38/MRh263KKcq0wBNOGFJbm+U6784RilTmHjB/HM9kH9V8WlCpVUcdOmip9cjXOh6MxZ5yk1z2SjDUJfWmA==
+  dependencies:
+    "@types/retry" "^0.12.0"
+    retry "^0.12.0"
+
 p-try@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-1.0.0.tgz#cbc79cdbaf8fd4228e13f621f2b1a237c1b207b3"
@@ -4352,6 +4365,11 @@ ret@~0.1.10:
   version "0.1.15"
   resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
 
+retry@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/retry/-/retry-0.12.0.tgz#1b42a6266a21f07421d1b0b54b7dc167b01c013b"
+  integrity sha1-G0KmJmoh8HQh0bC1S33BZ7AcATs=
+
 reusify@^1.0.0:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
@@ -4384,20 +4402,20 @@ rxjs@^6.4.0:
   dependencies:
     tslib "^1.9.0"
 
-saasify-client@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.8.0.tgz#9308f79035f05134c60c27eb92f5672641959420"
-  integrity sha512-Vjk2Pzs/OZpKQSxFZjbj2vvF7FEi+wSHx6dDZC4L6Ei1nKmTIGNSRbRs3BaHL0JPKVYXnB6vUKOFwm2XWvIY+w==
+saasify-client@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.8.1.tgz#07f318d333a4734bd75d719c5f32d239caa734fb"
+  integrity sha512-dlpmy55+6AOys4vNh18iyTSveGxVuJ8xR1mold8zjFS2cfidqDFPAz3ksxNRMPahrTbyBSv1w0kZfwVteg18HQ==
   dependencies:
     axios "^0.19.0"
     is-buffer "^2.0.3"
     is-stream "^2.0.0"
     qs "^6.6.0"
 
-saasify-utils@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/saasify-utils/-/saasify-utils-1.8.0.tgz#ada6846d5368fd2e121155f758ee22f2c8bcf1e7"
-  integrity sha512-W+NPEyNCLmNdbxca4AmD9SAL6fLeY7FDwyO0kudPqQv0J6IKgp94igsDqh72nzK5fuxVYgAcMnuVUg/HhZbMKg==
+saasify-utils@^1.8.3:
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/saasify-utils/-/saasify-utils-1.8.3.tgz#117824252d0c8cc609019710165f6b8e585a305e"
+  integrity sha512-zlO+Dekvg6g4I5J15ZC+oAcTXCBpyEK3S0j2XIJsr7EnVDQaaRAyE424Qvqf4GXEHCpKgWT1zpK1sQI7UcixPQ==
   dependencies:
     clone-deep "^4.0.1"
     decompress "^4.2.0"

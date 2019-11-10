@@ -63,6 +63,7 @@
     "ora": "^3.4.0",
     "p-each-series": "^2.1.0",
     "p-map": "^3.0.0",
+    "p-retry": "^4.2.0",
     "parse-git-config": "^3.0.0",
     "pidtree": "^0.3.0",
     "pify": "^4.0.1",
