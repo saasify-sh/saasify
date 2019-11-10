@@ -6,7 +6,7 @@ This project provides a hosted, SaaS version of [sharp](https://github.com/lovel
 
 If you are the original author of [sharp](https://github.com/lovell/sharp) and would like to claim the majority of the revenue, please [get in touch](mailto:dev@saasify.sh).
 
-<a href="https://transitive-bullshit_sharp.saasify.sh">
+<a href="https://dev_sharp.saasify.sh">
   <img
     src="https://badges.saasify.sh"
     height="40"
@@ -20,7 +20,7 @@ The following examples can all be invoked with the following curl template by ch
 
 ```
 curl -X POST -d '@example.json' \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp'
+  'https://api.saasify.sh/1/call/dev/sharp'
 ```
 
 ### Download image
@@ -34,7 +34,7 @@ curl -X POST -d '@example.json' \
 
 ```
 curl -X POST -d '@example.json' -o out.png \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp'
+  'https://api.saasify.sh/1/call/dev/sharp'
 ```
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/1.png" width="128" />
@@ -55,10 +55,10 @@ curl -X POST -d '@example.json' -o out.png \
 
 ```
 curl -X POST -d '@example.json' -o out.jpg \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp'
+  'https://api.saasify.sh/1/call/dev/sharp'
 ```
 
-Here's this example as a GET request: [`/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg`](https://api.saasify.sh/1/call/transitive-bullshit/sharp/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg).
+Here's this example as a GET request: [`/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg`](https://api.saasify.sh/1/call/dev/sharp/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg).
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/2.jpg" width="128" />
 
@@ -86,7 +86,7 @@ Here's this example as a GET request: [`/?input=https://octodex.github.com/image
 
 ```
 curl -X POST -d '@example.json' -o out.webp \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp'
+  'https://api.saasify.sh/1/call/dev/sharp'
 ```
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/3.webp" width="128" />
@@ -111,7 +111,7 @@ curl -X POST -d '@example.json' -o out.webp \
 
 ```
 curl -X POST -d '@example.json' -o out.png \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp'
+  'https://api.saasify.sh/1/call/dev/sharp'
 ```
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/4.png" width="128" />
@@ -142,7 +142,7 @@ curl -X POST -d '@example.json' -o out.png \
 
 ```
 curl -X POST -d '@example.json' -o out.png \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp'
+  'https://api.saasify.sh/1/call/dev/sharp'
 ```
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/5.png" width="128" />
@@ -163,7 +163,7 @@ curl -X POST -d '@example.json' -o out.png \
 
 ```
 curl -X POST -d '@example.json' -o out.json \
-  'https://api.saasify.sh/1/call/transitive-bullshit/sharp'
+  'https://api.saasify.sh/1/call/dev/sharp'
 ```
 
 *output (JSON)*
