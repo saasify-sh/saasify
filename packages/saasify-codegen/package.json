@@ -26,7 +26,8 @@
     "start": "microbundle watch --no-compress --format modern,cjs",
     "dev": "yarn start",
     "prepublish": "yarn build",
-    "test": "yarn build && ava -v && eslint src"
+    "pretest": "yarn build",
+    "test": "ava -v"
   },
   "devDependencies": {
     "ava": "^2.4.0",

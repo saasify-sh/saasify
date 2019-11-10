@@ -26,7 +26,7 @@
     "start": "microbundle watch --no-compress --format modern,cjs",
     "dev": "yarn start",
     "prepublish": "yarn build",
-    "test": "yarn build && eslint src"
+    "test": "yarn build"
   },
   "devDependencies": {
     "@saasify/microbundle": "^0.13.2"
