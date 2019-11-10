@@ -55,7 +55,7 @@ Wraps the [sharp](https://github.com/lovell/sharp) NPM module by [Lovell Fuller]
 </a>
 
 <p align="center">
-  <a href="https://transitive-bullshit_sharp_4caa3e85.saasify.sh/" title="Sharp" target="_blank">
+  <a href="https://dev_sharp_4caa3e85.saasify.sh/" title="Sharp" target="_blank">
     <img src="https://storage.googleapis.com/saasify-uploads-prod/4692dbd3bc4f9aab721f2e7c0a6f36139ce91feb.svg" alt="Sharp Logo" width="200" />
   </a>
 </p>
