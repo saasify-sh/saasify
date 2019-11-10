@@ -10,7 +10,9 @@ const spinner = require('../spinner')
 module.exports = (program, client) => {
   program
     .command('publish <deploymentId|deploymentUrl>')
-    .description('Creates a subscription to a project (requires a valid billing source)')
+    .description(
+      'Creates a subscription to a project (requires a valid billing source)'
+    )
     .action(async (identifier, opts) => {
       program.requireAuthentication()
 
@@ -24,7 +26,9 @@ module.exports = (program, client) => {
         }
 
         if (!parsedFaas.deploymentHash) {
-          throw new Error(`Invalid project identifier [${identifier}]. Publishing requires a full deployment identifier with version hash.`)
+          throw new Error(
+            `Invalid project identifier [${identifier}]. Publishing requires a full deployment identifier with version hash.`
+          )
         }
 
         const { projectId, deploymentId } = parsedFaas

@@ -5,15 +5,7 @@ import theme from 'lib/theme'
 import { inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 
-import {
-  Button,
-  Checkbox,
-  Divider,
-  Form,
-  Icon,
-  Input,
-  message
-} from 'lib/antd'
+import { Button, Checkbox, Divider, Form, Icon, Input, message } from 'lib/antd'
 
 import authGitHub from 'lib/auth-github'
 import debug from 'lib/debug'
@@ -55,9 +47,7 @@ export class SignupForm extends Component {
         className={theme(styles, 'form', theme.light, className)}
         onSubmit={this._onSubmit}
       >
-        <h2 className={theme(styles, 'title')}>
-          Sign up
-        </h2>
+        <h2 className={theme(styles, 'title')}>Sign up</h2>
 
         <FormItem>
           <Button
@@ -69,41 +59,25 @@ export class SignupForm extends Component {
           </Button>
         </FormItem>
 
-        <Divider>
-          Or
-        </Divider>
+        <Divider>Or</Divider>
 
         <FormItem>
           {getFieldDecorator('email', {
             rules: [{ required: true, message: 'Please enter your email.' }]
-          })(
-            <Input
-              prefix={iconUser}
-              placeholder='Email'
-            />
-          )}
+          })(<Input prefix={iconUser} placeholder='Email' />)}
         </FormItem>
 
         <FormItem>
           {getFieldDecorator('username', {
             rules: [{ required: true, message: 'Please enter a username.' }]
-          })(
-            <Input
-              prefix={iconUser}
-              placeholder='Username'
-            />
-          )}
+          })(<Input prefix={iconUser} placeholder='Username' />)}
         </FormItem>
 
         <FormItem>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Please enter a password.' }]
           })(
-            <Input
-              prefix={iconLock}
-              type='password'
-              placeholder='Password'
-            />
+            <Input prefix={iconLock} type='password' placeholder='Password' />
           )}
         </FormItem>
 
@@ -111,9 +85,7 @@ export class SignupForm extends Component {
           {getFieldDecorator('remember', {
             valuePropName: 'checked',
             initialValue: true
-          })(
-            <Checkbox>Remember me</Checkbox>
-          )}
+          })(<Checkbox>Remember me</Checkbox>)}
         </FormItem>
 
         <Button
@@ -133,7 +105,8 @@ export class SignupForm extends Component {
     this.props.form.validateFields((err, data) => {
       if (!err) {
         this.setState({ loading: true })
-        this.props.auth.signup(data)
+        this.props.auth
+          .signup(data)
           .then(this.props.onAuth)
           .catch((err) => {
             this.setState({ loading: false })

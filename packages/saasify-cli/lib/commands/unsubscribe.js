@@ -51,7 +51,9 @@ module.exports = (program, client) => {
           `Cancelling subscription to project [${consumer.project}]`
         )
 
-        console.log(`Successfully unsubscribed from project [${consumer.project}]`)
+        console.log(
+          `Successfully unsubscribed from project [${consumer.project}]`
+        )
       } catch (err) {
         handleError(program, err)
       }

@@ -16,29 +16,33 @@ export class CTAButton extends Component {
       inline,
       className,
       children,
-      style = { },
+      style = {},
       ...rest
     } = this.props
 
     const primaryColor = theme['@primary-color']
-    const borderColor = (type === 'secondary' || !hovered)
-      ? primaryColor
-      : 'transparent'
+    const borderColor =
+      type === 'secondary' || !hovered ? primaryColor : 'transparent'
 
     const ownStyle = {
       border: `2px solid ${borderColor}`
     }
 
     if (type === 'secondary') {
-      ownStyle.background = hovered
-        ? primaryColor
-        : 'transparent'
+      ownStyle.background = hovered ? primaryColor : 'transparent'
     }
 
     return (
       <Button
         type={type}
-        className={theme(styles, 'cta-button', className, type, styles[type], inline && theme(styles, 'inline'))}
+        className={theme(
+          styles,
+          'cta-button',
+          className,
+          type,
+          styles[type],
+          inline && theme(styles, 'inline')
+        )}
         style={{
           ...ownStyle,
           ...style

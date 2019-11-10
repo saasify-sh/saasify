@@ -7,21 +7,12 @@ import styles from './styles.module.css'
 
 export class Loading extends Component {
   render() {
-    const {
-      className,
-      title,
-      ...rest
-    } = this.props
+    const { className, title, ...rest } = this.props
 
     return (
-      <div
-        className={theme(styles, 'loading', className)}
-        {...rest}
-      >
+      <div className={theme(styles, 'loading', className)} {...rest}>
         {title && (
-          <h3 className={theme(styles, 'title', className)}>
-            {title}
-          </h3>
+          <h3 className={theme(styles, 'title', className)}>{title}</h3>
         )}
 
         <Icon

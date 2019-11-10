@@ -1,17 +1,10 @@
 import React, { Component } from 'react'
 
-import {
-  CTAButton,
-  Section,
-  theme
-} from 'react-saasify'
+import { CTAButton, Section, theme } from 'react-saasify'
 
 export class HeroSection extends Component {
   render() {
-    const {
-      className,
-      ...rest
-    } = this.props
+    const { className, ...rest } = this.props
 
     return (
       <Section
@@ -21,9 +14,7 @@ export class HeroSection extends Component {
         className={theme(null, 'hero', className)}
         {...rest}
       >
-        <CTAButton>
-          Get Started
-        </CTAButton>
+        <CTAButton>Get Started</CTAButton>
       </Section>
     )
   }

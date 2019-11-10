@@ -16,7 +16,7 @@ module.exports = (program, client) => {
       program.requireAuthentication()
 
       try {
-        const query = { }
+        const query = {}
         let label = 'Fetching all projects and deployments'
 
         if (arg) {
@@ -37,12 +37,9 @@ module.exports = (program, client) => {
           }
         }
 
-        const deployments = await spinner(
-          client.listDeployments(query),
-          label
-        )
+        const deployments = await spinner(client.listDeployments(query), label)
 
-        const projects = { }
+        const projects = {}
         const sortedProjects = []
 
         // aggregate deployments by project
@@ -70,7 +67,9 @@ module.exports = (program, client) => {
         }
 
         // sort projects with most recent first
-        sortedProjects.sort((a, b) => b.deployments[0].createdAt - a.deployments[0].createdAt)
+        sortedProjects.sort(
+          (a, b) => b.deployments[0].createdAt - a.deployments[0].createdAt
+        )
 
         // TODO: better output formatting
         console.log(JSON.stringify(sortedProjects, null, 2))
@@ -80,7 +79,7 @@ module.exports = (program, client) => {
     })
 }
 
-function pruneDeployment (deployment, verbose) {
+function pruneDeployment(deployment, verbose) {
   if (!verbose) {
     deployment = pick(deployment, [
       'id',
@@ -98,14 +97,15 @@ function pruneDeployment (deployment, verbose) {
       'services'
     ])
 
-    deployment.services = deployment.services
-      .map((service) => pruneService(service, verbose))
+    deployment.services = deployment.services.map((service) =>
+      pruneService(service, verbose)
+    )
   }
 
   return deployment
 }
 
-function pruneService (service, verbose) {
+function pruneService(service, verbose) {
   if (verbose) {
     return service
   } else {

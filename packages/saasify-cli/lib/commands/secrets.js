@@ -33,7 +33,9 @@ module.exports = (program, client) => {
 
           case 'rm': {
             if (!name) {
-              console.error('error: you must specify the name of an existing secret to remove')
+              console.error(
+                'error: you must specify the name of an existing secret to remove'
+              )
               process.exit(1)
             }
 
@@ -47,7 +49,9 @@ module.exports = (program, client) => {
 
           case 'rename': {
             if (!name) {
-              console.error('error: you must specify the name of an existing secret to rename')
+              console.error(
+                'error: you must specify the name of an existing secret to rename'
+              )
               process.exit(1)
             }
 
@@ -61,9 +65,13 @@ module.exports = (program, client) => {
 
           default: {
             if (!cmd) {
-              console.error('error: must specify a command (ls, add, rm, or rename)')
+              console.error(
+                'error: must specify a command (ls, add, rm, or rename)'
+              )
             } else {
-              console.error(`error: invalid command [${cmd}] (ls, add, rm, or rename)`)
+              console.error(
+                `error: invalid command [${cmd}] (ls, add, rm, or rename)`
+              )
             }
 
             process.exit(1)

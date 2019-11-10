@@ -22,7 +22,7 @@ export class NavFooter extends Component {
 
     return (
       <SaasifyContext.Consumer>
-        {config => (
+        {(config) => (
           <footer
             className={theme(styles, 'container')}
             style={{
@@ -35,9 +35,7 @@ export class NavFooter extends Component {
                   <Logo className={theme(styles, 'logo')} />
                 </Link>
 
-                <div className={theme(styles, 'detail')}>
-                  Brooklyn, NY
-                </div>
+                <div className={theme(styles, 'detail')}>Brooklyn, NY</div>
               </div>
 
               {config.footer.columns.map((column) => (
@@ -56,9 +54,7 @@ export class NavFooter extends Component {
                           key={link.to || link.href}
                           className={theme(styles, 'listItem')}
                         >
-                          <Link
-                            {...link}
-                          />
+                          <Link {...link} />
                         </li>
                       )
                     })}

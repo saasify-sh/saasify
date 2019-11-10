@@ -42,7 +42,8 @@ const saasifyContext = {
       },
       {
         children: 'Slack',
-        href: 'https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI'
+        href:
+          'https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI'
       },
       {
         children: 'GitHub',
@@ -88,7 +89,8 @@ const saasifyContext = {
         links: [
           {
             label: 'Slack',
-            href: 'https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI'
+            href:
+              'https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI'
           },
           {
             label: 'Email',
@@ -117,20 +119,17 @@ export default class App extends Component {
         <Provider auth={AuthManager}>
           <SaasifyContext.Provider value={saasifyContext}>
             <Helmet>
-              {fonts && (
+              {fonts &&
                 fonts.map((font) => (
                   <link
                     key={font}
                     href={`https://fonts.googleapis.com/css?family=${font}&display=swap`}
                     rel='stylesheet'
                   />
-                ))
-              )}
+                ))}
             </Helmet>
 
-            <BodyClassName
-              className={theme(null, themeClassName)}
-            >
+            <BodyClassName className={theme(null, themeClassName)}>
               <Switch>
                 <Route exact path='/' component={HomePage} />
 

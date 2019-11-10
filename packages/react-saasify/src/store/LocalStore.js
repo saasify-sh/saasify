@@ -1,6 +1,6 @@
 import localforage from 'localforage'
 
-const cache = { }
+const cache = {}
 
 export default class LocalStore {
   static get(...args) {

@@ -27,18 +27,10 @@ export class PricingPlan extends Component {
   }
 
   render() {
-    const {
-      plan,
-      inline,
-      className,
-      ...rest
-    } = this.props
+    const { plan, inline, className, ...rest } = this.props
 
     return (
-      <Paper
-        className={theme(styles, 'plan', className)}
-        {...rest}
-      >
+      <Paper className={theme(styles, 'plan', className)} {...rest}>
         <h3 className={theme(styles, 'name')}>
           {plan.name} {inline ? 'Plan' : ''}
         </h3>
@@ -48,23 +40,15 @@ export class PricingPlan extends Component {
         <div className={theme(styles, 'features')}>
           <div />
 
-          <div className={theme(styles, 'column')}>
-            Price
-          </div>
+          <div className={theme(styles, 'column')}>Price</div>
 
-          <div className={theme(styles, 'column')}>
-            Rate Limit
-          </div>
+          <div className={theme(styles, 'column')}>Rate Limit</div>
 
           {plan.requests && (
             <Fragment>
-              <div className={theme(styles, 'emphasis')}>
-                API Calls
-              </div>
+              <div className={theme(styles, 'emphasis')}>API Calls</div>
 
-              <div>
-                {plan.requests.price}
-              </div>
+              <div>{plan.requests.price}</div>
 
               {plan.requests.rateLimit || (
                 <img
@@ -78,13 +62,9 @@ export class PricingPlan extends Component {
 
           {plan.compute && (
             <Fragment>
-              <div className={theme(styles, 'emphasis')}>
-                Compute Time
-              </div>
+              <div className={theme(styles, 'emphasis')}>Compute Time</div>
 
-              <div>
-                {plan.compute.price}
-              </div>
+              <div>{plan.compute.price}</div>
 
               <div>
                 {plan.compute.rateLimit || (
@@ -100,13 +80,9 @@ export class PricingPlan extends Component {
 
           {plan.bandwidth && (
             <Fragment>
-              <div className={theme(styles, 'emphasis')}>
-                Bandwidth
-              </div>
+              <div className={theme(styles, 'emphasis')}>Bandwidth</div>
 
-              <div>
-                {plan.bandwidth.price}
-              </div>
+              <div>{plan.bandwidth.price}</div>
 
               <div>
                 {plan.bandwidth.rateLimit || (
@@ -123,19 +99,20 @@ export class PricingPlan extends Component {
 
         <Divider />
 
-        <div style={{ color: theme['@primary-color'] }}>
-          {plan.desc}
-        </div>
+        <div style={{ color: theme['@primary-color'] }}>{plan.desc}</div>
 
         <div className={theme(styles, 'price')}>
-          <span className={theme(styles, 'dollas')}>{plan.price}</span> / {plan.interval}
+          <span className={theme(styles, 'dollas')}>{plan.price}</span> /{' '}
+          {plan.interval}
         </div>
 
         {!inline && (
           <Link to={`/signup?plan=${plan.key}`}>
             <CTAButton
               type={plan.type}
-              className={cs(plan.type === 'secondary' && theme(styles, 'secondaryCTAButton'))}
+              className={cs(
+                plan.type === 'secondary' && theme(styles, 'secondaryCTAButton')
+              )}
             >
               Get Started
             </CTAButton>

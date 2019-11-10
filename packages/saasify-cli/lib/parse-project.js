@@ -7,7 +7,7 @@ const getExtension = require('./get-extension')
 const parseConfig = require('./parse-config')
 const adaptors = require('./adaptors')
 
-module.exports = async (program, opts = { }) => {
+module.exports = async (program, opts = {}) => {
   const config = parseConfig(program)
   let adaptor
 

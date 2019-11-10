@@ -19,7 +19,9 @@ module.exports = (program) => {
     throw new Error(`Unable to find config file "${program.config}"`)
   }
 
-  const configFilePath = isDirectory.sync(base) ? path.join(base, 'saasify.json') : base
+  const configFilePath = isDirectory.sync(base)
+    ? path.join(base, 'saasify.json')
+    : base
 
   if (!fs.pathExistsSync(configFilePath)) {
     throw new Error(`Unable to find config file "${configFilePath}"`)
@@ -47,7 +49,9 @@ module.exports = (program) => {
   }
 
   if (!validators.projectName(config.name)) {
-    throw new Error(`Invalid config name [${config.name}] (regex ${validators.projectNameRe})`)
+    throw new Error(
+      `Invalid config name [${config.name}] (regex ${validators.projectNameRe})`
+    )
   }
 
   if (config.saasifyVersion !== 1) {
@@ -64,7 +68,9 @@ module.exports = (program) => {
 
   for (const service of config.services) {
     if (service.name && !validators.service(service.name)) {
-      throw new Error(`Invalid config service "name" [${service.name}] (must be a valid JavaScript identifier regex ${validators.serviceRe})`)
+      throw new Error(
+        `Invalid config service "name" [${service.name}] (must be a valid JavaScript identifier regex ${validators.serviceRe})`
+      )
     }
   }
 

@@ -9,7 +9,7 @@ const auth = require('./auth')
 
 const commands = require('./commands')
 
-module.exports = async (argv, opts = { }) => {
+module.exports = async (argv, opts = {}) => {
   const client = new SaasifyClient({
     ...opts,
     ...auth.get()
@@ -20,7 +20,10 @@ module.exports = async (argv, opts = { }) => {
     .version(version)
     .option('-d, --debug', 'Enable extra debugging output', false)
     .option('-n, --project <name>', 'Project name')
-    .option('-c, --config <path>', 'Path to `saasify.json` file (defaults to cwd)')
+    .option(
+      '-c, --config <path>',
+      'Path to `saasify.json` file (defaults to cwd)'
+    )
     .option('-C, --no-clipboard', 'Do not attempt to copy URL to clipboard')
 
   // TODO: add ability to set client.teamId in global program options

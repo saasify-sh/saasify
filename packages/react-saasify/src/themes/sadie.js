@@ -8,7 +8,7 @@ import styles from './sadie.module.css'
 
 // https://colorhunt.co/palette/105443
 
-export const sadie = (opts = { }) => {
+export const sadie = (opts = {}) => {
   return {
     ...styles,
     '@name': 'sadie',

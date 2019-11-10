@@ -19,14 +19,8 @@ module.exports = (program, client) => {
       try {
         switch (cmd) {
           case 'ls': {
-            const [
-              user,
-              sources
-            ] = await spinner(
-              Promise.all([
-                client.getBilling(),
-                client.listBillingSources()
-              ]),
+            const [user, sources] = await spinner(
+              Promise.all([client.getBilling(), client.listBillingSources()]),
               'Getting billing sources'
             )
 
@@ -38,7 +32,7 @@ module.exports = (program, client) => {
           }
 
           case 'add': {
-            const temp = { }
+            const temp = {}
 
             const prompts = [
               {
@@ -138,7 +132,9 @@ module.exports = (program, client) => {
 
           case 'rm': {
             if (!id) {
-              console.error('error: you must specify the id of a billing source id to remove')
+              console.error(
+                'error: you must specify the id of a billing source id to remove'
+              )
               process.exit(1)
             }
 
@@ -152,7 +148,9 @@ module.exports = (program, client) => {
 
           case 'set-default': {
             if (!id) {
-              console.error('error: you must specify the id of a billing source id to set-default')
+              console.error(
+                'error: you must specify the id of a billing source id to set-default'
+              )
               process.exit(1)
             }
 
@@ -166,9 +164,13 @@ module.exports = (program, client) => {
 
           default: {
             if (!cmd) {
-              console.error('error: must specify a billing command (ls, add, rm, or set-default)')
+              console.error(
+                'error: must specify a billing command (ls, add, rm, or set-default)'
+              )
             } else {
-              console.error(`error: invalid billing command [${cmd}] (ls, add, rm, or set-default)`)
+              console.error(
+                `error: invalid billing command [${cmd}] (ls, add, rm, or set-default)`
+              )
             }
 
             process.exit(1)

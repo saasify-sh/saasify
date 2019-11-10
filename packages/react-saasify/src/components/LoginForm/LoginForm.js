@@ -5,15 +5,7 @@ import theme from 'lib/theme'
 import { inject } from 'mobx-react'
 import { Link, withRouter } from 'react-router-dom'
 
-import {
-  Button,
-  Checkbox,
-  Divider,
-  Form,
-  Icon,
-  Input,
-  message
-} from 'lib/antd'
+import { Button, Checkbox, Divider, Form, Icon, Input, message } from 'lib/antd'
 
 import authGitHub from 'lib/auth-github'
 import debug from 'lib/debug'
@@ -55,10 +47,7 @@ export class LoginForm extends Component {
         className={theme(styles, 'form', theme.light, className)}
         onSubmit={this._onSubmit}
       >
-        <h2 className={theme(styles, 'title')}>
-          Login
-        </h2>
-
+        <h2 className={theme(styles, 'title')}>Login</h2>
         <FormItem>
           <Button
             className={theme(styles, 'submit')}
@@ -68,41 +57,29 @@ export class LoginForm extends Component {
             Login with GitHub
           </Button>
         </FormItem>
-
-        <Divider>
-          Or
-        </Divider>
-
+        <Divider>Or</Divider>
         <FormItem>
           {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please enter your username or email.' }]
-          })(
-            <Input
-              prefix={iconUser}
-              placeholder='Username'
-            />
-          )}
+            rules: [
+              {
+                required: true,
+                message: 'Please enter your username or email.'
+              }
+            ]
+          })(<Input prefix={iconUser} placeholder='Username' />)}
         </FormItem>
-
         <FormItem>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Please enter your password.' }]
           })(
-            <Input
-              prefix={iconLock}
-              type='password'
-              placeholder='Password'
-            />
+            <Input prefix={iconLock} type='password' placeholder='Password' />
           )}
         </FormItem>
-
         <FormItem>
           {getFieldDecorator('remember', {
             valuePropName: 'checked',
             initialValue: true
-          })(
-            <Checkbox>Remember me</Checkbox>
-          )}
+          })(<Checkbox>Remember me</Checkbox>)}
 
           {/* TODO
           <Link
@@ -113,7 +90,6 @@ export class LoginForm extends Component {
           </Link>
           */}
         </FormItem>
-
         <Button
           type='primary'
           htmlType='submit'
@@ -122,7 +98,6 @@ export class LoginForm extends Component {
         >
           Log in
         </Button>
-
         Or <Link to='/signup'>sign up!</Link>
       </Form>
     )
@@ -133,7 +108,8 @@ export class LoginForm extends Component {
     this.props.form.validateFields((err, data) => {
       if (!err) {
         this.setState({ loading: true })
-        this.props.auth.signin(data)
+        this.props.auth
+          .signin(data)
           .then(this.props.onAuth)
           .catch((err) => {
             this.setState({ loading: false })

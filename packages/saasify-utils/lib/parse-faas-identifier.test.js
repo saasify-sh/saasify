@@ -41,7 +41,9 @@ test('URL prefix and suffix success', (t) => {
 })
 
 test('namespace success', (t) => {
-  success(t, 'https://api.saasify.sh/1/call/foo-bar@01234567/foo', { namespace: 'username' })
+  success(t, 'https://api.saasify.sh/1/call/foo-bar@01234567/foo', {
+    namespace: 'username'
+  })
   success(t, '/1/call/foo-bar@01234567/foo', { namespace: 'username' })
   success(t, '/foo-bar@01234567/foo', { namespace: 'username' })
   success(t, '/foo-bar@01234567/foo/', { namespace: 'username' })

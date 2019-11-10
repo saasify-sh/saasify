@@ -43,9 +43,7 @@ export class BillingSourcesSection extends Component {
     {
       title: 'Number',
       dataIndex: 'last4',
-      render: (last4) => (
-        `XXXX - ${last4}`
-      )
+      render: (last4) => `XXXX - ${last4}`
     },
     {
       title: 'Name',
@@ -54,9 +52,7 @@ export class BillingSourcesSection extends Component {
     {
       title: 'Expiration',
       key: 'expiration',
-      render: (card) => (
-        `${card.exp_month} / ${card.exp_year}`
-      )
+      render: (card) => `${card.exp_month} / ${card.exp_year}`
     },
     {
       title: 'Zipcode',
@@ -65,7 +61,7 @@ export class BillingSourcesSection extends Component {
     {
       title: 'Default',
       dataIndex: 'default',
-      render: (isDefault) => (
+      render: (isDefault) =>
         isDefault ? (
           <Icon
             type='check-circle'
@@ -76,7 +72,6 @@ export class BillingSourcesSection extends Component {
         ) : (
           ''
         )
-      )
     },
     {
       title: 'Actions',
@@ -119,10 +114,7 @@ export class BillingSourcesSection extends Component {
   )
 
   render() {
-    const {
-      auth,
-      ...rest
-    } = this.props
+    const { auth, ...rest } = this.props
 
     const {
       data,
@@ -137,15 +129,11 @@ export class BillingSourcesSection extends Component {
     } = this.state
 
     return (
-      <Section
-        id='billing-sources'
-        title='Payment Methods'
-        {...rest}
-      >
+      <Section id='billing-sources' title='Payment Methods' {...rest}>
         <div className={theme(styles, 'body')}>
           <Table
             columns={this._columns}
-            rowKey={record => record.id}
+            rowKey={(record) => record.id}
             dataSource={data}
             pagination={false}
             loading={isLoading}
@@ -186,7 +174,8 @@ export class BillingSourcesSection extends Component {
         >
           {selectedSource && (
             <div>
-              Are you sure you want to remove the {selectedSource.brand} card ending in <b>{selectedSource.last4}</b> from your payment methods?
+              Are you sure you want to remove the {selectedSource.brand} card
+              ending in <b>{selectedSource.last4}</b> from your payment methods?
             </div>
           )}
         </Modal>
@@ -200,7 +189,9 @@ export class BillingSourcesSection extends Component {
         >
           {selectedSource && (
             <div>
-              Are you sure you want to set the {selectedSource.brand} card ending in <b>{selectedSource.last4}</b> as your default payment method?
+              Are you sure you want to set the {selectedSource.brand} card
+              ending in <b>{selectedSource.last4}</b> as your default payment
+              method?
             </div>
           )}
         </Modal>
@@ -219,24 +210,19 @@ export class BillingSourcesSection extends Component {
   }
 
   _fetch = (params = {}) => {
-    const {
-      auth
-    } = this.props
+    const { auth } = this.props
 
     if (!auth.user) {
       return
     }
 
-    let {
-      data,
-      hasMoreData
-    } = this.state
+    let { data, hasMoreData } = this.state
 
     if (!data.length && hasMoreData) {
       this.setState({ isLoading: true })
 
-      API.listBillingSources()
-        .then((sources) => {
+      API.listBillingSources().then(
+        (sources) => {
           if (!sources.length) {
             hasMoreData = false
           } else {
@@ -249,13 +235,15 @@ export class BillingSourcesSection extends Component {
             data,
             hasMoreData
           })
-        }, (err) => {
+        },
+        (err) => {
           console.warn(err)
 
           this.setState({
             isLoading: false
           })
-        })
+        }
+      )
     }
   }
 
@@ -283,19 +271,22 @@ export class BillingSourcesSection extends Component {
       const source = await API.addBillingSource({ source: token.id })
       console.log('checkout source', { source })
 
-      this.setState({
-        data: [],
-        hasMoreData: true,
-        isLoadingAddNewSourceModal: false,
-        isVisibleAddNewSourceModal: false
-      }, () => {
-        notification.success({
-          message: 'Payment Method Added',
-          description: `Your ${source.brand} card ending in ${source.last4} was added successfully.`
-        })
+      this.setState(
+        {
+          data: [],
+          hasMoreData: true,
+          isLoadingAddNewSourceModal: false,
+          isVisibleAddNewSourceModal: false
+        },
+        () => {
+          notification.success({
+            message: 'Payment Method Added',
+            description: `Your ${source.brand} card ending in ${source.last4} was added successfully.`
+          })
 
-        this._fetch()
-      })
+          this._fetch()
+        }
+      )
     } catch (err) {
       notification.error({
         message: 'Error adding payment source',
@@ -319,23 +310,27 @@ export class BillingSourcesSection extends Component {
     const { selectedSource } = this.state
     this.setState({ isLoadingRemoveSourceModal: true })
 
-    API.removeBillingSource(selectedSource.id)
-      .then(() => {
-        this.setState({
-          data: [],
-          hasMoreData: true,
-          isLoadingRemoveSourceModal: false,
-          isVisibleRemoveSourceModal: false,
-          selectedSource: null
-        }, () => {
-          notification.success({
-            message: 'Card Removed',
-            description: `Your ${selectedSource.brand} card ending in ${selectedSource.last4} has been removed.`
-          })
+    API.removeBillingSource(selectedSource.id).then(
+      () => {
+        this.setState(
+          {
+            data: [],
+            hasMoreData: true,
+            isLoadingRemoveSourceModal: false,
+            isVisibleRemoveSourceModal: false,
+            selectedSource: null
+          },
+          () => {
+            notification.success({
+              message: 'Card Removed',
+              description: `Your ${selectedSource.brand} card ending in ${selectedSource.last4} has been removed.`
+            })
 
-          this._fetch()
-        })
-      }, (err) => {
+            this._fetch()
+          }
+        )
+      },
+      (err) => {
         console.warn(err)
 
         this.setState({ isLoadingRemoveSourceModal: false })
@@ -345,7 +340,8 @@ export class BillingSourcesSection extends Component {
           description: `There was an error trying to remove your ${selectedSource.brand} card ending in ${selectedSource.last4}.`,
           duration: 10
         })
-      })
+      }
+    )
   }
 
   _onCancelRemoveSourceModal = () => {
@@ -360,23 +356,27 @@ export class BillingSourcesSection extends Component {
     const { selectedSource } = this.state
     this.setState({ isLoadingSetDefaultSourceModal: true })
 
-    API.setDefaultBillingSource(selectedSource.id)
-      .then(() => {
-        this.setState({
-          data: [],
-          hasMoreData: true,
-          isLoadingSetDefaultSourceModal: false,
-          isVisibleSetDefaultSourceModal: false,
-          selectedSource: null
-        }, () => {
-          notification.success({
-            message: 'Card Set as Default',
-            description: `Your ${selectedSource.brand} card ending in ${selectedSource.last4} has been set as your default payment method.`
-          })
+    API.setDefaultBillingSource(selectedSource.id).then(
+      () => {
+        this.setState(
+          {
+            data: [],
+            hasMoreData: true,
+            isLoadingSetDefaultSourceModal: false,
+            isVisibleSetDefaultSourceModal: false,
+            selectedSource: null
+          },
+          () => {
+            notification.success({
+              message: 'Card Set as Default',
+              description: `Your ${selectedSource.brand} card ending in ${selectedSource.last4} has been set as your default payment method.`
+            })
 
-          this._fetch()
-        })
-      }, (err) => {
+            this._fetch()
+          }
+        )
+      },
+      (err) => {
         console.warn(err)
 
         this.setState({ isLoadingRemoveSourceModal: false })
@@ -386,10 +386,14 @@ export class BillingSourcesSection extends Component {
           description: `There was an error trying to set the ${selectedSource.brand} card ending in ${selectedSource.last4} as your default payment method.`,
           duration: 10
         })
-      })
+      }
+    )
   }
 
   _onCancelSetDefaultSourceModal = () => {
-    this.setState({ isVisibleSetDefaultSourceModal: false, selectedSource: null })
+    this.setState({
+      isVisibleSetDefaultSourceModal: false,
+      selectedSource: null
+    })
   }
 }

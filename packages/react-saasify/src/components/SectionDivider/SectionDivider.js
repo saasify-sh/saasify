@@ -30,7 +30,7 @@ export class SectionDivider extends Component {
   static defaultProps = {
     inverted: false,
     animated: false,
-    style: { }
+    style: {}
   }
 
   _state = {
@@ -66,13 +66,7 @@ export class SectionDivider extends Component {
   }
 
   render() {
-    const {
-      inverted,
-      animated,
-      style,
-      className,
-      ...rest
-    } = this.props
+    const { inverted, animated, style, className, ...rest } = this.props
 
     return (
       <div
@@ -120,16 +114,7 @@ export class SectionDivider extends Component {
   }
 
   _update() {
-    let {
-      dx0,
-      dy0,
-      dx1,
-      dy1,
-      x0,
-      y0,
-      x1,
-      y1
-    } = this._state
+    let { dx0, dy0, dx1, dy1, x0, y0, x1, y1 } = this._state
 
     dx0 = Math.max(-V, Math.min(V, dx0 + random.float(-V / 10, V / 10)))
     dy0 = Math.max(-V, Math.min(V, dy0 + random.float(-V / 10, V / 10)))
@@ -157,17 +142,9 @@ export class SectionDivider extends Component {
   _disposer = autorun(() => this._draw())
 
   _draw() {
-    const {
-      inverted
-    } = this.props
+    const { inverted } = this.props
 
-    const {
-      x0,
-      y0,
-      x1,
-      y1,
-      ltr
-    } = this._state
+    const { x0, y0, x1, y1, ltr } = this._state
 
     const foreground = theme['@section-fg-color']
     const background = theme['@section-bg-color']
@@ -176,9 +153,7 @@ export class SectionDivider extends Component {
       return
     }
 
-    const fg = Colr
-      .fromHex(foreground)
-      .toRgbArray()
+    const fg = Colr.fromHex(foreground).toRgbArray()
     const foregroundLight = `rgba(${fg[0]}, ${fg[1]}, ${fg[2]}, 0.5)`
 
     const ctx = this._canvas.getContext('2d')
@@ -196,7 +171,14 @@ export class SectionDivider extends Component {
       const cy0 = h * y0
       const cx1 = w * x1
       const cy1 = h * y1
-      ctx.bezierCurveTo(cx0, inverted ? h - cy0 : cy0, cx1, inverted ? h - cy1 : cy1, w, h / 2)
+      ctx.bezierCurveTo(
+        cx0,
+        inverted ? h - cy0 : cy0,
+        cx1,
+        inverted ? h - cy1 : cy1,
+        w,
+        h / 2
+      )
       ctx.lineTo(w, inverted ? h : 0)
       ctx.fill()
     } else {
@@ -207,7 +189,14 @@ export class SectionDivider extends Component {
       const cy0 = h * y0
       const cx1 = w * x1
       const cy1 = h * y1
-      ctx.bezierCurveTo(cx1, inverted ? h - cy0 : cy0, cx0, inverted ? h - cy1 : cy1, 0, h / 2)
+      ctx.bezierCurveTo(
+        cx1,
+        inverted ? h - cy0 : cy0,
+        cx0,
+        inverted ? h - cy1 : cy1,
+        0,
+        h / 2
+      )
       ctx.lineTo(0, inverted ? h : 0)
       ctx.fill()
     }
@@ -219,7 +208,14 @@ export class SectionDivider extends Component {
     const cy0 = h * y0
     const cx1 = w * x1
     const cy1 = h * y1
-    ctx.bezierCurveTo(cx0, inverted ? h - cy0 : cy0, cx1, inverted ? h - cy1 : cy1, w, inverted ? h : 0)
+    ctx.bezierCurveTo(
+      cx0,
+      inverted ? h - cy0 : cy0,
+      cx1,
+      inverted ? h - cy1 : cy1,
+      w,
+      inverted ? h : 0
+    )
     ctx.fill()
   }
 

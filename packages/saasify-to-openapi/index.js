@@ -5,15 +5,17 @@ const jsonSchemaRefParser = require('json-schema-ref-parser')
 const pReduce = require('p-reduce')
 const codegen = require('saasify-codegen')
 
-module.exports = async function saasifyToOpenAPI (deployment, opts = { }) {
-  const paths = await pReduce(deployment.services, async (paths, service) => ({
-    ...paths,
-    ...(await module.exports.serviceToPaths(service))
-  }), { })
+module.exports = async function saasifyToOpenAPI(deployment, opts = {}) {
+  const paths = await pReduce(
+    deployment.services,
+    async (paths, service) => ({
+      ...paths,
+      ...(await module.exports.serviceToPaths(service))
+    }),
+    {}
+  )
 
-  const version = deployment.version
-    ? `v${deployment.version}`
-    : undefined
+  const version = deployment.version ? `v${deployment.version}` : undefined
 
   return {
     openapi: '3.0.2',
@@ -25,7 +27,7 @@ module.exports = async function saasifyToOpenAPI (deployment, opts = { }) {
   }
 }
 
-function pruneCustomKeywords (schema) {
+function pruneCustomKeywords(schema) {
   if (Array.isArray(schema)) {
     schema.forEach(pruneCustomKeywords)
   } else if (typeof schema === 'object') {
@@ -37,7 +39,7 @@ function pruneCustomKeywords (schema) {
   }
 }
 
-function pruneTypes (schema) {
+function pruneTypes(schema) {
   if (Array.isArray(schema)) {
     schema.forEach(pruneTypes)
   } else if (typeof schema === 'object') {
@@ -83,7 +85,7 @@ function pruneTypes (schema) {
   }
 }
 
-async function prepareSchema (schema) {
+async function prepareSchema(schema) {
   const deref = await jsonSchemaRefParser.dereference(schema)
   // all $refs have been replaced directly, so remove any indirect definitions
   delete deref.definitions
@@ -97,19 +99,19 @@ async function prepareSchema (schema) {
   return deref
 }
 
-module.exports.serviceToPaths = async function serviceToPaths (service) {
-  const {
-    route,
-    definition
-  } = service
+module.exports.serviceToPaths = async function serviceToPaths(service) {
+  const { route, definition } = service
 
-  const result = { }
+  const result = {}
 
   // ---------------------------------------------------------------------------
   // Parameters
   // ---------------------------------------------------------------------------
 
-  const { http: isRawHttpRequest = false, schema: paramsSchema } = definition.params
+  const {
+    http: isRawHttpRequest = false,
+    schema: paramsSchema
+  } = definition.params
   let requestBody
   let requestSchema
 
@@ -117,7 +119,8 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
     requestSchema = {
       type: 'string',
       format: 'binary',
-      description: 'Raw HTTP request body which can be interpreted using the standard `Content-Type` header.'
+      description:
+        'Raw HTTP request body which can be interpreted using the standard `Content-Type` header.'
     }
 
     requestBody = {
@@ -150,15 +153,20 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   let examples
 
   if (service.examples) {
-    examplesOrdered = service.examples
-      .filter((example) => !example.inputContentType || example.inputContentType === 'application/json')
+    examplesOrdered = service.examples.filter(
+      (example) =>
+        !example.inputContentType ||
+        example.inputContentType === 'application/json'
+    )
 
     if (examplesOrdered.length) {
-      examples = examplesOrdered
-        .reduce((acc, example) => ({
+      examples = examplesOrdered.reduce(
+        (acc, example) => ({
           ...acc,
           [example.name]: example.input
-        }), { })
+        }),
+        {}
+      )
 
       // infer example values for all parameters from the list of provided example inputs
       for (const [name, schema] of Object.entries(requestSchema.properties)) {
@@ -185,7 +193,10 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
   // Responses
   // ---------------------------------------------------------------------------
 
-  const { http: isRawHttpResponse = false, schema: responseSchema } = definition.returns
+  const {
+    http: isRawHttpResponse = false,
+    schema: responseSchema
+  } = definition.returns
   const { type, additionalProperties, properties, ...rest } = responseSchema
   let responses
 
@@ -193,7 +204,8 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
     const responseSchema = {
       type: 'string',
       format: 'binary',
-      description: 'Raw HTTP response body which can be interpreted using the standard `Content-Type` header.'
+      description:
+        'Raw HTTP response body which can be interpreted using the standard `Content-Type` header.'
     }
 
     responses = {
@@ -249,7 +261,8 @@ module.exports.serviceToPaths = async function serviceToPaths (service) {
       }))
 
       if (!isRawHttpRequest) {
-        post.requestBody.content['application/json'].example = examplesOrdered[0].input
+        post.requestBody.content['application/json'].example =
+          examplesOrdered[0].input
       }
     }
 

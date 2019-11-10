@@ -7,15 +7,11 @@ import styles from './styles.module.css'
 
 export class Logo extends Component {
   render() {
-    const {
-      className,
-      style = { },
-      ...rest
-    } = this.props
+    const { className, style = {}, ...rest } = this.props
 
     return (
       <SaasifyContext.Consumer>
-        {config => (
+        {(config) =>
           config.logo ? (
             <img
               className={theme(styles, 'logo', className)}
@@ -33,7 +29,7 @@ export class Logo extends Component {
               {config.name}
             </div>
           )
-        )}
+        }
       </SaasifyContext.Consumer>
     )
   }

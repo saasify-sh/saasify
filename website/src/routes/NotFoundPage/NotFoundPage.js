@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import { theme } from 'react-saasify'
 
-import {
-  NavHeader,
-  NavFooter,
-  NotFoundSection
-} from 'components'
+import { NavHeader, NavFooter, NotFoundSection } from 'components'
 
 import styles from './styles.module.css'
 

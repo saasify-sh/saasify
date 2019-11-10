@@ -34,7 +34,8 @@ module.exports = override(
   }),
   */
   addBabelPlugin([
-    '@babel/plugin-proposal-class-properties', {
+    '@babel/plugin-proposal-class-properties',
+    {
       loose: true
     }
   ]),
@@ -64,9 +65,9 @@ module.exports = override(
   */
   (config) => {
     // allow relative imports from the top-level src directory
-    config.resolve.modules = [
-      path.join(__dirname, 'src')
-    ].concat(config.resolve.modules)
+    config.resolve.modules = [path.join(__dirname, 'src')].concat(
+      config.resolve.modules
+    )
 
     // allow custom resolving of default directory imports by attempting to load
     // 'DirName/DirName.js' if `DirName/index.js` doesn't exist which negates

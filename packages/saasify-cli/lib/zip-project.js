@@ -16,33 +16,28 @@ module.exports = async (program, deployment, zipEnv = false) => {
     mark: true
   })
 
-  const envFiles = zipEnv ? (
-    await globby('.env', {
-      cwd: deployment.root,
-      gitignore: false
-    })
-  ) : (
-    []
-  )
+  const envFiles = zipEnv
+    ? await globby('.env', {
+        cwd: deployment.root,
+        gitignore: false
+      })
+    : []
 
   const ignoredFiles = await getIgnoredFiles(program, deployment)
 
-  const allFilesFiltered = ignoredFiles.filter(files)
-    .concat(envFiles)
+  const allFilesFiltered = ignoredFiles.filter(files).concat(envFiles)
 
   const mtime = new Date(1540000000000)
   const zipFile = new ZipFile()
 
   const zipBuffer = await new Promise((resolve, reject) => {
-    allFilesFiltered
-      .sort()
-      .forEach((file) => {
-        const filePath = path.join(deployment.root, file)
-        const stream = fs.createReadStream(filePath)
-        const stat = fs.statSync(filePath)
-        stream.on('error', reject)
-        zipFile.addReadStream(stream, file, { mode: stat.mode, mtime })
-      })
+    allFilesFiltered.sort().forEach((file) => {
+      const filePath = path.join(deployment.root, file)
+      const stream = fs.createReadStream(filePath)
+      const stat = fs.statSync(filePath)
+      stream.on('error', reject)
+      zipFile.addReadStream(stream, file, { mode: stat.mode, mtime })
+    })
 
     zipFile.end()
     streamToBuffer(zipFile.outputStream)
@@ -53,7 +48,7 @@ module.exports = async (program, deployment, zipEnv = false) => {
   return zipBuffer
 }
 
-async function getIgnoredFiles (program, deployment) {
+async function getIgnoredFiles(program, deployment) {
   const ignores = [
     '.hg',
     '.git',

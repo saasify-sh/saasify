@@ -13,15 +13,11 @@ export class Markdown extends Component {
   }
 
   static defaultProps = {
-    renderers: { }
+    renderers: {}
   }
 
-  render () {
-    const {
-      source,
-      renderers,
-      ...rest
-    } = this.props
+  render() {
+    const { source, renderers, ...rest } = this.props
 
     return (
       <ReactMarkdown

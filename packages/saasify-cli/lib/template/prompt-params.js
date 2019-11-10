@@ -6,10 +6,7 @@ const { validators } = require('saasify-utils')
 const config = require('../config')
 
 module.exports = async (opts) => {
-  const {
-    skipPrompts,
-    ...rest
-  } = opts
+  const { skipPrompts, ...rest } = opts
 
   if (opts.name && !validators.projectName(opts.name)) {
     throw new Error(`invalid project name "${opts.name}"`)
@@ -17,7 +14,9 @@ module.exports = async (opts) => {
 
   if (skipPrompts) {
     if (!opts.name) {
-      throw new Error('invalid input; you must pass a project name with --skip-prompts')
+      throw new Error(
+        'invalid input; you must pass a project name with --skip-prompts'
+      )
     }
     const info = {}
 
@@ -58,7 +57,7 @@ module.exports = async (opts) => {
       {
         type: 'input',
         name: 'author',
-        message: 'Author\'s GitHub Handle',
+        message: "Author's GitHub Handle",
         default: opts.author
       },
       {

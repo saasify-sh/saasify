@@ -6,6 +6,6 @@
  *
  * @returns {string}
  */
-export default async function example (foo, bar) {
+export default async function example(foo, bar) {
   return JSON.stringify({ foo, bar }, null, 2)
 }

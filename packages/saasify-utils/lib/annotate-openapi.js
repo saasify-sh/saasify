@@ -9,18 +9,14 @@ const nameRe = /\/([^/]*)$/
  * Annotates a valid OpenAPI spec with extra metadata mostly specific to
  * Saasify's SaaS web client and [Redoc](https://github.com/Redocly/redoc).
  */
-module.exports = async (spec, deployment, opts = { }) => {
-  const {
-    baseUrl = 'https://api.saasify.sh'
-  } = opts
+module.exports = async (spec, deployment, opts = {}) => {
+  const { baseUrl = 'https://api.saasify.sh' } = opts
 
   const api = cloneDeep(spec)
-  const version = deployment.version
-    ? `v${deployment.version}`
-    : undefined
+  const version = deployment.version ? `v${deployment.version}` : undefined
 
-  api.servers = [ { url: baseUrl } ]
-  api.security = [ { 'API Key': [] } ]
+  api.servers = [{ url: baseUrl }]
+  api.security = [{ 'API Key': [] }]
 
   api.tags = [
     {

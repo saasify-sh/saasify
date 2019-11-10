@@ -35,11 +35,11 @@ export class Section extends Component {
       desc,
       id,
       className,
-      style = { },
+      style = {},
       children
     } = this.props
 
-    const sectionProps = { }
+    const sectionProps = {}
 
     if (id || title) {
       sectionProps.id = id || slugify(title.toLowerCase())
@@ -57,29 +57,27 @@ export class Section extends Component {
       <section
         className={theme(...themeArgs)}
         style={{
-          background: inverted ? theme['@section-fg-color'] : theme['@section-bg-color'],
+          background: inverted
+            ? theme['@section-fg-color']
+            : theme['@section-bg-color'],
           ...style
         }}
         {...sectionProps}
       >
-        <div className={theme(styles, 'content', stretch && theme(styles, 'stretch'))}>
-          {title && (
-            <h1 className={theme(styles, 'title')}>
-              {title}
-            </h1>
+        <div
+          className={theme(
+            styles,
+            'content',
+            stretch && theme(styles, 'stretch')
           )}
+        >
+          {title && <h1 className={theme(styles, 'title')}>{title}</h1>}
 
           {subtitle && (
-            <h5 className={theme(styles, 'subtitle')}>
-              {subtitle}
-            </h5>
+            <h5 className={theme(styles, 'subtitle')}>{subtitle}</h5>
           )}
 
-          {desc && (
-            <p className={theme(styles, 'desc')}>
-              {desc}
-            </p>
-          )}
+          {desc && <p className={theme(styles, 'desc')}>{desc}</p>}
 
           {children}
         </div>
