@@ -4,3 +4,5 @@ build/
 dist/
 templates/
 node_modules/
+fontfaceobserver.standalone.js
+*.min.js
