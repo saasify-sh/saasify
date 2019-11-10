@@ -2,7 +2,7 @@
   "parser": "babel-eslint",
   "extends": [
     "plugin:prettier/recommended",
-    "standard-react"
+    "plugin:react/recommended"
   ],
   "plugins": [
     "react"
@@ -20,7 +20,7 @@
   },
   "settings": {
     "react": {
-      "version": "16.10.1"
+      "version": "16"
     }
   },
   "rules": {
@@ -28,6 +28,10 @@
     "import/export": 0,
     "react/prop-types": 0,
     "react/jsx-handler-names": 0,
-    "react/jsx-fragments": 0
+    "react/jsx-fragments": 0,
+    "react/jsx-indent": 0,
+    "react/jsx-curly-newline": 0,
+    "react/display-name": 0,
+    "react/no-unescaped-entities": 0
   }
 }
