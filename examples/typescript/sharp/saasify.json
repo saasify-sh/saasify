@@ -1,5 +1,6 @@
 {
   "name": "sharp",
+  "alias": "sharp",
   "services": [
     {
       "src": "index.ts",

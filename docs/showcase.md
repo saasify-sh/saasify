@@ -46,7 +46,7 @@ Powerful SaaS API for image conversion and manipulation. ([source code](https://
 
 Wraps the [sharp](https://github.com/lovell/sharp) NPM module by [Lovell Fuller](https://github.com/lovell)
 
-<a href="https://dev_sharp.saasify.sh" target="_blank">
+<a href="https://sharp.saasify.sh" target="_blank">
   <img
     src="https://badges.saasify.sh?text=Try%20Sharp%20API"
     height="40"
@@ -55,7 +55,7 @@ Wraps the [sharp](https://github.com/lovell/sharp) NPM module by [Lovell Fuller]
 </a>
 
 <p align="center">
-  <a href="https://dev_sharp.saasify.sh/" title="Sharp" target="_blank">
+  <a href="https://sharp.saasify.sh/" title="Sharp" target="_blank">
     <img src="https://storage.googleapis.com/saasify-uploads-prod/4692dbd3bc4f9aab721f2e7c0a6f36139ce91feb.svg" alt="Sharp Logo" width="200" />
   </a>
 </p>
