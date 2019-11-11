@@ -12,12 +12,15 @@ export const ServiceInputWrapperWithLabel = ({
     <label>
       <div className={theme(styles, 'service-form__input-label')}>
         <span className={theme(styles, 'service-form__input-name')}>
-          {propKey} -{' '}
+          {propKey}
+          {description && ' - '}
         </span>
 
-        <span className={theme(styles, 'service-form__input-description')}>
-          {description}
-        </span>
+        {description && (
+          <span className={theme(styles, 'service-form__input-description')}>
+            {description}
+          </span>
+        )}
       </div>
       {children}
     </label>
