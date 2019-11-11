@@ -82,7 +82,7 @@
   "saas": {
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/natural",
     "heading": "**NLP** APIs",
-    "subheading": "Powered by the OSS authors behind the most popular Node.js NLP toolkit.",
+    "subheading": "Powered by the most popular Node.js NLP toolkit.",
     "logo": "media/logo.svg",
     "favicon": "media/favicon.ico",
     "theme": {
