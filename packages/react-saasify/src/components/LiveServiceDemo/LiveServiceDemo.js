@@ -293,6 +293,10 @@ export class LiveServiceDemo extends Component {
     this.setState({ running: true })
 
     this.setState({
+      output: null,
+      outputContentType: null,
+      outputError: null,
+      hitRateLimit: null,
       ...(await requestService({
         auth,
         service,
