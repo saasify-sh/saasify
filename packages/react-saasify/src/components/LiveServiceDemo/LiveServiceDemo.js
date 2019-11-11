@@ -100,6 +100,8 @@ export class LiveServiceDemo extends Component {
         renderedOutput = (
           <img alt={this._example.name || 'Example output'} src={dataUrl} />
         )
+      } else {
+        // TODO: gracefully handle other content-types
       }
     }
 
@@ -290,13 +292,15 @@ export class LiveServiceDemo extends Component {
   _onClickRun = async () => {
     const { auth, service } = this.props
 
-    this.setState({ running: true })
-
     this.setState({
+      running: true,
       output: null,
       outputContentType: null,
       outputError: null,
-      hitRateLimit: null,
+      hitRateLimit: null
+    })
+
+    this.setState({
       ...(await requestService({
         auth,
         service,

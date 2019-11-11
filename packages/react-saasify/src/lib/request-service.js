@@ -46,6 +46,8 @@ export default async ({ auth, service, data }) => {
       output = JSON.parse(Buffer.from(response.data, 'binary').toString())
     } else if (outputContentType.startsWith('image')) {
       output = Buffer.from(response.data, 'binary').toString('base64')
+    } else {
+      // TODO: gracefully handle other content-types
     }
 
     return {
