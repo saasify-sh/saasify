@@ -12,7 +12,7 @@ import { SaasifyContext } from '../SaasifyContext'
 import Link from './Link'
 import styles from './styles.module.css'
 
-const isServer = (typeof window === 'undefined')
+const isServer = typeof window === 'undefined'
 
 @inject('auth')
 @observer
@@ -27,7 +27,7 @@ export class NavHeader extends Component {
   }
 
   state = {
-    attached: (isServer || window.scrollY > 0),
+    attached: isServer || window.scrollY > 0,
     expanded: false
   }
 
@@ -61,7 +61,7 @@ export class NavHeader extends Component {
 
     return (
       <SaasifyContext.Consumer>
-        {config => (
+        {(config) => (
           <header
             className={theme(
               styles,
@@ -70,21 +70,30 @@ export class NavHeader extends Component {
               expanded ? theme(styles, 'expanded') : null
             )}
             style={{
-              background: attached || fixed || expanded ? theme['@section-fg-color'] : 'transparent'
+              background:
+                attached || fixed || expanded
+                  ? theme['@section-fg-color']
+                  : 'transparent'
             }}
           >
             <div className={theme(styles, 'content')}>
               <div className={theme(styles, 'primary')}>
-                <Link
-                  to='/'
-                >
+                <Link to='/'>
                   <Logo className={theme(styles, 'logo')} />
 
-                  <span className={theme(styles, 'logo-text')}>{config.name}</span>
+                  {config.logo && (
+                    <span className={theme(styles, 'logo-text')}>
+                      {config.name}
+                    </span>
+                  )}
                 </Link>
 
                 <div className={theme(styles, 'burger')}>
-                  <CTAButton type='secondary' inline onClick={this.handleToggleExpanded}>
+                  <CTAButton
+                    type='secondary'
+                    inline
+                    onClick={this.handleToggleExpanded}
+                  >
                     Menu
                   </CTAButton>
                 </div>
@@ -98,12 +107,7 @@ export class NavHeader extends Component {
                       if (!link) return null
                     }
 
-                    return (
-                      <Link
-                        key={link.to || link.href}
-                        {...link}
-                      />
-                    )
+                    return <Link key={link.to || link.href} {...link} />
                   })}
                 </div>
 
@@ -154,7 +158,7 @@ export class NavHeader extends Component {
     this._scrollRaf = null
 
     this.setState({
-      attached: (isServer || window.scrollY > 0)
+      attached: isServer || window.scrollY > 0
     })
   }
 }

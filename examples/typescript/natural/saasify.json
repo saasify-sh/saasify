@@ -83,6 +83,8 @@
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/natural",
     "heading": "**NLP** APIs",
     "subheading": "Powered by the OSS authors behind the most popular Node.js NLP toolkit.",
+    "logo": "media/logo.svg",
+    "favicon": "media/favicon.ico",
     "theme": {
       "name": "waves",
       "backgroundImage": "https://images.unsplash.com/photo-1456081101716-74e616ab23d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=2555&q=80",
