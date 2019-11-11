@@ -176,7 +176,7 @@ export class LiveServiceDemo extends Component {
               </div>
             )}
             <div className={theme(styles, 'footer__action')}>
-              <Button onClick={this._onClickRun} type='primary' loading={running}>
+              <Button onClick={this._onClickRun} type='secondary' loading={running}>
                 Run example
               </Button>
             </div>
