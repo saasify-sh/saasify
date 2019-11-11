@@ -15,7 +15,6 @@ test('GET hello-world', async (t) => {
   t.truthy(res)
 
   const { response, ...rest } = res
-  console.log(JSON.stringify(rest, null, 2))
   t.snapshot(rest)
 })
 

@@ -80,15 +80,13 @@ module.exports = class SaasifySDK {
         return { hitRateLimit: true, response: res }
       }
 
-      const contentTypeHeader =
+      const outputContentType =
         res.headers['content-type'] || defaultContentType
-      const parsedContentType = contentType.parse(contentTypeHeader)
-      const outputContentType = parsedContentType
-        ? parsedContentType.type
-        : defaultContentType
+      const outputContentTypeParsed = contentType.parse(outputContentType)
 
       let output = Buffer.from(res.data, 'binary')
 
+      // TODO: switch to use type-is package here
       if (outputContentType.startsWith('text/')) {
         output = output.toString()
       } else if (outputContentType.startsWith('application/json')) {
@@ -102,6 +100,7 @@ module.exports = class SaasifySDK {
       return {
         output,
         outputContentType,
+        outputContentTypeParsed,
         response: res
       }
     } catch (e) {

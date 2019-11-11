@@ -52,6 +52,7 @@ export class LiveServiceDemo extends Component {
       running,
       output,
       outputContentType,
+      outputContentTypeParsed,
       outputError,
       hitRateLimit
     } = this.state
@@ -64,14 +65,34 @@ export class LiveServiceDemo extends Component {
       }
     )
 
-    let renderedOutput = output
+    let renderedOutput = null
 
-    if (output) {
-      if (outputContentType.startsWith('text/plain')) {
+    if (outputError) {
+      renderedOutput = (
+        <div className={theme(styles, 'error')}>{outputError}</div>
+      )
+    } else if (hitRateLimit) {
+      renderedOutput = (
+        <div className={theme(styles, 'output__cta')}>
+          <div className={theme(styles, 'output__cta__message')}>
+            You've hit our public rate limit. To keep using the API, please
+            upgrade or try again later.
+          </div>
+
+          <div className={theme(styles, 'output__cta__button')}>
+            <Link to={'/signup?plan=unlimited'}>
+              <Button type='primary'>Upgrade to unlimited</Button>
+            </Link>
+          </div>
+        </div>
+      )
+    } else if (output && outputContentType) {
+      // TODO: switch to use type-is package here
+      if (outputContentType.startsWith('text/')) {
         renderedOutput = (
           <CodeBlock
             className={theme(styles, 'code')}
-            language='text'
+            language={outputContentType.slice('text/'.length)}
             value={output}
           />
         )
@@ -94,7 +115,7 @@ export class LiveServiceDemo extends Component {
             value={value}
           />
         )
-      } else if (outputContentType.startsWith('image')) {
+      } else if (outputContentType.startsWith('image/')) {
         const dataUrl = 'data:' + outputContentType + ';base64,' + output
 
         renderedOutput = (
@@ -102,30 +123,13 @@ export class LiveServiceDemo extends Component {
         )
       } else {
         // TODO: gracefully handle other content-types
+        renderedOutput = (
+          <div className={theme(styles, 'error')}>
+            The API returned an unsupported content-type "
+            {outputContentTypeParsed.type}".
+          </div>
+        )
       }
-    }
-
-    if (outputError) {
-      renderedOutput = (
-        <div className={theme(styles, 'error')}>{outputError}</div>
-      )
-    }
-
-    if (hitRateLimit) {
-      renderedOutput = (
-        <div className={theme(styles, 'output__cta')}>
-          <div className={theme(styles, 'output__cta__message')}>
-            You've hit our public rate limit. To keep using the API, please
-            upgrade or try again later.
-          </div>
-
-          <div className={theme(styles, 'output__cta__button')}>
-            <Link to={'/signup?plan=unlimited'}>
-              <Button type='primary'>Upgrade to unlimited</Button>
-            </Link>
-          </div>
-        </div>
-      )
     }
 
     return (
@@ -300,19 +304,22 @@ export class LiveServiceDemo extends Component {
       running: true,
       output: null,
       outputContentType: null,
+      outputContentTypeParsed: null,
       outputError: null,
       hitRateLimit: null
     })
 
+    const result = await requestService({
+      auth,
+      service,
+      data: {
+        ...this._example.input,
+        ...this.state.values
+      }
+    })
+
     this.setState({
-      ...(await requestService({
-        auth,
-        service,
-        data: {
-          ...this._example.input,
-          ...this.state.values
-        }
-      })),
+      ...result,
       running: false
     })
   }
