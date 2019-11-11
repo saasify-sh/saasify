@@ -6,12 +6,12 @@ import copyTextToClipboard from 'copy-text-to-clipboard'
 
 import { observer, inject } from 'mobx-react'
 import { Button, Tooltip } from 'lib/antd'
-import axios from 'axios'
 
 import { CodeBlock } from '../CodeBlock'
 import { ServiceForm } from '../ServiceForm'
 
 import getServiceExamples from 'lib/get-service-examples'
+import requestService from 'lib/request-service'
 
 import styles from './styles.module.css'
 
@@ -232,73 +232,19 @@ export class LiveServiceDemo extends Component {
   _onClickRun = async () => {
     const { auth, service } = this.props
 
-    const authHeaders = {}
-
-    if (auth.consumer) {
-      authHeaders.authorization = auth.consumer.token
-    };
-
-    const data = {
-      ...this._example.input,
-      ...this.state.values
-    }
-
-    const payload = {}
-
-    if (service.POST) {
-      payload.data = data
-    } else {
-      payload.params = data
-    }
-
-    const options = {
-      method: service.POST ? 'POST' : 'GET',
-      url: service.url,
-      headers: {
-        'content-type': 'application/json',
-        ...authHeaders
-      },
-      responseType: 'arraybuffer',
-      ...payload
-    }
+    this.setState({ running: true })
 
     this.setState({
-      running: true
+      ...await requestService({
+        auth,
+        service,
+        data: {
+          ...this._example.input,
+          ...this.state.values
+        }
+      }),
+      running: false
     })
-
-    try {
-      const response = await axios.request(options)
-
-      // NB not used until we add 429 to options via validateStatus method
-      if (response.status === 429) {
-        this.setState({
-          running: false,
-          hitRateLimit: true
-        })
-
-        return
-      }
-
-      const outputContentType = response.headers['content-type']
-      let output
-
-      if (outputContentType.startsWith('application/json')) {
-        output = JSON.parse(Buffer.from(response.data, 'binary').toString())
-      } else if (outputContentType.startsWith('image')) {
-        output = Buffer.from(response.data, 'binary').toString('base64')
-      }
-
-      this.setState({
-        running: false,
-        output,
-        outputContentType
-      })
-    } catch (e) {
-      this.setState({
-        running: false,
-        outputError: e.message
-      })
-    }
   }
 
   _handlePlaygroundChange = (values) => {
