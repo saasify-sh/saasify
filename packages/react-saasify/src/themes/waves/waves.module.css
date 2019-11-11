@@ -312,6 +312,10 @@
   text-align: left;
 }
 
+.theme-waves .checkout-page .content .form .label {
+  font-weight: 500;
+}
+
 .theme-waves .checkout-page .plan {
   margin-bottom: var(--space-l);
   margin-left: 0;
