@@ -28,13 +28,11 @@ const res = await sdk.post(helloWorldUrl, {
   data: { name: 'Nala' }
 })
 
-/*
 {
   "output": "Hello Nala!",
   "outputContentType": "application/json",
   "response": { /* raw axios response */ }
 }
-*/
 ```
 
 ## License
