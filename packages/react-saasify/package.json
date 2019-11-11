@@ -1,6 +1,6 @@
 {
   "name": "react-saasify",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "description": "React components for Saasify web clients.",
   "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
@@ -53,8 +53,8 @@
     "react-sizeme": "^2.6.7",
     "react-stripe-elements": "^5.0.1",
     "react-syntax-highlighter": "^11.0.2",
-    "saasify-client": "^1.8.1",
-    "saasify-codegen": "^1.8.6",
+    "saasify-client": "^1.10.0",
+    "saasify-codegen": "^1.10.0",
     "titleize": "^2.1.0"
   },
   "peerDependencies": {
