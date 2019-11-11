@@ -38,7 +38,11 @@ export default async ({ auth, service, data }) => {
     const outputContentType = response.headers['content-type']
     let output
 
-    if (outputContentType.startsWith('application/json')) {
+    console.log(response.headers)
+
+    if (outputContentType.startsWith('text/plain')) {
+      output = Buffer.from(response.data, 'binary').toString('utf8')
+    } else if (outputContentType.startsWith('application/json')) {
       output = JSON.parse(Buffer.from(response.data, 'binary').toString())
     } else if (outputContentType.startsWith('image')) {
       output = Buffer.from(response.data, 'binary').toString('base64')

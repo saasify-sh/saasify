@@ -67,12 +67,31 @@ export class LiveServiceDemo extends Component {
     let renderedOutput = output
 
     if (output) {
-      if (outputContentType.startsWith('application/json')) {
+      if (outputContentType.startsWith('text/plain')) {
         renderedOutput = (
           <CodeBlock
             className={theme(styles, 'code')}
-            language='json'
-            value={JSON.stringify(output, null, 2)}
+            language='text'
+            value={output}
+          />
+        )
+      } else if (outputContentType.startsWith('application/json')) {
+        let language
+        let value
+
+        if (typeof output === 'string') {
+          language = 'text'
+          value = output
+        } else {
+          language = 'json'
+          value = JSON.stringify(output, null, 2)
+        }
+
+        renderedOutput = (
+          <CodeBlock
+            className={theme(styles, 'code')}
+            language={language}
+            value={value}
           />
         )
       } else if (outputContentType.startsWith('image')) {
