@@ -59,7 +59,8 @@
 
 .code {
   height: 396px;
-  overflow: hidden !important;
+  overflow: hidden;
+  overflow-x: auto;
 }
 
 .icons {
