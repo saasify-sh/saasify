@@ -81,6 +81,13 @@
   height: 100% !important;
 }
 
+.output .error {
+  color: #e22301;
+  font-weight: 600;
+  padding: 24px;
+  text-align: center;
+}
+
 .output img {
   max-width: 100%;
 }
