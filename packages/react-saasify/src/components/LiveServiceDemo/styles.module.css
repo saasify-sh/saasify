@@ -59,7 +59,8 @@
 
 .code {
   height: 396px;
-  overflow: hidden !important;
+  overflow: hidden;
+  overflow-x: auto;
 }
 
 .icons {
@@ -79,6 +80,15 @@
 
 .copy {
   height: 100% !important;
+}
+
+.output .output__cta {
+  padding: 24px;
+  text-align: center;
+}
+
+.output .output__cta__message {
+  padding-bottom: 16px;
 }
 
 .output .error {
