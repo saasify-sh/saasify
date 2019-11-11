@@ -1109,6 +1109,11 @@ concat-with-sourcemaps@^1.0.5:
   dependencies:
     source-map "^0.6.1"
 
+content-type@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
+  integrity sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
+
 convert-source-map@^1.1.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.6.0.tgz#51b537a8c43e0f04dec1993bffcdd504e758ac20"
@@ -2677,6 +2682,11 @@ qs@^6.6.0, qs@^6.9.0:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.0.tgz#d1297e2a049c53119cb49cca366adbbacc80b409"
   integrity sha512-27RP4UotQORTpmNQDX8BHPukOnBP3p1uUJY5UnDhaJB+rMt9iMsok724XL+UHU23bEFOHRMQ2ZhI99qOWUMGFA==
 
+qs@^6.9.1:
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.1.tgz#20082c65cb78223635ab1a9eaca8875a29bf8ec9"
+  integrity sha512-Cxm7/SS/y/Z3MHWSxXb8lIFqgqBowP5JMlTUFyJN88y0SGQhVmZnqFK/PeuMX9LzUyWsqqhNxIyg0jlzq946yA==
+
 raf@^3.3.2, raf@^3.4.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.1.tgz#0742e99a4a6552f445d73e3ee0328af0ff1ede39"
@@ -3048,25 +3058,34 @@ rollup@^1.19.4:
     "@types/node" "*"
     acorn "^7.1.0"
 
-saasify-client@^1.7.13:
-  version "1.7.13"
-  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.7.13.tgz#5555140369ff36d9fd4e8d8e1994cd0b8abc4b8a"
-  integrity sha512-6eIsPuXGUb4aX78zjFgXJ0klSA0ijRa5E0c6/3AsUOxCnH4U4lEkSSgO2SE8yh/fywXjMhhNBpbUJP3zCWGISg==
+saasify-client@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.10.0.tgz#c44eeb2210cec98b70f3f8cffcf9d340609310b3"
+  integrity sha512-h4HfxLS+uUQFpRADqtUKbCq73zfoHv4uduwhHE3+NDycRkAFU6exQ5d3rK63NSXP3F6JyF8YoQUA0YcwhKzhig==
   dependencies:
     axios "^0.19.0"
     is-buffer "^2.0.3"
     is-stream "^2.0.0"
     qs "^6.6.0"
 
-saasify-codegen@^1.7.13:
-  version "1.7.13"
-  resolved "https://registry.yarnpkg.com/saasify-codegen/-/saasify-codegen-1.7.13.tgz#06a703bdea6cf7ad1acfe5fe403286d249787d43"
-  integrity sha512-YUsKqienR1EC0Ohx8JmAvffoScE96jWQhRQLY0CTBFx4irJO8iGk3H+RzkzzyXs11fh+WCuQ6MBwdgXCMiB4CA==
+saasify-codegen@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/saasify-codegen/-/saasify-codegen-1.10.0.tgz#6159f7ce0aa758c88b8ce147e82d844c565a6de8"
+  integrity sha512-Gu9ty4aEKbGZbq+uq6w8L+Cs8jQH8MBsfsR/DPvd27Ef4UH+PC8Me5XTUkXDbwt+e2FxIrv4YPifobhnWQR89w==
   dependencies:
     indent-string "^4.0.0"
     mustache "^3.1.0"
     qs "^6.9.0"
     stringify-object "^3.3.0"
+
+saasify-sdk@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/saasify-sdk/-/saasify-sdk-1.10.0.tgz#6a31690ab4b37538f707734043d27633d83ce7b7"
+  integrity sha512-rbWa7SLwtc29+DvyGItehfUz06Kx6wk2ohS8SXEhOn9izgMIF40QY+ZN8FZFGFgxamw6i5EhRS7c464da9ByJw==
+  dependencies:
+    axios "^0.19.0"
+    content-type "^1.0.4"
+    qs "^6.9.1"
 
 sade@^1.6.1:
   version "1.6.1"

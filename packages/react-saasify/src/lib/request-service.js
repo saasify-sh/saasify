@@ -5,8 +5,7 @@ const sdk = new SaasifySDK()
 export default async ({ auth, service, data }) => {
   sdk.token = auth.consumer && auth.consumer.token
 
-  const result = await sdk.call({
-    url: service.url,
+  const result = await sdk.call(service.url, {
     method: service.POST ? 'POST' : 'GET',
     data
   })
