@@ -41,10 +41,13 @@ for (const v of variables) {
 }
 
 // make sure these variables are tracked reactively by mobx
-decorate(themeUtil, variables.reduce((acc, k) => {
-  acc[k] = computed
-  return acc
-}, { }))
+decorate(
+  themeUtil,
+  variables.reduce((acc, k) => {
+    acc[k] = computed
+    return acc
+  }, {})
+)
 
 export const theme = themeUtil
 export default themeUtil

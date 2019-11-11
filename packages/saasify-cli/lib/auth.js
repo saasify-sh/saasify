@@ -26,7 +26,7 @@ exports.get = () => {
       teamSlug: conf.get(keyTeamSlug)
     }
   } else {
-    return { }
+    return {}
   }
 }
 

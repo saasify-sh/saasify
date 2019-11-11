@@ -8,13 +8,9 @@ export function handleAuth({ auth, location }) {
     const plan = params.get('plan')
 
     if (plan === 'unlimited') {
-      return (
-        <Redirect to={`/checkout?plan=${plan}`} />
-      )
+      return <Redirect to={`/checkout?plan=${plan}`} />
     } else {
-      return (
-        <Redirect to='/dashboard' />
-      )
+      return <Redirect to='/dashboard' />
     }
   }
 }

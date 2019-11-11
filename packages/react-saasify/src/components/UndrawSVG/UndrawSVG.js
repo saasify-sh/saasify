@@ -10,16 +10,12 @@ export class UndrawSVG extends Component {
   }
 
   render() {
-    const {
-      className,
-      name,
-      color,
-      ...rest
-    } = this.props
+    const { className, name, color, ...rest } = this.props
 
-    const uri = name.indexOf('/') >= 0 || name.indexOf('.') >= 0
-      ? name
-      : `/assets/undraw/${name}.svg`
+    const uri =
+      name.indexOf('/') >= 0 || name.indexOf('.') >= 0
+        ? name
+        : `/assets/undraw/${name}.svg`
 
     return (
       <img

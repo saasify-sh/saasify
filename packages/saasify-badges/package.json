@@ -8,8 +8,7 @@
   "repository": "saasify-sh/saasify",
   "license": "MIT",
   "scripts": {
-    "deploy": "now --prod && now rm --safe --yes saasify-badges || echo 'done'",
-    "test": "standard index.js lib/render-badge.js"
+    "deploy": "now --prod && now rm --safe --yes saasify-badges || echo 'done'"
   },
   "engines": {
     "node": ">=8"
@@ -34,9 +33,6 @@
     "png",
     "fontfaceobserver"
   ],
-  "devDependencies": {
-    "standard": "^12.0.1"
-  },
   "dependencies": {
     "css-in-js-utils": "^3.0.2",
     "ow": "^0.6.0",

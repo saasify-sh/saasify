@@ -5,21 +5,13 @@ const findFreePort = require('find-free-port')
 const got = require('got')
 const pRetry = require('p-retry')
 const path = require('path')
-const {
-  parseOpenAPI,
-  convertOpenAPIToServices
-} = require('saasify-utils')
+const { parseOpenAPI, convertOpenAPIToServices } = require('saasify-utils')
 
 const killProcessTree = require('../kill-process-tree')
 const serveProjectLocal = require('../serve-project-local')
 
 module.exports = async (opts) => {
-  const {
-    program,
-    config,
-    serveProjectLocal,
-    ...rest
-  } = opts
+  const { program, config, serveProjectLocal, ...rest } = opts
 
   // TODO: relax restriction on only having one source service
   if (config.services.length > 1) {
@@ -53,12 +45,7 @@ module.exports = async (opts) => {
 
 // TODO: find a less hacky approach for extracting the openapi schema
 module.exports.extractOpenAPI = async (opts) => {
-  const {
-    program,
-    config,
-    service,
-    ...rest
-  } = opts
+  const { program, config, service, ...rest } = opts
 
   const src = path.resolve(config.root, service.src)
   const srcRelative = path.relative(process.cwd(), src)
@@ -88,7 +75,7 @@ module.exports.extractOpenAPI = async (opts) => {
   return spec
 }
 
-module.exports.fetchOpenAPI = async (url, opts = { }) => {
+module.exports.fetchOpenAPI = async (url, opts = {}) => {
   return pRetry(() => got(url, opts), {
     retries: 6,
     factor: 1.8,

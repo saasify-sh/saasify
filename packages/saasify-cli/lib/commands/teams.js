@@ -7,7 +7,7 @@ const auth = require('../auth')
 const handleError = require('../handle-error')
 const spinner = require('../spinner')
 
-const defaultUserTeam = { }
+const defaultUserTeam = {}
 
 module.exports = (program, client) => {
   program
@@ -19,10 +19,7 @@ module.exports = (program, client) => {
       try {
         switch (cmd) {
           case 'ls': {
-            const teams = await spinner(
-              client.listTeams(),
-              'Fetching teams'
-            )
+            const teams = await spinner(client.listTeams(), 'Fetching teams')
 
             // TODO: better output formatting
             console.log(JSON.stringify(teams, null, 2))
@@ -50,10 +47,7 @@ module.exports = (program, client) => {
 
             const info = await prompt(prompts)
 
-            const team = await spinner(
-              client.createTeam(info),
-              'Creating team'
-            )
+            const team = await spinner(client.createTeam(info), 'Creating team')
 
             client.teamId = team.id
             auth.switchTeam(team)
@@ -63,7 +57,9 @@ module.exports = (program, client) => {
           }
 
           case 'rm': {
-            console.error('error: removing teams has been disabled in the CLI for now. please contact support for help.')
+            console.error(
+              'error: removing teams has been disabled in the CLI for now. please contact support for help.'
+            )
             process.exit(1)
 
             // TODO: this would be pretty easy to accidentally do and would prevent you
@@ -93,13 +89,10 @@ module.exports = (program, client) => {
           }
 
           case 'switch': {
-            const teams = await spinner(
-              client.listTeams(),
-              'Fetching teams'
-            )
+            const teams = await spinner(client.listTeams(), 'Fetching teams')
 
             const choices = teams.map((team) => `${team.slug} (${team.name})`)
-            const choiceToTeamMap = { }
+            const choiceToTeamMap = {}
             for (let i = 0; i < choices.length; ++i) {
               const choice = choices[i]
               choiceToTeamMap[choice] = teams[i]
@@ -150,12 +143,16 @@ module.exports = (program, client) => {
 
           case 'invite': {
             if (!client.teamId) {
-              console.error('error: you must switch to an active team before inviting a member to join')
+              console.error(
+                'error: you must switch to an active team before inviting a member to join'
+              )
               process.exit(1)
             }
 
             if (!arg) {
-              console.error('error: you must specify the username of the saasify user you want to invite')
+              console.error(
+                'error: you must specify the username of the saasify user you want to invite'
+              )
               process.exit(1)
             }
 
@@ -169,15 +166,21 @@ module.exports = (program, client) => {
               `Sending invite to user "${arg}"`
             )
 
-            console.log(`User "${arg}" has been invited to your active team "${client.teamSlug}"`)
+            console.log(
+              `User "${arg}" has been invited to your active team "${client.teamSlug}"`
+            )
             break
           }
 
           default: {
             if (!cmd) {
-              console.error('error: must specify a team command (ls, add, invite, switch)')
+              console.error(
+                'error: must specify a team command (ls, add, invite, switch)'
+              )
             } else {
-              console.error(`error: invalid team command [${cmd}] (ls, add, invite, switch)`)
+              console.error(
+                `error: invalid team command [${cmd}] (ls, add, invite, switch)`
+              )
             }
 
             process.exit(1)

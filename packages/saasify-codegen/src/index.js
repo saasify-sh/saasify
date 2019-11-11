@@ -41,11 +41,8 @@ const languages = [
   */
 ]
 
-export default (service, token, opts = { }) => {
-  const {
-    method = 'POST',
-    example = service.examples[0]
-  } = opts
+export default (service, token, opts = {}) => {
+  const { method = 'POST', example = service.examples[0] } = opts
 
   if (method !== 'POST' && method !== 'GET') {
     throw new Error(`TODO: support service codegen for method "${method}"`)
@@ -68,9 +65,14 @@ export default (service, token, opts = { }) => {
   // stringifyObject returns the JSON without all the extra quotes around keys
   // and using single quotes for string values
   data.exampleJSONBare = stringifyObject(example.input, { indent: '  ' })
-  data.exampleJSONBareIndented = indent(data.exampleJSONBare, 1, { indent: '  ' }).slice(2)
+  data.exampleJSONBareIndented = indent(data.exampleJSONBare, 1, {
+    indent: '  '
+  }).slice(2)
 
-  data.hasFileOutput = (service.definition && service.definition.returns.http && typeof example.output === 'string')
+  data.hasFileOutput =
+    service.definition &&
+    service.definition.returns.http &&
+    typeof example.output === 'string'
   data.output = example.output
 
   // --------------------------------------------------------------
@@ -78,16 +80,18 @@ export default (service, token, opts = { }) => {
   // Restart the dev server each time you make a change.
   // --------------------------------------------------------------
 
-  const snippets = languages.map((l) => {
-    const template = l[`template${method}`]
+  const snippets = languages
+    .map((l) => {
+      const template = l[`template${method}`]
 
-    if (template) {
-      const code = mustache.render(template, data).trim()
-      const { language, label } = l
+      if (template) {
+        const code = mustache.render(template, data).trim()
+        const { language, label } = l
 
-      return { code, language, label }
-    }
-  }).filter(Boolean)
+        return { code, language, label }
+      }
+    })
+    .filter(Boolean)
 
   return {
     ...example,

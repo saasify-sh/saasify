@@ -1,6 +1,6 @@
 import styles from './theme.module.css'
 
-export default (opts = { }) => {
+export default (opts = {}) => {
   return {
     ...styles,
     '@name': 'clean',

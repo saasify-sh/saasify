@@ -7,7 +7,10 @@ const puppeteer = require('puppeteer-serverless').default
 
 const { cssifyObject } = require('css-in-js-utils')
 
-const observerScript = fs.readFileSync(path.join(__dirname, 'fontfaceobserver.standalone.js'), 'utf8')
+const observerScript = fs.readFileSync(
+  path.join(__dirname, 'fontfaceobserver.standalone.js'),
+  'utf8'
+)
 const observer = `
 <script>
   ${observerScript}
@@ -49,8 +52,8 @@ module.exports = async (opts) => {
     loadFontFamily = undefined,
     loadGoogleFont = false,
     type = 'png',
-    style = { },
-    inject = { }
+    style = {},
+    inject = {}
   } = opts
 
   if (output) {
@@ -67,22 +70,27 @@ module.exports = async (opts) => {
   }
 
   const fonts = loadFontFamily
-    ? [ loadFontFamily ]
+    ? [loadFontFamily]
     : loadGoogleFont
-      ? fontFamily.split(',').map((font) => font.trim())
-      : [ ]
+    ? fontFamily.split(',').map((font) => font.trim())
+    : []
 
   const fontHeader = loadFontFamily
-    ? observer : (
-      loadGoogleFont ? `
+    ? observer
+    : loadGoogleFont
+    ? `
       ${observer}
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=${fonts.map((font) => font.replace(/ /g, '+')).join('|')}">
-    ` : ''
-    )
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=${fonts
+        .map((font) => font.replace(/ /g, '+'))
+        .join('|')}">
+    `
+    : ''
 
   const fontsToLoad = fonts.map((font) => `new FontFaceObserver('${font}')`)
   const fontLoader = fontsToLoad.length
-    ? `Promise.all([ ${fontsToLoad.join(', ')} ].map((f) => f.load())).then(ready);`
+    ? `Promise.all([ ${fontsToLoad.join(
+        ', '
+      )} ].map((f) => f.load())).then(ready);`
     : 'ready();'
 
   const html = `
@@ -171,7 +179,7 @@ ${inject.body || ''}
   // const fs = require('fs')
   // fs.writeFileSync('test.html', html)
 
-  const browser = opts.browser || await puppeteer.launch()
+  const browser = opts.browser || (await puppeteer.launch())
   const page = await browser.newPage()
 
   page.on('console', console.log)

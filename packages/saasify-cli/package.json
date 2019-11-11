@@ -10,8 +10,7 @@
     "saasify": "lib/cli.js"
   },
   "scripts": {
-    "docs": "update-markdown-usage",
-    "test": "standard"
+    "docs": "update-markdown-usage"
   },
   "engines": {
     "node": ">=8"
@@ -27,7 +26,6 @@
   ],
   "devDependencies": {
     "ava": "^2.2.0",
-    "standard": "^13.1.0",
     "update-markdown-usage": "^1.0.5"
   },
   "dependencies": {

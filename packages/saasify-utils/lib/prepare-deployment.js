@@ -13,17 +13,11 @@ const npmConfigName = 'package.json'
 const tsConfigName = 'tsconfig.json'
 const jsonConfig = { spaces: 2 }
 
-module.exports = async (deployment, data, opts = { }) => {
-  const {
-    tempDir = tempy.directory(),
-    config = { },
-    debug = false
-  } = opts
+module.exports = async (deployment, data, opts = {}) => {
+  const { tempDir = tempy.directory(), config = {}, debug = false } = opts
 
   await decompress(data, tempDir, {
-    plugins: [
-      decompressUnzip()
-    ]
+    plugins: [decompressUnzip()]
   })
 
   const builds = []
@@ -36,14 +30,19 @@ module.exports = async (deployment, data, opts = { }) => {
 
     if (ext === 'ts' || ext === 'tsx' || ext === 'js') {
       if (language && language !== 'ts') {
-        const err = new Error('Mixing service languages is not currently supported')
+        const err = new Error(
+          'Mixing service languages is not currently supported'
+        )
         err.statusCode = 400
         throw err
       }
 
       language = 'ts'
 
-      const srcPath = path.relative(tempDir, path.resolve(tempDir, service.src.replace(`.${ext}`, '')))
+      const srcPath = path.relative(
+        tempDir,
+        path.resolve(tempDir, service.src.replace(`.${ext}`, ''))
+      )
 
       const definitionData = JSON.stringify(service.definition, null, 2)
       const serviceName = service.name
@@ -73,7 +72,7 @@ module.exports = async (deployment, data, opts = { }) => {
         use: '@now/node@1.0.1',
         config: {
           maxLambdaSize: '50mb',
-          ...(service.config || { }),
+          ...(service.config || {}),
           ...config
         }
       })
@@ -91,7 +90,9 @@ module.exports = async (deployment, data, opts = { }) => {
       }
     } else if (ext === 'py') {
       if (language && language !== 'py') {
-        const err = new Error('Mixing service languages is not currently supported')
+        const err = new Error(
+          'Mixing service languages is not currently supported'
+        )
         err.statusCode = 400
         throw err
       }
@@ -102,8 +103,8 @@ module.exports = async (deployment, data, opts = { }) => {
         src: service.src,
         use: '@now/python@0.3.1',
         config: {
-          'maxLambdaSize': '50mb',
-          ...(service.config || { }),
+          maxLambdaSize: '50mb',
+          ...(service.config || {}),
           ...config
         }
       })
@@ -129,31 +130,42 @@ module.exports = async (deployment, data, opts = { }) => {
   }
 
   const prefix = deployment.team || deployment.user
-  await fs.writeJson(nowConfigPath, {
-    version: 2,
-    name: deployment.project,
-    build: {
-      env: transformEnv(prefix, (deployment.build && deployment.build.env) || { })
+  await fs.writeJson(
+    nowConfigPath,
+    {
+      version: 2,
+      name: deployment.project,
+      build: {
+        env: transformEnv(
+          prefix,
+          (deployment.build && deployment.build.env) || {}
+        )
+      },
+      env: transformEnv(prefix, deployment.env || {}),
+      builds,
+      routes
     },
-    env: transformEnv(prefix, deployment.env || { }),
-    builds,
-    routes
-  }, jsonConfig)
+    jsonConfig
+  )
 
   if (language === 'ts') {
     const tsConfigPath = path.join(tempDir, tsConfigName)
     const npmConfigPath = path.join(tempDir, npmConfigName)
     if (!fs.existsSync(tsConfigPath)) {
-      await fs.writeJson(tsConfigPath, {
-        compilerOptions: {
-          target: 'es2015',
-          moduleResolution: 'node'
-        }
-      }, jsonConfig)
+      await fs.writeJson(
+        tsConfigPath,
+        {
+          compilerOptions: {
+            target: 'es2015',
+            moduleResolution: 'node'
+          }
+        },
+        jsonConfig
+      )
     }
 
     if (!fs.existsSync(npmConfigPath)) {
-      await fs.writeJson(npmConfigPath, { }, jsonConfig)
+      await fs.writeJson(npmConfigPath, {}, jsonConfig)
     }
 
     const npmConfig = await fs.readJson(npmConfigPath)
@@ -176,14 +188,13 @@ module.exports = async (deployment, data, opts = { }) => {
   return tempDir
 }
 
-const transformEnv = function (userId, env = { }) {
-  return Object.entries(env)
-    .reduce((acc, [ key, value ]) => {
-      if (value.startsWith('@')) {
-        value = `@${userId}-${value.substr(1)}`
-      }
+const transformEnv = function(userId, env = {}) {
+  return Object.entries(env).reduce((acc, [key, value]) => {
+    if (value.startsWith('@')) {
+      value = `@${userId}-${value.substr(1)}`
+    }
 
-      acc[key] = value
-      return acc
-    }, { })
+    acc[key] = value
+    return acc
+  }, {})
 }

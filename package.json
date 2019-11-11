@@ -10,11 +10,17 @@
   "scripts": {
     "docs": "docsify serve docs",
     "deploy": "cd docs && now --prod && now rm --safe --yes saasify || echo 'done'",
-    "test": "lerna run test",
     "bootstrap": "lerna bootstrap",
     "publish": "lerna publish",
     "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') < 0) throw new Error('saasify requires yarn for development')\"",
-    "postinstall": "run-s bootstrap"
+    "postinstall": "run-s bootstrap",
+    "fix": "eslint . --fix",
+    "fix:black": "if type black > /dev/null; then black examples/python; else echo 'python formatting requires black to be installed'; fi",
+    "test": "run-s test:*",
+    "test:unit": "lerna run test",
+    "test:lint": "eslint .",
+    "test:prettier": "prettier '**/*.js' --check",
+    "test:black": "if type black > /dev/null; then black examples/python --check; else echo 'python formatting requires black to be installed'; fi"
   },
   "keywords": [
     "faas",
@@ -28,24 +34,18 @@
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "docsify": "^4.9.4",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-react": "^9.2.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.15.0",
+    "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-standard": "^4.0.1",
     "lerna": "^3.13.4",
-    "npm-run-all": "^4.1.5"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "jsxSingleQuote": true,
-    "semi": false,
-    "tabWidth": 2,
-    "bracketSpacing": true,
-    "jsxBracketSameLine": false,
-    "arrowParens": "always"
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1"
   }
 }

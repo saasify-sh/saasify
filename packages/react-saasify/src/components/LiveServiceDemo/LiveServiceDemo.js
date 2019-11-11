@@ -30,7 +30,9 @@ export class LiveServiceDemo extends Component {
     values: {}
   }
 
-  _onClickPlaygroundTabMem = mem(() => () => this._onClickTab({ label: 'Playground' }))
+  _onClickPlaygroundTabMem = mem(() => () =>
+    this._onClickTab({ label: 'Playground' })
+  )
   _onClickTabMem = mem((i) => () => this._onClickTab(this._example.snippets[i]))
 
   componentWillUnmount() {
@@ -41,10 +43,7 @@ export class LiveServiceDemo extends Component {
   }
 
   render() {
-    const {
-      service,
-      auth
-    } = this.props
+    const { service, auth } = this.props
 
     const {
       selected,
@@ -55,9 +54,13 @@ export class LiveServiceDemo extends Component {
       outputError
     } = this.state
 
-    this._example = getServiceExamples(service, auth.consumer && auth.consumer.token, {
-      method: service.POST ? 'POST' : 'GET'
-    })
+    this._example = getServiceExamples(
+      service,
+      auth.consumer && auth.consumer.token,
+      {
+        method: service.POST ? 'POST' : 'GET'
+      }
+    )
 
     let renderedOutput = output
 
@@ -74,30 +77,37 @@ export class LiveServiceDemo extends Component {
         const dataUrl = 'data:' + outputContentType + ';base64,' + output
 
         renderedOutput = (
-          <img
-            alt={this._example.name || 'Example output'}
-            src={dataUrl}
-          />
+          <img alt={this._example.name || 'Example output'} src={dataUrl} />
         )
       }
     }
 
     if (outputError) {
-      renderedOutput = <div className={theme(styles, 'error')}>{outputError}</div>
+      renderedOutput = (
+        <div className={theme(styles, 'error')}>{outputError}</div>
+      )
     }
 
     return (
       <div className={theme(styles, 'live-service-demo')}>
         <div className={theme(styles, 'tabs')}>
           <div
-            className={theme(styles, 'tab', selected === 'Playground' && theme(styles, 'selected-tab'))}
+            className={theme(
+              styles,
+              'tab',
+              selected === 'Playground' && theme(styles, 'selected-tab')
+            )}
             onClick={this._onClickPlaygroundTabMem()}
           >
-              Playground
+            Playground
           </div>
           {this._example.snippets.map((l, i) => (
             <div
-              className={theme(styles, 'tab', selected === l.label && theme(styles, 'selected-tab'))}
+              className={theme(
+                styles,
+                'tab',
+                selected === l.label && theme(styles, 'selected-tab')
+              )}
               key={i}
               onClick={this._onClickTabMem(i)}
             >
@@ -108,7 +118,11 @@ export class LiveServiceDemo extends Component {
 
         <div className={theme(styles, 'tab-content')}>
           <div
-            className={theme(styles, 'tab-pane', selected === 'Playground' && theme(styles, 'selected-tab-pane'))}
+            className={theme(
+              styles,
+              'tab-pane',
+              selected === 'Playground' && theme(styles, 'selected-tab-pane')
+            )}
           >
             <div className={theme(styles, 'api-playground')}>
               <ServiceForm
@@ -120,7 +134,11 @@ export class LiveServiceDemo extends Component {
           </div>
           {this._example.snippets.map((l, i) => (
             <div
-              className={theme(styles, 'tab-pane', selected === l.label && theme(styles, 'selected-tab-pane'))}
+              className={theme(
+                styles,
+                'tab-pane',
+                selected === l.label && theme(styles, 'selected-tab-pane')
+              )}
               key={i}
             >
               <CodeBlock
@@ -133,10 +151,14 @@ export class LiveServiceDemo extends Component {
         </div>
 
         <div className={theme(styles, 'footer')}>
-
           <div className={theme(styles, 'footer__service')}>
             {this._example.description && (
-              <div className={theme(styles, 'footer__service__example-description')}>
+              <div
+                className={theme(
+                  styles,
+                  'footer__service__example-description'
+                )}
+              >
                 Example - {this._example.description}
               </div>
             )}
@@ -155,7 +177,6 @@ export class LiveServiceDemo extends Component {
                 {service.POST ? 'POST' : 'GET'}
               </div>
 
-              /
               <div className={theme(styles, 'footer__service__name')}>
                 {service.name}
               </div>
@@ -167,7 +188,9 @@ export class LiveServiceDemo extends Component {
               <div className={theme(styles, 'footer__action')}>
                 <Tooltip
                   placement='top'
-                  title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
+                  title={
+                    copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'
+                  }
                 >
                   <Button
                     icon='copy'
@@ -179,7 +202,11 @@ export class LiveServiceDemo extends Component {
               </div>
             )}
             <div className={theme(styles, 'footer__action')}>
-              <Button onClick={this._onClickRun} type='secondary' loading={running}>
+              <Button
+                onClick={this._onClickRun}
+                type='secondary'
+                loading={running}
+              >
                 Run example
               </Button>
             </div>
@@ -187,11 +214,7 @@ export class LiveServiceDemo extends Component {
         </div>
 
         {renderedOutput && (
-          <div
-            className={theme(styles, 'output')}
-          >
-            {renderedOutput}
-          </div>
+          <div className={theme(styles, 'output')}>{renderedOutput}</div>
         )}
       </div>
     )
@@ -204,9 +227,7 @@ export class LiveServiceDemo extends Component {
   }
 
   _onClickCopy = () => {
-    const {
-      selected
-    } = this.state
+    const { selected } = this.state
 
     const snippet = this._example.snippets.find((l) => l.label === selected)
 
@@ -235,14 +256,14 @@ export class LiveServiceDemo extends Component {
     this.setState({ running: true })
 
     this.setState({
-      ...await requestService({
+      ...(await requestService({
         auth,
         service,
         data: {
           ...this._example.input,
           ...this.state.values
         }
-      }),
+      })),
       running: false
     })
   }

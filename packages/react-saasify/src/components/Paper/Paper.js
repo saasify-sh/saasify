@@ -5,16 +5,8 @@ import styles from './styles.module.css'
 
 export class Paper extends Component {
   render() {
-    const {
-      className,
-      ...rest
-    } = this.props
+    const { className, ...rest } = this.props
 
-    return (
-      <div
-        className={theme(styles, 'paper', className)}
-        {...rest}
-      />
-    )
+    return <div className={theme(styles, 'paper', className)} {...rest} />
   }
 }

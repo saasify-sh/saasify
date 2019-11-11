@@ -27,13 +27,15 @@ class AuthManagerClass {
   }
 
   constructor() {
-    LocalStore.get(AUTH_STORE_KEY)
-      .then((auth) => {
+    LocalStore.get(AUTH_STORE_KEY).then(
+      (auth) => {
         this.auth = auth
         this.isBootstrapping = false
-      }, () => {
+      },
+      () => {
         this.isBootstrapping = false
-      })
+      }
+    )
   }
 
   async signin(opts) {

@@ -19,41 +19,29 @@ const columns = [
   {
     title: 'Start',
     dataIndex: 'request.period.start',
-    render: (timestamp) => (
-      timestamp
-        ? format(new Date(timestamp * 1000), 'MM/dd/yyyy')
-        : ''
-    )
+    render: (timestamp) =>
+      timestamp ? format(new Date(timestamp * 1000), 'MM/dd/yyyy') : ''
   },
   {
     title: 'End',
     dataIndex: 'request.period.end',
-    render: (timestamp) => (
-      timestamp
-        ? format(new Date(timestamp * 1000), 'MM/dd/yyyy')
-        : 'Current'
-    )
+    render: (timestamp) =>
+      timestamp ? format(new Date(timestamp * 1000), 'MM/dd/yyyy') : 'Current'
   },
   {
     title: 'Number of Requests',
     dataIndex: 'request.total_usage',
-    render: (amount) => (
-      amount
-    )
+    render: (amount) => amount
   },
   {
     title: 'Compute Time (ms)',
     dataIndex: 'compute.total_usage',
-    render: (amount) => (
-      amount
-    )
+    render: (amount) => amount
   },
   {
     title: 'Bandwidth (GBs)',
     dataIndex: 'bandwidth.total_usage',
-    render: (amount) => (
-      amount === undefined ? 0 : amount
-    )
+    render: (amount) => (amount === undefined ? 0 : amount)
   }
 ]
 
@@ -86,27 +74,16 @@ export class BillingUsageSection extends Component {
   )
 
   render() {
-    const {
-      auth,
-      ...rest
-    } = this.props
+    const { auth, ...rest } = this.props
 
-    const {
-      data,
-      pagination,
-      loading
-    } = this.state
+    const { data, pagination, loading } = this.state
 
     return (
-      <Section
-        id='billing-usage'
-        title='Usage'
-        {...rest}
-      >
+      <Section id='billing-usage' title='Usage' {...rest}>
         <div className={theme(styles, 'body')}>
           <Table
             columns={columns}
-            rowKey={record => record.request.id}
+            rowKey={(record) => record.request.id}
             dataSource={data}
             pagination={pagination}
             loading={loading}
@@ -132,18 +109,13 @@ export class BillingUsageSection extends Component {
   }
 
   _fetch = (params = {}) => {
-    const {
-      auth
-    } = this.props
+    const { auth } = this.props
 
     if (!auth.consumer) {
       return
     }
 
-    let {
-      data,
-      pagination
-    } = this.state
+    let { data, pagination } = this.state
 
     if (params.reset) {
       data = []
@@ -159,23 +131,22 @@ export class BillingUsageSection extends Component {
         opts.ending_before = data[data.length - 1].id
       }
 
-      API.listBillingUsageForConsumer(auth.consumer, opts)
-        .then((items) => {
-          const pagination = { ...this.state.pagination }
+      API.listBillingUsageForConsumer(auth.consumer, opts).then((items) => {
+        const pagination = { ...this.state.pagination }
 
-          if (!items.length) {
-            pagination.total = data.length
-          } else {
-            data = data.concat(items)
-            pagination.total = data.length
-          }
+        if (!items.length) {
+          pagination.total = data.length
+        } else {
+          data = data.concat(items)
+          pagination.total = data.length
+        }
 
-          this.setState({
-            loading: false,
-            data,
-            pagination
-          })
+        this.setState({
+          loading: false,
+          data,
+          pagination
         })
+      })
     }
   }
 }

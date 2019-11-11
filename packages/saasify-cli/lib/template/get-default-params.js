@@ -34,7 +34,7 @@ module.exports = async () => {
         config.set('author', defaults.author)
       }
     }
-  } catch (err) { }
+  } catch (err) {}
 
   return defaults
 }

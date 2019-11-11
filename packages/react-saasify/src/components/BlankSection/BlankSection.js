@@ -4,10 +4,7 @@ import { Section } from '../Section'
 
 export class BlankSection extends Component {
   render() {
-    const {
-      style,
-      ...rest
-    } = this.props
+    const { style, ...rest } = this.props
 
     return (
       <Section

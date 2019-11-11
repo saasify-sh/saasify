@@ -7,7 +7,7 @@
   "repository": "saasify-sh/saasify",
   "license": "MIT",
   "scripts": {
-    "test": "ava -v && standard"
+    "test": "ava -v"
   },
   "engines": {
     "node": ">=8"
@@ -32,7 +32,6 @@
     "ava": "^2.4.0",
     "delay": "^4.3.0",
     "globby": "^10.0.1",
-    "standard": "^14.3.1",
     "swagger-parser": "^8.0.2"
   },
   "ava": {

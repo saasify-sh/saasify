@@ -6,10 +6,7 @@ const semver = require('semver')
 
 const validators = require('./validators')
 
-const httpParameterBlacklist = new Set([
-  'path',
-  'cookie'
-])
+const httpParameterBlacklist = new Set(['path', 'cookie'])
 
 const httpMethodBlacklist = [
   'put',
@@ -20,10 +17,7 @@ const httpMethodBlacklist = [
   'trace'
 ]
 
-const httpMethodWhitelist = [
-  'get',
-  'post'
-]
+const httpMethodWhitelist = ['get', 'post']
 
 module.exports = async (spec) => {
   const bundle = await parser.bundle(spec)
@@ -44,16 +38,22 @@ module.exports = async (spec) => {
 
     if (name && !validators.service(name)) {
       if (name.indexOf('/') !== -1) {
-        throw new Error(`Invalid path "${path}" must be a top-level path with no slashes`)
+        throw new Error(
+          `Invalid path "${path}" must be a top-level path with no slashes`
+        )
       }
 
-      throw new Error(`Invalid path "${path}" must be blank or a valid JS variable identifier`)
+      throw new Error(
+        `Invalid path "${path}" must be blank or a valid JS variable identifier`
+      )
     }
 
     for (const httpMethod of httpMethodBlacklist) {
       const op = pathItem[httpMethod]
       if (op !== undefined) {
-        throw new Error(`Unsupported http method "${httpMethod}" for path "${path}"`)
+        throw new Error(
+          `Unsupported http method "${httpMethod}" for path "${path}"`
+        )
       }
     }
 
@@ -67,7 +67,11 @@ module.exports = async (spec) => {
     }
 
     if (!httpMethodFound) {
-      throw new Error(`Path "${path}" must contain one of the following http methods [${httpMethodWhitelist.join(', ')}]`)
+      throw new Error(
+        `Path "${path}" must contain one of the following http methods [${httpMethodWhitelist.join(
+          ', '
+        )}]`
+      )
     }
 
     if (pathItem.parameters) {
@@ -91,7 +95,9 @@ module.exports.validateOperation = async (op, pathItem) => {
 module.exports.validateParameters = async (parameters) => {
   for (const param of parameters) {
     if (httpParameterBlacklist.has(param.in)) {
-      throw new Error(`Unsupported http parameter location "${param.in}" for parameter "${param.name}"`)
+      throw new Error(
+        `Unsupported http parameter location "${param.in}" for parameter "${param.name}"`
+      )
     }
   }
 }

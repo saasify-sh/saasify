@@ -1,20 +1,14 @@
 import {
   AuthenticatedRoute,
-
   LoginForm,
   SignupForm,
-
   NavHeader,
   NavFooter,
-
   NotFoundSection,
   BlankSection,
-
   Section,
   SectionDivider,
-
   CTAButton,
-
   UndrawSVG,
   Logo,
   BackgroundSlideshow,
@@ -24,21 +18,15 @@ import {
 
 export {
   AuthenticatedRoute,
-
   LoginForm,
   SignupForm,
-
   NavHeader,
   NavFooter,
-
   NotFoundSection,
   BlankSection,
-
   Section,
   SectionDivider,
-
   CTAButton,
-
   UndrawSVG,
   Logo,
   BackgroundSlideshow,

@@ -1,0 +1,8 @@
+.snapshots/
+docs/_assets/
+build/
+dist/
+templates/
+node_modules/
+fontfaceobserver.standalone.js
+*.min.js

@@ -9,22 +9,22 @@ const zipProject = require('./zip-project')
 
 const now = require('./services/now')
 
-module.exports = async (program, project, opts = { }) => {
-  const {
-    tempDir = tempy.directory(),
-    listen,
-    ...rest
-  } = opts
+module.exports = async (program, project, opts = {}) => {
+  const { tempDir = tempy.directory(), listen, ...rest } = opts
 
   const zipBuffer = await zipProject(program, project, true)
 
   await spinner(
-    prepareDeployment({
-      ...project,
-      project: `localhost/${project.name}`
-    }, zipBuffer, {
-      tempDir
-    }),
+    prepareDeployment(
+      {
+        ...project,
+        project: `localhost/${project.name}`
+      },
+      zipBuffer,
+      {
+        tempDir
+      }
+    ),
     'Preparing deployment'
   )
 
@@ -33,7 +33,7 @@ module.exports = async (program, project, opts = { }) => {
     await installPackageDeps(program, tempDir)
   }
 
-  const hasListen = (listen !== undefined)
+  const hasListen = listen !== undefined
   const args = [
     program.debug && '--debug',
     hasListen && '--listen',

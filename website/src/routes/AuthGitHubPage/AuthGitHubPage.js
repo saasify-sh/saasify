@@ -35,33 +35,31 @@ export class AuthGitHubPage extends Component {
       pathname: query.state
     })
 
-    this.props.auth.authWithGitHub({
-      code: query.code,
-      state: query.state
-    })
-      .then(() => {
-        this.setState({ loading: false })
-      }, (err) => {
-        this.setState({ loading: false })
-
-        debug(err)
-        message.error('Error authenticating with GitHub.')
+    this.props.auth
+      .authWithGitHub({
+        code: query.code,
+        state: query.state
       })
+      .then(
+        () => {
+          this.setState({ loading: false })
+        },
+        (err) => {
+          this.setState({ loading: false })
+
+          debug(err)
+          message.error('Error authenticating with GitHub.')
+        }
+      )
   }
 
   render() {
     const { loading, pathname } = this.state
 
     if (loading) {
-      return (
-        <div>
-          Authenticating...
-        </div>
-      )
+      return <div>Authenticating...</div>
     } else {
-      return (
-        <Redirect to={pathname} />
-      )
+      return <Redirect to={pathname} />
     }
   }
 }

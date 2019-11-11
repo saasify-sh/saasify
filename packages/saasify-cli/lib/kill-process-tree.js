@@ -3,10 +3,8 @@
 const pidtree = require('pidtree')
 const pMap = require('p-map')
 
-module.exports = async (pid, signal = 'SIGKILL', opts = { }) => {
-  const {
-    concurrency = 4
-  } = opts
+module.exports = async (pid, signal = 'SIGKILL', opts = {}) => {
+  const { concurrency = 4 } = opts
 
   let pids = []
 
@@ -26,7 +24,7 @@ module.exports = async (pid, signal = 'SIGKILL', opts = { }) => {
   return pids
 }
 
-function killPID (pid, signal) {
+function killPID(pid, signal) {
   try {
     process.kill(pid, signal)
   } catch (err) {

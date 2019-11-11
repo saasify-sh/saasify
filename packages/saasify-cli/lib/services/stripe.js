@@ -1,7 +1,7 @@
 'use strict'
 
 const env = process.env.NODE_ENV || 'development'
-const envIsProd = (env === 'production')
+const envIsProd = env === 'production'
 
 const publicKey = envIsProd
   ? 'pk_live_3vousdHKwzzKdrP0quCQPWcr'

@@ -61,7 +61,9 @@ module.exports = async (opts) => {
     const isInsideGitRepo = isGitRepo(process.cwd())
 
     if (isInsideGitRepo) {
-      console.log('Skipping git init because project is already inside a git repo')
+      console.log(
+        'Skipping git init because project is already inside a git repo'
+      )
     } else {
       await spinner(
         module.exports.initGitRepo({
@@ -77,11 +79,7 @@ module.exports = async (opts) => {
 }
 
 module.exports.copyTemplateFile = async (opts) => {
-  const {
-    file,
-    source,
-    dest
-  } = opts
+  const { file, source, dest } = opts
 
   const fileRelativePath = path.relative(source, file)
   const destFilePath = path.join(dest, fileRelativePath)
@@ -98,10 +96,7 @@ module.exports.copyTemplateFile = async (opts) => {
 }
 
 module.exports.initGitRepo = async (opts) => {
-  const {
-    dest,
-    template
-  } = opts
+  const { dest, template } = opts
 
   const commitMessage = `init ${template} template (${pkg.name}@${pkg.version})`
 

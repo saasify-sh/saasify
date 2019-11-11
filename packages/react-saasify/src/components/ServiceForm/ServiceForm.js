@@ -26,10 +26,10 @@ export class ServiceForm extends Component {
   static getDerivedStateFromProps(props, state) {
     const definition = props.restrictToFirstExample
       ? restrictDefinitionToExample(
-        props.service.definition,
-        props.service.examples[0],
-        state.values
-      )
+          props.service.definition,
+          props.service.examples[0],
+          state.values
+        )
       : mergeInValues(props.service.definition)
 
     return {

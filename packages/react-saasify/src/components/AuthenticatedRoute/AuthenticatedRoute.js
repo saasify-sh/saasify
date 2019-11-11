@@ -12,7 +12,8 @@ import { Redirect, Route } from 'react-router-dom'
 @observer
 export class AuthenticatedRoute extends Component {
   static propTypes = {
-    component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
+    component: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
+      .isRequired,
     auth: PropTypes.object.isRequired,
     redirect: PropTypes.string
   }
@@ -22,12 +23,7 @@ export class AuthenticatedRoute extends Component {
   }
 
   render() {
-    const {
-      component: Component,
-      redirect,
-      auth,
-      ...rest
-    } = this.props
+    const { component: Component, redirect, auth, ...rest } = this.props
 
     if (!auth.isAuthenticated) {
       return (
@@ -42,7 +38,7 @@ export class AuthenticatedRoute extends Component {
     return (
       <Route
         {...rest}
-        render={(props) => (
+        render={(props) =>
           auth.isAuthenticated ? (
             <Component {...props} />
           ) : (
@@ -55,7 +51,7 @@ export class AuthenticatedRoute extends Component {
               }}
             />
           )
-        )}
+        }
       />
     )
   }

@@ -20,9 +20,11 @@ module.exports = (program, client) => {
 
       try {
         const deploymentsLabel = pluralize('deployment', args.length)
-        const parsedArgs = args.map((identifier) => parseFaasIdentifier(identifier, {
-          namespace: client.user.username
-        }))
+        const parsedArgs = args.map((identifier) =>
+          parseFaasIdentifier(identifier, {
+            namespace: client.user.username
+          })
+        )
 
         const invalid = args.filter((_, index) => !parsedArgs[index])
 
@@ -54,13 +56,17 @@ module.exports = (program, client) => {
         }
 
         await spinner(
-          pMap(deployments, (deploymentId) => {
-            return client.removeDeployment(deploymentId, {
-              safe: opts.safe
-            })
-          }, {
-            concurrency: 1
-          }),
+          pMap(
+            deployments,
+            (deploymentId) => {
+              return client.removeDeployment(deploymentId, {
+                safe: opts.safe
+              })
+            },
+            {
+              concurrency: 1
+            }
+          ),
           `Removing ${deployments.length} ${deploymentsLabel}`
         )
 

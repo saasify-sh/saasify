@@ -21,7 +21,9 @@ exports.email = (value) => {
 }
 
 exports.username = (value) => {
-  return value && exports.usernameRe.test(value) && !usernameBlacklistSet.has(value)
+  return (
+    value && exports.usernameRe.test(value) && !usernameBlacklistSet.has(value)
+  )
 }
 
 exports.password = (value) => {

@@ -30,16 +30,12 @@ const columns = [
   {
     title: 'Date',
     dataIndex: 'created',
-    render: (timestamp) => (
-      format(new Date(timestamp * 1000), 'MM/dd/yyyy')
-    )
+    render: (timestamp) => format(new Date(timestamp * 1000), 'MM/dd/yyyy')
   },
   {
     title: 'Amount',
     dataIndex: 'amount_due',
-    render: (amount) => (
-      `$${(amount / 100).toFixed(2)}`
-    )
+    render: (amount) => `$${(amount / 100).toFixed(2)}`
   },
   {
     title: 'Status',
@@ -47,16 +43,21 @@ const columns = [
     render: (status) => {
       const color = statusColors[status]
 
-      return (
-        <Tag color={color}>{titleize(status)}</Tag>
-      )
+      return <Tag color={color}>{titleize(status)}</Tag>
     }
   },
   {
     title: 'PDF',
     dataIndex: 'invoice_pdf',
     render: (link) => (
-      <a href={link} title='Invoice PDF' target='_blank' rel='noopener noreferrer'>Download</a>
+      <a
+        href={link}
+        title='Invoice PDF'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        Download
+      </a>
     )
   }
 ]
@@ -90,27 +91,16 @@ export class InvoicingSection extends Component {
   )
 
   render() {
-    const {
-      auth,
-      ...rest
-    } = this.props
+    const { auth, ...rest } = this.props
 
-    const {
-      data,
-      pagination,
-      loading
-    } = this.state
+    const { data, pagination, loading } = this.state
 
     return (
-      <Section
-        id='invoicing'
-        title='Invoicing'
-        {...rest}
-      >
+      <Section id='invoicing' title='Invoicing' {...rest}>
         <div className={theme(styles, 'body')}>
           <Table
             columns={columns}
-            rowKey={record => record.id}
+            rowKey={(record) => record.id}
             dataSource={data}
             pagination={pagination}
             loading={loading}
@@ -136,18 +126,13 @@ export class InvoicingSection extends Component {
   }
 
   _fetch = (params = {}) => {
-    const {
-      auth
-    } = this.props
+    const { auth } = this.props
 
     if (!auth.consumer) {
       return
     }
 
-    let {
-      data,
-      pagination
-    } = this.state
+    let { data, pagination } = this.state
 
     if (params.reset) {
       data = []
@@ -163,8 +148,8 @@ export class InvoicingSection extends Component {
         opts.ending_before = data[data.length - 1].id
       }
 
-      API.listBillingInvoicesForConsumer(auth.consumer, opts)
-        .then((invoices) => {
+      API.listBillingInvoicesForConsumer(auth.consumer, opts).then(
+        (invoices) => {
           const pagination = { ...this.state.pagination }
 
           if (!invoices.length) {
@@ -179,7 +164,8 @@ export class InvoicingSection extends Component {
             data,
             pagination
           })
-        })
+        }
+      )
     }
   }
 }

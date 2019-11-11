@@ -8,20 +8,19 @@ const pMap = require('p-map')
 const { validators } = require('saasify-utils')
 
 module.exports = async (opts) => {
-  const {
-    program,
-    config,
-    serveProjectLocal,
-    ...rest
-  } = opts
+  const { program, config, serveProjectLocal, ...rest } = opts
 
   // TODO: Concurrency within a single process doesn't work here because TS compiler
   // is CPU-bound. Explore workarounds to speed up multi-service projects.
-  const services = await pMap(config.services, async (service) => {
-    return module.exports.generateDefinition(program, service, config, rest)
-  }, {
-    concurrency: 1
-  })
+  const services = await pMap(
+    config.services,
+    async (service) => {
+      return module.exports.generateDefinition(program, service, config, rest)
+    },
+    {
+      concurrency: 1
+    }
+  )
 
   const pkgInfo = await module.exports.getPackageInfo(config)
 
@@ -47,7 +46,7 @@ module.exports.getPackageInfo = async (config) => {
     ])
   }
 
-  return { }
+  return {}
 }
 
 module.exports.generateDefinition = async (program, service, config, opts) => {
@@ -61,7 +60,9 @@ module.exports.generateDefinition = async (program, service, config, opts) => {
     service.name = definition.title
 
     if (!validators.service(service.name)) {
-      throw new Error(`Invalid service name [${service.name}] (must be a valid JavaScript function identifier ${validators.serviceRe})`)
+      throw new Error(
+        `Invalid service name [${service.name}] (must be a valid JavaScript function identifier ${validators.serviceRe})`
+      )
     }
   }
 

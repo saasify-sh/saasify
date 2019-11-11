@@ -8,14 +8,8 @@ const isStream = require('is-stream')
 const defaultBaseUrl = 'https://api.saasify.sh'
 
 module.exports = class SaasifyClient {
-  constructor (opts = { }) {
-    const {
-      baseUrl = defaultBaseUrl,
-      user,
-      token,
-      teamId,
-      teamSlug
-    } = opts
+  constructor(opts = {}) {
+    const { baseUrl = defaultBaseUrl, user, token, teamId, teamSlug } = opts
 
     this._baseUrl = baseUrl
     this._user = user
@@ -30,41 +24,41 @@ module.exports = class SaasifyClient {
     this._reset()
   }
 
-  get isAuthenticated () {
+  get isAuthenticated() {
     return !!this._token
   }
 
-  get user () {
+  get user() {
     return this._user
   }
 
-  get token () {
+  get token() {
     return this._token
   }
 
-  get teamId () {
+  get teamId() {
     return this._teamId
   }
 
-  get teamSlug () {
+  get teamSlug() {
     return this._teamSlug
   }
 
-  get baseUrl () {
+  get baseUrl() {
     return this._baseUrl
   }
 
-  set user (user) {
+  set user(user) {
     this._user = user
     this._reset()
   }
 
-  set token (token) {
+  set token(token) {
     this._token = token
     this._reset()
   }
 
-  set teamId (teamId) {
+  set teamId(teamId) {
     this._teamId = teamId
     this._reset()
   }
@@ -73,7 +67,7 @@ module.exports = class SaasifyClient {
   // Auth
   // --------------------------------------------------------------------------
 
-  async signin ({ username, password }) {
+  async signin({ username, password }) {
     return this._request({
       url: `/1/auth/signin`,
       method: 'put',
@@ -82,7 +76,8 @@ module.exports = class SaasifyClient {
         username,
         password
       }
-    }).then(res => res.data)
+    })
+      .then((res) => res.data)
       .then((data) => {
         this._token = data.token
         this._user = data.user
@@ -92,13 +87,14 @@ module.exports = class SaasifyClient {
       })
   }
 
-  async signup (data) {
+  async signup(data) {
     return this._request({
       url: `/1/auth/signup`,
       method: 'post',
       params: this._params,
       data
-    }).then(res => res.data)
+    })
+      .then((res) => res.data)
       .then((data) => {
         this._token = data.token
         this._user = data.user
@@ -108,13 +104,14 @@ module.exports = class SaasifyClient {
       })
   }
 
-  async authWithGitHub (data) {
+  async authWithGitHub(data) {
     return this._request({
       url: `/1/auth/github`,
       method: 'put',
       params: this._params,
       data
-    }).then(res => res.data)
+    })
+      .then((res) => res.data)
       .then((data) => {
         this._token = data.token
         this._user = data.user
@@ -124,7 +121,7 @@ module.exports = class SaasifyClient {
       })
   }
 
-  async signout () {
+  async signout() {
     this._token = null
     this._user = null
     this._teamId = undefined
@@ -135,148 +132,148 @@ module.exports = class SaasifyClient {
   // Users
   // --------------------------------------------------------------------------
 
-  async getMe () {
+  async getMe() {
     return this._request({
       url: `/1/me`,
       params: this._params
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async updateMe (data) {
+  async updateMe(data) {
     return this._request({
       url: `/1/me`,
       method: 'put',
       params: this._params,
       data
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
   // --------------------------------------------------------------------------
   // Projects
   // --------------------------------------------------------------------------
 
-  async createProject (data) {
+  async createProject(data) {
     return this._request({
       url: `/1/projects`,
       method: 'post',
       params: this._params,
       data
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async getProject (id, opts = { }) {
+  async getProject(id, opts = {}) {
     return this._request({
       url: `/1/projects/${id}`,
       params: {
         ...this._params,
         ...opts
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async updateProject (project) {
+  async updateProject(project) {
     return this._request({
       url: `/1/projects/${project.id}`,
       method: 'put',
       params: this._params,
       data: project
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async getProjectByAlias (alias, opts = { }) {
+  async getProjectByAlias(alias, opts = {}) {
     return this._request({
       url: `/1/projects/alias/${alias}`,
       params: {
         ...this._params,
         ...opts
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
   // --------------------------------------------------------------------------
   // Consumers
   // --------------------------------------------------------------------------
 
-  async createConsumer (data) {
+  async createConsumer(data) {
     return this._request({
       url: `/1/consumers`,
       method: 'post',
       params: this._params,
       data
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async getConsumer (id) {
+  async getConsumer(id) {
     return this._request({
       url: `/1/consumers/${id}`,
       params: this._params
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async removeConsumer (consumer) {
+  async removeConsumer(consumer) {
     return this._request({
       url: `/1/consumers/${consumer.id}`,
       params: this._params,
       method: 'delete'
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async updateConsumer (consumer) {
+  async updateConsumer(consumer) {
     return this._request({
       url: `/1/consumers/${consumer.id}`,
       params: this._params,
       method: 'put'
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async getConsumerByProject (projectId) {
+  async getConsumerByProject(projectId) {
     return this._request({
       url: `/1/consumers/projects/${projectId}`,
       params: this._params
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
   // --------------------------------------------------------------------------
   // Deployments
   // --------------------------------------------------------------------------
 
-  async createDeployment (data) {
+  async createDeployment(data) {
     return this._request({
       url: `/1/deployments`,
       method: 'post',
       params: this._params,
       data
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async getDeployment (id, opts = { }) {
+  async getDeployment(id, opts = {}) {
     return this._request({
       url: `/1/deployments/${id}`,
       params: {
         ...this._params,
         ...opts
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async updateDeployment (deployment) {
+  async updateDeployment(deployment) {
     return this._request({
       url: `/1/deployments/${deployment.id}`,
       method: 'put',
       params: this._params,
       data: deployment
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async removeDeployment (id) {
+  async removeDeployment(id) {
     return this._request({
       url: `/1/deployments/${id}`,
       method: 'delete',
       params: this._params
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async listDeployments (where = { }, opts = { }) {
+  async listDeployments(where = {}, opts = {}) {
     return this._request({
       url: `/1/deployments`,
       params: {
@@ -284,59 +281,59 @@ module.exports = class SaasifyClient {
         where,
         ...opts
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async publishDeployment (deploymentId, data) {
+  async publishDeployment(deploymentId, data) {
     return this._request({
       url: `/1/deployments/publish/${deploymentId}`,
       method: 'put',
       params: this._params,
       data
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
   // --------------------------------------------------------------------------
   // Teams
   // --------------------------------------------------------------------------
 
-  async createTeam (data) {
+  async createTeam(data) {
     return this._request({
       url: `/1/teams`,
       method: 'post',
       params: this._params,
       data
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async getTeam (id, opts = { }) {
+  async getTeam(id, opts = {}) {
     return this._request({
       url: `/1/teams/${id}`,
       params: {
         ...this._params,
         ...opts
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async updateTeam (team) {
+  async updateTeam(team) {
     return this._request({
       url: `/1/teams/${team.id}`,
       method: 'put',
       params: this._params,
       data: team
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async removeTeam (teamId) {
+  async removeTeam(teamId) {
     return this._request({
       url: `/1/teams/${teamId}`,
       params: this._params,
       method: 'delete'
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async listTeams (where = { }, opts = { }) {
+  async listTeams(where = {}, opts = {}) {
     return this._request({
       url: `/1/teams`,
       params: {
@@ -344,40 +341,40 @@ module.exports = class SaasifyClient {
         where,
         ...opts
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async inviteTeamMember (teamId, member) {
+  async inviteTeamMember(teamId, member) {
     return this._request({
       url: `/1/teams/${teamId}/members`,
       method: 'post',
       params: this._params,
       data: member
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async updateTeamMember (teamId, member) {
+  async updateTeamMember(teamId, member) {
     return this._request({
       url: `/1/teams/${teamId}/members/${member.username}`,
       method: 'put',
       params: this._params,
       data: member
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async removeTeamMember (teamId, member) {
+  async removeTeamMember(teamId, member) {
     return this._request({
       url: `/1/teams/${teamId}/members/${member.username}`,
       params: this._params,
       method: 'delete'
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
   // --------------------------------------------------------------------------
   // Logs
   // --------------------------------------------------------------------------
 
-  async getLogs (identifier, opts) {
+  async getLogs(identifier, opts) {
     return this._request({
       url: `/1/logs`,
       method: 'put',
@@ -386,94 +383,94 @@ module.exports = class SaasifyClient {
         ...opts,
         identifier
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
   // --------------------------------------------------------------------------
   // Billing
   // --------------------------------------------------------------------------
 
-  async getBilling () {
+  async getBilling() {
     return this._request({
       url: `/1/billing`,
       params: this._params
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async listBillingSources () {
+  async listBillingSources() {
     return this._request({
       url: `/1/billing/sources`,
       params: this._params
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async addBillingSource (data) {
+  async addBillingSource(data) {
     return this._request({
       url: `/1/billing/sources`,
       method: 'post',
       params: this._params,
       data
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async removeBillingSource (id) {
+  async removeBillingSource(id) {
     return this._request({
       url: `/1/billing/sources/${id}`,
       method: 'delete',
       params: this._params
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async setDefaultBillingSource (id) {
+  async setDefaultBillingSource(id) {
     return this._request({
       url: `/1/billing/sources/${id}/set-default`,
       method: 'put',
       params: this._params
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async listBillingInvoices (opts = { }) {
+  async listBillingInvoices(opts = {}) {
     return this._request({
       url: `/1/billing/invoices`,
       params: {
         ...this._params,
         ...opts
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async listBillingInvoicesForConsumer (consumer, opts = { }) {
+  async listBillingInvoicesForConsumer(consumer, opts = {}) {
     return this._request({
       url: `/1/billing/invoices/${consumer.id}`,
       params: {
         ...this._params,
         ...opts
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async listBillingUsageForConsumer (consumer, opts = { }) {
+  async listBillingUsageForConsumer(consumer, opts = {}) {
     return this._request({
       url: `/1/billing/usage/${consumer.id}`,
       params: {
         ...this._params,
         ...opts
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
   // --------------------------------------------------------------------------
   // Secrets
   // --------------------------------------------------------------------------
 
-  async listSecrets () {
+  async listSecrets() {
     return this._request({
       url: `/1/secrets`,
       params: this._params
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async addSecret (name, value) {
+  async addSecret(name, value) {
     return this._request({
       url: `/1/secrets`,
       method: 'post',
@@ -482,18 +479,18 @@ module.exports = class SaasifyClient {
         name,
         value
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async removeSecret (name) {
+  async removeSecret(name) {
     return this._request({
       url: `/1/secrets/${name}`,
       method: 'delete',
       params: this._params
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
-  async renameSecret (name, newName) {
+  async renameSecret(name, newName) {
     return this._request({
       url: `/1/secrets/${name}`,
       method: 'put',
@@ -501,7 +498,7 @@ module.exports = class SaasifyClient {
       data: {
         name: newName
       }
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
   // --------------------------------------------------------------------------
@@ -514,7 +511,7 @@ module.exports = class SaasifyClient {
    * - [Buffer](https://nodejs.org/api/buffer.html) in Node.js
    * - [Stream](https://nodejs.org/api/stream.html) in Node.js
    */
-  async upload (input, opts = { }) {
+  async upload(input, opts = {}) {
     let type = opts.type
     let name = opts.name
 
@@ -527,11 +524,7 @@ module.exports = class SaasifyClient {
       throw new Error('upload requires a valid mime type')
     }
 
-    const {
-      key,
-      uploadUrl,
-      url
-    } = await this._getUploadRequest({
+    const { key, uploadUrl, url } = await this._getUploadRequest({
       type,
       name
     })
@@ -561,20 +554,20 @@ module.exports = class SaasifyClient {
     return url
   }
 
-  async _getUploadRequest (data) {
+  async _getUploadRequest(data) {
     return this._request({
       url: `/1/uploads`,
       method: 'post',
       params: this._params,
       data
-    }).then(res => res.data)
+    }).then((res) => res.data)
   }
 
   // --------------------------------------------------------------------------
   // Internal
   // --------------------------------------------------------------------------
 
-  _reset () {
+  _reset() {
     const headers = {}
     this._params = {}
 

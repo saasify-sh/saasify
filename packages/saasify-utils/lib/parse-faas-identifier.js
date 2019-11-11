@@ -4,10 +4,8 @@ const url = require('url')
 
 const parseFaasUri = require('./parse-faas-uri')
 
-module.exports = (identifier, opts = { }) => {
-  const {
-    namespace
-  } = opts
+module.exports = (identifier, opts = {}) => {
+  const { namespace } = opts
 
   if (!identifier) {
     return
@@ -46,7 +44,8 @@ module.exports = (identifier, opts = { }) => {
 
   if (result) {
     // TODO: if version and not deploymentHash then it won't be a valid deploymentId
-    result.deploymentId = `${result.projectId}@${result.version || result.deploymentHash}`
+    result.deploymentId = `${result.projectId}@${result.version ||
+      result.deploymentHash}`
 
     // TODO: add fully specified uri? depends on the above
   }

@@ -4,9 +4,9 @@ import * as themes from '../themes'
 
 class ThemeManagerClass {
   @observable
-  theme = { }
+  theme = {}
 
-  _themes = { }
+  _themes = {}
 
   registerTheme = (name, themeFactory) => {
     if (process.env.NODE_ENV === 'development') {
@@ -23,7 +23,7 @@ class ThemeManagerClass {
       name = opts.name
     } else {
       name = opts
-      opts = { }
+      opts = {}
     }
 
     const themeFactory = name && this._themes[name]
@@ -46,14 +46,17 @@ for (const [k, v] of Object.entries(themes)) {
 }
 
 if (process.env.NODE_ENV === 'development') {
-  autorun(() => {
-    trace()
-    console.log('theme', toJS(ThemeManager.theme))
+  autorun(
+    () => {
+      trace()
+      console.log('theme', toJS(ThemeManager.theme))
 
-    // window.less.modifyVars(ThemeManager.theme)
-  }, {
-    name: 'Theme change (development)'
-  })
+      // window.less.modifyVars(ThemeManager.theme)
+    },
+    {
+      name: 'Theme change (development)'
+    }
+  )
 }
 
 export default ThemeManager

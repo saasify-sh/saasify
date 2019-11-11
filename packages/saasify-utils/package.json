@@ -6,11 +6,11 @@
   "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
   "license": "MIT",
-  "scripts": {
-    "test": "ava -v && standard"
-  },
   "engines": {
     "node": ">=8"
+  },
+  "scripts": {
+    "test": "ava -v"
   },
   "keywords": [
     "faas",
@@ -22,8 +22,7 @@
     "fts"
   ],
   "devDependencies": {
-    "ava": "^1.2.0",
-    "standard": "^12.0.1"
+    "ava": "^1.2.0"
   },
   "dependencies": {
     "clone-deep": "^4.0.1",

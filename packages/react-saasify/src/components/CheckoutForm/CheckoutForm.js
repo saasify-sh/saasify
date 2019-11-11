@@ -46,13 +46,10 @@ export class CheckoutForm extends Component {
   render() {
     return (
       <SaasifyContext.Consumer>
-        {config => (
+        {(config) => (
           <StripeProvider apiKey={env.stripePublicKey}>
             <Elements>
-              <CheckoutFormImpl
-                {...this.props}
-                config={config}
-              />
+              <CheckoutFormImpl {...this.props} config={config} />
             </Elements>
           </StripeProvider>
         )}
@@ -85,15 +82,10 @@ class CheckoutFormImpl extends Component {
         className={theme(styles, 'form', className, theme(styles, 'light'))}
         onSubmit={this._onSubmit}
       >
-        {title && (
-          <h2 className={theme(styles, 'title')}>
-            {title}
-          </h2>
-        )}
+        {title && <h2 className={theme(styles, 'title')}>{title}</h2>}
 
         <label className={theme(styles, 'label')}>
           Name
-
           <input
             className={theme(styles, 'input')}
             name='name'
@@ -105,26 +97,18 @@ class CheckoutFormImpl extends Component {
 
         <label className={theme(styles, 'label')}>
           Card Details
-
           <Tooltip
             placement='right'
             title='All payment info is securely handled by Stripe.'
           >
-            <Icon
-              className={theme(styles, 'detail')}
-              type='question-circle'
-            />
+            <Icon className={theme(styles, 'detail')} type='question-circle' />
           </Tooltip>
-
-          <CardElement
-            {...createOptions()}
-          />
+          <CardElement {...createOptions()} />
         </label>
 
         {config.coupons && config.coupons.length > 0 && (
           <label className={theme(styles, 'label')}>
             Promo Code
-
             <input
               className={theme(styles, 'input')}
               name='coupon'
