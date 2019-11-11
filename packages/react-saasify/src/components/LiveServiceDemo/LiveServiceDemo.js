@@ -6,6 +6,7 @@ import copyTextToClipboard from 'copy-text-to-clipboard'
 
 import { observer, inject } from 'mobx-react'
 import { Button, Tooltip } from 'lib/antd'
+import { Link } from 'react-router-dom'
 
 import { CodeBlock } from '../CodeBlock'
 import { ServiceForm } from '../ServiceForm'
@@ -51,7 +52,8 @@ export class LiveServiceDemo extends Component {
       running,
       output,
       outputContentType,
-      outputError
+      outputError,
+      hitRateLimit
     } = this.state
 
     this._example = getServiceExamples(
@@ -85,6 +87,22 @@ export class LiveServiceDemo extends Component {
     if (outputError) {
       renderedOutput = (
         <div className={theme(styles, 'error')}>{outputError}</div>
+      )
+    }
+
+    if (hitRateLimit) {
+      renderedOutput = (
+        <div className={theme(styles, 'output__cta')}>
+          <div className={theme(styles, 'output__cta__message')}>
+            You've hit our public rate limit. To keep using the API, please
+            upgrade or try again later.
+          </div>
+          <div className={theme(styles, 'output__cta__button')}>
+            <Link to={'/signup?plan=unlimited'}>
+              <Button>Upgrade to unlimited</Button>
+            </Link>
+          </div>
+        </div>
       )
     }
 

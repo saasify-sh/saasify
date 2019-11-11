@@ -23,13 +23,14 @@ export default async ({ auth, service, data }) => {
       ...authHeaders
     },
     responseType: 'arraybuffer',
+    validateStatus: (status) =>
+      (status >= 200 && status < 300) || status === 429,
     ...payload
   }
 
   try {
     const response = await axios.request(options)
 
-    // NB not used until we add 429 to options via validateStatus method
     if (response.status === 429) {
       return { hitRateLimit: true }
     }

@@ -81,6 +81,15 @@
   height: 100% !important;
 }
 
+.output .output__cta {
+  padding: 24px;
+  text-align: center;
+}
+
+.output .output__cta__message {
+  padding-bottom: 16px;
+}
+
 .output .error {
   color: #e22301;
   font-weight: 600;
