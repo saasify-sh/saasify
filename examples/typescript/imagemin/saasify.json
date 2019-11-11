@@ -1,6 +1,7 @@
 {
   "name": "imagemin",
   "description": "Image optimization as a service",
+  "alias": "imagemin",
   "services": [
     {
       "src": "src/url.ts",
@@ -29,7 +30,18 @@
   ],
   "saas": {
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin",
+    "heading": "Powerful **Image Optimization**",
+    "subheading": "Lightning fast API to serve optimized versions of any image asset.",
     "logo": "media/logo.svg",
-    "favicon": "media/favicon.ico"
+    "favicon": "media/favicon.ico",
+    "theme": {
+      "name": "waves",
+      "backgroundImage": "https://images.unsplash.com/photo-1539186607619-df476afe6ff1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80",
+      "buttonStyle": "rounded",
+      "color": "#2097e2",
+      "wave": false,
+      "gradientDark": false,
+      "codeBlockDark": true
+    }
   }
 }

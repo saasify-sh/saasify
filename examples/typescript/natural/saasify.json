@@ -1,5 +1,7 @@
 {
   "name": "natural",
+  "description": "NLP toolkit",
+  "alias": "natural",
   "services": [
     {
       "src": "./src/approx-string-search.ts"
@@ -7,41 +9,31 @@
     {
       "src": "./src/distance.ts",
       "config": {
-        "includeFiles": [
-          "./node_modules/natural/**/*"
-        ]
+        "includeFiles": ["./node_modules/natural/**/*"]
       }
     },
     {
       "src": "./src/singularize.ts",
       "config": {
-        "includeFiles": [
-          "./node_modules/natural/**/*"
-        ]
+        "includeFiles": ["./node_modules/natural/**/*"]
       }
     },
     {
       "src": "./src/pluralize.ts",
       "config": {
-        "includeFiles": [
-          "./node_modules/natural/**/*"
-        ]
+        "includeFiles": ["./node_modules/natural/**/*"]
       }
     },
     {
       "src": "./src/nth.ts",
       "config": {
-        "includeFiles": [
-          "./node_modules/natural/**/*"
-        ]
+        "includeFiles": ["./node_modules/natural/**/*"]
       }
     },
     {
       "src": "./src/phonetics.ts",
       "config": {
-        "includeFiles": [
-          "./node_modules/natural/**/*"
-        ]
+        "includeFiles": ["./node_modules/natural/**/*"]
       }
     },
     {
@@ -56,33 +48,25 @@
     {
       "src": "./src/stem.ts",
       "config": {
-        "includeFiles": [
-          "./node_modules/natural/**/*"
-        ]
+        "includeFiles": ["./node_modules/natural/**/*"]
       }
     },
     {
       "src": "./src/tokenize.ts",
       "config": {
-        "includeFiles": [
-          "./node_modules/natural/**/*"
-        ]
+        "includeFiles": ["./node_modules/natural/**/*"]
       }
     },
     {
       "src": "./src/n-grams.ts",
       "config": {
-        "includeFiles": [
-          "./node_modules/natural/**/*"
-        ]
+        "includeFiles": ["./node_modules/natural/**/*"]
       }
     },
     {
       "src": "./src/n-grams-zh.ts",
       "config": {
-        "includeFiles": [
-          "./node_modules/natural/**/*"
-        ]
+        "includeFiles": ["./node_modules/natural/**/*"]
       }
     },
     {
@@ -94,5 +78,19 @@
         ]
       }
     }
-  ]
+  ],
+  "saas": {
+    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/natural",
+    "heading": "**NLP** APIs",
+    "subheading": "Powered by the OSS authors behind the most popular Node.js NLP toolkit.",
+    "theme": {
+      "name": "waves",
+      "backgroundImage": "https://images.unsplash.com/photo-1456081101716-74e616ab23d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=2555&q=80",
+      "buttonStyle": "rounded",
+      "color": "#f38181",
+      "wave": false,
+      "gradientDark": false,
+      "codeBlockDark": true
+    }
+  }
 }

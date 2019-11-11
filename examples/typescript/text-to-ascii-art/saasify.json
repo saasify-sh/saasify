@@ -1,5 +1,7 @@
 {
   "name": "text-to-ascii-art",
+  "description": "Converts text to ascii art.",
+  "alias": "text-to-ascii-art",
   "services": [
     {
       "src": "index.ts",
@@ -92,8 +94,19 @@
     }
   ],
   "saas": {
+    "heading": "Text to **ASCII ART**",
+    "subheading": "Simple API for converting text to hundreds of styles of ASCII art.",
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/text-to-ascii-art",
     "logo": "./media/logo.svg",
-    "favicon": "./media/favicon.ico"
+    "favicon": "./media/favicon.ico",
+    "theme": {
+      "name": "waves",
+      "backgroundImage": "https://images.unsplash.com/photo-1558777097-28d89959d145?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2167&q=80",
+      "buttonStyle": "rounded",
+      "color": "#3f72af",
+      "wave": false,
+      "gradientDark": false,
+      "codeBlockDark": true
+    }
   }
 }
