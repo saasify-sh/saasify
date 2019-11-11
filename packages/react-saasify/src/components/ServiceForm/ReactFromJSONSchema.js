@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import ReactFromJSON from 'react-from-json'
 
@@ -19,10 +19,14 @@ const mapProp = (prop, onChange) => {
   return prop
 }
 
-export const ReactFromJSONSchema = ({ definition, mapping, onChange }) => (
-  <ReactFromJSON
-    entry={{ ...definition.params.schema.properties, type: 'entry' }}
-    mapping={mapping}
-    mapProp={(prop) => mapProp(prop, onChange)}
-  />
-)
+export const ReactFromJSONSchema = ({ definition, mapping, onChange }) => {
+  const memMapProp = useCallback((prop) => mapProp(prop, onChange), [])
+
+  return (
+    <ReactFromJSON
+      entry={{ ...definition.params.schema.properties, type: 'entry' }}
+      mapping={mapping}
+      mapProp={memMapProp}
+    />
+  )
+}
