@@ -37,10 +37,6 @@ const res = await sdk.post(helloWorldUrl, {
 */
 ```
 
-## Related
-
-- [saasify](https://saasify.sh) - Saasify is the easiest way to launch your own SaaS.
-
 ## License
 
 MIT © [Saasify](https://saasify.sh)
