@@ -176,7 +176,7 @@ export class LiveServiceDemo extends Component {
               >
                 {service.POST ? 'POST' : 'GET'}
               </div>
-
+              /
               <div className={theme(styles, 'footer__service__name')}>
                 {service.name}
               </div>
