@@ -6,6 +6,7 @@ import copyTextToClipboard from 'copy-text-to-clipboard'
 
 import { observer, inject } from 'mobx-react'
 import { Button, Tooltip } from 'lib/antd'
+import axios from 'axios'
 
 import { CodeBlock } from '../CodeBlock'
 import { ServiceForm } from '../ServiceForm'
@@ -13,9 +14,6 @@ import { ServiceForm } from '../ServiceForm'
 import getServiceExamples from 'lib/get-service-examples'
 
 import styles from './styles.module.css'
-
-// Using import seems to cause circular dependency
-const request = require('request')
 
 @inject('auth')
 @observer
@@ -53,7 +51,8 @@ export class LiveServiceDemo extends Component {
       copiedTextToClipboard,
       running,
       output,
-      outputContentType
+      outputContentType,
+      outputError
     } = this.state
 
     this._example = getServiceExamples(service, auth.consumer && auth.consumer.token, {
@@ -63,7 +62,7 @@ export class LiveServiceDemo extends Component {
     let renderedOutput = output
 
     if (output) {
-      if (outputContentType === 'application/json') {
+      if (outputContentType.startsWith('application/json')) {
         renderedOutput = (
           <CodeBlock
             className={theme(styles, 'code')}
@@ -72,7 +71,7 @@ export class LiveServiceDemo extends Component {
           />
         )
       } else if (outputContentType.startsWith('image')) {
-        const dataUrl = 'data:' + outputContentType + ';base64,' + Buffer.from(output).toString('base64')
+        const dataUrl = 'data:' + outputContentType + ';base64,' + output
 
         renderedOutput = (
           <img
@@ -81,6 +80,10 @@ export class LiveServiceDemo extends Component {
           />
         )
       }
+    }
+
+    if (outputError) {
+      renderedOutput = <div className={theme(styles, 'error')}>{outputError}</div>
     }
 
     return (
@@ -183,7 +186,7 @@ export class LiveServiceDemo extends Component {
           </div>
         </div>
 
-        {output && (
+        {renderedOutput && (
           <div
             className={theme(styles, 'output')}
           >
@@ -226,7 +229,7 @@ export class LiveServiceDemo extends Component {
     }
   }
 
-  _onClickRun = () => {
+  _onClickRun = async () => {
     const { auth, service } = this.props
 
     const authHeaders = {}
@@ -243,9 +246,9 @@ export class LiveServiceDemo extends Component {
     const payload = {}
 
     if (service.POST) {
-      payload.body = data
+      payload.data = data
     } else {
-      payload.qs = data
+      payload.params = data
     }
 
     const options = {
@@ -255,24 +258,47 @@ export class LiveServiceDemo extends Component {
         'content-type': 'application/json',
         ...authHeaders
       },
-      ...payload,
-      json: true,
-      encoding: null
+      responseType: 'arraybuffer',
+      ...payload
     }
 
     this.setState({
       running: true
     })
 
-    request(options, (error, response, body) => {
-      if (error) throw new Error(error)
+    try {
+      const response = await axios.request(options)
+
+      // NB not used until we add 429 to options via validateStatus method
+      if (response.status === 429) {
+        this.setState({
+          running: false,
+          hitRateLimit: true
+        })
+
+        return
+      }
+
+      const outputContentType = response.headers['content-type']
+      let output
+
+      if (outputContentType.startsWith('application/json')) {
+        output = JSON.parse(Buffer.from(response.data, 'binary').toString())
+      } else if (outputContentType.startsWith('image')) {
+        output = Buffer.from(response.data, 'binary').toString('base64')
+      }
 
       this.setState({
         running: false,
-        output: body,
-        outputContentType: response.headers['content-type']
+        output,
+        outputContentType
       })
-    })
+    } catch (e) {
+      this.setState({
+        running: false,
+        outputError: e.message
+      })
+    }
   }
 
   _handlePlaygroundChange = (values) => {
