@@ -2711,10 +2711,10 @@ react-event-as-prop@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-event-as-prop/-/react-event-as-prop-1.0.0.tgz#381d923583b456dd2c4a6d8d99a09f06dba2c474"
   integrity sha1-OB2SNYO0Vt0sSm2NmaCfBtuixHQ=
 
-react-from-json@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/react-from-json/-/react-from-json-0.6.0.tgz#f426428139d155aa7ad97b53735eb78c2be69be7"
-  integrity sha512-dUzJ7e0U0WLuuE3mtoCpOZnZm0RQY+PhqoIABa06k3r5joBDDr5OVQr/3kkP++8E43Y5NwtxfT+TeqBAUmqEzA==
+react-from-json@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/react-from-json/-/react-from-json-0.7.0.tgz#341474f36a375b1a04fc8e705da3f16336a981d5"
+  integrity sha512-mriWCHZuPZPy1aFubdbqK7JGH21jVeq7DQQffPmP69fh7D3Kk8IhBXd+4GNgGeG4UHqHChSmAKyidpSC2lu9Yg==
 
 react-is@^16.8.1, react-is@^16.8.6:
   version "16.10.1"
