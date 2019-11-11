@@ -1,61 +1,21 @@
-import axios from 'axios'
+import SaasifySDK from 'saasify-sdk'
+
+const sdk = new SaasifySDK()
 
 export default async ({ auth, service, data }) => {
-  const authHeaders = {}
+  sdk.token = auth.consumer && auth.consumer.token
 
-  if (auth.consumer) {
-    authHeaders.authorization = auth.consumer.token
-  }
-
-  const payload = {}
-
-  if (service.POST) {
-    payload.data = data
-  } else {
-    payload.params = data
-  }
-
-  const options = {
-    method: service.POST ? 'POST' : 'GET',
+  const result = await sdk.call({
     url: service.url,
-    headers: {
-      'content-type': 'application/json',
-      ...authHeaders
-    },
-    responseType: 'arraybuffer',
-    validateStatus: (status) =>
-      (status >= 200 && status < 300) || status === 429,
-    ...payload
+    method: service.POST ? 'POST' : 'GET',
+    data
+  })
+
+  if (result.output && result.outputContentType) {
+    if (result.outputContentType.startsWith('image/')) {
+      result.output = result.output.toString('base64')
+    }
   }
 
-  try {
-    const response = await axios.request(options)
-
-    if (response.status === 429) {
-      return { hitRateLimit: true }
-    }
-
-    const outputContentType = response.headers['content-type']
-    let output
-
-    console.log(response.headers)
-
-    if (outputContentType.startsWith('text/plain')) {
-      output = Buffer.from(response.data, 'binary').toString('utf8')
-    } else if (outputContentType.startsWith('application/json')) {
-      output = JSON.parse(Buffer.from(response.data, 'binary').toString())
-    } else if (outputContentType.startsWith('image')) {
-      output = Buffer.from(response.data, 'binary').toString('base64')
-    } else {
-      // TODO: gracefully handle other content-types
-    }
-
-    return {
-      output,
-      outputContentType,
-      response
-    }
-  } catch (e) {
-    return { outputError: e.message }
-  }
+  return result
 }

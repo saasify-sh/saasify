@@ -118,6 +118,7 @@ export class LiveServiceDemo extends Component {
             You've hit our public rate limit. To keep using the API, please
             upgrade or try again later.
           </div>
+
           <div className={theme(styles, 'output__cta__button')}>
             <Link to={'/signup?plan=unlimited'}>
               <Button type='primary'>Upgrade to unlimited</Button>
@@ -140,6 +141,7 @@ export class LiveServiceDemo extends Component {
           >
             Playground
           </div>
+
           {this._example.snippets.map((l, i) => (
             <div
               className={theme(
@@ -171,6 +173,7 @@ export class LiveServiceDemo extends Component {
               />
             </div>
           </div>
+
           {this._example.snippets.map((l, i) => (
             <div
               className={theme(
@@ -240,6 +243,7 @@ export class LiveServiceDemo extends Component {
                 </Tooltip>
               </div>
             )}
+
             <div className={theme(styles, 'footer__action')}>
               <Button
                 onClick={this._onClickRun}
