@@ -122,6 +122,10 @@ body header + section:first-of-type .title {
   }
 }
 
+.theme-okta .live-service-demo .output__cta__message {
+  color: black;
+}
+
 .theme-okta .live-service-demo .footer__service__name {
   color: #de7443;
 }
