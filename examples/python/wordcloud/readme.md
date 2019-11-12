@@ -1,6 +1,6 @@
 # wordcloud
 
-> Generate stylistic wordclouds from any webpage.
+> Generate stylish wordclouds from any webpage.
 
 <a href="https://wordcloud.saasify.sh">
   <img

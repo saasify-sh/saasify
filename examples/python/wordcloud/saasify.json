@@ -1,6 +1,6 @@
 {
   "name": "wordcloud",
-  "description": "Generate stylistic wordclouds from any webpage.",
+  "description": "Generate stylish wordclouds from any webpage.",
   "alias": "wordcloud",
   "services": [
     {
@@ -29,8 +29,8 @@
   },
   "saas": {
     "name": "WordCloud",
-    "heading": "**Stylistic Wordclouds**",
-    "subheading": "An API that turns any webpage into a stylistic wordcloud.",
+    "heading": "**Stylish Wordclouds**",
+    "subheading": "An API that turns any webpage into interesting wordclouds.",
     "repo": "https://github.com/saasify-sh/wordcloud",
     "theme": {
       "name": "waves",
