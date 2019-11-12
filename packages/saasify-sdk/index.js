@@ -1,7 +1,7 @@
 'use strict'
 
 const axios = require('axios')
-const contentType = require('content-type')
+const { parse: parseContentType } = require('content-type')
 const qs = require('qs')
 
 const defaultContentType = 'application/octet-stream'
@@ -49,10 +49,12 @@ module.exports = class SaasifySDK {
       authHeaders.authorization = this._token
     }
 
-    if (isPost) {
-      payload.data = data
-    } else {
-      payload.params = data
+    if (data !== undefined) {
+      if (isPost) {
+        payload.data = data
+      } else {
+        payload.params = data
+      }
     }
 
     const options = {
@@ -73,38 +75,33 @@ module.exports = class SaasifySDK {
       ...rest
     }
 
-    try {
-      const res = await axios.request(options)
+    const res = await axios.request(options)
 
-      if (res.status === 429) {
-        return { hitRateLimit: true, response: res }
-      }
+    if (res.status === 429) {
+      return { hitRateLimit: true, response: res }
+    }
 
-      const outputContentType =
-        res.headers['content-type'] || defaultContentType
-      const outputContentTypeParsed = contentType.parse(outputContentType)
+    const contentType = res.headers['content-type'] || defaultContentType
+    const contentTypeParsed = parseContentType(contentType)
 
-      let output = Buffer.from(res.data, 'binary')
+    let body = Buffer.from(res.data, 'binary')
 
-      // TODO: switch to use type-is package here
-      if (outputContentType.startsWith('text/')) {
-        output = output.toString()
-      } else if (outputContentType.startsWith('application/json')) {
-        output = JSON.parse(output.toString())
-      } else if (outputContentType.startsWith('image/')) {
-        // return raw binary buffer as-is
-      } else {
-        // TODO: gracefully handle other content-types
-      }
+    // TODO: switch to use type-is package here
+    if (contentType.startsWith('text/')) {
+      body = body.toString()
+    } else if (contentType.startsWith('application/json')) {
+      body = JSON.parse(body.toString())
+    } else if (contentType.startsWith('image/')) {
+      // return raw binary buffer as-is
+    } else {
+      // TODO: gracefully handle other content-types
+    }
 
-      return {
-        output,
-        outputContentType,
-        outputContentTypeParsed,
-        response: res
-      }
-    } catch (e) {
-      return { outputError: e.message }
+    return {
+      body,
+      contentType,
+      contentTypeParsed,
+      response: res
     }
   }
 }

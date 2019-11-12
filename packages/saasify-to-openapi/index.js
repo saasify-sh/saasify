@@ -17,6 +17,8 @@ module.exports = async function saasifyToOpenAPI(deployment, opts = {}) {
 
   const version = deployment.version ? `v${deployment.version}` : undefined
 
+  // all other saasify-specific metadata gets added to the this base openapi
+  // spec later via annotate-openapi
   return {
     openapi: '3.0.2',
     info: {

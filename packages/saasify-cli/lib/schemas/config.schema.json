@@ -83,9 +83,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [
-        "services"
-      ]
+      "required": ["services"]
     },
     "Example": {
       "title": "Example",
@@ -103,34 +101,13 @@
           "type": "object",
           "title": "input"
         },
-        "output": {
-          "title": "output",
-          "oneOf": [
-            {
-              "type": "object"
-            },
-            {
-              "type": "string"
-            },
-            {
-              "type": "array"
-            }
-          ]
-        },
         "inputContentType": {
           "type": "string",
           "title": "inputContentType"
         },
-        "outputContentType": {
-          "type": "string",
-          "title": "outputContentType"
-        },
         "additionalProperties": false
       },
-      "required": [
-        "name",
-        "input"
-      ]
+      "required": ["name", "input"]
     },
     "Coupon": {
       "title": "Coupon",
@@ -170,9 +147,7 @@
         },
         "additionalProperties": false
       },
-      "required": [
-        "duration"
-      ]
+      "required": ["duration"]
     },
     "Service": {
       "title": "Service",
@@ -218,9 +193,7 @@
         },
         "additionalProperties": false
       },
-      "required": [
-        "src"
-      ]
+      "required": ["src"]
     },
     "RateLimit": {
       "title": "RateLimit",
@@ -243,7 +216,7 @@
         }
       },
       "additionalProperties": false,
-      "required": [ ]
+      "required": []
     }
   }
 }
