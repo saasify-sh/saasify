@@ -11,8 +11,8 @@ export default async ({ auth, service, data }) => {
       data
     })
 
-    if (result.body && result.outputContentType) {
-      if (result.outputContentType.startsWith('image/')) {
+    if (result.body && result.contentType) {
+      if (result.contentType.startsWith('image/')) {
         result.body = result.body.toString('base64')
       }
     }
