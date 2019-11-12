@@ -2,9 +2,9 @@
 
 > Powerful SaaS API for image conversion and manipulation.
 
-This project provides a hosted, SaaS version of [sharp](https://github.com/lovell/sharp) by [Lovell Fuller](https://github.com/lovell).
+This project provides a hosted, SaaS API for [sharp](https://github.com/lovell/sharp) by [Lovell Fuller](https://github.com/lovell).
 
-If you are the original author of [sharp](https://github.com/lovell/sharp) and would like to claim the majority of the revenue, please [get in touch](mailto:dev@saasify.sh).
+**We set aside the majority of any revenue generated from this API for the original OSS developers**. If you are one of these devs, please check out our [mission](https://saasify.sh/#/mission) and [get in touch](https://saasify.sh/#/support) to setup payouts and answer any questions you may have.
 
 <a href="https://dev_sharp.saasify.sh">
   <img
@@ -25,7 +25,8 @@ curl -X POST -d '@example.json' \
 
 ### Download image
 
-*example.json*
+_example.json_
+
 ```json
 {
   "input": "https://octodex.github.com/images/original.png"
@@ -41,7 +42,8 @@ curl -X POST -d '@example.json' -o out.png \
 
 ### Convert png to jpeg
 
-*example.json*
+_example.json_
+
 ```json
 {
   "input": "https://octodex.github.com/images/original.png",
@@ -64,7 +66,8 @@ Here's this example as a GET request: [`/?input=https://octodex.github.com/image
 
 ### Resize and convert to webp
 
-*example.json*
+_example.json_
+
 ```
 {
   "input": "https://octodex.github.com/images/original.png",
@@ -93,7 +96,8 @@ curl -X POST -d '@example.json' -o out.webp \
 
 ### Blur and then flip vertically
 
-*example.json*
+_example.json_
+
 ```
 {
   "input": "https://octodex.github.com/images/original.png",
@@ -118,7 +122,8 @@ curl -X POST -d '@example.json' -o out.png \
 
 ### Tint, remove alpha, and convert to custom png
 
-*example.json*
+_example.json_
+
 ```
 {
   "input": "https://octodex.github.com/images/original.png",
@@ -149,7 +154,8 @@ curl -X POST -d '@example.json' -o out.png \
 
 ### Get image metadata
 
-*example.json*
+_example.json_
+
 ```json
 {
   "input": "https://octodex.github.com/images/original.png",
@@ -166,7 +172,8 @@ curl -X POST -d '@example.json' -o out.json \
   'https://api.saasify.sh/1/call/dev/sharp'
 ```
 
-*output (JSON)*
+_output (JSON)_
+
 ```json
 {
   "format": "png",

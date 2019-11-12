@@ -35,7 +35,7 @@ class WordCloudRequest(BaseModel):
     # mask: = None
     scale: float = 1
     # color_func = None
-    max_words: int = 200
+    max_words: int = 2000
     min_font_size: int = 4
     # stopwords = None
     random_state: str = None

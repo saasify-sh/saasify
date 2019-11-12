@@ -69,10 +69,7 @@ export default (service, token, opts = {}) => {
     indent: '  '
   }).slice(2)
 
-  data.hasFileOutput =
-    service.definition &&
-    service.definition.returns.http &&
-    typeof example.output === 'string'
+  data.hasFileOutput = example.outputUrl
   data.output = example.output
 
   // --------------------------------------------------------------

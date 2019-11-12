@@ -10,15 +10,13 @@
           "name": "The Onion Example",
           "input": {
             "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347"
-          },
-          "output": "out.png",
-          "outputContentType": "image/png"
+          }
         }
       ]
     }
   ],
   "amountPerBase": 99,
-  "amountPerRequest": 0.2,
+  "amountPerRequest": 0.1,
   "amountPerCompute": 0,
   "amountPerBandwidth": 0,
   "noAuthRateLimit": {
@@ -30,9 +28,9 @@
     "DIFFBOT_TOKEN": "@diffbot-token"
   },
   "saas": {
-    "name": "Word Cloud",
-    "heading": "**Generate stylistic wordclouds from any webpage.**",
-    "subheading": "TODO",
+    "name": "WordCloud",
+    "heading": "**Stylistic Wordclouds**",
+    "subheading": "An API that turns any webpage into a stylistic wordcloud.",
     "repo": "https://github.com/saasify-sh/wordcloud",
     "theme": {
       "name": "waves",

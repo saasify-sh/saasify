@@ -3,7 +3,7 @@
   "alias": "sharp",
   "services": [
     {
-      "src": "index.ts",
+      "src": "src/index.ts",
       "examples": [
         {
           "name": "Resize",
@@ -20,8 +20,7 @@
                 "op": "webp"
               }
             ]
-          },
-          "output": "result.webp"
+          }
         }
       ]
     }

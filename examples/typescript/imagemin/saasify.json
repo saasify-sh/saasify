@@ -10,17 +10,13 @@
           "name": "PNG",
           "input": {
             "url": "https://octodex.github.com/images/original.png"
-          },
-          "output": "optimized.png",
-          "outputContentType": "image/png"
+          }
         },
         {
           "name": "JPEG",
           "input": {
             "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/examples/nala.jpg"
-          },
-          "output": "optimized.jpg",
-          "outputContentType": "image/jpeg"
+          }
         }
       ]
     },
