@@ -11,6 +11,7 @@ module.exports = (identifier, opts = {}) => {
     return
   }
 
+  // eslint-disable-next-line node/no-deprecated-api
   const { pathname } = url.parse(identifier)
   let uri = pathname
 

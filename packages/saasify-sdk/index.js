@@ -9,7 +9,7 @@ const defaultContentType = 'application/octet-stream'
 module.exports = class SaasifySDK {
   constructor(opts = {}) {
     if (typeof opts === 'string') {
-      this._token = token
+      this._token = opts
     } else {
       const { token } = opts
       this._token = token

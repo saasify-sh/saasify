@@ -56,16 +56,16 @@ module.exports = (program, client) => {
             break
           }
 
+          // TODO: this would be pretty easy to accidentally do and would prevent you
+          // from accessing any of your deployments, so disabling this for now.
+
+          /*
           case 'rm': {
             console.error(
               'error: removing teams has been disabled in the CLI for now. please contact support for help.'
             )
             process.exit(1)
 
-            // TODO: this would be pretty easy to accidentally do and would prevent you
-            // from accessing any of your deployments, so disabling this for now.
-
-            /*
             if (!arg) {
               console.error('error: must specify the id of the team you want to remove')
               process.exit(1)
@@ -83,10 +83,9 @@ module.exports = (program, client) => {
               client.teamId = undefined
               client.teamSlug = undefined
             }
-            */
-
             break
           }
+          */
 
           case 'switch': {
             const teams = await spinner(client.listTeams(), 'Fetching teams')
