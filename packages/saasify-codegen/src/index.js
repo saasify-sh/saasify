@@ -69,7 +69,7 @@ export default (service, token, opts = {}) => {
     indent: '  '
   }).slice(2)
 
-  data.hasFileOutput = example.outputUrl
+  data.hasFileOutput = !!example.outputUrl
   data.output = example.output
 
   // --------------------------------------------------------------
