@@ -15,7 +15,7 @@ module.exports = async (opts) => {
 
   // TODO: relax restriction on only having one source FastAPI file
   const src = config.services[0].src
-  for (const service of services) {
+  for (const service of config.services) {
     if (service.src !== src) {
       throw new Error(
         `Python only supports a single src file: found "${src}" and "${service.src}"`

@@ -18,7 +18,7 @@ module.exports = async (api, config) => {
     }
 
     const origService =
-      origService >= 0 ? origServices.splice(index, 1)[0] : undefined
+      index >= 0 ? origServices.splice(index, 1)[0] : undefined
 
     const service = {
       name,
