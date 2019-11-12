@@ -25,7 +25,7 @@ The goal is to make it as easy as possible for developers of any programming lan
 
 ## Usage
 
-All endpoint take in either a `url` or `text`, in addition to a number of optional customization parameters.
+All endpoints take in either a `url` or `text`, in addition to a number of optional customization parameters.
 
 If you pass a `url`, the webpage will be parsed with only the sanitized main body content being passed as `text`.
 
