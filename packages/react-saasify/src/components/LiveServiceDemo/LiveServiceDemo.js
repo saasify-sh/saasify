@@ -34,6 +34,7 @@ export class LiveServiceDemo extends Component {
   _onClickPlaygroundTabMem = mem(() => () =>
     this._onClickTab({ label: 'Playground' })
   )
+
   _onClickTabMem = mem((i) => () => this._onClickTab(this._example.snippets[i]))
 
   componentWillUnmount() {
@@ -80,7 +81,7 @@ export class LiveServiceDemo extends Component {
           </div>
 
           <div className={theme(styles, 'output__cta__button')}>
-            <Link to={'/signup?plan=unlimited'}>
+            <Link to='/signup?plan=unlimited'>
               <Button type='primary'>Upgrade to unlimited</Button>
             </Link>
           </div>
