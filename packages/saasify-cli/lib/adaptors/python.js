@@ -81,6 +81,12 @@ module.exports.fetchOpenAPI = async (url, opts = {}) => {
   return pRetry(() => got(url, opts), {
     retries: 6,
     factor: 1.8,
-    maxTimeout: 5000
+    maxTimeout: 5000,
+    onFailedAttempt: (err) => {
+      // quick exit if FastAPI returns an error
+      if (err.statusCode >= 400) {
+        throw err
+      }
+    }
   })
 }

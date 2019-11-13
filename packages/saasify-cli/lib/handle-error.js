@@ -1,5 +1,9 @@
 'use strict'
 
+const PrettyError = require('pretty-error')
+
+const prettyError = new PrettyError()
+
 module.exports = (program, err) => {
   const detail = err.response
     ? (err.response.data && err.response.data.error) || err.response.statusText
@@ -11,7 +15,7 @@ module.exports = (program, err) => {
   }
 
   if (program.debug) {
-    console.error(err)
+    console.error(prettyError.render(err))
   }
 
   process.exit(1)

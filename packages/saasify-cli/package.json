@@ -66,6 +66,7 @@
     "pidtree": "^0.3.0",
     "pify": "^4.0.1",
     "pluralize": "^8.0.0",
+    "pretty-error": "^2.1.1",
     "qs": "^6.8.0",
     "saasify-client": "^1.10.0",
     "saasify-utils": "^1.10.0",
