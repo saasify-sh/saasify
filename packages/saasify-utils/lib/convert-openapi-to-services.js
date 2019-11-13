@@ -26,6 +26,9 @@ module.exports = async (api, config) => {
       ...origService
     }
 
+    service.GET = false
+    service.POST = false
+
     const httpMethods = Object.keys(pathItem)
     for (const httpMethod of httpMethods) {
       service[httpMethod.toUpperCase()] = true

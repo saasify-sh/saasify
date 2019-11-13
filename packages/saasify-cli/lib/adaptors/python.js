@@ -35,7 +35,7 @@ module.exports = async (opts) => {
   })
 
   const openapiResolved = await parseOpenAPI(openapi)
-  const services = await convertOpenAPIToServices(openapiResolved)
+  const services = await convertOpenAPIToServices(openapiResolved, config)
 
   return {
     ...config,
