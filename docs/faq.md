@@ -2,7 +2,7 @@
 
 # FAQ
 
-TODO: use `detail` to hide the answers
+TODO: use `detail` to hide answers
 
 ## Makers
 
@@ -70,6 +70,7 @@ TODO
 ### Is Saasify open source?
 
 TODO
+The core parts of Saasify have been open sourced as over a dozen NPM modules.
 
 ---
 

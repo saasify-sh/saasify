@@ -18,7 +18,7 @@
 
 ## Demo
 
-Here is a fully functional [example SaaS website](https://synopsis.saasify.sh ':target=_blank') that was generated with Saasify from this [source code](https://github.com/saasify-sh/synopsis ':target=_blank').
+Here is a live [SaaS API and marketing site](https://synopsis.saasify.sh ':target=_blank') that were auto-generated with Saasify from this [source code](https://github.com/saasify-sh/synopsis ':target=_blank').
 
 We've made it really simple to "saasify" your own projects like this one. Once your API is setup, we handle all bizdev and support requests for you while ensuring that you receive the majority of revenue in return.
 
