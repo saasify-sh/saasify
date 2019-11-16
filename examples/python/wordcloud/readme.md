@@ -23,6 +23,10 @@ The goal is to make it as easy as possible for developers of any programming lan
   />
 </a>
 
+## Use Cases
+
+
+
 ## Usage
 
 All endpoints take in either a `url` or `text`, in addition to a number of optional customization parameters.
@@ -37,7 +41,7 @@ Styleclouds are wordclouds that fit the shape of a [Font Awesome]() icon.
 
 ## Examples
 
-### The Onion
+### Preview of a news article
 
 ```
 curl -X POST -o 'example.png' \
@@ -47,3 +51,14 @@ curl -X POST -o 'example.png' \
 ```
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/stylecloud.png" width="256" />
+
+## TODO
+
+- [ ] investigate fastapi support for documenting apis and params via comments and/or markdown
+- [ ] polish readme
+- [ ] polish saasify config
+- [ ] add examples using different masks and fontawesome icons
+- [ ] research other product alternatives
+- [ ] add example use cases
+- [ ] renew diffbot token
+

@@ -16,6 +16,7 @@ class StyleCloudRequest(BaseModel):
     text: str = None
     size: int = 512
     icon_name: str = "fas fa-flag"
+    # TODO: make this an enum
     palette: str = "cartocolors.qualitative.Bold_6"
     background_color: str = "white"
     max_font_size: int = 200

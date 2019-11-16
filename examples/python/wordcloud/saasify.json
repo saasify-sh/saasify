@@ -7,7 +7,8 @@
       "src": "main.py",
       "examples": [
         {
-          "name": "The Onion Example",
+          "name": "News Article",
+          "description": "Generate a preview from a news article",
           "input": {
             "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347"
           }
@@ -16,13 +17,13 @@
     }
   ],
   "amountPerBase": 99,
-  "amountPerRequest": 0.1,
+  "amountPerRequest": 0.2,
   "amountPerCompute": 0,
   "amountPerBandwidth": 0,
   "noAuthRateLimit": {
     "requests": true,
     "requestsInterval": 3600,
-    "requestsMaxPerInterval": 10
+    "requestsMaxPerInterval": 15
   },
   "env": {
     "DIFFBOT_TOKEN": "@diffbot-token"
@@ -30,8 +31,35 @@
   "saas": {
     "name": "WordCloud",
     "heading": "**Stylish Wordclouds**",
-    "subheading": "An API that turns any webpage into interesting wordclouds.",
-    "repo": "https://github.com/saasify-sh/wordcloud",
+    "subheading": "An API to create attractive wordcloud previews from any webpage.",
+    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/python/wordcloud",
+    "features": [
+      {
+        "name": "",
+        "desc": "Our AI powered engine extracts the main content from any website with ease.",
+        "icon": "media/icons/ai.svg"
+      },
+      {
+        "name": "",
+        "desc": "",
+        "icon": "media/icons/body.svg"
+      },
+      {
+        "name": "Get Going Fast",
+        "desc": "Try out the REST API for FREE and then sign up with your GitHub account and Stripe.",
+        "icon": "media/icons/developer_activity.svg"
+      },
+      {
+        "name": "Cost Effective",
+        "desc": "Building on top of serverless functions means you'll only pay for the API calls you actually use.",
+        "icon": "media/icons/stripe.svg"
+      },
+      {
+        "name": "Open Source",
+        "desc": "Check out the source on [GitHub](https://github.com/saasify-sh/saasify/tree/master/examples/python/wordcloud)!",
+        "icon": "media/icons/code_review.svg"
+      }
+    ],
     "theme": {
       "name": "waves",
       "backgroundImage": "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80",
