@@ -24,8 +24,8 @@ export class HowItWorksSection extends Component {
             <h3>1. Create a serverless function</h3>
 
             <p>
-              Using TypeScript or Python, wrap your existing open source project
-              in a serverless function.
+              Wrap your existing open source project in a serverless function
+              using JS, TS, or Python.
             </p>
           </div>
 
@@ -39,16 +39,16 @@ export class HowItWorksSection extends Component {
             <h3>2. Deploy with Saasify</h3>
 
             <p>
-              Deploy your project to AWS with our CLI. We autogenerate a
-              customizable SaaS website for you that handles all billing,
-              accounts, docs, hosting, and more.
+              Deploy your project as a monetizable API with our CLI. We
+              autogenerate a customizable SaaS website for you that handles all
+              billing, accounts, docs, hosting, and more.
             </p>
           </div>
         </div>
 
         <div className={theme(styles, 'step')}>
           <div>
-            <h3>3. Earn passive income!</h3>
+            <h3>3. Earn passive income</h3>
 
             <p>
               You collect 80% of all revenue your API makes via Stripe Connect.

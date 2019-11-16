@@ -16,25 +16,19 @@
           "name": "Person",
           "input": {
             "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/cc.jpg"
-          },
-          "output": "girl-no-bg.png",
-          "outputContentType": "image/png"
+          }
         },
         {
           "name": "Product",
           "input": {
             "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/pg.jpg"
-          },
-          "output": "pg-no-bg.png",
-          "outputContentType": "image/png"
+          }
         },
         {
           "name": "Car",
           "input": {
             "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/remove-bg/examples/jb.jpg"
-          },
-          "output": "car-no-bg.png",
-          "outputContentType": "image/png"
+          }
         }
       ]
     },

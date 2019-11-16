@@ -10,9 +10,9 @@ Wraps the [puppeteer](https://github.com/GoogleChrome/puppeteer) NPM module by [
 
 <a href="https://puppet-master.sh" target="_blank">
   <img
-    src="https://badges.saasify.sh?text=Try%20Puppet%20Master%20API"
+    src="https://badges.saasify.sh?text=View%20Puppet%20Master%20API"
     height="40"
-    alt="Try Puppet Master API"
+    alt="View Puppet Master API"
   />
 </a>
 
@@ -28,9 +28,9 @@ Summarize any webpage or article automagically. ([source code](https://github.co
 
 <a href="https://synopsis.saasify.sh" target="_blank">
   <img
-    src="https://badges.saasify.sh?text=Try%20Synopsis%20API"
+    src="https://badges.saasify.sh?text=View%20Synopsis%20API"
     height="40"
-    alt="Try Synopsis API"
+    alt="View Synopsis API"
   />
 </a>
 
@@ -48,9 +48,9 @@ Wraps the [sharp](https://github.com/lovell/sharp) NPM module by [Lovell Fuller]
 
 <a href="https://sharp.saasify.sh" target="_blank">
   <img
-    src="https://badges.saasify.sh?text=Try%20Sharp%20API"
+    src="https://badges.saasify.sh?text=View%20Sharp%20API"
     height="40"
-    alt="Try Sharp API"
+    alt="View Sharp API"
   />
 </a>
 

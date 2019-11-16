@@ -13,9 +13,14 @@ const serveProjectLocal = require('../serve-project-local')
 module.exports = async (opts) => {
   const { program, config, serveProjectLocal, ...rest } = opts
 
-  // TODO: relax restriction on only having one source service
-  if (config.services.length > 1) {
-    throw new Error('Python only supports a single source service')
+  // TODO: relax restriction on only having one source FastAPI file
+  const src = config.services[0].src
+  for (const service of config.services) {
+    if (service.src !== src) {
+      throw new Error(
+        `Python only supports a single src file: found "${src}" and "${service.src}"`
+      )
+    }
   }
 
   if (serveProjectLocal === false) {
@@ -30,11 +35,7 @@ module.exports = async (opts) => {
   })
 
   const openapiResolved = await parseOpenAPI(openapi)
-  const services = await convertOpenAPIToServices(openapiResolved)
-
-  for (const service of services) {
-    service.src = config.services[0].src
-  }
+  const services = await convertOpenAPIToServices(openapiResolved, config)
 
   return {
     ...config,
@@ -61,7 +62,8 @@ module.exports.extractOpenAPI = async (opts) => {
 
   const child = serve()
 
-  // TODO: is this delay necessary to wait before now dev is listening on the port?
+  // TODO: this delay is a bit hacky but regardless the fetch will be retried
+  // several times with an increasing delay
   await delay(2000)
 
   const url = `http://localhost:${port}/openapi.json`
@@ -79,6 +81,12 @@ module.exports.fetchOpenAPI = async (url, opts = {}) => {
   return pRetry(() => got(url, opts), {
     retries: 6,
     factor: 1.8,
-    maxTimeout: 5000
+    maxTimeout: 5000,
+    onFailedAttempt: (err) => {
+      // quick exit if FastAPI returns an error
+      if (err.statusCode >= 400) {
+        throw err
+      }
+    }
   })
 }

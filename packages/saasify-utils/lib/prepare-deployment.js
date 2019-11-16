@@ -101,7 +101,7 @@ module.exports = async (deployment, data, opts = {}) => {
 
       builds.push({
         src: service.src,
-        use: '@now/python@0.3.1',
+        use: '@now/python@1.0.0',
         config: {
           maxLambdaSize: '50mb',
           ...(service.config || {}),

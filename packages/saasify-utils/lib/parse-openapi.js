@@ -60,6 +60,7 @@ module.exports = async (spec) => {
     let httpMethodFound = false
     for (const httpMethod of httpMethodWhitelist) {
       const op = pathItem[httpMethod]
+
       if (op !== undefined) {
         httpMethodFound = true
         await module.exports.validateOperation(op, pathItem)

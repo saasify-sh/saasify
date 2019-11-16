@@ -6,8 +6,8 @@ const processReadme = require('./process-readme')
 const nameRe = /\/([^/]*)$/
 
 /**
- * Annotates a valid OpenAPI spec with extra metadata mostly specific to
- * Saasify's SaaS web client and [Redoc](https://github.com/Redocly/redoc).
+ * Annotates a valid OpenAPI spec with extra metadata specific to Saasify's
+ * SaaS web client and [Redoc](https://github.com/Redocly/redoc).
  */
 module.exports = async (spec, deployment, opts = {}) => {
   const { baseUrl = 'https://api.saasify.sh' } = opts
@@ -25,10 +25,10 @@ module.exports = async (spec, deployment, opts = {}) => {
     }
   ]
 
-  // TODO: pre-process readme to have # Readme h1 section
   let readme = deployment.readme || ''
 
   if (readme) {
+    // pre-process readme to ensure headers play well with redoc
     readme = processReadme(readme)
     readme = `# Readme\n\n${readme}`
   }

@@ -35,6 +35,11 @@ const res = await sdk.post(helloWorldUrl, {
 }
 ```
 
+## TODO
+
+- [ ] use `nock` in unit tests to ensure robustness and enable offline testing
+- [ ] change stateful way the auth `token` is currently handled
+
 ## License
 
 MIT © [Saasify](https://saasify.sh)

@@ -98,8 +98,16 @@
   text-align: center;
 }
 
+.output .img-wrapper {
+  display: flex;
+  padding: 24px;
+  text-align: center;
+}
+
 .output img {
+  display: inline-block;
   max-width: 100%;
+  margin: 0 auto;
 }
 
 @media only screen and (max-width: 767px) {

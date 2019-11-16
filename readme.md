@@ -18,19 +18,21 @@
 
 ## Demo
 
-Here is a fully functional [example SaaS website](https://puppet-master.sh ':target=_blank') that was generated with Saasify from this [source code](https://github.com/saasify-sh/puppet-master ':target=_blank').
+Here is a live [SaaS API and marketing site](https://synopsis.saasify.sh ':target=_blank') that was auto-generated with Saasify from this [source code](https://github.com/saasify-sh/synopsis ':target=_blank').
+
+We've made it really simple to "saasify" your own projects like this one. Once your API is setup, we handle all bizdev and support requests for you while ensuring that you receive the majority of revenue in return.
 
 ## Why Saasify?
 
 We built Saasify as an ideal solution for developers who want to earn passive income.
 
-By making it extremely simple to create SaaS APIs, we're creating new opportunities for developers to monetize their work. And the best part is that this business model scales naturally as usage increases, which means the more popular your project becomes, the more money you can earn!
+By making it extremely simple to create SaaS APIs, we're creating new opportunities for developers to monetize their work. And the best part is that this business model scales naturally as usage increases, which means the more popular your project becomes, the more money you will earn!
 
 In a nutshell, we allow makers to:
 
 1. Monetize existing OSS! ⭐️
 2. Focus only on unique value instead of SaaS boilerplate 🔥
-3. Ship and start monetizing in minutes instead of months ✈️
+3. Ship and start monetizing APIs in minutes instead of months ✈️
 
 <p align="center">
   <img src="https://saasify.sh/_media/undraw/business_shop.svg" alt="Online shop" width="200" />
@@ -38,27 +40,40 @@ In a nutshell, we allow makers to:
 
 ## What can be monetized using Saasify?
 
-Saasify is built around serverless functions, so any functionality that can be wrapped in a serverless function could potentially be monetized. With that being said, Saasify won't work for all types of OSS projects.
+Saasify is built around serverless functions, so any functionality that can be wrapped in a serverless function could potentially be monetized.
 
 Some example use cases include:
 
-- Workflow automation (headless chrome)
-- Pre-built machine learning models
+- Workflow automation (headless chrome / bots)
 - Image & media processing tasks
 - Data transformations
 - General algorithms
+- Pre-built machine learning models
+- Your NPM module or PyPi package?
+
+Saasify is built around serverless functions, so the ideal use case involves stateless functions that take a specific input and produce some valuable output.
+
+Some example use cases include:
+
+- Workflow automation (headless chrome, bots)
+- Image & media processing tasks
+- Data transformations
+- General algorithms
+- Pre-built machine learning models
+- Your NPM module or PyPI package?
+
+Check out the [showcase](https://saasify.sh/#/showcase) for more live examples of projects which have been saasified.
 
 Have an idea or an OSS project that you'd like to monetize, but not sure where to start? Feel free to contact us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY). ✌️
 
 ## Features
 
-- 💰 Monetize your open source projects!
-- ⚡️️ Simple & quick to setup your own SaaS
-- 🔥 Focus on your unique value instead of boilerplate
-- 💯 Built with TypeScript + Lambda + Stripe
-- 💎 Creates standard OpenAPI REST APIs
-- 🤖 Handles all docs, hosting, billing, and accounts for you
-- 🚀 Begin monetizing in minutes!
+- 💰 Get paid for your open source projects
+- ⚡️️ Quick & easy to setup your own monetizable APIs
+- 🔥 Every API comes with its own customizable marketing site
+- 💯 Built with TypeScript + AWS Lambda + Stripe
+- 🤖 We handle all docs, hosting, billing, and accounts for you
+- 🚀 Our CLI makes it really easy to get started!
 
 ## Getting Started
 

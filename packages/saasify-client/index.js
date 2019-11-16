@@ -237,6 +237,8 @@ module.exports = class SaasifyClient {
   // Deployments
   // --------------------------------------------------------------------------
 
+  // TODO: possibly increase the timeout for this HTTP call until the backend
+  // deployment initialization is changed to be async
   async createDeployment(data) {
     return this._request({
       url: `/1/deployments`,

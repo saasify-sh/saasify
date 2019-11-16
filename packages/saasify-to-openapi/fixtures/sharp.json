@@ -53,6 +53,7 @@
               }
             ]
           },
+          "outputUrl": "https://example.com/file",
           "output": "result.webp"
         }
       ],
@@ -66,11 +67,7 @@
         },
         "params": {
           "context": false,
-          "order": [
-            "input",
-            "options",
-            "ops"
-          ],
+          "order": ["input", "options", "ops"],
           "schema": {
             "type": "object",
             "properties": {
@@ -235,21 +232,12 @@
                     "type": "number"
                   },
                   "channels": {
-                    "enum": [
-                      1,
-                      2,
-                      3,
-                      4
-                    ],
+                    "enum": [1, 2, 3, 4],
                     "type": "number"
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "channels",
-                  "height",
-                  "width"
-                ]
+                "required": ["channels", "height", "width"]
               },
               "Create": {
                 "type": "object",
@@ -264,10 +252,7 @@
                   },
                   "channels": {
                     "description": "Number of bands e.g. 3 for RGB, 4 for RGBA",
-                    "enum": [
-                      3,
-                      4
-                    ],
+                    "enum": [3, 4],
                     "type": "number"
                   },
                   "background": {
@@ -283,12 +268,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "background",
-                  "channels",
-                  "height",
-                  "width"
-                ]
+                "required": ["background", "channels", "height", "width"]
               },
               "RGBA": {
                 "type": "object",
@@ -316,9 +296,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationType": {
                 "enum": [
@@ -380,10 +358,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "limit",
-                  "op"
-                ]
+                "required": ["limit", "op"]
               },
               "ImageOperationWithMetadata": {
                 "type": "object",
@@ -396,9 +371,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "WriteableMetadata": {
                 "type": "object",
@@ -421,9 +394,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "JpegOptions": {
                 "type": "object",
@@ -490,9 +461,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "PngOptions": {
                 "type": "object",
@@ -547,9 +516,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "WebpOptions": {
                 "type": "object",
@@ -596,9 +563,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "TiffOptions": {
                 "type": "object",
@@ -645,9 +610,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ResizeOptions": {
                 "type": "object",
@@ -662,13 +625,7 @@
                   },
                   "fit": {
                     "description": "How the image should be resized to fit both provided dimensions, one of cover, contain, fill, inside or outside. (optional, default 'cover')",
-                    "enum": [
-                      "contain",
-                      "cover",
-                      "fill",
-                      "inside",
-                      "outside"
-                    ],
+                    "enum": ["contain", "cover", "fill", "inside", "outside"],
                     "type": "string"
                   },
                   "position": {
@@ -719,9 +676,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ExtendOptions": {
                 "type": "object",
@@ -763,10 +718,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op",
-                  "region"
-                ]
+                "required": ["op", "region"]
               },
               "Region": {
                 "type": "object",
@@ -789,12 +741,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "height",
-                  "left",
-                  "top",
-                  "width"
-                ]
+                "required": ["height", "left", "top", "width"]
               },
               "ImageOperationTrim": {
                 "type": "object",
@@ -807,9 +754,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationComposite": {
                 "type": "object",
@@ -825,10 +770,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "images",
-                  "op"
-                ]
+                "required": ["images", "op"]
               },
               "OverlayOptions": {
                 "type": "object",
@@ -851,9 +793,7 @@
                           }
                         },
                         "additionalProperties": false,
-                        "required": [
-                          "create"
-                        ]
+                        "required": ["create"]
                       },
                       {
                         "type": "string"
@@ -939,9 +879,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "RotateOptions": {
                 "type": "object",
@@ -971,9 +909,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationFlop": {
                 "type": "object",
@@ -986,9 +922,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationSharpen": {
                 "type": "object",
@@ -1007,9 +941,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationMedian": {
                 "type": "object",
@@ -1022,9 +954,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationBlur": {
                 "type": "object",
@@ -1037,9 +967,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationFlatten": {
                 "type": "object",
@@ -1059,9 +987,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "FlattenOptions": {
                 "type": "object",
@@ -1091,9 +1017,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationNegate": {
                 "type": "object",
@@ -1106,9 +1030,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationNormalize": {
                 "type": "object",
@@ -1121,9 +1043,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationConvolve": {
                 "type": "object",
@@ -1136,10 +1056,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "kernel",
-                  "op"
-                ]
+                "required": ["kernel", "op"]
               },
               "Kernel": {
                 "type": "object",
@@ -1169,11 +1086,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "height",
-                  "kernel",
-                  "width"
-                ]
+                "required": ["height", "kernel", "width"]
               },
               "ImageOperationThreshold": {
                 "type": "object",
@@ -1189,9 +1102,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ThresholdOptions": {
                 "type": "object",
@@ -1224,20 +1135,14 @@
                       }
                     },
                     "additionalProperties": false,
-                    "required": [
-                      "raw"
-                    ]
+                    "required": ["raw"]
                   },
                   "op": {
                     "$ref": "#/definitions/ImageOperationType"
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op",
-                  "operand",
-                  "operator"
-                ]
+                "required": ["op", "operand", "operator"]
               },
               "ImageOperationLinear": {
                 "type": "object",
@@ -1253,9 +1158,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationRecomb": {
                 "type": "object",
@@ -1443,10 +1346,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "inputMatrix",
-                  "op"
-                ]
+                "required": ["inputMatrix", "op"]
               },
               "ImageOperationModulate": {
                 "type": "object",
@@ -1471,9 +1371,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationTint": {
                 "type": "object",
@@ -1493,10 +1391,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op",
-                  "rgb"
-                ]
+                "required": ["op", "rgb"]
               },
               "ImageOperationGreyscale": {
                 "type": "object",
@@ -1509,9 +1404,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationToColorSpace": {
                 "type": "object",
@@ -1533,9 +1426,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationRemoveAlpha": {
                 "type": "object",
@@ -1545,9 +1436,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationEnsureAlpha": {
                 "type": "object",
@@ -1557,9 +1446,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "op"
-                ]
+                "required": ["op"]
               },
               "ImageOperationExtractChannel": {
                 "type": "object",
@@ -1572,10 +1459,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "channel",
-                  "op"
-                ]
+                "required": ["channel", "op"]
               },
               "ImageOperationBandBool": {
                 "type": "object",
@@ -1588,10 +1472,7 @@
                   }
                 },
                 "additionalProperties": false,
-                "required": [
-                  "boolOp",
-                  "op"
-                ]
+                "required": ["boolOp", "op"]
               }
             },
             "$schema": "http://json-schema.org/draft-07/schema#"

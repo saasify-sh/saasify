@@ -16,6 +16,7 @@ class StyleCloudRequest(BaseModel):
     text: str = None
     size: int = 512
     icon_name: str = "fas fa-flag"
+    # TODO: make this an enum
     palette: str = "cartocolors.qualitative.Bold_6"
     background_color: str = "white"
     max_font_size: int = 200
@@ -35,7 +36,7 @@ class WordCloudRequest(BaseModel):
     # mask: = None
     scale: float = 1
     # color_func = None
-    max_words: int = 200
+    max_words: int = 2000
     min_font_size: int = 4
     # stopwords = None
     random_state: str = None
@@ -72,6 +73,7 @@ responses = {
 }
 
 DIFFBOT_TOKEN = os.getenv("DIFFBOT_TOKEN")
+OUTPUT_NAME = "/tmp/out.png"
 
 
 def require_diffbot():
@@ -101,11 +103,14 @@ def stylecloud(request: StyleCloudRequest):
     elif text is None:
         raise Exception('Must provide either"text" or "url".')
 
-    sc.gen_stylecloud(**params, text=text)
+    sc.gen_stylecloud(
+        **params, text=text, icon_dir="/tmp/icons", output_name=OUTPUT_NAME
+    )
 
-    return FileResponse("stylecloud.png", media_type="image/png", headers=headers)
+    return FileResponse(OUTPUT_NAME, media_type="image/png", headers=headers)
 
 
+"""
 @app.post("/wordcloud", responses=responses)
 def wordcloud(request: WordCloudRequest):
     params = request.dict()
@@ -114,7 +119,7 @@ def wordcloud(request: WordCloudRequest):
 
     if url is not None:
         require_diffbot()
-        article = diffbot.article(url, token=DIFFBOT_TOKEN).objects[0]
+        article = diffbot.article(url, token=DIFFBOT_TOKEN)["objects"][0]
         pprint.pprint(article)
         text = article["text"]
     elif text is None:
@@ -122,6 +127,7 @@ def wordcloud(request: WordCloudRequest):
 
     wc = WordCloud(**params)
     wc.generate_from_text(text)
-    wc.to_file("wordcloud.png")
+    wc.to_file(OUTPUT_NAME)
 
-    return FileResponse("wordcloud.png", media_type="image/png", headers=headers)
+    return FileResponse(OUTPUT_NAME, media_type="image/png", headers=headers)
+"""
