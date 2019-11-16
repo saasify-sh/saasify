@@ -3,16 +3,16 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
-[dev-packages]
-
 [packages]
 fastapi = "*"
 stylecloud = "*"
 requests = "*"
-uvicorn = "*"
 aiofiles = "*"
 diffbot = "*"
 python-dotenv = "*"
+
+[dev-packages]
+uvicorn = "*"
 
 [requires]
 python_version = "3.7"

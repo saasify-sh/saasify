@@ -120,7 +120,9 @@ export class LiveServiceDemo extends Component {
         const dataUrl = 'data:' + outputContentType + ';base64,' + output
 
         renderedOutput = (
-          <img alt={this._example.name || 'Example output'} src={dataUrl} />
+          <div className={theme(styles, 'img-wrapper')}>
+            <img alt={this._example.name || 'Example output'} src={dataUrl} />
+          </div>
         )
       } else {
         // TODO: gracefully handle other content-types
