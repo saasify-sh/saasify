@@ -24,8 +24,8 @@ export class HowItWorksSection extends Component {
             <h3>1. Create a serverless function</h3>
 
             <p>
-              Using JS, TS, or Python, wrap your existing open source project in
-              a serverless function.
+              Wrap your existing open source project in a serverless function
+              using JS, TS, or Python.
             </p>
           </div>
 
