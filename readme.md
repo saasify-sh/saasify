@@ -18,7 +18,7 @@
 
 ## Demo
 
-Here is a live [SaaS API and marketing site](https://synopsis.saasify.sh ':target=_blank') that were auto-generated with Saasify from this [source code](https://github.com/saasify-sh/synopsis ':target=_blank').
+Here is a live [SaaS API and marketing site](https://synopsis.saasify.sh ':target=_blank') that was auto-generated with Saasify from this [source code](https://github.com/saasify-sh/synopsis ':target=_blank').
 
 We've made it really simple to "saasify" your own projects like this one. Once your API is setup, we handle all bizdev and support requests for you while ensuring that you receive the majority of revenue in return.
 
@@ -60,7 +60,7 @@ Some example use cases include:
 - Data transformations
 - General algorithms
 - Pre-built machine learning models
-- Your NPM module or PyPi package?
+- Your NPM module or PyPI package?
 
 Check out the [showcase](https://saasify.sh/#/showcase) for more live examples of projects which have been saasified.
 
@@ -73,7 +73,6 @@ Have an idea or an OSS project that you'd like to monetize, but not sure where t
 - 🔥 Every API comes with its own customizable marketing site
 - 💯 Built with TypeScript + AWS Lambda + Stripe
 - 🤖 We handle all docs, hosting, billing, and accounts for you
-- 🥰 Our platform is open source
 - 🚀 Our CLI makes it really easy to get started!
 
 ## Getting Started
