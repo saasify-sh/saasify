@@ -10,12 +10,14 @@ from stylecloud import stylecloud as sc
 from typing import Optional
 from wordcloud import WordCloud
 
+from fontawesome import FontAwesomeIcon
+
 
 class StyleCloudRequest(BaseModel):
     url: str = None
     text: str = None
     size: int = 512
-    icon_name: str = "fas fa-flag"
+    icon_name: FontAwesomeIcon = "fas fa-flag"
     # TODO: make this an enum
     palette: str = "cartocolors.qualitative.Bold_6"
     background_color: str = "white"
