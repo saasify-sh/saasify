@@ -708,6 +708,11 @@
   overflow-y: auto;
 }
 
+.theme-waves .live-service-demo .output {
+  max-height: 30vh;
+  overflow-y: auto;
+}
+
 .theme-waves .code-block {
   background: transparent !important;
   color: white !important;
