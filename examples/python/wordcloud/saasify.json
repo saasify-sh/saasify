@@ -8,9 +8,11 @@
       "examples": [
         {
           "name": "News Article",
-          "description": "Generate a preview from a news article",
+          "description": "Create wordcloud from article",
           "input": {
-            "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347"
+            "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347",
+            "icon_name": "fas fa-flag",
+            "palette": "cartocolors.qualitative.Bold_6"
           }
         }
       ]
@@ -30,15 +32,15 @@
   },
   "saas": {
     "name": "WordCloud",
-    "heading": "**Stylish Wordclouds**",
-    "subheading": "An API to create attractive wordcloud previews from any webpage.",
+    "heading": "**Generate Beautiful Wordclouds**",
+    "subheading": "An API to create attractive wordcloud previews from any text or webpage.",
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/python/wordcloud",
     "logo": "media/logo.svg",
     "theme": {
       "name": "waves",
       "backgroundImage": "https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80",
-      "buttonStyle": "rounded",
-      "color": "#2097e2",
+      "buttonStyle": "standard",
+      "color": "#50A9DA",
       "wave": false,
       "gradientDark": false,
       "codeBlockDark": true
