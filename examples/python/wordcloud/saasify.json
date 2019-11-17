@@ -8,9 +8,11 @@
       "examples": [
         {
           "name": "News Article",
-          "description": "Generate a preview from a news article",
+          "description": "Create wordcloud from article",
           "input": {
-            "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347"
+            "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347",
+            "icon_name": "fas fa-flag",
+            "palette": "cartocolors.qualitative.Bold_6"
           }
         }
       ]
