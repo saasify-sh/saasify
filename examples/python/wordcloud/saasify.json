@@ -7,6 +7,14 @@
       "src": "main.py",
       "examples": [
         {
+          "name": "US Constitution",
+          "input": {
+            "url": "https://www.constituteproject.org/constitution/United_States_of_America_1992",
+            "icon_name": "fas fa-flag",
+            "palette": "cartocolors.qualitative.Bold_6"
+          }
+        },
+        {
           "name": "News Article",
           "description": "Create wordcloud from article",
           "input": {
