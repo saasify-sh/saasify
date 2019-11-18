@@ -709,9 +709,12 @@
 }
 
 .theme-waves .live-service-demo .output {
-  background: var(--code-block-output-background);
   max-height: 30vh;
   overflow-y: auto;
+}
+
+.theme-waves .live-service-demo .output:not(.output--hit-rate-limit) {
+  background: var(--code-block-output-background);
 }
 
 .theme-waves .live-service-demo .output img {

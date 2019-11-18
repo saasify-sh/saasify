@@ -298,7 +298,15 @@ export class LiveServiceDemo extends Component {
         </div>
 
         {renderedOutput && (
-          <div className={theme(styles, 'output')}>{renderedOutput}</div>
+          <div
+            className={theme(
+              styles,
+              'output',
+              hitRateLimit && theme(styles, 'output--hit-rate-limit')
+            )}
+          >
+            {renderedOutput}
+          </div>
         )}
       </div>
     )
