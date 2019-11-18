@@ -16,13 +16,15 @@ from palettes import Palette
 
 
 class StyleCloudRequest(BaseModel):
-    url: str = None
-    text: str = None
+    url: str = Schema(None, description="URL of webpage to extract text")
+    text: str = Schema(None, description="Source text")
     size: int = Schema(512, description="Output width and height in pixels")
     icon_name: FontAwesomeIcon = Schema(
         "fas fa-flag", description="Font Awesome icon mask", alias="icon"
     )
-    palette: Palette = "cartocolors.qualitative.Bold_6"
+    palette: Palette = Schema(
+        "cartocolors.qualitative.Bold_6", description="Color palette to use"
+    )
     background_color: Color = Color("white")
     max_font_size: int = 200
     max_words: int = Schema(
