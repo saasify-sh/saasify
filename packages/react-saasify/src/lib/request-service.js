@@ -20,7 +20,8 @@ export default async ({ auth, service, data }) => {
     return {
       output: result.body,
       outputContentType: result.contentType,
-      outputContentTypeParsed: result.contentTypeParsed
+      outputContentTypeParsed: result.contentTypeParsed,
+      hitRateLimit: result.hitRateLimit
     }
   } catch (e) {
     return { outputError: e.message }
