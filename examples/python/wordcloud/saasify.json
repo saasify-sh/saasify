@@ -11,8 +11,17 @@
           "description": "Create wordcloud from article",
           "input": {
             "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347",
-            "icon_name": "fas fa-flag",
+            "icon": "fas fa-flag",
             "palette": "cartocolors.qualitative.Bold_6"
+          }
+        },
+        {
+          "name": "YC",
+          "description": "Generate from blog post",
+          "input": {
+            "url": "https://blog.ycombinator.com/ycs-essential-startup-advice/",
+            "icon": "fab fa-y-combinator",
+            "palette": "cartocolors.qualitative.Pastel_8"
           }
         }
       ]
@@ -36,6 +45,7 @@
     "subheading": "An API to create attractive wordcloud previews from any text or webpage.",
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/python/wordcloud",
     "logo": "media/logo.svg",
+    "favicon": "media/favicon.ico",
     "theme": {
       "name": "waves",
       "backgroundImage": "https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80",

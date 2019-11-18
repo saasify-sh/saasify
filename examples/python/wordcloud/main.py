@@ -58,7 +58,7 @@ def require_diffbot():
 
 
 @app.post(
-    "/",
+    "/stylecloud",
     responses={
         200: {
             "content": {"image/png": {}},
