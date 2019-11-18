@@ -17,3 +17,12 @@
     monospace;
   font-weight: bold;
 }
+
+.service-form :global(.ant-select-selection__rendered) {
+  margin-right: 0;
+}
+
+.service-form :global(.ant-select-search__field) {
+  border: 0;
+  padding-left: 0;
+}
