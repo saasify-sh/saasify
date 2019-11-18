@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import theme from 'lib/theme'
 import mem from 'mem'
+import isDeepEqual from 'fast-deep-equal'
 import copyTextToClipboard from 'copy-text-to-clipboard'
+import mediumZoom from 'medium-zoom'
 
 import { observer, inject } from 'mobx-react'
 import { Button, Tooltip } from 'lib/antd'
 import { Link } from 'react-router-dom'
 
 import { CodeBlock } from '../CodeBlock'
+import { ImageZoom } from '../ImageZoom'
 import { ServiceForm } from '../ServiceForm'
 
 import getServiceExamples from 'lib/get-service-examples'
@@ -31,6 +34,11 @@ export class LiveServiceDemo extends Component {
     values: {}
   }
 
+  _zoom = mediumZoom({
+    background: '#fff',
+    margin: 48
+  })
+
   _onClickPlaygroundTabMem = mem(() => () =>
     this._onClickTab({ label: 'Playground' })
   )
@@ -52,8 +60,8 @@ export class LiveServiceDemo extends Component {
       copiedTextToClipboard,
       running,
       output,
+      outputUrl,
       outputContentType,
-      outputContentTypeParsed,
       outputError,
       hitRateLimit
     } = this.state
@@ -87,51 +95,77 @@ export class LiveServiceDemo extends Component {
           </div>
         </div>
       )
-    } else if (output && outputContentType) {
-      // TODO: switch to use type-is package here
-      if (outputContentType.startsWith('text/')) {
-        renderedOutput = (
-          <CodeBlock
-            className={theme(styles, 'code')}
-            language={outputContentType.slice('text/'.length)}
-            value={output}
-          />
-        )
-      } else if (outputContentType.startsWith('application/json')) {
-        let language
-        let value
-
-        if (typeof output === 'string') {
-          language = 'text'
-          value = output
+    } else if (outputContentType) {
+      if (outputUrl) {
+        if (outputContentType.startsWith('image/')) {
+          renderedOutput = (
+            <div className={theme(styles, 'img-wrapper')}>
+              <ImageZoom
+                src={outputUrl}
+                alt={this._example.name || 'Example output'}
+                zoom={this._zoom}
+              />
+            </div>
+          )
         } else {
-          language = 'json'
-          value = JSON.stringify(output, null, 2)
+          // TODO: gracefully handle other content-types
+          renderedOutput = (
+            <div className={theme(styles, 'error')}>
+              The API returned an unsupported content-type "{outputContentType}
+              ".
+            </div>
+          )
         }
+      } else if (output) {
+        // TODO: switch to use type-is package here
+        if (outputContentType.startsWith('text/')) {
+          renderedOutput = (
+            <CodeBlock
+              className={theme(styles, 'code')}
+              language={outputContentType.slice('text/'.length)}
+              value={output}
+            />
+          )
+        } else if (outputContentType.startsWith('application/json')) {
+          let language
+          let value
 
-        renderedOutput = (
-          <CodeBlock
-            className={theme(styles, 'code')}
-            language={language}
-            value={value}
-          />
-        )
-      } else if (outputContentType.startsWith('image/')) {
-        const dataUrl = 'data:' + outputContentType + ';base64,' + output
+          if (typeof output === 'string') {
+            language = 'text'
+            value = output
+          } else {
+            language = 'json'
+            value = JSON.stringify(output, null, 2)
+          }
 
-        renderedOutput = (
-          <div className={theme(styles, 'img-wrapper')}>
-            <img alt={this._example.name || 'Example output'} src={dataUrl} />
-          </div>
-        )
-      } else {
-        // TODO: gracefully handle other content-types
-        renderedOutput = (
-          <div className={theme(styles, 'error')}>
-            The API returned an unsupported content-type "
-            {outputContentTypeParsed.type}".
-          </div>
-        )
+          renderedOutput = (
+            <CodeBlock
+              className={theme(styles, 'code')}
+              language={language}
+              value={value}
+            />
+          )
+        } else if (outputContentType.startsWith('image/')) {
+          const dataUrl = 'data:' + outputContentType + ';base64,' + output
+
+          renderedOutput = (
+            <div className={theme(styles, 'img-wrapper')}>
+              <ImageZoom
+                src={dataUrl}
+                alt={this._example.name || 'Example output'}
+                zoom={this._zoom}
+              />
+            </div>
+          )
+        } else {
+          // TODO: gracefully handle other content-types
+          renderedOutput = (
+            <div className={theme(styles, 'error')}>
+              The API returned an unsupported content-type "{outputContentType}
+              ".
+            </div>
+          )
+        }
       }
     }
 
@@ -306,20 +340,42 @@ export class LiveServiceDemo extends Component {
     this.setState({
       running: true,
       output: null,
+      outputUrl: null,
       outputContentType: null,
-      outputContentTypeParsed: null,
       outputError: null,
       hitRateLimit: null
     })
 
-    const result = await requestService({
-      auth,
-      service,
-      data: {
-        ...this._example.input,
-        ...this.state.values
+    const data = {
+      ...this._example.input,
+      ...this.state.values
+    }
+
+    const builtInExample = service.examples.find(
+      (e) =>
+        isDeepEqual(e.input, data) &&
+        e.outputContentType &&
+        (e.outputUrl || e.output)
+    )
+    let result
+
+    if (builtInExample) {
+      result = {
+        output: builtInExample.output,
+        outputUrl: builtInExample.outputUrl,
+        outputContentType: builtInExample.outputContentType
       }
-    })
+
+      await new Promise((resolve) => {
+        setTimeout(resolve, 750)
+      })
+    } else {
+      result = await requestService({
+        auth,
+        service,
+        data
+      })
+    }
 
     this.setState({
       ...result,
