@@ -709,6 +709,7 @@
 }
 
 .theme-waves .live-service-demo .output {
+  background: var(--code-block-output-background);
   max-height: 30vh;
   overflow-y: auto;
 }
