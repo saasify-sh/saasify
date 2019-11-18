@@ -1544,6 +1544,11 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
+fuse.js@^3.4.5:
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-3.4.5.tgz#8954fb43f9729bd5dbcb8c08f251db552595a7a6"
+  integrity sha512-s9PGTaQIkT69HaeoTVjwGsLfb8V8ScJLx5XGFcKHg0MqLUH/UZ4EKOtqtXX9k7AFqCGxD1aJmYb8Q5VYDibVRQ==
+
 generic-names@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/generic-names/-/generic-names-1.0.3.tgz#2d786a121aee508876796939e8e3bff836c20917"
@@ -3068,30 +3073,30 @@ rollup@^1.19.4:
     "@types/node" "*"
     acorn "^7.1.0"
 
-saasify-client@^1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.11.0.tgz#582ae8fe0c00899ccc04e0c7ea1baf998e74dec0"
-  integrity sha512-Cm6l7xbdCatGyZfaEzFfnwyGqbO+oZK0Gs2HSqATFaKIZeFG81fnnU1icaBC+hbUnMIRLLajWGdh21jnD0IvLQ==
+saasify-client@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.11.1.tgz#82a9932284e57178bb9bb9a83031fbc2abb8edc8"
+  integrity sha512-Q8McpKUl0IhaNpKH49ZT9GZ+ohe+C8oXTflImdHG51P5WP9TZKIw/CLTk8UyKtZj0mgQYgCYr4SNcFMVKhgY+Q==
   dependencies:
     axios "^0.19.0"
     is-buffer "^2.0.3"
     is-stream "^2.0.0"
     qs "^6.6.0"
 
-saasify-codegen@^1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/saasify-codegen/-/saasify-codegen-1.11.0.tgz#78f1a8b800e74b4bbdcb45806cb9a8d73d379821"
-  integrity sha512-5NqvASyUWa2yta5IBSOk2tiXqdyiWN03dRLqOsAM4TNYCM9tBelOE44eZaqoCwviOHJ3FiZoSFv9cTkH2RK/WA==
+saasify-codegen@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/saasify-codegen/-/saasify-codegen-1.11.1.tgz#5358d7cc9362ed08f643045345e1810c1055be5f"
+  integrity sha512-JSV9OM/2dH6DEkT8GufRUUmLjb6Ap22ywKQ3XBgKIMG5Nd/rbkTJ0B63azF7kP0X2N826L25XHdRvsP9B2cmBQ==
   dependencies:
     indent-string "^4.0.0"
     mustache "^3.1.0"
     qs "^6.9.0"
     stringify-object "^3.3.0"
 
-saasify-sdk@^1.11.0:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/saasify-sdk/-/saasify-sdk-1.11.0.tgz#735941b9764efe39e57ce456610c180d0b5107bb"
-  integrity sha512-3wrRGQiCEi+02xWe0ziIeB75gvnzvK+QCZsIWs7OthjlzT93+hWQbjHZnx9S7dC6EuhRtMOLSMHs19bgb7fVKQ==
+saasify-sdk@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/saasify-sdk/-/saasify-sdk-1.11.1.tgz#4473acf4eb7b33e21b8a5b2bd4fe31ee7dd31a72"
+  integrity sha512-ex0HhqwkSchD1nbH0zzZHJzoiCJnyHUF7A36zPR2ipLkbka7Tsscg0Fy1uMSprjIiibEk220eig+741bEVj0ag==
   dependencies:
     axios "^0.19.0"
     content-type "^1.0.4"
