@@ -10,6 +10,7 @@ requests = "*"
 aiofiles = "*"
 diffbot = "*"
 python-dotenv = "*"
+pydantic = "*"
 
 [dev-packages]
 uvicorn = "*"
