@@ -10,9 +10,9 @@
           "name": "News Article",
           "description": "Create wordcloud from article",
           "input": {
-            "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347",
-            "icon": "fas fa-flag",
-            "palette": "cartocolors.qualitative.Bold_6"
+            "url": "https://www.cbc.ca/news/canada/ottawa/snow-storm-remembrance-day-1.5355302",
+            "icon": "fab fa-canadian-maple-leaf",
+            "palette": "colorbrewer.sequential.Reds_6"
           }
         },
         {
