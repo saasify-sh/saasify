@@ -20,10 +20,10 @@ class StyleCloudRequest(BaseModel):
     text: str = Schema(None, description="Source text")
     size: int = Schema(512, description="Output width and height in pixels")
     icon_name: FontAwesomeIcon = Schema(
-        "fas fa-flag", description="Font Awesome icon mask", alias="icon"
+        "fas fa-flag", description="[Font Awesome](https://fontawesome.com/icons?d=gallery&m=free) icon mask", alias="icon"
     )
     palette: Palette = Schema(
-        "cartocolors.qualitative.Bold_6", description="Color palette to use"
+        "cartocolors.qualitative.Bold_6", description="Color palette to use from [palettable](https://jiffyclub.github.io/palettable/)"
     )
     background_color: Color = Color("white")
     max_font_size: int = 200
