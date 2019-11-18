@@ -4,7 +4,7 @@ import theme from 'lib/theme'
 import styles from './styles.module.css'
 import ReactMarkdown from 'react-markdown'
 
-const allowedTypes = ['link', 'text']
+const allowedTypes = ['strong', 'emphasis', 'link', 'text']
 
 export const ServiceInputWrapperWithLabel = ({
   children,
@@ -24,6 +24,8 @@ export const ServiceInputWrapperWithLabel = ({
             <ReactMarkdown
               source={description}
               allowedTypes={allowedTypes}
+              escapeHtml={false}
+              linkTarget='_blank'
               unwrapDisallowed
             />
           </span>
