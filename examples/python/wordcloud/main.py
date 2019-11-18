@@ -76,7 +76,14 @@ def stylecloud(request: StyleCloudRequest):
 
     if url is not None:
         require_diffbot()
-        article = diffbot.article(url, token=DIFFBOT_TOKEN)["objects"][0]
+        article = diffbot.article(
+            url,
+            token=DIFFBOT_TOKEN,
+            paging=False,
+            discussion=False,
+            maxTags=0,
+            norender=True,
+        )["objects"][0]
         pprint.pprint(article)
         text = article["text"]
     elif text is None:
