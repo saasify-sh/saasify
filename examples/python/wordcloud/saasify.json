@@ -10,7 +10,7 @@
           "name": "US Constitution",
           "input": {
             "url": "https://www.constituteproject.org/constitution/United_States_of_America_1992",
-            "icon_name": "fas fa-flag",
+            "icon": "fas fa-flag",
             "palette": "cartocolors.qualitative.Bold_6"
           }
         },
