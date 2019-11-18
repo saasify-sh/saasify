@@ -53,7 +53,8 @@
       "color": "#50A9DA",
       "wave": false,
       "gradientDark": false,
-      "codeBlockDark": true
+      "codeBlockDark": true,
+      "codeBlockOutputColor": "white"
     }
   }
 }
