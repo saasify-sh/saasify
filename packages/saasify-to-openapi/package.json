@@ -1,6 +1,6 @@
 {
   "name": "saasify-to-openapi",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "description": "Converts Saasify deployments to OpenAPI specs.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
@@ -26,7 +26,7 @@
     "json-schema-ref-parser": "^7.1.1",
     "json-schema-to-openapi-schema": "^0.4.0",
     "p-reduce": "^2.1.0",
-    "saasify-codegen": "^1.11.0"
+    "saasify-codegen": "^1.11.1"
   },
   "devDependencies": {
     "ava": "^2.4.0",
