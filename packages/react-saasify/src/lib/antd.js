@@ -17,6 +17,7 @@ import 'antd/es/message/style/css'
 import 'antd/es/notification/style/css'
 
 export { default as Avatar } from 'antd/es/avatar'
+export { default as AutoComplete } from 'antd/es/auto-complete'
 export { default as Button } from 'antd/es/button'
 export { default as Checkbox } from 'antd/es/checkbox'
 export { default as Divider } from 'antd/es/divider'

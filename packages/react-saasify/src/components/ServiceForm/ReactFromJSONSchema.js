@@ -7,7 +7,7 @@ const mapProp = (prop, onChange) => {
     const { type, ...props } = prop
 
     return {
-      type,
+      type: props.enum ? 'enum' : type,
       props: {
         ...props,
         onChange,
