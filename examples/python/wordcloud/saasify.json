@@ -11,7 +11,7 @@
           "input": {
             "url": "https://www.constituteproject.org/constitution/United_States_of_America_1992",
             "icon": "fas fa-flag",
-            "palette": "cartocolors.qualitative.Bold_6",
+            "palette": "cmocean.sequential.Matter_10",
             "gradient": "horizontal"
           }
         },
