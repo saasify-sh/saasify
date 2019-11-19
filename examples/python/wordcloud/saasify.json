@@ -38,7 +38,7 @@
     }
   ],
   "amountPerBase": 99,
-  "amountPerRequest": 0.2,
+  "amountPerRequest": 0.5,
   "amountPerCompute": 0,
   "amountPerBandwidth": 0,
   "noAuthRateLimit": {
