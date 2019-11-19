@@ -27,13 +27,15 @@ This project provides a hosted API for [stylecloud](https://github.com/minimaxir
 
 ## Quick Start
 
-Welcome to the quick-start! Below are some examples for common ways of using the API via `cURL`. See the sidebar for a reference of all the supported [API endpoints](/docs#tag/service).
+Welcome to the quick-start! Below are some examples for common ways of using the API via `cURL`.
+
+Also be sure to check out the full reference of [API endpoints](https://wordcloud.saasify.sh/docs#tag/service).
 
 ### Intro
 
 Wordclouds are a graphical cloud of words that fit the shape of free [Font Awesome](https://fontawesome.com/icons?d=gallery&m=free) icons using a color palette from [palettable](https://jiffyclub.github.io/palettable/).
 
-The most common use is to generate a wordcloud from a news article or other webpage. For this, we can pass a `url` to the `/stylecloud` API:
+The most common use case is to generate a wordcloud from a news article or other webpage. For this, we can pass a `url` to the `/stylecloud` API.
 
 ### Generating a wordcloud from a URL
 
@@ -48,8 +50,7 @@ curl -X POST -o 'example.png' \
   }'
 ```
 
-
-This example generates an image stored in `example.png`, containing a wordcloud from [this article](https://www.bbc.com/sport/athletics/50460861) with the [running icon](https://fontawesome.com/icons/running?style=solid) icon.
+This example generates an image stored in `example.png`, containing a wordcloud from [this article](https://www.bbc.com/sport/athletics/50460861) with the [running icon](https://fontawesome.com/icons/running?style=solid).
 
 *example.png*
 
@@ -71,7 +72,7 @@ Changing these parameters will change the generated image.
 
 ### Generating a wordcloud from a Wikipedia article
 
-Let's try changing the shape to swimming `icon` via [`fas fa-swimmer`](https://fontawesome.com/icons/swimmer?style=solid) from Font Awesome and use the wikipedia page of [Michael Phelps](https://en.wikipedia.org/wiki/Michael_Phelps).
+Let's try changing the shape to a swimming icon [`fas fa-swimmer`](https://fontawesome.com/icons/swimmer?style=solid) from Font Awesome and use the wikipedia page for [Michael Phelps](https://en.wikipedia.org/wiki/Michael_Phelps).
 
 ```sh
 curl -X POST -o 'example.png' \
@@ -89,7 +90,7 @@ curl -X POST -o 'example.png' \
 
 ### Generating a wordcloud with custom color palette
 
-Now let's try switching things up by setting the `palette` to [`cmocean.sequential.Matter_10`](https://jiffyclub.github.io/palettable/cmocean/sequential/#matter_10) from palettable.
+Now let's try changing the `palette` to [`cmocean.sequential.Matter_10`](https://jiffyclub.github.io/palettable/cmocean/sequential/#matter_10) from palettable.
 
 ```sh
 curl -X POST -o 'example.png' \
@@ -106,11 +107,9 @@ curl -X POST -o 'example.png' \
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/yc.png" width="256" />
 
-Awesome! To continue playing with the full power of the API, see [our API docs](https://wordcloud.saasify.sh/docs#tag/service).
+Awesome! To continue playing with the full power of the API, check out [our API docs](https://wordcloud.saasify.sh/docs#tag/service).
 
-Hitting our public rate limit? Consider [upgrading](https://wordcloud.saasify.sh/pricing) to remove the rate limits.
-
-Thanks!
+Hitting our public rate limit? Consider [upgrading](https://wordcloud.saasify.sh/pricing) to remove all rate limits.
 
 ## License
 
