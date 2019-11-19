@@ -8,7 +8,7 @@ If you've ever struggled to make a living working on open source, we hear you.
 
 OSS can be extremely powerful and rewarding, but there is a huge problem that exists in the market between how valuable open source is to every business in existence versus how difficult it is for OSS developers to capture any of that value.
 
-Patreon and donations help with a very small percentage of this problem because the business model of voluntarily giving back to OSS is inherently weak.
+Donation platforms like Patreon and GitHub Sponsors help with a very small percentage of this problem because the business model of voluntarily giving back to OSS is inherently weak.
 
 Contrast this with the standard SaaS API business model of paying based on usage that aligns much more naturally with how businesses actually pay for software critical to their core business needs.
 
