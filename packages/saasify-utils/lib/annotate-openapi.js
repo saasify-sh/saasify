@@ -25,13 +25,9 @@ module.exports = async (spec, deployment, opts = {}) => {
     }
   ]
 
-  let readme = deployment.readme || ''
+  const readmeRaw = deployment.readme || ''
 
-  if (readme) {
-    // pre-process readme to ensure headers play well with redoc
-    readme = processReadme(readme)
-    readme = `# Readme\n\n${readme}`
-  }
+  const { readme, quickStart, supportingOSS } = processReadme(readmeRaw)
 
   api.info = {
     ...api.info,
@@ -43,7 +39,9 @@ module.exports = async (spec, deployment, opts = {}) => {
       email: 'support@saasify.sh'
     },
     description: `
-${readme}
+${quickStart || readme}
+
+# Configuration
 
 ## API
 
@@ -112,7 +110,7 @@ When we make backwards-incompatible changes to an API, we release new versions f
 
 You can visit your [Dashboard](/dashboard) to manage your API version.
 
----
+${supportingOSS}
 `
   }
 
