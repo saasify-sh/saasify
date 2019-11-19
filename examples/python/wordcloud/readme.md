@@ -89,7 +89,7 @@ curl -X POST -o 'example.png' \
 
 ### Generating a wordcloud with custom color palette
 
-Now let's change switching things up by setting the `palette` to [`cmocean.sequential.Matter_10`](https://jiffyclub.github.io/palettable/cmocean/sequential/#matter_10) from palettable.
+Now let's try switching things up by setting the `palette` to [`cmocean.sequential.Matter_10`](https://jiffyclub.github.io/palettable/cmocean/sequential/#matter_10) from palettable.
 
 ```sh
 curl -X POST -o 'example.png' \
@@ -108,7 +108,7 @@ curl -X POST -o 'example.png' \
 
 Awesome! To continue playing with the full power of the API, see [our API docs](https://wordcloud.saasify.sh/docs#tag/service).
 
-Hitting our rate limit? Consider [upgrading](https://wordcloud.saasify.sh/pricing) to remove rate limits.
+Hitting our public rate limit? Consider [upgrading](https://wordcloud.saasify.sh/pricing) to remove the rate limits.
 
 Thanks!
 
