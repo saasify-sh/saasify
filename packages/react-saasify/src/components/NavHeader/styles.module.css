@@ -35,12 +35,17 @@
   display: flex;
 }
 
+.logo-image {
+  margin-right: 24px;
+  height: 48px;
+}
+
 .logo {
   align-self: center;
   display: flex;
-  max-height: 1.3em;
-  margin-right: 24px;
   transition: all 400ms ease;
+  height: 100%;
+  width: 100%;
 }
 
 .logo-text {
