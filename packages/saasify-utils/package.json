@@ -1,6 +1,6 @@
 {
   "name": "saasify-utils",
-  "version": "1.11.6",
+  "version": "1.11.7",
   "description": "Shared utilities for Saasify.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
