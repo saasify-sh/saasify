@@ -114,14 +114,6 @@ ${supportingOSS}
 `
   }
 
-  if (deployment.saas.logo) {
-    api.info['x-logo'] = {
-      url: deployment.saas.logo,
-      altText: deployment.project.name,
-      href: '/'
-    }
-  }
-
   api.components = {
     ...api.components,
     securitySchemes: {

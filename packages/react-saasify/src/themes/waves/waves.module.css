@@ -63,6 +63,15 @@
   padding: var(--space-xl);
 }
 
+.theme-waves .loading {
+  background: white;
+}
+
+.theme-waves .loading .loading-icon,
+.theme-waves .loading .title {
+  color: var(--color-fg) !important;
+}
+
 /*
  * Section
  * ----------------------------
@@ -425,7 +434,6 @@
   padding-left: var(--side-gutter);
   padding-right: var(--side-gutter);
   padding-top: var(--space-m);
-  position: sticky;
   transition: var(--transition-all-fast);
 }
 
@@ -933,4 +941,46 @@
 .theme-waves .enterprise-section .content {
   max-width: 600px;
   text-align: center;
+}
+
+/*
+ * Docs
+ * ----------------------------
+ */
+
+.theme-waves .docs-page {
+  background: white;
+}
+
+.theme-waves .docs-page pre {
+  border-radius: 8px;
+}
+
+.theme-waves .docs-page .logo {
+  filter: brightness(100); /* White logo on docs */
+}
+
+.theme-waves .docs-page header {
+  background: #292929 !important;
+}
+
+@media (min-width: 48em) {
+  .theme-waves .docs-page header.attached .link {
+    color: white !important;
+  }
+}
+
+.theme-waves
+  .docs-page
+  header:not(.attached):not(.expanded)
+  .cta-button:global(.secondary):not(:hover) {
+  border-color: white !important;
+  color: white !important;
+}
+
+.theme-waves .docs-page header.attached .logo-text:not(:hover),
+.theme-waves .docs-page header.attached .links .link:not(:hover),
+.theme-waves .docs-page header.expanded .logo-text:not(:hover),
+.theme-waves .docs-page header.expanded .links .link:not(:hover) {
+  color: white !important;
 }

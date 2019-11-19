@@ -15,6 +15,7 @@
 }
 
 .theme-okta {
+  background: #23303a;
   color: #fff;
 }
 
@@ -128,4 +129,8 @@ body header + section:first-of-type .title {
 
 .theme-okta .live-service-demo .footer__service__name {
   color: #de7443;
+}
+
+.theme-okta .docs-page header {
+  background: #23303a !important;
 }
