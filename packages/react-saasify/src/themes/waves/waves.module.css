@@ -956,7 +956,7 @@
   border-radius: 8px;
 }
 
-.theme-waves .docs-page .logo {
+.theme-waves .docs-page header .logo {
   filter: brightness(100); /* White logo on docs */
 }
 
