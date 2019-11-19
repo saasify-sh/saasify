@@ -8,9 +8,9 @@ fastapi = "*"
 stylecloud = "*"
 requests = "*"
 aiofiles = "*"
-diffbot = "*"
 python-dotenv = "*"
 pydantic = "*"
+urllib2 = "*"
 
 [dev-packages]
 uvicorn = "*"

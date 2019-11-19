@@ -103,7 +103,6 @@ async function prepareSchema(schema) {
 
 module.exports.serviceToPaths = async function serviceToPaths(service) {
   const { route, definition } = service
-
   const result = {}
 
   // ---------------------------------------------------------------------------
@@ -114,6 +113,7 @@ module.exports.serviceToPaths = async function serviceToPaths(service) {
     http: isRawHttpRequest = false,
     schema: paramsSchema
   } = definition.params
+
   let requestBody
   let requestSchema
 
@@ -195,46 +195,51 @@ module.exports.serviceToPaths = async function serviceToPaths(service) {
   // Responses
   // ---------------------------------------------------------------------------
 
-  const {
-    http: isRawHttpResponse = false,
-    schema: responseSchema
-  } = definition.returns
-  const { type, additionalProperties, properties, ...rest } = responseSchema
-  let responses
-
-  if (isRawHttpResponse) {
-    const responseSchema = {
-      type: 'string',
-      format: 'binary',
-      description:
-        'Raw HTTP response body which can be interpreted using the standard `Content-Type` header.'
+  const { returns = {} } = definition
+  const { http: isRawHttpResponse = false, schema: responseSchema } = returns
+  let responses = {
+    200: {
+      description: 'Success'
     }
+  }
 
-    responses = {
-      200: {
-        description: 'Success',
-        content: {
-          // TODO: support restriction response content-types via OpenAPI `produces` prop
-          '*/*': {
-            schema: responseSchema
+  if (responseSchema) {
+    const { type, additionalProperties, properties, ...rest } = responseSchema
+
+    if (isRawHttpResponse) {
+      const responseSchema = {
+        type: 'string',
+        format: 'binary',
+        description:
+          'Raw HTTP response body which can be interpreted using the standard `Content-Type` header.'
+      }
+
+      responses = {
+        200: {
+          description: 'Success',
+          content: {
+            // TODO: support restriction response content-types via OpenAPI `produces` prop
+            '*/*': {
+              schema: responseSchema
+            }
           }
         }
       }
-    }
-  } else {
-    const returnsJsonSchema = {
-      ...rest,
-      ...properties.result
-    }
-    const returns = await prepareSchema(returnsJsonSchema)
-    const responseSchema = jsonSchemaToOpenAPI(returns)
+    } else {
+      const returnsJsonSchema = {
+        ...rest,
+        ...properties.result
+      }
+      const returns = await prepareSchema(returnsJsonSchema)
+      const responseSchema = jsonSchemaToOpenAPI(returns)
 
-    responses = {
-      200: {
-        description: 'Success',
-        content: {
-          'application/json': {
-            schema: responseSchema
+      responses = {
+        200: {
+          description: 'Success',
+          content: {
+            'application/json': {
+              schema: responseSchema
+            }
           }
         }
       }

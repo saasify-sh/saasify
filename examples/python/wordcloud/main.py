@@ -1,6 +1,5 @@
 import os
 import pprint
-import diffbot
 
 from dotenv import load_dotenv
 from enum import Enum
@@ -12,6 +11,7 @@ from stylecloud import stylecloud as sc
 from typing import Optional
 from wordcloud import WordCloud
 
+from diffbot import article
 from fontawesome import FontAwesomeIcon
 from palettes import Palette
 
@@ -85,7 +85,7 @@ def stylecloud(request: StyleCloudRequest):
 
     if url is not None:
         require_diffbot()
-        article = diffbot.article(
+        result = article(
             url,
             token=DIFFBOT_TOKEN,
             paging=False,
@@ -93,8 +93,8 @@ def stylecloud(request: StyleCloudRequest):
             maxTags=0,
             norender=True,
         )["objects"][0]
-        pprint.pprint(article)
-        text = article["text"]
+        pprint.pprint(result)
+        text = result["text"]
     elif text is None:
         raise Exception('Must provide either "text" or "url".')
 
