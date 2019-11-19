@@ -3,6 +3,7 @@ import pprint
 import diffbot
 
 from dotenv import load_dotenv
+from enum import Enum
 from fastapi import FastAPI
 from pydantic import BaseModel, Schema
 from pydantic.color import Color
@@ -15,15 +16,23 @@ from fontawesome import FontAwesomeIcon
 from palettes import Palette
 
 
+class Gradient(str, Enum):
+    horizontal = "horizontal"
+    vertical = "vertical"
+
+
 class StyleCloudRequest(BaseModel):
     url: str = Schema(None, description="URL of webpage to extract text")
     text: str = Schema(None, description="Source text")
     size: int = Schema(512, description="Output width and height in pixels")
     icon_name: FontAwesomeIcon = Schema(
-        "fas fa-flag", description="[Font Awesome](https://fontawesome.com/icons?d=gallery&m=free) icon mask", alias="icon"
+        "fas fa-flag",
+        description="[Font Awesome](https://fontawesome.com/icons?d=gallery&m=free) icon mask",
+        alias="icon",
     )
     palette: Palette = Schema(
-        "cartocolors.qualitative.Bold_6", description="Color palette to use from [palettable](https://jiffyclub.github.io/palettable/)"
+        "cartocolors.qualitative.Bold_6",
+        description="Color palette to use from [palettable](https://jiffyclub.github.io/palettable/)",
     )
     background_color: Color = Color("white")
     max_font_size: int = 200
@@ -31,7 +40,7 @@ class StyleCloudRequest(BaseModel):
         2000, description="Maximum number of words to include in the stylecloud", gt=0
     )
     stopwords: bool = Schema(True, description="Boolean to filter out common stopwords")
-    gradient: str = Schema(None, description="Direction of gradient")
+    gradient: Gradient = Schema(None, description="Direction of gradient")
 
 
 load_dotenv()

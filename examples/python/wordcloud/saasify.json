@@ -11,8 +11,7 @@
           "input": {
             "url": "https://www.constituteproject.org/constitution/United_States_of_America_1992",
             "icon": "fas fa-flag",
-            "palette": "cmocean.sequential.Matter_10",
-            "gradient": "horizontal"
+            "palette": "cmocean.sequential.Matter_10"
           }
         },
         {
@@ -22,7 +21,7 @@
             "url": "https://www.cbc.ca/news/canada/ottawa/snow-storm-remembrance-day-1.5355302",
             "icon": "fab fa-canadian-maple-leaf",
             "palette": "colorbrewer.sequential.Reds_6",
-            "gradient": "horizontal"
+            "gradient": "vertical"
           }
         },
         {
