@@ -984,3 +984,7 @@
 .theme-waves .docs-page header.expanded .links .link:not(:hover) {
   color: white !important;
 }
+
+.theme-waves .docs-page p {
+  font-family: var(--font-family);
+}
