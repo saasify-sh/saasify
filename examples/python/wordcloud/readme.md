@@ -85,7 +85,7 @@ curl -X POST -o 'example.png' \
 
 *example.png*
 
-<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/swimmer.png" width="256" />
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/michael-phelps.png" width="256" />
 
 ### Generating a wordcloud with custom color palette
 
