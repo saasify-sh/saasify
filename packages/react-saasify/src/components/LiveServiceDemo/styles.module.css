@@ -98,8 +98,17 @@
   text-align: center;
 }
 
+.output .img-wrapper {
+  padding: 24px;
+}
+
+.output--flush .img-wrapper {
+  padding: 0;
+}
+
 .output img {
   display: block;
+  height: 100%;
   max-width: 100%;
   margin: 0 auto;
 }

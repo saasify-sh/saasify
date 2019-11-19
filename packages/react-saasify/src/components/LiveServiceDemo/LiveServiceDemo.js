@@ -55,6 +55,8 @@ export class LiveServiceDemo extends Component {
   render() {
     const { service, auth } = this.props
 
+    const { codeBlockOutputFlush } = this.props.deployment.saas.theme
+
     const {
       selected,
       copiedTextToClipboard,
@@ -302,7 +304,8 @@ export class LiveServiceDemo extends Component {
             className={theme(
               styles,
               'output',
-              hitRateLimit && theme(styles, 'output--hit-rate-limit')
+              hitRateLimit && theme(styles, 'output--hit-rate-limit'),
+              codeBlockOutputFlush && theme(styles, 'output--flush')
             )}
           >
             {renderedOutput}
