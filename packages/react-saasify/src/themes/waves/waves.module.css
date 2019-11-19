@@ -709,7 +709,6 @@
 }
 
 .theme-waves .live-service-demo .output {
-  max-height: 30vh;
   overflow-y: auto;
 }
 
@@ -717,8 +716,8 @@
   background: var(--code-block-output-background);
 }
 
-.theme-waves .live-service-demo .output img {
-  max-height: 30vh;
+.theme-waves .live-service-demo .output .img-wrapper {
+  height: 30vh;
 }
 
 .theme-waves .code-block {
