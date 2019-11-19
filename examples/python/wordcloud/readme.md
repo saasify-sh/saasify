@@ -45,8 +45,7 @@ curl -X POST -o 'example.png' \
   -H 'content-type: application/json' \
   -d '{
     "url": "https://www.bbc.com/sport/athletics/50460861",
-    "icon": "fas fa-running",
-    "gradient": "horizontal"
+    "icon": "fas fa-running"
   }'
 ```
 
@@ -63,8 +62,7 @@ Breaking down the example above, you can see the payload looks like:
 ```json
 {
   "url": "https://www.bbc.com/sport/athletics/50460861",
-  "icon": "fas fa-running",
-  "gradient": "horizontal"
+  "icon": "fas fa-running"
 }
 ```
 
@@ -80,7 +78,8 @@ curl -X POST -o 'example.png' \
   -H 'content-type: application/json' \
   -d '{
     "url": "https://en.wikipedia.org/wiki/Michael_Phelps",
-    "icon": "fas fa-swimmer"
+    "icon": "fas fa-swimmer",
+    "gradient": "none"
   }'
 ```
 
@@ -99,7 +98,8 @@ curl -X POST -o 'example.png' \
   -d '{
     "url": "https://blog.ycombinator.com/ycs-essential-startup-advice/",
     "icon": "fab fa-y-combinator",
-    "palette": "cmocean.sequential.Matter_10"
+    "palette": "cmocean.sequential.Matter_10",
+    "gradient": "none"
   }'
 ```
 

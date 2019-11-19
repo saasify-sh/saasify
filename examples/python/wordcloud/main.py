@@ -17,6 +17,7 @@ from palettes import Palette
 
 
 class Gradient(str, Enum):
+    none = "none"
     horizontal = "horizontal"
     vertical = "vertical"
 
@@ -26,7 +27,7 @@ class StyleCloudRequest(BaseModel):
     text: str = Schema(None, description="Source text")
     size: int = Schema(512, description="Output width and height in pixels")
     icon_name: FontAwesomeIcon = Schema(
-        "fas fa-flag",
+        "fas fa-grin",
         description="[Font Awesome](https://fontawesome.com/icons?d=gallery&m=free) icon mask",
         alias="icon",
     )
@@ -40,7 +41,10 @@ class StyleCloudRequest(BaseModel):
         2000, description="Maximum number of words to include in the stylecloud", gt=0
     )
     stopwords: bool = Schema(True, description="Boolean to filter out common stopwords")
-    gradient: Gradient = Schema(None, description="Direction of gradient")
+    gradient: Gradient = Schema(
+        "horizontal",
+        description="Direction of gradient. Set to 'none' to disable gradient.",
+    )
 
 
 load_dotenv()
@@ -82,9 +86,14 @@ def stylecloud(request: StyleCloudRequest):
     url = params.pop("url", None)
     text = params.pop("text", None)
     background_color = params.pop("background_color", None)
+    gradient = params.pop("gradient", None)
+
+    if gradient == Gradient.none:
+        gradient = None
 
     if url is not None:
         require_diffbot()
+        # TODO: replace this with a more lightweight alternative than diffbot
         result = article(
             url,
             token=DIFFBOT_TOKEN,
@@ -101,6 +110,7 @@ def stylecloud(request: StyleCloudRequest):
     sc.gen_stylecloud(
         **params,
         text=text,
+        gradient=gradient,
         icon_dir="/tmp/icons",
         output_name=OUTPUT_NAME,
         background_color=background_color.as_hex()
