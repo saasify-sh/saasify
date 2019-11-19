@@ -11,7 +11,9 @@
 
 ## Supporting OSS
 
-This project provides a hosted API for [stylecloud](https://github.com/minimaxir/stylecloud) and [wordcloud](https://github.com/amueller/word_cloud), by [minimaxir](https://github.com/minimaxir) and [amueller](https://github.com/amueller) respectively. **The majority of any revenue generated from this API is set aside for the original OSS developers**. If this is you, please [get in touch](https://saasify.sh/#/support) to setup payouts and answer any questions you may have.
+This project provides a hosted API for [stylecloud](https://github.com/minimaxir/stylecloud) and [wordcloud](https://github.com/amueller/word_cloud), by [minimaxir](https://github.com/minimaxir) and [amueller](https://github.com/amueller) respectively.
+
+**We set aside the majority of any revenue generated from this API for the original OSS developers**. If this is you, please [get in touch](https://saasify.sh/#/support) to setup payouts and answer any questions you may have.
 
 ## Hosted API
 
@@ -31,7 +33,7 @@ Welcome to the quick-start! Below are some examples for common ways of using the
 
 Wordclouds are a graphical cloud of words that fit the shape of free [Font Awesome](https://fontawesome.com/icons?d=gallery&m=free) icons using a color palette from [palettable](https://jiffyclub.github.io/palettable/).
 
-The most common use is to generate a wordcloud from a news article, or other web page. For this, we can pass a `url` to the `/stylecloud` API:
+The most common use is to generate a wordcloud from a news article or other webpage. For this, we can pass a `url` to the `/stylecloud` API:
 
 ### Generating a wordcloud from a URL
 
@@ -39,57 +41,76 @@ The most common use is to generate a wordcloud from a news article, or other web
 curl -X POST -o 'example.png' \
   'https://api.saasify.sh/1/call/dev/wordcloud/stylecloud' \
   -H 'content-type: application/json' \
-  -d '{ "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347", "icon": "fas fa-flag" }'
+  -d '{
+    "url": "https://www.bbc.com/sport/athletics/50460861",
+    "icon": "fas fa-running",
+    "gradient": "horizontal"
+  }'
 ```
 
-This example generates an image stored in `example.png`, containing a wordcloud from [this article](https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347) with the [flag](https://fontawesome.com/icons/flag?style=solid) icon.
 
-**example.png**
+This example generates an image stored in `example.png`, containing a wordcloud from [this article](https://www.bbc.com/sport/athletics/50460861) with the [running icon](https://fontawesome.com/icons/running?style=solid) icon.
 
-<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/stylecloud.png" width="256" />
+*example.png*
+
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/running.png" width="256" />
 
 Breaking down the example above, you can see the payload looks like:
 
-**Default Payload**
+*Default Payload*
 
 ```json
 {
-  "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347",
-  "icon": "fas fa-flag"
+  "url": "https://www.bbc.com/sport/athletics/50460861",
+  "icon": "fas fa-running",
+  "gradient": "horizontal"
 }
 ```
 
-Changing these parameters will change the generated image. Let's change the shape to use a bicycle by changing `icon` to [`fas fa-bicycle`](https://fontawesome.com/icons/bicycle) from Font Awesome.
+Changing these parameters will change the generated image.
 
-### Generating a bicycle wordcloud
+### Generating a wordcloud from a Wikipedia article
 
-```sh
-curl -X POST -o 'example.png' \
-  'https://api.saasify.sh/1/call/dev/wordcloud/stylecloud' \
-  -H 'content-type: application/json' \
-  -d '{ "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347", "icon": "fas fa-bicycle" }'
-```
-
-**example.png**
-
-<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/bicycle.png" width="256" />
-
-Great! Now let's change `palette` to [`cmocean.sequential.Matter_10`](https://jiffyclub.github.io/palettable/cmocean/sequential/#matter_10) from palettable.
-
-### Generating a wordcloud with color palette
+Let's try changing the shape to swimming `icon` via [`fas fa-swimmer`](https://fontawesome.com/icons/swimmer?style=solid) from Font Awesome and use the wikipedia page of [Michael Phelps](https://en.wikipedia.org/wiki/Michael_Phelps).
 
 ```sh
 curl -X POST -o 'example.png' \
   'https://api.saasify.sh/1/call/dev/wordcloud/stylecloud' \
   -H 'content-type: application/json' \
-  -d '{ "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347", "icon": "fas fa-bicycle" }'
+  -d '{
+    "url": "https://en.wikipedia.org/wiki/Michael_Phelps",
+    "icon": "fas fa-swimmer"
+  }'
 ```
 
-**example.png**
+*example.png*
 
-<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/bicycle.png" width="256" />
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/swimmer.png" width="256" />
 
-Awesome! To continue playing with the full power of the API, see [our API docs](https://wordcloud.saasify.sh/docs#tag/service). Hitting our rate limit? Make sure you [upgrade](https://wordcloud.saasify.sh/pricing) to remove rate limits.
+### Generating a wordcloud with custom color palette
+
+Now let's change switching things up by setting the `palette` to [`cmocean.sequential.Matter_10`](https://jiffyclub.github.io/palettable/cmocean/sequential/#matter_10) from palettable.
+
+```sh
+curl -X POST -o 'example.png' \
+  'https://api.saasify.sh/1/call/dev/wordcloud/stylecloud' \
+  -H 'content-type: application/json' \
+  -d '{
+    "url": "https://blog.ycombinator.com/ycs-essential-startup-advice/",
+    "icon": "fab fa-y-combinator",
+    "palette": "cmocean.sequential.Matter_10"
+  }'
+```
+
+*example.png*
+
+<img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/yc.png" width="256" />
+
+Awesome! To continue playing with the full power of the API, see [our API docs](https://wordcloud.saasify.sh/docs#tag/service).
+
+Hitting our rate limit? Consider [upgrading](https://wordcloud.saasify.sh/pricing) to remove rate limits.
+
+Thanks!
 
 ## License
 
