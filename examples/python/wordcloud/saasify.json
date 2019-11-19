@@ -11,7 +11,8 @@
           "input": {
             "url": "https://www.constituteproject.org/constitution/United_States_of_America_1992",
             "icon": "fas fa-flag",
-            "palette": "cartocolors.qualitative.Bold_6"
+            "palette": "cmocean.sequential.Matter_10",
+            "gradient": "horizontal"
           }
         },
         {
@@ -20,7 +21,8 @@
           "input": {
             "url": "https://www.cbc.ca/news/canada/ottawa/snow-storm-remembrance-day-1.5355302",
             "icon": "fab fa-canadian-maple-leaf",
-            "palette": "colorbrewer.sequential.Reds_6"
+            "palette": "colorbrewer.sequential.Reds_6",
+            "gradient": "horizontal"
           }
         },
         {
@@ -29,7 +31,8 @@
           "input": {
             "url": "https://blog.ycombinator.com/ycs-essential-startup-advice/",
             "icon": "fab fa-y-combinator",
-            "palette": "cartocolors.qualitative.Pastel_8"
+            "palette": "cartocolors.qualitative.Pastel_8",
+            "gradient": "horizontal"
           }
         }
       ]

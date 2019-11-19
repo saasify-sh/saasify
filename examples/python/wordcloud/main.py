@@ -31,7 +31,7 @@ class StyleCloudRequest(BaseModel):
         2000, description="Maximum number of words to include in the stylecloud", gt=0
     )
     stopwords: bool = Schema(True, description="Boolean to filter out common stopwords")
-    gradient: str = None
+    gradient: str = Schema(None, description="Direction of gradient")
 
 
 load_dotenv()
