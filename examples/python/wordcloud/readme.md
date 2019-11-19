@@ -25,15 +25,15 @@ This project provides a hosted API for [stylecloud](https://github.com/minimaxir
 
 ## Quick Start
 
-Welcome to the quick-start! Below are the examples for the most popular ways to use this API using cURL. See the sidebar for all the other supported API's and REST methods!
+Welcome to the quick-start! Below are the examples for the most popular ways to use this API using cURL. See [our API docs](https://wordcloud.saasify.sh/docs#tag/service) for all the other supported API's and REST methods!
 
-### Generating a wordcloud from a URL
+### Intro
 
 Wordclouds are a graphical cloud of words that fit the shape of free [Font Awesome](https://fontawesome.com/icons?d=gallery&m=free) icons using a color palette from [palettable](https://jiffyclub.github.io/palettable/).
 
 The most common way is to generate a wordcloud from a news article, or other web page. For this, we can pass a `url` to the `/stylecloud` API:
 
-#### Generating wordcloud via cURL
+### Generating a wordcloud from a URL
 
 ```sh
 curl -X POST -o 'example.png' \
@@ -44,13 +44,13 @@ curl -X POST -o 'example.png' \
 
 generates an image called `example.png`, containing a wordcloud from [this article](https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347) with the [Font Awesome flag icon](https://fontawesome.com/icons/flag?style=solid)
 
-#### example.png
+**example.png**
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/stylecloud.png" width="256" />
 
 Breaking down the example above, you can see the payload looks like:
 
-#### Default Payload
+**Default Payload**
 
 ```json
 {
@@ -61,7 +61,7 @@ Breaking down the example above, you can see the payload looks like:
 
 Changing these parameters will change the generated image. Let's change the shape to use a bicycle by changing `icon` to [`fas fa-bicycle` from Font Awesome](https://fontawesome.com/icons/bicycle):
 
-#### Generating a bicycle wordcloud
+### Generating a bicycle wordcloud
 
 ```sh
 curl -X POST -o 'example.png' \
@@ -70,13 +70,13 @@ curl -X POST -o 'example.png' \
   -d '{ "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347", "icon": "fas fa-bicycle" }'
 ```
 
-#### example.png
+**example.png**
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/bicycle.png" width="256" />
 
 Great! Now let's change `palette` to [`cmocean.sequential.Matter_10` from palettable](https://jiffyclub.github.io/palettable/cmocean/sequential/#matter_10):
 
-#### Generating a wordcloud with color palette
+### Generating a wordcloud with color palette
 
 ```sh
 curl -X POST -o 'example.png' \
@@ -85,7 +85,7 @@ curl -X POST -o 'example.png' \
   -d '{ "url": "https://www.theonion.com/new-day-same-bullshit-whispers-dalai-lama-before-sl-1839720347", "icon": "fas fa-bicycle" }'
 ```
 
-#### example.png
+**example.png**
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/python/wordcloud/examples/bicycle.png" width="256" />
 
