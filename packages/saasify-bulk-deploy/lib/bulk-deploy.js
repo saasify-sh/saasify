@@ -40,22 +40,48 @@ module.exports = async (repos, opts = {}) => {
     }
   }
 
-  const deployments = await pMap(
+  const deployments = []
+  const errors = []
+
+  await pMap(
     projects,
-    (project) => deployProject(project, { debug }),
+    async (project) => {
+      try {
+        const deployment = await deployProject(project, { debug })
+        deployments.push(deployment)
+
+        if (publish) {
+          await publishDeployment(deployment, { debug })
+        }
+      } catch (err) {
+        errors.push({ project, error: err })
+        console.err()
+        console.err()
+        console.error(err)
+        console.err()
+        console.err()
+      }
+    },
     {
       concurrency: 1
     }
   )
 
-  if (publish) {
-    await pMap(
-      deployments,
-      (deployment) => publishDeployment(deployment, { debug }),
-      {
-        concurrency: 1
-      }
-    )
+  const deploymentsLabel = pluralize('deployment', deployments.length)
+  const errorsLabel = pluralize('error', errors.length)
+  const publishInfo = publish ? 'and published ' : ''
+  console.log(
+    `Deployed ${publishInfo}${projects.length} saasify ${deploymentsLabel}`
+  )
+
+  if (errors.length) {
+    const errs = errors.map((e) => ({
+      name: e.project.config.name,
+      error: e.error
+    }))
+
+    console.log(`Error: encountered ${errors.length} ${errorsLabel}`)
+    console.log(JSON.stringify(errs, null, 2))
   }
 
   return deployments
