@@ -19,7 +19,7 @@ module.exports = (program, client) => {
       try {
         const project = await parseProject(program)
         if (program.debug) {
-          console.log(JSON.stringify(project, null, 2))
+          console.error(JSON.stringify(project, null, 2))
         }
 
         const zipBuffer = await zipProject(program, project)
@@ -38,7 +38,7 @@ module.exports = (program, client) => {
           clipboard.writeSync(result.url)
         }
 
-        console.log(JSON.stringify(result, null, 2))
+        program.appendOutput(JSON.stringify(result, null, 2))
       } catch (err) {
         handleError(program, err)
       }

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
+const fs = require('fs').promises
 const program = require('commander')
 const SaasifyClient = require('saasify-client')
 
@@ -20,6 +21,10 @@ module.exports = async (argv, opts = {}) => {
     .version(version)
     .option('-d, --debug', 'Enable extra debugging output', false)
     .option('-n, --project <name>', 'Project name')
+    .option(
+      '-o, --output <file>',
+      'Write any output to the given file (defaults to stdout)'
+    )
     .option(
       '-c, --config <path>',
       'Path to `saasify.json` file (defaults to cwd)'
@@ -43,6 +48,14 @@ module.exports = async (argv, opts = {}) => {
     if (!client.isAuthenticated) {
       console.error('Command requires authentication. Please login first.')
       process.exit(1)
+    }
+  }
+
+  program.appendOutput = (content) => {
+    if (program.output) {
+      return fs.appendFile(program.output, content)
+    } else {
+      console.log(content)
     }
   }
 

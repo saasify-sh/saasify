@@ -51,17 +51,6 @@ Some example use cases include:
 - Pre-built machine learning models
 - Your NPM module or PyPi package?
 
-Saasify is built around serverless functions, so the ideal use case involves stateless functions that take a specific input and produce some valuable output.
-
-Some example use cases include:
-
-- Workflow automation (headless chrome, bots)
-- Image & media processing tasks
-- Data transformations
-- General algorithms
-- Pre-built machine learning models
-- Your NPM module or PyPI package?
-
 Check out the [showcase](https://saasify.sh/#/showcase) for more live examples of projects which have been saasified.
 
 Have an idea or an OSS project that you'd like to monetize, but not sure where to start? Feel free to contact us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY). ✌️

@@ -22,7 +22,7 @@ module.exports = (program, client) => {
             const teams = await spinner(client.listTeams(), 'Fetching teams')
 
             // TODO: better output formatting
-            console.log(JSON.stringify(teams, null, 2))
+            program.appendOutput(JSON.stringify(teams, null, 2))
             break
           }
 
@@ -52,7 +52,7 @@ module.exports = (program, client) => {
             client.teamId = team.id
             auth.switchTeam(team)
 
-            console.log(JSON.stringify(team, null, 2))
+            program.appendOutput(JSON.stringify(team, null, 2))
             break
           }
 

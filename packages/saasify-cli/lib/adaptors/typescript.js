@@ -52,7 +52,7 @@ module.exports.getPackageInfo = async (config) => {
 module.exports.generateDefinition = async (program, service, config, opts) => {
   const src = path.resolve(config.root, service.src)
   const srcRelative = path.relative(process.cwd(), src)
-  console.log(`parsing service ${srcRelative}`)
+  console.error(`parsing service ${srcRelative}`)
 
   const definition = await fts.generateDefinition(src, opts)
 

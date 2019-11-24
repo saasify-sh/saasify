@@ -10,9 +10,8 @@ const spinner = require('../spinner')
 module.exports = (program, client) => {
   program
     .command('publish <deploymentId|deploymentUrl>')
-    .description(
-      'Creates a subscription to a project (requires a valid billing source)'
-    )
+    .description('Publishes a deployment')
+    .option('--new-version <version>', 'Specify the new version to publish')
     .action(async (identifier, opts) => {
       program.requireAuthentication()
 
@@ -27,7 +26,7 @@ module.exports = (program, client) => {
 
         if (!parsedFaas.deploymentHash) {
           throw new Error(
-            `Invalid project identifier [${identifier}]. Publishing requires a full deployment identifier with version hash.`
+            `Invalid deployment identifier [${identifier}]. Publishing requires a full deployment identifier with version hash.`
           )
         }
 
@@ -39,26 +38,42 @@ module.exports = (program, client) => {
         )
 
         const lastPublishedVersion = project.lastPublishedVersion || '0.0.0'
-        console.log(`Current version ${lastPublishedVersion}`)
+        console.error(`Current version ${lastPublishedVersion}`)
+        let version = opts.newVersion
 
-        const prompt = new Input({
-          message: 'Enter semver version to publish.',
-          validate: (value) => {
-            return semver.valid(value) && semver.gt(value, lastPublishedVersion)
-          },
-          result: (value) => {
-            return semver.clean(value)
+        const validate = (value) =>
+          semver.valid(value) && semver.gt(value, lastPublishedVersion)
+
+        if (version) {
+          if (!semver.valid(version)) {
+            console.error(`Invalid semver "${version}"`)
+            process.exit(1)
+          } else if (!validate(version)) {
+            console.error(
+              `Invalid semver version "${version}" must be greater than current version "${lastPublishedVersion}"`
+            )
+            process.exit(1)
           }
-        })
+        } else {
+          const prompt = new Input({
+            message: 'Enter semver version to publish.',
+            validate,
+            result: (value) => {
+              return semver.clean(value)
+            }
+          })
 
-        const version = await prompt.run()
+          version = await prompt.run()
+        }
 
         const deployment = await spinner(
           client.publishDeployment(deploymentId, { version }),
           `Publishing deployment [${deploymentId}] as version "${version}"`
         )
 
-        console.log(deployment.project.aliasUrl || deployment.project.saasUrl)
+        program.appendOutput(
+          deployment.project.aliasUrl || deployment.project.saasUrl
+        )
       } catch (err) {
         handleError(program, err)
       }

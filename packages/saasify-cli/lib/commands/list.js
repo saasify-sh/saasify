@@ -72,7 +72,7 @@ module.exports = (program, client) => {
         )
 
         // TODO: better output formatting
-        console.log(JSON.stringify(sortedProjects, null, 2))
+        program.appendOutput(JSON.stringify(sortedProjects, null, 2))
       } catch (err) {
         handleError(program, err)
       }
