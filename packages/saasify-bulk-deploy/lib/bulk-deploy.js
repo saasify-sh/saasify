@@ -78,8 +78,7 @@ module.exports = async (repos, opts = {}) => {
 
   if (errors.length) {
     const errs = errors.map((e) => ({
-      name: e.project.config.name,
-      error: e.error
+      name: e.project.config.name
     }))
 
     console.log(`Error: encountered ${errors.length} ${errorsLabel}`)
