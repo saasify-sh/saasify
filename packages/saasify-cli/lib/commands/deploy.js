@@ -19,7 +19,7 @@ module.exports = (program, client) => {
       try {
         const project = await parseProject(program)
         if (program.debug) {
-          console.log(JSON.stringify(project, null, 2))
+          console.error(JSON.stringify(project, null, 2))
         }
 
         const zipBuffer = await zipProject(program, project)

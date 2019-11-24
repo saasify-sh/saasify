@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict'
 
 const bulkDeploy = require('./lib')
@@ -18,4 +19,6 @@ const projects = [
   }
 ]
 
-bulkDeploy(projects)
+bulkDeploy(projects, {
+  publish: true
+})

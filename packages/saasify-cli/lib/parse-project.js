@@ -63,7 +63,7 @@ module.exports.getReadme = async (config) => {
   if (readmeFiles.length) {
     return fs.readFile(readmeFiles[0], 'utf8')
   } else {
-    console.warn('Unable to find project readme')
+    console.error('Unable to find project readme')
     return ''
   }
 }

@@ -2,18 +2,24 @@
 
 const { Confirm } = require('enquirer')
 const pluralize = require('pluralize')
+const pMap = require('p-map')
 const tempy = require('tempy')
 
 const formatWhoami = require('./format-whoami')
 const getProjects = require('./get-projects')
-const whoami = require('./whoami')
+const deployProject = require('./deploy-project')
+const publishDeployment = require('./publish-deployment')
+const whoami = require('./saasify/whoami')
 
 module.exports = async (config, opts = {}) => {
   const { user, team } = await whoami(opts)
+  const reposLabel = pluralize('repo', config.length)
   const whoamiLabel = formatWhoami({ user, team })
-  const { temp = tempy.directory() } = opts
+  const { temp = tempy.directory(), publish = false } = opts
 
-  console.log(`Aggregating saasify projects from ${config.length} repos`)
+  console.log(
+    `Aggregating saasify projects from ${config.length} ${reposLabel}`
+  )
   console.log(temp)
 
   const projects = await getProjects(config, { temp })
@@ -36,5 +42,15 @@ module.exports = async (config, opts = {}) => {
     }
   }
 
-  // TODO
+  const deployments = await pMap(projects, deployProject, {
+    concurrency: 1
+  })
+
+  if (publish) {
+    await pMap(deployments, publishDeployment, {
+      concurrency: 1
+    })
+  }
+
+  return deployments
 }

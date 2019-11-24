@@ -29,8 +29,8 @@ module.exports = (program) => {
   }
 
   const configLabel = path.relative(process.cwd(), configFilePath)
-  console.log(`parsing config ${configLabel}`)
-  const configData = fs.readSync(configFilePath, 'utf8')
+  console.error(`parsing config ${configLabel}`)
+  const configData = fs.readFileSync(configFilePath, 'utf8')
   const config = parseJson(configData, configLabel)
   validateConfig(config)
 

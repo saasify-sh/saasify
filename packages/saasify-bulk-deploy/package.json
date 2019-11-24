@@ -35,10 +35,11 @@
     "ora": "^4.0.3",
     "p-map": "^3.0.0",
     "parse-github-repo-url": "^1.4.1",
+    "parse-json": "^5.0.0",
     "pify": "^4.0.1",
     "pluralize": "^8.0.0",
     "saasify": "^1.11.9",
-    "safe-eval": "^0.4.1",
+    "semver": "^6.3.0",
     "tempy": "^0.3.0"
   }
 }

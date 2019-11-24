@@ -10,7 +10,9 @@ module.exports = (program, client) => {
       program.requireAuthentication()
 
       try {
-        console.log({ user: client.user, team: client.teamSlug })
+        console.log(
+          JSON.stringify({ user: client.user, team: client.teamSlug }, null, 2)
+        )
       } catch (err) {
         handleError(program, err)
       }

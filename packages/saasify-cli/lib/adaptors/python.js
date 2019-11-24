@@ -50,7 +50,7 @@ module.exports.extractOpenAPI = async (opts) => {
 
   const src = path.resolve(config.root, service.src)
   const srcRelative = path.relative(process.cwd(), src)
-  console.log(`parsing service ${srcRelative}`)
+  console.error(`parsing service ${srcRelative}`)
 
   const [port] = await findFreePort(8761)
 
@@ -68,7 +68,7 @@ module.exports.extractOpenAPI = async (opts) => {
 
   const url = `http://localhost:${port}/openapi.json`
   const { body: spec } = await module.exports.fetchOpenAPI(url, { json: true })
-  console.log('openapi', spec)
+  console.error('openapi', spec)
 
   await killProcessTree(child.pid)
   child.cancel()

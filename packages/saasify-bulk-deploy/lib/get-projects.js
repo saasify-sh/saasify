@@ -32,11 +32,15 @@ module.exports = async function getProjects(config, opts) {
 
         let projectDirs = [dest]
         if (projects) {
-          projectDirs = await globby(projects, {
-            cwd: dest,
-            onlyDirectories: true,
-            globstar: false
-          })
+          if (typeof projects === 'string' && projects.indexOf('*') < 0) {
+            projectDirs = [projects]
+          } else {
+            projectDirs = await globby(projects, {
+              cwd: dest,
+              onlyDirectories: true,
+              globstar: false
+            })
+          }
 
           projectDirs = projectDirs.map((projectDir) =>
             path.join(dest, projectDir)
@@ -55,7 +59,7 @@ module.exports = async function getProjects(config, opts) {
 
             const config = await fs.readJson(projectConfigPath)
             return {
-              path: projectDir,
+              projectDir,
               config
             }
           },
