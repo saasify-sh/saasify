@@ -31,12 +31,6 @@
           }
         }
       ]
-    },
-    {
-      "src": "src/base64.ts"
-    },
-    {
-      "src": "src/raw.ts"
     }
   ],
   "env": {

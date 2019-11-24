@@ -55,11 +55,11 @@ module.exports = async (repos, opts = {}) => {
         }
       } catch (err) {
         errors.push({ project, error: err })
-        console.err()
-        console.err()
+        console.error()
+        console.error()
         console.error(err)
-        console.err()
-        console.err()
+        console.error()
+        console.error()
       }
     },
     {
@@ -70,9 +70,11 @@ module.exports = async (repos, opts = {}) => {
   const deploymentsLabel = pluralize('deployment', deployments.length)
   const errorsLabel = pluralize('error', errors.length)
   const publishInfo = publish ? 'and published ' : ''
+  console.log()
   console.log(
     `Deployed ${publishInfo}${projects.length} saasify ${deploymentsLabel}`
   )
+  console.log()
 
   if (errors.length) {
     const errs = errors.map((e) => ({
