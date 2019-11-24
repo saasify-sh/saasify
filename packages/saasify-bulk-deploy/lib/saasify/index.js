@@ -8,9 +8,8 @@ const SAASIFY_PATH =
   path.resolve(__dirname, '../../node_modules/.bin/saasify')
 
 module.exports = (command, args, opts = {}) => {
-  const argv = [command].concat(args.filter(Boolean))
-
-  const { pipe = true, ...rest } = opts
+  const { pipe = true, debug = false, ...rest } = opts
+  const argv = [command].concat(args.filter(Boolean), debug ? ['--debug'] : [])
 
   if (pipe) {
     console.log('saasify', argv.join(' '), rest)

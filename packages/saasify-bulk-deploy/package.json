@@ -34,6 +34,7 @@
     "lodash.flatten": "^4.4.0",
     "ora": "^4.0.3",
     "p-map": "^3.0.0",
+    "p-retry": "^4.2.0",
     "parse-github-repo-url": "^1.4.1",
     "parse-json": "^5.0.0",
     "pify": "^4.0.1",

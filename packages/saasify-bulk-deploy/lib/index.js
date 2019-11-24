@@ -11,18 +11,16 @@ const deployProject = require('./deploy-project')
 const publishDeployment = require('./publish-deployment')
 const whoami = require('./saasify/whoami')
 
-module.exports = async (config, opts = {}) => {
+module.exports = async (repos, opts = {}) => {
   const { user, team } = await whoami(opts)
-  const reposLabel = pluralize('repo', config.length)
+  const reposLabel = pluralize('repo', repos.length)
   const whoamiLabel = formatWhoami({ user, team })
-  const { temp = tempy.directory(), publish = false } = opts
+  const { temp = tempy.directory(), debug = false, publish = false } = opts
 
-  console.log(
-    `Aggregating saasify projects from ${config.length} ${reposLabel}`
-  )
+  console.log(`Aggregating saasify projects from ${repos.length} ${reposLabel}`)
   console.log(temp)
 
-  const projects = await getProjects(config, { temp })
+  const projects = await getProjects(repos, { temp })
 
   const projectNames = projects.map((project) => project.config.name)
   const projectsLabel = pluralize('project', projects.length)
@@ -42,14 +40,22 @@ module.exports = async (config, opts = {}) => {
     }
   }
 
-  const deployments = await pMap(projects, deployProject, {
-    concurrency: 1
-  })
+  const deployments = await pMap(
+    projects,
+    (project) => deployProject(project, { debug }),
+    {
+      concurrency: 1
+    }
+  )
 
   if (publish) {
-    await pMap(deployments, publishDeployment, {
-      concurrency: 1
-    })
+    await pMap(
+      deployments,
+      (deployment) => publishDeployment(deployment, { debug }),
+      {
+        concurrency: 1
+      }
+    )
   }
 
   return deployments

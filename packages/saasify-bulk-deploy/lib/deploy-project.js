@@ -3,6 +3,7 @@
 const execa = require('execa')
 const fs = require('fs-extra')
 const path = require('path')
+const pRetry = require('p-retry')
 
 const deploy = require('./saasify/deploy')
 const spinner = require('./spinner')
@@ -11,10 +12,11 @@ module.exports = async function deployProject(
   { projectDir, config },
   opts = {}
 ) {
+  const { noYarn = false } = opts
   const packageJsonPath = path.join(projectDir, 'package.json')
   console.log()
 
-  if (fs.existsSync(packageJsonPath)) {
+  if (!noYarn && fs.existsSync(packageJsonPath)) {
     await spinner(
       execa('yarn', { cwd: projectDir, shell: true }),
       `Initializing project "${config.name}"`
@@ -24,5 +26,7 @@ module.exports = async function deployProject(
   console.log(projectDir)
   console.log()
 
-  return deploy(projectDir)
+  return pRetry(async () => deploy(projectDir, opts), {
+    retries: 1
+  })
 }

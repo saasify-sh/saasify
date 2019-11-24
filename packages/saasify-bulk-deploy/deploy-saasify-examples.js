@@ -6,7 +6,7 @@ const bulkDeploy = require('./lib')
 const projects = [
   {
     name: 'Saasify examples',
-    repository: 'saasify-sh/saasify',
+    path: '../../',
     projects: 'examples/*/**'
   },
   {

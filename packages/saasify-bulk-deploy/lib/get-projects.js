@@ -11,39 +11,45 @@ const pMap = require('p-map')
 
 const spinner = require('./spinner')
 
-module.exports = async function getProjects(config, opts) {
+module.exports = async function getProjects(repos, opts) {
   const { temp } = opts
 
   return flatten(
     await pMap(
-      config,
+      repos,
       async (info) => {
         const { name, repository, projects } = info
-        const [repoAuthor, repoName] = parseGitHubRepoUrl(repository)
-        const repoUrl = `https://github.com/${repoAuthor}/${repoName}.git`
-        const dest = path.join(temp, repoName)
+        let { path: repoPath } = info
 
-        await spinner(
-          pify(gitClone)(repoUrl, dest, {
-            shallow: true
-          }),
-          `Cloning "${repoAuthor}/${repoName}" repo for "${name}"`
-        )
+        if (repoPath) {
+          repoPath = path.resolve(repoPath)
+        } else {
+          const [repoAuthor, repoName] = parseGitHubRepoUrl(repository)
+          const repoUrl = `https://github.com/${repoAuthor}/${repoName}.git`
+          repoPath = path.join(temp, repoName)
 
-        let projectDirs = [dest]
+          await spinner(
+            pify(gitClone)(repoUrl, repoPath, {
+              shallow: true
+            }),
+            `Cloning "${repoAuthor}/${repoName}" repo for "${name}"`
+          )
+        }
+
+        let projectDirs = [repoPath]
         if (projects) {
           if (typeof projects === 'string' && projects.indexOf('*') < 0) {
             projectDirs = [projects]
           } else {
             projectDirs = await globby(projects, {
-              cwd: dest,
+              cwd: repoPath,
               onlyDirectories: true,
               globstar: false
             })
           }
 
           projectDirs = projectDirs.map((projectDir) =>
-            path.join(dest, projectDir)
+            path.join(repoPath, projectDir)
           )
         }
 

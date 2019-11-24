@@ -6,11 +6,12 @@ const bulkDeploy = require('./lib')
 const projects = [
   {
     name: 'Hello World',
-    repository: 'saasify-sh/saasify',
-    projects: 'examples/typescript/hello-world'
+    path: '../../',
+    projects: 'examples/python/wordcloud'
   }
 ]
 
 bulkDeploy(projects, {
+  debug: true,
   publish: true
 })
