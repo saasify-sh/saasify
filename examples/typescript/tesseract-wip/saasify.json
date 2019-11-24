@@ -1,8 +1,0 @@
-{
-  "name": "tesseract-example",
-  "services": [
-    {
-      "src": "index.ts"
-    }
-  ]
-}
