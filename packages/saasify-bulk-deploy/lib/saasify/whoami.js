@@ -9,7 +9,5 @@ module.exports = async (opts = {}) => {
     pipe: false
   })
 
-  console.log(result)
-
   return parseJson(result)
 }
