@@ -7,7 +7,7 @@ const projects = [
   {
     name: 'Hello World',
     path: '../../',
-    projects: 'examples/python/wordcloud'
+    projects: 'examples/typescript/hello-world'
   }
 ]
 
