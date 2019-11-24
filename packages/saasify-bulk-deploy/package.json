@@ -1,0 +1,44 @@
+{
+  "name": "saasify-bulk-deploy",
+  "version": "0.1.0",
+  "description": "Bulk deployment utility for Saasify.",
+  "author": "Saasify <dev@saasify.sh>",
+  "repository": "saasify-sh/saasify",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "bin": {
+    "saasify": "lib/cli.js"
+  },
+  "scripts": {
+    "docs": "update-markdown-usage"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "saasify",
+    "deploy"
+  ],
+  "devDependencies": {
+    "ava": "^2.4.0",
+    "update-markdown-usage": "^1.0.5"
+  },
+  "dependencies": {
+    "commander": "^2.20.0",
+    "enquirer": "^2.3.0",
+    "execa": "^2.1.0",
+    "fs-extra": "^8.1.0",
+    "git-clone": "^0.1.0",
+    "globby": "^10.0.1",
+    "inquirer": "^7.0.0",
+    "lodash.flatten": "^4.4.0",
+    "ora": "^4.0.3",
+    "p-map": "^3.0.0",
+    "parse-github-repo-url": "^1.4.1",
+    "pify": "^4.0.1",
+    "pluralize": "^8.0.0",
+    "saasify": "^1.11.9",
+    "safe-eval": "^0.4.1",
+    "tempy": "^0.3.0"
+  }
+}

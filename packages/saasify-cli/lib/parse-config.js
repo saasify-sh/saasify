@@ -4,6 +4,7 @@ const Ajv = require('ajv')
 const fs = require('fs-extra')
 const isDirectory = require('is-directory')
 const path = require('path')
+const parseJson = require('parse-json')
 const semver = require('semver')
 const { validators } = require('saasify-utils')
 
@@ -27,8 +28,10 @@ module.exports = (program) => {
     throw new Error(`Unable to find config file "${configFilePath}"`)
   }
 
-  console.log(`parsing config ${path.relative(process.cwd(), configFilePath)}`)
-  const config = fs.readJsonSync(configFilePath)
+  const configLabel = path.relative(process.cwd(), configFilePath)
+  console.log(`parsing config ${configLabel}`)
+  const configData = fs.readSync(configFilePath, 'utf8')
+  const config = parseJson(configData, configLabel)
   validateConfig(config)
 
   if (validateConfig.errors) {
