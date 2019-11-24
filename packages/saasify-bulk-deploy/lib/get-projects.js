@@ -18,7 +18,7 @@ module.exports = async function getProjects(repos, opts) {
     await pMap(
       repos,
       async (info) => {
-        const { name, repository, projects } = info
+        const { repository, projects } = info
         let { path: repoPath } = info
 
         if (repoPath) {
@@ -32,7 +32,7 @@ module.exports = async function getProjects(repos, opts) {
             pify(gitClone)(repoUrl, repoPath, {
               shallow: true
             }),
-            `Cloning "${repoAuthor}/${repoName}" repo for "${name}"`
+            `Cloning "${repoAuthor}/${repoName}" repo"`
           )
         }
 
@@ -59,7 +59,7 @@ module.exports = async function getProjects(repos, opts) {
             const projectConfigPath = path.join(projectDir, 'saasify.json')
             if (!(await fs.pathExists(projectConfigPath))) {
               throw new Error(
-                `Error found invalid saasify project in "${name}" at "${projectDir}"`
+                `Error found invalid saasify project in ${projectDir}`
               )
             }
 

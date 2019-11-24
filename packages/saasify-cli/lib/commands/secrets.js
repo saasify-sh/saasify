@@ -18,7 +18,7 @@ module.exports = (program, client) => {
               'Getting secrets'
             )
 
-            console.log(JSON.stringify(secrets, null, 2))
+            program.appendOutput(JSON.stringify(secrets, null, 2))
             break
           }
 
@@ -27,7 +27,7 @@ module.exports = (program, client) => {
               client.addSecret(name, value),
               'Creating secret'
             )
-            console.log(JSON.stringify(secret, null, 2))
+            program.appendOutput(JSON.stringify(secret, null, 2))
             break
           }
 
@@ -43,7 +43,7 @@ module.exports = (program, client) => {
               client.removeSecret(name),
               'Removing secret'
             )
-            console.log(JSON.stringify(secret, null, 2))
+            program.appendOutput(JSON.stringify(secret, null, 2))
             break
           }
 
@@ -59,7 +59,7 @@ module.exports = (program, client) => {
               client.renameSecret(name, value),
               'Renaming secret'
             )
-            console.log(JSON.stringify(secret, null, 2))
+            program.appendOutput(JSON.stringify(secret, null, 2))
             break
           }
 

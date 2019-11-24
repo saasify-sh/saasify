@@ -1,18 +1,13 @@
 'use strict'
 
-const saasify = require('.')
+const saasify = require('./saasify')
 
 module.exports = async (deploymentId, version, opts = {}) => {
-  const { exitCode, stdout } = await saasify(
+  const result = await saasify(
     'publish',
     [deploymentId, '--new-version', version],
     opts
   )
 
-  if (exitCode === 0) {
-    return stdout
-  } else {
-    console.error(`error running "saasify publish"`)
-    process.exit(1)
-  }
+  return result
 }

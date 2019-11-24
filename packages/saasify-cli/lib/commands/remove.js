@@ -30,7 +30,7 @@ module.exports = (program, client) => {
 
         if (invalid.length) {
           const invalidLabel = pluralize('deployment', invalid.length)
-          console.log(`Error invalid ${invalidLabel} [${invalid.join(', ')}]`)
+          console.error(`Error invalid ${invalidLabel} [${invalid.join(', ')}]`)
           process.exit(1)
         }
 
@@ -42,7 +42,7 @@ module.exports = (program, client) => {
         const deployments = parsedArgs.map(({ deploymentId }) => deploymentId)
 
         if (!opts.yes) {
-          console.log(`${deploymentsLabel}:`, deployments.join(', '))
+          console.error(`${deploymentsLabel}:`, deployments.join(', '))
 
           const prompt = new Confirm({
             message: `Are you sure you want to delete these ${deployments.length} ${deploymentsLabel}?`,
@@ -70,7 +70,9 @@ module.exports = (program, client) => {
           `Removing ${deployments.length} ${deploymentsLabel}`
         )
 
-        console.log(`Deleted ${deployments.length} ${deploymentsLabel}`)
+        program.appendOutput(
+          `Deleted ${deployments.length} ${deploymentsLabel}`
+        )
       } catch (err) {
         handleError(program, err)
       }

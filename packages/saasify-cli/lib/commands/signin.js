@@ -33,7 +33,7 @@ module.exports = (program, client) => {
         const { user, token } = result
         auth.signin({ user, token })
 
-        console.log(JSON.stringify(user, null, 2))
+        program.appendOutput(JSON.stringify(user, null, 2))
       } catch (err) {
         handleError(program, err)
       }

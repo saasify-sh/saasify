@@ -26,7 +26,7 @@ module.exports = (program, client) => {
 
             // TODO: better output formatting
             // TODO: better highlighting of default source
-            console.log(JSON.stringify(sources, null, 2))
+            program.appendOutput(JSON.stringify(sources, null, 2))
             console.log(`default source: ${user.stripeCustomer.default_source}`)
             break
           }
@@ -126,7 +126,7 @@ module.exports = (program, client) => {
               client.addBillingSource({ source: token }),
               'Attaching billing source to user'
             )
-            console.log(JSON.stringify(source, null, 2))
+            program.appendOutput(JSON.stringify(source, null, 2))
             break
           }
 
@@ -158,7 +158,7 @@ module.exports = (program, client) => {
               client.setDefaultBillingSource(id),
               'Setting default billing source'
             )
-            console.log(JSON.stringify(source, null, 2))
+            program.appendOutput(JSON.stringify(source, null, 2))
             break
           }
 

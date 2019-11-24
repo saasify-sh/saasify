@@ -5,7 +5,7 @@
   "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "lib/bulk-deploy.js",
   "bin": {
     "saasify": "lib/cli.js"
   },

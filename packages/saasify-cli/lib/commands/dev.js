@@ -22,7 +22,7 @@ module.exports = (program, client) => {
         })
 
         if (program.debug) {
-          console.log(JSON.stringify(project, null, 2))
+          program.appendOutput(JSON.stringify(project, null, 2))
         }
 
         const serve = await serveProjectLocal(program, project, {

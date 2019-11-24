@@ -67,9 +67,9 @@ module.exports.extractOpenAPI = async (opts) => {
   await delay(2000)
 
   if (child.exitCode) {
-    console.error(child.stdout)
-    console.error(child.stderr)
-    throw new Error('Error preparing project')
+    throw new Error(
+      'Unknown error preparing project; rerun with --debug for more info'
+    )
   }
 
   const url = `http://localhost:${port}/openapi.json`

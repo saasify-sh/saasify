@@ -38,7 +38,7 @@ module.exports = (program, client) => {
           clipboard.writeSync(result.url)
         }
 
-        console.log(JSON.stringify(result, null, 2))
+        program.appendOutput(JSON.stringify(result, null, 2))
       } catch (err) {
         handleError(program, err)
       }

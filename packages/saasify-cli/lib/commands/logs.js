@@ -27,7 +27,7 @@ module.exports = (program, client) => {
           `Fetching logs for deployment [${identifier}]`
         )
 
-        console.log(logs)
+        program.appendOutput(logs)
       } catch (err) {
         handleError(program, err)
       }
