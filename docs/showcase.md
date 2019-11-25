@@ -140,18 +140,36 @@ This project provides a hosted API for [imagemin](https://github.com/imagemin/im
   </a>
 </p>
 
-## Examples
+## Remove BG
+
+Smart image background removal! 🤯. ([source code](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/remove-bg)).
+
+<a href="https://dev_remove-bg.saasify.sh" target="_blank">
+  <img
+    src="https://badges.saasify.sh?text=View%20Hosted%20API"
+    height="40"
+    alt="View Hosted API"
+  />
+</a>
+
+<p align="center">
+  <a href="https://dev_remove-bg.saasify.sh/" title="Hosted API" target="_blank">
+    <img src="https://storage.googleapis.com/saasify-uploads-prod/3ea6d473816b9b7d49734ec41658a02d835d3905.svg" alt="API Logo" width="200" />
+  </a>
+</p>
+
+# Examples
 
 Here are some simpler projects that provide good examples for getting started with Saasify.
 
-### TypeScript
+## TypeScript
 
 - [hello-world](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/hello-world) - Simplest possible TypeScript project.
 - [coupons](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/coupons) - Shows how to use coupons.
 - [secrets](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/secrets) - Shows how to use environment variable secrets.
 - [features](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/features) - Shows how to customize the SaaS client features section.
 
-### Python
+## Python
 
 - [hello-world](https://github.com/saasify-sh/saasify/tree/master/examples/python/hello-world) - Simplest possible python project.
 - [wordcloud](https://github.com/saasify-sh/saasify/tree/master/examples/python/wordcloud) - Generate stylish wordclouds from any webpage.
