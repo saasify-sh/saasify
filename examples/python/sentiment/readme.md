@@ -9,3 +9,7 @@ This project provides a hosted, SaaS API for [VADER Sentiment Analysis](https://
 ## Intro
 
 VADER (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media, and works well on texts from other domains.
+
+## License
+
+MIT © [Saasify](https://saasify.sh)

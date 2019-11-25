@@ -9,3 +9,7 @@ saasify deploy
 ```
 
 Note that if you try to deploy this project without first adding the secret, your deployment will fail.
+
+## License
+
+MIT © [Saasify](https://saasify.sh)

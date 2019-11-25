@@ -2,7 +2,7 @@
 
 > Image optimization as a service.
 
-This project provides a hosted, SaaS API for [imagemin](https://github.com/imagemin/imagemin).
+This project provides a hosted API for [imagemin](https://github.com/imagemin/imagemin).
 
 **We set aside the majority of any revenue generated from this API for the original OSS developers**. If you are one of these devs, please check out our [mission](https://saasify.sh/#/mission) and [get in touch](https://saasify.sh/#/support) to setup payouts and answer any questions you may have.
 

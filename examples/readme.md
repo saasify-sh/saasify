@@ -16,6 +16,7 @@
 ### Python
 
 - [hello-world](./python/hello-world) - Simplest possible python project.
+- [wordcloud](./python/wordcloud) - Generate stylish wordclouds from any webpage.
 - [sentiment](./python/sentiment) - Sentiment analysis with pipenv.
 
 ### Features
