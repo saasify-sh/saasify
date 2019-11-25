@@ -1,8 +1,8 @@
 # sharp
 
-> Powerful SaaS API for image conversion and manipulation.
+> Powerful API for image conversion and manipulation.
 
-This project provides a hosted, SaaS API for [sharp](https://github.com/lovell/sharp) by [Lovell Fuller](https://github.com/lovell).
+This project provides a hosted API for [sharp](https://github.com/lovell/sharp) by [Lovell Fuller](https://github.com/lovell).
 
 **We set aside the majority of any revenue generated from this API for the original OSS developers**. If you are one of these devs, please check out our [mission](https://saasify.sh/#/mission) and [get in touch](https://saasify.sh/#/support) to setup payouts and answer any questions you may have.
 
