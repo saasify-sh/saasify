@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "lib/bulk-deploy.js",
   "bin": {
-    "saasify": "lib/cli.js"
+    "saasify-bulk-deploy": "lib/cli.js"
   },
   "scripts": {
     "docs": "update-markdown-usage"

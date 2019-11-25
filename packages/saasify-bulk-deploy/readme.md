@@ -6,7 +6,7 @@
 
 # saasify-bulk-deploy
 
-> Codegen for [Saasify](https://saasify.sh) services.
+> Bulk deployment utility for [Saasify](https://saasify.sh).
 
 [![NPM](https://img.shields.io/npm/v/saasify-bulk-deploy.svg)](https://www.npmjs.com/package/saasify-bulk-deploy) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
