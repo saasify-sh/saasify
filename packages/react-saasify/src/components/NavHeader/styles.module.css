@@ -38,7 +38,6 @@
 .logo-image {
   margin-right: 24px;
   height: 48px;
-  width: 48px;
 }
 
 .logo {
@@ -46,7 +45,7 @@
   display: flex;
   transition: all 400ms ease;
   height: 100%;
-  width: 100%;
+  width: auto;
 }
 
 .logo-text {
