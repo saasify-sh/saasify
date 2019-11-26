@@ -1,6 +1,6 @@
 {
   "name": "saasify-bulk-deploy",
-  "version": "0.1.0",
+  "version": "1.11.10",
   "description": "Bulk deployment utility for Saasify.",
   "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
@@ -39,7 +39,7 @@
     "parse-json": "^5.0.0",
     "pify": "^4.0.1",
     "pluralize": "^8.0.0",
-    "saasify": "^1.11.9",
+    "saasify": "^1.11.10",
     "semver": "^6.3.0",
     "tempy": "^0.3.0"
   }
