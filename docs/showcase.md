@@ -158,6 +158,26 @@ Smart image background removal! 🤯. ([source code](https://github.com/saasify-
   </a>
 </p>
 
+## image-size
+
+Get the dimensions of an image ([source code](https://github.com/saasify-sh/image-size)).
+
+This project provides a hosted API for [image-size](https://github.com/image-size/image-size).
+
+<a href="https://dev_image-size.saasify.sh" target="_blank">
+  <img
+    src="https://badges.saasify.sh?text=View%20Hosted%20API"
+    height="40"
+    alt="View Hosted API"
+  />
+</a>
+
+<p align="center">
+  <a href="https://dev_image-size.saasify.sh/" title="Hosted API" target="_blank">
+    <img src="https://storage.googleapis.com/saasify-uploads-prod/577ffc19d4c84dba9e4bca871c8e64f0636cd1fb.png" alt="API Logo" width="200" />
+  </a>
+</p>
+
 # Examples
 
 Here are some simpler projects that provide good examples for getting started with Saasify.
