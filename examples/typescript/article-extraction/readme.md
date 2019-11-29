@@ -1,6 +1,6 @@
 # article-extraction
 
-> Royalty-free stock media search
+> Cleanly pull content from any website.
 
 <a href="https://article-extraction.saasify.sh">
   <img

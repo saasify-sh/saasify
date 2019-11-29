@@ -2,7 +2,7 @@
   "name": "article-extraction",
   "private": true,
   "version": "0.1.0",
-  "description": "TODO",
+  "description": "Cleanly pull content from any website.",
   "author": "Saasify <dev@saasify.sh>",
   "license": "MIT",
   "repository": "saasify-sh/saasify",
@@ -10,16 +10,8 @@
     "node": ">=8"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
     "fts-http": "^1.2.1",
     "lodash.pick": "^4.4.0",
-    "node-fetch": "^2.6.0",
-    "p-cache": "^1.0.1",
-    "p-timeout": "^3.2.0",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.8",
-    "scrapex": "^0.2.0",
-    "unsplash-js": "^6.0.0"
-  },
-  "devDependencies": {}
+    "scrapex": "^0.2.0"
+  }
 }
