@@ -1,0 +1,23 @@
+{
+  "name": "meta-stock-image-search",
+  "private": true,
+  "version": "0.1.0",
+  "description": "TODO",
+  "author": "Saasify <dev@saasify.sh>",
+  "license": "MIT",
+  "repository": "saasify-sh/saasify",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "fts-http": "^1.2.1",
+    "node-fetch": "^2.6.0",
+    "p-cache": "^1.0.1",
+    "p-timeout": "^3.2.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.8",
+    "unsplash-js": "^6.0.0"
+  },
+  "devDependencies": {}
+}
