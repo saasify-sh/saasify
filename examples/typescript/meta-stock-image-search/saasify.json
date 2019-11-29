@@ -4,7 +4,13 @@
   "alias": "meta-stock-image-search",
   "services": [
     {
-      "src": "src/search-images.ts"
+      "src": "src/search-images.ts",
+      "examples": [
+        "name": "",
+        "input": {
+          "query": "cats"
+        }
+      ]
     }
   ],
   "env": {
@@ -13,14 +19,14 @@
     "PIXABAY_API_KEY": "@pixabay_api_key"
   },
   "saas": {
-    "heading": "TODO",
-    "subheading": "TODO",
+    "heading": "Royalty Free Stock Media",
+    "subheading": "Meta search engine for finding the absolute best royalty free stock images, gifs, and videos!",
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/meta-stock-image-search",
     "theme": {
       "name": "waves",
-      "backgroundImage": "https://images.unsplash.com/photo-1464820453369-31d2c0b651af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1700&q=80",
+      "backgroundImage": "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80",
       "buttonStyle": "rounded",
-      "meta-stock-image-search": "#ff6e6c",
+      "meta-stock-image-search": "#61a3a8",
       "wave": false,
       "gradientDark": false,
       "codeBlockDark": true
