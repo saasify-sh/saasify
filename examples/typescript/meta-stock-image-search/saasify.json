@@ -6,9 +6,11 @@
     {
       "src": "src/search-images.ts",
       "examples": [
-        "name": "",
-        "input": {
-          "query": "cats"
+        {
+          "name": "Search for images of cats",
+          "input": {
+            "query": "cats"
+          }
         }
       ]
     }
