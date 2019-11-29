@@ -1,7 +1,7 @@
 {
-  "name": "meta-stock-image-search",
+  "name": "meta-stock",
   "description": "TODO",
-  "alias": "meta-stock-image-search",
+  "alias": "meta-stock",
   "services": [
     {
       "src": "src/search-images.ts",
@@ -22,9 +22,9 @@
   },
   "saas": {
     "name": "MetaStock",
-    "heading": "Royalty Free Stock Media",
-    "subheading": "Meta search engine for the best royalty free stock images, gifs, and videos!",
-    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/meta-stock-image-search",
+    "heading": "Royalty free stock media search",
+    "subheading": "Meta search engine for the best royalty free stock images, gifs, and videos.",
+    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/meta-stock",
     "logo": "media/logo.svg",
     "favicon": "media/favicon.png",
     "theme": {
