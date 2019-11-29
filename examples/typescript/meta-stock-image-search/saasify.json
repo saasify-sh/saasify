@@ -25,6 +25,8 @@
     "heading": "Royalty Free Stock Media",
     "subheading": "Meta search engine for the best royalty free stock images, gifs, and videos!",
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/meta-stock-image-search",
+    "logo": "media/logo.svg",
+    "favicon": "media/favicon.png",
     "theme": {
       "name": "waves",
       "backgroundImage": "https://images.unsplash.com/photo-1549916571-9b2c630403dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80",
