@@ -5,11 +5,20 @@
   "services": [
     {
       "src": "src/extract-article.ts",
-      "POST": false
+      "POST": false,
+      "examples": [
+        {
+          "name": "Extract BBC Article",
+          "input": {
+            "url": "https://www.bbc.com/news/uk-43396008"
+          }
+        }
+      ]
     }
   ],
   "saas": {
-    "heading": "Article Extraction",
+    "name": "Article Extraction",
+    "heading": "Clean article extraction",
     "subheading": "High quality article extraction at scale.",
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/article-extraction",
     "logo": "media/logo.svg",
