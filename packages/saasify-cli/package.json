@@ -1,6 +1,6 @@
 {
   "name": "saasify",
-  "version": "1.11.9",
+  "version": "1.11.10",
   "description": "Developer CLI for Saasify. Saasify is the easiest way to launch your own SaaS.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
@@ -69,8 +69,8 @@
     "pluralize": "^8.0.0",
     "pretty-error": "^2.1.1",
     "qs": "^6.8.0",
-    "saasify-client": "^1.11.1",
-    "saasify-utils": "^1.11.9",
+    "saasify-client": "^1.11.10",
+    "saasify-utils": "^1.11.10",
     "semver": "^6.3.0",
     "slash": "^3.0.0",
     "stripe": "^7.6.0",
