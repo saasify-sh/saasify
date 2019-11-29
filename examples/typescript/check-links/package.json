@@ -1,0 +1,15 @@
+{
+  "name": "check-links",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Quickly and robustly checks large batches of URLs for liveness.",
+  "author": "Saasify <dev@saasify.sh>",
+  "license": "MIT",
+  "repository": "saasify-sh/saasify",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "check-links": "^1.1.8"
+  }
+}

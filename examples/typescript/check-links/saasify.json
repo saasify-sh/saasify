@@ -1,0 +1,41 @@
+{
+  "name": "check-links",
+  "description": "Cleanly pull content from any website",
+  "alias": "check-links",
+  "services": [
+    {
+      "src": "src/check-links.ts",
+      "POST": false,
+      "examples": [
+        {
+          "name": "Basic Usage",
+          "input": {
+            "urls": [
+              "https://www.brown.edu/",
+              "https://news.ycombinator.com/",
+              "invalid url",
+              "https://example.com/not-found-404"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "saas": {
+    "name": "Lively URLs",
+    "heading": "Robust URL Liveness",
+    "subheading": "Quickly and robustly check large batches of URLs for liveness at scale.",
+    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/check-links",
+    "logo": "media/logo.svg",
+    "favicon": "media/favicon.ico",
+    "theme": {
+      "name": "waves",
+      "backgroundImage": "https://images.unsplash.com/photo-1452953008873-ae5837174535?ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80",
+      "buttonStyle": "rounded",
+      "color": "#4aaef7",
+      "wave": false,
+      "gradientDark": false,
+      "codeBlockDark": true
+    }
+  }
+}
