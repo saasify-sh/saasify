@@ -1,0 +1,27 @@
+{
+  "name": "article-extraction",
+  "description": "Cleanly pull content from any website",
+  "alias": "article-extraction",
+  "services": [
+    {
+      "src": "src/extract-article.ts",
+      "POST": false
+    }
+  ],
+  "saas": {
+    "heading": "Article Extraction",
+    "subheading": "High quality article extraction at scale.",
+    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/article-extraction",
+    "logo": "media/logo.svg",
+    "favicon": "media/favicon.ico",
+    "theme": {
+      "name": "waves",
+      "backgroundImage": "https://images.unsplash.com/photo-1557428894-56bcc97113fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80",
+      "buttonStyle": "rounded",
+      "color": "#4aaef7",
+      "wave": false,
+      "gradientDark": false,
+      "codeBlockDark": true
+    }
+  }
+}
