@@ -8,9 +8,9 @@
       "POST": false,
       "examples": [
         {
-          "name": "Extract BBC Article",
+          "name": "Extract Wikipedia Article",
           "input": {
-            "url": "https://www.bbc.com/news/uk-43396008"
+            "url": "https://en.wikipedia.org/wiki/Joker_(2019_film)"
           }
         }
       ]
