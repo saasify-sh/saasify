@@ -1,0 +1,19 @@
+{
+  "name": "color",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Color conversion and manipulation API. 🌈",
+  "author": "Saasify <dev@saasify.sh>",
+  "license": "MIT",
+  "repository": "saasify-sh/saasify",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "color": "^3.1.2",
+    "fts-http": "^1.2.1"
+  },
+  "devDependencies": {
+    "@types/color": "^3.0.0"
+  }
+}
