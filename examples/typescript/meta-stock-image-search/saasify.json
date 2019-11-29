@@ -21,14 +21,15 @@
     "PIXABAY_API_KEY": "@pixabay_api_key"
   },
   "saas": {
+    "name": "MetaStock",
     "heading": "Royalty Free Stock Media",
-    "subheading": "Meta search engine for finding the absolute best royalty free stock images, gifs, and videos!",
+    "subheading": "Meta search engine for the best royalty free stock images, gifs, and videos!",
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/meta-stock-image-search",
     "theme": {
       "name": "waves",
-      "backgroundImage": "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80",
+      "backgroundImage": "https://images.unsplash.com/photo-1549916571-9b2c630403dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80",
       "buttonStyle": "rounded",
-      "meta-stock-image-search": "#61a3a8",
+      "color": "#4aaef7",
       "wave": false,
       "gradientDark": false,
       "codeBlockDark": true
