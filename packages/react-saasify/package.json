@@ -53,6 +53,7 @@
     "react-event-as-prop": "^1.0.0",
     "react-from-json": "^0.7.0",
     "react-markdown": "^4.2.2",
+    "react-simple-code-editor": "^0.10.0",
     "react-sizeme": "^2.6.7",
     "react-stripe-elements": "^5.0.1",
     "react-syntax-highlighter": "^11.0.2",
