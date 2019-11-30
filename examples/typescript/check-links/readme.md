@@ -1,6 +1,6 @@
 # check-links
 
-> Cleanly pull content from any website.
+> Quickly and robustly checks large batches of URLs for liveness.
 
 <a href="https://check-links.saasify.sh">
   <img
