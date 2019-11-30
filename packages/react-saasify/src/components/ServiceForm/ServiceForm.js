@@ -55,6 +55,7 @@ export class ServiceForm extends Component {
               </div>
             ),
             entry: ServiceEntry,
+            array: ServiceInputJSON,
             boolean: ServiceInputCheckbox,
             enum: ServiceInputSelect,
             number: ServiceInputNumber,

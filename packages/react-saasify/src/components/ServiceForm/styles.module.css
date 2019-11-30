@@ -26,3 +26,18 @@
   border: 0;
   padding-left: 0;
 }
+
+.service-form :global(.npm__react-simple-code-editor__textarea) {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier,
+    monospace !important;
+  padding: 0.5em !important;
+  z-index: 10;
+}
+
+.service-form :global(.npm__react-simple-code-editor__textarea)::selection {
+  background: #4e95dc62;
+}
+
+.service-form :global(.npm__react-simple-code-editor__textarea) + pre > pre {
+  margin-bottom: 0;
+}

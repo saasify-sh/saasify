@@ -1,13 +1,9 @@
 import React, { useState, useCallback } from 'react'
 import { ServiceInputWrapperWithLabel } from './ServiceInputWrapperWithLabel'
-import { Checkbox } from 'lib/antd'
-
-import { renderToString } from 'react-dom/server'
-
-import Editor from 'react-simple-code-editor'
 
 import codeTheme from 'react-syntax-highlighter/dist/esm/styles/hljs/vs2015'
 
+import Editor from 'lib/react-simple-code-editor'
 import { SyntaxHighlighter } from 'lib/react-syntax-highlighter'
 
 export const ServiceInputJSON = ({
@@ -46,10 +42,12 @@ export const ServiceInputJSON = ({
         value={value}
         onValueChange={onValueChange}
         highlight={highlight}
+        useInlineStyles={false}
         style={{
           background: 'rgb(30, 30, 30)',
           borderRadius: 4,
-          outline: 'none !important'
+          outline: 'none !important',
+          zIndex: 10
         }}
       />
     </ServiceInputWrapperWithLabel>
