@@ -6,6 +6,7 @@ import { ReactFromJSONSchema } from './ReactFromJSONSchema'
 import { ServiceEntry } from './ServiceEntry'
 import { ServiceInput } from './ServiceInput'
 import { ServiceInputCheckbox } from './ServiceInputCheckbox'
+import { ServiceInputJSON } from './ServiceInputJSON'
 import { ServiceInputNumber } from './ServiceInputNumber'
 import { ServiceInputSelect } from './ServiceInputSelect'
 import { restrictDefinitionToExample, mergeInValues } from './helpers'
@@ -54,9 +55,11 @@ export class ServiceForm extends Component {
               </div>
             ),
             entry: ServiceEntry,
+            array: ServiceInputJSON,
             boolean: ServiceInputCheckbox,
             enum: ServiceInputSelect,
             number: ServiceInputNumber,
+            object: ServiceInputJSON,
             string: ServiceInput
           }}
         />
