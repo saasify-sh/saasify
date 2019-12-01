@@ -6,6 +6,9 @@ import codeTheme from 'react-syntax-highlighter/dist/esm/styles/hljs/vs2015'
 import Editor from 'lib/react-simple-code-editor'
 import { SyntaxHighlighter } from 'lib/react-syntax-highlighter'
 
+import prettier from 'prettier/standalone'
+import prettierBabylon from 'prettier/parser-babylon'
+
 export const ServiceInputJSON = ({
   default: defaultValue,
   type,
@@ -14,7 +17,10 @@ export const ServiceInputJSON = ({
   ...props
 }) => {
   const [value, setValue] = useState(() =>
-    JSON.stringify(defaultValue, null, 2)
+    prettier.format(JSON.stringify(defaultValue), {
+      parser: 'json',
+      plugins: [prettierBabylon]
+    })
   )
 
   const onValueChange = useCallback((value) => {
