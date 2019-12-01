@@ -30,39 +30,41 @@ interface PipelineMap {
 // workaround instead of using `imagemin.buffer` directly until this ZEIT now bug is fixed
 // https://spectrum.chat/zeit/now/cannot-find-module-nodelib-fs-stat~62fe9614-fd8c-4f25-ade4-8f6fd4f611c2
 // (this happens when we import imagemin which transitively imports fast-glob)
-const imageminBuffer = async (input: Buffer, {plugins = []} = {}): Promise<Buffer> => {
-	if (!Buffer.isBuffer(input)) {
-		throw new TypeError(`Expected a \`Buffer\`, got \`${typeof input}\``)
-	}
+const imageminBuffer = async (
+  input: Buffer,
+  { plugins = [] } = {}
+): Promise<Buffer> => {
+  if (!Buffer.isBuffer(input)) {
+    throw new TypeError(`Expected a \`Buffer\`, got \`${typeof input}\``)
+  }
 
-	if (plugins.length === 0) {
-		return input
-	}
+  if (plugins.length === 0) {
+    return input
+  }
 
-	return ((pPipe(...plugins)(input) as any) as Buffer)
+  return (pPipe(...plugins)(input) as any) as Buffer
 }
 
 const mimeTypeToPipelines: PipelineMap = {
   'image/png': [
-    { name: 'pngquant', plugins: [ imageminPngquant() ] },
-    { name: 'optipng', plugins: [ imageminOptipng() ] },
-    { name: 'pngcrush', plugins: [ imageminPngcrush() ] }
+    { name: 'pngquant', plugins: [imageminPngquant()] },
+    { name: 'optipng', plugins: [imageminOptipng()] },
+    { name: 'pngcrush', plugins: [imageminPngcrush()] }
   ],
   'image/jpeg': [
-    { name: 'jpegtran, mozjpeg', plugins: [ imageminJpegtran(), imageminMozjpeg() ] }
+    {
+      name: 'jpegtran, mozjpeg',
+      plugins: [imageminJpegtran(), imageminMozjpeg()]
+    }
   ],
-  'image/webp': [
-    { name: 'webp', plugins: [ imageminWebp() ] }
-  ],
-  'image/svg+xml': [
-    { name: 'svgo', plugins: [ imageminSvgo() ] }
-  ],
-  'image/gif': [
-    { name: 'gifsicle', plugins: [ imageminGifsicle() ] }
-  ]
+  'image/webp': [{ name: 'webp', plugins: [imageminWebp()] }],
+  'image/svg+xml': [{ name: 'svgo', plugins: [imageminSvgo()] }],
+  'image/gif': [{ name: 'gifsicle', plugins: [imageminGifsicle()] }]
 }
 
-export default async function optimizeImage(input: Buffer): Promise<HttpResponse> {
+export default async function optimizeImage(
+  input: Buffer
+): Promise<HttpResponse> {
   const inputType = fileType(input)
   let pipelines: Pipeline[]
 
@@ -77,27 +79,31 @@ export default async function optimizeImage(input: Buffer): Promise<HttpResponse
   let bestPipeline = 'identity'
   console.log({ inputType, pipeline: 'identity', length: body.byteLength })
 
-  await pMap(pipelines, async (pipeline) => {
-    try {
-      const result = await imageminBuffer(input, pipeline)
-      console.log({ pipeline: pipeline.name, length: result.byteLength })
+  await pMap(
+    pipelines,
+    async (pipeline) => {
+      try {
+        const result = await imageminBuffer(input, pipeline)
+        console.log({ pipeline: pipeline.name, length: result.byteLength })
 
-      if (result.byteLength < body.byteLength) {
-        body = result
-        bestPipeline = pipeline.name
+        if (result.byteLength < body.byteLength) {
+          body = result
+          bestPipeline = pipeline.name
+        }
+      } catch (err) {
+        console.error(`error processing pipeline "${pipeline.name}"`, err)
       }
-    } catch (err) {
-      console.error(`error processing pipeline "${pipeline.name}"`, err)
+    },
+    {
+      concurrency: 2
     }
-  }, {
-    concurrency: 2
-  })
+  )
 
   const outputType = fileType(body)
 
   console.log({ outputType, pipeline: bestPipeline, length: body.byteLength })
   if (!outputType) {
-    throw new Error('unsupported media outputType\n')
+    throw new Error('unsupported media output type\n')
   }
 
   return {

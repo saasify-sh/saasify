@@ -1,0 +1,23 @@
+{
+  "name": "lqip",
+  "private": true,
+  "version": "0.1.0",
+  "description": "An API for generating Low Quality Image Placeholders (LQIP).",
+  "author": "Saasify <dev@saasify.sh>",
+  "license": "MIT",
+  "repository": "saasify-sh/saasify",
+  "engines": {
+    "node": ">=8"
+  },
+  "dependencies": {
+    "file-type": "^12.4.0",
+    "fts-core": "^1.1.0",
+    "fts-http": "^1.3.3",
+    "got": "^9.6.0",
+    "http-errors": "^1.7.3",
+    "lqip": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/file-type": "^10.9.1"
+  }
+}

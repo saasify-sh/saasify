@@ -1,0 +1,56 @@
+{
+  "name": "lqip",
+  "description": "An API for generating Low Quality Image Placeholders (LQIP).",
+  "alias": "lqip",
+  "services": [
+    {
+      "src": "src/url-to-base64.ts",
+      "POST": false,
+      "examples": [
+        {
+          "name": "Basic Usage",
+          "input": {
+            "url": "https://octodex.github.com/images/twenty-percent-cooler-octocat.png"
+          }
+        }
+      ]
+    },
+    {
+      "src": "src/url-to-image.ts",
+      "POST": false,
+      "examples": [
+        {
+          "name": "Basic Usage",
+          "input": {
+            "url": "https://octodex.github.com/images/surftocat.png"
+          }
+        }
+      ]
+    },
+    {
+      "src": "src/image-to-base64.ts",
+      "GET": false
+    },
+    {
+      "src": "src/image-to-image.ts",
+      "GET": false
+    }
+  ],
+  "saas": {
+    "name": "LQIP",
+    "heading": "Low Quality Image Placeholders",
+    "subheading": "An API for generating Low Quality Image Placeholders (LQIP).",
+    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/lqip",
+    "logo": "media/logo.svg",
+    "favicon": "media/favicon.ico",
+    "theme": {
+      "name": "waves",
+      "backgroundImage": "https://images.unsplash.com/photo-1499346146792-b008e446261f?ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80",
+      "buttonStyle": "rounded",
+      "color": "#0a8cfb",
+      "wave": false,
+      "gradientDark": false,
+      "codeBlockDark": true
+    }
+  }
+}
