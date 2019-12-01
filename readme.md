@@ -8,7 +8,7 @@
 
 <p align="center">
   <img
-    src="https://saasify.sh/_media/saasify-how-it-works.png"
+    src="https://saasify.sh/_media/saasify-how-it-works-v2.png"
     alt="How Saasify Works"
     width="760"
   />

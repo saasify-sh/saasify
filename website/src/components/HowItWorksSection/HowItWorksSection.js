@@ -39,9 +39,9 @@ export class HowItWorksSection extends Component {
             <h3>2. Deploy with Saasify</h3>
 
             <p>
-              Deploy your project as a monetizable API with our CLI. We
-              autogenerate a customizable SaaS website for you that handles all
-              billing, accounts, docs, hosting, and more.
+              Deploy your project as a monetizable API with our CLI. We generate
+              a customizable SaaS website for you that handles all the billing,
+              accounts, docs, hosting, and more.
             </p>
           </div>
         </div>
