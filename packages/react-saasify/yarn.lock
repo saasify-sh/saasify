@@ -2642,6 +2642,11 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.5
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
+prettier@^1.19.1:
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
+  integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
+
 pretty-bytes@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-3.0.1.tgz#27d0008d778063a0b4811bb35c79f1bd5d5fbccf"
@@ -2759,6 +2764,11 @@ react-markdown@^4.2.2:
     unified "^6.1.5"
     unist-util-visit "^1.3.0"
     xtend "^4.0.1"
+
+react-simple-code-editor@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.10.0.tgz#73e7ac550a928069715482aeb33ccba36efe2373"
+  integrity sha512-bL5W5mAxSW6+cLwqqVWY47Silqgy2DKDTR4hDBrLrUqC5BXc29YVx17l2IZk5v36VcDEq1Bszu2oHm1qBwKqBA==
 
 react-sizeme@^2.6.7:
   version "2.6.7"
@@ -3073,30 +3083,30 @@ rollup@^1.19.4:
     "@types/node" "*"
     acorn "^7.1.0"
 
-saasify-client@^1.11.1:
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.11.1.tgz#82a9932284e57178bb9bb9a83031fbc2abb8edc8"
-  integrity sha512-Q8McpKUl0IhaNpKH49ZT9GZ+ohe+C8oXTflImdHG51P5WP9TZKIw/CLTk8UyKtZj0mgQYgCYr4SNcFMVKhgY+Q==
+saasify-client@^1.11.10:
+  version "1.11.10"
+  resolved "https://registry.yarnpkg.com/saasify-client/-/saasify-client-1.11.10.tgz#ea58d515c1e61ca86837e924e7b5e98c146979d2"
+  integrity sha512-315dGfGJ8/7I9Y4nTamMhWAqHN8UbAlPnZVrZOD17bk6BKySnsLl/HXso81dpKitrgAqGx/6E04O8EEJGE9c1g==
   dependencies:
     axios "^0.19.0"
     is-buffer "^2.0.3"
     is-stream "^2.0.0"
     qs "^6.6.0"
 
-saasify-codegen@^1.11.1:
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/saasify-codegen/-/saasify-codegen-1.11.1.tgz#5358d7cc9362ed08f643045345e1810c1055be5f"
-  integrity sha512-JSV9OM/2dH6DEkT8GufRUUmLjb6Ap22ywKQ3XBgKIMG5Nd/rbkTJ0B63azF7kP0X2N826L25XHdRvsP9B2cmBQ==
+saasify-codegen@^1.11.10:
+  version "1.11.10"
+  resolved "https://registry.yarnpkg.com/saasify-codegen/-/saasify-codegen-1.11.10.tgz#c10bdaf1c73aa5f6ee3b9cac0ebe959c8fe1c681"
+  integrity sha512-l3owjj9UqIOUHwsXrrFK5OPg0EyJBHLbi9u1eaUIBpw6EI0pEFHs9xTaAdLRSOng//KK/PgHX6P5kEZPGZRjEg==
   dependencies:
     indent-string "^4.0.0"
     mustache "^3.1.0"
     qs "^6.9.0"
     stringify-object "^3.3.0"
 
-saasify-sdk@^1.11.1:
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/saasify-sdk/-/saasify-sdk-1.11.1.tgz#4473acf4eb7b33e21b8a5b2bd4fe31ee7dd31a72"
-  integrity sha512-ex0HhqwkSchD1nbH0zzZHJzoiCJnyHUF7A36zPR2ipLkbka7Tsscg0Fy1uMSprjIiibEk220eig+741bEVj0ag==
+saasify-sdk@^1.11.10:
+  version "1.11.10"
+  resolved "https://registry.yarnpkg.com/saasify-sdk/-/saasify-sdk-1.11.10.tgz#06c8c5f534cb730c22910941d05d80fd88f4b48b"
+  integrity sha512-swYeLdhF/s1a+QRjbZkqNSh+JsZUD7JilfPTgS42WmvN9nANT90o/yFjmw4sXLl5HmbrughiIlGZZnrpiA2gxw==
   dependencies:
     axios "^0.19.0"
     content-type "^1.0.4"
