@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h2 align="center" class='subtitle'>Monetize your OSS projects</h2>
+<h2 align="center" class='subtitle'>A new way to fund OSS</h2>
 
 <img src="https://saasify.sh/_media/saasify-how-it-works.png" alt="How Saasify Works" />
 
@@ -18,15 +18,15 @@ We make it really simple to "saasify" your own projects like this one. Once your
 
 ## Why Saasify?
 
-We built Saasify as an ideal solution for developers who want to earn passive income.
+We built Saasify as an ideal solution for developers who'd like to earn passive income.
 
-By making it extremely simple to create SaaS APIs, we're creating new opportunities for developers to monetize their work. And the best part is that this business model scales naturally as usage increases, which means the more popular your project becomes, the more money you will earn!
+By making it extremely simple to create SaaS APIs, we're creating new opportunities for devs to monetize their work. And the best part is that this business model scales naturally as usage increases, which means the more popular your project becomes, the more money you can earn!
 
 In a nutshell, we allow makers to:
 
-1. Monetize existing OSS! ⭐️
+1. Monetize existing OSS ⭐️
 2. Focus only on unique value instead of SaaS boilerplate 🔥
-3. Ship and start monetizing APIs in minutes instead of months ✈️
+3. Ship an API and start monetizing in minutes instead of months ✈️
 
 <p align="center">
   <img src="https://saasify.sh/_media/undraw/business_shop.svg" alt="Online shop" width="200" />
