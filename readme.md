@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  Fund your OSS with an API
+  The easiest way to create SaaS APIs on top of your OSS projects.
 </p>
 
 <h2 align="center" class='subtitle'>How it works</h2>
