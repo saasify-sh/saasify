@@ -4,6 +4,8 @@
   </a>
 </p>
 
+<p align="center">Fund your OSS with a rate-limited SaaS API</p>
+
 <h2 align="center" class='subtitle'>How it works</h2>
 
 <p align="center">
