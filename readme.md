@@ -4,6 +4,10 @@
   </a>
 </p>
 
+<p align="center">
+  Fund your OSS with an API
+</p>
+
 <h2 align="center" class='subtitle'>How it works</h2>
 
 <p align="center">
