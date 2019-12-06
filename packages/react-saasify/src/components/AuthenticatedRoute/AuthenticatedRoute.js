@@ -8,6 +8,8 @@ import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 import { Redirect, Route } from 'react-router-dom'
 
+import { Loading } from '../Loading'
+
 @inject('auth')
 @observer
 export class AuthenticatedRoute extends Component {
@@ -24,6 +26,10 @@ export class AuthenticatedRoute extends Component {
 
   render() {
     const { component: Component, redirect, auth, ...rest } = this.props
+
+    if (auth.isBootstrapping) {
+      return <Loading />
+    }
 
     if (!auth.isAuthenticated) {
       return (
