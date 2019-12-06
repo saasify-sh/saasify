@@ -47,7 +47,7 @@
     "requestsMaxPerInterval": 15
   },
   "env": {
-    "DIFFBOT_TOKEN": "@diffbot-token"
+    "EXTRACT_TOKEN": "@extract_token"
   },
   "saas": {
     "name": "WordCloud",

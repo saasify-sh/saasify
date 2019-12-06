@@ -1,4 +1,3 @@
-import os
 import pprint
 
 from dotenv import load_dotenv
@@ -11,7 +10,7 @@ from stylecloud import stylecloud as sc
 from typing import Optional
 from wordcloud import WordCloud
 
-from diffbot import article
+from extract import extract
 from fontawesome import FontAwesomeIcon
 from palettes import Palette
 
@@ -63,13 +62,7 @@ responses = {
     }
 }
 
-DIFFBOT_TOKEN = os.getenv("DIFFBOT_TOKEN")
 OUTPUT_NAME = "/tmp/out.png"
-
-
-def require_diffbot():
-    if DIFFBOT_TOKEN is None:
-        raise Exception("url support requires a valid diffbot token")
 
 
 @app.post(
@@ -92,16 +85,7 @@ def stylecloud(request: StyleCloudRequest):
         gradient = None
 
     if url is not None:
-        require_diffbot()
-        # TODO: replace this with a more lightweight alternative than diffbot
-        result = article(
-            url,
-            token=DIFFBOT_TOKEN,
-            paging=False,
-            discussion=False,
-            maxTags=0,
-            norender=True,
-        )["objects"][0]
+        result = extract(url)
         pprint.pprint(result)
         text = result["text"]
     elif text is None:
