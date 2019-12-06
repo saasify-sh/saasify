@@ -43,5 +43,6 @@
   },
   "ava": {
     "snapshotDir": "./.snapshots"
-  }
+  },
+  "gitHead": "c7c6721c98e28d0b1ea455c38276eb668c66b1f9"
 }
