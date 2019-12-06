@@ -1,6 +1,6 @@
 {
   "name": "saasify-sdk",
-  "version": "1.11.11",
+  "version": "1.11.12",
   "description": "HTTP client for invoking Saasify FaaS.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
