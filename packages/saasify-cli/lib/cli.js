@@ -18,6 +18,7 @@ module.exports = async (argv, opts = {}) => {
 
   program
     .name(name)
+    .usage('<command> [options]')
     .version(version)
     .option('-d, --debug', 'Enable extra debugging output', false)
     .option('-n, --project <name>', 'Project name')
