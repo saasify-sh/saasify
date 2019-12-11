@@ -46,11 +46,7 @@ const imageminBuffer = async (
 }
 
 const mimeTypeToPipelines: PipelineMap = {
-  'image/png': [
-    { name: 'pngquant', plugins: [imageminPngquant()] },
-    { name: 'optipng', plugins: [imageminOptipng()] },
-    { name: 'pngcrush', plugins: [imageminPngcrush()] }
-  ],
+  'image/png': [{ name: 'pngquant', plugins: [imageminPngquant()] }],
   'image/jpeg': [
     {
       name: 'jpegtran, mozjpeg',
