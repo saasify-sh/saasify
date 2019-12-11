@@ -83,6 +83,7 @@ export default async function optimizeImage(
     pipelines,
     async (pipeline) => {
       try {
+        console.time(pipeline.name)
         const result = await imageminBuffer(input, pipeline)
         console.log({ pipeline: pipeline.name, length: result.byteLength })
 
@@ -90,6 +91,8 @@ export default async function optimizeImage(
           body = result
           bestPipeline = pipeline.name
         }
+
+        console.timeEnd(pipeline.name)
       } catch (err) {
         console.error(`error processing pipeline "${pipeline.name}"`, err)
       }
