@@ -4,6 +4,7 @@
 const fs = require('fs').promises
 const program = require('commander')
 const SaasifyClient = require('saasify-client')
+const didYouMean = require('didyoumean')
 
 const { name, version } = require('../package')
 const auth = require('./auth')
@@ -15,6 +16,14 @@ module.exports = async (argv, opts = {}) => {
     ...opts,
     ...auth.get()
   })
+
+  const suggestCommands = (cmd) => {
+    const availableCommands = program.commands.map((cmd) => cmd._name)
+    const suggestion = didYouMean(cmd, availableCommands)
+    if (suggestion) {
+      console.log(`\n Did you mean ${suggestion}?`)
+    }
+  }
 
   program
     .name(name)
@@ -38,10 +47,11 @@ module.exports = async (argv, opts = {}) => {
     await Promise.resolve(command(program, client))
   }
 
-  program.on('command:*', () => {
-    console.error(`Invalid command: "${program.args.join(' ')}"`)
+  program.command('*', null, { noHelp: true }).action((cmd) => {
+    console.error(`Invalid command: "${cmd}"`)
     console.error()
     program.outputHelp()
+    suggestCommands(cmd)
     process.exit(1)
   })
 
