@@ -17,6 +17,13 @@ module.exports = async (argv, opts = {}) => {
     ...auth.get()
   })
 
+  const suggestCommands = (cmd) => {
+  	const suggestion = didYouMean(cmd, program.commands.map(cmd => cmd._name))
+      if (suggestion) {
+        console.log(`\n Did you mean ${suggestion}?`)
+      }
+  }
+
   program
     .name(name)
     .usage('<command> [options]')
@@ -44,10 +51,7 @@ module.exports = async (argv, opts = {}) => {
       console.error(`Invalid command: "${cmd}"`)
       console.error()
       program.outputHelp()
-      const suggestion = didYouMean(cmd, program.commands.map(cmd => cmd._name))
-      if (suggestion) {
-        console.log(`\n Did you mean ${cmd}?`)
-      }
+      suggestCommands(cmd);
       process.exit(1)
     })
 
