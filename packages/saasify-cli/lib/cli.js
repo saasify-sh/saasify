@@ -18,11 +18,11 @@ module.exports = async (argv, opts = {}) => {
   })
 
   const suggestCommands = (cmd) => {
-  	const availableCommands = program.commands.map(cmd => cmd._name)
-  	const suggestion = didYouMean(cmd, availableCommands)
-      if (suggestion) {
-        console.log(`\n Did you mean ${suggestion}?`)
-      }
+    const availableCommands = program.commands.map((cmd) => cmd._name)
+    const suggestion = didYouMean(cmd, availableCommands)
+    if (suggestion) {
+      console.log(`\n Did you mean ${suggestion}?`)
+    }
   }
 
   program
@@ -47,14 +47,13 @@ module.exports = async (argv, opts = {}) => {
     await Promise.resolve(command(program, client))
   }
 
-  program.command('*', null, { noHelp: true })
-    .action((cmd) => {
-      console.error(`Invalid command: "${cmd}"`)
-      console.error()
-      program.outputHelp()
-      suggestCommands(cmd);
-      process.exit(1)
-    })
+  program.command('*', null, { noHelp: true }).action((cmd) => {
+    console.error(`Invalid command: "${cmd}"`)
+    console.error()
+    program.outputHelp()
+    suggestCommands(cmd)
+    process.exit(1)
+  })
 
   program.requireAuthentication = () => {
     if (!client.isAuthenticated) {
