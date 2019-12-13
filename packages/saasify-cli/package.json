@@ -36,6 +36,7 @@
     "conf": "^6.0.1",
     "credit-card": "^3.0.2",
     "delay": "^4.3.0",
+    "didyoumean": "^1.2.1",
     "enquirer": "^2.3.0",
     "execa": "^2.1.0",
     "fast-stream-to-buffer": "^1.0.0",
