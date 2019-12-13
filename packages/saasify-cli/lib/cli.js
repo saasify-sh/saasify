@@ -44,6 +44,10 @@ module.exports = async (argv, opts = {}) => {
       console.error(`Invalid command: "${cmd}"`)
       console.error()
       program.outputHelp()
+      const suggestion = didYouMean(cmd, program.commands.map(cmd => cmd._name))
+      if (suggestion) {
+        console.log(`\n Did you mean ${cmd}?`)
+      }
       process.exit(1)
     })
 
