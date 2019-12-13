@@ -38,8 +38,8 @@ module.exports = async (argv, opts = {}) => {
     await Promise.resolve(command(program, client))
   }
 
-  program.on('command:*', () => {
-    console.error(`Invalid command: "${program.args.join(' ')}"`)
+  program.on('command:*', (cmd) => {
+    console.error(`Invalid command: "${cmd}"`)
     console.error()
     program.outputHelp()
     process.exit(1)
