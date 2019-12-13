@@ -18,7 +18,8 @@ module.exports = async (argv, opts = {}) => {
   })
 
   const suggestCommands = (cmd) => {
-  	const suggestion = didYouMean(cmd, program.commands.map(cmd => cmd._name))
+  	const availableCommands = program.commands.map(cmd => cmd._name)
+  	const suggestion = didYouMean(cmd, availableCommands)
       if (suggestion) {
         console.log(`\n Did you mean ${suggestion}?`)
       }
