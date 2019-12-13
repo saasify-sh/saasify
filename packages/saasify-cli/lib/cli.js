@@ -4,6 +4,7 @@
 const fs = require('fs').promises
 const program = require('commander')
 const SaasifyClient = require('saasify-client')
+const didYouMean = require('didyoumean')
 
 const { name, version } = require('../package')
 const auth = require('./auth')
@@ -38,12 +39,13 @@ module.exports = async (argv, opts = {}) => {
     await Promise.resolve(command(program, client))
   }
 
-  program.on('command:*', (cmd) => {
-    console.error(`Invalid command: "${cmd}"`)
-    console.error()
-    program.outputHelp()
-    process.exit(1)
-  })
+  program.command('*', null, { noHelp: true })
+    .action((cmd) => {
+      console.error(`Invalid command: "${cmd}"`)
+      console.error()
+      program.outputHelp()
+      process.exit(1)
+    })
 
   program.requireAuthentication = () => {
     if (!client.isAuthenticated) {
