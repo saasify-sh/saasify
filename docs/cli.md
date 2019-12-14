@@ -13,7 +13,7 @@ npm install -g saasify
 ## Usage
 
 ```bash
-Usage: saasify [command] [options]
+Usage: saasify <command> [options]
 
 Options:
   -V, --version                                        output the version number
