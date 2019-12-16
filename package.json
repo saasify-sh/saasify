@@ -22,6 +22,14 @@
     "test:prettier": "prettier '**/*.js' --check",
     "test:black": "if type black > /dev/null; then black examples/python --check; else echo 'python formatting requires black to be installed'; fi"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "npm run lint"
+  },
   "keywords": [
     "faas",
     "saas",
