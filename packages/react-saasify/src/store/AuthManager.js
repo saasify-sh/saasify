@@ -15,6 +15,9 @@ class AuthManagerClass {
   @observable
   consumer = null
 
+  @observable
+  context = null
+
   @computed get user() {
     return this.auth && this.auth.user
   }
@@ -41,7 +44,7 @@ class AuthManagerClass {
   async signin(opts) {
     debug(`AuthManager.signin [${opts.username}]`)
 
-    const auth = await API.signin(opts)
+    const auth = await API.signin({ ...this.context, ...opts })
 
     if (opts.remember !== false) {
       await LocalStore.set(AUTH_STORE_KEY, auth)
@@ -53,7 +56,7 @@ class AuthManagerClass {
   async signup(opts) {
     debug(`AuthManager.signup [${opts.email}] [${opts.username}]`)
 
-    const auth = await API.signup(opts)
+    const auth = await API.signup({ ...this.context, ...opts })
     await LocalStore.set(AUTH_STORE_KEY, auth)
     this.auth = auth
   }
@@ -70,17 +73,10 @@ class AuthManagerClass {
   async authWithGitHub(opts) {
     debug('AuthManager.authWithGitHub')
     const auth = await API.authWithGitHub({
+      ...this.context,
       ...githubConfig,
       ...opts
     })
-
-    await LocalStore.set(AUTH_STORE_KEY, auth)
-    this.auth = auth
-  }
-
-  async authWithFacebook(opts) {
-    debug('AuthManager.authWithFacebook')
-    const auth = await API.authWithFacebook(opts)
 
     await LocalStore.set(AUTH_STORE_KEY, auth)
     this.auth = auth
