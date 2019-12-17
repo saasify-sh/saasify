@@ -67,15 +67,12 @@ module.exports = class SaasifyClient {
   // Auth
   // --------------------------------------------------------------------------
 
-  async signin({ username, password }) {
+  async signin(data) {
     return this._request({
       url: `/1/auth/signin`,
       method: 'put',
       params: this._params,
-      data: {
-        username,
-        password
-      }
+      data
     })
       .then((res) => res.data)
       .then((data) => {
