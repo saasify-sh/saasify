@@ -33,7 +33,7 @@ The following image formats are supported:
 Providing an image URL is the easiest way to use this API.
 
 ```
-curl --request POST -o 'optimized.png' \
+curl --request POST -o optimized.png \
   --url 'https://api.saasify.sh/1/call/dev/imagemin/optimizeImageUrl' \
   --header 'content-type: application/json' \
   --data '{"url":"https://octodex.github.com/images/original.png"}'
@@ -52,7 +52,7 @@ curl --request POST -o 'optimized.png' \
 You can also provide binary image data as the body of POST requests. Try replacing the image path with your own local test image.
 
 ```
-curl --data-binary '@./examples/test-0.png' -o out.png \
+curl --data-binary '@./examples/test-0.png' -o optimized.png \
   'https://api.saasify.sh/1/call/dev/imagemin/optimizeImage'
 ```
 
