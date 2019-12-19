@@ -5,7 +5,15 @@ import theme from 'lib/theme'
 import { inject } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 
-import { Button, Checkbox, Divider, Form, Icon, Input, message } from 'lib/antd'
+import {
+  Button,
+  Checkbox,
+  Divider,
+  Form,
+  Icon,
+  Input,
+  notification
+} from 'lib/antd'
 
 import authGitHub from 'lib/auth-github'
 import debug from 'lib/debug'
@@ -111,7 +119,10 @@ export class SignupForm extends Component {
           .catch((err) => {
             this.setState({ loading: false })
             debug(err)
-            message.error(`Error signing up: ${err.response.data.error}`)
+            notification.error({
+              message: 'Error signing up',
+              description: err.message
+            })
           })
       }
     })
