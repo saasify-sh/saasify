@@ -729,6 +729,10 @@
   height: 30vh;
 }
 
+.theme-waves .live-service-demo .output--flush .img-wrapper {
+  height: auto;
+}
+
 .theme-waves .code-block {
   background: transparent !important;
   color: white !important;
