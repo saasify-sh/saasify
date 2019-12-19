@@ -114,6 +114,10 @@
   display: none;
 }
 
+.theme-waves .section:last-of-type {
+  margin-bottom: calc(2 * var(--space-xxl));
+}
+
 /*
  * Home page
  * ----------------------------
@@ -249,6 +253,14 @@
   max-width: 220px;
 }
 
+.theme-waves .features-section .feature:nth-of-type(3n - 2) {
+  margin-left: 0;
+}
+
+.theme-waves .features-section .feature:nth-of-type(3n) {
+  margin-right: 0;
+}
+
 .theme-waves .features-section .feature .illustration {
   max-height: 120px !important;
   width: 220px;
@@ -256,15 +268,6 @@
 
 .theme-waves .features-section .feature h3 {
   font-weight: 600 !important;
-}
-
-/*
- * Home page, CTA section
- * ----------------------------
- */
-
-.theme-waves .home-page .section:last-of-type {
-  display: none;
 }
 
 /*
