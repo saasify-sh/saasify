@@ -7,15 +7,17 @@
       "src": "src/url.ts",
       "examples": [
         {
-          "name": "PNG",
+          "name": "JPEG",
+          "description": "Optimize image by URL",
           "input": {
-            "url": "https://octodex.github.com/images/original.png"
+            "url": "https://source.unsplash.com/V6TWE6h8gyg/1600x900"
           }
         },
         {
-          "name": "JPEG",
+          "name": "PNG",
+          "description": "Optimize image by URL",
           "input": {
-            "url": "https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/imagemin/examples/nala.jpg"
+            "url": "https://octodex.github.com/images/original.png"
           }
         }
       ]
@@ -26,19 +28,53 @@
   ],
   "saas": {
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin",
-    "heading": "Powerful **Image Optimization**",
-    "subheading": "Lightning fast API to serve optimized versions of any image asset.",
+    "name": "imagemin",
+    "heading": "**Reduce image sizes by up to 80%**",
+    "subheading": "Lightning-fast API to serve optimized versions of any image asset, in any environment.",
     "logo": "media/logo.svg",
     "favicon": "media/favicon.ico",
     "theme": {
       "name": "waves",
-      "backgroundImage": "https://images.unsplash.com/photo-1539186607619-df476afe6ff1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80",
+      "backgroundImage": "https://images.unsplash.com/photo-1565638459249-c85cbb2faaa8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
       "buttonStyle": "rounded",
-      "color": "#2097e2",
+      "color": "#2f8aad",
       "wave": false,
-      "gradientDark": false,
-      "codeBlockDark": true
-    }
+      "gradientDark": true,
+      "codeBlockDark": true,
+      "codeBlockOutputFlush": true
+    },
+    "features": [
+      {
+        "name": "Minify any image",
+        "desc": "Reduce image sizes for PNGs, JPEGs, GIFs and more by up to 80%.",
+        "icon": "media/icons/images.svg"
+      },
+      {
+        "name": "Lightning-fast",
+        "desc": "Industry leading image processing times mean you'll never wait long.",
+        "icon": "media/icons/fast.svg"
+      },
+      {
+        "name": "Reduce costs",
+        "desc": "Image processing at scale is expensive. We'll handle that; you focus on your business.",
+        "icon": "media/icons/savings.svg"
+      },
+      {
+        "name": "Free to try",
+        "desc": "100 images / mo for free, then only pay for what you use. See [our pricing](/pricing).",
+        "icon": "media/icons/happy.svg"
+      },
+      {
+        "name": "Plugin ecosystem",
+        "desc": "Leverage an ecosystem with [dozens of plugins](https://www.npmjs.com/search?q=keywords:imageminplugin), from pngquant to gifsicle.",
+        "icon": "media/icons/plugins.svg"
+      },
+      {
+        "name": "Support open source",
+        "desc": "Profits support the authors of [imagemin](https://www.github.com/imagemin/imagemin), the popular Node.js lib with 3,000,000+ monthly downloads!",
+        "icon": "media/icons/opensource.svg"
+      }
+    ]
   },
   "amountPerBase": 99,
   "amountPerRequest": 0.24,
