@@ -58,6 +58,11 @@ const mimeTypeToPipelines: PipelineMap = {
   'image/gif': [{ name: 'gifsicle', plugins: [imageminGifsicle()] }]
 }
 
+/**
+ * Optimizes an image
+ *
+ * @param input Image buffer to optimize
+ */
 export default async function optimizeImage(
   input: Buffer
 ): Promise<HttpResponse> {
