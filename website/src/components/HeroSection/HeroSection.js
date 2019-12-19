@@ -14,7 +14,7 @@ export class HeroSection extends Component {
         className={theme(null, 'hero', className)}
         {...rest}
       >
-        <CTAButton>Get Started</CTAButton>
+        <CTAButton>Get started</CTAButton>
       </Section>
     )
   }

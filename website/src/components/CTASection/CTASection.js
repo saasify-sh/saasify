@@ -8,7 +8,7 @@ export class CTASection extends Component {
     return (
       <Section {...this.props}>
         <Link to='/signup'>
-          <CTAButton>Get Started For Free!</CTAButton>
+          <CTAButton>Get started for free!</CTAButton>
         </Link>
       </Section>
     )

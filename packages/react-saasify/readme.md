@@ -43,7 +43,7 @@ export class HeroSection extends Component {
         className={theme(styles, 'hero')}
       >
         <CTAButton>
-          Get Started
+          Get started
         </CTAButton>
       </Section>
     )

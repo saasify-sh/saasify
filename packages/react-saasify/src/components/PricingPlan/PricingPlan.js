@@ -114,7 +114,7 @@ export class PricingPlan extends Component {
                 plan.type === 'secondary' && theme(styles, 'secondaryCTAButton')
               )}
             >
-              Get Started
+              Get started
             </CTAButton>
           </Link>
         )}
