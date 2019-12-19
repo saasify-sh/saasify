@@ -29,7 +29,7 @@
   "saas": {
     "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin",
     "name": "imagemin",
-    "heading": "**Reduce image sizes by up to 80%**",
+    "heading": "**Reduce image sizes by up to 60%**",
     "subheading": "Lightning-fast API to serve optimized versions of any image asset, in any environment.",
     "logo": "media/logo.svg",
     "favicon": "media/favicon.ico",
@@ -46,7 +46,7 @@
     "features": [
       {
         "name": "Minify any image",
-        "desc": "Reduce image sizes for PNGs, JPEGs, GIFs and more by up to 80%.",
+        "desc": "Reduce image sizes for PNGs, JPEGs, GIFs and more by up to 60%.",
         "icon": "media/icons/images.svg"
       },
       {
