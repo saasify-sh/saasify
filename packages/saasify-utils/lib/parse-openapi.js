@@ -4,7 +4,7 @@ const cloneDeep = require('clone-deep')
 const parser = require('swagger-parser')
 const semver = require('semver')
 
-const validators = require('./validators')
+const { validators } = require('saasify-faas-utils')
 
 const httpParameterBlacklist = new Set(['path', 'cookie'])
 

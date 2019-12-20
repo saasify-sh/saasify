@@ -1,5 +1,11 @@
 'use strict'
 
+const faasUtils = require('saasify-faas-utils')
+
+module.exports = {
+  ...faasUtils
+}
+
 exports.prepareDeployment = require('./lib/prepare-deployment')
 
 // TODO: move these into an isolated package

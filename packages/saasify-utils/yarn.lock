@@ -1101,6 +1101,11 @@ duplexer3@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer3/-/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
 
+email-validator@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/email-validator/-/email-validator-2.0.4.tgz#b8dfaa5d0dae28f1b03c95881d904d4e40bfe7ed"
+  integrity sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==
+
 emittery@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.4.1.tgz#abe9d3297389ba424ac87e53d1c701962ce7433d"
@@ -2820,6 +2825,13 @@ rimraf@^2.6.1, rimraf@^2.6.3:
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
   dependencies:
     glob "^7.1.3"
+
+saasify-faas-utils@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/saasify-faas-utils/-/saasify-faas-utils-0.1.2.tgz#6efa3c9ac7c11ab2ac7bd718a9dd07f37e4d029d"
+  integrity sha512-SV9ThHjTI9r0ylt+KAYA71lNw1fDQkQ+OKhAMyq8IUpZVJaIcdSjXBI6LdeT33h3f3Ihf4tBJItxEvFKD4t3Jg==
+  dependencies:
+    email-validator "^2.0.4"
 
 safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@^5.1.2:
   version "5.2.0"
