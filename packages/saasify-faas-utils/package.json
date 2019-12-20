@@ -1,6 +1,6 @@
 {
   "name": "saasify-faas-utils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shared FaaS utilities for Saasify.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
