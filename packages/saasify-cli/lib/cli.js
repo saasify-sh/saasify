@@ -37,7 +37,7 @@ module.exports = async (argv, opts = {}) => {
     )
     .option(
       '-c, --config <path>',
-      'Path to `saasify.json` file (defaults to cwd)'
+      'Path to saasify config file (defaults to cwd)'
     )
     .option('-C, --no-clipboard', 'Do not attempt to copy URL to clipboard')
 
