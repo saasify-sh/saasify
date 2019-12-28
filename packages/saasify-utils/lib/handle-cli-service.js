@@ -9,14 +9,24 @@ const reducePairs = (pairs) =>
 
 const buildCommand = (commandTemplate, required, optional) => {
   // TODO remove npx once using global installs of deps via deployment.install
-  const command = `npx ${commandTemplate}`
+  let command = `npx ${commandTemplate}`
 
-  const optionsString = Object.keys(optional).reduce(
-    (acc, item) => `${acc} --${item} ${optional[item]}`,
-    ''
-  )
+  const optionsString = Object.keys(optional).reduce((acc, item) => {
+    let option = ''
+    const prefix = item.length === 1 ? '-' : '--' // Allows us to test with single letter params
 
-  command.replace(' [options]', optionsString)
+    if (typeof optional[item] === 'boolean') {
+      if (optional[item]) {
+        option = ` ${prefix}${item}`
+      }
+    } else {
+      option = ` ${prefix}${item} ${JSON.stringify(optional[item])}`
+    }
+
+    return `${acc}${option}`
+  }, '')
+
+  command = command.replace(' [options]', optionsString)
 
   const matchedKeys = []
 
@@ -26,15 +36,17 @@ const buildCommand = (commandTemplate, required, optional) => {
 
     if (command.match(pattern)) {
       matchedKeys.push(key)
-      command.replace(` [${key}]`, val)
+      command.replace(pattern, val)
+
+      command = command.replace(pattern, val)
     }
   }
 
   return { command, matchedKeys }
 }
 
-module.exports = async (run, contentType, input, ...args) => {
-  const params = reducePairs(args)
+module.exports = async (run, contentType, input, optionPairs) => {
+  const options = reducePairs(optionPairs)
 
   const outputPath = tempy.file()
 
@@ -44,8 +56,10 @@ module.exports = async (run, contentType, input, ...args) => {
       input: await tempWrite(input),
       output: outputPath
     },
-    params
+    options
   )
+
+  console.log(command)
 
   // If inline output, implicitly return stdout
   const { stdout } = await exec(command)
