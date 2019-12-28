@@ -24,6 +24,14 @@
           "type": "string",
           "title": "description"
         },
+        "package": {
+          "type": "string",
+          "title": "package"
+        },
+        "language": {
+          "type": "string",
+          "title": "language"
+        },
         "alias": {
           "type": "string",
           "title": "alias"
@@ -157,9 +165,17 @@
           "type": "string",
           "title": "src"
         },
+        "run": {
+          "type": "string",
+          "title": "run"
+        },
         "name": {
           "type": "string",
           "title": "name"
+        },
+        "contentType": {
+          "type": "string",
+          "title": "contentType"
         },
         "timeout": {
           "type": "number",
@@ -192,8 +208,7 @@
           "additionalProperties": true
         },
         "additionalProperties": false
-      },
-      "required": ["src"]
+      }
     },
     "RateLimit": {
       "title": "RateLimit",

@@ -6,7 +6,10 @@ module.exports = {
   ...faasUtils
 }
 
-exports.prepareDeployment = require('./lib/prepare-deployment')
+// NB not sure why these aren't appearing when using exports. Address during review.
+module.exports.prepareDeployment = require('./lib/prepare-deployment')
+module.exports.generateSrcFromCli = require('./lib/generate-src-from-cli')
+module.exports.handleCliService = require('./lib/handle-cli-service')
 
 // TODO: move these into an isolated package
 exports.parseOpenAPI = require('./lib/parse-openapi')

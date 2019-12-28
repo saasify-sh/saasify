@@ -29,7 +29,10 @@ module.exports = async (program, project, opts = {}) => {
   )
 
   // TODO: make this cleaner as part of the adaptor
-  if (project.services[0].adaptor === 'typescript') {
+  if (
+    project.services[0].adaptor === 'typescript' ||
+    project.services[0].adaptor === 'cli'
+  ) {
     await installPackageDeps(program, tempDir)
   }
 
