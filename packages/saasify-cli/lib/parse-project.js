@@ -13,19 +13,26 @@ module.exports = async (program, opts = {}) => {
 
   // figure out which language adaptor this project uses
   for (const service of config.services) {
-    const ext = getExtension(service.src)
     let current
 
-    if (ext === 'ts' || ext === 'tsx' || ext === 'js') {
-      current = 'typescript'
-    } else if (ext === 'py') {
-      current = 'python'
+    if (service.run) {
+      current = 'cli'
     } else {
-      throw new Error(`Unsupported service type "${ext}" [${service.src}]`)
-    }
+      const ext = getExtension(service.src)
 
-    if (adaptor && current !== adaptor) {
-      throw new Error(`Unsupported service type "${ext}" [${service.src}]`)
+      if (ext === 'ts' || ext === 'tsx' || ext === 'js') {
+        current = 'typescript'
+      } else if (ext === 'py') {
+        current = 'python'
+      } else if (service.run) {
+        current = 'cli'
+      } else {
+        throw new Error(`Unsupported service type "${ext}" [${service.src}]`)
+      }
+
+      if (adaptor && current !== adaptor) {
+        throw new Error(`Unsupported service type "${ext}" [${service.src}]`)
+      }
     }
 
     adaptor = current

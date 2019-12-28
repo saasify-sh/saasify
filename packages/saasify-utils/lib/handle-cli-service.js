@@ -1,0 +1,68 @@
+const tempWrite = require('temp-write')
+const tempy = require('tempy')
+const util = require('util')
+const fs = require('fs')
+const exec = util.promisify(require('child_process').exec)
+
+const reducePairs = (pairs) =>
+  pairs.reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {})
+
+const buildCommand = (commandTemplate, required, optional) => {
+  // TODO remove npx once using global installs of deps via deployment.install
+  const command = `npx ${commandTemplate}`
+
+  const optionsString = Object.keys(optional).reduce(
+    (acc, item) => `${acc} --${item} ${optional[item]}`,
+    ''
+  )
+
+  command.replace(' [options]', optionsString)
+
+  const matchedKeys = []
+
+  for (const key in required) {
+    const val = required[key]
+    const pattern = new RegExp(`\\[${key}\\]`)
+
+    if (command.match(pattern)) {
+      matchedKeys.push(key)
+      command.replace(` [${key}]`, val)
+    }
+  }
+
+  return { command, matchedKeys }
+}
+
+module.exports = async (run, contentType, input, ...args) => {
+  const params = reducePairs(args)
+
+  const outputPath = tempy.file()
+
+  const { command, matchedKeys } = buildCommand(
+    run,
+    {
+      input: await tempWrite(input),
+      output: outputPath
+    },
+    params
+  )
+
+  // If inline output, implicitly return stdout
+  const { stdout } = await exec(command)
+
+  let body
+
+  if (matchedKeys.indexOf('output') > -1) {
+    body = fs.readFileSync(outputPath)
+  } else {
+    body = stdout
+  }
+
+  return {
+    headers: {
+      'Content-Type': contentType
+    },
+    statusCode: 200,
+    body
+  }
+}
