@@ -26,7 +26,6 @@ class Service {
   src?: string
   run?: string
   name?: string
-  contentType?: string
   timeout?: number = 0
   examples?: Example[]
   config?: object

@@ -3,6 +3,7 @@ const tempy = require('tempy')
 const util = require('util')
 const fs = require('fs')
 const exec = util.promisify(require('child_process').exec)
+const fileType = require('file-type')
 
 const reducePairs = (pairs) =>
   pairs.reduce((acc, [key, val]) => ({ ...acc, [key]: val }), {})
@@ -45,7 +46,7 @@ const buildCommand = (commandTemplate, required, optional) => {
   return { command, matchedKeys }
 }
 
-module.exports = async (run, contentType, input, optionPairs) => {
+module.exports = async (run, input, optionPairs) => {
   const options = reducePairs(optionPairs)
 
   const outputPath = tempy.file()
@@ -74,7 +75,7 @@ module.exports = async (run, contentType, input, optionPairs) => {
 
   return {
     headers: {
-      'Content-Type': contentType
+      'Content-Type': fileType(body).mime
     },
     statusCode: 200,
     body

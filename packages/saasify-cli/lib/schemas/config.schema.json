@@ -173,10 +173,6 @@
           "type": "string",
           "title": "name"
         },
-        "contentType": {
-          "type": "string",
-          "title": "contentType"
-        },
         "timeout": {
           "type": "number",
           "title": "timeout",
