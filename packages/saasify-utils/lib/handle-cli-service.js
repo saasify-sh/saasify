@@ -10,7 +10,7 @@ const reducePairs = (pairs) =>
 
 const buildCommand = (commandTemplate, required, optional) => {
   // TODO remove npx once using global installs of deps via deployment.install
-  let command = `npx ${commandTemplate}`
+  let command = `npx --no-install ${commandTemplate}`
 
   const optionsString = Object.keys(optional).reduce((acc, item) => {
     let option = ''
@@ -63,14 +63,15 @@ module.exports = async (run, input, optionPairs) => {
   console.log(command)
 
   // If inline output, implicitly return stdout
-  const { stdout } = await exec(command)
+  // Maximum buffer size is 256MB
+  const { stdout } = await exec(command, { maxBuffer: 1024 * 256000 })
 
   let body
 
   if (matchedKeys.indexOf('output') > -1) {
     body = fs.readFileSync(outputPath)
   } else {
-    body = stdout
+    body = Buffer.from(stdout)
   }
 
   return {
