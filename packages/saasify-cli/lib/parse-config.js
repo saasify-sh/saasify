@@ -7,6 +7,7 @@ const path = require('path')
 const parseJson = require('parse-json')
 const semver = require('semver')
 const { validators } = require('saasify-utils')
+const yaml = require('js-yaml')
 
 const configSchema = require('./schemas/config.schema')
 
@@ -20,18 +21,34 @@ module.exports = (program) => {
     throw new Error(`Unable to find config file "${program.config}"`)
   }
 
-  const configFilePath = isDirectory.sync(base)
+  const jsonConfigFilePath = isDirectory.sync(base)
     ? path.join(base, 'saasify.json')
     : base
 
-  if (!fs.pathExistsSync(configFilePath)) {
-    throw new Error(`Unable to find config file "${configFilePath}"`)
+  const yamlConfigFilePath = isDirectory.sync(base)
+    ? path.join(base, 'saasify.yml')
+    : base
+
+  let configFilePath
+  let fileType
+
+  if (fs.pathExistsSync(jsonConfigFilePath)) {
+    configFilePath = jsonConfigFilePath
+    fileType = 'json'
+  } else if (fs.pathExistsSync(yamlConfigFilePath)) {
+    configFilePath = yamlConfigFilePath
+    fileType = 'yaml'
+  } else {
+    throw new Error(`Unable to find config file "${jsonConfigFilePath}"`)
   }
 
   const configLabel = path.relative(process.cwd(), configFilePath)
   console.error(`parsing config ${configLabel}`)
   const configData = fs.readFileSync(configFilePath, 'utf8')
-  const config = parseJson(configData, configLabel)
+  const config =
+    fileType === 'json'
+      ? parseJson(configData, configLabel)
+      : yaml.safeLoad(configData)
   validateConfig(config)
 
   if (validateConfig.errors) {
