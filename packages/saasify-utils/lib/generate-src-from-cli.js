@@ -12,8 +12,9 @@ export default async function ${service.name}(
   input: Buffer,
   ...options: any[]
 ): Promise<HttpResponse> {
-  return handleCliService('${run}', '${service.contentType}', input, options)
-}`
+  return handleCliService('${run}', input, options)
+}
+`
 
   fs.writeFileSync(destination, src)
 
