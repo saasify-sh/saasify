@@ -32,8 +32,16 @@ module.exports = async (deployment, data, opts = {}) => {
     if (immutable) {
       headers = {
         'cache-control':
-          'public, immutable, s-maxage=31536000, max-age=31536000',
+          'public, immutable, s-maxage=31536000, max-age=31536000, stale-while-revalidate',
         ...headers
+      }
+    } else if (!headers || !headers['cache-control']) {
+      // ZEIT now sets default cache-control headers of `public, max-age=0, must-revalidate`
+      // We want to override this default with something a little more aggressive.
+      headers = {
+        ...headers,
+        'cache-control':
+          'public, s-maxage=3600, max-age=3600, stale-while-revalidate'
       }
     }
 

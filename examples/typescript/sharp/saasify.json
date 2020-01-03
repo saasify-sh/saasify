@@ -4,6 +4,7 @@
   "services": [
     {
       "src": "src/index.ts",
+      "immutable": true,
       "examples": [
         {
           "name": "Resize",

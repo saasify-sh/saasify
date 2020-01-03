@@ -11,6 +11,7 @@
   "services": [
     {
       "src": "src/url.ts",
+      "immutable": true,
       "examples": [
         {
           "name": "Person",

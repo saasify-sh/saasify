@@ -5,6 +5,7 @@
   "services": [
     {
       "src": "src/search-images.ts",
+      "immutable": true,
       "examples": [
         {
           "name": "Search for images of cats",

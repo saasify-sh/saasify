@@ -5,6 +5,7 @@
   "services": [
     {
       "src": "index.ts",
+      "immutable": true,
       "examples": [
         {
           "name": "Ghost",
