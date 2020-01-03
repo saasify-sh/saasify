@@ -17,6 +17,8 @@ class Config {
   build?: object
   env?: object
   saas?: object
+  headers?: object
+  immutable?: boolean
   services: Service[]
 }
 
