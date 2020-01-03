@@ -27,6 +27,15 @@ module.exports = async (deployment, data, opts = {}) => {
 
   for (const service of deployment.services) {
     const ext = getExtension(service.src).toLowerCase()
+    let { headers, immutable } = service
+
+    if (immutable) {
+      headers = {
+        'cache-control':
+          'public, immutable, s-maxage=31536000, max-age=31536000',
+        ...headers
+      }
+    }
 
     if (ext === 'ts' || ext === 'tsx' || ext === 'js') {
       if (language && language !== 'ts') {
@@ -79,13 +88,15 @@ module.exports = async (deployment, data, opts = {}) => {
 
       routes.push({
         src: `/${serviceName}`,
-        dest: handlerFileNameExt
+        dest: handlerFileNameExt,
+        headers
       })
 
       if (deployment.services.length === 1) {
         routes.push({
           src: '/',
-          dest: handlerFileNameExt
+          dest: handlerFileNameExt,
+          headers
         })
       }
     } else if (ext === 'py') {
@@ -111,7 +122,8 @@ module.exports = async (deployment, data, opts = {}) => {
 
       routes.push({
         src: '.*',
-        dest: service.src
+        dest: service.src,
+        headers
       })
 
       // TODO: restrict python to a single entry service

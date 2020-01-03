@@ -191,6 +191,10 @@
           "title": "headers",
           "additionalProperties": true
         },
+        "immutable": {
+          "type": "boolean",
+          "title": "immutable"
+        },
         "additionalProperties": false
       },
       "required": ["src"]

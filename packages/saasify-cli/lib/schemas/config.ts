@@ -29,6 +29,7 @@ class Service {
   GET?: boolean
   POST?: boolean
   headers?: object
+  immutable?: boolean
 }
 
 class Example {
