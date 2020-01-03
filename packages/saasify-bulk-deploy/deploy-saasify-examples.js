@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
-const bulkDeploy = require('./lib')
+const bulkDeploy = require('./lib/dev')
 
 const projects = [
   {
