@@ -17,6 +17,8 @@ class Config {
   build?: object
   env?: object
   saas?: object
+  headers?: object
+  immutable?: boolean
   services: Service[]
 }
 
@@ -29,6 +31,7 @@ class Service {
   GET?: boolean
   POST?: boolean
   headers?: object
+  immutable?: boolean
 }
 
 class Example {

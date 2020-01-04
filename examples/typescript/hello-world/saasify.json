@@ -3,7 +3,8 @@
   "alias": "hello-world",
   "services": [
     {
-      "src": "index.ts"
+      "src": "index.ts",
+      "immutable": true
     }
   ]
 }

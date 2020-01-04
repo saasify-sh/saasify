@@ -44,6 +44,7 @@ module.exports = (program) => {
 
   const configLabel = path.relative(process.cwd(), configFilePath)
   console.error(`parsing config ${configLabel}`)
+
   const configData = fs.readFileSync(configFilePath, 'utf8')
   const config =
     fileType === 'json'
@@ -86,11 +87,36 @@ module.exports = (program) => {
     throw new Error('Invalid config, must contain at least one service')
   }
 
+  // these properties should apply to each service
+  const { headers, immutable } = config
+  delete config.headers
+  delete config.immutable
+
   for (const service of config.services) {
     if (service.name && !validators.service(service.name)) {
       throw new Error(
         `Invalid config service "name" [${service.name}] (must be a valid JavaScript identifier regex ${validators.serviceRe})`
       )
+    }
+
+    if (immutable && service.immutable === undefined) {
+      service.immutable = true
+    }
+
+    if (headers) {
+      service.headers = {
+        ...headers,
+        ...service.headers
+      }
+    }
+
+    if (service.headers) {
+      const headers = Object.entries(service.headers)
+
+      // ensure that all headers are normalized to lower-case
+      service.headers = headers.reduce((acc, [key, value]) => {
+        acc[key.toLowerCase()] = value
+      }, {})
     }
   }
 

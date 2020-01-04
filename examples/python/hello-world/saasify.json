@@ -2,7 +2,8 @@
   "name": "python-hello-world",
   "services": [
     {
-      "src": "main.py"
+      "src": "main.py",
+      "immutable": true
     }
   ]
 }

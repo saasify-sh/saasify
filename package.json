@@ -28,7 +28,7 @@
     }
   },
   "lint-staged": {
-    "*.js": "npm run test:lint"
+    "*.js": "eslint"
   },
   "keywords": [
     "faas",

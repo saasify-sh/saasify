@@ -2,6 +2,7 @@
   "name": "natural",
   "description": "NLP toolkit",
   "alias": "natural",
+  "immutable": true,
   "services": [
     {
       "src": "./src/approx-string-search.ts"

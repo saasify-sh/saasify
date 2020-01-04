@@ -5,6 +5,7 @@
   "services": [
     {
       "src": "main.py",
+      "immutable": true,
       "examples": [
         {
           "name": "US Constitution",

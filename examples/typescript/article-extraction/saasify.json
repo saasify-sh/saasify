@@ -6,6 +6,7 @@
     {
       "src": "src/extract-article.ts",
       "POST": false,
+      "immutable": true,
       "examples": [
         {
           "name": "Extract Wikipedia Article",

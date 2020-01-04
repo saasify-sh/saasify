@@ -2,6 +2,7 @@
   "name": "lqip",
   "description": "An API for generating Low Quality Image Placeholders (LQIP).",
   "alias": "lqip",
+  "immutable": true,
   "services": [
     {
       "src": "src/url-to-base64.ts",

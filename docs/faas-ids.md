@@ -6,7 +6,7 @@
 
 The most general FaaS identifier fully specifies the deployment and service name.
 
-It *may* include an optional URL prefix such as `http://localhost:5000/1/call/` in *development* or `https://api.saasify.sh/1/call/` in *production*. The parsed result will be the same with or without the full URL prefix.
+It *may* include an optional URL prefix such as `http://localhost:5100/` in *development* or `https://ssfy.sh/` in *production*. The parsed result will be the same with or without the full URL prefix.
 
 ```
 username/projectName@01234567/serviceName  // explicitly identify a specific deployment (may not be published)

@@ -20,7 +20,7 @@ The following examples can all be invoked with the following curl template by ch
 
 ```
 curl -X POST -d '@example.json' \
-  'https://api.saasify.sh/1/call/dev/sharp'
+  'https://ssfy.sh/dev/sharp'
 ```
 
 ### Download image
@@ -35,7 +35,7 @@ _example.json_
 
 ```
 curl -X POST -d '@example.json' -o out.png \
-  'https://api.saasify.sh/1/call/dev/sharp'
+  'https://ssfy.sh/dev/sharp'
 ```
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/1.png" width="128" />
@@ -57,10 +57,10 @@ _example.json_
 
 ```
 curl -X POST -d '@example.json' -o out.jpg \
-  'https://api.saasify.sh/1/call/dev/sharp'
+  'https://ssfy.sh/dev/sharp'
 ```
 
-Here's this example as a GET request: [`/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg`](https://api.saasify.sh/1/call/dev/sharp/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg).
+Here's this example as a GET request: [`/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg`](https://ssfy.sh/dev/sharp/?input=https://octodex.github.com/images/original.png&ops[0][op]=jpeg).
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/2.jpg" width="128" />
 
@@ -89,7 +89,7 @@ _example.json_
 
 ```
 curl -X POST -d '@example.json' -o out.webp \
-  'https://api.saasify.sh/1/call/dev/sharp'
+  'https://ssfy.sh/dev/sharp'
 ```
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/3.webp" width="128" />
@@ -115,7 +115,7 @@ _example.json_
 
 ```
 curl -X POST -d '@example.json' -o out.png \
-  'https://api.saasify.sh/1/call/dev/sharp'
+  'https://ssfy.sh/dev/sharp'
 ```
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/4.png" width="128" />
@@ -147,7 +147,7 @@ _example.json_
 
 ```
 curl -X POST -d '@example.json' -o out.png \
-  'https://api.saasify.sh/1/call/dev/sharp'
+  'https://ssfy.sh/dev/sharp'
 ```
 
 <img src="https://raw.githubusercontent.com/saasify-sh/saasify/master/examples/typescript/sharp/examples/5.png" width="128" />
@@ -169,7 +169,7 @@ _example.json_
 
 ```
 curl -X POST -d '@example.json' -o out.json \
-  'https://api.saasify.sh/1/call/dev/sharp'
+  'https://ssfy.sh/dev/sharp'
 ```
 
 _output (JSON)_

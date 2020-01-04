@@ -2,6 +2,7 @@
   "name": "imagemin",
   "description": "Image optimization as a service",
   "alias": "imagemin",
+  "immutable": true,
   "services": [
     {
       "src": "src/url.ts",

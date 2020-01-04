@@ -22,7 +22,7 @@ npm install --save saasify-sdk
 const SaasifySDK = require('saasify-sdk')
 const sdk = new SaasifySDK()
 
-const helloWorldUrl = 'https://api.saasify.sh/1/call/dev/hello-world'
+const helloWorldUrl = 'https://ssfy.sh/dev/hello-world'
 
 const res = await sdk.post(helloWorldUrl, {
   data: { name: 'Nala' }

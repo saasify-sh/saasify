@@ -15,6 +15,7 @@ module.exports = (identifier, opts = {}) => {
   const { pathname } = url.parse(identifier)
   let uri = pathname
 
+  // TODO: /1/call/ prefix has been deprecated
   if (uri.startsWith('/1/call/')) {
     uri = uri.slice('/1/call/'.length)
   } else if (uri.startsWith('/')) {

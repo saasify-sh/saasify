@@ -80,6 +80,15 @@
             "$ref": "#/definitions/Coupon"
           },
           "title": "coupons"
+        },
+        "headers": {
+          "type": "object",
+          "title": "headers",
+          "additionalProperties": true
+        },
+        "immutable": {
+          "type": "boolean",
+          "title": "immutable"
         }
       },
       "additionalProperties": false,
@@ -190,6 +199,10 @@
           "type": "object",
           "title": "headers",
           "additionalProperties": true
+        },
+        "immutable": {
+          "type": "boolean",
+          "title": "immutable"
         },
         "additionalProperties": false
       },

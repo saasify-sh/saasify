@@ -169,6 +169,7 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail.`
     }
   }
 
+  /*
   // TODO: clean this up; this URL path should be private
   // this is a relic of the python openapi not including the full relative path for the
   // saasify proxy but instead only including the relative path for the end deployment
@@ -182,6 +183,10 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail.`
       api.paths[realPath] = pathItem
     }
   }
+
+  // NOTE (travis 1/2020) this shouldn't be necessary anymore with the deprecation of
+  // the FaaS `/1/call/` prefix
+  */
 
   return api
 }
