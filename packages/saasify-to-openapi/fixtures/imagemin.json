@@ -25,9 +25,7 @@
         },
         "params": {
           "context": false,
-          "order": [
-            "image"
-          ],
+          "order": ["image"],
           "schema": {
             "type": "object",
             "properties": {
@@ -37,9 +35,7 @@
               }
             },
             "additionalProperties": false,
-            "required": [
-              "image"
-            ],
+            "required": ["image"],
             "$schema": "http://json-schema.org/draft-07/schema#"
           }
         },

@@ -41,7 +41,7 @@ The most common use case is to generate a wordcloud from a news article or other
 
 ```sh
 curl -X POST -o 'example.png' \
-  'https://api.saasify.sh/1/call/dev/wordcloud/stylecloud' \
+  'https://ssfy.sh/dev/wordcloud/stylecloud' \
   -H 'content-type: application/json' \
   -d '{
     "url": "https://www.bbc.com/sport/athletics/50460861",
@@ -74,7 +74,7 @@ Let's try changing the shape to a swimming icon [`fas fa-swimmer`](https://fonta
 
 ```sh
 curl -X POST -o 'example.png' \
-  'https://api.saasify.sh/1/call/dev/wordcloud/stylecloud' \
+  'https://ssfy.sh/dev/wordcloud/stylecloud' \
   -H 'content-type: application/json' \
   -d '{
     "url": "https://en.wikipedia.org/wiki/Michael_Phelps",
@@ -93,7 +93,7 @@ Now let's try changing the `palette` to [`cmocean.sequential.Matter_10`](https:/
 
 ```sh
 curl -X POST -o 'example.png' \
-  'https://api.saasify.sh/1/call/dev/wordcloud/stylecloud' \
+  'https://ssfy.sh/dev/wordcloud/stylecloud' \
   -H 'content-type: application/json' \
   -d '{
     "url": "https://blog.ycombinator.com/ycs-essential-startup-advice/",

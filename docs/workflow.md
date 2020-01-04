@@ -89,21 +89,21 @@ You can now call your services on this live deployment via HTTP. As an example, 
 Via HTTP GET:
 
 ```
-> http https://api.saasify.sh/1/call/username/hello-world@f4a0d67b
+> http https://ssfy.sh/username/hello-world@f4a0d67b
 Hello World!
 ```
 
 Via HTTP GET with query params:
 
 ```
-> http https://api.saasify.sh/1/call/username/hello-world@f4a0d67b?name=Foo
+> http https://ssfy.sh/username/hello-world@f4a0d67b?name=Foo
 Hello Foo!
 ```
 
 Via HTTP POST with body params:
 
 ```
-> http POST https://api.saasify.sh/1/call/username/hello-world@f4a0d67b name=Nala
+> http POST https://ssfy.sh/username/hello-world@f4a0d67b name=Nala
 Hello Nala!
 ```
 

@@ -34,7 +34,7 @@ Providing an image URL is the easiest way to use this API.
 
 ```
 curl --request POST -o optimized.png \
-  --url 'https://api.saasify.sh/1/call/dev/imagemin/optimizeImageUrl' \
+  --url 'https://ssfy.sh/dev/imagemin/optimizeImageUrl' \
   --header 'content-type: application/json' \
   --data '{"url":"https://octodex.github.com/images/original.png"}'
 ```
@@ -53,7 +53,7 @@ You can also provide binary image data as the body of POST requests. Try replaci
 
 ```
 curl --data-binary '@./examples/test-0.png' -o optimized.png \
-  'https://api.saasify.sh/1/call/dev/imagemin/optimizeImage'
+  'https://ssfy.sh/dev/imagemin/optimizeImage'
 ```
 
 > See the following [docs](https://ec.haxx.se/http-post.html#posting-binary) for more info on curl's `--data-binary` option.

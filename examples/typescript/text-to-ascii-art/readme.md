@@ -20,7 +20,7 @@ Below are some of my favorite fonts. See [fonts.ts](./fonts.ts) for the full lis
 
 #### Ghost
 
-[/?text=Boo!&font=Ghost](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Boo!&font=Ghost)
+[/?text=Boo!&font=Ghost](https://ssfy.sh/dev/text-to-ascii-art/?text=Boo!&font=Ghost)
 
 ```
 .-. .-')                            ,---.
@@ -36,7 +36,7 @@ Below are some of my favorite fonts. See [fonts.ts](./fonts.ts) for the full lis
 
 #### Big Money-ne
 
-[/?text=Saasify&font=Big%20Money-ne](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Saasify&font=Big%20Money-ne)
+[/?text=Saasify&font=Big%20Money-ne](https://ssfy.sh/dev/text-to-ascii-art/?text=Saasify&font=Big%20Money-ne)
 
 ```
   /$$$$$$                                /$$  /$$$$$$
@@ -54,7 +54,7 @@ Below are some of my favorite fonts. See [fonts.ts](./fonts.ts) for the full lis
 
 #### ANSI Shadow
 
-[/?text=Saasify&font=ANSI%20Shadow](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Saasify&font=ANSI%20Shadow)
+[/?text=Saasify&font=ANSI%20Shadow](https://ssfy.sh/dev/text-to-ascii-art/?text=Saasify&font=ANSI%20Shadow)
 
 ```
 ███████╗ █████╗  █████╗ ███████╗██╗███████╗██╗   ██╗
@@ -67,7 +67,7 @@ Below are some of my favorite fonts. See [fonts.ts](./fonts.ts) for the full lis
 
 #### Bloody
 
-[/?text=Saasify&font=Bloody](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Saasify&font=Bloody)
+[/?text=Saasify&font=Bloody](https://ssfy.sh/dev/text-to-ascii-art/?text=Saasify&font=Bloody)
 
 ```
   ██████  ▄▄▄      ▄▄▄        ██████  ██▓  █████▒▓██   ██▓
@@ -84,7 +84,7 @@ Below are some of my favorite fonts. See [fonts.ts](./fonts.ts) for the full lis
 
 #### Alligator
 
-[/?text=Saasify&font=Alligator](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Saasify&font=Alligator)
+[/?text=Saasify&font=Alligator](https://ssfy.sh/dev/text-to-ascii-art/?text=Saasify&font=Alligator)
 
 ```
       ::::::::      :::         :::      :::::::: ::::::::::: :::::::::: :::   :::
@@ -98,7 +98,7 @@ Below are some of my favorite fonts. See [fonts.ts](./fonts.ts) for the full lis
 
 #### Alligator2
 
-[/?text=Saasify&font=Alligator2](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Saasify&font=Alligator2)
+[/?text=Saasify&font=Alligator2](https://ssfy.sh/dev/text-to-ascii-art/?text=Saasify&font=Alligator2)
 
 ```
  ::::::::      :::         :::      :::::::: ::::::::::: :::::::::: :::   :::
@@ -112,7 +112,7 @@ Below are some of my favorite fonts. See [fonts.ts](./fonts.ts) for the full lis
 
 #### Banner3-D
 
-[/?text=Saasify&font=Banner3-D](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Saasify&font=Banner3-D)
+[/?text=Saasify&font=Banner3-D](https://ssfy.sh/dev/text-to-ascii-art/?text=Saasify&font=Banner3-D)
 
 ```
 :'######:::::'###:::::::'###:::::'######::'####:'########:'##:::'##:
@@ -127,7 +127,7 @@ Below are some of my favorite fonts. See [fonts.ts](./fonts.ts) for the full lis
 
 #### Georgia11
 
-[/?text=Saasify&font=Georgia11](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Saasify&font=Georgia11)
+[/?text=Saasify&font=Georgia11](https://ssfy.sh/dev/text-to-ascii-art/?text=Saasify&font=Georgia11)
 
 ```
                                       ,,      ,...
@@ -144,7 +144,7 @@ P"Ybmmd"  `Moo9^Yo.`Moo9^Yo.M9mmmP' .JMML..JMML.    ,V
 
 #### Roman
 
-[/?text=Saasify&font=Roman](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Saasify&font=Roman)
+[/?text=Saasify&font=Roman](https://ssfy.sh/dev/text-to-ascii-art/?text=Saasify&font=Roman)
 
 ```
  .oooooo..o                               o8o   .o88o.
@@ -160,7 +160,7 @@ oo     .d8P d8(  888  d8(  888  o.  )88b  888   888       `888'
 
 #### Poison
 
-[/?text=Saasify&font=Poison](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Saasify&font=Poison)
+[/?text=Saasify&font=Poison](https://ssfy.sh/dev/text-to-ascii-art/?text=Saasify&font=Poison)
 
 ```
  @@@@@@    @@@@@@    @@@@@@    @@@@@@   @@@  @@@@@@@@  @@@ @@@
@@ -177,7 +177,7 @@ oo     .d8P d8(  888  d8(  888  o.  )88b  888   888       `888'
 
 #### Small Poison
 
-[/?text=Saasify&font=Small%20Poison](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Saasify&font=Small%20Poison)
+[/?text=Saasify&font=Small%20Poison](https://ssfy.sh/dev/text-to-ascii-art/?text=Saasify&font=Small%20Poison)
 
 ```
  @@@@@@  @@@@@@   @@@@@@   @@@@@@ @@@ @@@@@@@@ @@@ @@@
@@ -189,7 +189,7 @@ oo     .d8P d8(  888  d8(  888  o.  )88b  888   888       `888'
 
 #### Doh
 
-[/?text=Saasify&font=Doh](https://api.saasify.sh/1/call/dev/text-to-ascii-art/?text=Saasify&font=Doh)
+[/?text=Saasify&font=Doh](https://ssfy.sh/dev/text-to-ascii-art/?text=Saasify&font=Doh)
 
 ```
    SSSSSSSSSSSSSSS                                                      iiii     ffffffffffffffff

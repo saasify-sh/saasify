@@ -75,7 +75,7 @@ You can deploy your project by running `saasify deploy` from within the director
 saasify deploy
 ```
 
-This will take a minute or so to complete, with the end result being a publicly accessible deployment. The deployment URL will be copied to your clipboard and should resemble `https://api.saasify.sh/1/call/username/hello-world@f4a0d67b`.
+This will take a minute or so to complete, with the end result being a publicly accessible deployment. The deployment URL will be copied to your clipboard and should resemble `https://ssfy.sh/username/hello-world@f4a0d67b`.
 
 <p align="center">
   <img src="./_media/undraw/logistics.svg" alt="Deployments" width="200" />
@@ -90,21 +90,21 @@ You can now call your services on this live deployment via HTTP. As an example, 
 Via HTTP GET:
 
 ```
-> http https://api.saasify.sh/1/call/username/hello-world@f4a0d67b
+> http https://ssfy.sh/username/hello-world@f4a0d67b
 Hello World!
 ```
 
 Via HTTP GET with query params:
 
 ```
-> http https://api.saasify.sh/1/call/username/hello-world@f4a0d67b?name=Foo
+> http https://ssfy.sh/username/hello-world@f4a0d67b?name=Foo
 Hello Foo!
 ```
 
 Via HTTP POST with body params:
 
 ```
-> http POST https://api.saasify.sh/1/call/username/hello-world@f4a0d67b name=Nala
+> http POST https://ssfy.sh/username/hello-world@f4a0d67b name=Nala
 Hello Nala!
 ```
 
@@ -143,14 +143,14 @@ From now on, when you call your project's services via HTTP, you'll want to incl
 You can do this by either adding an `authorization` header with a value of your `token`:
 
 ```
-> http https://api.saasify.sh/1/call/username/hello-world_f4a0d67b authorization:<token>
+> http https://ssfy.sh/username/hello-world_f4a0d67b authorization:<token>
 Hello World!
 ```
 
 Or by adding a `token` query parameter:
 
 ```
-> http https://api.saasify.sh/1/call/username/hello-world_f4a0d67b?token=<token>&name=Bob
+> http https://ssfy.sh/username/hello-world_f4a0d67b?token=<token>&name=Bob
 Hello Bob!
 ```
 
