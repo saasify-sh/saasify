@@ -10,7 +10,7 @@ const nameRe = /\/([^/]*)$/
  * SaaS web client and [Redoc](https://github.com/Redocly/redoc).
  */
 module.exports = async (spec, deployment, opts = {}) => {
-  const { baseUrl = 'https://api.saasify.sh' } = opts
+  const { baseUrl = 'https://ssfy.sh' } = opts
 
   const api = cloneDeep(spec)
   const version = deployment.version ? `v${deployment.version}` : undefined
