@@ -78,6 +78,10 @@ You may also want to check out our [mission](https://saasify.sh/#/mission) to le
   <img src="https://saasify.sh/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
 </p>
 
+## Contributing Guidelines
+
+Please see the [Contributing Guidelines](https://github.com/saasify-sh/saasify/blob/master/CONTRIBUTING.md).
+
 ## Status
 
 **As of September, 2019, Saasify is in beta and is ready for general use.**
