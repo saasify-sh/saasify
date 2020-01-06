@@ -5,6 +5,7 @@ const fs = require('fs').promises
 const program = require('commander')
 const SaasifyClient = require('saasify-client')
 const didYouMean = require('didyoumean')
+const updateNotifier = require('update-notifier')
 
 const pkg = require('../package')
 const auth = require('./auth')
@@ -24,6 +25,8 @@ module.exports = async (argv, opts = {}) => {
       console.log(`\n Did you mean ${suggestion}?`)
     }
   }
+
+  updateNotifier({pkg}).notify()
 
   program
     .name(pkg.name)
