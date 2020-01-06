@@ -66,7 +66,7 @@ Have an idea or an OSS project that you'd like to monetize, but not sure where t
 - 🔥 Every API comes with its own customizable marketing site
 - 💯 Built with TypeScript + AWS Lambda + Stripe
 - 🤖 We handle all docs, hosting, billing, and accounts for you
-- 🚀 Our CLI makes it really easy to get started!
+- 🚀 [Our CLI](https://saasify.sh/#/cli) makes it really easy to get started!
 
 ## Getting Started
 
@@ -78,6 +78,10 @@ You may also want to check out our [mission](https://saasify.sh/#/mission) to le
   <img src="https://saasify.sh/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
 </p>
 
+## Contributing Guidelines
+
+Please see the [Contributing Guidelines](https://github.com/saasify-sh/saasify/blob/master/CONTRIBUTING.md).
+
 ## Status
 
 **As of September, 2019, Saasify is in beta and is ready for general use.**
@@ -88,4 +92,4 @@ Thanks! ⭐️
 
 ## License
 
-MIT © [Saasify](https://saasify.sh)
+MIT © [Saasify](https://github.com/saasify-sh/saasify/blob/master/LICENSE)
