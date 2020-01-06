@@ -13,7 +13,7 @@ export class UndrawSVG extends Component {
     const { className, name, color, ...rest } = this.props
 
     const uri =
-      name.indexOf('/') >= 0 || name.indexOf('.') >= 0
+      name.includes('/') || name.includes('.')
         ? name
         : `/assets/undraw/${name}.svg`
 
