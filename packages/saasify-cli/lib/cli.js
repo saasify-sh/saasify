@@ -6,7 +6,7 @@ const program = require('commander')
 const SaasifyClient = require('saasify-client')
 const didYouMean = require('didyoumean')
 
-const { name, version } = require('../package')
+const pkg = require('../package')
 const auth = require('./auth')
 
 const commands = require('./commands')
@@ -26,9 +26,9 @@ module.exports = async (argv, opts = {}) => {
   }
 
   program
-    .name(name)
+    .name(pkg.name)
     .usage('<command> [options]')
-    .version(version)
+    .version(pkg.version)
     .option('-d, --debug', 'Enable extra debugging output', false)
     .option('-n, --project <name>', 'Project name')
     .option(
