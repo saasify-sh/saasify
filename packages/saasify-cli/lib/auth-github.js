@@ -48,7 +48,7 @@ module.exports = async (client) => {
     uri: redirectUri
   })}`
   const config =
-    client.baseUrl.indexOf('localhost') >= 0
+    client.baseUrl.includes('localhost')
       ? {
           client_id: '86d73532d0105da51a4d',
           redirect_uri
