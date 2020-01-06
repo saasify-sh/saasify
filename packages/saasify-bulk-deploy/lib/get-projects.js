@@ -38,7 +38,7 @@ module.exports = async function getProjects(repos, opts) {
 
         let projectDirs = [repoPath]
         if (projects) {
-          if (typeof projects === 'string' && projects.indexOf('*') < 0) {
+          if (typeof projects === 'string' && !projects.includes('*')) {
             projectDirs = [projects]
           } else {
             projectDirs = await globby(projects, {
