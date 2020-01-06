@@ -37,7 +37,7 @@ module.exports = async (spec) => {
     const name = path.slice(1)
 
     if (name && !validators.service(name)) {
-      if (name.indexOf('/') !== -1) {
+      if (name.includes('/')) {
         throw new Error(
           `Invalid path "${path}" must be a top-level path with no slashes`
         )
