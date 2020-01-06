@@ -47,16 +47,15 @@ module.exports = async (client) => {
   const redirect_uri = `https://auth.saasify.sh/?${qs.stringify({
     uri: redirectUri
   })}`
-  const config =
-    client.baseUrl.includes('localhost')
-      ? {
-          client_id: '86d73532d0105da51a4d',
-          redirect_uri
-        }
-      : {
-          client_id: '6525c812c9b4430147c3',
-          redirect_uri
-        }
+  const config = client.baseUrl.includes('localhost')
+    ? {
+        client_id: '86d73532d0105da51a4d',
+        redirect_uri
+      }
+    : {
+        client_id: '6525c812c9b4430147c3',
+        redirect_uri
+      }
 
   const scope = 'read:user user:email'
   const params = new url.URLSearchParams({
