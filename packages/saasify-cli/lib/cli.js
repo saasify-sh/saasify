@@ -26,7 +26,7 @@ module.exports = async (argv, opts = {}) => {
     }
   }
 
-  updateNotifier({pkg}).notify()
+  updateNotifier({ pkg }).notify()
 
   program
     .name(pkg.name)
