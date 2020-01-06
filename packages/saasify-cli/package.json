@@ -77,6 +77,7 @@
     "slash": "^3.0.0",
     "stripe": "^7.6.0",
     "tempy": "^0.3.0",
+    "update-notifier": "^4.0.0",
     "yazl": "^2.5.1"
   },
   "gitHead": "c7c6721c98e28d0b1ea455c38276eb668c66b1f9"
