@@ -19,7 +19,6 @@
     "fix:black": "if type black > /dev/null; then black examples/python; else echo 'python formatting requires black to be installed'; fi",
     "test": "run-s test:*",
     "test:unit": "lerna run test",
-    "test:lint": "eslint .",
     "test:prettier": "prettier '**/*.js' --check",
     "test:black": "if type black > /dev/null; then black examples/python --check; else echo 'python formatting requires black to be installed'; fi"
   },
