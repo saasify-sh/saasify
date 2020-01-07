@@ -15,7 +15,7 @@
     "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') < 0) throw new Error('saasify requires yarn for development')\"",
     "postinstall": "run-s bootstrap",
     "lint": "eslint .",
-    "fix": "eslint . --fix",
+    "lint:fix": "eslint . --fix",
     "fix:black": "if type black > /dev/null; then black examples/python; else echo 'python formatting requires black to be installed'; fi",
     "test": "run-s test:*",
     "test:unit": "lerna run test",
