@@ -1,6 +1,6 @@
 {
   "name": "saasify-utils",
-  "version": "1.13.1",
+  "version": "1.13.3",
   "description": "Shared utilities for Saasify.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
@@ -31,7 +31,7 @@
     "fs-extra": "^8.1.0",
     "is-url-superb": "^3.0.0",
     "remark": "^11.0.1",
-    "saasify-faas-utils": "^1.13.0",
+    "saasify-faas-utils": "^1.13.3",
     "semver": "^6.3.0",
     "swagger-parser": "^8.0.1",
     "tempy": "^0.3.0",
