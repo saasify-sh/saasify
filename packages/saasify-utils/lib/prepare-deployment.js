@@ -86,7 +86,7 @@ module.exports = async (deployment, data, opts = {}) => {
 
       builds.push({
         src: handlerFileNameExt,
-        use: '@now/node@1.0.1',
+        use: '@now/node@1.3.4',
         config: {
           maxLambdaSize: '50mb',
           ...(service.config || {}),
@@ -195,7 +195,7 @@ module.exports = async (deployment, data, opts = {}) => {
 
     // TODO: remove 'fts' as a dependency
     dependencies.fts = '^1'
-    dependencies['fts-http'] = '^1.3.3'
+    dependencies['fts-http'] = '^1.3.4'
 
     if (!devDependencies['@types/node']) {
       devDependencies['@types/node'] = 'latest'

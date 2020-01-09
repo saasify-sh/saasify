@@ -7638,10 +7638,10 @@ fts-http-client@^1.3.3:
     fts-validator "^1.3.3"
     isomorphic-unfetch "^3.0.0"
 
-fts-http@^1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/fts-http/-/fts-http-1.3.3.tgz#73598c228ec0072e6aab76518329973486f54ad1"
-  integrity sha512-8ndLGJdoHJ5QZsNKLG3Xi9zxdGg/KDrnWithNB4SgJ7YJBNOmi8uUDyWp+wz/xFnPoy8Bfu/7EIUAhDu4L2+Hw==
+fts-http@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/fts-http/-/fts-http-1.3.4.tgz#3b05fdc902136329c789629b33a1579d20af48f0"
+  integrity sha512-Qx9RveZLjLxGjxDNGsEy4+2rSjC04ZOCHVhbBoSOSyn34bVBV0inBqvfXoTFyUe3CqP7tAq5iJgHTnVU0PlWmQ==
   dependencies:
     accepts "^1.3.5"
     content-type "^1.0.4"
