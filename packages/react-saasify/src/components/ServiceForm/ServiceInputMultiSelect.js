@@ -6,6 +6,8 @@ import { Select } from 'lib/antd'
 const style = { width: '100%' }
 
 export class ServiceInputMultiSelect extends Component {
+  _values = this.props.default
+
   render() {
     const { default: defaultValue, onChange, ...props } = this.props
 
@@ -25,7 +27,8 @@ export class ServiceInputMultiSelect extends Component {
         <Select
           defaultValue={defaultValue}
           style={style}
-          onSelect={this._onChange}
+          onSelect={this._onSelect}
+          onDeselect={this._onDeselect}
           mode='multiple'
           placeholder='Select'
         >
@@ -35,7 +38,19 @@ export class ServiceInputMultiSelect extends Component {
     )
   }
 
-  _onChange = (value) => {
-    this.props.onChange({ target: { value, name: this.props.propKey } })
+  _onSelect = (value) => {
+    this._values.push(value)
+    console.log('select', { value, values: this._values })
+    this.props.onChange({
+      target: { value: this._values, name: this.props.propKey }
+    })
+  }
+
+  _onDeselect = (value) => {
+    this._values = this._values.filter((v) => v !== value)
+    console.log('deselect', { value, values: this._values })
+    this.props.onChange({
+      target: { value: this._values, name: this.props.propKey }
+    })
   }
 }
