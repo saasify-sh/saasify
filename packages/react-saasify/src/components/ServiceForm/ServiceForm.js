@@ -9,6 +9,7 @@ import { ServiceInputCheckbox } from './ServiceInputCheckbox'
 import { ServiceInputJSON } from './ServiceInputJSON'
 import { ServiceInputNumber } from './ServiceInputNumber'
 import { ServiceInputSelect } from './ServiceInputSelect'
+import { ServiceInputMultiSelect } from './ServiceInputMultiSelect'
 import { restrictDefinitionToExample, mergeInValues } from './helpers'
 
 import styles from './styles.module.css'
@@ -55,7 +56,7 @@ export class ServiceForm extends Component {
               </div>
             ),
             entry: ServiceEntry,
-            array: ServiceInputJSON,
+            array: ServiceInputMultiSelect,
             boolean: ServiceInputCheckbox,
             enum: ServiceInputSelect,
             number: ServiceInputNumber,
