@@ -117,6 +117,7 @@ ${supportingOSS}
   api.components = {
     ...api.components,
     securitySchemes: {
+      ...(api.components && api.components.securitySchemes),
       'API Key': {
         type: 'apiKey',
         name: 'Authorization',

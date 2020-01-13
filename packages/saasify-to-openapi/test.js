@@ -9,6 +9,7 @@ const test = require('ava')
 const saasifyToOpenAPI = require('.')
 
 const fixtures = globby.sync('./fixtures/*.json')
+// const fixtures = globby.sync('./fixtures/ta11y.json')
 
 for (const fixture of fixtures) {
   const { name } = path.parse(fixture)

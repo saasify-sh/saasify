@@ -6,11 +6,12 @@ const pReduce = require('p-reduce')
 const codegen = require('saasify-codegen')
 
 module.exports = async function saasifyToOpenAPI(deployment, opts = {}) {
+  const components = { schemas: {} }
   const paths = await pReduce(
     deployment.services,
     async (paths, service) => ({
       ...paths,
-      ...(await module.exports.serviceToPaths(service))
+      ...(await module.exports.serviceToPaths(service, components))
     }),
     {}
   )
@@ -25,7 +26,8 @@ module.exports = async function saasifyToOpenAPI(deployment, opts = {}) {
       title: deployment.project.name,
       version
     },
-    paths
+    paths,
+    components
   }
 }
 
@@ -87,21 +89,58 @@ function pruneTypes(schema) {
   }
 }
 
-async function prepareSchema(schema) {
-  const deref = await jsonSchemaRefParser.dereference(schema)
-  // all $refs have been replaced directly, so remove any indirect definitions
-  delete deref.definitions
+function rewriteRefs(schema, opts) {
+  if (Array.isArray(schema)) {
+    schema.forEach((value) => rewriteRefs(value, opts))
+  } else if (typeof schema === 'object') {
+    for (const [key, value] of Object.entries(schema)) {
+      if (key === '$ref' && typeof value === 'string') {
+        const { fromPrefix, toPrefix } = opts
 
-  // prune custom FTS keywords
-  pruneCustomKeywords(deref)
+        if (value.startsWith(fromPrefix)) {
+          schema[key] = toPrefix + value.substr(fromPrefix.length)
+        }
+      }
 
-  // prune incompatible types
-  pruneTypes(deref)
-
-  return deref
+      rewriteRefs(value, opts)
+    }
+  }
 }
 
-module.exports.serviceToPaths = async function serviceToPaths(service) {
+async function prepareJsonSchema(schema, components) {
+  const result = await jsonSchemaRefParser.dereference(schema)
+
+  // update all $refs from '#/definitions/' to '#/components/schemas/'
+  rewriteRefs(result, {
+    fromPrefix: '#/definitions/',
+    toPrefix: '#/components/schemas/'
+  })
+
+  // all $refs have been replaced directly, so remove any indirect definitions
+  // delete result.definitions
+
+  // prune custom FTS keywords
+  pruneCustomKeywords(result)
+
+  // prune incompatible types
+  pruneTypes(result)
+
+  // TODO: how should we handle duplicates here?
+  components.schemas = {
+    ...components.schemas,
+    ...result.definitions
+  }
+
+  delete result.$ref
+  delete result.definitions
+
+  return result
+}
+
+module.exports.serviceToPaths = async function serviceToPaths(
+  service,
+  components
+) {
   const { route, definition } = service
   const result = {}
 
@@ -134,7 +173,7 @@ module.exports.serviceToPaths = async function serviceToPaths(service) {
       }
     }
   } else {
-    const params = await prepareSchema(paramsSchema)
+    const params = await prepareJsonSchema(paramsSchema, components)
     requestSchema = jsonSchemaToOpenAPI(params)
 
     requestBody = {
@@ -230,7 +269,7 @@ module.exports.serviceToPaths = async function serviceToPaths(service) {
         ...rest,
         ...properties.result
       }
-      const returns = await prepareSchema(returnsJsonSchema)
+      const returns = await prepareJsonSchema(returnsJsonSchema, components)
       const responseSchema = jsonSchemaToOpenAPI(returns)
 
       responses = {
