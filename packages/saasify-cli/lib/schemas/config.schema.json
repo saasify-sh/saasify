@@ -24,13 +24,13 @@
           "type": "string",
           "title": "description"
         },
-        "package": {
+        "install": {
           "type": "string",
-          "title": "package"
+          "title": "install"
         },
-        "language": {
-          "type": "string",
-          "title": "language"
+        "npm": {
+          "#ref": "#/definitions/Npm",
+          "title": "package"
         },
         "alias": {
           "type": "string",
@@ -101,6 +101,17 @@
       },
       "additionalProperties": false,
       "required": ["services"]
+    },
+    "Npm": {
+      "title": "Npm",
+      "type": "object",
+      "properties": {
+        "package": {
+          "type": "string",
+          "title": "package"
+        }
+      },
+      "required": ["package"]
     },
     "Example": {
       "title": "Example",
@@ -193,6 +204,11 @@
             "$ref": "#/definitions/Example"
           },
           "title": "examples"
+        },
+        "schema": {
+          "type": "object",
+          "title": "schema",
+          "additionalProperties": true
         },
         "config": {
           "type": "object",

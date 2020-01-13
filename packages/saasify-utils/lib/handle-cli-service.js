@@ -46,37 +46,69 @@ const buildCommand = (commandTemplate, required, optional) => {
   return { command, matchedKeys }
 }
 
-module.exports = async (run, input, optionPairs) => {
-  const options = reducePairs(optionPairs)
+module.exports = async (run, params, required, optional) => {
+  const requiredParams = required.reduce(
+    (acc, paramName, index) => ({ ...acc, [paramName]: params[index] }),
+    {}
+  )
+
+  const namedOptionalParams = optional.reduce(
+    (acc, paramName, index) => ({
+      ...acc,
+      [paramName]: params[index + required.length]
+    }),
+    {}
+  )
+
+  const unnamedOptionalParams = reducePairs(
+    params.slice(required.length + optional.length)
+  )
+
+  const optionalParams = {
+    ...namedOptionalParams,
+    ...unnamedOptionalParams
+  }
 
   const outputPath = tempy.file()
 
+  if (requiredParams.input) {
+    requiredParams.input = await tempWrite(requiredParams.input) // TODO support direct input
+  }
+
+  requiredParams.output = outputPath
+
   const { command, matchedKeys } = buildCommand(
     run,
-    {
-      input: await tempWrite(input),
-      output: outputPath
-    },
-    options
+    requiredParams,
+    optionalParams
   )
 
-  console.log(command)
+  console.log(`Executing "${command}"`)
 
   // If inline output, implicitly return stdout
   // Maximum buffer size is 256MB
-  const { stdout } = await exec(command, { maxBuffer: 1024 * 256000 })
+  const { stdout, stderr } = await exec(command, { maxBuffer: 1024 * 256000 })
+
+  if (stderr) {
+    throw new Error(stderr)
+  }
 
   let body
 
   if (matchedKeys.indexOf('output') > -1) {
     body = fs.readFileSync(outputPath)
   } else {
-    body = Buffer.from(stdout)
+    const buffer = Buffer.from(stdout)
+    if (fileType(stdout)) {
+      body = buffer
+    } else {
+      body = stdout
+    }
   }
 
   return {
     headers: {
-      'Content-Type': fileType(body).mime
+      'Content-Type': (fileType(body) || { mime: 'application/json' }).mime
     },
     statusCode: 200,
     body

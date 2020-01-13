@@ -186,7 +186,7 @@ module.exports = async (deployment, data, opts = {}) => {
     }
 
     if (!fs.existsSync(npmConfigPath)) {
-      await fs.writeJson(npmConfigPath, deployment.npmConfig || {}, jsonConfig)
+      await fs.writeJson(npmConfigPath, {}, jsonConfig)
     }
 
     const npmConfig = await fs.readJson(npmConfigPath)

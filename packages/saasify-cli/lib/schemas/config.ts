@@ -7,8 +7,8 @@ class Config {
   version?: string = 0.1.0
   name?: string
   description?: string
-  package?: string
-  language?: string
+  npm?: Npm
+  install?: string
   amountPerBase?: number = 99
   amountPerRequest?: number = 0.04
   amountPerCompute?: number = 0.34
@@ -22,6 +22,10 @@ class Config {
   headers?: object
   immutable?: boolean
   services: Service[]
+}
+
+class Npm {
+  package?: string
 }
 
 class Service {

@@ -2,6 +2,7 @@
 
 const fs = require('fs-extra')
 const globby = require('globby')
+const path = require('path')
 
 const getExtension = require('./get-extension')
 const parseConfig = require('./parse-config')
@@ -52,7 +53,7 @@ module.exports = async (program, opts = {}) => {
     service.adaptor = adaptor
   }
 
-  const readme = await module.exports.getReadme(config)
+  const readme = await module.exports.getReadme(project)
 
   return {
     ...project,
@@ -68,7 +69,7 @@ module.exports.getReadme = async (config) => {
   })
 
   if (readmeFiles.length) {
-    return fs.readFile(readmeFiles[0], 'utf8')
+    return fs.readFile(path.join(config.root, readmeFiles[0]), 'utf8')
   } else {
     console.error('Unable to find project readme')
     return ''

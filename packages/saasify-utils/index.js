@@ -7,7 +7,6 @@ module.exports = {
 }
 
 module.exports.prepareDeployment = require('./lib/prepare-deployment')
-module.exports.generateSrcFromCli = require('./lib/generate-src-from-cli')
 module.exports.handleCliService = require('./lib/handle-cli-service')
 
 // TODO: move these into an isolated package
