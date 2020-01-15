@@ -203,6 +203,15 @@ module.exports = async (deployment, data, opts = {}) => {
 
     npmConfig.dependencies = dependencies
     npmConfig.devDependencies = devDependencies
+
+    // ensure we set a default engines to the latest version of Node.js that ZEIT supports
+    if (!npmConfig.engines || !npmConfig.engines.node) {
+      npmConfig.engines = {
+        ...npmConfig.engines,
+        node: '>=12'
+      }
+    }
+
     await fs.writeJson(npmConfigPath, npmConfig, jsonConfig)
   }
 
