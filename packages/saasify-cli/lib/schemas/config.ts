@@ -4,22 +4,63 @@
 
 class Config {
   saasifyVersion?: number = 1
-  version?: string = 0.1.0
+  version?: string = '0.1.0'
   name?: string
   description?: string
+
+  // pricing
+  pricingPlans: PricingPlan[]
+  coupons?: Coupon[]
+
+  // @deprecated pricing; use `pricingPlans` instead
   amountPerBase?: number = 99
   amountPerRequest?: number = 0.04
-  amountPerCompute?: number = 0.34
-  amountPerBandwidth?: number = 20
+  amountPerCompute?: number = 0
+  amountPerBandwidth?: number = 0
   authRateLimit?: RateLimit
   noAuthRateLimit?: RateLimit
-  coupons?: Coupon[]
+
+  // general config
   build?: object
   env?: object
-  saas?: object
   headers?: object
   immutable?: boolean
+
+  // saas client
+  saas?: object
+
+  // core services
   services: Service[]
+}
+
+class PricingPlan {
+  name: string
+  slug: string
+
+  desc?: string
+  auth?: boolean
+  features?: string[]
+
+  amountPerBase?: number
+  requests?: PricingPlanMetric
+
+  rateLimit?: RateLimit
+}
+
+class PricingPlanMetric {
+  amount?: number
+
+  tiers?: PricingPlanTier[]
+  tiersMode?: string = 'graduated'
+
+  billingScheme?: string = 'per_unit' // | tiered
+  usageType?: string = 'metered' // | licensed
+}
+
+class PricingPlanTier {
+  unitAmount?: number
+  flatAmount?: number
+  upTo: string
 }
 
 class Service {
@@ -32,6 +73,19 @@ class Service {
   POST?: boolean
   headers?: object
   immutable?: boolean
+
+  rateLimit?: boolean | RateLimit
+
+  pricingPlanConfig?: PricingPlanServiceConfigMap
+}
+
+class PricingPlanServiceConfigMap {
+  [plan: string]: PricingPlanServiceConfig
+}
+
+class PricingPlanServiceConfig {
+  enabled?: boolean
+  rateLimit?: boolean | RateLimit
 }
 
 class Example {
