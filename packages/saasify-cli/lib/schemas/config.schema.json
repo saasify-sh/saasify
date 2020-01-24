@@ -45,6 +45,7 @@
         },
         "services": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "#/definitions/Service"
           },
@@ -68,6 +69,8 @@
         },
         "pricingPlans": {
           "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
           "items": {
             "$ref": "#/definitions/PricingPlan"
           },
@@ -190,9 +193,25 @@
           "type": "boolean",
           "title": "immutable"
         },
-        "additionalProperties": false
+        "reportUsage": {
+          "type": "boolean",
+          "title": "reportUsage"
+        },
+        "rateLimit": {
+          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
+          "title": "rateLimit"
+        },
+        "pricingPlanConfig": {
+          "type": "object",
+          "title": "pricingPlanConfig",
+          "patternProperties": {
+            "^.*$": { "$ref": "#/definitions/PricingPlanServiceConfig" }
+          },
+          "additionalProperties": false
+        }
       },
-      "required": ["src"]
+      "required": ["src"],
+      "additionalProperties": false
     },
     "RateLimit": {
       "title": "RateLimit",
@@ -278,7 +297,7 @@
           "title": "requests"
         },
         "rateLimit": {
-          "$ref": "#/definitions/RateLimit",
+          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
           "title": "rateLimit"
         }
       },
@@ -341,6 +360,25 @@
       },
       "additionalProperties": false,
       "required": ["upTo"]
+    },
+    "PricingPlanServiceConfig": {
+      "title": "PricingPlanServiceConfig",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "enabled"
+        },
+        "reportUsage": {
+          "type": "boolean",
+          "title": "reportUsage"
+        },
+        "rateLimit": {
+          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
+          "title": "rateLimit"
+        }
+      },
+      "additionalProperties": false
     }
   }
 }
