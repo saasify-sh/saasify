@@ -32,7 +32,8 @@ const columns = [
     title: 'Number of Requests',
     dataIndex: 'request.total_usage',
     render: (amount) => amount
-  },
+  }
+  /*
   {
     title: 'Compute Time (ms)',
     dataIndex: 'compute.total_usage',
@@ -43,6 +44,7 @@ const columns = [
     dataIndex: 'bandwidth.total_usage',
     render: (amount) => (amount === undefined ? 0 : amount)
   }
+  */
 ]
 
 @inject('auth')

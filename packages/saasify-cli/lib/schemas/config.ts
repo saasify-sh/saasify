@@ -7,12 +7,13 @@ class Config {
   version?: string = '0.1.0'
   name?: string
   description?: string
+  keywords?: string[]
 
   // pricing
-  pricingPlans: PricingPlan[]
+  pricingPlans?: PricingPlan[]
   coupons?: Coupon[]
 
-  // @deprecated pricing; use `pricingPlans` instead
+  // @deprecated; use `pricingPlans` instead
   amountPerBase?: number = 99
   amountPerRequest?: number = 0.04
   amountPerCompute?: number = 0
@@ -39,6 +40,8 @@ class PricingPlan {
 
   desc?: string
   auth?: boolean
+
+  // UI-only list of features to display for this plan (supports Markdown)
   features?: string[]
 
   amountPerBase?: number
@@ -50,11 +53,11 @@ class PricingPlan {
 class PricingPlanMetric {
   amount?: number
 
-  tiers?: PricingPlanTier[]
-  tiersMode?: string = 'graduated'
-
   billingScheme?: string = 'per_unit' // | tiered
   usageType?: string = 'metered' // | licensed
+
+  tiers?: PricingPlanTier[]
+  tiersMode?: string = 'graduated'
 }
 
 class PricingPlanTier {
@@ -66,7 +69,6 @@ class PricingPlanTier {
 class Service {
   src: string
   name?: string
-  timeout?: number = 0
   examples?: Example[]
   config?: object
   GET?: boolean
@@ -74,18 +76,30 @@ class Service {
   headers?: object
   immutable?: boolean
 
-  rateLimit?: boolean | RateLimit
+  // whether or not to report calls to this service (for metered usage)
+  reportUsage?: boolean = true
 
+  // disable or customize this service's rate limits (defaults to the active pricing plan's rate limits)
+  rateLimit?: null | RateLimit
+
+  // customize this service depending on the active pricing plan
   pricingPlanConfig?: PricingPlanServiceConfigMap
 }
 
 class PricingPlanServiceConfigMap {
+  // map of pricing plan slug to service config overrides for a given plan
   [plan: string]: PricingPlanServiceConfig
 }
 
 class PricingPlanServiceConfig {
+  // whether or not this service is enabled for a given pricing plan
   enabled?: boolean
-  rateLimit?: boolean | RateLimit
+
+  // whether or not to report calls to this service on a given pricing plan (for metered usage)
+  reportUsage?: boolean
+
+  // disable or customize this service's rate limits for a given pricing plan
+  rateLimit?: null | RateLimit
 }
 
 class Example {
@@ -97,8 +111,13 @@ class Example {
 }
 
 class RateLimit {
-  requests?: boolean = true
-  requestsInterval?: number = 60000
+  // whether or not this rate limit is enabled
+  enabled?: boolean = true
+
+  // interval given either in seconds or as a human-readable string
+  requestsInterval?: number | string = '1h'
+
+  // maximum number of requests allowed per rate limit interval
   requestsMaxPerInterval?: number = 1000
 }
 
