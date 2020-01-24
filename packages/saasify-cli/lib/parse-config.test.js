@@ -13,6 +13,7 @@ for (const fixture of fixtures) {
 
   test(name, async (t) => {
     const config = parseConfig({ config: fixture })
+    delete config.root
 
     console.log(JSON.stringify(config, null, 2))
     t.snapshot(config)
