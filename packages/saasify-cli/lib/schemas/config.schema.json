@@ -114,6 +114,10 @@
           "type": "string",
           "title": "inputContentType"
         },
+        "snippet": {
+          "$ref": "#/definitions/Snippet",
+          "title": "snippet"
+        },
         "additionalProperties": false
       },
       "required": ["name", "input"]
@@ -230,6 +234,31 @@
       },
       "additionalProperties": false,
       "required": []
+    },
+    "Snippet": {
+      "title": "Snippet",
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "label"
+        },
+        "language": {
+          "type": "string",
+          "title": "language"
+        },
+        "code": {
+          "type": "string",
+          "title": "code"
+        },
+        "exclusive": {
+          "type": "boolean",
+          "title": "exclusive",
+          "default": true
+        }
+      },
+      "additionalProperties": false,
+      "required": ["label", "language", "code"]
     }
   }
 }

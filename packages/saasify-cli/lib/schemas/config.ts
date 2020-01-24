@@ -39,6 +39,7 @@ class Example {
   description?: string
   input: object
   inputContentType?: string = 'application/json'
+  snippet?: Snippet
 }
 
 class RateLimit {
@@ -84,4 +85,11 @@ class Coupon {
 
   redeem_by?: string
   max_redemptions?: number
+}
+
+class Snippet {
+  language: string
+  label: string
+  code: string
+  exclusive?: boolean = false
 }

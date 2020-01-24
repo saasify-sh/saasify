@@ -1,0 +1,126 @@
+{
+  "enabled": true,
+  "published": false,
+  "description": "Powered by Saasify",
+  "noAuthRateLimit": {
+    "enabled": true,
+    "requests": true,
+    "requestsInterval": 3600,
+    "requestsMaxPerInterval": 10
+  },
+  "amountPerBase": 99,
+  "amountPerRequest": 0.04,
+  "amountPerCompute": 0.34,
+  "amountPerBandwidth": 20,
+  "hash": "6ed513d4",
+  "user": "5d5b477eb5fab1199c927a36",
+  "project": {
+    "enabled": true,
+    "_id": "transitive-bullshit/hello-world",
+    "name": "hello-world",
+    "user": "5d5b477eb5fab1199c927a36",
+    "publishedVersions": [
+      {
+        "deployment": "transitive-bullshit/hello-world@aa51d414",
+        "version": "0.1.0"
+      }
+    ],
+    "createdAt": "2019-09-30T02:56:53.146Z",
+    "updatedAt": "2019-10-02T22:43:07.313Z",
+    "__v": 1,
+    "lastPublishedDeployment": "transitive-bullshit/hello-world@aa51d414",
+    "lastPublishedVersion": "0.1.0",
+    "saasUrl": "http://transitive-bullshit_hello-world.localhost:3000",
+    "id": "transitive-bullshit/hello-world"
+  },
+  "version": "0.1.0",
+  "readme": "# Hello World\n\nThis is a very simple Saasify project with a single TypeScript function that implements the classic \"Hello World!\".\n\n<a href=\"https://saasify.sh\">\n  <img\n    src=\"https://badges.saasify.sh\"\n    height=\"40\"\n    alt=\"Hosted API\"\n  />\n</a>\n",
+  "authRateLimit": null,
+  "services": [
+    {
+      "name": "index",
+      "timeout": 0,
+      "adaptor": "typescript",
+      "GET": true,
+      "POST": true,
+      "examples": [
+        {
+          "inputContentType": "application/json",
+          "outputContentType": "application/json",
+          "name": "Basic",
+          "input": {},
+          "snippet": {
+            "label": "HTML",
+            "language": "html",
+            "code": "<div>Hello, World</div>",
+            "exclusive": false
+          }
+        }
+      ],
+      "config": {},
+      "headers": {},
+      "src": "index.ts",
+      "definition": {
+        "config": {
+          "defaultExport": true,
+          "language": "typescript"
+        },
+        "params": {
+          "context": false,
+          "order": [
+            "name"
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "default": "World"
+              }
+            },
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "returns": {
+          "async": false,
+          "http": false,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "version": "1.1.0",
+        "title": "index"
+      },
+      "url": "http://localhost:5000/1/call/transitive-bullshit/hello-world@6ed513d4",
+      "route": "/1/call/transitive-bullshit/hello-world@6ed513d4"
+    }
+  ],
+  "build": null,
+  "env": null,
+  "saas": {
+    "features": [],
+    "name": "hello-world",
+    "heading": "hello-world",
+    "subheading": "Powered by Saasify",
+    "theme": {
+      "name": "okta"
+    },
+    "logo": null,
+    "favicon": null
+  },
+  "createdAt": "2019-10-28T06:30:00.390Z",
+  "updatedAt": "2019-10-28T06:30:00.390Z",
+  "coupons": [],
+  "url": "http://localhost:5000/1/call/transitive-bullshit/hello-world@6ed513d4",
+  "openApiUrl": "http://localhost:5000/1/deployments/openapi/transitive-bullshit/hello-world@6ed513d4",
+  "saasUrl": "http://transitive-bullshit_hello-world_6ed513d4.localhost:3000",
+  "id": "transitive-bullshit/hello-world@6ed513d4"
+}
