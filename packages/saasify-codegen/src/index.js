@@ -77,18 +77,25 @@ export default (service, token, opts = {}) => {
   // Restart the dev server each time you make a change.
   // --------------------------------------------------------------
 
-  const snippets = languages
-    .map((l) => {
-      const template = l[`template${method}`]
+  let snippets =
+    example.snippet && example.snippet.exclusive
+      ? [example.snippet]
+      : languages
+          .map((l) => {
+            const template = l[`template${method}`]
 
-      if (template) {
-        const code = mustache.render(template, data).trim()
-        const { language, label } = l
+            if (template) {
+              const code = mustache.render(template, data).trim()
+              const { language, label } = l
 
-        return { code, language, label }
-      }
-    })
-    .filter(Boolean)
+              return { code, language, label }
+            }
+          })
+          .filter(Boolean)
+
+  if (example.snippet && !example.snippet.exclusive) {
+    snippets = [example.snippet, ...snippets]
+  }
 
   return {
     ...example,
