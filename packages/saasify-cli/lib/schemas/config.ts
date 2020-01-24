@@ -44,7 +44,7 @@ class PricingPlan {
   // UI-only list of features to display for this plan (supports Markdown)
   features?: string[]
 
-  amountPerBase?: number
+  amount?: number = 0
   requests?: PricingPlanMetric
 
   rateLimit?: RateLimit
@@ -76,7 +76,7 @@ class Service {
   headers?: object
   immutable?: boolean
 
-  // whether or not to report calls to this service (for metered usage)
+  // whether to report calls to this service (for metered usage)
   reportUsage?: boolean = true
 
   // disable or customize this service's rate limits (defaults to the active pricing plan's rate limits)
@@ -92,10 +92,10 @@ class PricingPlanServiceConfigMap {
 }
 
 class PricingPlanServiceConfig {
-  // whether or not this service is enabled for a given pricing plan
+  // whether this service is enabled for a given pricing plan
   enabled?: boolean
 
-  // whether or not to report calls to this service on a given pricing plan (for metered usage)
+  // whether to report calls to this service on a given pricing plan (for metered usage)
   reportUsage?: boolean
 
   // disable or customize this service's rate limits for a given pricing plan
