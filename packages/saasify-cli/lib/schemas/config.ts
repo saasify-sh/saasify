@@ -14,12 +14,12 @@ class Config {
   coupons?: Coupon[]
 
   // @deprecated; use `pricingPlans` instead
-  amountPerBase?: number = 99
-  amountPerRequest?: number = 0.04
-  amountPerCompute?: number = 0
-  amountPerBandwidth?: number = 0
-  authRateLimit?: RateLimit
-  noAuthRateLimit?: RateLimit
+  // amountPerBase?: number = 99
+  // amountPerRequest?: number = 0.04
+  // amountPerCompute?: number = 0
+  // amountPerBandwidth?: number = 0
+  // authRateLimit?: RateLimit
+  // noAuthRateLimit?: RateLimit
 
   // general config
   build?: object

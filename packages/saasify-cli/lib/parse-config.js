@@ -99,6 +99,7 @@ module.exports = (program) => {
       )
     }
 
+    // TODO: all of this normalization logic should exist on the server-side
     if (immutable && service.immutable === undefined) {
       service.immutable = true
     }

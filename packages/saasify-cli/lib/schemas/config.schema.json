@@ -7,14 +7,14 @@
       "type": "object",
       "properties": {
         "saasifyVersion": {
-          "type": "number",
           "title": "saasifyVersion",
-          "default": 1
+          "default": 1,
+          "oneOf": [{ "type": "number" }, { "type": "string" }]
         },
         "version": {
-          "type": "string",
           "title": "version",
-          "default": "0.1.0"
+          "default": "0.1.0",
+          "oneOf": [{ "type": "number" }, { "type": "string" }]
         },
         "name": {
           "type": "string",
@@ -43,30 +43,6 @@
           "title": "saas",
           "additionalProperties": true
         },
-        "authRateLimit": {
-          "$ref": "#/definitions/RateLimit",
-          "title": "authRateLimit"
-        },
-        "noAuthRateLimit": {
-          "$ref": "#/definitions/RateLimit",
-          "title": "noAuthRateLimit"
-        },
-        "amountPerBase": {
-          "type": "number",
-          "title": "amountPerBase"
-        },
-        "amountPerRequest": {
-          "type": "number",
-          "title": "amountPerRequest"
-        },
-        "amountPerCompute": {
-          "type": "number",
-          "title": "amountPerCompute"
-        },
-        "amountPerBandwidth": {
-          "type": "number",
-          "title": "amountPerBandwidth"
-        },
         "services": {
           "type": "array",
           "items": {
@@ -89,6 +65,13 @@
         "immutable": {
           "type": "boolean",
           "title": "immutable"
+        },
+        "pricingPlans": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PricingPlan"
+          },
+          "title": "pricingPlans"
         }
       },
       "additionalProperties": false,
@@ -176,8 +159,7 @@
         },
         "timeout": {
           "type": "number",
-          "title": "timeout",
-          "default": 0
+          "title": "timeout"
         },
         "examples": {
           "type": "array",
@@ -218,13 +200,13 @@
       "properties": {
         "requests": {
           "type": "boolean",
-          "title": "requests",
+          "title": "enabled",
           "default": true
         },
         "requestsInterval": {
-          "type": "number",
           "title": "requestsInterval",
-          "default": 60000
+          "default": "1h",
+          "oneOf": [{ "type": "number" }, { "type": "string" }]
         },
         "requestsMaxPerInterval": {
           "type": "number",
@@ -259,6 +241,106 @@
       },
       "additionalProperties": false,
       "required": ["label", "language", "code"]
+    },
+    "PricingPlan": {
+      "title": "PricingPlan",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "name"
+        },
+        "slug": {
+          "type": "string",
+          "title": "slug"
+        },
+        "desc": {
+          "type": "string",
+          "title": "desc"
+        },
+        "auth": {
+          "type": "boolean",
+          "title": "auth"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "features"
+        },
+        "amount": {
+          "type": "number",
+          "title": "amount"
+        },
+        "requests": {
+          "$ref": "#/definitions/PricingPlanMetric",
+          "title": "requests"
+        },
+        "rateLimit": {
+          "$ref": "#/definitions/RateLimit",
+          "title": "rateLimit"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["name", "slug"]
+    },
+    "PricingPlanMetric": {
+      "title": "PricingPlanMetric",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "title": "amount",
+          "minimum": 0
+        },
+        "billingScheme": {
+          "type": "string",
+          "title": "billingScheme",
+          "enum": ["per_unit", "tiered"]
+        },
+        "usageType": {
+          "type": "string",
+          "title": "usageType",
+          "enum": ["metered", "licensed"]
+        },
+        "tiersMode": {
+          "type": "string",
+          "title": "teirsMode",
+          "enum": ["graduated", "volume"]
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PricingPlanTier"
+          },
+          "title": "tiers"
+        }
+      },
+      "additionalProperties": false,
+      "required": []
+    },
+    "PricingPlanTier": {
+      "title": "PricingPlanTier",
+      "type": "object",
+      "properties": {
+        "unitAmount": {
+          "type": "number",
+          "title": "unitAmount",
+          "minimum": 0
+        },
+        "flatAmount": {
+          "type": "number",
+          "title": "flatAmount",
+          "minimum": 0
+        },
+        "upTo": {
+          "type": "string",
+          "title": "upTo"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["upTo"]
     }
   }
 }
