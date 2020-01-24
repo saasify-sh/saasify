@@ -57,7 +57,7 @@ class PricingPlanMetric {
   usageType?: string = 'metered' // | licensed
 
   tiers?: PricingPlanTier[]
-  tiersMode?: string = 'graduated'
+  tiersMode?: string = 'graduated' // | volume
 }
 
 class PricingPlanTier {
@@ -76,7 +76,7 @@ class Service {
   headers?: object
   immutable?: boolean
 
-  // whether to report calls to this service (for metered usage)
+  // whether to report calls to this service (only applicable to metered billing)
   reportUsage?: boolean = true
 
   // disable or customize this service's rate limits (defaults to the active pricing plan's rate limits)
