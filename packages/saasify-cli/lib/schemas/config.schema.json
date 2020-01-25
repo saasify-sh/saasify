@@ -318,11 +318,6 @@
           "title": "billingScheme",
           "enum": ["per_unit", "tiered"]
         },
-        "usageType": {
-          "type": "string",
-          "title": "usageType",
-          "enum": ["metered", "licensed"]
-        },
         "tiersMode": {
           "type": "string",
           "title": "teirsMode",

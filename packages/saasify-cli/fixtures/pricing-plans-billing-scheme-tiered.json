@@ -42,7 +42,6 @@
       "slug": "unlimited",
       "amount": 999,
       "requests": {
-        "usageType": "metered",
         "billingScheme": "tiered",
         "tiers": [
           {

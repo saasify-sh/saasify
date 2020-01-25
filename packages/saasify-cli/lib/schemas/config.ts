@@ -51,10 +51,12 @@ class PricingPlan {
 }
 
 class PricingPlanMetric {
+  // only 'metered' requests pricing is available
+  // usageType?: string = 'metered' // | licensed
+
   amount?: number
 
   billingScheme?: string = 'per_unit' // | tiered
-  usageType?: string = 'metered' // | licensed
 
   tiers?: PricingPlanTier[]
   tiersMode?: string = 'graduated' // | volume

@@ -36,8 +36,7 @@
       "amount": 99,
       "rateLimit": null,
       "requests": {
-        "amount": 0.04,
-        "usageType": "metered"
+        "amount": 0.04
       }
     }
   ]
