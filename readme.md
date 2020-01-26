@@ -5,10 +5,10 @@
 </p>
 
 <p align="center">
-  The easiest way to create SaaS APIs on top of your OSS projects.
+  A new way for devs to earn passive income.
 </p>
 
-<h2 align="center" class='subtitle'>How it works</h2>
+<h2 align="center">How it works</h2>
 
 <p align="center">
   <img
@@ -22,7 +22,7 @@
 
 ## Demo
 
-Here is a live [SaaS API and marketing site](https://synopsis.saasify.sh ':target=_blank') that was auto-generated with Saasify from this [source code](https://github.com/saasify-sh/synopsis ':target=_blank').
+Here is a live [SaaS API and marketing site](https://imagemin.saasify.sh ':target=_blank') by [sindresorhus](https://github.com/sindresorhus ':target=_blank') that was auto-generated with Saasify from this [source code](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin ':target=_blank').
 
 We make it really simple to "saasify" your own projects like this one. Once your API is setup, we handle all the bizdev and support requests for you while ensuring that you receive the majority of revenue in return.
 
@@ -32,7 +32,7 @@ We built Saasify as an ideal solution for developers who'd like to earn passive 
 
 By making it extremely simple to create SaaS APIs, we're creating new opportunities for devs to monetize their work. And the best part is that this business model scales naturally as usage increases, which means the more popular your project becomes, the more money you can earn!
 
-In a nutshell, we allow makers to:
+In a nutshell, we enable devs to:
 
 1. Monetize existing OSS ⭐️
 2. Focus only on unique value instead of SaaS boilerplate 🔥
@@ -66,7 +66,7 @@ Have an idea or an OSS project that you'd like to monetize, but not sure where t
 - 🔥 Every API comes with its own customizable marketing site
 - 💯 Built with TypeScript + AWS Lambda + Stripe
 - 🤖 We handle all docs, hosting, billing, and accounts for you
-- 🚀 [Our CLI](https://saasify.sh/#/cli) makes it really easy to get started!
+- 🚀 Our CLI makes it really easy to get started!
 
 ## Getting Started
 
@@ -82,11 +82,9 @@ You may also want to check out our [mission](https://saasify.sh/#/mission) to le
 
 Please see the [Contributing Guidelines](https://github.com/saasify-sh/saasify/blob/master/CONTRIBUTING.md).
 
-## Status
+## Support
 
-**As of September, 2019, Saasify is in beta and is ready for general use.**
-
-If you're interested in OSS sustainability and want to follow along with our progress, please consider starring the [repo](https://github.com/saasify-sh/saasify) and joining us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY).
+If Saasify interests you, the best way to show your support is to **star the project and give us your [feedback](https://travisfischer.typeform.com/to/yOo9Wb)** (10 questions, ~2 minutes).
 
 Thanks! ⭐️
 

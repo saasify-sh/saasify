@@ -4,15 +4,19 @@
   </a>
 </p>
 
-<h2 align="center" class='subtitle'>A new way to fund OSS</h2>
+<h3 align="center" class='subtitle'>
+  A new way for devs to earn passive income.
+</h3>
 
-<img src="https://saasify.sh/_media/saasify-how-it-works-v2.png" alt="How Saasify Works" />
+<p align="center">
+  <img src="https://saasify.sh/_media/saasify-how-it-works-v2.png" alt="How Saasify Works" />
+</p>
 
 [![NPM](https://img.shields.io/npm/v/saasify.svg)](https://www.npmjs.com/package/saasify) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Demo
 
-Here is a live [SaaS API and marketing site](https://synopsis.saasify.sh ':target=_blank') that was auto-generated with Saasify from this [source code](https://github.com/saasify-sh/synopsis ':target=_blank').
+Here is a live [SaaS API and marketing site](https://imagemin.saasify.sh ':target=_blank') by [sindresorhus](https://github.com/sindresorhus ':target=_blank') that was auto-generated with Saasify from this [source code](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin ':target=_blank').
 
 We make it really simple to "saasify" your own projects like this one. Once your API is setup, we handle all the bizdev and support requests for you while ensuring that you receive the majority of revenue in return.
 
@@ -22,7 +26,7 @@ We built Saasify as an ideal solution for developers who'd like to earn passive 
 
 By making it extremely simple to create SaaS APIs, we're creating new opportunities for devs to monetize their work. And the best part is that this business model scales naturally as usage increases, which means the more popular your project becomes, the more money you can earn!
 
-In a nutshell, we allow makers to:
+In a nutshell, we enable devs to:
 
 1. Monetize existing OSS ⭐️
 2. Focus only on unique value instead of SaaS boilerplate 🔥
@@ -68,13 +72,9 @@ You may also want to check out our [mission](https://saasify.sh/#/mission) to le
   <img src="https://saasify.sh/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
 </p>
 
-## Status
+## Feedback
 
-**As of September, 2019, Saasify is ready for general public use.**
-
-If you're interested in OSS sustainability and want to follow along with our progress, please consider starring the [repo](https://github.com/saasify-sh/saasify) and joining us on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY).
-
-Thanks! ⭐️
+<div class="typeform-widget" data-url="https://travisfischer.typeform.com/to/yOo9Wb" data-transparency="100" data-hide-headers=true></div>
 
 ## License
 
