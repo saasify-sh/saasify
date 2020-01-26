@@ -4,11 +4,9 @@
   </a>
 </p>
 
-<p align="center">
-  A new way for devs to earn passive income.
-</p>
-
-<h2 align="center">How it works</h2>
+<h2 align="center">
+  How it works
+</h2>
 
 <p align="center">
   <img

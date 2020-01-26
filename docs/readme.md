@@ -4,8 +4,14 @@
   </a>
 </p>
 
-<h3 align="center" class='subtitle'>
+<h3 align="center" style="margin-top: .6rem">
   A new way for devs to earn passive income.
+</h3>
+
+---
+
+<h3 align="center">
+  How it works
 </h3>
 
 <p align="center">
