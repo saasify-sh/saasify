@@ -76,10 +76,6 @@ You may also want to check out our [mission](https://saasify.sh/#/mission) to le
   <img src="https://saasify.sh/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
 </p>
 
-## Contributing Guidelines
-
-Please see the [Contributing Guidelines](https://github.com/saasify-sh/saasify/blob/master/CONTRIBUTING.md).
-
 ## Support
 
 If Saasify interests you, the best way to show your support is to **star the project and give us your [feedback](https://travisfischer.typeform.com/to/yOo9Wb)** (10 questions, ~2 minutes).
