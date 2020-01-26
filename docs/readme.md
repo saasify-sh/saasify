@@ -22,7 +22,7 @@
 
 ## Demo
 
-Here is a live [SaaS API and marketing site](https://imagemin.saasify.sh ':target=_blank') by sindresorhus that was auto-generated with Saasify from this [source code](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin ':target=_blank').
+Here is a live [SaaS API and marketing site](https://imagemin.saasify.sh ':target=_blank') by Sindre Sorhus that was auto-generated with Saasify from this [source code](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/imagemin ':target=_blank').
 
 We make it really simple to "saasify" your own projects like this one. Once your API is setup, we handle all the bizdev and support requests for you while ensuring that you receive the majority of revenue in return.
 
