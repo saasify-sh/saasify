@@ -5,7 +5,7 @@
 </p>
 
 <h3 align="center" style="margin-top: .6rem">
-  We help devs earn passive income from SaaS APIs.
+  We help devs earn passive income via SaaS APIs.
 </h3>
 
 ---
