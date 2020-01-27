@@ -45,12 +45,12 @@ class PricingPlan {
   features?: string[]
 
   amount?: number = 0
-  requests?: PricingPlanMetric
+  requests?: PricingPlanMeteredConfig
 
   rateLimit?: RateLimit
 }
 
-class PricingPlanMetric {
+class PricingPlanMeteredConfig {
   // only 'metered' requests pricing is available
   // usageType?: string = 'metered' // | licensed
 

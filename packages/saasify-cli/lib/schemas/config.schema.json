@@ -293,7 +293,7 @@
           "title": "amount"
         },
         "requests": {
-          "$ref": "#/definitions/PricingPlanMetric",
+          "$ref": "#/definitions/PricingPlanMeteredConfig",
           "title": "requests"
         },
         "rateLimit": {
@@ -304,8 +304,8 @@
       "additionalProperties": false,
       "required": ["name", "slug"]
     },
-    "PricingPlanMetric": {
-      "title": "PricingPlanMetric",
+    "PricingPlanMeteredConfig": {
+      "title": "PricingPlanMeteredConfig",
       "type": "object",
       "properties": {
         "amount": {
