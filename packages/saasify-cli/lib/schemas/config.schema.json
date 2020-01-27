@@ -302,7 +302,7 @@
         }
       },
       "additionalProperties": false,
-      "required": ["name", "slug"]
+      "required": ["name"]
     },
     "PricingPlanMeteredConfig": {
       "title": "PricingPlanMeteredConfig",

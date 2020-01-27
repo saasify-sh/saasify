@@ -36,7 +36,9 @@ class Config {
 
 class PricingPlan {
   name: string
-  slug: string
+
+  // by default, this is inferred from the plan name
+  slug?: string
 
   desc?: string
   auth?: boolean
