@@ -4,7 +4,7 @@ import cs from 'classnames'
 import theme from 'lib/theme'
 
 import { Link } from 'react-router-dom'
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import { Divider } from 'lib/antd'
 
 import { CTAButton } from '../CTAButton'
@@ -14,9 +14,11 @@ import infinity from '../../assets/infinity.svg'
 
 import styles from './styles.module.css'
 
+@inject('auth')
 @observer
 export class PricingPlan extends Component {
   static propTypes = {
+    auth: PropTypes.object.isRequired,
     plan: PropTypes.object.isRequired,
     inline: PropTypes.bool,
     className: PropTypes.string
@@ -27,7 +29,7 @@ export class PricingPlan extends Component {
   }
 
   render() {
-    const { plan, inline, className, ...rest } = this.props
+    const { auth, plan, inline, className, ...rest } = this.props
 
     return (
       <Paper className={theme(styles, 'plan', className)} {...rest}>
@@ -72,18 +74,24 @@ export class PricingPlan extends Component {
           {plan.interval}
         </div>
 
-        {!inline && (
-          <Link to={`/signup?plan=${plan.slug}`}>
-            <CTAButton
-              type={plan.type}
-              className={cs(
-                plan.type === 'secondary' && theme(styles, 'secondaryCTAButton')
-              )}
-            >
-              Get started
+        {!inline &&
+          (auth.consumer && auth.consumer.plan === plan.slug ? (
+            <CTAButton disabled type={plan.type}>
+              Current plan
             </CTAButton>
-          </Link>
-        )}
+          ) : (
+            <Link to={`/signup?plan=${plan.slug}`}>
+              <CTAButton
+                type={plan.type}
+                className={cs(
+                  plan.type === 'secondary' &&
+                    theme(styles, 'secondaryCTAButton')
+                )}
+              >
+                Get started
+              </CTAButton>
+            </Link>
+          ))}
       </Paper>
     )
   }
