@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import cs from 'classnames'
-import theme from 'lib/theme'
 
+import ReactMarkdown from 'react-markdown'
 import { Link } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
+
 import { Divider } from 'lib/antd'
+import theme from 'lib/theme'
 
 import { CTAButton } from '../CTAButton'
 import { Paper } from '../Paper'
@@ -13,6 +15,16 @@ import { Paper } from '../Paper'
 import infinity from '../../assets/infinity.svg'
 
 import styles from './styles.module.css'
+
+const allowedTypes = [
+  'strong',
+  'text',
+  'emphasis',
+  'link',
+  'linkReference',
+  'delete',
+  'inlineCode'
+]
 
 @inject('auth')
 @observer
@@ -75,6 +87,21 @@ export class PricingPlan extends Component {
         </div>
 
         <Divider />
+
+        {plan.features && plan.features.length ? (
+          <Fragment>
+            {plan.features.map((feature, index) => (
+              <ReactMarkdown
+                key={index}
+                source={feature}
+                allowedTypes={allowedTypes}
+                unwrapDisallowed
+              />
+            ))}
+
+            <Divider />
+          </Fragment>
+        ) : null}
 
         {plan.desc && (
           <div style={{ color: theme['@primary-color'] }}>{plan.desc}</div>
