@@ -247,9 +247,14 @@
   }
 }
 
-.theme-waves .home-page .demo-section .title,
 .theme-waves .home-page .demo-section .desc {
   display: none;
+}
+
+@media (min-width: 48em) {
+  .theme-waves .home-page .demo-section .title {
+    display: none;
+  }
 }
 
 /*
@@ -698,14 +703,16 @@
   }
 }
 
-.theme-waves .live-service-demo .tabs:before {
-  align-self: center;
-  color: #ffffff90;
-  content: 'Live Demo';
-  font-size: 16px;
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier,
-    monospace;
-  white-space: nowrap;
+@media (min-width: 48em) {
+  .theme-waves .live-service-demo .tabs:before {
+    align-self: center;
+    color: #ffffff90;
+    content: 'Live Demo';
+    font-size: 16px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier,
+      monospace;
+    white-space: nowrap;
+  }
 }
 
 .theme-waves .live-service-demo .tabs {
@@ -720,8 +727,14 @@
 }
 
 .theme-waves .live-service-demo .tabs .tab:first-of-type {
-  margin-left: auto;
-  padding-left: var(--space-xl);
+  padding-left: 0;
+}
+
+@media (min-width: 48em) {
+  .theme-waves .live-service-demo .tabs .tab:first-of-type {
+    margin-left: auto;
+    padding-left: var(--space-xl);
+  }
 }
 
 .theme-waves .live-service-demo .tabs .tab:hover {
