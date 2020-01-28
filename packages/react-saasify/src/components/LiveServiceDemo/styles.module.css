@@ -129,14 +129,17 @@
   align-items: center;
   background-color: #49587950;
   display: flex;
-  justify-content: center;
-  padding: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
   padding-left: 24px;
   padding-right: 24px;
 }
 
 .footer__service {
+  flex-grow: 1;
   margin-top: -4px;
+  margin-right: var(--space-s);
+  padding-top: 16px;
 }
 
 .footer__service__path {
@@ -155,11 +158,20 @@
 
 .footer__actions {
   display: flex;
-  margin-left: auto;
+  padding-top: 16px;
+}
+
+@media only screen and (max-width: 767px) {
+  .footer__actions {
+  }
 }
 
 .footer__action {
   margin-left: var(--space-s);
+}
+
+.footer__action:first-of-type {
+  margin-left: 0;
 }
 
 .footer__service__badge {
