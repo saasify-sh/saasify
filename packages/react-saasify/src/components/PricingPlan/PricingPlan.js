@@ -62,49 +62,61 @@ export class PricingPlan extends Component {
 
         <Divider />
 
-        <div className={theme(styles, 'features')}>
-          <div />
-
-          <div className={theme(styles, 'column')}>Price</div>
-
-          <div className={theme(styles, 'column')}>Rate Limit</div>
-
-          {plan.requests && (
-            <Fragment>
-              <div className={theme(styles, 'emphasis')}>API Calls</div>
-
-              <div>{plan.requests.price}</div>
-
-              {plan.requests.rateLimit || (
-                <img
-                  alt='unlimited'
-                  src={infinity}
-                  className={theme(styles, 'infinity')}
-                />
-              )}
-            </Fragment>
-          )}
-        </div>
-
-        <Divider />
-
-        {plan.features && plan.features.length ? (
+        {(plan.context.hasMeteredBilling || plan.context.hasRateLimits) && (
           <Fragment>
-            {plan.features.map((feature, index) => (
-              <ReactMarkdown
-                key={index}
-                source={feature}
-                allowedTypes={allowedTypes}
-                unwrapDisallowed
-              />
-            ))}
+            <div className={theme(styles, 'pricing')}>
+              <div />
+
+              <div className={theme(styles, 'column')}>Price</div>
+
+              <div className={theme(styles, 'column')}>Rate Limit</div>
+
+              {plan.requests && (
+                <Fragment>
+                  <div className={theme(styles, 'emphasis')}>API Calls</div>
+
+                  <div>{plan.requests.price}</div>
+
+                  {plan.requests.rateLimit || (
+                    <img
+                      alt='unlimited'
+                      src={infinity}
+                      className={theme(styles, 'infinity')}
+                    />
+                  )}
+                </Fragment>
+              )}
+            </div>
 
             <Divider />
           </Fragment>
-        ) : null}
+        )}
+
+        {plan.features && plan.features.length && (
+          <Fragment>
+            <ul className={theme(styles, 'features')}>
+              {plan.features.map((feature, index) => (
+                <li className={theme(styles, 'feature')} key={index}>
+                  <ReactMarkdown
+                    source={feature}
+                    allowedTypes={allowedTypes}
+                    unwrapDisallowed
+                  />
+                </li>
+              ))}
+            </ul>
+
+            <Divider />
+          </Fragment>
+        )}
 
         {plan.desc && (
-          <div style={{ color: theme['@primary-color'] }}>{plan.desc}</div>
+          <div
+            className={theme(styles, 'desc')}
+            style={{ color: theme['@primary-color'] }}
+          >
+            {plan.desc}
+          </div>
         )}
 
         <div className={theme(styles, 'price')}>
