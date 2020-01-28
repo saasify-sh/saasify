@@ -6,6 +6,7 @@ import raf from 'raf'
 import { observer, inject } from 'mobx-react'
 
 import { CTAButton } from '../CTAButton'
+import { Button } from 'lib/antd'
 import { Logo } from '../Logo'
 import { SaasifyContext } from '../SaasifyContext'
 
@@ -91,13 +92,12 @@ export class NavHeader extends Component {
                 </Link>
 
                 <div className={theme(styles, 'burger')}>
-                  <CTAButton
+                  <Button
                     type='secondary'
                     inline
                     onClick={this.handleToggleExpanded}
-                  >
-                    Menu
-                  </CTAButton>
+                    icon='menu'
+                  />
                 </div>
               </div>
 

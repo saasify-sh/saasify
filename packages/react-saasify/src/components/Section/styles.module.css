@@ -4,13 +4,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 1;
 }
 
 .content {
   width: 100%;
-  flex: 1;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,10 +42,6 @@ body header + section:first-of-type .content {
 }
 
 @media only screen and (max-width: 767px) {
-  body header + section:first-of-type .content {
-    padding-top: 124px;
-  }
-
   .content {
     padding: 3em 0.5em;
   }

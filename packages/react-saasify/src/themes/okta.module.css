@@ -87,6 +87,12 @@
   color: #fff;
 }
 
+.theme-okta :global(.ant-btn-secondary) {
+  background-color: transparent;
+  border-color: #d23d67;
+  color: #fff;
+}
+
 .theme-okta :global(#readme) code {
   background: #0788cc;
   color: #fff;
@@ -114,12 +120,18 @@ body header + section:first-of-type .title {
 }
 
 @media only screen and (max-width: 767px) {
-  body header + section:first-of-type .content {
-    padding-top: 124px;
+  body header + section:first-of-type .title {
+    font-size: 40px;
+    line-height: 1.33;
+    margin-bottom: 24px;
   }
 
   .content {
     padding: 3em 0.5em;
+  }
+
+  body header + section:first-of-type {
+    min-height: 80vh;
   }
 }
 
