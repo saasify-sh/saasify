@@ -21,7 +21,7 @@
   ],
   "devDependencies": {
     "ava": "^2.4.0",
-    "update-markdown-usage": "^1.0.5"
+    "update-markdown-usage": "^1.0.7"
   },
   "dependencies": {
     "commander": "^2.20.0",

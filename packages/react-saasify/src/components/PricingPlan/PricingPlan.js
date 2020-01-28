@@ -59,47 +59,13 @@ export class PricingPlan extends Component {
               )}
             </Fragment>
           )}
-
-          {plan.compute && (
-            <Fragment>
-              <div className={theme(styles, 'emphasis')}>Compute Time</div>
-
-              <div>{plan.compute.price}</div>
-
-              <div>
-                {plan.compute.rateLimit || (
-                  <img
-                    alt='unlimited'
-                    src={infinity}
-                    className={theme(styles, 'infinity')}
-                  />
-                )}
-              </div>
-            </Fragment>
-          )}
-
-          {plan.bandwidth && (
-            <Fragment>
-              <div className={theme(styles, 'emphasis')}>Bandwidth</div>
-
-              <div>{plan.bandwidth.price}</div>
-
-              <div>
-                {plan.bandwidth.rateLimit || (
-                  <img
-                    alt='unlimited'
-                    src={infinity}
-                    className={theme(styles, 'infinity')}
-                  />
-                )}
-              </div>
-            </Fragment>
-          )}
         </div>
 
         <Divider />
 
-        <div style={{ color: theme['@primary-color'] }}>{plan.desc}</div>
+        {plan.desc && (
+          <div style={{ color: theme['@primary-color'] }}>{plan.desc}</div>
+        )}
 
         <div className={theme(styles, 'price')}>
           <span className={theme(styles, 'dollas')}>{plan.price}</span> /{' '}
@@ -107,7 +73,7 @@ export class PricingPlan extends Component {
         </div>
 
         {!inline && (
-          <Link to={`/signup?plan=${plan.key}`}>
+          <Link to={`/signup?plan=${plan.slug}`}>
             <CTAButton
               type={plan.type}
               className={cs(

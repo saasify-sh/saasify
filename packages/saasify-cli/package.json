@@ -27,7 +27,7 @@
   ],
   "devDependencies": {
     "ava": "^2.4.0",
-    "update-markdown-usage": "^1.0.5"
+    "update-markdown-usage": "^1.0.7"
   },
   "dependencies": {
     "ajv": "^6.10.2",
