@@ -16,6 +16,7 @@ import { ServiceForm } from '../ServiceForm'
 
 import getServiceExamples from 'lib/get-service-examples'
 import requestService from 'lib/request-service'
+import { getUpgradeLink } from 'lib/upgrade'
 
 import styles from './styles.module.css'
 
@@ -23,6 +24,7 @@ import styles from './styles.module.css'
 @observer
 export class LiveServiceDemo extends Component {
   static propTypes = {
+    deployment: PropTypes.object.isRequired,
     service: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired
   }
@@ -53,9 +55,8 @@ export class LiveServiceDemo extends Component {
   }
 
   render() {
-    const { service, auth } = this.props
-
-    const { codeBlockOutputFlush } = this.props.deployment.saas.theme
+    const { service, auth, deployment } = this.props
+    const { codeBlockOutputFlush } = deployment.saas.theme
 
     const {
       selected,
@@ -91,8 +92,8 @@ export class LiveServiceDemo extends Component {
           </div>
 
           <div className={theme(styles, 'output__cta__button')}>
-            <Link to='/signup?plan=unlimited'>
-              <Button type='primary'>Upgrade to unlimited</Button>
+            <Link to={getUpgradeLink({ auth, deployment })}>
+              <Button type='primary'>Upgrade</Button>
             </Link>
           </div>
         </div>

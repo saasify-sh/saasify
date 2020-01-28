@@ -31,6 +31,17 @@ export class PricingPlan extends Component {
   render() {
     const { auth, plan, inline, className, ...rest } = this.props
 
+    const isCurrentPlan = auth.consumer
+      ? auth.consumer.plan === plan.slug
+      : auth.isAuthenticated && plan.isFree
+    const isDowngrade =
+      !isCurrentPlan &&
+      auth.consumer &&
+      auth.consumer.plan !== plan.slug &&
+      plan.isFree
+
+    const actionLink = isDowngrade ? '/dashboard' : `/signup?plan=${plan.slug}`
+
     return (
       <Paper className={theme(styles, 'plan', className)} {...rest}>
         <h3 className={theme(styles, 'name')}>
@@ -75,12 +86,12 @@ export class PricingPlan extends Component {
         </div>
 
         {!inline &&
-          (auth.consumer && auth.consumer.plan === plan.slug ? (
+          (isCurrentPlan ? (
             <CTAButton disabled type={plan.type}>
               Current plan
             </CTAButton>
           ) : (
-            <Link to={`/signup?plan=${plan.slug}`}>
+            <Link to={actionLink}>
               <CTAButton
                 type={plan.type}
                 className={cs(
@@ -88,7 +99,11 @@ export class PricingPlan extends Component {
                     theme(styles, 'secondaryCTAButton')
                 )}
               >
-                Get started
+                {isDowngrade
+                  ? 'Downgrade'
+                  : auth.consumer && auth.consumer.enabled
+                  ? 'Switch plans'
+                  : 'Get started'}
               </CTAButton>
             </Link>
           ))}
