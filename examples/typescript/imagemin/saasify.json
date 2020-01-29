@@ -77,11 +77,20 @@
       }
     ]
   },
-  "amountPerBase": 99,
-  "amountPerRequest": 0.24,
-  "noAuthRateLimit": {
-    "requests": true,
-    "requestsInterval": 2628000,
-    "requestsMaxPerInterval": 100
-  }
+  "pricingPlans": [
+    {
+      "name": "Free",
+      "rateLimit": {
+        "requestsInterval": 2628000,
+        "requestsMaxPerInterval": 100
+      }
+    },
+    {
+      "name": "Unlimited",
+      "amount": 99,
+      "requests": {
+        "amount": 0.24
+      }
+    }
+  ]
 }

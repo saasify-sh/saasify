@@ -7,8 +7,6 @@
   "version": "1",
   "url": "http://localhost:5000/1/call/hello-world-required-query-param_360e148006098c95",
   "user": "5c5a35cc1cd684a8f5fc93fa",
-  "amountPerRequest": 1,
-  "amountPerCompute": 1,
   "createdAt": "2019-04-09T17:07:14.546Z",
   "updatedAt": "2019-04-09T17:07:14.546Z",
   "services": [
@@ -25,9 +23,7 @@
         },
         "params": {
           "context": false,
-          "order": [
-            "name"
-          ],
+          "order": ["name"],
           "schema": {
             "type": "object",
             "properties": {
@@ -36,9 +32,7 @@
               }
             },
             "additionalProperties": false,
-            "required": [
-              "name"
-            ],
+            "required": ["name"],
             "$schema": "http://json-schema.org/draft-07/schema#"
           }
         },

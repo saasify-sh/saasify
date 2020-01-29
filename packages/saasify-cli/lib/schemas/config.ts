@@ -3,9 +3,14 @@
 // used as the source of truth for validation within the saasify cli.
 
 class Config {
+  // project name
+  name?: string
+
+  // optional version info
   saasifyVersion?: number = 1
   version?: string = '0.1.0'
-  name?: string
+
+  // optional metadata
   description?: string
   keywords?: string[]
 
@@ -27,7 +32,7 @@ class Config {
   headers?: object
   immutable?: boolean
 
-  // saas client
+  // saas marketing site config
   saas?: object
 
   // core services
@@ -35,31 +40,43 @@ class Config {
 }
 
 class PricingPlan {
+  // display name of this pricing plan
   name: string
 
   // by default, this is inferred from the plan name
   slug?: string
 
+  // optional display description
   desc?: string
+
+  // whether or not this plan requires authentication
   auth?: boolean
 
   // UI-only list of features to display for this plan (supports Markdown)
   features?: string[]
 
+  // base amount to charge per month (licensed billing)
+  // 99 = $0.99
+  // 499 = $4.99
+  // 2999 = $29.99
   amount?: number = 0
+
+  // optional metered billing per request
   requests?: PricingPlanMeteredConfig
 
+  // optional rate limit to enforce on this plan
   rateLimit?: RateLimit
 }
 
 class PricingPlanMeteredConfig {
-  // only 'metered' requests pricing is available
-  // usageType?: string = 'metered' // | licensed
-
+  // amount to charge for each request in USD cents (metered billing)
+  // 100 = $1.00
+  // 2 = $0.02
+  // 0.05 = $0.0005
   amount?: number
 
+  // more advanced per-plan tiered pricing options
   billingScheme?: string = 'per_unit' // | tiered
-
   tiers?: PricingPlanTier[]
   tiersMode?: string = 'graduated' // | volume
 }

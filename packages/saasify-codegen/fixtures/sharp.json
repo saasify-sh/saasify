@@ -8,10 +8,6 @@
     "requestsInterval": 3600,
     "requestsMaxPerInterval": 10
   },
-  "amountPerBase": 99,
-  "amountPerRequest": 0.04,
-  "amountPerCompute": 0.34,
-  "amountPerBandwidth": 20,
   "hash": "d90e513e",
   "user": "5d5b477eb5fab1199c927a36",
   "project": {

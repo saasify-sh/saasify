@@ -8,10 +8,6 @@
     "requestsInterval": 3600,
     "requestsMaxPerInterval": 10
   },
-  "amountPerBase": 99,
-  "amountPerRequest": 0.04,
-  "amountPerCompute": 0.34,
-  "amountPerBandwidth": 20,
   "hash": "6ed513d4",
   "user": "5d5b477eb5fab1199c927a36",
   "project": {
@@ -67,9 +63,7 @@
         },
         "params": {
           "context": false,
-          "order": [
-            "name"
-          ],
+          "order": ["name"],
           "schema": {
             "type": "object",
             "properties": {

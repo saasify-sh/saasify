@@ -8,8 +8,7 @@
           "name": "Basic",
           "input": {
             "url": "https://youtube.com"
-          },
-          "output": "youtube.png"
+          }
         },
         {
           "name": "Custom",
@@ -23,8 +22,7 @@
               "deviceScaleFactor": 2
             },
             "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
-          },
-          "output": "github.jpg"
+          }
         }
       ]
     },
@@ -35,22 +33,7 @@
           "name": "Basic",
           "input": {
             "url": "https://producthunt.com"
-          },
-          "output": "producthunt.pdf"
-        },
-        {
-          "name": "Custom",
-          "input": {
-            "url": "https://producthunt.com",
-            "viewport": {
-              "width": 1920,
-              "height": 1080,
-              "deviceScaleFactor": 2
-            },
-            "displayHeaderFooter": true,
-            "format": "A0"
-          },
-          "output": "producthunt.pdf"
+          }
         }
       ]
     }

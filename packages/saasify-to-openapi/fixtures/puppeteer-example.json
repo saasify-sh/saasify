@@ -7,8 +7,6 @@
   "version": "1",
   "url": "http://localhost:5000/1/call/puppeteer-example_c204408318ac4c1b",
   "user": "5c5a35cc1cd684a8f5fc93fa",
-  "amountPerRequest": 1,
-  "amountPerCompute": 1,
   "createdAt": "2019-04-17T20:21:40.971Z",
   "updatedAt": "2019-04-17T20:21:40.971Z",
   "services": [
@@ -25,10 +23,7 @@
         },
         "params": {
           "context": false,
-          "order": [
-            "url",
-            "type"
-          ],
+          "order": ["url", "type"],
           "schema": {
             "type": "object",
             "properties": {
@@ -41,15 +36,10 @@
               }
             },
             "additionalProperties": false,
-            "required": [
-              "url"
-            ],
+            "required": ["url"],
             "definitions": {
               "ImageFormat": {
-                "enum": [
-                  "jpg",
-                  "png"
-                ],
+                "enum": ["jpg", "png"],
                 "type": "string"
               }
             },

@@ -1,13 +1,6 @@
 {
   "name": "remove-bg",
   "description": "Smart image background removal",
-  "amountPerBase": 999,
-  "amountPerRequest": 50,
-  "noAuthRateLimit": {
-    "requests": true,
-    "requestsInterval": 86400,
-    "requestsMaxPerInterval": 5
-  },
   "services": [
     {
       "src": "src/url.ts",
@@ -32,6 +25,22 @@
           }
         }
       ]
+    }
+  ],
+  "pricingPlans": [
+    {
+      "name": "Free",
+      "rateLimit": {
+        "requestsInterval": 86400,
+        "requestsMaxPerInterval": 5
+      }
+    },
+    {
+      "name": "Unlimited",
+      "amount": 999,
+      "requests": {
+        "amount": 50
+      }
     }
   ],
   "env": {

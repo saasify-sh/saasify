@@ -291,6 +291,7 @@
         "amount": {
           "type": "number",
           "title": "amount",
+          "default": 0,
           "minimum": 0
         },
         "requests": {

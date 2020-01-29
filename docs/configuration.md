@@ -20,26 +20,37 @@ To quickly check whether or not your `saasify.json` file is valid, you can run `
 
 ```ts
 class Config {
-  saasifyVersion?: number = 1
-  version?: string = 0.1.0
+  // project name
   name?: string
-  amountPerBase?: number = 99
-  amountPerRequest?: number = 0.04
-  amountPerCompute?: number = 0.34
-  amountPerBandwidth?: number = 20
-  authRateLimit?: RateLimit
-  noAuthRateLimit?: RateLimit
+
+  // optional version info
+  saasifyVersion?: number = 1
+  version?: string = '0.1.0'
+
+  // optional metadata
+  description?: string
+  keywords?: string[]
+
+  // pricing
+  pricingPlans?: PricingPlan[]
+  coupons?: object[]
+
+  // general config
   build?: object
   env?: object
-  coupons?: object[]
+  headers?: object
+  immutable?: boolean
+
+  // saas marketing site config
   saas?: SaaS
+
+  // core services
   services: Service[] // required
 }
 
 class Service {
   src: string // required
   name?: string
-  timeout?: number = 0
   examples?: Example[]
   GET?: boolean
   POST?: boolean
@@ -49,12 +60,6 @@ class Example {
   name: string
   input: object
   output?: string | object
-}
-
-class RateLimit {
-  requests?: boolean = true
-  requestsInterval?: number = 60000
-  requestsMaxPerInterval?: number = 1000
 }
 
 class SaaS {
@@ -118,49 +123,11 @@ Optional project semver version. Will be used by deployments during publishing.
 
 Defaults to `0.1.0`.
 
-#### amountPerBase
+#### pricingPlans
 
-Optional amount to charge for subscriptions per interval *regardless of usage*.
+Optional array of `PricingPlan` objects to fully customize the pricing of your project.
 
-Specified in USD cents. Defaults to `99` which is equivalent to $0.99` USD.
-
-#### amountPerRequest
-
-Optional amount to charge for subscriptions *based on usage per authenticated serverless invocation*.
-
-Specified in USD cents. Defaults to `0.04` cents which is equivalent to $0.0004` USD.
-
-#### amountPerCompute
-
-Optional amount to charge for subscriptions *based on usage per authenticated serverless compute time*.
-
-Specified USD cents per GB-s. Defaults to `0.34` cents which is equivalent to $0.0034` USD.
-
-#### amountPerBandwidth
-
-Optional amount to charge for subscriptions *based on usage per authenticated serverless data transfer in/out*.
-
-Specified in USD cents per GB. Defaults to `20` cents which is equivalent to $0.20` USD per GB transferred.
-
-#### noAuthRateLimit
-
-Optional `RateLimit` for non-authenticated users.
-
-Defaults to the following:
-
-```ts
-{
-  requests: true
-  requestsInterval: 60000
-  requestsMaxPerInterval: 1000
-}
-```
-
-#### authRateLimit
-
-Optional `RateLimit` info for authenticated users.
-
-By default, all authenticated rate limits are disabled.
+See [pricng](./pricing.md) for details on how to configure pricing including examples of common pricing models.
 
 #### env
 
@@ -254,7 +221,7 @@ For more detail on writing these serverless functions, see [functions](./functio
 
 `Service` objects **require** a valid `src` property that points to a TypeSript file with a single function export. The path to the file should be relative to the folder containing the project config file.
 
-They may optionally include `name`, `examples`, and a custom `timeout`.
+They may optionally include `name` and `examples`.
 
 You may optionally set `GET: false` or `POST: false` to disable a HTTP method for a service. Otherwise, by default, TypeScript services will support both GET and POST, and Python services will support whichever HTTP methods are specified in the source file.
 
