@@ -4,7 +4,7 @@
 
 !> All payments and billing info on Saasify are securely handled by [Stripe](https://stripe.com).
 
-Saasify supports 95% of the billing models that Stripe supports. This includes:
+Saasify supports most of the billing models that Stripe supports. This includes:
 
 - Automatic recurring subscriptions
 - Multiple pricing plans
@@ -17,7 +17,7 @@ Saasify supports 95% of the billing models that Stripe supports. This includes:
 - Support for coupons
 - ...
 
-This covers the vast majority of SaaS billing models that you may want to support.
+We've found that these features should cover the vast majority of billing models you may want to use.
 
 ## Examples
 
