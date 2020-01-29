@@ -3,7 +3,7 @@ export function getUpgradeLink({ auth, deployment }) {
 
   if (auth.isAuthenticated) {
     if (pricingPlans.length === 2) {
-      return `/chckout?plan=${pricingPlans[1].slug}`
+      return `/checkout?plan=${pricingPlans[1].slug}`
     }
   }
 
