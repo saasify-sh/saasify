@@ -13,7 +13,7 @@
     "bootstrap": "lerna bootstrap",
     "publish": "lerna publish",
     "prepublish": "run-s build",
-    "build": "lerna run --parallel build",
+    "build": "lerna run --parallel build --ignore saasify-platform",
     "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') < 0) throw new Error('saasify requires yarn for development')\"",
     "postinstall": "run-s bootstrap",
     "lint": "eslint .",
