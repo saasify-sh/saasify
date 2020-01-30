@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "name": "hello-world",
+  "services": [
+    {
+      "src": "functions/hello-world.ts",
+      "immutable": true,
+      "reportUsage": false,
+      "rateLimit": {
+        "requestsInterval": "1d",
+        "requestsMaxPerInterval": 1000
+      }
+    },
+    {
+      "src": "functions/nala.ts",
+      "pricingPlanConfig": {
+        "free": {
+          "enabled": true,
+          "rateLimit": {
+            "requestsInterval": 3600,
+            "requestsMaxPerInterval": 5
+          }
+        },
+        "unlimited": {
+          "reportUsage": false
+        }
+      }
+    }
+  ],
+  "pricingPlans": [
+    {
+      "name": "Free",
+      "slug": "free",
+      "amount": 0,
+      "rateLimit": {
+        "requestsInterval": "1h",
+        "requestsMaxPerInterval": 25
+      }
+    },
+    {
+      "name": "Unlimited",
+      "slug": "unlimited",
+      "amount": 999,
+      "requests": {
+        "billingScheme": "tiered",
+        "tiers": [
+          {
+            "unitAmount": 0,
+            "upTo": "1000"
+          },
+          {
+            "unitAmount": 0.04,
+            "upTo": "10000"
+          },
+          {
+            "unitAmount": 0.02,
+            "upTo": "inf"
+          }
+        ]
+      }
+    }
+  ]
+}

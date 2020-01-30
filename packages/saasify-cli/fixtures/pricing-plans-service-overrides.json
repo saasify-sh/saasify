@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "name": "hello-world",
+  "services": [
+    {
+      "src": "functions/hello-world.ts",
+      "immutable": true,
+      "reportUsage": false,
+      "rateLimit": null
+    },
+    {
+      "src": "functions/nala.ts",
+      "pricingPlanConfig": {
+        "free": {
+          "enabled": false
+        },
+        "unlimited": {
+          "reportUsage": false
+        }
+      }
+    }
+  ],
+  "pricingPlans": [
+    {
+      "name": "Free",
+      "slug": "free",
+      "amount": 0,
+      "rateLimit": {
+        "requestsInterval": "1h",
+        "requestsMaxPerInterval": 25
+      }
+    },
+    {
+      "name": "Unlimited",
+      "slug": "unlimited",
+      "amount": 99,
+      "rateLimit": null,
+      "requests": {
+        "amount": 0.04
+      }
+    }
+  ]
+}

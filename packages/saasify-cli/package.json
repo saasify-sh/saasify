@@ -10,7 +10,8 @@
     "saasify": "lib/cli.js"
   },
   "scripts": {
-    "docs": "update-markdown-usage"
+    "docs": "update-markdown-usage",
+    "test": "ava -v"
   },
   "engines": {
     "node": ">=8"
@@ -26,7 +27,7 @@
   ],
   "devDependencies": {
     "ava": "^2.4.0",
-    "update-markdown-usage": "^1.0.5"
+    "update-markdown-usage": "^1.0.7"
   },
   "dependencies": {
     "ajv": "^6.10.2",
@@ -57,6 +58,7 @@
     "is-git-repository": "^1.1.1",
     "js-yaml": "^3.13.1",
     "koa": "^2.8.1",
+    "lodash.get": "^4.4.2",
     "lodash.pick": "^4.4.0",
     "now": "^16.6.0",
     "open": "^6.4.0",
@@ -79,6 +81,10 @@
     "tempy": "^0.3.0",
     "update-notifier": "^4.0.0",
     "yazl": "^2.5.1"
+  },
+  "ava": {
+    "failFast": true,
+    "snapshotDir": "./.snapshots"
   },
   "gitHead": "c7c6721c98e28d0b1ea455c38276eb668c66b1f9"
 }

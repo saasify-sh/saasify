@@ -36,6 +36,7 @@ export class SignupPage extends Component {
   }
 
   _onAuth = () => {
+    // TODO: this will be a no-op here as it returns jsx
     handleAuth(this.props)
   }
 }

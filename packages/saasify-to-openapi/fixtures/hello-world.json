@@ -2,16 +2,6 @@
   "enabled": true,
   "published": false,
   "description": "Powered by Saasify",
-  "noAuthRateLimit": {
-    "enabled": true,
-    "requests": true,
-    "requestsInterval": 3600,
-    "requestsMaxPerInterval": 10
-  },
-  "amountPerBase": 99,
-  "amountPerRequest": 0.04,
-  "amountPerCompute": 0.34,
-  "amountPerBandwidth": 20,
   "hash": "6ed513d4",
   "user": "5d5b477eb5fab1199c927a36",
   "project": {
@@ -35,7 +25,6 @@
   },
   "version": "0.1.0",
   "readme": "# Hello World\n\nThis is a very simple Saasify project with a single TypeScript function that implements the classic \"Hello World!\".\n\n<a href=\"https://saasify.sh\">\n  <img\n    src=\"https://badges.saasify.sh\"\n    height=\"40\"\n    alt=\"Hosted API\"\n  />\n</a>\n",
-  "authRateLimit": null,
   "services": [
     {
       "name": "index",
@@ -61,9 +50,7 @@
         },
         "params": {
           "context": false,
-          "order": [
-            "name"
-          ],
+          "order": ["name"],
           "schema": {
             "type": "object",
             "properties": {

@@ -3,6 +3,7 @@
 const Ajv = require('ajv')
 const fs = require('fs-extra')
 const isDirectory = require('is-directory')
+const get = require('lodash.get')
 const path = require('path')
 const parseJson = require('parse-json')
 const semver = require('semver')
@@ -13,6 +14,35 @@ const configSchema = require('./schemas/config.schema')
 
 const ajv = new Ajv({ useDefaults: true })
 const validateConfig = ajv.compile(configSchema)
+
+const deprecatedConfigPaths = [
+  {
+    path: 'noAuthRateLimit',
+    message: '"noAuthRateLimit" is deprecated in favor of "pricingPlans"'
+  },
+  {
+    path: 'authRateLimit',
+    message: '"authRateLimit" is deprecated in favor of "pricingPlans"'
+  },
+  {
+    path: 'amountPerBase',
+    message: '"amountPerBase" is deprecated in favor of "pricingPlans"'
+  },
+  {
+    path: 'amountPerRequests',
+    message: '"amountPerRequests" is deprecated in favor of "pricingPlans"'
+  },
+  {
+    path: 'amountPerCompute',
+    message:
+      '"amountPerCompute" is deprecated in favor of "pricingPlans" (per-compute pricing is no longer supported)'
+  },
+  {
+    path: 'amountPerBandwidth',
+    message:
+      '"amountPerBandwidth" is deprecated in favor of "pricingPlans" (per-bandwidth pricing is no longer supported)'
+  }
+]
 
 module.exports = (program) => {
   const base = path.resolve(program.config || '')
@@ -50,7 +80,14 @@ module.exports = (program) => {
     fileType === 'json'
       ? parseJson(configData, configLabel)
       : yaml.safeLoad(configData)
+
   validateConfig(config)
+
+  for (const deprecatedConfigPath of deprecatedConfigPaths) {
+    if (get(config, deprecatedConfigPath.path) !== undefined) {
+      console.warn(`config warning: ${deprecatedConfigPath.message}`)
+    }
+  }
 
   if (validateConfig.errors) {
     throw new Error(`Invalid config: ${ajv.errorsText(validateConfig.errors)}`)
@@ -99,6 +136,7 @@ module.exports = (program) => {
       )
     }
 
+    // TODO: all of this normalization logic should exist on the server-side
     if (immutable && service.immutable === undefined) {
       service.immutable = true
     }

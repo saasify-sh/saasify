@@ -2,21 +2,18 @@
 
 # Roadmap
 
-You can check out our detailed **[public roadmap on Trello](https://trello.com/b/0I0V0NEM/saasify)**.
+You can check out our detailed **[product roadmap on trello](https://trello.com/b/0I0V0NEM/saasify)**.
 
 Here is a condensed version of the largest features planned for Saasify in the next 6 months.
 
 ## Core
 
-- Add support for more flexible billing models
-- Add support for python services
-- Add support for docker services
-- Add support for custom tsconfig.json
-- Add support for Stripe Connect payouts
-
-## SaaS Client
-
-- Add more templates
+- [x] Add global support for caching API responses
+- [x] Add support for more flexible billing models
+- [ ] Add a marketplace webapp for API search and discovery
+- [ ] Add support for external APIs
+- [ ] Add support for marketing automation
+- [ ] Add support for docker services
 
 ## Marketing
 

@@ -20,8 +20,7 @@
 
 .secondaryCTAButton:hover,
 .secondaryCTAButton:active,
-.secondaryCTAButton:focus
-{
+.secondaryCTAButton:focus {
   color: #fff !important;
 }
 
@@ -35,7 +34,7 @@
   vertical-align: middle;
 }
 
-.features {
+.pricing {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
@@ -46,4 +45,18 @@
 
 .emphasis {
   font-weight: 700;
+}
+
+.features {
+  text-align: left;
+  font-size: 0.85em;
+  padding-inline-start: 0.5em;
+}
+
+.feature {
+  margin-bottom: 0.5em;
+}
+
+.feature:last-child {
+  margin-bottom: 0;
 }

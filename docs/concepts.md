@@ -10,7 +10,7 @@ A `Service` is a single monetizable serverless function or FaaS. For Saasify v1,
 
 Services conform to the [Functional TypeScript](https://github.com/transitive-bullshit/functional-typescript) specification. This strong typing allows Saasify to automatically generate documentation, client SDKs, and examples for all services.
 
-By default, every service deployed on Saasify is publicly available and rate-limited by IP address. Other developers can *subscribe* to your Project's API in order to gain access to higher rate limits and usage-based pricing.
+By default, every service deployed on Saasify is publicly available and rate-limited by IP address. Other developers can _subscribe_ to your Project's API in order to gain access to higher rate limits and usage-based pricing.
 
 See [services](./services.md) for more detail on auto-generated service endpoints.
 
@@ -21,21 +21,31 @@ A `Project` is a collection of related `Services`. It is specified by a Saasify 
 ```ts
 class Config {
   saasifyVersion?: number = 1
-  version?: string = 0.1.0
+  version?: string = '0.1.0'
   name?: string
-  amountPerBase?: number = 99
-  amountPerRequest?: number = 0.0004
-  amountPerCompute?: number = 0.0034
-  amountPerBandwidth?: number = 0.2
-  authRateLimit?: RateLimit
-  noAuthRateLimit?: RateLimit
+  description?: string
+  keywords?: string[]
+
+  // pricing
+  pricingPlans?: PricingPlan[]
+  coupons?: Coupon[]
+
+  // general config
+  build?: object
+  env?: object
+  headers?: object
+  immutable?: boolean
+
+  // saas marketing site
+  saas?: object
+
+  // core services
   services: Service[]
 }
 
 class Service {
   src: string
   name?: string
-  timeout?: number = 0
   examples?: Example[]
 }
 
@@ -43,12 +53,6 @@ class Example {
   name: string
   input: object
   output?: string | object
-}
-
-class RateLimit {
-  requests?: boolean = true
-  requestsInterval?: number = 60000
-  requestsMaxPerInterval?: number = 1000
 }
 ```
 

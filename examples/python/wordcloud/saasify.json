@@ -38,15 +38,22 @@
       ]
     }
   ],
-  "amountPerBase": 99,
-  "amountPerRequest": 0.5,
-  "amountPerCompute": 0,
-  "amountPerBandwidth": 0,
-  "noAuthRateLimit": {
-    "requests": true,
-    "requestsInterval": 3600,
-    "requestsMaxPerInterval": 15
-  },
+  "pricingPlans": [
+    {
+      "name": "Free",
+      "rateLimit": {
+        "requestsInterval": 3600,
+        "requestsMaxPerInterval": 15
+      }
+    },
+    {
+      "name": "Unlimited",
+      "amount": 99,
+      "requests": {
+        "amount": 0.5
+      }
+    }
+  ],
   "env": {
     "EXTRACT_TOKEN": "@extract_token"
   },

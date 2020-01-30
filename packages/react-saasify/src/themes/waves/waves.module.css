@@ -936,17 +936,17 @@
   text-shadow: none;
 }
 
-.theme-waves .plan .features {
+.theme-waves .plan .pricing {
   margin-bottom: var(--space-l);
 }
 
-.theme-waves .pricing-section .plan .features {
+.theme-waves .pricing-section .plan .pricing {
   margin-bottom: var(--space-l);
 }
 
 /* Label */
-.theme-waves .pricing-section .plan .features .emphasis,
-.theme-waves .pricing-section .plan .features .column {
+.theme-waves .pricing-section .plan .pricing .emphasis,
+.theme-waves .pricing-section .plan .pricing .column {
   font-weight: 400;
   opacity: 0.6;
 }
@@ -960,7 +960,7 @@
   content: 'test';
 }
 
-.theme-waves .plan > div:nth-last-of-type(2) {
+.theme-waves .plan .desc {
   display: none;
 }
 

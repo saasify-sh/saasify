@@ -7,10 +7,12 @@ export function handleAuth({ auth, location }) {
     const params = new URLSearchParams(location.search)
     const plan = params.get('plan')
 
-    if (plan === 'unlimited') {
+    if (plan) {
       return <Redirect to={`/checkout?plan=${plan}`} />
     } else {
       return <Redirect to='/dashboard' />
     }
+  } else {
+    return <Redirect to='/' />
   }
 }

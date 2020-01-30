@@ -135,7 +135,7 @@ export class ProfileSection extends Component {
               </Popconfirm>
             </Fragment>
           ) : (
-            <Button type='primary' href='/checkout?plan=unlimited'>
+            <Button type='primary' href='/pricing'>
               Upgrade
             </Button>
           )
@@ -149,7 +149,7 @@ export class ProfileSection extends Component {
         email: auth.user.email,
         image: auth.user.image,
         joined: auth.user.createdAt,
-        subscription: hasSubscription ? 'Unlimited' : 'Free',
+        subscription: hasSubscription ? auth.consumer.plan : 'Free',
         subscribed: auth.consumer && auth.consumer.createdAt
       }
     ]

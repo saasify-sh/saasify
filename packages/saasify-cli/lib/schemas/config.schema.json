@@ -7,14 +7,14 @@
       "type": "object",
       "properties": {
         "saasifyVersion": {
-          "type": "number",
           "title": "saasifyVersion",
-          "default": 1
+          "default": 1,
+          "oneOf": [{ "type": "number" }, { "type": "string" }]
         },
         "version": {
-          "type": "string",
           "title": "version",
-          "default": "0.1.0"
+          "default": "0.1.0",
+          "oneOf": [{ "type": "number" }, { "type": "string" }]
         },
         "name": {
           "type": "string",
@@ -43,32 +43,9 @@
           "title": "saas",
           "additionalProperties": true
         },
-        "authRateLimit": {
-          "$ref": "#/definitions/RateLimit",
-          "title": "authRateLimit"
-        },
-        "noAuthRateLimit": {
-          "$ref": "#/definitions/RateLimit",
-          "title": "noAuthRateLimit"
-        },
-        "amountPerBase": {
-          "type": "number",
-          "title": "amountPerBase"
-        },
-        "amountPerRequest": {
-          "type": "number",
-          "title": "amountPerRequest"
-        },
-        "amountPerCompute": {
-          "type": "number",
-          "title": "amountPerCompute"
-        },
-        "amountPerBandwidth": {
-          "type": "number",
-          "title": "amountPerBandwidth"
-        },
         "services": {
           "type": "array",
+          "minItems": 1,
           "items": {
             "$ref": "#/definitions/Service"
           },
@@ -89,6 +66,15 @@
         "immutable": {
           "type": "boolean",
           "title": "immutable"
+        },
+        "pricingPlans": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": {
+            "$ref": "#/definitions/PricingPlan"
+          },
+          "title": "pricingPlans"
         }
       },
       "additionalProperties": false,
@@ -176,8 +162,7 @@
         },
         "timeout": {
           "type": "number",
-          "title": "timeout",
-          "default": 0
+          "title": "timeout"
         },
         "examples": {
           "type": "array",
@@ -208,9 +193,25 @@
           "type": "boolean",
           "title": "immutable"
         },
-        "additionalProperties": false
+        "reportUsage": {
+          "type": "boolean",
+          "title": "reportUsage"
+        },
+        "rateLimit": {
+          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
+          "title": "rateLimit"
+        },
+        "pricingPlanConfig": {
+          "type": "object",
+          "title": "pricingPlanConfig",
+          "patternProperties": {
+            "^.*$": { "$ref": "#/definitions/PricingPlanServiceConfig" }
+          },
+          "additionalProperties": false
+        }
       },
-      "required": ["src"]
+      "required": ["src"],
+      "additionalProperties": false
     },
     "RateLimit": {
       "title": "RateLimit",
@@ -218,13 +219,13 @@
       "properties": {
         "requests": {
           "type": "boolean",
-          "title": "requests",
+          "title": "enabled",
           "default": true
         },
         "requestsInterval": {
-          "type": "number",
           "title": "requestsInterval",
-          "default": 60000
+          "default": "1h",
+          "oneOf": [{ "type": "number" }, { "type": "string" }]
         },
         "requestsMaxPerInterval": {
           "type": "number",
@@ -259,6 +260,122 @@
       },
       "additionalProperties": false,
       "required": ["label", "language", "code"]
+    },
+    "PricingPlan": {
+      "title": "PricingPlan",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "name"
+        },
+        "slug": {
+          "type": "string",
+          "title": "slug"
+        },
+        "desc": {
+          "type": "string",
+          "title": "desc"
+        },
+        "auth": {
+          "type": "boolean",
+          "title": "auth"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "features"
+        },
+        "amount": {
+          "type": "number",
+          "title": "amount",
+          "default": 0,
+          "minimum": 0
+        },
+        "requests": {
+          "$ref": "#/definitions/PricingPlanMeteredConfig",
+          "title": "requests"
+        },
+        "rateLimit": {
+          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
+          "title": "rateLimit"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["name"]
+    },
+    "PricingPlanMeteredConfig": {
+      "title": "PricingPlanMeteredConfig",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "title": "amount",
+          "minimum": 0
+        },
+        "billingScheme": {
+          "type": "string",
+          "title": "billingScheme",
+          "enum": ["per_unit", "tiered"]
+        },
+        "tiersMode": {
+          "type": "string",
+          "title": "teirsMode",
+          "enum": ["graduated", "volume"]
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PricingPlanTier"
+          },
+          "title": "tiers"
+        }
+      },
+      "additionalProperties": false,
+      "required": []
+    },
+    "PricingPlanTier": {
+      "title": "PricingPlanTier",
+      "type": "object",
+      "properties": {
+        "unitAmount": {
+          "type": "number",
+          "title": "unitAmount",
+          "minimum": 0
+        },
+        "flatAmount": {
+          "type": "number",
+          "title": "flatAmount",
+          "minimum": 0
+        },
+        "upTo": {
+          "type": "string",
+          "title": "upTo"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["upTo"]
+    },
+    "PricingPlanServiceConfig": {
+      "title": "PricingPlanServiceConfig",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "enabled"
+        },
+        "reportUsage": {
+          "type": "boolean",
+          "title": "reportUsage"
+        },
+        "rateLimit": {
+          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
+          "title": "rateLimit"
+        }
+      },
+      "additionalProperties": false
     }
   }
 }
