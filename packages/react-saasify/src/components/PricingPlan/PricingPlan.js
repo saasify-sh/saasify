@@ -92,7 +92,7 @@ export class PricingPlan extends Component {
           </Fragment>
         )}
 
-        {plan.features && plan.features.length && (
+        {plan.features && plan.features.length > 0 && (
           <Fragment>
             <ul className={theme(styles, 'features')}>
               {plan.features.map((feature, index) => (
