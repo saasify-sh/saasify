@@ -12,6 +12,8 @@
     "deploy": "cd docs && now --prod && now rm --safe --yes saasify || echo 'done'",
     "bootstrap": "lerna bootstrap",
     "publish": "lerna publish",
+    "prepublish": "run-s build",
+    "build": "lerna run --parallel build",
     "preinstall": "node -e \"if (process.env.npm_execpath.indexOf('yarn') < 0) throw new Error('saasify requires yarn for development')\"",
     "postinstall": "run-s bootstrap",
     "lint": "eslint .",
