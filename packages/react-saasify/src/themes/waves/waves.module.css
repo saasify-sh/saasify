@@ -575,6 +575,14 @@
   max-height: 48px;
 }
 
+.theme-waves header:not(.attached) .logo--light {
+  display: var(--logo-light-top-display);
+}
+
+.theme-waves header:not(.attached) .logo:not(.logo--light) {
+  display: var(--logo-top-display);
+}
+
 .theme-waves header .logo-text {
   font-weight: 600;
 }
@@ -1022,6 +1030,14 @@
 .theme-waves .docs-page header.expanded .logo-text:not(:hover),
 .theme-waves .docs-page header.expanded .links .link:not(:hover) {
   color: white !important;
+}
+
+.theme-waves .docs-page header.attached .logo--light {
+  display: flex;
+}
+
+.theme-waves .docs-page header.attached .logo:not(.logo--light) {
+  display: none;
 }
 
 .theme-waves .docs-page p {

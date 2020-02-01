@@ -7,7 +7,7 @@ import styles from './styles.module.css'
 
 export class Logo extends Component {
   render() {
-    const { className, style = {}, ...rest } = this.props
+    const { className, style = {}, light, ...rest } = this.props
 
     return (
       <SaasifyContext.Consumer>
@@ -15,7 +15,7 @@ export class Logo extends Component {
           config.logo ? (
             <img
               className={theme(styles, 'logo', className)}
-              src={config.logo}
+              src={(light && config.deployment.saas.logoLight) || config.logo}
               alt={`${config.name} Logo`}
               style={style}
               {...rest}

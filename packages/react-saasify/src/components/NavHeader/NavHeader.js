@@ -82,6 +82,14 @@ export class NavHeader extends Component {
                 <Link to='/'>
                   <span className={theme(styles, 'logo-image')}>
                     <Logo className={theme(styles, 'logo')} />
+                    <Logo
+                      className={theme(
+                        styles,
+                        'logo',
+                        theme(styles, 'logo--light')
+                      )}
+                      light
+                    />
                   </span>
 
                   {config.logo && (

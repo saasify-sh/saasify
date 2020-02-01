@@ -146,3 +146,11 @@ body header + section:first-of-type .title {
 .theme-okta .docs-page header {
   background: #23303a !important;
 }
+
+.theme-okta .logo.logo--light {
+  display: flex;
+}
+
+.theme-okta .logo:not(.logo--light) {
+  display: none;
+}
