@@ -47,7 +47,9 @@ export const waves = ({
     'code-block-output-background': codeBlockOutputColor || codeBlockBackground,
     'code-block-shadow-color': codeBlockDark ? '#1E1E1E95' : '#392ab195',
     'hero-color': backgroundImage ? 'white' : '#3a3a3a',
-    'nav-border-width': backgroundImage ? '0px' : '1px'
+    'nav-border-width': backgroundImage ? '0px' : '1px',
+    'logo-light-top-display': backgroundImage ? 'flex' : 'none',
+    'logo-top-display': backgroundImage ? 'none' : 'flex'
   })
 
   // TODO: make styles more dynamic based on less variables

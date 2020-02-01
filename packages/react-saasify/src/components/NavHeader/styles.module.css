@@ -48,6 +48,10 @@
   width: auto;
 }
 
+.logo--light {
+  display: none;
+}
+
 .logo-text {
   font-size: 22px;
   margin-right: 32px;

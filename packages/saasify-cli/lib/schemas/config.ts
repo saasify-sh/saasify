@@ -148,6 +148,7 @@ class SaaS {
   heading?: string
   subheading?: string
   logo?: string
+  logoLight?: string
   favicon?: string
   features?: Feature[]
   sections?: object
