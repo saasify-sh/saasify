@@ -35,6 +35,9 @@ class Config {
   // saas marketing site config
   saas?: object
 
+  // TODO
+  openapi?: object
+
   // core services
   services: Service[]
 }
