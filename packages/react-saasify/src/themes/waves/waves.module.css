@@ -98,7 +98,7 @@
 
 @media (min-width: 48em) {
   .theme-waves .section .title {
-    font-size: 48px;
+    font-size: var(--heading-font-size);
   }
 }
 
