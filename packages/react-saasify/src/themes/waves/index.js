@@ -13,6 +13,7 @@ export const waves = ({
   wave = true,
   codeBlockDark = false,
   codeBlockOutputColor,
+  headingFontSize = '48px',
   ...opts
 } = {}) => {
   // Define root CSS vars
@@ -49,7 +50,8 @@ export const waves = ({
     'hero-color': backgroundImage ? 'white' : '#3a3a3a',
     'nav-border-width': backgroundImage ? '0px' : '1px',
     'logo-light-top-display': backgroundImage ? 'flex' : 'none',
-    'logo-top-display': backgroundImage ? 'none' : 'flex'
+    'logo-top-display': backgroundImage ? 'none' : 'flex',
+    'heading-font-size': headingFontSize
   })
 
   // TODO: make styles more dynamic based on less variables
