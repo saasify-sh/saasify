@@ -116,9 +116,6 @@ async function prepareJsonSchema(schema, components) {
     toPrefix: '#/components/schemas/'
   })
 
-  // all $refs have been replaced directly, so remove any indirect definitions
-  // delete result.definitions
-
   // prune custom FTS keywords
   pruneCustomKeywords(result)
 
@@ -131,6 +128,7 @@ async function prepareJsonSchema(schema, components) {
     ...result.definitions
   }
 
+  // all $refs have been replaced directly, so remove any indirect definitions
   delete result.$ref
   delete result.definitions
 
