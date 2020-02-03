@@ -1,6 +1,10 @@
 'use strict'
 
-const jsonSchemaToOpenAPI = require('json-schema-to-openapi-schema')
+// TODO: switch to using https://github.com/openapi-contrib/json-schema-to-openapi-schema
+// TODO: move codegen into annotateOpenAPI so all deployments can use it
+// TODO: move all examples and request params "example" value inference into annotateOpenAPI
+
+const jsonSchemaToOpenAPISchema = require('json-schema-to-openapi-schema')
 const pReduce = require('p-reduce')
 const codegen = require('saasify-codegen')
 
@@ -69,7 +73,7 @@ module.exports.serviceToPaths = async function serviceToPaths(
     }
   } else {
     const params = await prepareJsonSchema(paramsSchema, components)
-    requestSchema = jsonSchemaToOpenAPI(params)
+    requestSchema = jsonSchemaToOpenAPISchema(params)
 
     requestBody = {
       required: true,
@@ -165,7 +169,7 @@ module.exports.serviceToPaths = async function serviceToPaths(
         ...properties.result
       }
       const returns = await prepareJsonSchema(returnsJsonSchema, components)
-      const responseSchema = jsonSchemaToOpenAPI(returns)
+      const responseSchema = jsonSchemaToOpenAPISchema(returns)
 
       responses = {
         200: {

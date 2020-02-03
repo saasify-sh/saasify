@@ -38,12 +38,6 @@ module.exports = async (spec) => {
     const name = slugify(path.slice(1))
 
     if (name && !validators.service(name)) {
-      if (name.includes('/')) {
-        throw new Error(
-          `Invalid path "${path}" must be a top-level path with no slashes`
-        )
-      }
-
       throw new Error(
         `Invalid path "${path}" must be blank or a valid JS variable identifier`
       )

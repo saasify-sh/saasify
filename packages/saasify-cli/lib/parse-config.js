@@ -122,7 +122,11 @@ module.exports = async (program) => {
   }
 
   if (!config.services || !config.services.length) {
-    throw new Error('Invalid config, must contain at least one service')
+    if (config.openapi) {
+      config.services = []
+    } else {
+      throw new Error('Invalid config, must contain at least one service')
+    }
   }
 
   // these properties should apply to each service

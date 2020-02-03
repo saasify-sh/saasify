@@ -11,7 +11,11 @@ module.exports = async (program, opts = {}) => {
   const config = await parseConfig(program)
   let adaptor
 
-  // figure out which language adaptor this project uses
+  if (config.openapi) {
+    adaptor = 'openapi'
+  }
+
+  // figure out which service adaptor this project uses
   for (const service of config.services) {
     const ext = getExtension(service.src)
     let current
@@ -20,12 +24,16 @@ module.exports = async (program, opts = {}) => {
       current = 'typescript'
     } else if (ext === 'py') {
       current = 'python'
+    } else if (service.src === undefined) {
+      current = 'openapi'
     } else {
       throw new Error(`Unsupported service type "${ext}" [${service.src}]`)
     }
 
     if (adaptor && current !== adaptor) {
-      throw new Error(`Unsupported service type "${ext}" [${service.src}]`)
+      throw new Error(
+        `All services must have the same type: found "${adaptor}" and "${current}"`
+      )
     }
 
     adaptor = current
@@ -34,6 +42,7 @@ module.exports = async (program, opts = {}) => {
   // perform any adaptor-specific project initialization
   // for typescript, this infers FTS definitions from service source files
   // for python, this infers the OpenAPI spec via FastAPI
+  // for openapi, this infers the services from an OpenAPI spec
   const project = await adaptors[adaptor]({
     ...opts,
     program,

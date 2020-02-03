@@ -3,6 +3,7 @@
 const cloneDeep = require('clone-deep')
 const processReadme = require('./process-readme')
 
+// TODO: this logic should be deprecated
 const nameRe = /\/([^/]*)$/
 
 /**

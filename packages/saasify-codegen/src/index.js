@@ -45,7 +45,7 @@ export default (service, token, opts = {}) => {
   const { method = 'POST', example = service.examples[0] } = opts
 
   if (method !== 'POST' && method !== 'GET') {
-    throw new Error(`TODO: support service codegen for method "${method}"`)
+    throw new Error(`Service codegen is not supported for method "${method}"`)
   }
 
   if (!example) {
