@@ -1009,6 +1009,7 @@
 
 .theme-waves .docs-page header {
   background: #292929 !important;
+  border-bottom: none;
 }
 
 @media (min-width: 48em) {
@@ -1017,27 +1018,22 @@
   }
 }
 
-.theme-waves
-  .docs-page
-  header:not(.attached):not(.expanded)
-  .cta-button:global(.secondary):not(:hover) {
+.theme-waves .docs-page header .cta-button:global(.secondary):not(:hover) {
   border-color: white !important;
   color: white !important;
 }
 
-.theme-waves .docs-page header.attached .logo-text:not(:hover),
-.theme-waves .docs-page header.attached .links .link:not(:hover),
-.theme-waves .docs-page header.expanded .logo-text:not(:hover),
-.theme-waves .docs-page header.expanded .links .link:not(:hover) {
+.theme-waves .docs-page header .logo-text:not(:hover),
+.theme-waves .docs-page header .links .link:not(:hover) {
   color: white !important;
 }
 
-.theme-waves .docs-page header.attached .logo--light {
-  display: flex;
+.theme-waves .docs-page .logo--light {
+  display: flex !important;
 }
 
-.theme-waves .docs-page header.attached .logo:not(.logo--light) {
-  display: none;
+.theme-waves .docs-page .logo:not(.logo--light) {
+  display: none !important;
 }
 
 .theme-waves .docs-page p {
