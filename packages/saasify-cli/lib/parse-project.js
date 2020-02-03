@@ -8,7 +8,7 @@ const parseConfig = require('./parse-config')
 const adaptors = require('./adaptors')
 
 module.exports = async (program, opts = {}) => {
-  const config = parseConfig(program)
+  const config = await parseConfig(program)
   let adaptor
 
   // figure out which language adaptor this project uses

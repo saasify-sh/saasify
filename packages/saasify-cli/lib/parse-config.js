@@ -44,7 +44,7 @@ const deprecatedConfigPaths = [
   }
 ]
 
-module.exports = (program) => {
+module.exports = async (program) => {
   const base = path.resolve(program.config || '')
 
   if (!fs.pathExistsSync(base)) {
@@ -80,8 +80,7 @@ module.exports = (program) => {
     fileType === 'json'
       ? parseJson(configData, configLabel)
       : yaml.safeLoad(configData)
-
-  validateConfig(config)
+  const root = path.dirname(configFilePath)
 
   for (const deprecatedConfigPath of deprecatedConfigPaths) {
     if (get(config, deprecatedConfigPath.path) !== undefined) {
@@ -89,11 +88,13 @@ module.exports = (program) => {
     }
   }
 
+  validateConfig(config)
+
   if (validateConfig.errors) {
     throw new Error(`Invalid config: ${ajv.errorsText(validateConfig.errors)}`)
   }
 
-  config.root = path.dirname(configFilePath)
+  config.root = root
 
   // ensure the config has a valid project name
   if (program.project) {

@@ -3,6 +3,7 @@
 const cloneDeep = require('clone-deep')
 const parser = require('swagger-parser')
 const semver = require('semver')
+const slugify = require('@sindresorhus/slugify')
 
 const { validators } = require('saasify-faas-utils')
 
@@ -24,7 +25,7 @@ module.exports = async (spec) => {
   const api = await parser.dereference(cloneDeep(spec))
 
   if (semver.major(api.openapi) !== 3) {
-    throw new Error('OpenAPI spec must conform to version 3')
+    throw new Error('Only OpenAPI version 3 is supported')
   }
 
   for (const path of Object.keys(api.paths)) {
@@ -34,7 +35,7 @@ module.exports = async (spec) => {
       throw new Error(`Invalid path "${path}" must start with "/"`)
     }
 
-    const name = path.slice(1)
+    const name = slugify(path.slice(1))
 
     if (name && !validators.service(name)) {
       if (name.includes('/')) {

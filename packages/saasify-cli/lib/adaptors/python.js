@@ -5,7 +5,10 @@ const findFreePort = require('find-free-port')
 const got = require('got')
 const pRetry = require('p-retry')
 const path = require('path')
-const { parseOpenAPI, convertOpenAPIToServices } = require('saasify-utils')
+const {
+  parseOpenAPI,
+  convertOpenAPIToServices
+} = require('saasify-openapi-utils')
 
 const killProcessTree = require('../kill-process-tree')
 const serveProjectLocal = require('../serve-project-local')
@@ -27,15 +30,15 @@ module.exports = async (opts) => {
     return config
   }
 
-  const openapi = await module.exports.extractOpenAPI({
+  const openapiRaw = await module.exports.extractOpenAPI({
     program,
     config,
     service: config.services[0],
     ...rest
   })
 
-  const openapiResolved = await parseOpenAPI(openapi)
-  const services = await convertOpenAPIToServices(openapiResolved, config)
+  const openapi = await parseOpenAPI(openapiRaw)
+  const services = await convertOpenAPIToServices(openapi, config)
 
   return {
     ...config,

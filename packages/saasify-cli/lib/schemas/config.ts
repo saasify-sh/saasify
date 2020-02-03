@@ -36,7 +36,7 @@ class Config {
   saas?: object
 
   // TODO
-  openapi?: object
+  openapi?: string | object
 
   // core services
   services: Service[]

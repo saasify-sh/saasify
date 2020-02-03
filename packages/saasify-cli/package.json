@@ -56,6 +56,7 @@
     "inquirer": "^7.0.0",
     "is-directory": "^0.3.1",
     "is-git-repository": "^1.1.1",
+    "is-url-superb": "^3.0.0",
     "js-yaml": "^3.13.1",
     "koa": "^2.8.1",
     "lodash.get": "^4.4.2",
