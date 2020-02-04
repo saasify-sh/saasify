@@ -19,7 +19,7 @@ module.exports = (uri) => {
     return {
       projectId: pdsMatch[1],
       deploymentHash: pdsMatch[2],
-      servicePath: pdsMatch[3]
+      servicePath: pdsMatch[3] || '/'
     }
   }
 
@@ -29,7 +29,7 @@ module.exports = (uri) => {
     return {
       projectId: pvsMatch[1],
       version: pvsMatch[2],
-      servicePath: pvsMatch[3]
+      servicePath: pvsMatch[3] || '/'
     }
   }
 
@@ -38,7 +38,7 @@ module.exports = (uri) => {
   if (psMatch) {
     return {
       projectId: psMatch[1],
-      servicePath: psMatch[2],
+      servicePath: psMatch[2] || '/',
       version: 'latest'
     }
   }

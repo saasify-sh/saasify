@@ -4,20 +4,20 @@
 
 ## ID Format
 
-The most general FaaS identifier fully specifies the deployment and service name.
+The most general FaaS identifier fully specifies the deployment and service path.
 
-It *may* include an optional URL prefix such as `http://localhost:5100/` in *development* or `https://ssfy.sh/` in *production*. The parsed result will be the same with or without the full URL prefix.
+It _may_ include an optional URL prefix such as `http://localhost:5100/` in _development_ or `https://ssfy.sh/` in _production_. The parsed result will be the same with or without the full URL prefix.
 
 ```
-username/projectName@01234567/serviceName  // explicitly identify a specific deployment (may not be published)
-username/projectName@latest/serviceName    // explicitly identify the latest published deployment
-username/projectName@1.0.0/serviceName     // explicitly identify a published deployment with a specific version
-username/projectName/serviceName           // implicitly identify the latest published deployment
+username/projectName@01234567/servicePath  // explicitly identify a specific deployment (may not be published)
+username/projectName@latest/servicePath    // explicitly identify the latest published deployment
+username/projectName@1.0.0/servicePath     // explicitly identify a published deployment with a specific version
+username/projectName/servicePath           // implicitly identify the latest published deployment
 ```
 
 ---
 
-If no `serviceName` is specified, it is assumed that the deployment either has a single service or has a service registered at the root `/` path and errors if this is not the case.
+If no `servicePath` is specified, it is assumed that the deployment either has a single service or has a service registered at the root `/` path and errors if this is not the case.
 
 ```
 username/projectName@01234567
@@ -84,7 +84,6 @@ validators.deployment('username/bad%project%20name@ZZ') // false
 ## Source
 
 Check out [parse-faas-uri.js](https://github.com/saasify-sh/saasify/blob/master/packages/saasify-utils/lib/parse-faas-uri.js) and [validators.js](https://github.com/saasify-sh/saasify/blob/master/packages/saasify-utils/lib/validators.js) for the specific regular expressions used to parse and validate FaaS identifiers.
-
 
 <p align="center">
   <img src="./_media/undraw/functions.svg" alt="Functions" width="200" />
