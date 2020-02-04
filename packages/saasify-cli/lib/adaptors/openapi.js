@@ -2,7 +2,6 @@
 
 const {
   parseOpenAPI,
-  validateOpenAPI,
   convertOpenAPIToServices
 } = require('saasify-openapi-utils')
 
@@ -20,8 +19,6 @@ module.exports = async (opts) => {
   } catch (err) {
     throw new Error(`Error resolving OpenAPI spec: ${err.message}`)
   }
-
-  await validateOpenAPI(config.openapi)
 
   const openapi = await parseOpenAPI(config.openapi)
   const services = await convertOpenAPIToServices(openapi, config)
