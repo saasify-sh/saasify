@@ -37,31 +37,35 @@ This package requires you tu use [Koa](https://koajs.com), but it should be easy
 
 This example forwards all requests to the default `faasUrl` (`https://ssfy.sh`), without changing the URL `path`.
 
-    const Koa = require('koa')
-    const proxy = require('saasify-faas-proxy')
+```js
+const Koa = require('koa')
+const proxy = require('saasify-faas-proxy')
 
-    const app = new Koa()
+const app = new Koa()
 
-    app.use(proxy())
+app.use(proxy())
 
-    app.listen(3000)
-
-* * *
+app.listen(3000)
+```
 
 This example forwards all requests to the default `faasUrl` (`https://ssfy.sh`), prefixing the URL `path` via our deployment's identifier `foo/hello-world`.
 
 In this example, `foo` would be the username and `hello-world` would be the project name. The deployment version would implicitly be the `latest` published version.
 
-    const Koa = require('koa')
-    const proxy = require('saasify-faas-proxy')
+```js
+const Koa = require('koa')
+const proxy = require('saasify-faas-proxy')
 
-    const app = new Koa()
+const app = new Koa()
 
-    app.use(proxy({
-      getPath: (ctx) => `foo/hello-world/${ctx.req.path}`
-    }))
+app.use(
+  proxy({
+    getPath: (ctx) => `foo/hello-world/${ctx.req.path}`
+  })
+)
 
-    app.listen(3000)
+app.listen(3000)
+```
 
 ## API
 
@@ -69,7 +73,7 @@ In this example, `foo` would be the username and `hello-world` would be the proj
 
 #### Table of Contents
 
--   [index](#index)
+- [index](#index)
 
 ### [index](https://git@github.com/:saasify-sh/saasify/blob/dfb48daaf97d5dccb1b4b839db216579863c8687/packages/saasify-faas-proxy/index.js#L22-L112)
 
@@ -80,16 +84,16 @@ as the target path without any transforms.
 
 Type: `function (opts): function`
 
--   `opts` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Config options. (optional, default `{}`)
-    -   `opts.faasUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Base URL to proxy FaaS requests downstream. (optional, default `'https://ssfy.sh'`)
-    -   `opts.logger` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Logger (console or winston instancd). (optional, default `console`)
-    -   `opts.getPath` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Function to extract the target URL's path from the given request context.
+- `opts` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Config options. (optional, default `{}`)
+  - `opts.faasUrl` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Base URL to proxy FaaS requests downstream. (optional, default `'https://ssfy.sh'`)
+  - `opts.logger` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Logger (console or winston instancd). (optional, default `console`)
+  - `opts.getPath` **[object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)?** Function to extract the target URL's path from the given request context.
 
-* * *
+---
 
 ## Related
 
--   [saasify](https://saasify.sh) - Saasify is the easiest way to launch your own SaaS.
+- [saasify](https://saasify.sh) - Saasify is the easiest way to launch your own SaaS.
 
 ## License
 
