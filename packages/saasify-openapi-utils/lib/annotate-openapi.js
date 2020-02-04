@@ -7,8 +7,14 @@ const processReadme = require('./process-readme')
 const nameRe = /\/([^/]*)$/
 
 /**
- * Annotates a valid OpenAPI spec with extra metadata specific to Saasify's
- * SaaS web client and [Redoc](https://github.com/Redocly/redoc).
+ * Annotates a valid OpenAPI spec with extra metadata specific to Saasify's SaaS web client
+ * and [Redoc](https://github.com/Redocly/redoc).
+ *
+ * @param {object} spec - OpenAPI spec.
+ * @param {object} deployment - Parent Saasify deployment.
+ * @param {object} [opts] - Optional config.
+ *
+ * @return {Promise}
  */
 module.exports = async (spec, deployment, opts = {}) => {
   const { baseUrl = 'https://ssfy.sh' } = opts

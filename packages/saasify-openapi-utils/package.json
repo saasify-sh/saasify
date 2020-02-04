@@ -10,7 +10,8 @@
     "node": ">=8"
   },
   "scripts": {
-    "test": "ava -v"
+    "test": "ava -v",
+    "docs": "update-markdown-jsdoc"
   },
   "keywords": [
     "openapi",
@@ -23,12 +24,14 @@
     "fts"
   ],
   "devDependencies": {
-    "ava": "^3.2.0"
+    "ava": "^3.2.0",
+    "update-markdown-jsdoc": "^1.0.11"
   },
   "dependencies": {
     "@sindresorhus/slugify": "^0.10.0",
     "ajv": "^6.11.0",
     "clone-deep": "^4.0.1",
+    "http-errors": "^1.7.3",
     "remark": "^11.0.1",
     "semver": "^6.3.0",
     "swagger-parser": "^8.0.1",

@@ -20,6 +20,15 @@ const httpMethodBlacklist = [
 
 const httpMethodWhitelist = ['get', 'post']
 
+/**
+ * Validates and parses an OpenAPI spec according to Saasify's constraints.
+ *
+ * Returns a potentially updated, deep cloned spec that should be used.
+ *
+ * @param {object} spec - OpenAPI spec.
+ *
+ * @return {Promise}
+ */
 module.exports = async (spec) => {
   const bundle = await parser.bundle(spec)
   const api = await parser.dereference(cloneDeep(spec))

@@ -1,23 +1,34 @@
 'use strict'
 
 const cloneDeep = require('clone-deep')
+const createError = require('http-errors')
 const refParser = require('json-schema-ref-parser')
 
 const serviceToPathItem = require('./service-to-path-item')
 
 // TODO: use https://github.com/openapi-contrib/openapi-schema-to-json-schema
 
-module.exports = async (ctx, { service, openapi }) => {
+/**
+ * Converts an OpenAPI-based Service's input parameters into a corresponding
+ * JSON Schema.
+ *
+ * @param {object} service - Service to convert.
+ * @param {object} openapi - OpenAPI spec for the parent deployment.
+ *
+ * @return {Promise}
+ */
+module.exports = async (service, openapi) => {
   const { name } = service
 
   const pathItem = serviceToPathItem(service, openapi)
   let schema
 
-  ctx.assert(
-    pathItem,
-    400,
-    `Error service [${name}] unable to find matching OpenAPI PathItem for path "${service.path}"`
-  )
+  if (!pathItem) {
+    throw createError(
+      400,
+      `Error service [${name}] unable to find matching OpenAPI PathItem for path "${service.path}"`
+    )
+  }
 
   if (pathItem.post) {
     // Convert OpenAPI POST PathItem to JSON Schema
@@ -51,18 +62,18 @@ module.exports = async (ctx, { service, openapi }) => {
       }
     }
   } else {
-    ctx.assert(
-      false,
+    throw createError(
       400,
       `Error service [${name}] matches invalid OpenAPI path item "${service.path}" which doesn't support POST or GET`
     )
   }
 
-  ctx.assert(
-    schema,
-    400,
-    `Error service [${name}] matches invalid OpenAPI path item "${service.path}" - JSON schema conversion failed`
-  )
+  if (!schema) {
+    throw createError(
+      400,
+      `Error service [${name}] matches invalid OpenAPI path item "${service.path}" - JSON schema conversion failed`
+    )
+  }
 
   // ensure schema is clean and fully dereferenced
   schema = await refParser.dereference(schema)

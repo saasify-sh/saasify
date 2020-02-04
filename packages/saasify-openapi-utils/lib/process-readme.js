@@ -8,6 +8,13 @@ const findAllBetween = require('unist-util-find-all-between')
 const visit = require('unist-util-visit')
 const u = require('unist-builder')
 
+/**
+ * Pre-processes a markdown readme for display in Saasify's Redoc docs.
+ *
+ * @param {string} rawReadme - Raw markdown readme string.
+ *
+ * @return {string}
+ */
 module.exports = (rawReadme) => {
   const readme = remark()
     .use(() => {

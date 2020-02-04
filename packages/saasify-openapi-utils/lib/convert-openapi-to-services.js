@@ -1,6 +1,14 @@
 'use strict'
 
-module.exports = async (api, config) => {
+/**
+ * Converts an OpenAPI spec to Saasify's `Service` format.
+ *
+ * @param {object} openapi - OpenAPI spec.
+ * @param {object} config - Parsed Saasify project configuration.
+ *
+ * @return {Promise}
+ */
+module.exports = async (openapi, config) => {
   const origServices = config.services.slice()
   const services = []
 
@@ -9,8 +17,8 @@ module.exports = async (api, config) => {
   const firstService = origServices[0]
   let origService = firstService
 
-  for (const path of Object.keys(api.paths)) {
-    const pathItem = api.paths[path]
+  for (const path of Object.keys(openapi.paths)) {
+    const pathItem = openapi.paths[path]
     const name = path.slice(1)
 
     if (!isSingleService) {
