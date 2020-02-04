@@ -22,7 +22,8 @@
     "fts"
   ],
   "dependencies": {
-    "email-validator": "^2.0.4"
+    "email-validator": "^2.0.4",
+    "is-relative-url": "^3.0.0"
   },
   "devDependencies": {
     "ava": "^1.2.0"

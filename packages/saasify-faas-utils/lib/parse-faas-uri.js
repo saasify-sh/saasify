@@ -1,53 +1,35 @@
 'use strict'
 
-// namespace/projectName@deploymentHash/serviceName
-// project@deploymentHash/serviceName
-const projectDeploymentServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([a-z0-9]{8})\/([a-zA-Z_][a-zA-Z0-9_]*)$/
+// namespace/projectName@deploymentHash/servicePath
+// project@deploymentHash/servicePath
+const projectDeploymentServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([a-z0-9]{8})(\/[a-zA-Z0-9\-._~%!$&'()*+,;=:/]*)?$/
 
-// namespace/projectName@version/serviceName
-// project@version/serviceName
-const projectVersionServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([^/?@]+)\/([a-zA-Z_][a-zA-Z0-9_]*)$/
+// namespace/projectName@version/servicePath
+// project@version/servicePath
+const projectVersionServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([^/?@]+)(\/[a-zA-Z0-9\-._~%!$&'()*+,;=:/]*)?$/
 
-// namespace/projectName/serviceName
-// project/serviceName (latest version)
-const projectServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})\/([a-zA-Z_][a-zA-Z0-9_]*)$/
-
-// ---
-
-// namespace/projectName@deploymentHash
-// project@deploymentHash
-const projectDeploymentRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([a-z0-9]{8})\/?$/
-
-// namespace/projectName@version
-// project@version
-const projectVersionRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([^/?@]+)\/?$/
-
-// namespace/projectName
-// project (latest version)
-const projectRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})\/?$/
+// namespace/projectName/servicePath
+// project/servicePath (latest version)
+const projectServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})(\/[a-zA-Z0-9\-._~%!$&'()*+,;=:/]*)?$/
 
 module.exports = (uri) => {
-  // ---
-  // test cases where serviceName is explicitly specified
-  // ---
+  const pdsMatch = uri.match(projectDeploymentServiceRe)
 
-  const psdMatch = uri.match(projectDeploymentServiceRe)
-
-  if (psdMatch) {
+  if (pdsMatch) {
     return {
-      projectId: psdMatch[1],
-      deploymentHash: psdMatch[2],
-      serviceName: psdMatch[3]
+      projectId: pdsMatch[1],
+      deploymentHash: pdsMatch[2],
+      servicePath: pdsMatch[3]
     }
   }
 
-  const psvMatch = uri.match(projectVersionServiceRe)
+  const pvsMatch = uri.match(projectVersionServiceRe)
 
-  if (psvMatch) {
+  if (pvsMatch) {
     return {
-      projectId: psvMatch[1],
-      version: psvMatch[2],
-      serviceName: psvMatch[3]
+      projectId: pvsMatch[1],
+      version: pvsMatch[2],
+      servicePath: pvsMatch[3]
     }
   }
 
@@ -56,39 +38,7 @@ module.exports = (uri) => {
   if (psMatch) {
     return {
       projectId: psMatch[1],
-      serviceName: psMatch[2],
-      version: 'latest'
-    }
-  }
-
-  // ---
-  // test cases where serviceName is not explicitly specified
-  // (deployment must have a single service)
-  // ---
-
-  const pdMatch = uri.match(projectDeploymentRe)
-
-  if (pdMatch) {
-    return {
-      projectId: pdMatch[1],
-      deploymentHash: pdMatch[2]
-    }
-  }
-
-  const pvMatch = uri.match(projectVersionRe)
-
-  if (pvMatch) {
-    return {
-      projectId: pvMatch[1],
-      version: pvMatch[2]
-    }
-  }
-
-  const pMatch = uri.match(projectRe)
-
-  if (pMatch) {
-    return {
-      projectId: pMatch[1],
+      servicePath: psMatch[2],
       version: 'latest'
     }
   }
