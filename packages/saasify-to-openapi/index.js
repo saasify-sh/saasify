@@ -156,7 +156,7 @@ module.exports.serviceToPaths = async function serviceToPaths(
         200: {
           description: 'Success',
           content: {
-            // TODO: support restriction response content-types via OpenAPI `produces` prop
+            // TODO: support restricted response content-types via OpenAPI `produces` prop
             '*/*': {
               schema: responseSchema
             }

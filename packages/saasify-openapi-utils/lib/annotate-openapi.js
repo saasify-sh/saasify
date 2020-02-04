@@ -1,10 +1,9 @@
 'use strict'
 
 const cloneDeep = require('clone-deep')
-const processReadme = require('./process-readme')
 
-// TODO: this logic should be deprecated
-const nameRe = /\/([^/]*)$/
+const pathToService = require('./path-to-service')
+const processReadme = require('./process-readme')
 
 /**
  * Annotates a valid OpenAPI spec with extra metadata specific to Saasify's SaaS web client
@@ -25,12 +24,12 @@ module.exports = async (spec, deployment, opts = {}) => {
   api.servers = [{ url: baseUrl }]
   api.security = [{ 'API Key': [] }]
 
-  api.tags = [
+  api.tags = (api.tags || []).concat([
     {
       name: 'service',
       'x-displayName': 'APIs'
     }
-  ]
+  ])
 
   const readmeRaw = deployment.readme || ''
 
@@ -145,37 +144,47 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail.`
 
   for (const path of Object.keys(api.paths)) {
     const pathItem = api.paths[path]
-    const name = path.match(nameRe)[1]
 
-    for (const httpMethod of Object.keys(pathItem)) {
-      const op = pathItem[httpMethod]
-      op.tags = ['service']
-
-      if (!op.operationId) {
-        op.operationId = `${name}${httpMethod.toUpperCase()}`
-      }
-
-      if (!op.summary) {
-        op.summary = `${name} (${httpMethod.toUpperCase()})`
-      }
-
-      const { responses } = op
-
-      if (!responses['400']) {
-        responses['400'] = {
-          description: 'Invalid Input'
-        }
-      }
-
-      if (!responses['429']) {
-        responses['429'] = {
-          description: 'Rate limit exceeded'
-        }
-      }
-
-      delete op.security
-    }
+    annotatePathItem({ pathItem, path, api, deployment })
   }
 
   return api
+}
+
+function annotatePathItem({ pathItem, path, api, deployment }) {
+  const service = pathToService(path, deployment)
+  if (!service) {
+    throw new Error(`Unable to find matching service for path "${path}"`)
+  }
+
+  const { name } = service
+
+  for (const httpMethod of Object.keys(pathItem)) {
+    const op = pathItem[httpMethod]
+    op.tags = ['service']
+
+    if (!op.operationId) {
+      op.operationId = `${name}${httpMethod.toUpperCase()}`
+    }
+
+    if (!op.summary) {
+      op.summary = `${name} (${httpMethod.toUpperCase()})`
+    }
+
+    const { responses } = op
+
+    if (!responses['400']) {
+      responses['400'] = {
+        description: 'Invalid input'
+      }
+    }
+
+    if (!responses['429']) {
+      responses['429'] = {
+        description: 'Rate limit exceeded'
+      }
+    }
+
+    delete op.security
+  }
 }

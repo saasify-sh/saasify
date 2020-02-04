@@ -50,9 +50,7 @@ module.exports = async (spec, opts = {}) => {
     const expressPath = openAPIPathToExpressPath(path)
 
     if (!validators.servicePath(expressPath)) {
-      throw new Error(
-        `Invalid path "${path}" must be blank or a valid JS variable identifier`
-      )
+      throw new Error(`Invalid path "${path}" must a valid relative URL`)
     }
 
     // for (const httpMethod of httpMethodBlacklist) {
@@ -90,7 +88,9 @@ module.exports.validateOperation = async (op, pathItem) => {
   // }
 
   if (op.servers !== undefined) {
-    throw new Error(`"Operation.servers" is not allowed`)
+    throw new Error(
+      `"Operation.servers" is not allowed. All OpenAPI specs must only use one set of top-level severs.`
+    )
   }
 }
 
