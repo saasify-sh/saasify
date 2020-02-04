@@ -2,8 +2,8 @@
 
 const fs = require('fs-extra')
 const globby = require('globby')
+const { getExtension } = require('saasify-utils')
 
-const getExtension = require('./get-extension')
 const parseConfig = require('./parse-config')
 const adaptors = require('./adaptors')
 

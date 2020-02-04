@@ -7,4 +7,5 @@ module.exports = {
   ...faasUtils
 }
 
+module.exports.getExtension = require('./lib/get-extension')
 module.exports.prepareDeployment = require('./lib/prepare-deployment')
