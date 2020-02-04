@@ -12,6 +12,8 @@ const filterObj = require('filter-obj')
  * By default, `opts.getPath = (ctx) => ctx.req.path` which uses the incoming request's path
  * as the target path without any transforms.
  *
+ * @name getSaasifyFaasProxy
+ *
  * @param {object} [opts] - Config options.
  * @param {string} [opts.faasUrl='https://ssfy.sh'] - Base URL to proxy FaaS requests downstream.
  * @param {object} [opts.logger=console] - Logger (console or winston instancd).
@@ -19,7 +21,7 @@ const filterObj = require('filter-obj')
  *
  * @return {function}
  */
-module.exports = (opts = {}) => {
+module.exports = function getSaasifyFaasProxy(opts = {}) {
   const {
     faasUrl = 'https://ssfy.sh',
     logger = console,

@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "ava -v",
-    "docs": "update-markdown-jsdoc"
+    "docs": "update-markdown-jsdoc --no-markdown-toc"
   },
   "keywords": [
     "openapi",
