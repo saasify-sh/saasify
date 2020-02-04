@@ -95,8 +95,10 @@ class Service {
   name?: string
   examples?: Example[]
   config?: object
+
   GET?: boolean
   POST?: boolean
+
   headers?: object
   immutable?: boolean
 

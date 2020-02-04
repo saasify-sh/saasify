@@ -57,6 +57,9 @@ module.exports = async (openapi, config) => {
 
     service.GET = false
     service.POST = false
+    service.PUT = false
+    service.DELETE = false
+    service.HEAD = false
 
     const httpMethods = Object.keys(pathItem)
     for (const httpMethod of httpMethods) {

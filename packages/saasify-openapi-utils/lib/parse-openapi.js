@@ -8,23 +8,10 @@ const { validators } = require('saasify-faas-utils')
 
 const openAPIPathToExpressPath = require('./openapi-path-to-express-path')
 
-const httpMethodBlacklist = [
-  'put',
-  'delete',
-  'options',
-  'head',
-  'patch',
-  'trace'
-]
-
-const httpMethodWhitelist = ['get', 'post']
-
-const httpParameterBlacklist = new Set(['cookie'])
-
 /**
  * Validates and parses an OpenAPI spec according to Saasify's constraints.
  *
- * Returns a potentially updated, deep cloned spec that should be used.
+ * Returns a deep cloned spec that should be used.
  *
  * @param {object} spec - OpenAPI spec.
  *
@@ -33,6 +20,7 @@ const httpParameterBlacklist = new Set(['cookie'])
 module.exports = async (spec, opts = {}) => {
   const { strict = false } = opts
 
+  // TODO: this bundle vs dereference logic is confusing
   const bundle = await parser.bundle(spec)
   const api = await parser.dereference(cloneDeep(spec))
 
@@ -67,31 +55,25 @@ module.exports = async (spec, opts = {}) => {
       )
     }
 
-    for (const httpMethod of httpMethodBlacklist) {
-      const op = pathItem[httpMethod]
-      if (op !== undefined) {
-        throw new Error(
-          `Unsupported http method "${httpMethod}" for path "${path}"`
-        )
-      }
-    }
+    // for (const httpMethod of httpMethodBlacklist) {
+    //   const op = pathItem[httpMethod]
+    //   if (op !== undefined) {
+    //     throw new Error(
+    //       `Unsupported http method "${httpMethod}" for path "${path}"`
+    //     )
+    //   }
+    // }
 
     let httpMethodFound = false
-    for (const httpMethod of httpMethodWhitelist) {
+    for (const httpMethod of Object.keys(pathItem)) {
       const op = pathItem[httpMethod]
+      httpMethodFound = true
 
-      if (op !== undefined) {
-        httpMethodFound = true
-        await module.exports.validateOperation(op, pathItem)
-      }
+      await module.exports.validateOperation(op, pathItem)
     }
 
     if (!httpMethodFound) {
-      throw new Error(
-        `Path "${path}" must contain one of the following http methods [${httpMethodWhitelist.join(
-          ', '
-        )}]`
-      )
+      throw new Error(`Path "${path}" must contain a valid http method`)
     }
 
     if (pathItem.parameters) {
@@ -103,21 +85,21 @@ module.exports = async (spec, opts = {}) => {
 }
 
 module.exports.validateOperation = async (op, pathItem) => {
-  if (op.parameters) {
-    await module.exports.validateParameters(op.parameters)
-  }
+  // if (op.parameters) {
+  //   await module.exports.validateParameters(op.parameters)
+  // }
 
   if (op.servers !== undefined) {
     throw new Error(`"Operation.servers" is not allowed`)
   }
 }
 
-module.exports.validateParameters = async (parameters) => {
-  for (const param of parameters) {
-    if (httpParameterBlacklist.has(param.in)) {
-      throw new Error(
-        `Unsupported http parameter location "${param.in}" for parameter "${param.name}"`
-      )
-    }
-  }
-}
+// module.exports.validateParameters = async (parameters) => {
+// for (const param of parameters) {
+//   if (httpParameterBlacklist.has(param.in)) {
+//     throw new Error(
+//       `Unsupported http parameter location "${param.in}" for parameter "${param.name}"`
+//     )
+//   }
+// }
+// }

@@ -52,11 +52,10 @@
         },
         "services": {
           "type": "array",
-          "minItems": 1,
+          "title": "services",
           "items": {
             "$ref": "#/definitions/Service"
-          },
-          "title": "services"
+          }
         },
         "coupons": {
           "type": "array",
@@ -84,8 +83,7 @@
           "title": "pricingPlans"
         }
       },
-      "additionalProperties": false,
-      "required": ["services"]
+      "additionalProperties": false
     },
     "Example": {
       "title": "Example",
