@@ -14,11 +14,20 @@ const tsConfigName = 'tsconfig.json'
 const jsonConfig = { spaces: 2 }
 
 module.exports = async (deployment, data, opts = {}) => {
-  const { tempDir = tempy.directory(), config = {}, debug = false } = opts
+  const {
+    tempDir = tempy.directory(),
+    config = {},
+    debug = false,
+    provider
+  } = opts
 
   await decompress(data, tempDir, {
     plugins: [decompressUnzip()]
   })
+
+  if (provider === 'external') {
+    return tempDir
+  }
 
   const builds = []
   const routes = []

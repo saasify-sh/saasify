@@ -7,6 +7,9 @@ const { getExtension } = require('saasify-utils')
 const parseConfig = require('./parse-config')
 const adaptors = require('./adaptors')
 
+// TODO: all of this normalization and validation should be moved into
+// saasify-utils and also done on the backend.
+
 module.exports = async (program, opts = {}) => {
   const config = await parseConfig(program)
   let adaptor
