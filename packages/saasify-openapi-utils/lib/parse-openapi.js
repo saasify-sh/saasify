@@ -30,7 +30,9 @@ const httpMethodWhitelist = ['get', 'post']
  *
  * @return {Promise}
  */
-module.exports = async (spec) => {
+module.exports = async (spec, opts = {}) => {
+  const { strict = false } = opts
+
   const bundle = await parser.bundle(spec)
   const api = await parser.dereference(cloneDeep(spec))
 
@@ -38,13 +40,15 @@ module.exports = async (spec) => {
     throw new Error('Only OpenAPI version 3 is supported')
   }
 
-  if (!api.servers || !api.servers.length) {
-    throw new Error('Missing required "servers"')
-  }
+  if (strict) {
+    if (!api.servers || !api.servers.length) {
+      throw new Error('Missing required "servers"')
+    }
 
-  for (const server of api.servers) {
-    if (!server.url || !isUrl(server.url)) {
-      throw new Error('Missing required server "url"')
+    for (const server of api.servers) {
+      if (!server.url || !isUrl(server.url)) {
+        throw new Error('Missing required server "url"')
+      }
     }
   }
 
