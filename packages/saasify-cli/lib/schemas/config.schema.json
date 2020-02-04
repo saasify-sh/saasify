@@ -43,6 +43,13 @@
           "title": "saas",
           "additionalProperties": true
         },
+        "openapi": {
+          "title": "openapi",
+          "oneOf": [
+            { "type": "object", "additionalProperties": true },
+            { "type": "string" }
+          ]
+        },
         "services": {
           "type": "array",
           "minItems": 1,

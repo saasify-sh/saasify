@@ -129,39 +129,5 @@ module.exports = async (program) => {
     }
   }
 
-  // these properties should apply to each service
-  const { headers, immutable } = config
-  delete config.headers
-  delete config.immutable
-
-  for (const service of config.services) {
-    if (service.name && !validators.service(service.name)) {
-      throw new Error(
-        `Invalid config service "name" [${service.name}] (must be a valid JavaScript identifier regex ${validators.serviceRe})`
-      )
-    }
-
-    // TODO: all of this normalization logic should exist on the server-side
-    if (immutable && service.immutable === undefined) {
-      service.immutable = true
-    }
-
-    if (headers) {
-      service.headers = {
-        ...headers,
-        ...service.headers
-      }
-    }
-
-    if (service.headers) {
-      const headers = Object.entries(service.headers)
-
-      // ensure that all headers are normalized to lower-case
-      service.headers = headers.reduce((acc, [key, value]) => {
-        acc[key.toLowerCase()] = value
-      }, {})
-    }
-  }
-
   return config
 }
