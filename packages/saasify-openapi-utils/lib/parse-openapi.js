@@ -1,6 +1,7 @@
 'use strict'
 
 const cloneDeep = require('clone-deep')
+const isUrl = require('is-url-superb')
 const parser = require('swagger-parser')
 const semver = require('semver')
 const slugify = require('@sindresorhus/slugify')
@@ -35,6 +36,16 @@ module.exports = async (spec) => {
 
   if (semver.major(api.openapi) !== 3) {
     throw new Error('Only OpenAPI version 3 is supported')
+  }
+
+  if (!api.servers || !api.servers.length) {
+    throw new Error('Missing required "servers"')
+  }
+
+  for (const server of api.servers) {
+    if (!server.url || !isUrl(server.url)) {
+      throw new Error('Missing required server "url"')
+    }
   }
 
   for (const path of Object.keys(api.paths)) {

@@ -32,6 +32,7 @@
     "ajv": "^6.11.0",
     "clone-deep": "^4.0.1",
     "http-errors": "^1.7.3",
+    "is-url-superb": "^3.0.0",
     "remark": "^11.0.1",
     "semver": "^6.3.0",
     "swagger-parser": "^8.0.1",
