@@ -72,7 +72,9 @@ module.exports = async (deployment, data, opts = {}) => {
 
       const definitionData = JSON.stringify(service.definition, null, 2)
       const serviceName = service.name
+      const servicePath = service.path || `/${serviceName}`
 
+      // TODO: this validation logic doesn't really belong here
       if (serviceNames.has(serviceName)) {
         const err = new Error(`Duplicate service name "${serviceName}"`)
         err.statusCode = 400
@@ -104,7 +106,7 @@ module.exports = async (deployment, data, opts = {}) => {
       })
 
       routes.push({
-        src: `/${serviceName}`,
+        src: servicePath,
         dest: handlerFileNameExt,
         headers
       })
