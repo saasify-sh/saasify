@@ -1,5 +1,7 @@
 'use strict'
 
+const slugify = require('@sindresorhus/slugify')
+
 /**
  * Converts an OpenAPI spec to Saasify's `Service` format.
  *
@@ -19,15 +21,18 @@ module.exports = async (openapi, config) => {
 
   // TODO: convert openapi path to service path syntax so we can use
   // https://github.com/pillarjs/path-to-regexp for routing
-  // {pathParam} to :pathParam
-  // TODO: is this transformation necessary?
 
   for (const path of Object.keys(openapi.paths)) {
     const pathItem = openapi.paths[path]
-    const name = path.slice(1)
+    let name = path.slice(1)
+
+    if (name.includes('/')) {
+      name = slugify(name)
+    }
 
     if (!isSingleService) {
       let index = origServices.findIndex((s) => s.path === path)
+
       if (
         index < 0 &&
         origServices.length === 1 &&
@@ -59,6 +64,16 @@ module.exports = async (openapi, config) => {
     }
 
     services.push(service)
+  }
+
+  // if there are any origServices that were not matched, throw an error
+  if (origServices.length > 0) {
+    const extra = origServices[0]
+    const extraLabel = extra.name || extra.path
+
+    throw new Error(
+      `Error mapping OpenAPI spec to services: found extra unmatched service "${extraLabel}"}`
+    )
   }
 
   return services

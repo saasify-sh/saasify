@@ -4,8 +4,9 @@ const cloneDeep = require('clone-deep')
 const isUrl = require('is-url-superb')
 const parser = require('swagger-parser')
 const semver = require('semver')
-
 const { validators } = require('saasify-faas-utils')
+
+const openAPIPathToExpressPath = require('./openapi-path-to-express-path')
 
 const httpMethodBlacklist = [
   'put',
@@ -18,7 +19,7 @@ const httpMethodBlacklist = [
 
 const httpMethodWhitelist = ['get', 'post']
 
-const httpParameterBlacklist = new Set(['path', 'cookie'])
+const httpParameterBlacklist = new Set(['cookie'])
 
 /**
  * Validates and parses an OpenAPI spec according to Saasify's constraints.
@@ -58,8 +59,9 @@ module.exports = async (spec, opts = {}) => {
       throw new Error(`Invalid path "${path}" must start with "/"`)
     }
 
-    // TODO: account for path parameters
-    if (!validators.servicePath(path)) {
+    const expressPath = openAPIPathToExpressPath(path)
+
+    if (!validators.servicePath(expressPath)) {
       throw new Error(
         `Invalid path "${path}" must be blank or a valid JS variable identifier`
       )
