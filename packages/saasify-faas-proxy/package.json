@@ -1,0 +1,41 @@
+{
+  "name": "saasify-faas-proxy",
+  "version": "1.14.0",
+  "description": "Customizable FaaS proxy which can be deployed in front of a Saasify FaaS.",
+  "main": "index.js",
+  "author": "Saasify <dev@saasify.sh>",
+  "repository": "saasify-sh/saasify",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "test": "ava -v",
+    "docs": "update-markdown-jsdoc"
+  },
+  "keywords": [
+    "openapi",
+    "faas",
+    "saas",
+    "http",
+    "https",
+    "lambda",
+    "serverless",
+    "proxy",
+    "saasify",
+    "fts"
+  ],
+  "devDependencies": {
+    "ava": "^3.2.0",
+    "update-markdown-jsdoc": "^1.0.11"
+  },
+  "dependencies": {
+    "filter-obj": "^2.0.1",
+    "http-errors": "^1.7.3",
+    "lodash.pick": "^4.4.0"
+  },
+  "ava": {
+    "snapshotDir": "./.snapshots"
+  },
+  "gitHead": "c7c6721c98e28d0b1ea455c38276eb668c66b1f9"
+}
