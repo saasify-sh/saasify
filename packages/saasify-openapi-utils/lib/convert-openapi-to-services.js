@@ -17,6 +17,11 @@ module.exports = async (openapi, config) => {
   const firstService = origServices[0]
   let origService = firstService
 
+  // TODO: convert openapi path to service path syntax so we can use
+  // https://github.com/pillarjs/path-to-regexp for routing
+  // {pathParam} to :pathParam
+  // TODO: is this transformation necessary?
+
   for (const path of Object.keys(openapi.paths)) {
     const pathItem = openapi.paths[path]
     const name = path.slice(1)
@@ -31,7 +36,11 @@ module.exports = async (openapi, config) => {
         index = 0
       }
 
-      origService = index >= 0 ? origServices.splice(index, 1)[0] : undefined
+      if (index >= 0) {
+        origService = origServices.splice(index, 1)[0]
+      } else {
+        origService = null
+      }
     }
 
     const service = {

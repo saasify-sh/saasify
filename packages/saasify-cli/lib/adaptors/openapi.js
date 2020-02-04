@@ -20,7 +20,7 @@ module.exports = async (opts) => {
     throw new Error(`Error resolving OpenAPI spec: ${err.message}`)
   }
 
-  const openapi = await parseOpenAPI(config.openapi)
+  const openapi = await parseOpenAPI(config.openapi, { strict: true })
   const services = await convertOpenAPIToServices(openapi, config)
 
   return {
