@@ -32,9 +32,9 @@ module.exports = async (service, openapi) => {
 
   // TODO: handle other http methods
 
-  if (pathItem.post) {
+  if (pathItem.post || pathItem.put) {
     // Convert OpenAPI POST PathItem to JSON Schema
-    const op = pathItem.post
+    const op = pathItem.post || pathItem.put
 
     // TODO: this will not be robust against arbitrary OpenAPI specs
 
