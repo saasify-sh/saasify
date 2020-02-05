@@ -127,11 +127,7 @@ test('servicePath success', (t) => {
   t.truthy(validators.servicePath('/'))
   t.truthy(validators.servicePath('/foo/bar/123%20-_abc'))
   t.truthy(validators.servicePath('/foo/BAR/..'))
-  t.truthy(
-    validators.servicePath(
-      '/api/iconsets/v3/categories?platform={platform}&language={language}'
-    )
-  )
+  t.truthy(validators.servicePath('/api/iconsets/v3/categories'))
 })
 
 test('servicePath failure', (t) => {
