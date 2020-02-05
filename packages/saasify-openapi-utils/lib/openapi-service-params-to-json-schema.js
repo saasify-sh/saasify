@@ -30,9 +30,13 @@ module.exports = async (service, openapi) => {
     )
   }
 
+  // TODO: handle other http methods
+
   if (pathItem.post) {
     // Convert OpenAPI POST PathItem to JSON Schema
     const op = pathItem.post
+
+    // TODO: this will not be robust against arbitrary OpenAPI specs
 
     schema = cloneDeep(op.requestBody.content['application/json'].schema)
     schema.components = openapi.components
@@ -80,7 +84,7 @@ module.exports = async (service, openapi) => {
   delete schema.$ref
   delete schema.components
 
-  console.log(JSON.stringify(schema, null, 2))
+  // console.log(JSON.stringify(schema, null, 2))
 
   return schema
 }

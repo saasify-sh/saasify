@@ -25,6 +25,13 @@ for (const fixture of fixturesError) {
 
   test(`parseOpenAPI error ${name}`, async (t) => {
     const spec = await fs.readJson(fixture)
-    await t.throwsAsync(() => parseOpenAPI(spec))
+    try {
+      const result = await parseOpenAPI(spec)
+      console.error(result)
+      t.fail(`expected ${name} to throw an error`)
+    } catch (err) {
+      console.log('(expected)', err.message)
+      t.snapshot(err.message)
+    }
   })
 }

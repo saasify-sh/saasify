@@ -186,5 +186,7 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
     }
 
     delete op.security
+
+    // TODO: move codegen and example logic from saasify-to-openapi into here
   }
 }

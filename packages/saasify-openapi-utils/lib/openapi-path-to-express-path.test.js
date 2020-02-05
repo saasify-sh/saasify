@@ -7,7 +7,9 @@ const fixtures = [
   '/users/{userId}/posts/{postId}',
   '/users',
   '/{foo}/{bar}',
-  '/'
+  '/',
+  'foo', // invalid
+  '/api/iconsets/v3/categories?platform={platform}&language={language}'
 ]
 
 for (const fixture of fixtures) {

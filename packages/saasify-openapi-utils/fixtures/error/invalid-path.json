@@ -1,0 +1,36 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Fast API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "foo": {
+      "get": {
+        "summary": "Read Root",
+        "operationId": "read_root__get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "Q",
+              "type": "string"
+            },
+            "name": "q",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

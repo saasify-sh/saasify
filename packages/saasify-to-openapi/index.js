@@ -10,7 +10,15 @@ const codegen = require('saasify-codegen')
 
 const { prepareJsonSchema } = require('./lib/prepare-json-schema')
 
-module.exports = async function saasifyToOpenAPI(deployment, opts = {}) {
+/**
+ * Converts a Saasify Deployment into an OpenAPI spec.
+ *
+ * Note that this is only used for deployments powered by FTS, as all other
+ * deployments are derived from an OpenAPI spec.
+ *
+ * @return {Promise}
+ */
+module.exports = async function saasifyToOpenAPI(deployment) {
   const components = { schemas: {} }
   const paths = await pReduce(
     deployment.services,

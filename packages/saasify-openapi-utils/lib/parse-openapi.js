@@ -24,6 +24,10 @@ module.exports = async (spec, opts = {}) => {
   const bundle = await parser.bundle(spec)
   const api = await parser.dereference(cloneDeep(spec))
 
+  if (!api.openapi) {
+    throw new Error('Invalid OpenAPI spec must provide "openapi" version')
+  }
+
   if (semver.major(api.openapi) !== 3) {
     throw new Error('Only OpenAPI version 3 is supported')
   }
