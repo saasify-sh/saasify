@@ -2,6 +2,15 @@
 
 const slugify = require('@sindresorhus/slugify')
 
+const httpMethodWhitelist = new Set([
+  'get',
+  'head',
+  'post',
+  'put',
+  'delete',
+  'patch'
+])
+
 /**
  * Converts an OpenAPI spec to Saasify's `Service` format.
  *
@@ -14,56 +23,66 @@ module.exports = async (openapi, config) => {
   const origServices = config.services.slice()
   const services = []
 
-  // TODO: clean up this hacky service resolution stuffs
-  const isSingleService = origServices.length === 1
   const firstService = origServices[0]
-  let origService = firstService
-
-  // TODO: convert openapi path to service path syntax so we can use
-  // https://github.com/pillarjs/path-to-regexp for routing
+  let defaultService = false
 
   for (const path of Object.keys(openapi.paths)) {
     const pathItem = openapi.paths[path]
-    let name = path.slice(1)
+    const ops = Object.values(pathItem)
+    let name = ops.map((op) => op.summary).filter(Boolean)[0]
 
-    if (name.includes('/')) {
-      name = slugify(name)
+    if (!name) {
+      name = path.slice(1)
+
+      if (!name) {
+        name = 'Default'
+      } else if (name.includes('/')) {
+        name = slugify(name)
+      }
     }
 
-    if (!isSingleService) {
-      let index = origServices.findIndex((s) => s.path === path)
+    let index = origServices.findIndex((s) => s.path === path)
+    let origService
 
-      if (
-        index < 0 &&
-        origServices.length === 1 &&
-        origServices[0].path === undefined
-      ) {
-        index = 0
+    if (
+      index < 0 &&
+      origServices.length === 1 &&
+      origServices[0].path === undefined
+    ) {
+      if (defaultService) {
+        throw new Error(
+          'Error resolving OpenAPI spec to services: include "path" in services to disambiguate'
+        )
       }
 
-      if (index >= 0) {
-        origService = origServices.splice(index, 1)[0]
-      } else {
-        origService = null
-      }
+      index = 0
+      defaultService = true
+    }
+
+    if (index >= 0) {
+      origService = origServices[index]
+      origServices.splice(index, 1)
     }
 
     const service = {
       name,
       path,
-      src: firstService.src,
+      src: firstService ? firstService.src : undefined,
       ...origService
     }
 
     service.GET = false
+    service.HEAD = false
     service.POST = false
     service.PUT = false
     service.DELETE = false
-    service.HEAD = false
+    service.PATCH = false
 
     const httpMethods = Object.keys(pathItem)
     for (const httpMethod of httpMethods) {
-      service[httpMethod.toUpperCase()] = true
+      if (httpMethodWhitelist.has(httpMethod)) {
+        service[httpMethod.toUpperCase()] = true
+      }
     }
 
     services.push(service)

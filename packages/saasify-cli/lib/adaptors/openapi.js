@@ -15,7 +15,7 @@ module.exports = async (opts) => {
   }
 
   try {
-    config.openapi = await resolveOpenApiSchema(config.openapi)
+    config.openapi = await resolveOpenApiSchema(config.openapi, config.root)
   } catch (err) {
     throw new Error(`Error resolving OpenAPI spec: ${err.message}`)
   }

@@ -215,7 +215,6 @@
           "additionalProperties": false
         }
       },
-      "required": ["src"],
       "additionalProperties": false
     },
     "RateLimit": {
@@ -238,8 +237,7 @@
           "default": 1000
         }
       },
-      "additionalProperties": false,
-      "required": []
+      "additionalProperties": false
     },
     "Snippet": {
       "title": "Snippet",
@@ -338,8 +336,7 @@
           "title": "tiers"
         }
       },
-      "additionalProperties": false,
-      "required": []
+      "additionalProperties": false
     },
     "PricingPlanTier": {
       "title": "PricingPlanTier",

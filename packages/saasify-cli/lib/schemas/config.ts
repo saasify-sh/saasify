@@ -91,7 +91,7 @@ class PricingPlanTier {
 }
 
 class Service {
-  src: string
+  src?: string
   name?: string
   examples?: Example[]
   config?: object

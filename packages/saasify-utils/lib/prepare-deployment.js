@@ -35,7 +35,7 @@ module.exports = async (deployment, data, opts = {}) => {
   let language
 
   for (const service of deployment.services) {
-    const ext = getExtension(service.src).toLowerCase()
+    const ext = (getExtension(service.src) || '').toLowerCase()
     let { headers, immutable } = service
 
     if (immutable) {
