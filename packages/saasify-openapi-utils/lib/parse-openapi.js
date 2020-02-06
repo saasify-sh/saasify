@@ -20,7 +20,8 @@ const openAPIPathToExpressPath = require('./openapi-path-to-express-path')
 module.exports = async (spec, opts = {}) => {
   const { strict = false } = opts
 
-  // TODO: this bundle vs dereference logic is confusing
+  // bundle => only contains internal $refs
+  // dereference => no $refs at all
   const bundle = await parser.bundle(spec)
   const api = await parser.dereference(cloneDeep(spec))
 
@@ -78,9 +79,9 @@ module.exports = async (spec, opts = {}) => {
       throw new Error(`Path "${path}" must contain a valid http method`)
     }
 
-    if (pathItem.parameters) {
-      await module.exports.validateParameters(pathItem.parameters)
-    }
+    // if (pathItem.parameters) {
+    //   await module.exports.validateParameters(pathItem.parameters)
+    // }
   }
 
   return bundle
@@ -98,6 +99,7 @@ module.exports.validateOperation = async (op, pathItem) => {
   }
 }
 
+// hey, we're allowing any parameters now -- huzzah!
 // module.exports.validateParameters = async (parameters) => {
 // for (const param of parameters) {
 //   if (httpParameterBlacklist.has(param.in)) {

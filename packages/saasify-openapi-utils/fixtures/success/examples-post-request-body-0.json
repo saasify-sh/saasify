@@ -1,0 +1,44 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Zestful",
+    "description": "Should output an example list of ingredients",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/parseIngredients": {
+      "post": {
+        "summary": "Parse Ingredients",
+        "description": "Parses a list of raw ingredient strings into structured JSON.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ingredients": {
+                    "title": "ingredients",
+                    "type": "array",
+                    "description": "List of ingredients to parse.\n- This list must contain between 1 and 100 elements.\n- Each string in the list must be 1,024 characters or fewer.\n- Unicode strings are supported.\n- The strings may be HTML- or URL-encoded.\n- Any HTML tags in the ingredient strings will be ignored.",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": ["ingredients"],
+                "additionalProperties": false
+              },
+              "example": {
+                "ingredients": [
+                  "3 large Granny Smith apples",
+                  "2 1/2 tablespoons finely chopped parsley",
+                  "½ tsp brown sugar"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

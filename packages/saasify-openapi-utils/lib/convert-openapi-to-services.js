@@ -1,6 +1,10 @@
 'use strict'
 
+const cloneDeep = require('clone-deep')
+const parser = require('swagger-parser')
 const slugify = require('@sindresorhus/slugify')
+
+const getExamplesFromPathItem = require('./get-examples-from-path-item')
 
 const httpMethodWhitelist = new Set([
   'get',
@@ -14,12 +18,13 @@ const httpMethodWhitelist = new Set([
 /**
  * Converts an OpenAPI spec to Saasify's `Service` format.
  *
- * @param {object} openapi - OpenAPI spec.
+ * @param {object} spec - OpenAPI spec.
  * @param {object} config - Parsed Saasify project configuration.
  *
  * @return {Promise}
  */
-module.exports = async (openapi, config) => {
+module.exports = async (spec, config) => {
+  const openapi = await parser.dereference(cloneDeep(spec))
   const origServices = config.services.slice()
   const services = []
 
@@ -84,6 +89,10 @@ module.exports = async (openapi, config) => {
         service[httpMethod.toUpperCase()] = true
       }
     }
+
+    // extract any examples from the OpenAPI PathItem for this service
+    const examples = await getExamplesFromPathItem(pathItem)
+    service.examples = (service.examples || []).concat(examples)
 
     services.push(service)
   }

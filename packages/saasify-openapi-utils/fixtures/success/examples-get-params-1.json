@@ -1,0 +1,109 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Fixture Examples",
+    "description": "Should output an object with default values from get.parameters and op.parameters",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/": {
+      "parameters": [
+        {
+          "required": true,
+          "schema": {
+            "title": "foo",
+            "type": "string",
+            "example": "foo"
+          },
+          "name": "foo",
+          "in": "query"
+        },
+        {
+          "schema": {
+            "title": "bar",
+            "type": "string"
+          },
+          "example": "bar",
+          "name": "bar",
+          "in": "query"
+        }
+      ],
+      "get": {
+        "parameters": [
+          {
+            "schema": {
+              "title": "baz0",
+              "type": "string"
+            },
+            "examples": {
+              "foo": {
+                "value": "baz0"
+              }
+            },
+            "name": "baz0",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "title": "baz1",
+              "type": "string"
+            },
+            "examples": ["baz1"],
+            "name": "baz1",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "title": "abc0",
+              "type": "string",
+              "examples": {
+                "foo": {
+                  "value": "abc0"
+                }
+              }
+            },
+            "name": "abc0",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "title": "abc1",
+              "type": "string",
+              "examples": ["abc1"]
+            },
+            "name": "abc1",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "title": "nala",
+              "type": "number",
+              "default": 13
+            },
+            "name": "nala",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "title": "blank",
+              "description": "shouldn't show up in examples",
+              "type": "string"
+            },
+            "name": "blank",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

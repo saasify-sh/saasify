@@ -1,0 +1,146 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Zestful",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/parseIngredients": {
+      "post": {
+        "summary": "Parse Ingredients",
+        "description": "Parses a list of raw ingredient strings into structured JSON.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ingredients": {
+                    "title": "ingredients",
+                    "type": "array",
+                    "description": "List of ingredients to parse.\n- This list must contain between 1 and 100 elements.\n- Each string in the list must be 1,024 characters or fewer.\n- Unicode strings are supported.\n- The strings may be HTML- or URL-encoded.\n- Any HTML tags in the ingredient strings will be ignored.",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": ["ingredients"],
+                "additionalProperties": false
+              },
+              "example": {
+                "ingredients": [
+                  "3 large Granny Smith apples",
+                  "2 1/2 tablespoons finely chopped parsley",
+                  "½ tsp brown sugar"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "title": "results",
+                      "type": "array",
+                      "description": " If the request was successful, contains a list of dictionaries with the keys `ingredientRaw`, `ingredientParsed`, and `error`.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "ingredientRaw": {
+                            "type": "string"
+                          },
+                          "ingredientParsed": {
+                            "type": "object",
+                            "description": "A dictionary containing the ingredient as structured data.",
+                            "properties": {
+                              "quantity": {
+                                "description": "A number representing the quantity represented in the ingredient string, or null if no quantity was detected in the ingredient string.",
+                                "oneOf": [
+                                  { "type": "string" },
+                                  { "type": null }
+                                ]
+                              },
+                              "unit": {
+                                "description": "A string containing the unit of measure in the ingredient string, or null if no unit of measure was found.\nThe unit of measure is always in singular form (e.g., `teaspoon`, not `teaspoons`).",
+                                "oneOf": [
+                                  { "type": "string" },
+                                  { "type": null }
+                                ]
+                              },
+                              "productSizeModifier": {
+                                "description": "Adjectives that describe product's size (e.g., `large`, `small`).",
+                                "type": "string"
+                              },
+                              "product": {
+                                "description": "The product a user buys to obtain this ingredient (e.g., `ground beef`, `brown sugar`).",
+                                "type": "string"
+                              },
+                              "preparationNotes": {
+                                "description": "Instructions to the user about how to prepare this ingredient for a recipe (e.g., `finely chopped`, `halved`).\n\n- Preparation notes refer to actions that a user takes after purchasing an ingredient. In some cases, such as “ground cinnamon” this is ambiguous because a user can purchase whole cinnamon sticks and grind them (which would treat grinding as a preparation step) or a user can purchase the product `ground cinnamon` (which has no preparation steps).\n\n- For ambiguous cases, the parser attempts to choose the product that is more common. For example, “ground cinnamon” is treated as a product name because most users purchase cinnamon pre-ground. In contrast, “diced celery” is interpreted as product=`celery`, preparationNotes=`diced` because users more commonly dice celery instead of buying pre-diced celery.",
+                                "type": "string"
+                              },
+                              "usdaInfo": {
+                                "description": "If Zestful can match the ingredient to a food in the USDA database, this contains a dictionary of information about the matching USDA entry",
+                                "type": "object",
+                                "properties": {
+                                  "fdcId": {
+                                    "description": "The FDC ID for the food in the USDA FoodData Central database (e.g., `168833`)",
+                                    "type": "string"
+                                  },
+                                  "matchMethod": {
+                                    "description": "The method that Zestful used to match the ingredient to a USDA entry. This can be one of the following values:\n\n- `exact`: Zestful found an exact match for this product in the USDA database.\n- `closestUnbranded`: Zestful could not find an exact equivalent USDA entry, so it matched the ingredient to a closely related unbranded USDA product.\n- e.g., USDA has no exact match for `light brown sugar`, so Zestful would match this ingredient to `Sugars, brown`.\n- `closestBranded`: Zestful could not find an exact or unbranded equivalent USDA entry, so it matched the ingredient to a branded USDA product.\n- e.g., USDA has no exact match for `apple cider vinegar`, so Zestful would match this ingredient to `BRAGG, ORGANIC APPLE CIDER VINEGAR`.",
+                                    "type": "string",
+                                    "enum": [
+                                      "exact",
+                                      "closestUnbranded",
+                                      "closestBranded"
+                                    ]
+                                  },
+                                  "category": {
+                                    "description": "The USDA category for the ingredient (e.g., `Sweets`).",
+                                    "type": "string"
+                                  },
+                                  "description": {
+                                    "description": "The name of the ingredient in the USDA database (e.g., `Sugars, brown`).",
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "confidence": {
+                                "description": "A value between 0.0 and 1.0 representing Zestful’s confidence in the result (higher is better).",
+                                "type": "number"
+                              },
+                              "error": {
+                                "description": "An error message that describes what caused `ingredientRaw` to fail parsing.",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "error": {
+                        "type": "string",
+                        "description": "An error message that describes what caused the full parse request to fail."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://sandbox.zestfuldata.com"
+    }
+  ]
+}

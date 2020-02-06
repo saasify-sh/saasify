@@ -165,6 +165,10 @@
           "type": "string",
           "title": "name"
         },
+        "path": {
+          "type": "string",
+          "title": "path"
+        },
         "timeout": {
           "type": "number",
           "title": "timeout"

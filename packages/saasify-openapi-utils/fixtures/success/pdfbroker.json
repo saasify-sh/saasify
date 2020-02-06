@@ -9,9 +9,7 @@
   "paths": {
     "/api/pdf": {
       "get": {
-        "tags": [
-          "Pdf"
-        ],
+        "tags": ["Pdf"],
         "summary": "Basic method to verify api is up and running",
         "responses": {
           "200": {
@@ -22,9 +20,7 @@
     },
     "/api/pdf/xslfo": {
       "post": {
-        "tags": [
-          "Pdf"
-        ],
+        "tags": ["Pdf"],
         "summary": "Create pdf-file from complete XSL-FO document.",
         "requestBody": {
           "description": "XSL-FO Request, the basic XSL-FO request. Post your XSL-FO document and digital resources, either as 'multipart/form-data' or 'application/json'",
@@ -113,9 +109,7 @@
     },
     "/api/pdf/xslfowithtransform": {
       "post": {
-        "tags": [
-          "Pdf"
-        ],
+        "tags": ["Pdf"],
         "summary": "Create pdf-file from transforming xml document with Xsl-Fo transform document.",
         "requestBody": {
           "description": "XSL-FO Transform Request. The XSL-FO is transformed on the supplied xml data document. Post your XSL-FO transform document and xml data document aloing with your digital resources, either as 'multipart/form-data' or 'application/json'",
@@ -212,9 +206,7 @@
     },
     "/api/pdf/pdftoimage": {
       "post": {
-        "tags": [
-          "Pdf"
-        ],
+        "tags": ["Pdf"],
         "summary": "Generate an image of to provided pdf file",
         "requestBody": {
           "description": "PdfToImage Request. Create an image of a page in an existing pdf document.",
@@ -333,9 +325,7 @@
     },
     "/api/pdf/pdfconcat": {
       "post": {
-        "tags": [
-          "Pdf"
-        ],
+        "tags": ["Pdf"],
         "summary": "Concatenate multiple pdf files into single pdf file..",
         "requestBody": {
           "description": "PdfConcat Request. Add two or more pdf files and concatenate pages into single pdf document.",
@@ -424,9 +414,7 @@
     },
     "/api/pdf/pdfwritestring": {
       "post": {
-        "tags": [
-          "Pdf"
-        ],
+        "tags": ["Pdf"],
         "summary": "Write text on a page in a pdf document.",
         "requestBody": {
           "description": "PdfWriteString Request. Write string on page in pdf document",
@@ -523,9 +511,7 @@
     },
     "/api/pdf/wkhtmltopdf": {
       "post": {
-        "tags": [
-          "Pdf"
-        ],
+        "tags": ["Pdf"],
         "summary": "Generate pdf file from url using the excellent tool wkhtmltopdf.",
         "responses": {
           "200": {
@@ -796,12 +782,7 @@
             "readOnly": true
           },
           "style": {
-            "enum": [
-              "Regular",
-              "Bold",
-              "Italic",
-              "BoldItalic"
-            ],
+            "enum": ["Regular", "Bold", "Italic", "BoldItalic"],
             "type": "string",
             "description": "Gets the style of the font",
             "readOnly": true
@@ -839,20 +820,12 @@
             "format": "float"
           },
           "xOrigin": {
-            "enum": [
-              "Left",
-              "Center",
-              "Right"
-            ],
+            "enum": ["Left", "Center", "Right"],
             "type": "string",
             "description": "Get or set the point from where the X axis position should be calculated from. Default value is from left side of page."
           },
           "yOrigin": {
-            "enum": [
-              "Top",
-              "Center",
-              "Bottom"
-            ],
+            "enum": ["Top", "Center", "Bottom"],
             "type": "string",
             "description": "Get or set the point from where the Y axis position should be calculated from. Default value is from top of page."
           }
@@ -913,9 +886,7 @@
   },
   "security": [
     {
-      "OAuth2": [
-        "pdfbroker"
-      ]
+      "OAuth2": ["pdfbroker"]
     }
   ]
 }

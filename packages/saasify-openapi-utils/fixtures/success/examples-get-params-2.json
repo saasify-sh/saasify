@@ -1,0 +1,56 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Fixture Examples",
+    "description": "Missing required parameter baz0 so should output []",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/": {
+      "parameters": [
+        {
+          "required": true,
+          "schema": {
+            "title": "foo",
+            "type": "string",
+            "example": "foo"
+          },
+          "name": "foo",
+          "in": "query"
+        },
+        {
+          "schema": {
+            "title": "bar",
+            "type": "string"
+          },
+          "example": "bar",
+          "name": "bar",
+          "in": "query"
+        }
+      ],
+      "get": {
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "baz0",
+              "type": "string"
+            },
+            "name": "baz0",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
