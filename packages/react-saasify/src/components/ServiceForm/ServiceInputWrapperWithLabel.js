@@ -10,29 +10,36 @@ export const ServiceInputWrapperWithLabel = ({
   children,
   propKey,
   description
-}) => (
-  <ServiceInputWrapper>
-    <label>
-      <div className={theme(styles, 'service-form__input-label')}>
-        <span className={theme(styles, 'service-form__input-name')}>
-          {propKey}
-          {description && ' - '}
-        </span>
+}) => {
+  let desc = description.length > 80 ? description.split('\n')[0] : description
+  if (desc.length > 80) {
+    desc = desc.split('.')[0]
+  }
 
-        {description && (
-          <span className={theme(styles, 'service-form__input-description')}>
-            <ReactMarkdown
-              source={description}
-              allowedTypes={allowedTypes}
-              escapeHtml={false}
-              linkTarget='_blank'
-              unwrapDisallowed
-            />
+  return (
+    <ServiceInputWrapper>
+      <label>
+        <div className={theme(styles, 'service-form__input-label')}>
+          <span className={theme(styles, 'service-form__input-name')}>
+            {propKey}
+            {desc && ' - '}
           </span>
-        )}
-      </div>
 
-      {children}
-    </label>
-  </ServiceInputWrapper>
-)
+          {desc && (
+            <span className={theme(styles, 'service-form__input-description')}>
+              <ReactMarkdown
+                source={desc}
+                allowedTypes={allowedTypes}
+                escapeHtml={false}
+                linkTarget='_blank'
+                unwrapDisallowed
+              />
+            </span>
+          )}
+        </div>
+
+        {children}
+      </label>
+    </ServiceInputWrapper>
+  )
+}
