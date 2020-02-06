@@ -1,6 +1,6 @@
 {
   "name": "saasify-openapi-utils",
-  "version": "1.15.2",
+  "version": "1.15.3",
   "description": "OpenAPI utilities for Saasify.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
