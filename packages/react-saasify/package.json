@@ -29,7 +29,7 @@
     "test": "yarn build"
   },
   "devDependencies": {
-    "@saasify/microbundle": "^0.13.3"
+    "@saasify/microbundle": "^0.13.5"
   },
   "dependencies": {
     "@sindresorhus/slugify": "^0.9.1",

@@ -21,7 +21,7 @@ for (const fixture of fixturesSuccess) {
       const results = await getExamplesFromPathItem(pathItem)
       console.log(path, JSON.stringify(results, null, 2))
       t.truthy(results)
-      // t.snapshot(result)
+      t.snapshot(results)
     }
   })
 }

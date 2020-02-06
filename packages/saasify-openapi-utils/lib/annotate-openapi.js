@@ -49,14 +49,6 @@ ${quickStart || readme}
 
 # Configuration
 
-## API
-
-This API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Unless otherwise specified, API endpoints accept [JSON-encoded](http://www.json.org/) request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs.
-
-## Content Type
-
-Unless otherwise specified, all requests must be encoded as JSON with the \`Content-Type: application/json\` header. Unless otherwise specified, responses from the API, including errors, are encoded exclusively as JSON as well.
-
 ## Authentication
 
 ### API Key
@@ -107,14 +99,6 @@ When the rate limit is **exceeded**, an error is returned with the status "**429
 ## Errors
 
 This API uses conventional HTTP response codes to indicate the success or failure of API requests. In general: Codes in the \`2xx\` range indicate success. Codes in the \`4xx\` range indicate an error that failed given the information provided (e.g., a required parameter was omitted, endpoint not found, etc.). Codes in the \`5xx\` range indicate an error with our API (these are rare).
-
-## Versioning
-
-API versions are **immutable** which guarantees that once you have a working integration, it will always be completely optional to upgrade to newer versions.
-
-When we make backwards-incompatible changes to an API, we release new versions following [semver](https://semver.org/). The current version is \`${version}\`.
-
-You can visit your [Dashboard](/dashboard) to manage your API version.
 
 ${supportingOSS}
 `

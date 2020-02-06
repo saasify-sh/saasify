@@ -150,7 +150,7 @@ export class ProfileSection extends Component {
         image: auth.user.image,
         joined: auth.user.createdAt,
         subscription: hasSubscription ? auth.consumer.plan : 'Free',
-        subscribed: auth.consumer && auth.consumer.createdAt
+        subscribed: auth.consumer?.createdAt
       }
     ]
 
@@ -209,7 +209,7 @@ export class ProfileSection extends Component {
 
         notification.error({
           message: 'Error canceling subscription',
-          description: err.error && err.error.message,
+          description: err.error?.message,
           duration: 0
         })
 
