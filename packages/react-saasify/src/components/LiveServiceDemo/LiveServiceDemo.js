@@ -264,7 +264,7 @@ export class LiveServiceDemo extends Component {
               </div>
               /
               <div className={theme(styles, 'footer__service__name')}>
-                {service.name}
+                {service.path.slice(1)}
               </div>
             </div>
           </div>

@@ -139,7 +139,6 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail.`
 function annotatePathItem({ pathItem, path, api, deployment }) {
   // TODO: ideally we wouldn't need to treat openapi and non-openapi deployments differently here
   const needsFullRoute = !!deployment.openapi
-  console.log(1, { needsFullRoute, path })
 
   if (!needsFullRoute) {
     const parsedPath = parseFaasIdentifier(path)
@@ -155,7 +154,6 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
 
   const { name, route } = service
 
-  console.log(2, { needsFullRoute, path, route })
   if (needsFullRoute) {
     delete api.paths[path]
     api.paths[route] = pathItem
