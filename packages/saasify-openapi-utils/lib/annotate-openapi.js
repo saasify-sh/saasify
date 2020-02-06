@@ -1,6 +1,7 @@
 'use strict'
 
 const cloneDeep = require('clone-deep')
+const { parseFaasIdentifier } = require('saasify-faas-utils')
 
 const pathToService = require('./path-to-service')
 const processReadme = require('./process-readme')
@@ -136,12 +137,26 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail.`
 }
 
 function annotatePathItem({ pathItem, path, api, deployment }) {
+  // TODO: ideally we wouldn't need to treat openapi and non-openapi deployments differently here
+  const needsFullRoute = !!deployment.openapi
+  if (!needsFullRoute) {
+    const parsedPath = parseFaasIdentifier(path)
+    if (parsedPath) {
+      path = parsedPath.servicePath
+    }
+  }
+
   const service = pathToService(path, deployment)
   if (!service) {
     throw new Error(`Unable to find matching service for path "${path}"`)
   }
 
-  const { name } = service
+  const { name, route } = service
+
+  if (needsFullRoute) {
+    delete api[path]
+    api[route] = pathItem
+  }
 
   for (const httpMethod of Object.keys(pathItem)) {
     const op = pathItem[httpMethod]
@@ -169,6 +184,7 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
       }
     }
 
+    // TODO: not sure what to do with this...
     delete op.security
 
     // TODO: move codegen and example logic from saasify-to-openapi into here
