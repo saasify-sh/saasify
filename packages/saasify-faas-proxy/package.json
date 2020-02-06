@@ -1,6 +1,6 @@
 {
   "name": "saasify-faas-proxy",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "description": "Customizable FaaS proxy which can be deployed in front of a Saasify FaaS.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
