@@ -1,11 +1,24 @@
 'use strict'
 
-const jsonSchemaToOpenAPI = require('json-schema-to-openapi-schema')
-const jsonSchemaRefParser = require('json-schema-ref-parser')
+// TODO: switch to using https://github.com/openapi-contrib/json-schema-to-openapi-schema
+// TODO: move codegen into annotateOpenAPI so all deployments can use it
+// TODO: move all examples and request params "example" value inference into annotateOpenAPI
+
+const jsonSchemaToOpenAPISchema = require('json-schema-to-openapi-schema')
 const pReduce = require('p-reduce')
 const codegen = require('saasify-codegen')
 
-module.exports = async function saasifyToOpenAPI(deployment, opts = {}) {
+const { prepareJsonSchema } = require('./lib/prepare-json-schema')
+
+/**
+ * Converts a Saasify Deployment into an OpenAPI spec.
+ *
+ * Note that this is only used for deployments powered by FTS, as all other
+ * deployments are derived from an OpenAPI spec.
+ *
+ * @return {Promise}
+ */
+module.exports = async function saasifyToOpenAPI(deployment) {
   const components = { schemas: {} }
   const paths = await pReduce(
     deployment.services,
@@ -29,112 +42,6 @@ module.exports = async function saasifyToOpenAPI(deployment, opts = {}) {
     paths,
     components
   }
-}
-
-function pruneCustomKeywords(schema) {
-  if (Array.isArray(schema)) {
-    schema.forEach(pruneCustomKeywords)
-  } else if (typeof schema === 'object') {
-    // TODO: this is a bit hacky and could delete valid params
-    // we need a more structured traversal
-    delete schema.coerceTo
-    delete schema.coerceFrom
-    Object.values(schema).forEach(pruneCustomKeywords)
-  }
-}
-
-function pruneTypes(schema) {
-  if (Array.isArray(schema)) {
-    schema.forEach(pruneTypes)
-  } else if (typeof schema === 'object') {
-    for (const [key, value] of Object.entries(schema)) {
-      if (key === 'type') {
-        if (Array.isArray(value)) {
-          // OpenAPI doesn't support certain ambiguous oneOf types like:
-          // - number | boolean
-          // - number | string
-          // - string | boolean
-          const types = {
-            number: 0,
-            string: 0,
-            boolean: 0
-          }
-
-          for (const v of value) {
-            types[v]++
-          }
-
-          if (types.number + types.string + types.boolean >= 2) {
-            if (types.string) {
-              schema[key] = 'string'
-            } else if (types.number) {
-              schema[key] = 'number'
-            } else {
-              schema[key] = 'boolean'
-            }
-          }
-        }
-
-        if (schema.items && Array.isArray(schema.items)) {
-          // TODO: figure out a better fallback type for these cases
-          // a variable-length array is commonly used for numbers but could also be used
-          // for strings, booleans, etc.
-          schema.items = { type: 'number' }
-          delete schema.additionalItems
-        }
-      }
-
-      pruneTypes(value)
-    }
-  }
-}
-
-function rewriteRefs(schema, opts) {
-  if (Array.isArray(schema)) {
-    schema.forEach((value) => rewriteRefs(value, opts))
-  } else if (typeof schema === 'object') {
-    for (const [key, value] of Object.entries(schema)) {
-      if (key === '$ref' && typeof value === 'string') {
-        const { fromPrefix, toPrefix } = opts
-
-        if (value.startsWith(fromPrefix)) {
-          schema[key] = toPrefix + value.substr(fromPrefix.length)
-        }
-      }
-
-      rewriteRefs(value, opts)
-    }
-  }
-}
-
-async function prepareJsonSchema(schema, components) {
-  const result = await jsonSchemaRefParser.dereference(schema)
-
-  // update all $refs from '#/definitions/' to '#/components/schemas/'
-  rewriteRefs(result, {
-    fromPrefix: '#/definitions/',
-    toPrefix: '#/components/schemas/'
-  })
-
-  // all $refs have been replaced directly, so remove any indirect definitions
-  // delete result.definitions
-
-  // prune custom FTS keywords
-  pruneCustomKeywords(result)
-
-  // prune incompatible types
-  pruneTypes(result)
-
-  // TODO: how should we handle duplicates here?
-  components.schemas = {
-    ...components.schemas,
-    ...result.definitions
-  }
-
-  delete result.$ref
-  delete result.definitions
-
-  return result
 }
 
 module.exports.serviceToPaths = async function serviceToPaths(
@@ -174,7 +81,7 @@ module.exports.serviceToPaths = async function serviceToPaths(
     }
   } else {
     const params = await prepareJsonSchema(paramsSchema, components)
-    requestSchema = jsonSchemaToOpenAPI(params)
+    requestSchema = jsonSchemaToOpenAPISchema(params)
 
     requestBody = {
       required: true,
@@ -257,7 +164,7 @@ module.exports.serviceToPaths = async function serviceToPaths(
         200: {
           description: 'Success',
           content: {
-            // TODO: support restriction response content-types via OpenAPI `produces` prop
+            // TODO: support restricted response content-types via OpenAPI `produces` prop
             '*/*': {
               schema: responseSchema
             }
@@ -270,7 +177,7 @@ module.exports.serviceToPaths = async function serviceToPaths(
         ...properties.result
       }
       const returns = await prepareJsonSchema(returnsJsonSchema, components)
-      const responseSchema = jsonSchemaToOpenAPI(returns)
+      const responseSchema = jsonSchemaToOpenAPISchema(returns)
 
       responses = {
         200: {

@@ -92,13 +92,14 @@ export class NavHeader extends Component {
                     />
                   </span>
 
-                  {config.logo && (
-                    <span className={theme(styles, 'logo-text')}>
-                      {typeof config.deployment.saas.headerName !== 'undefined'
-                        ? config.deployment.saas.headerName
-                        : config.name}
-                    </span>
-                  )}
+                  {config.logo &&
+                    !config.deployment.saas?.sections?.navHeader?.hideName && (
+                      <span className={theme(styles, 'logo-text')}>
+                        {config.deployment.saas.headerName
+                          ? config.deployment.saas.headerName
+                          : config.name}
+                      </span>
+                    )}
                 </Link>
 
                 <div className={theme(styles, 'burger')}>

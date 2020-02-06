@@ -1,0 +1,723 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Randommer API",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Card": {
+      "get": {
+        "tags": [
+          "Card"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Card/Types": {
+      "get": {
+        "tags": [
+          "Card"
+        ],
+        "parameters": [
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Hash": {
+      "post": {
+        "tags": [
+          "Hash"
+        ],
+        "parameters": [
+          {
+            "name": "hashType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/HashType"
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetHash"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetHash"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetHash"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Name": {
+      "get": {
+        "tags": [
+          "Name"
+        ],
+        "parameters": [
+          {
+            "name": "nameType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/NameType"
+            }
+          },
+          {
+            "name": "number",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maximum": 10000,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Name/suggestions": {
+      "get": {
+        "tags": [
+          "Name"
+        ],
+        "parameters": [
+          {
+            "name": "startingWords",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Number": {
+      "get": {
+        "tags": [
+          "Number"
+        ],
+        "parameters": [
+          {
+            "name": "min",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483646,
+              "minimum": -2147483648,
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": -2147483647,
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Number/Sequence": {
+      "get": {
+        "tags": [
+          "Number"
+        ],
+        "parameters": [
+          {
+            "name": "min",
+            "in": "query",
+            "schema": {
+              "maximum": 1000,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "schema": {
+              "maximum": 12000,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Phone/Generate": {
+      "get": {
+        "tags": [
+          "Phone"
+        ],
+        "parameters": [
+          {
+            "name": "CountryCode",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maxLength": 2,
+              "type": "string"
+            }
+          },
+          {
+            "name": "Quantity",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maximum": 1000,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Phone/Validate": {
+      "get": {
+        "tags": [
+          "Phone"
+        ],
+        "parameters": [
+          {
+            "name": "telephone",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maxLength": 25,
+              "type": "string"
+            }
+          },
+          {
+            "name": "CountryCode",
+            "in": "query",
+            "schema": {
+              "maxLength": 2,
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Phone/Countries": {
+      "get": {
+        "tags": [
+          "Phone"
+        ],
+        "parameters": [
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/SocialNumber": {
+      "get": {
+        "tags": [
+          "SocialNumber"
+        ],
+        "parameters": [
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Text/LoremIpsum": {
+      "get": {
+        "tags": [
+          "Text"
+        ],
+        "parameters": [
+          {
+            "name": "loremType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/LoremType"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TextType"
+            }
+          },
+          {
+            "name": "number",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Text/Password": {
+      "get": {
+        "tags": [
+          "Text"
+        ],
+        "parameters": [
+          {
+            "name": "length",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "maximum": 250,
+              "minimum": 3,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "hasDigits",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "hasUppercase",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "hasSpecial",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Text/Humanize": {
+      "post": {
+        "tags": [
+          "Text"
+        ],
+        "parameters": [
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Text/Transform": {
+      "post": {
+        "tags": [
+          "Text"
+        ],
+        "parameters": [
+          {
+            "name": "textActionType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/TextActionType"
+            }
+          },
+          {
+            "name": "caseType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/CaseType"
+            }
+          },
+          {
+            "name": "find",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "replace",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Api-Key",
+            "in": "header",
+            "description": "Enter your key",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HashType": {
+        "enum": [
+          "md5",
+          "sha1",
+          "sha256",
+          "sha384",
+          "sha512",
+          "crc32",
+          "caesarencryption",
+          "caesardecryption"
+        ],
+        "type": "string"
+      },
+      "GetHash": {
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "maxLength": 100000,
+            "type": "string"
+          },
+          "key": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NameType": {
+        "enum": [
+          "firstname",
+          "surname",
+          "fullname"
+        ],
+        "type": "string"
+      },
+      "LoremType": {
+        "enum": [
+          "normal",
+          "business"
+        ],
+        "type": "string"
+      },
+      "TextType": {
+        "enum": [
+          "paragraphs",
+          "words"
+        ],
+        "type": "string"
+      },
+      "TextDto": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TextActionType": {
+        "enum": [
+          "Transform",
+          "Replace"
+        ],
+        "type": "string"
+      },
+      "CaseType": {
+        "enum": [
+          "LowerCase",
+          "UpperCase",
+          "SentenceCase",
+          "TitleCase"
+        ],
+        "type": "string"
+      }
+    }
+  }
+}

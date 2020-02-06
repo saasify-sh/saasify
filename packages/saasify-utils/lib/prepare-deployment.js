@@ -14,11 +14,20 @@ const tsConfigName = 'tsconfig.json'
 const jsonConfig = { spaces: 2 }
 
 module.exports = async (deployment, data, opts = {}) => {
-  const { tempDir = tempy.directory(), config = {}, debug = false } = opts
+  const {
+    tempDir = tempy.directory(),
+    config = {},
+    debug = false,
+    provider
+  } = opts
 
   await decompress(data, tempDir, {
     plugins: [decompressUnzip()]
   })
+
+  if (provider === 'external') {
+    return tempDir
+  }
 
   const builds = []
   const routes = []
@@ -26,7 +35,7 @@ module.exports = async (deployment, data, opts = {}) => {
   let language
 
   for (const service of deployment.services) {
-    const ext = getExtension(service.src).toLowerCase()
+    const ext = (getExtension(service.src) || '').toLowerCase()
     let { headers, immutable } = service
 
     if (immutable) {
@@ -63,7 +72,9 @@ module.exports = async (deployment, data, opts = {}) => {
 
       const definitionData = JSON.stringify(service.definition, null, 2)
       const serviceName = service.name
+      const servicePath = service.path || `/${serviceName}`
 
+      // TODO: this validation logic doesn't really belong here
       if (serviceNames.has(serviceName)) {
         const err = new Error(`Duplicate service name "${serviceName}"`)
         err.statusCode = 400
@@ -95,7 +106,7 @@ module.exports = async (deployment, data, opts = {}) => {
       })
 
       routes.push({
-        src: `/${serviceName}`,
+        src: servicePath,
         dest: handlerFileNameExt,
         headers
       })

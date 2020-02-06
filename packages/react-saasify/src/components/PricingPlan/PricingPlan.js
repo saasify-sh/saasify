@@ -140,7 +140,7 @@ export class PricingPlan extends Component {
               >
                 {isDowngrade
                   ? 'Downgrade'
-                  : auth.consumer && auth.consumer.enabled
+                  : auth.consumer?.enabled
                   ? 'Switch plans'
                   : 'Get started'}
               </CTAButton>

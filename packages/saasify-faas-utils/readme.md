@@ -24,18 +24,20 @@ npm install --save saasify-faas-utils
 const saasifyUtils = require('saasify-faas-utils')
 
 // parses any FaaS identifier (see the FaaS format below for more examples)
-const parsedInfo = saasifyUtils.parseFaasIdentifier('username/projectName@01234567/serviceName')
+const parsedInfo = saasifyUtils.parseFaasIdentifier(
+  'username/projectName@01234567/servicePath'
+)
 
 if (!parsedInfo) {
   console.error('invalid identifier')
 } else {
-  const { projectId, serviceName, deploymentHash, version } = parsedInfo
+  const { projectId, deploymentHash, version, servicePath } = parsedInfo
 
   /*
   {
     projectId: 'projectName',
-    serviceName: 'serviceName',
     deploymentHash: '01234567',
+    servicePath: '/servicePath',
     version: undefined
   }
   */
@@ -74,20 +76,20 @@ validators.deployment('username/bad%project%20name@ZZ') // false
 
 ## FaaS Identifier Format
 
-The most general FaaS identifier fully specifies the deployment and service name.
+The most general FaaS identifier fully specifies the deployment and service path.
 
-It *may* include an optional URL prefix such as `http://localhost:5000/1/call/` in *development* or `https://api.saasify.sh/1/call/` in *production*. The parsed result will be the same with or without the full URL prefix.
+It _may_ include an optional URL prefix such as `http://localhost:5000/1/call/` in _development_ or `https://ssfy.sh/` in _production_. The parsed result will be the same with or without the full URL prefix.
 
 ```
-username/projectName@01234567/serviceName  // explicitly identify a specific deployment (may not be published)
-username/projectName@latest/serviceName    // explicitly identify the latest published deployment
-username/projectName@1.0.0/serviceName     // explicitly identify a published deployment with a specific version
-username/projectName/serviceName           // implicitly identify the latest published deployment
+username/projectName@01234567/servicePath  // explicitly identify a specific deployment (may not be published)
+username/projectName@latest/servicePath    // explicitly identify the latest published deployment
+username/projectName@1.0.0/servicePath     // explicitly identify a published deployment with a specific version
+username/projectName/servicePath           // implicitly identify the latest published deployment
 ```
 
 ---
 
-If no `serviceName` is specified, it is assumed that the deployment either has a single service or has a service registered at the root `/` path and errors if this is not the case.
+If no `servicePath` is specified, it is assumed that the deployment either has a single service or has a service registered at the root `/` path and errors if this is not the case.
 
 ```
 username/projectName@01234567

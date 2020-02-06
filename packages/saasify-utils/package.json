@@ -25,21 +25,11 @@
     "ava": "^1.2.0"
   },
   "dependencies": {
-    "clone-deep": "^4.0.1",
     "decompress": "^4.2.0",
     "decompress-unzip": "^4.0.1",
     "fs-extra": "^8.1.0",
-    "is-url-superb": "^3.0.0",
-    "remark": "^11.0.1",
     "saasify-faas-utils": "^1.13.3",
-    "semver": "^6.3.0",
-    "swagger-parser": "^8.0.1",
-    "tempy": "^0.3.0",
-    "unist-builder": "^2.0.2",
-    "unist-util-filter": "^2.0.0",
-    "unist-util-find": "^1.0.1",
-    "unist-util-find-all-after": "^1.0.4",
-    "unist-util-find-all-between": "^2.0.0"
+    "tempy": "^0.3.0"
   },
   "ava": {
     "snapshotDir": "./.snapshots"

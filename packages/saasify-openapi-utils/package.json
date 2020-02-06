@@ -1,0 +1,51 @@
+{
+  "name": "saasify-openapi-utils",
+  "version": "1.14.0",
+  "description": "OpenAPI utilities for Saasify.",
+  "main": "index.js",
+  "author": "Saasify <dev@saasify.sh>",
+  "repository": "saasify-sh/saasify",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "ava -v",
+    "docs": "update-markdown-jsdoc"
+  },
+  "keywords": [
+    "openapi",
+    "faas",
+    "saas",
+    "lambda",
+    "serverless",
+    "deploy",
+    "saasify",
+    "fts"
+  ],
+  "devDependencies": {
+    "ava": "^3.2.0",
+    "update-markdown-jsdoc": "^1.0.11"
+  },
+  "dependencies": {
+    "@sindresorhus/slugify": "^0.10.0",
+    "ajv": "^6.11.0",
+    "clone-deep": "^4.0.1",
+    "fast-json-stable-stringify": "^2.1.0",
+    "http-errors": "^1.7.3",
+    "is-url-superb": "^3.0.0",
+    "lodash.pick": "^4.4.0",
+    "remark": "^11.0.1",
+    "semver": "^6.3.0",
+    "swagger-parser": "^8.0.1",
+    "unist-builder": "^2.0.2",
+    "unist-util-filter": "^2.0.0",
+    "unist-util-find": "^1.0.1",
+    "unist-util-find-all-after": "^1.0.4",
+    "unist-util-find-all-between": "^2.0.0"
+  },
+  "ava": {
+    "snapshotDir": "./.snapshots"
+  },
+  "gitHead": "c7c6721c98e28d0b1ea455c38276eb668c66b1f9"
+}

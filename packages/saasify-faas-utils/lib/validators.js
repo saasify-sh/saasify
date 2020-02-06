@@ -1,6 +1,8 @@
 'use strict'
 
 const emailValidator = require('email-validator')
+const isRelativeUrl = require('is-relative-url')
+
 const usernameBlacklist = require('./username-blacklist.json')
 const usernameBlacklistSet = new Set(usernameBlacklist)
 
@@ -13,8 +15,10 @@ exports.deploymentHashRe = /^[a-z0-9]{8}$/
 exports.projectRe = /^[a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64}$/
 exports.deploymentRe = /^[a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64}@[a-z0-9]{8}$/
 
-// any valid JavaScript identifier
-exports.serviceRe = /^[a-zA-Z_][a-zA-Z0-9_]*$/
+// service names may be any valid JavaScript identifier
+// TODO: should service names be any label?
+exports.serviceNameRe = /^[a-zA-Z_][a-zA-Z0-9_]*$/
+exports.servicePathRe = /^\/[a-zA-Z0-9\-._~%!$&'()*+,;=:/]*$/
 
 exports.email = (value) => {
   return emailValidator.validate(value)
@@ -46,6 +50,10 @@ exports.deployment = (value) => {
   return value && exports.deploymentRe.test(value)
 }
 
-exports.service = (value) => {
-  return value && exports.serviceRe.test(value)
+exports.serviceName = (value) => {
+  return value && exports.serviceNameRe.test(value)
+}
+
+exports.servicePath = (value) => {
+  return value && exports.servicePathRe.test(value) && isRelativeUrl(value)
 }

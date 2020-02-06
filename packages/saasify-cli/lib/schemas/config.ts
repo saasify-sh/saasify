@@ -35,6 +35,9 @@ class Config {
   // saas marketing site config
   saas?: object
 
+  // TODO
+  openapi?: string | object
+
   // core services
   services: Service[]
 }
@@ -88,12 +91,14 @@ class PricingPlanTier {
 }
 
 class Service {
-  src: string
+  src?: string
   name?: string
   examples?: Example[]
   config?: object
+
   GET?: boolean
   POST?: boolean
+
   headers?: object
   immutable?: boolean
 

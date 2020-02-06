@@ -14,7 +14,10 @@
 - [saasify-client](./saasify-client) - Universal HTTP client for Saasify.
 - [saasify-codegen](./saasify-codegen) - Codegen for saasify services.
 - [saasify-sdk](./saasify-sdk) - HTTP client for invoking Saasify FaaS.
+- [saasify-faas-proxy](./saasify-faas-proxy) - Customizable FaaS proxy which can be deployed in front of a Saasify FaaS.
+- [saasify-faas-utils](./saasify-faas-utils) - Shared FaaS utilities for Saasify.
 - [saasify-to-openapi](./saasify-to-openapi) - Converts Saasify deployments to OpenAPI specs.
+- [saasify-openapi-utils](./saasify-openapi-utils) - Shared OpenAPI utilities for Saasify.
 - [saasify-utils](./saasify-utils) - Shared utilities for Saasify.
 
 ## License

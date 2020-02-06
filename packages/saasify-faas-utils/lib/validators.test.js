@@ -110,14 +110,30 @@ test('deployment failure', (t) => {
   t.falsy(validators.deployment('012345678/123@1.0.1'))
 })
 
-test('service success', (t) => {
-  t.truthy(validators.service('serviceName'))
-  t.truthy(validators.service('_identIFIER0123'))
-  t.truthy(validators.service('abc_123_foo'))
+test('serviceName success', (t) => {
+  t.truthy(validators.serviceName('serviceName'))
+  t.truthy(validators.serviceName('_identIFIER0123'))
+  t.truthy(validators.serviceName('abc_123_foo'))
 })
 
-test('service failure', (t) => {
-  t.falsy(validators.service('ab1.2'))
-  t.falsy(validators.service('foo-bar'))
-  t.falsy(validators.service('abc/123'))
+test('serviceName failure', (t) => {
+  t.falsy(validators.serviceName('ab1.2'))
+  t.falsy(validators.serviceName('foo-bar'))
+  t.falsy(validators.serviceName('abc/123'))
+})
+
+test('servicePath success', (t) => {
+  t.truthy(validators.servicePath('/foo'))
+  t.truthy(validators.servicePath('/'))
+  t.truthy(validators.servicePath('/foo/bar/123%20-_abc'))
+  t.truthy(validators.servicePath('/foo/BAR/..'))
+  t.truthy(validators.servicePath('/api/iconsets/v3/categories'))
+})
+
+test('servicePath failure', (t) => {
+  t.falsy(validators.servicePath(''))
+  t.falsy(validators.servicePath('foo/bar'))
+  t.falsy(validators.servicePath('/foo/bar\\'))
+  t.falsy(validators.servicePath('/foo/bar@'))
+  t.falsy(validators.servicePath('/foo/bar@abc'))
 })

@@ -16,39 +16,42 @@ const error = (t, value) => {
   t.is(result, undefined)
 }
 
-test('username/projectName@deployment/serviceName success', (t) => {
+test('username/projectName@deployment/servicePath success', (t) => {
   success(t, 'username/foo-bar@01234567/foo')
   success(t, 'username/foo-bar@abc123lz/foo')
   success(t, 'username/fooBar123-yo@01234567/foo_bar_BAR_901')
+  success(t, 'username/fooBar@01234567/foo/bar/123/456')
 })
 
-test('username/projectName@deployment/serviceName error', (t) => {
+test('username/projectName@deployment/servicePath error', (t) => {
   error(t, 'foo-bar@01234567/foo')
   error(t, '%/foo-bar@01234567/foo')
   error(t, 'user/foo^bar@01234567/foo')
   error(t, 'user@foo^bar@01234567/foo')
 })
 
-test('username/projectName@version/serviceName success', (t) => {
+test('username/projectName@version/servicePath success', (t) => {
   success(t, 'username/foo-bar@latest/foo')
   success(t, 'username/foo-bar@1.0.0/foo')
   success(t, 'username/fooBar123-yo@0.0.1/foo_bar_BAR_901')
+  success(t, 'username/fooBar123-yo@0.0.1/foo/bar/123-456')
 })
 
-test('username/projectName@version/serviceName error', (t) => {
+test('username/projectName@version/servicePath error', (t) => {
   error(t, 'foo_bar@latest/foo')
-  error(t, 'username/foo-bar@1.0.0/0foo')
+  error(t, 'username/foo-bar@1.0.0/foo@')
   error(t, 'username/foo-bar@/foo')
   error(t, 'username/foo-bar@/foo/')
 })
 
-test('username/projectName/serviceName success', (t) => {
+test('username/projectName/servicePath success', (t) => {
   success(t, 'u/foo-bar/foo')
   success(t, 'a/foo-bar/foo_123')
   success(t, 'foo/fooBar123-yo/foo_bar_BAR_901')
+  success(t, 'foo/fooBar123-yo/foo/bar/123/456')
 })
 
-test('username/projectName/serviceName error', (t) => {
+test('username/projectName/servicePath error', (t) => {
   error(t, '@/foo_bar/foo')
   error(t, 'foo-bar/foo\\/')
   error(t, 'user/_/foo')

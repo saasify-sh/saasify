@@ -1,0 +1,892 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "PdfBroker.io API",
+    "description": "PdfBroker.io is an api for creating pdf files from Xsl-Fo or Html and other useful pdf utilities.",
+    "termsOfService": "https://www.pdfbroker.io/terms",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/pdf": {
+      "get": {
+        "tags": ["Pdf"],
+        "summary": "Basic method to verify api is up and running",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/pdf/xslfo": {
+      "post": {
+        "tags": ["Pdf"],
+        "summary": "Create pdf-file from complete XSL-FO document.",
+        "requestBody": {
+          "description": "XSL-FO Request, the basic XSL-FO request. Post your XSL-FO document and digital resources, either as 'multipart/form-data' or 'application/json'",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FoRequestDto"
+              },
+              "example": "{\r\n  \"foDocumentBase64String\": \"<Encode your XSL-FO document as Base64 encoded string>\",\r\n  \"resources\": {\r\n    \"<Use file name as key, i.e 'logo.png', which is set as src on fo:external-graphic elements>\": \"<Convert your images to Base64 encoded string>\"\r\n  }\r\n}"
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fodocument": {
+                    "type": "string",
+                    "description": "An entry named fodocument is required in the multipart/form-data request",
+                    "format": "binary"
+                  },
+                  "resources": {
+                    "type": "string",
+                    "description": "After fodocument is added, add all digital resources one by one to your multipart/form-data request, using the filename as name in the form.",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "fodocument": {
+                  "contentType": "application/octet-stream"
+                },
+                "resources": {
+                  "contentType": "application/octet-stream"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the newly created pdf file. Either the file directly or serialized as Json if Accept-header is set to application/json",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/PdfResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PdfResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "If any error occurs parsing input",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "If content-type of request is not set to multipart/form-data or application/json",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pdf/xslfowithtransform": {
+      "post": {
+        "tags": ["Pdf"],
+        "summary": "Create pdf-file from transforming xml document with Xsl-Fo transform document.",
+        "requestBody": {
+          "description": "XSL-FO Transform Request. The XSL-FO is transformed on the supplied xml data document. Post your XSL-FO transform document and xml data document aloing with your digital resources, either as 'multipart/form-data' or 'application/json'",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FoTransformRequestDto"
+              },
+              "example": "{\r\n  \"xmlDataDocumentBase64String\": \"<This is the document which contains your data that the XSL-FO transform will be applied on. Send as Base64 encoded string>\",\r\n  \"foDocumentBase64String\": \"<Encode your XSL-FO transform document as Base64 encoded string>\",\r\n  \"resources\": {\r\n    \"<Use file name as key, i.e 'logo.png', which is set as src on fo:external-graphic elements>\": \"<Convert your images to Base64 encoded string>\"\r\n  }\r\n}"
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fodocument": {
+                    "type": "string",
+                    "description": "An entry named fodocument with your XSL-FO transform is required in the multipart/form-data request",
+                    "format": "binary"
+                  },
+                  "xmldatadocument": {
+                    "type": "string",
+                    "description": "An entry named xmldatadocument, on which the XSL-FO transform is applied, is required in the multipart/form-data request",
+                    "format": "binary"
+                  },
+                  "resources": {
+                    "type": "string",
+                    "description": "After fodocument and xmldatadocument is added, add all digital resources one by one to your multipart/form-data request, using the filename as name in the form.",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "fodocument": {
+                  "contentType": "application/octet-stream"
+                },
+                "xmldatadocument": {
+                  "contentType": "application/octet-stream"
+                },
+                "resources": {
+                  "contentType": "application/octet-stream"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the newly created pdf file. Either the file directly or serialized as Json if Accept-header is set to application/json",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/PdfResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PdfResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "If any error occurs parsing input",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "If content-type of request is not set to multipart/form-data or application/json",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pdf/pdftoimage": {
+      "post": {
+        "tags": ["Pdf"],
+        "summary": "Generate an image of to provided pdf file",
+        "requestBody": {
+          "description": "PdfToImage Request. Create an image of a page in an existing pdf document.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PdfToImageRequestDto"
+              },
+              "example": "{\r\n  \"pdfFileBase64String\": \"<Encode your existing PDF document as Base64 encoded string>\",\r\n  \"options\": {\r\n    \"pageNumber\": 1,\r\n    \"imageFormat\": \"image/jpeg\",\r\n    \"horizontalResolution\": 96.0,\r\n    \"verticalResolution\": 96.0,\r\n    \"width\": 0,\r\n    \"height\": 0,\r\n    \"transparent\": false,\r\n    \"jpegQuality\": 90,\r\n    \"pngCompressionLevel\": 6\r\n  }\r\n}"
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pdfdocument": {
+                    "type": "string",
+                    "description": "An entry named pdfdocument is required in the multipart/form-data request",
+                    "format": "binary"
+                  },
+                  "options": {
+                    "type": "string",
+                    "description": "After pdfdocument is added, add an entry named options with your PdfToImageOptions object serialized as JSON.",
+                    "format": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "pdfdocument": {
+                  "contentType": "application/octet-stream"
+                },
+                "options": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageResponseDto"
+                }
+              },
+              "image/gif": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageResponseDto"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ImageResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "image/gif": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Client Error",
+            "content": {
+              "image/jpeg": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "image/gif": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "image/png": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pdf/pdfconcat": {
+      "post": {
+        "tags": ["Pdf"],
+        "summary": "Concatenate multiple pdf files into single pdf file..",
+        "requestBody": {
+          "description": "PdfConcat Request. Add two or more pdf files and concatenate pages into single pdf document.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PdfConcatenationRequestDto"
+              },
+              "example": "{\r\n  \"pdfDocumentsAsBase64String\": [\r\n    \"<Encode your pdf documents as Base64 encoded string>\",\r\n    \"<Encode your pdf documents as Base64 encoded string>\"\r\n  ]\r\n}"
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pdfdocument1": {
+                    "type": "string",
+                    "description": "Add pdf files to be concatenated into single file",
+                    "format": "binary"
+                  },
+                  "pdfdocument2": {
+                    "type": "string",
+                    "description": "You can add more than two files in the same request",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "pdfdocument1": {
+                  "contentType": "application/octet-stream"
+                },
+                "pdfdocument2": {
+                  "contentType": "application/octet-stream"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the newly created pdf file. Either the file directly or serialized as Json if Accept-header is set to application/json",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/PdfResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PdfResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "If any error occurs parsing input",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "If content-type of request is not set to multipart/form-data or application/json",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pdf/pdfwritestring": {
+      "post": {
+        "tags": ["Pdf"],
+        "summary": "Write text on a page in a pdf document.",
+        "requestBody": {
+          "description": "PdfWriteString Request. Write string on page in pdf document",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PdfWriteStringRequestDto"
+              },
+              "example": "{\r\n  \"pdfFileBase64String\": \"<Encode your existing PDF document as Base64 encoded string>\",\r\n  \"options\": {\r\n    \"text\": \"This is test string\",\r\n    \"textColor\": {\r\n      \"r\": 33,\r\n      \"g\": 34,\r\n      \"b\": 35\r\n    },\r\n    \"font\": {\r\n      \"name\": \"Arial\",\r\n      \"size\": 24.0,\r\n      \"style\": 1\r\n    },\r\n    \"pageNumber\": 3,\r\n    \"xPosition\": 40.0,\r\n    \"yPosition\": -200.0,\r\n    \"xOrigin\": 1,\r\n    \"yOrigin\": 2\r\n  },\r\n  \"fontFileBase64String\": \"<Attach your own TrueTypeFont file if necessary to style text, encoded as Base64 encoded string>\"\r\n}"
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pdfdocument": {
+                    "type": "string",
+                    "description": "An entry named pdfdocument is required in the multipart/form-data request",
+                    "format": "binary"
+                  },
+                  "options": {
+                    "type": "string",
+                    "description": "After pdfdocument is added, add an entry named options with your PdfWriteStringOptions object serialized as JSON.",
+                    "format": "string"
+                  },
+                  "fontfile": {
+                    "type": "string",
+                    "description": "Optional entry to attach your own TrueType font file to style string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "pdfdocument": {
+                  "contentType": "application/octet-stream"
+                },
+                "options": {
+                  "contentType": "application/json"
+                },
+                "fontfile": {
+                  "contentType": "application/octet-stream"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the newly created pdf file. Either the file directly or serialized as Json if Accept-header is set to application/json",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/PdfResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PdfResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "If any error occurs parsing input",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "If content-type of request is not set to multipart/form-data or application/json",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pdf/wkhtmltopdf": {
+      "post": {
+        "tags": ["Pdf"],
+        "summary": "Generate pdf file from url using the excellent tool wkhtmltopdf.",
+        "responses": {
+          "200": {
+            "description": "Returns the newly created pdf file. Either the file directly or serialized as Json if Accept-header is set to application/json",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/PdfResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PdfResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "If any error occurs executing request",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "If content-type of request is not set to application/json",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PdfResponseDto": {
+        "type": "object",
+        "properties": {
+          "pdfFileBase64String": {
+            "type": "string",
+            "description": "The Base64 encoded string that is the pdf file."
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "If any error occurs the message will be displayed in here"
+          }
+        },
+        "additionalProperties": false,
+        "description": "When setting the Accept-header in the request to \"application/json\" the content of the pdf file will be return as Base64 encoded string. Note that converting data to Base64 encoded strings increases the response size with approximately 33%, if you can accept the a binary format it's better to use Accept-header \"application/pdf\"."
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string"
+          },
+          "instance": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": {
+          "type": "object"
+        }
+      },
+      "ImageResponseDto": {
+        "type": "object",
+        "properties": {
+          "imageBase64String": {
+            "type": "string",
+            "description": "The Base64 encoded string that is the image file."
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "If any error occurs the message will be displayed in here"
+          }
+        },
+        "additionalProperties": false,
+        "description": "When setting the Accept-header in the request to \"application/json\" the image file will be return as Base64 encoded string. Note that converting data to Base64 encoded strings increases the response size with approximately 33%, if you can accept the a binary format it's better to use Accept-header \"image/jpeg\", \"image/png\" or \"image/gif\"."
+      },
+      "FoRequestDto": {
+        "type": "object",
+        "properties": {
+          "foDocumentBase64String": {
+            "type": "string",
+            "description": "This is the complete XSL-FO document provided using Base64 encoding."
+          },
+          "resources": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "This is a set of key-value pairs of digital resources like images that is referenced in the XSL-FO document. It uses the filename as key and the data is provided as a Base64 encoded string."
+          }
+        },
+        "additionalProperties": false,
+        "description": "The basic request with the XSL-FO document as a Base64 encoded string with a set of resources provided with a name and the data of the resource as a Base64 encoded string."
+      },
+      "FoTransformRequestDto": {
+        "type": "object",
+        "properties": {
+          "xmlDataDocumentBase64String": {
+            "type": "string",
+            "description": "This is xml data document on which the XSL-FO transform document is applied. Provided using Base64 encoding."
+          },
+          "foDocumentBase64String": {
+            "type": "string",
+            "description": "This is the complete XSL-FO document provided using Base64 encoding."
+          },
+          "resources": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "This is a set of key-value pairs of digital resources like images that is referenced in the XSL-FO document. It uses the filename as key and the data is provided as a Base64 encoded string."
+          }
+        },
+        "additionalProperties": false,
+        "description": "The XSL-FO transform document and xml data document as a Base64 encoded string with a set of resources provided with a name and the data of the resource as a Base64 encoded string."
+      },
+      "PdfToImageOptions": {
+        "type": "object",
+        "properties": {
+          "pageNumber": {
+            "type": "integer",
+            "description": "Which page of the pdf file to generate image from, default is first page",
+            "format": "int32"
+          },
+          "imageFormat": {
+            "type": "string",
+            "description": "Valid options are \"image/jpeg\", \"image/png\" or \"image/gif\". Default is \"image/png\""
+          },
+          "horizontalResolution": {
+            "type": "number",
+            "description": "Set the horizontal resolution, default is 96 dpi;",
+            "format": "double"
+          },
+          "verticalResolution": {
+            "type": "number",
+            "description": "Set the vertical resolution, default is 96 dpi;",
+            "format": "double"
+          },
+          "width": {
+            "type": "integer",
+            "description": "Set the width of the output image, default value is width of source document. To scale width, and keeping proportions, do not set height;",
+            "format": "int32"
+          },
+          "height": {
+            "type": "integer",
+            "description": "Set the height of the output image, default value is width of source document. To scale height, and keeping proportions, do not set width;",
+            "format": "int32"
+          },
+          "transparent": {
+            "type": "boolean",
+            "description": "Keep the background of the image transparent. This setting is not available in JPEG-files, since transparency is not supported in the JPEG format."
+          },
+          "jpegQuality": {
+            "type": "integer",
+            "description": "Sets the quality of jpeg images, range 0 to 100, default is 75",
+            "format": "int32"
+          },
+          "pngCompressionLevel": {
+            "type": "integer",
+            "description": "Sets the png compression level, range 1 - 9, default is 6",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PdfToImageRequestDto": {
+        "type": "object",
+        "properties": {
+          "pdfFileBase64String": {
+            "type": "string",
+            "description": "The pdf file to generate image from, as Base64 encoded string."
+          },
+          "options": {
+            "$ref": "#/components/schemas/PdfToImageOptions"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PdfConcatenationRequestDto": {
+        "type": "object",
+        "properties": {
+          "pdfDocumentsAsBase64String": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The list of Pdf documents encoded as Base64 strings."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Request to concatenate a list of Pdf documents to a single Pdf document."
+      },
+      "ColorDto": {
+        "type": "object",
+        "properties": {
+          "r": {
+            "maximum": 255,
+            "minimum": 0,
+            "type": "integer",
+            "description": "Get or sets R value of RGB color",
+            "format": "int32",
+            "readOnly": true
+          },
+          "g": {
+            "maximum": 255,
+            "minimum": 0,
+            "type": "integer",
+            "description": "Get or sets G value of RGB color",
+            "format": "int32",
+            "readOnly": true
+          },
+          "b": {
+            "maximum": 255,
+            "minimum": 0,
+            "type": "integer",
+            "description": "Get or sets B value of RGB color",
+            "format": "int32",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Set color"
+      },
+      "FontDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Gets the name of the font",
+            "readOnly": true
+          },
+          "size": {
+            "type": "number",
+            "description": "Gets the size of the font",
+            "format": "float",
+            "readOnly": true
+          },
+          "style": {
+            "enum": ["Regular", "Bold", "Italic", "BoldItalic"],
+            "type": "string",
+            "description": "Gets the style of the font",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "The Font dto object"
+      },
+      "PdfWriteStringOptions": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "The text to write in the pdf"
+          },
+          "textColor": {
+            "$ref": "#/components/schemas/ColorDto"
+          },
+          "font": {
+            "$ref": "#/components/schemas/FontDto"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "description": "Get or set which page in the pdf to write on, default is first page.",
+            "format": "int32"
+          },
+          "xPosition": {
+            "type": "number",
+            "description": "Get or set the X axis position on where to write string, in reference to XOrigin.",
+            "format": "float"
+          },
+          "yPosition": {
+            "type": "number",
+            "description": "Get or set the Y axis position on where to write string, in reference to YOrigin.",
+            "format": "float"
+          },
+          "xOrigin": {
+            "enum": ["Left", "Center", "Right"],
+            "type": "string",
+            "description": "Get or set the point from where the X axis position should be calculated from. Default value is from left side of page."
+          },
+          "yOrigin": {
+            "enum": ["Top", "Center", "Bottom"],
+            "type": "string",
+            "description": "Get or set the point from where the Y axis position should be calculated from. Default value is from top of page."
+          }
+        },
+        "additionalProperties": false,
+        "description": "Options for writing string in pdf page;"
+      },
+      "PdfWriteStringRequestDto": {
+        "type": "object",
+        "properties": {
+          "pdfFileBase64String": {
+            "type": "string",
+            "description": "The pdf file to add text to, as Base64 encoded string."
+          },
+          "options": {
+            "$ref": "#/components/schemas/PdfWriteStringOptions"
+          },
+          "fontFileBase64String": {
+            "type": "string",
+            "description": "System fonts are available, but you can provide your own font file to be embedded in the pdf document. Send font as Base64 encoded string."
+          }
+        },
+        "additionalProperties": false,
+        "description": "The request dto object to write a string on pdf page"
+      },
+      "WkHtmlToPdfRequestDto": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The url to generate pdf from"
+          },
+          "wkHtmlToPdfArguments": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Command line arguments passed to wkhtmltopdf."
+          }
+        },
+        "additionalProperties": false,
+        "description": "WkHtmlToPdfRequestDto is the data transfer object for generating a pdf using wkhtmltopdf;"
+      }
+    },
+    "securitySchemes": {
+      "OAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://login.pdfbroker.io/connect/token",
+            "scopes": {
+              "pdfbroker": "Scope to access the PdfBroker API."
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "OAuth2": ["pdfbroker"]
+    }
+  ]
+}

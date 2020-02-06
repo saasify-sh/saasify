@@ -20,6 +20,12 @@ test('URL prefix success', (t) => {
   success(t, 'https://api.saasify.sh/1/call/username/foo-bar@01234567/foo')
   success(t, '/1/call/username/foo-bar@01234567/foo')
   success(t, '/username/foo-bar@01234567/foo')
+  success(
+    t,
+    'https://api.saasify.sh/1/call/username/foo-bar@01234567/foo/bar/456/123'
+  )
+  success(t, '/1/call/username/foo-bar@01234567/foo/bar/456/123')
+  success(t, '/username/foo-bar@01234567/foo/bar/456/123')
 })
 
 test('URL prefix error', (t) => {
@@ -33,11 +39,15 @@ test('URL suffix success', (t) => {
 })
 
 test('URL suffix error', (t) => {
-  error(t, 'username/foo-bar@01234567/foo/abc')
+  error(t, 'username/foo-bar@01234567/foo😀')
 })
 
 test('URL prefix and suffix success', (t) => {
   success(t, 'https://api.saasify.sh/1/call/username/foo-bar@01234567/foo/')
+  success(
+    t,
+    'https://api.saasify.sh/1/call/username/foo-bar@01234567/foo/bar/123'
+  )
 })
 
 test('namespace success', (t) => {
@@ -47,6 +57,11 @@ test('namespace success', (t) => {
   success(t, '/1/call/foo-bar@01234567/foo', { namespace: 'username' })
   success(t, '/foo-bar@01234567/foo', { namespace: 'username' })
   success(t, '/foo-bar@01234567/foo/', { namespace: 'username' })
+  success(t, 'https://api.saasify.sh/1/call/foo-bar@01234567/foo/bar/123', {
+    namespace: 'username'
+  })
+  success(t, '/1/call/foo-bar@01234567/foo/bar/123', { namespace: 'username' })
+  success(t, '/foo-bar@01234567/foo/bar/123', { namespace: 'username' })
 })
 
 test('namespace error', (t) => {
@@ -54,4 +69,5 @@ test('namespace error', (t) => {
   error(t, '/1/call/foo-bar@01234567/foo')
   error(t, '/foo-bar@01234567/foo')
   error(t, '/foo-bar@01234567/foo/')
+  error(t, '/foo-bar@01234567/foo/bar/123')
 })

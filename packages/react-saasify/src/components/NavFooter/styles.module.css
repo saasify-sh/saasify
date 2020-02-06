@@ -44,8 +44,10 @@
 }
 
 .logo {
+  max-width: 240px;
   max-height: 64px;
   margin-bottom: 0.7em;
+  margin-right: 3em;
 }
 
 .detail {
