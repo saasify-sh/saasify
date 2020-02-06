@@ -177,6 +177,14 @@
     "@babel/helper-regex" "^7.4.4"
     regexpu-core "^4.6.0"
 
+"@babel/helper-create-regexp-features-plugin@^7.8.3":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/helper-create-regexp-features-plugin/-/helper-create-regexp-features-plugin-7.8.3.tgz#c774268c95ec07ee92476a3862b75cc2839beb79"
+  integrity sha512-Gcsm1OHCUr9o9TcJln57xhWHtdXbA2pgQ58S0Lxlks0WMGNXuki4+GLfX0p+L2ZkINUGZvfkz8rzoqJQSthI+Q==
+  dependencies:
+    "@babel/helper-regex" "^7.8.3"
+    regexpu-core "^4.6.0"
+
 "@babel/helper-define-map@^7.7.4":
   version "7.7.4"
   resolved "https://registry.yarnpkg.com/@babel/helper-define-map/-/helper-define-map-7.7.4.tgz#2841bf92eb8bd9c906851546fe6b9d45e162f176"
@@ -253,6 +261,13 @@
 "@babel/helper-regex@^7.0.0", "@babel/helper-regex@^7.4.4":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/helper-regex/-/helper-regex-7.5.5.tgz#0aa6824f7100a2e0e89c1527c23936c152cab351"
+  dependencies:
+    lodash "^4.17.13"
+
+"@babel/helper-regex@^7.8.3":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/helper-regex/-/helper-regex-7.8.3.tgz#139772607d51b93f23effe72105b319d2a4c6965"
+  integrity sha512-BWt0QtYv/cg/NecOAZMdcn/waj/5P26DR4mVLXfFtDokSR6fyuG0Pj+e2FqtSME+MqED1khnSMulkmGl8qWiUQ==
   dependencies:
     lodash "^4.17.13"
 
@@ -404,6 +419,22 @@
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/plugin-syntax-optional-chaining" "^7.8.0"
 
+"@babel/plugin-proposal-throw-expressions@^7.7.4":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-throw-expressions/-/plugin-proposal-throw-expressions-7.8.3.tgz#155f36ae40c2a88ae685c35e3220f8a0d426cf24"
+  integrity sha512-tH40s9JnoR+r45ZXKWW+PC5xzPQfVJix3pR1D8Ty5l9sn5NnrbZUzw8MtnNxu/Bz7p0imyeSYj9FQVccEymOEg==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.8.3"
+    "@babel/plugin-syntax-throw-expressions" "^7.8.3"
+
+"@babel/plugin-proposal-unicode-property-regex@^7.4.4":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-unicode-property-regex/-/plugin-proposal-unicode-property-regex-7.8.3.tgz#b646c3adea5f98800c9ab45105ac34d06cd4a47f"
+  integrity sha512-1/1/rEZv2XGweRwwSkLpY+s60za9OZ1hJs4YDqFHCw0kYWYwL5IFljVY1MYBL+weT1l9pokDO2uhSTLVxzoHkQ==
+  dependencies:
+    "@babel/helper-create-regexp-features-plugin" "^7.8.3"
+    "@babel/helper-plugin-utils" "^7.8.3"
+
 "@babel/plugin-proposal-unicode-property-regex@^7.7.4", "@babel/plugin-proposal-unicode-property-regex@^7.7.7":
   version "7.7.7"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-unicode-property-regex/-/plugin-proposal-unicode-property-regex-7.7.7.tgz#433fa9dac64f953c12578b29633f456b68831c4e"
@@ -483,6 +514,13 @@
   integrity sha512-KoK9ErH1MBlCPxV0VANkXW2/dw4vlbGDrFgz8bmUsBGYkFRcbRwMh6cIJubdPrkxRwuGdtCk0v/wPTKbQgBjkg==
   dependencies:
     "@babel/helper-plugin-utils" "^7.8.0"
+
+"@babel/plugin-syntax-throw-expressions@^7.8.3":
+  version "7.8.3"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-throw-expressions/-/plugin-syntax-throw-expressions-7.8.3.tgz#c763bcf26d202ddb65f1299a29d63aad312adb54"
+  integrity sha512-Mv3shY1i7ZssY4OY+eLZJAmNCwqTcpv2qOKO9x6irELSygfKWVSMXk0igJsA9UhU4hOdw0qMGkjj9TAk4MqzwQ==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.8.3"
 
 "@babel/plugin-syntax-top-level-await@^7.7.4":
   version "7.7.4"
@@ -886,6 +924,17 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/plugin-transform-flow-strip-types" "^7.7.4"
+
+"@babel/preset-modules@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@babel/preset-modules/-/preset-modules-0.1.2.tgz#9365f51343ee69d99351b2892ff7479ef4505e78"
+  integrity sha512-FMhghLBAnMG7Dh0C/xgpX+HbzkrDDK9BdgS+NUuEzcro+ySmKKk2F9ROnqRawHS5aR/AH56rVtL/LM2vsy+81g==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-proposal-unicode-property-regex" "^7.4.4"
+    "@babel/plugin-transform-dotall-regex" "^7.4.4"
+    "@babel/types" "^7.4.4"
+    esutils "^2.0.2"
 
 "@babel/preset-react@7.7.4", "@babel/preset-react@^7.0.0":
   version "7.7.4"
@@ -1969,20 +2018,22 @@
   dependencies:
     estree-walker "^0.6.1"
 
-"@saasify/microbundle@^0.13.5":
-  version "0.13.5"
-  resolved "https://registry.yarnpkg.com/@saasify/microbundle/-/microbundle-0.13.5.tgz#e0d9fe90416b81e896d2480cd90f02adb27a4146"
-  integrity sha512-ZHersOpsT7HQgyro/Q/kDcRIccivyJD+TRtiXC+6bBi79a7nCekjfjmjmrK1EX/jsRBGmo2VrpqwHaEuV2KIxw==
+"@saasify/microbundle@^0.13.7":
+  version "0.13.7"
+  resolved "https://registry.yarnpkg.com/@saasify/microbundle/-/microbundle-0.13.7.tgz#e2af16a733c67353b009afaed6657069c80b7db6"
+  integrity sha512-uzVMctY9n6q+YE/X11X3UJBLgsKJxnxOZgQZIJ38k/DL4dID1ANCN8eR94qXzq3GjmeXxyFrsJl5FA7deG9ZUA==
   dependencies:
     "@babel/core" "^7.7.7"
     "@babel/plugin-proposal-class-properties" "7.7.4"
     "@babel/plugin-proposal-decorators" "^7.6.0"
     "@babel/plugin-proposal-optional-chaining" "^7.8.3"
+    "@babel/plugin-proposal-throw-expressions" "^7.7.4"
     "@babel/plugin-syntax-jsx" "^7.7.4"
     "@babel/plugin-transform-flow-strip-types" "^7.7.4"
     "@babel/plugin-transform-react-jsx" "^7.7.7"
     "@babel/preset-env" "^7.7.7"
     "@babel/preset-flow" "^7.7.4"
+    "@babel/preset-modules" "^0.1.2"
     "@rollup/plugin-alias" "^3.0.0"
     "@rollup/plugin-commonjs" "^11.0.1"
     "@rollup/plugin-json" "^4.0.1"
