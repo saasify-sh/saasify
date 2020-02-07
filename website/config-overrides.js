@@ -40,7 +40,14 @@ module.exports = override(
     }
   ]),
   addWebpackAlias({
-    '@ant-design/icons/lib/dist$': path.join(__dirname, 'src/lib/icons.js')
+    '@ant-design/icons/lib/dist$': path.join(__dirname, 'src/lib/icons.js'),
+    // TODO: I have no idea why this is necessary when locally linking react-saasify, but
+    // without it we get random client-side react errors...
+    react: path.resolve('../node_modules/react'),
+    'react-dom': path.resolve('../node_modules/react-dom'),
+    mobx: path.resolve('../node_modules/mobx'),
+    'mobx-react': path.resolve('../node_modules/mobx-react'),
+    'react-router-dom': path.resolve('../node_modules/react-router-dom')
   }),
   addWebpackPlugin(new CompressionPlugin()),
   /*

@@ -10,7 +10,7 @@
 
 <p align="center">
   <img
-    src="https://saasify.sh/_media/saasify-how-it-works-v2.png"
+    src="https://saasify.sh/_media/saasify-how-it-works-v3-body.png"
     alt="How Saasify Works"
     width="760"
   />
@@ -28,13 +28,9 @@ We make it really simple to "saasify" your own projects like this one. Once your
 
 We built Saasify as an ideal solution for developers who'd like to earn passive income.
 
-By making it extremely simple to create SaaS APIs, we're creating new opportunities for devs to monetize their work. And the best part is that this business model scales naturally as usage increases, which means the more popular your project becomes, the more money you can earn!
+The only real way to validate a SaaS idea is to ship an MVP and get real customers paying for it. That's why Saasify allows you to ship a quality MVP and start monetizing in minutes instead of months ✈️
 
-In a nutshell, we enable devs to:
-
-1. Monetize existing OSS ⭐️
-2. Focus only on unique value instead of SaaS boilerplate 🔥
-3. Ship an API and start monetizing in minutes instead of months ✈️
+We've helped dozens of SaaS products get off the ground by enabling them to focus only on their unique value instead of SaaS boilerplate 🔥
 
 <p align="center">
   <img src="https://saasify.sh/_media/undraw/business_shop.svg" alt="Online shop" width="200" />
@@ -42,7 +38,7 @@ In a nutshell, we enable devs to:
 
 ## What can be monetized using Saasify?
 
-Saasify is built around serverless functions, so any functionality that can be wrapped in a serverless function could potentially be monetized.
+Any externally hosted REST API can be monetized via Saasify. We also provide built-in support for monetizing serverless functions.
 
 Some example use cases include:
 
@@ -55,11 +51,11 @@ Some example use cases include:
 
 Check out the [showcase](https://saasify.sh/#/showcase) for more live examples of projects which have been saasified.
 
-Have an idea or a project that you'd like to monetize, but not sure where to start? Feel free to connect on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY). ✌️
+Have an idea that you'd like to monetize, but not sure where to start? Feel free to connect on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY). ✌️
 
 ## Features
 
-- 💰 Get paid for your open source projects
+- 💰 SaaS is a proven and very profitable business model
 - ⚡️️ Quick & easy to setup your own monetizable APIs
 - 🔥 Every API comes with its own customizable marketing site
 - 💯 Built with TypeScript + AWS Lambda + Stripe

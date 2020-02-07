@@ -21,11 +21,12 @@ export class HowItWorksSection extends Component {
       >
         <div className={theme(styles, 'step')}>
           <div>
-            <h3>1. Create a serverless function</h3>
+            <h3>1. Create an API</h3>
 
             <p>
-              Wrap your existing open source project in a serverless function
-              using JS, TS, or Python.
+              We support any REST API written in any programming language or web
+              framework. Just give us a brief description of your API and some
+              pricing info and we'll take things from there.
             </p>
           </div>
 
@@ -36,12 +37,12 @@ export class HowItWorksSection extends Component {
           <img alt='Launch' src={startupImage} />
 
           <div>
-            <h3>2. Deploy with Saasify</h3>
+            <h3>2. Launch on Saasify</h3>
 
             <p>
-              Deploy your project as a monetizable API with our CLI. We generate
-              a customizable SaaS website for you that handles all the billing,
-              accounts, docs, hosting, and more.
+              We generate a monetizable API proxy that tracks usage via Stripe.
+              We also generate a beautiful, customizable marketing website that
+              handles billing, user accounts, and docs. 💪
             </p>
           </div>
         </div>
@@ -51,10 +52,10 @@ export class HowItWorksSection extends Component {
             <h3>3. Earn passive income</h3>
 
             <p>
-              You collect 80% of all revenue your API makes via Stripe Connect.
-              Saasify acts as a buffer between you and paying customers, taking
-              care of all bizdev, marketing, and support requests, so you can
-              focus on what you do best.
+              We'll help you market your new SaaS API so it gets the attention
+              it deserves. You'll receive payouts each month via Stripe Connect
+              or PayPal. We'll also help with support requests so you can just
+              sit back and enjoy earning passive income.
             </p>
           </div>
 

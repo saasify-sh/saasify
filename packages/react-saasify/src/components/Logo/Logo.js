@@ -15,7 +15,7 @@ export class Logo extends Component {
           config.logo ? (
             <img
               className={theme(styles, 'logo', className)}
-              src={(light && config.deployment.saas.logoLight) || config.logo}
+              src={(light && config.deployment?.saas?.logoLight) || config.logo}
               alt={`${config.name} Logo`}
               style={style}
               {...rest}
