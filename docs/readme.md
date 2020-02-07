@@ -5,7 +5,7 @@
 </p>
 
 <h3 align="center" style="margin-top: .6rem">
-  The easiest way to launch your own SaaS API.
+  The easiest way to monetize any API.
 </h3>
 
 ---
