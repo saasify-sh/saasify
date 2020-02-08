@@ -25,7 +25,8 @@ module.exports = function getSaasifyFaasProxy(opts = {}) {
   const {
     faasUrl = 'https://ssfy.sh',
     logger = console,
-    getPath = (ctx) => ctx.req.path
+    getPath = (ctx) => ctx.req.path,
+    getParams = (ctx) => ctx.request.search
   } = opts
 
   const faasUrlProtocol = new URL(faasUrl).protocol
@@ -33,6 +34,7 @@ module.exports = function getSaasifyFaasProxy(opts = {}) {
 
   return async function saasifyFaasProxy(ctx) {
     const path = getPath(ctx)
+    const params = getParams(ctx)
     const target = `${faasUrl}/${path}`
     const url = new URL(target)
 
@@ -69,7 +71,7 @@ module.exports = function getSaasifyFaasProxy(opts = {}) {
 
     const options = {
       ...pick(url, ['protocol', 'slashes', 'host', 'port', 'hostname', 'hash']),
-      path: `${url.pathname}${ctx.request.search}`,
+      path: `${url.pathname}${params}`,
       method: ctx.req.method,
       headers
     }
