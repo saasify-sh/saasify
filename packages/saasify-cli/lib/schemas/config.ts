@@ -158,6 +158,7 @@ class SaaS {
   features?: Feature[]
   sections?: object
   theme?: Theme
+  socialShare?: object
 }
 
 class Theme {
