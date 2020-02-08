@@ -31,7 +31,7 @@ It also allows you to add additional custom `servicePath` transformations like f
 
 ## Koa
 
-This package requires you tu use [Koa](https://koajs.com), but it should be easy to convert the logic to work with other Node.js webservers.
+This package requires you to use [Koa](https://koajs.com), but it should be easy to convert the logic to work with other Node.js webservers.
 
 ## Usage
 
