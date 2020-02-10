@@ -3,9 +3,6 @@
 const emailValidator = require('email-validator')
 const isRelativeUrl = require('is-relative-url')
 
-const usernameBlacklist = require('./username-blacklist.json')
-const usernameBlacklistSet = new Set(usernameBlacklist)
-
 exports.usernameRe = /^[a-zA-Z0-9-]{1,64}$/
 exports.passwordRe = /^.{3,1024}$/
 
@@ -25,9 +22,7 @@ exports.email = (value) => {
 }
 
 exports.username = (value) => {
-  return (
-    value && exports.usernameRe.test(value) && !usernameBlacklistSet.has(value)
-  )
+  return value && exports.usernameRe.test(value)
 }
 
 exports.password = (value) => {

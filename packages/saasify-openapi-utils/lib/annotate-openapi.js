@@ -185,6 +185,34 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
       }
     }
 
+    const success = responses['200']
+    if (success) {
+      const mediaType = success.content && success.content['application/json']
+
+      if (
+        mediaType &&
+        (!mediaType.examples || !Object.keys(mediaType.examples).length)
+      ) {
+        mediaType.examples = service.examples.reduce((acc, example) => {
+          if (example.outputContentType !== 'application/json') {
+            return acc
+          }
+
+          const ex = { summary: example.name, description: example.description }
+          if (example.outputUrl) {
+            ex.externalValue = example.outputUrl
+          } else {
+            ex.value = example.output
+          }
+
+          return {
+            ...acc,
+            [example.name]: ex
+          }
+        }, {})
+      }
+    }
+
     // TODO: not sure what to do with this...
     delete op.security
 

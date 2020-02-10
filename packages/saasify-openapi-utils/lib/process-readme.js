@@ -50,8 +50,9 @@ module.exports = (rawReadme) => {
     .processSync(rawReadme)
     .toString()
 
+  const readmeValue = readme.toString().trim()
   return {
-    readme: `# Readme\n\n${readme.toString()}`,
+    readme: readmeValue ? `# Readme\n\n${readmeValue}` : '',
     quickStart: quickStart !== '\n' ? quickStart : '',
     supportingOSS: supportingOSS !== '\n' ? supportingOSS : ''
   }

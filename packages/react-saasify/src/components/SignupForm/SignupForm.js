@@ -117,11 +117,13 @@ export class SignupForm extends Component {
           .signup(data)
           .then(this.props.onAuth)
           .catch((err) => {
-            this.setState({ loading: false })
             debug(err)
+            this.setState({ loading: false })
+
             notification.error({
               message: 'Error signing up',
-              description: err.message
+              description: err?.response?.data?.error || err.message,
+              duration: 10000
             })
           })
       }
