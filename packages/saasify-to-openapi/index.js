@@ -1,12 +1,9 @@
 'use strict'
 
 // TODO: switch to using https://github.com/openapi-contrib/json-schema-to-openapi-schema
-// TODO: move codegen into annotateOpenAPI so all deployments can use it
-// TODO: move all examples and request params "example" value inference into annotateOpenAPI
 
 const jsonSchemaToOpenAPISchema = require('json-schema-to-openapi-schema')
 const pReduce = require('p-reduce')
-const codegen = require('saasify-codegen')
 
 const { prepareJsonSchema } = require('./lib/prepare-json-schema')
 
@@ -97,24 +94,24 @@ module.exports.serviceToPaths = async function serviceToPaths(
   // Example Usage
   // ---------------------------------------------------------------------------
 
-  let examplesOrdered
-  let examples
-
   if (service.examples) {
-    examplesOrdered = service.examples.filter(
+    const examplesOrdered = service.examples.filter(
       (example) =>
         !example.inputContentType ||
         example.inputContentType === 'application/json'
     )
 
     if (examplesOrdered.length) {
-      examples = examplesOrdered.reduce(
+      const examples = examplesOrdered.reduce(
         (acc, example) => ({
           ...acc,
           [example.name]: example.input
         }),
         {}
       )
+
+      // TODO: we'd really like to move this into annotate-openapi so all schemas
+      // can benefit from it.
 
       // infer example values for all parameters from the list of provided example inputs
       for (const [name, schema] of Object.entries(requestSchema.properties)) {
@@ -202,23 +199,6 @@ module.exports.serviceToPaths = async function serviceToPaths(
       responses
     }
 
-    if (examples) {
-      const example = codegen(service, null, {
-        method: 'POST'
-      })
-
-      post['x-code-samples'] = example.snippets.map((sample) => ({
-        lang: sample.language,
-        label: sample.label,
-        source: sample.code
-      }))
-
-      if (!isRawHttpRequest) {
-        post.requestBody.content['application/json'].example =
-          examplesOrdered[0].input
-      }
-    }
-
     if (definition.description) {
       post.description = definition.description
     }
@@ -261,18 +241,6 @@ module.exports.serviceToPaths = async function serviceToPaths(
     const get = {
       parameters,
       responses
-    }
-
-    if (examples) {
-      const example = codegen(service, null, {
-        method: 'GET'
-      })
-
-      get['x-code-samples'] = example.snippets.map((sample) => ({
-        lang: sample.language,
-        label: sample.label,
-        source: sample.code
-      }))
     }
 
     if (definition.description) {

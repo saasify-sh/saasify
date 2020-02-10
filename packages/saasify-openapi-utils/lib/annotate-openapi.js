@@ -2,6 +2,7 @@
 
 const cloneDeep = require('clone-deep')
 const contentType = require('content-type')
+const codegen = require('saasify-codegen')
 const { parseFaasIdentifier } = require('saasify-faas-utils')
 
 const pathToService = require('./path-to-service')
@@ -172,55 +173,108 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
       op.summary = `${name} (${httpMethod.toUpperCase()})`
     }
 
-    const { responses } = op
-
-    if (!responses['400']) {
-      responses['400'] = {
-        description: 'Invalid input'
-      }
-    }
-
-    if (!responses['429']) {
-      responses['429'] = {
-        description: 'Rate limit exceeded'
-      }
-    }
-
-    // add concrete examples to the JSON success responses
-    const success = responses['200']
-    if (success) {
-      const mediaType = success.content && success.content['application/json']
-
-      if (
-        mediaType &&
-        (!mediaType.examples || !Object.keys(mediaType.examples).length)
-      ) {
-        mediaType.examples = service.examples.reduce((acc, example) => {
-          const ct = contentType.parse(example.outputContentType)
-          const type = ct && ct.type
-
-          if (type !== 'application/json') {
-            return acc
-          }
-
-          const ex = { summary: example.name, description: example.description }
-          if (example.outputUrl) {
-            ex.externalValue = example.outputUrl
-          } else {
-            ex.value = example.output
-          }
-
-          return {
-            ...acc,
-            [example.name]: ex
-          }
-        }, {})
-      }
-    }
+    annotateOperationResponses({ op, httpMethod, service })
+    annotateOperationCodeSamples({ op, httpMethod, service })
 
     // TODO: not sure what to do with this...
     delete op.security
 
     // TODO: move codegen and example logic from saasify-to-openapi into here
+  }
+}
+
+function annotateOperationResponses({ op, service }) {
+  const { responses } = op
+
+  if (!responses['400']) {
+    responses['400'] = {
+      description: 'Invalid input'
+    }
+  }
+
+  if (!responses['429']) {
+    responses['429'] = {
+      description: 'Rate limit exceeded'
+    }
+  }
+
+  // add concrete examples to the JSON success responses
+  const success = responses['200']
+  if (success) {
+    const mediaType = success.content && success.content['application/json']
+
+    if (
+      mediaType &&
+      (!mediaType.examples || !Object.keys(mediaType.examples).length)
+    ) {
+      mediaType.examples = service.examples.reduce((acc, example) => {
+        const ct = contentType.parse(example.outputContentType)
+        const type = ct && ct.type
+
+        if (type !== 'application/json') {
+          return acc
+        }
+
+        const ex = { summary: example.name, description: example.description }
+        if (example.outputUrl) {
+          ex.externalValue = example.outputUrl
+        } else {
+          ex.value = example.output
+        }
+
+        return {
+          ...acc,
+          [example.name]: ex
+        }
+      }, {})
+    }
+  }
+}
+
+function annotateOperationCodeSamples({ op, httpMethod, service }) {
+  let example
+
+  try {
+    example = codegen(service, null, { method: httpMethod.toUpperCase() })
+  } catch (err) {
+    console.warn('codegen warning', err.message)
+  }
+
+  if (!op['x-code-samples']) {
+    op['x-code-samples'] = example.snippets.map((sample) => ({
+      lang: sample.language,
+      label: sample.label,
+      source: sample.code
+    }))
+  }
+
+  const mediaType =
+    op.requestBody &&
+    op.requestBody.content &&
+    op.requestBody.content['application/json']
+
+  if (mediaType) {
+    if (!mediaType.examples || !mediaType.examples.length) {
+      mediaType.examples = service.examples.reduce((acc, example) => {
+        const ct = contentType.parse(example.inputContentType)
+        const type = ct && ct.type
+
+        if (type !== 'application/json') {
+          return acc
+        }
+
+        const ex = { summary: example.name, description: example.description }
+        if (example.inputUrl) {
+          ex.externalValue = example.inputUrl
+        } else {
+          ex.value = example.input
+        }
+
+        return {
+          ...acc,
+          [example.name]: ex
+        }
+      }, {})
+    }
   }
 }
