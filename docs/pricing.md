@@ -53,8 +53,6 @@ This is what a more advanced pricing setup could look like.
   <img src="./_media/pricing-advanced.jpg" alt="Advanced pricing" />
 </p>
 
-TODO: this example is a bit contrived since the metered billing is a no-op. Replace with a different example.
-
 ## Constraints
 
 - Projects must have a minimum of 2 plans and a maximum of 5 plans.
