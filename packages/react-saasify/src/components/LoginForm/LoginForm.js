@@ -120,11 +120,13 @@ export class LoginForm extends Component {
           .signin(data)
           .then(this.props.onAuth)
           .catch((err) => {
-            this.setState({ loading: false })
             debug(err)
+            this.setState({ loading: false })
+
             notification.error({
               message: 'Error logging in',
-              description: err.message
+              description: err?.response?.data?.error || err.message,
+              duration: 10000
             })
           })
       }
