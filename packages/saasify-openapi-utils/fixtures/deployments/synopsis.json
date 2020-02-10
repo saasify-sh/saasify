@@ -1,0 +1,1948 @@
+{
+  "enabled": true,
+  "published": true,
+  "description": "AI-powered content extraction and summarization for webpages and articles.",
+  "readme": "<p align=\"center\">\n  <a href=\"https://synopsis.saasify.sh/\">\n    <img src=\"https://raw.githubusercontent.com/saasify-sh/synopsis/master/media/promo.jpg\" width=\"525\" />\n  </a>\n</p>\n\n# synopsis\n\n> Automagical AI-powered summarization for webpages and articles.\n\n- Uses state of the art AI to extract the core content of any webpage\n- Uses a variety of metrics to generate quality extractive text summaries\n- Summarizes html or text content\n- Utilizes html structure as a signal of text importance\n- Includes basic abstractive shortening of extracted sentences\n- Hosted by [Saasify](https://saasify.sh)\n- Thoroughly tested and used in production\n\n## Examples\n\nThe following examples all use [HTTPie](https://httpie.org/), a more intuitive version of `curl`.\n\n### The Onion Example 1\n\n*Input:* ([article](https://www.theonion.com/fun-toy-banned-because-of-three-stupid-dead-kids-1819565691))\n```bash\nhttp POST \\\n  'https://ssfy.sh/dev/synopsis/summarize' \\\n  'url=https://www.theonion.com/fun-toy-banned-because-of-three-stupid-dead-kids-1819565691'\n```\n\n*Output:*\n```json\n[\n  \"Fun Toy Banned Because Of Three Stupid Dead Kids\",\n  \"So now we have to do a full recall and halt production on what was a really awesome toy.\",\n  \"But now I'll never see it again, all because three stupid idiots had to go and wreck everything.\\\"\",\n  \"\\\"She thought the broken shards were candy.\",\n  \"That's what you'd assume after breaking a plastic, inedible toy, right?\",\n  \"\\\"I considered this for a while, but then I decided no. No way.\",\n  \"If you're 11 years old, you should know that it's impossible to fly.\",\n  \"And poor Wizco's probably going to go bankrupt because of this shit.\"\n]\n```\n\n<img src=\"https://raw.githubusercontent.com/saasify-sh/synopsis/master/media/articles/the-onion-1.jpg\" width=\"256\" />\n\n### The Onion Example 2\n\n*Input:* ([article](https://local.theonion.com/plan-to-get-laid-at-dragoncon-2001-fails-1819566152))\n```bash\nhttp POST \\\n  'https://ssfy.sh/dev/synopsis/summarize' \\\n  'url=https://local.theonion.com/plan-to-get-laid-at-dragoncon-2001-fails-1819566152'\n```\n\n*Output:*\n```json\n[\n  \"Plan To Get Laid At DragonCon 2001 Fails\",\n  \"\\\"I know a lot of girls online, but that's not really the same,\\\" Melcher said.\",\n  \"\\\"I imagined some girl and I talking about the new Lord Of The Rings movie,\\\" Melcher said.\",\n  \"\\\"I guess girls aren't into dragons and superheroes as much as guys are,\\\" Melcher said.\",\n  \"\\\"Andy and I went to this Sailor Moon thing because we knew girls would be there,\\\" Melcher said.\",\n  \"\\\"Make no mistake—we do not like Sailor Moon.\",\n  \"The women, however, were only interested in talking about Sailor Moon.\",\n  \"\\\"This one girl asked me if I wrote fan fiction, and I said yes,\\\" Melcher said.\",\n  \"The following night, Melcher attended a party he had heard about in an online chat room.\"\n]\n```\n\n<img src=\"https://raw.githubusercontent.com/saasify-sh/synopsis/master/media/articles/the-onion-2.jpg\" width=\"256\" />\n\n### The Onion Example 3\n\n*Input:* ([article](https://www.theonion.com/everyone-involved-in-pizzas-preparation-delivery-purc-1819564897))\n```bash\nhttp POST \\\n  'https://ssfy.sh/dev/synopsis/summarize' \\\n  'url=https://www.theonion.com/everyone-involved-in-pizzas-preparation-delivery-purc-1819564897'\n```\n\n*Output:*\n```json\n[\n  \"Everyone Involved In Pizza's Preparation, Delivery, Buy Extremely High\",\n  \"After taking the order, Lindeman relayed it to co-worker and fellow stoner Greg Kanner.\",\n  \"At 1 a.m. Monday, the pizza came into material being for the first time.\",\n  \"\\\"After all, it's just pizza, right?\",\n  \"Also, Bickell and Wang had forgotten to include their apartment number with the order.\",\n  \"Fuck!\\\" Behr later described the prolonged Blount Street search as \\\"a serious fucking hassle.\\\"\",\n  \"\\\"They were seriously bitching me out,\\\" said Lindeman, who was royally baked at the time.\",\n  \"\\\"I was like, 'Dude, just chill, your pizza will be there any sec.'\\\"\",\n  \"Finally, at 3:10 a.m., more than three hours after the order was placed, the pizza reached its destination.\"\n]\n```\n\n<img src=\"https://raw.githubusercontent.com/saasify-sh/synopsis/master/media/articles/the-onion-3.jpg\" height=\"130\" />\n\n### Wait But Why Example\n\n*Input:* ([article](https://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html))\n```bash\nhttp POST \\\n  'https://ssfy.sh/dev/synopsis/summarize' \\\n  'url=https://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html'\n```\n\n*Output:*\n```json\n[\n  \"The AI Revolution: The Road to Superintelligence\",\n  \"The Far Future—Coming Soon\",\n  \"The Road to Superintelligence\",\n  \"What Is AI?\",\n  \"Where We Are Now—A World Running on ANI\",\n  \"The Road From ANI to AGI\",\n  \"Plagiarize the brain.\",\n  \"Try to make evolution do what it did before but for us this time.\",\n  \"Make this whole thing the computer’s problem, not ours.\",\n  \"All This Could Happen Soon\"\n]\n```\n\n<img src=\"https://raw.githubusercontent.com/saasify-sh/synopsis/master/media/articles/wait-but-why-1.png\" width=\"256\" />\n\n## Metrics\n\nReplace `/summarize` with `/detail` to see the full metrics for how the input was processed which will give you a better understanding of why certain sentences were deemed more important by the algorithm.\n\n- tfidf overlap for base relative sentence importance\n- html node boosts for tags like `<h1>` and `<strong>`\n- listicle boosts for lists like `2) second item`\n- penalty for poor readability or really long sentences\n\nHere's an example of a sentence's internal structure after normalization, processing, and scoring:\n\n```js\n{\n  \"index\": 8,\n  \"sentence\": {\n    \"original\": \"4. For the cost of 1 highly produced video, you can get a year's worth of videos from Automagical.\",\n    \"listItem\": 4,\n    \"actual\": \"For the cost of 1 highly produced video, you can get a year's worth of videos from Automagical.\",\n    \"normalized\": \"for the cost of 1 highly produced video you can get a years worth of videos from automagical\",\n    \"tokenized\": [\n      \"cost\",\n      \"highly\",\n      \"produced\",\n      \"video\",\n      \"years\",\n      \"worth\",\n      \"videos\",\n      \"automagical\"\n    ]\n  },\n  \"liScore\": 1,\n  \"nodeScore\": 0.7,\n  \"readabilityPenalty\": 0,\n  \"tfidfScore\": 0.8019447657605553,\n  \"score\": 5.601944765760555\n}\n```\n",
+  "keywords": [],
+  "noAuthRateLimit": {
+    "enabled": true,
+    "requests": true,
+    "requestsInterval": 3600,
+    "requestsMaxPerInterval": 10
+  },
+  "amountPerBase": 1000,
+  "amountPerRequest": 2,
+  "amountPerCompute": 0,
+  "amountPerBandwidth": 0,
+  "hash": "15f060e3",
+  "user": "5d5b477eb5fab1199c927a36",
+  "team": "5dbef994fb93dc256540b0ce",
+  "project": {
+    "keywords": [],
+    "description": "AI-powered content extraction and summarization for webpages and articles.",
+    "_text": "synopsis automagical aipowered summarization webpages articles state art ai extract core content webpage variety metrics generate quality extractive text summaries summarizes html utilizes structure signal importance includes basic abstractive shortening extracted sentences hosted saasify tested production examples httpie intuitive version curl onion input article output wait replace /summarize /detail full processed give understanding deemed important algorithm tfidf overlap base relative sentence node boosts tags &lt h1> strong> listicle lists item penalty poor readability long internal normalization processing scoring",
+    "_id": "dev/synopsis",
+    "enabled": true,
+    "name": "synopsis",
+    "user": "5d83ec532df4320052a8269a",
+    "team": "5dbef994fb93dc256540b0ce",
+    "publishedVersions": [
+      {
+        "deployment": "dev/synopsis@557d1e98",
+        "version": "1.0.0"
+      },
+      {
+        "deployment": "dev/synopsis@ad72751d",
+        "version": "1.0.1"
+      },
+      {
+        "deployment": "dev/synopsis@fa4459d0",
+        "version": "1.0.2"
+      },
+      {
+        "deployment": "dev/synopsis@fd620921",
+        "version": "1.0.3"
+      },
+      {
+        "deployment": "dev/synopsis@e35ecfba",
+        "version": "1.0.4"
+      },
+      {
+        "deployment": "dev/synopsis@f9b121cd",
+        "version": "1.0.6"
+      },
+      {
+        "deployment": "dev/synopsis@15f060e3",
+        "version": "1.0.7"
+      }
+    ],
+    "createdAt": "2019-11-06T00:00:24.653Z",
+    "updatedAt": "2020-01-06T09:19:43.822Z",
+    "__v": 7,
+    "alias": "synopsis",
+    "lastPublishedDeployment": "dev/synopsis@15f060e3",
+    "lastPublishedVersion": "1.0.7",
+    "_stripeBandwidthProductLive": "prod_G7xA27dL0G0igH",
+    "_stripeBaseProductLive": "prod_G7xAD6FKnmoUcU",
+    "_stripeComputeProductLive": "prod_G7xAKvEkRBOZtQ",
+    "_stripeRequestProductLive": "prod_G7xACEIS1CEr4Z",
+    "_stripeFreeBasePlanLive": "plan_G89r33C9aGLCoU",
+    "_stripeFreeRequestPlanLive": "plan_G89rtjBVkCuN8A",
+    "__stripeCouponsLive": {},
+    "__stripeCouponsTest": {},
+    "__stripePlansLive": {
+      "base:70606ce87f7ce806a775c2e0a8e4121e9fcefb8991221a7657ad28d872a61b64": "plan_G7xAdPIRFpChWu",
+      "requests:c21412bb760e58b5aed745e16aec8ee2e1d2b0bc6193f98f0ef2ceef089719f3": "plan_G7xA6GDb3oYq0i"
+    },
+    "__stripePlansTest": {},
+    "stripeBaseProduct": "prod_G7xAD6FKnmoUcU",
+    "stripeRequestProduct": "prod_G7xACEIS1CEr4Z",
+    "_stripeCoupons": {},
+    "_stripePlans": {
+      "base:70606ce87f7ce806a775c2e0a8e4121e9fcefb8991221a7657ad28d872a61b64": "plan_G7xAdPIRFpChWu",
+      "requests:c21412bb760e58b5aed745e16aec8ee2e1d2b0bc6193f98f0ef2ceef089719f3": "plan_G7xA6GDb3oYq0i"
+    },
+    "saasUrl": "https://dev_synopsis.saasify.sh",
+    "aliasUrl": "https://synopsis.saasify.sh",
+    "id": "dev/synopsis"
+  },
+  "version": "1.0.7",
+  "authRateLimit": null,
+  "services": [
+    {
+      "name": "summarize",
+      "adaptor": "typescript",
+      "GET": true,
+      "POST": true,
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [
+        {
+          "inputContentType": "application/json",
+          "outputContentType": "application/json; charset=utf-8",
+          "name": "The Onion 1",
+          "description": "Summarizes an Onion article",
+          "input": {
+            "url": "https://www.theonion.com/fun-toy-banned-because-of-three-stupid-dead-kids-1819565691"
+          },
+          "output": [
+            "Fun Toy Banned Because Of Three Stupid Dead Kids",
+            "So now we have to do a full recall and halt production on what was a really awesome toy.",
+            "What a waste.\"",
+            "But now I'll never see it again, all because three stupid idiots had to go and wreck everything.\"",
+            "\"She thought the broken shards were candy.",
+            "That's what you'd assume after breaking a plastic, inedible toy, right?",
+            "If you're 11 years old, you should know that it's impossible to fly.",
+            "And poor Wizco's probably going to go bankrupt because of this shit.\""
+          ]
+        },
+        {
+          "inputContentType": "application/json",
+          "outputContentType": "application/json; charset=utf-8",
+          "name": "The Onion 2",
+          "description": "Summarizes an Onion article",
+          "input": {
+            "url": "https://local.theonion.com/plan-to-get-laid-at-dragoncon-2001-fails-1819566152"
+          },
+          "output": [
+            "Plan To Get Laid At DragonCon 2001 Fails",
+            "\"I know a lot of girls online, but that's not really the same,\" Melcher said.",
+            "\"I imagined some girl and I talking about the new Lord Of The Rings movie,\" Melcher said.",
+            "\"I guess girls aren't into dragons and superheroes as much as guys are,\" Melcher said.",
+            "She had the boots and the fishnet stockings and everything,\" Melcher said.",
+            "\"Andy and I went to this Sailor Moon thing because we knew girls would be there,\" Melcher said.",
+            "\"This one girl asked me if I wrote fan fiction, and I said yes,\" Melcher said.",
+            "The following night, Melcher attended a party he had heard about in an online chat room.",
+            "\"The next day, Andy had to drive the whole way home while I slept in the back seat,\" Melcher said."
+          ]
+        },
+        {
+          "inputContentType": "application/json",
+          "outputContentType": "application/json; charset=utf-8",
+          "name": "The Onion 3",
+          "description": "Summarizes an Onion article",
+          "input": {
+            "url": "https://www.theonion.com/everyone-involved-in-pizzas-preparation-delivery-purc-1819564897"
+          },
+          "output": [
+            "Everyone Involved In Pizza's Preparation, Delivery, Buy Extremely High",
+            "After taking the order, Lindeman relayed it to co-worker and fellow stoner Greg Kanner.",
+            "At 1 a.m. Monday, the pizza came into material being for the first time.",
+            "\"After all, it's just pizza, right?",
+            "\"For one, Behr went to the wrong discuss at least four times.",
+            "Also, Bickell and Wang had forgotten to include their apartment number with the order.",
+            "Fuck!\" Behr later described the prolonged Blount Street search as \"a serious fucking hassle.\"",
+            "\"They were seriously bitching me out,\" said Lindeman, who was royally baked at the time."
+          ]
+        },
+        {
+          "inputContentType": "application/json",
+          "outputContentType": "application/json; charset=utf-8",
+          "name": "Wait But Why",
+          "description": "Summarizes a blog post",
+          "input": {
+            "url": "https://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html"
+          },
+          "output": [
+            "The Artificial Intelligence Revolution: Part 1 - Wait But Why",
+            "Our own experience makes us stubborn old men about the future.",
+            "AI is a broad topic.",
+            "We use AI all the time in our daily lives, but we often don’t realize it’s AI.",
+            "AI is the brain, and the robot is its body—if it even has a body.",
+            "As of now, the human brain is the most complex object in the known universe.",
+            "Make AI that can beat any human in chess?",
+            "The human brain has 100 billion.",
+            "Building a computer as powerful as the brain is possible—our own brain’s evolution is proof.",
+            "Some debate about how soon AI will reach human-level general intelligence.",
+            "A computer is able to understand the world around it as well as a human four-year-old."
+          ]
+        }
+      ],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "timeout": 0,
+      "src": "./src/summarize.ts",
+      "path": "/summarize",
+      "definition": {
+        "config": {
+          "defaultExport": true,
+          "language": "typescript"
+        },
+        "params": {
+          "http": false,
+          "context": false,
+          "order": [
+            "url",
+            "input",
+            "title",
+            "numSentences",
+            "minNumSentences",
+            "maxNumSentences",
+            "minImageWidth",
+            "minImageHeight",
+            "media"
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "description": "Link to website to summarize.",
+                "type": "string"
+              },
+              "input": {
+                "description": "Text or HTML to summarize.",
+                "type": "string"
+              },
+              "title": {
+                "description": "Title of `input` content.",
+                "type": "string"
+              },
+              "numSentences": {
+                "description": "Optional number of sentences to produce. Default is to\ninfer a reasonable number based on the input's length.",
+                "type": "number"
+              },
+              "minNumSentences": {
+                "description": "Optional minimum number of sentences to produce.",
+                "type": "number",
+                "default": 1
+              },
+              "maxNumSentences": {
+                "description": "Optional maximum number of sentences to produce.",
+                "type": "number",
+                "default": 1000
+              },
+              "minImageWidth": {
+                "description": "Optional minimum image width when considering images in HTML.",
+                "type": "number",
+                "default": 400
+              },
+              "minImageHeight": {
+                "description": "Optional minimum image height when considering images in HTML.",
+                "type": "number",
+                "default": 300
+              },
+              "media": {
+                "description": "Whether or not to consider source media during summarization.",
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "returns": {
+          "async": true,
+          "http": false,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "version": "1.1.0",
+        "title": "summarize",
+        "description": "Summarizes the content of any `url` or `input` text.\n\nMust provide either `url` or `input`.\n\nReturns the summary as an array of strings / sentences."
+      },
+      "url": "https://ssfy.sh/dev/synopsis@15f060e3/summarize",
+      "route": "/dev/synopsis@15f060e3/summarize"
+    },
+    {
+      "name": "detail",
+      "adaptor": "typescript",
+      "GET": true,
+      "POST": true,
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [
+        {
+          "inputContentType": "application/json",
+          "outputContentType": "application/json; charset=utf-8",
+          "name": "The Onion",
+          "input": {
+            "url": "https://www.theonion.com/everyone-involved-in-pizzas-preparation-delivery-purc-1819564897"
+          },
+          "output": {
+            "title": "Everyone Involved In Pizza's Preparation, Delivery, Purchase Extremely High",
+            "extractive": [
+              "Everyone Involved In Pizza's Preparation, Delivery, Purchase Extremely High",
+              "After taking the order, Lindeman relayed it to co-worker and fellow stoner Greg Kanner.",
+              "At 1 a.m. Monday, the pizza came into material being for the first time.",
+              "\"After all, it's just pizza, right?",
+              "\"For one, Behr went to the wrong address at least four times.",
+              "Also, Bickell and Wang had forgotten to include their apartment number with the order.",
+              "Fuck!\" Behr later described the prolonged Blount Street search as \"a serious fucking hassle.\"",
+              "\"They were seriously bitching me out,\" said Lindeman, who was royally baked at the time."
+            ],
+            "abstractive": [
+              "Everyone Involved In Pizza's Preparation, Delivery, Buy Extremely High",
+              "After taking the order, Lindeman relayed it to co-worker and fellow stoner Greg Kanner.",
+              "At 1 a.m. Monday, the pizza came into material being for the first time.",
+              "\"After all, it's just pizza, right?",
+              "\"For one, Behr went to the wrong discuss at least four times.",
+              "Also, Bickell and Wang had forgotten to include their apartment number with the order.",
+              "Fuck!\" Behr later described the prolonged Blount Street search as \"a serious fucking hassle.\"",
+              "\"They were seriously bitching me out,\" said Lindeman, who was royally baked at the time."
+            ],
+            "topItems": [
+              {
+                "sentence": {
+                  "original": "Everyone Involved In Pizza's Preparation, Delivery, Purchase Extremely High",
+                  "actual": "Everyone Involved In Pizza's Preparation, Delivery, Purchase Extremely High",
+                  "normalized": "everyone involved in pizzas preparation delivery purchase extremely high",
+                  "tokenized": [
+                    "involved",
+                    "pizzas",
+                    "preparation",
+                    "delivery",
+                    "purchase",
+                    "extremely",
+                    "high"
+                  ]
+                },
+                "index": -1
+              },
+              {
+                "index": 11,
+                "sentence": {
+                  "original": "After taking the order, Lindeman relayed it to co-worker and fellow stoner Greg Kanner.",
+                  "actual": "After taking the order, Lindeman relayed it to co-worker and fellow stoner Greg Kanner.",
+                  "normalized": "after taking the order lindeman relayed it to coworker and fellow stoner greg kanner",
+                  "tokenized": [
+                    "order",
+                    "lindeman",
+                    "relayed",
+                    "coworker",
+                    "fellow",
+                    "stoner",
+                    "greg",
+                    "kanner"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.7659762613507658,
+                "score": 0.7659762613507658
+              },
+              {
+                "index": 13,
+                "sentence": {
+                  "original": "At 1 a.m. Monday, the pizza came into material being for the first time.",
+                  "actual": "At 1 a.m. Monday, the pizza came into material being for the first time.",
+                  "normalized": "at 1 am monday the pizza came into material being for the first time",
+                  "tokenized": [
+                    "monday",
+                    "pizza",
+                    "material",
+                    "time"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 1.5766339264971847,
+                "score": 1.5766339264971847
+              },
+              {
+                "index": 16,
+                "sentence": {
+                  "original": "\"After all, it's just pizza, right?",
+                  "actual": "\"After all, it's just pizza, right?",
+                  "normalized": "\"after all its just pizza right?",
+                  "tokenized": [
+                    "pizza"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 1.4015677324244655,
+                "score": 1.4015677324244655
+              },
+              {
+                "index": 21,
+                "sentence": {
+                  "original": "\"For one, Behr went to the wrong address at least four times.",
+                  "actual": "\"For one, Behr went to the wrong address at least four times.",
+                  "normalized": "\"for one behr went to the wrong address at least four times",
+                  "tokenized": [
+                    "behr",
+                    "wrong",
+                    "address",
+                    "times"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.46875318377243924,
+                "score": 0.46875318377243924
+              },
+              {
+                "index": 22,
+                "sentence": {
+                  "original": "Also, Bickell and Wang had forgotten to include their apartment number with the order.",
+                  "actual": "Also, Bickell and Wang had forgotten to include their apartment number with the order.",
+                  "normalized": "also bickell and wang had forgotten to include their apartment number with the order",
+                  "tokenized": [
+                    "bickell",
+                    "wang",
+                    "forgotten",
+                    "include",
+                    "apartment",
+                    "number",
+                    "order"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.8816670744475258,
+                "score": 0.8816670744475258
+              },
+              {
+                "index": 25,
+                "sentence": {
+                  "original": "Fuck!\" Behr later described the prolonged Blount Street search as \"a serious fucking hassle.\"",
+                  "actual": "Fuck!\" Behr later described the prolonged Blount Street search as \"a serious fucking hassle.\"",
+                  "normalized": "fuck!\" behr later described the prolonged blount street search as \"a serious fucking hassle\"",
+                  "tokenized": [
+                    "fuck",
+                    "behr",
+                    "prolonged",
+                    "blount",
+                    "street",
+                    "search",
+                    "fucking",
+                    "hassle"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.6004265117467663,
+                "score": 0.6004265117467663
+              },
+              {
+                "index": 27,
+                "sentence": {
+                  "original": "\"They were seriously bitching me out,\" said Lindeman, who was royally baked at the time.",
+                  "actual": "\"They were seriously bitching me out,\" said Lindeman, who was royally baked at the time.",
+                  "normalized": "\"they were seriously bitching me out\" said lindeman who was royally baked at the time",
+                  "tokenized": [
+                    "bitching",
+                    "lindeman",
+                    "royally",
+                    "baked",
+                    "time"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.6699871943774383,
+                "score": 0.6699871943774383
+              }
+            ],
+            "items": [
+              {
+                "index": 13,
+                "sentence": {
+                  "original": "At 1 a.m. Monday, the pizza came into material being for the first time.",
+                  "actual": "At 1 a.m. Monday, the pizza came into material being for the first time.",
+                  "normalized": "at 1 am monday the pizza came into material being for the first time",
+                  "tokenized": [
+                    "monday",
+                    "pizza",
+                    "material",
+                    "time"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 1.5766339264971847,
+                "score": 1.5766339264971847
+              },
+              {
+                "index": 16,
+                "sentence": {
+                  "original": "\"After all, it's just pizza, right?",
+                  "actual": "\"After all, it's just pizza, right?",
+                  "normalized": "\"after all its just pizza right?",
+                  "tokenized": [
+                    "pizza"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 1.4015677324244655,
+                "score": 1.4015677324244655
+              },
+              {
+                "index": 22,
+                "sentence": {
+                  "original": "Also, Bickell and Wang had forgotten to include their apartment number with the order.",
+                  "actual": "Also, Bickell and Wang had forgotten to include their apartment number with the order.",
+                  "normalized": "also bickell and wang had forgotten to include their apartment number with the order",
+                  "tokenized": [
+                    "bickell",
+                    "wang",
+                    "forgotten",
+                    "include",
+                    "apartment",
+                    "number",
+                    "order"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.8816670744475258,
+                "score": 0.8816670744475258
+              },
+              {
+                "index": 11,
+                "sentence": {
+                  "original": "After taking the order, Lindeman relayed it to co-worker and fellow stoner Greg Kanner.",
+                  "actual": "After taking the order, Lindeman relayed it to co-worker and fellow stoner Greg Kanner.",
+                  "normalized": "after taking the order lindeman relayed it to coworker and fellow stoner greg kanner",
+                  "tokenized": [
+                    "order",
+                    "lindeman",
+                    "relayed",
+                    "coworker",
+                    "fellow",
+                    "stoner",
+                    "greg",
+                    "kanner"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.7659762613507658,
+                "score": 0.7659762613507658
+              },
+              {
+                "index": 27,
+                "sentence": {
+                  "original": "\"They were seriously bitching me out,\" said Lindeman, who was royally baked at the time.",
+                  "actual": "\"They were seriously bitching me out,\" said Lindeman, who was royally baked at the time.",
+                  "normalized": "\"they were seriously bitching me out\" said lindeman who was royally baked at the time",
+                  "tokenized": [
+                    "bitching",
+                    "lindeman",
+                    "royally",
+                    "baked",
+                    "time"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.6699871943774383,
+                "score": 0.6699871943774383
+              },
+              {
+                "index": 25,
+                "sentence": {
+                  "original": "Fuck!\" Behr later described the prolonged Blount Street search as \"a serious fucking hassle.\"",
+                  "actual": "Fuck!\" Behr later described the prolonged Blount Street search as \"a serious fucking hassle.\"",
+                  "normalized": "fuck!\" behr later described the prolonged blount street search as \"a serious fucking hassle\"",
+                  "tokenized": [
+                    "fuck",
+                    "behr",
+                    "prolonged",
+                    "blount",
+                    "street",
+                    "search",
+                    "fucking",
+                    "hassle"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.6004265117467663,
+                "score": 0.6004265117467663
+              },
+              {
+                "index": 21,
+                "sentence": {
+                  "original": "\"For one, Behr went to the wrong address at least four times.",
+                  "actual": "\"For one, Behr went to the wrong address at least four times.",
+                  "normalized": "\"for one behr went to the wrong address at least four times",
+                  "tokenized": [
+                    "behr",
+                    "wrong",
+                    "address",
+                    "times"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.46875318377243924,
+                "score": 0.46875318377243924
+              },
+              {
+                "index": 31,
+                "sentence": {
+                  "original": "We invited him in and the three of us just pulled bingers and chowed that shit down.",
+                  "actual": "We invited him in and the three of us just pulled bingers and chowed that shit down.",
+                  "normalized": "we invited him in and the three of us just pulled bingers and chowed that shit down",
+                  "tokenized": [
+                    "invited",
+                    "pulled",
+                    "bingers",
+                    "chowed",
+                    "shit"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.4402011125374412,
+                "score": 0.4402011125374412
+              },
+              {
+                "index": 34,
+                "sentence": {
+                  "original": "Added Bickell: \"Then we all just sat back and vegged out.",
+                  "actual": "Added Bickell: \"Then we all just sat back and vegged out.",
+                  "normalized": "added bickell: \"then we all just sat back and vegged out",
+                  "tokenized": [
+                    "added",
+                    "bickell",
+                    "sat",
+                    "vegged"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.3700375362763039,
+                "score": 0.3700375362763039
+              },
+              {
+                "index": 5,
+                "sentence": {
+                  "original": "After an exhaustive search, it was finally found on the coffee table directly next to the phone.",
+                  "actual": "After an exhaustive search, it was finally found on the coffee table directly next to the phone.",
+                  "normalized": "after an exhaustive search it was finally found on the coffee table directly next to the phone",
+                  "tokenized": [
+                    "exhaustive",
+                    "search",
+                    "finally",
+                    "coffee",
+                    "table",
+                    "phone"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.3642737582838013,
+                "score": 0.3642737582838013
+              },
+              {
+                "index": 17,
+                "sentence": {
+                  "original": "But I was so high, I got kind of confused about the toppings.",
+                  "actual": "But I was so high, I got kind of confused about the toppings.",
+                  "normalized": "but i was so high i got kind of confused about the toppings",
+                  "tokenized": [
+                    "high",
+                    "kind",
+                    "confused",
+                    "toppings"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.29665118079752223,
+                "score": 0.29665118079752223
+              },
+              {
+                "index": 7,
+                "sentence": {
+                  "original": "\"It took me a while to figure out what they wanted,\" Lindeman said.",
+                  "actual": "\"It took me a while to figure out what they wanted,\" Lindeman said.",
+                  "normalized": "\"it took me a while to figure out what they wanted\" lindeman said",
+                  "tokenized": [
+                    "figure",
+                    "wanted",
+                    "lindeman"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0.2962635584586804,
+                "score": 0.2962635584586804
+              },
+              {
+                "index": 18,
+                "sentence": {
+                  "original": "It was no big deal, though.\"",
+                  "actual": "It was no big deal, though.\"",
+                  "normalized": "it was no big deal though\"",
+                  "tokenized": [
+                    "big",
+                    "deal"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0,
+                "score": 0
+              },
+              {
+                "index": 33,
+                "sentence": {
+                  "original": "To tell you the truth, I don't think he even noticed.\"",
+                  "actual": "To tell you the truth, I don't think he even noticed.\"",
+                  "normalized": "to tell you the truth i dont think he even noticed\"",
+                  "tokenized": [
+                    "truth",
+                    "noticed"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0,
+                "score": 0
+              },
+              {
+                "index": 30,
+                "sentence": {
+                  "original": "\"But he said we could have it free, so we weren't pissed or nothing.",
+                  "actual": "\"But he said we could have it free, so we weren't pissed or nothing.",
+                  "normalized": "\"but he said we could have it free so we werent pissed or nothing",
+                  "tokenized": [
+                    "free",
+                    "pissed"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": 0,
+                "attributionScore": 0,
+                "tfidfScore": 0,
+                "score": 0
+              },
+              {
+                "index": 15,
+                "sentence": {
+                  "original": "\"I wasn't really trained to do what I was doing, but I figured, shit, how hard can it be?\" Kanner said.",
+                  "actual": "\"I wasn't really trained to do what I was doing, but I figured, shit, how hard can it be?\" Kanner said.",
+                  "normalized": "\"i wasnt really trained to do what i was doing but i figured shit how hard can it be?\" kanner said",
+                  "tokenized": [
+                    "trained",
+                    "figured",
+                    "shit",
+                    "hard",
+                    "kanner"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -0.9583333333333334,
+                "attributionScore": 0,
+                "tfidfScore": 0.676286165695665,
+                "score": -0.28204716763766835
+              },
+              {
+                "index": 2,
+                "sentence": {
+                  "original": "\"In the brief time this pizza spent on Earth, at no point did it come into contact with a single non-stoned human being.\"",
+                  "actual": "\"In the brief time this pizza spent on Earth, at no point did it come into contact with a single non-stoned human being.\"",
+                  "normalized": "\"in the brief time this pizza spent on earth at no point did it come into contact with a single nonstoned human being\"",
+                  "tokenized": [
+                    "time",
+                    "pizza",
+                    "spent",
+                    "earth",
+                    "point",
+                    "contact",
+                    "single",
+                    "nonstoned",
+                    "human"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -1.7083333333333335,
+                "attributionScore": 0,
+                "tfidfScore": 1.331871902759726,
+                "score": -0.3764614305736076
+              },
+              {
+                "index": 8,
+                "sentence": {
+                  "original": "\"When I was listing off the toppings we've got, they kept asking if they could get, like, Fritos or sandwiches on the pizza.",
+                  "actual": "\"When I was listing off the toppings we've got, they kept asking if they could get, like, Fritos or sandwiches on the pizza.",
+                  "normalized": "\"when i was listing off the toppings weve got they kept asking if they could get like fritos or sandwiches on the pizza",
+                  "tokenized": [
+                    "listing",
+                    "toppings",
+                    "fritos",
+                    "sandwiches",
+                    "pizza"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -1.8333333333333333,
+                "attributionScore": 0,
+                "tfidfScore": 1.222357365019653,
+                "score": -0.6109759683136802
+              },
+              {
+                "index": 32,
+                "sentence": {
+                  "original": "It's, like, against the Wangster's beliefs and shit to eat sausage and pepperoni, but he was cool about it.",
+                  "actual": "It's, like, against the Wangster's beliefs and shit to eat sausage and pepperoni, but he was cool about it.",
+                  "normalized": "its like against the wangsters beliefs and shit to eat sausage and pepperoni but he was cool about it",
+                  "tokenized": [
+                    "wangsters",
+                    "beliefs",
+                    "shit",
+                    "eat",
+                    "sausage",
+                    "pepperoni",
+                    "cool"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -1.125,
+                "attributionScore": 0,
+                "tfidfScore": 0.41750931994834434,
+                "score": -0.7074906800516556
+              },
+              {
+                "index": 26,
+                "sentence": {
+                  "original": "Matters were further complicated by the five phone calls Bickell and Wang made to the pizzeria to inquire about the status of their pizza.",
+                  "actual": "Matters were further complicated by the five phone calls Bickell and Wang made to the pizzeria to inquire about the status of their pizza.",
+                  "normalized": "matters were further complicated by the five phone calls bickell and wang made to the pizzeria to inquire about the status of their pizza",
+                  "tokenized": [
+                    "matters",
+                    "complicated",
+                    "phone",
+                    "calls",
+                    "bickell",
+                    "wang",
+                    "pizzeria",
+                    "inquire",
+                    "status",
+                    "pizza"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -2.4166666666666665,
+                "attributionScore": 0,
+                "tfidfScore": 1.6551534514035227,
+                "score": -0.7615132152631439
+              },
+              {
+                "index": 23,
+                "sentence": {
+                  "original": "Furthermore, Behr ran out of gas about 10 minutes into the trip and had to walk to a nearby station with a gas can to get more.\"",
+                  "actual": "Furthermore, Behr ran out of gas about 10 minutes into the trip and had to walk to a nearby station with a gas can to get more.\"",
+                  "normalized": "furthermore behr ran out of gas about 10 minutes into the trip and had to walk to a nearby station with a gas can to get more\"",
+                  "tokenized": [
+                    "behr",
+                    "ran",
+                    "gas",
+                    "10",
+                    "minutes",
+                    "trip",
+                    "walk",
+                    "nearby",
+                    "station",
+                    "gas"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -2,
+                "attributionScore": 0,
+                "tfidfScore": 0.5307580192802575,
+                "score": -1.4692419807197425
+              },
+              {
+                "index": 9,
+                "sentence": {
+                  "original": "Plus, there were a ton of calls on hold, and I was getting pretty stressed trying to get their order and move on to the next caller.",
+                  "actual": "Plus, there were a ton of calls on hold, and I was getting pretty stressed trying to get their order and move on to the next caller.",
+                  "normalized": "plus there were a ton of calls on hold and i was getting pretty stressed trying to get their order and move on to the next caller",
+                  "tokenized": [
+                    "ton",
+                    "calls",
+                    "hold",
+                    "pretty",
+                    "stressed",
+                    "order",
+                    "move",
+                    "caller"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -2.166666666666667,
+                "attributionScore": 0,
+                "tfidfScore": 0.3636589780684774,
+                "score": -1.8030076885981896
+              },
+              {
+                "index": 4,
+                "sentence": {
+                  "original": "After spending the next 19 minutes deciding which pizzeria to call, Wang and Bickell moved into the next phase of the pizza saga, an 11-minute search for a $2 coupon.",
+                  "actual": "After spending the next 19 minutes deciding which pizzeria to call, Wang and Bickell moved into the next phase of the pizza saga, an 11-minute search for a $2 coupon.",
+                  "normalized": "after spending the next 19 minutes deciding which pizzeria to call wang and bickell moved into the next phase of the pizza saga an 11minute search for a $2 coupon",
+                  "tokenized": [
+                    "spending",
+                    "19",
+                    "minutes",
+                    "deciding",
+                    "pizzeria",
+                    "call",
+                    "wang",
+                    "bickell",
+                    "moved",
+                    "phase",
+                    "pizza",
+                    "saga",
+                    "11minute",
+                    "search",
+                    "coupon"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -3.5833333333333335,
+                "attributionScore": 0,
+                "tfidfScore": 1.4856709562553123,
+                "score": -2.097662377078021
+              },
+              {
+                "index": 36,
+                "sentence": {
+                  "original": "It's kind of hard to really follow the chain of events at that point because, basically, everybody was out of their freaking minds on dope.\"",
+                  "actual": "It's kind of hard to really follow the chain of events at that point because, basically, everybody was out of their freaking minds on dope.\"",
+                  "normalized": "its kind of hard to really follow the chain of events at that point because basically everybody was out of their freaking minds on dope\"",
+                  "tokenized": [
+                    "kind",
+                    "hard",
+                    "follow",
+                    "chain",
+                    "events",
+                    "point",
+                    "basically",
+                    "freaking",
+                    "minds",
+                    "dope"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -2.5,
+                "attributionScore": 0,
+                "tfidfScore": 0.25361975164994066,
+                "score": -2.2463802483500594
+              },
+              {
+                "index": 28,
+                "sentence": {
+                  "original": "\"I was like, 'Dude, just chill, your pizza will be there any sec.'\" Finally, at 3:10 a.m., more than three hours after the order was placed, the pizza reached its destination.",
+                  "actual": "\"I was like, 'Dude, just chill, your pizza will be there any sec.'\" Finally, at 3:10 a.m., more than three hours after the order was placed, the pizza reached its destination.",
+                  "normalized": "\"i was like dude just chill your pizza will be there any sec\" finally at 3:10 am more than three hours after the order was placed the pizza reached its destination",
+                  "tokenized": [
+                    "dude",
+                    "chill",
+                    "pizza",
+                    "sec",
+                    "finally",
+                    "10",
+                    "hours",
+                    "order",
+                    "pizza",
+                    "reached",
+                    "destination"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -3.958333333333333,
+                "attributionScore": 0,
+                "tfidfScore": 1.3557066404310358,
+                "score": -2.602626692902297
+              },
+              {
+                "index": 10,
+                "sentence": {
+                  "original": "But, luckily, me and Greg had just toked down this huge-ass fatty in the walk-in cooler, so I was able to maintain a mellow attitude throughout.\"",
+                  "actual": "But, luckily, me and Greg had just toked down this huge-ass fatty in the walk-in cooler, so I was able to maintain a mellow attitude throughout.\"",
+                  "normalized": "but luckily me and greg had just toked down this hugeass fatty in the walkin cooler so i was able to maintain a mellow attitude throughout\"",
+                  "tokenized": [
+                    "luckily",
+                    "greg",
+                    "toked",
+                    "hugeass",
+                    "fatty",
+                    "walkin",
+                    "cooler",
+                    "maintain",
+                    "mellow",
+                    "attitude"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -2.708333333333333,
+                "attributionScore": 0,
+                "tfidfScore": 0.06775067750677506,
+                "score": -2.640582655826558
+              },
+              {
+                "index": 12,
+                "sentence": {
+                  "original": "Kanner, normally a cashier, was forced to make pizzas that evening due to the absence of regular cook Ronny Poquette, who had skipped work because he was \"tripping his ass off.\"",
+                  "actual": "Kanner, normally a cashier, was forced to make pizzas that evening due to the absence of regular cook Ronny Poquette, who had skipped work because he was \"tripping his ass off.\"",
+                  "normalized": "kanner normally a cashier was forced to make pizzas that evening due to the absence of regular cook ronny poquette who had skipped work because he was \"tripping his ass off\"",
+                  "tokenized": [
+                    "kanner",
+                    "cashier",
+                    "forced",
+                    "pizzas",
+                    "evening",
+                    "due",
+                    "absence",
+                    "regular",
+                    "cook",
+                    "ronny",
+                    "poquette",
+                    "skipped",
+                    "work",
+                    "tripping",
+                    "ass"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -4.041666666666667,
+                "attributionScore": 0,
+                "tfidfScore": 0.277253612922451,
+                "score": -3.764413053744216
+              },
+              {
+                "index": 24,
+                "sentence": {
+                  "original": "Approximately 50 minutes into his journey, Behr was heard to exclaim, \"Shit, man, I've lived in this town for, like, four years, but I still can't think of where the hell Blount Street's at.",
+                  "actual": "Approximately 50 minutes into his journey, Behr was heard to exclaim, \"Shit, man, I've lived in this town for, like, four years, but I still can't think of where the hell Blount Street's at.",
+                  "normalized": "approximately 50 minutes into his journey behr was heard to exclaim \"shit man ive lived in this town for like four years but i still cant think of where the hell blount streets at",
+                  "tokenized": [
+                    "approximately",
+                    "50",
+                    "minutes",
+                    "journey",
+                    "behr",
+                    "heard",
+                    "exclaim",
+                    "shit",
+                    "man",
+                    "lived",
+                    "town",
+                    "years",
+                    "blount",
+                    "streets"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -4.583333333333333,
+                "attributionScore": 0,
+                "tfidfScore": 0.7703191768463264,
+                "score": -3.8130141564870064
+              },
+              {
+                "index": 38,
+                "sentence": {
+                  "original": "\"Sadly, for millions of pizzas, interaction with non-stoned humans is simply not an option,\" Dernier said.",
+                  "actual": "\"Sadly, for millions of pizzas, interaction with non-stoned humans is simply not an option,\" Dernier said.",
+                  "normalized": "\"sadly for millions of pizzas interaction with nonstoned humans is simply not an option\" dernier said",
+                  "tokenized": [
+                    "sadly",
+                    "millions",
+                    "pizzas",
+                    "interaction",
+                    "nonstoned",
+                    "humans",
+                    "simply",
+                    "option",
+                    "dernier"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -6.7976190476190474,
+                "attributionScore": 0,
+                "tfidfScore": 0.43962669204569704,
+                "score": -6.357992355573351
+              },
+              {
+                "index": 35,
+                "sentence": {
+                  "original": "I think maybe Barbarella was on cable, 'cause I remember some funny shit with these alien space-chicks or something.",
+                  "actual": "I think maybe Barbarella was on cable, 'cause I remember some funny shit with these alien space-chicks or something.",
+                  "normalized": "i think maybe barbarella was on cable cause i remember some funny shit with these alien spacechicks or something",
+                  "tokenized": [
+                    "barbarella",
+                    "cable",
+                    "remember",
+                    "funny",
+                    "shit",
+                    "alien",
+                    "spacechicks"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -7.214285714285714,
+                "attributionScore": 0,
+                "tfidfScore": 0.395336370946127,
+                "score": -6.818949343339588
+              },
+              {
+                "index": 20,
+                "sentence": {
+                  "original": "\"Not surprisingly, there were still several detours and delays standing between the pizza and its final destination,\" Dernier said.",
+                  "actual": "\"Not surprisingly, there were still several detours and delays standing between the pizza and its final destination,\" Dernier said.",
+                  "normalized": "\"not surprisingly there were still several detours and delays standing between the pizza and its final destination\" dernier said",
+                  "tokenized": [
+                    "surprisingly",
+                    "detours",
+                    "delays",
+                    "standing",
+                    "pizza",
+                    "final",
+                    "destination",
+                    "dernier"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -9.267857142857142,
+                "attributionScore": 0,
+                "tfidfScore": 1.1596222555447526,
+                "score": -8.10823488731239
+              },
+              {
+                "index": 37,
+                "sentence": {
+                  "original": "According to Dernier, the incident is not an isolated one: He estimated that each year in the U. S., as many as 25 million pizzas lead such drug-saturated existences.",
+                  "actual": "According to Dernier, the incident is not an isolated one: He estimated that each year in the U. S., as many as 25 million pizzas lead such drug-saturated existences.",
+                  "normalized": "according to dernier the incident is not an isolated one: he estimated that each year in the u s as many as 25 million pizzas lead such drugsaturated existences",
+                  "tokenized": [
+                    "dernier",
+                    "incident",
+                    "isolated",
+                    "estimated",
+                    "year",
+                    "25",
+                    "million",
+                    "pizzas",
+                    "lead",
+                    "drugsaturated",
+                    "existences"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -9.297619047619047,
+                "attributionScore": 0,
+                "tfidfScore": 0.36009231226776905,
+                "score": -8.937526735351279
+              },
+              {
+                "index": 29,
+                "sentence": {
+                  "original": "\"By the time [Behr] showed up, the pizza was cold, The X-Files was long over, and we were practically unconscious because we'd started pulling hits off Wang's three-foot Grafix,\" Bickell said.",
+                  "actual": "\"By the time [Behr] showed up, the pizza was cold, The X-Files was long over, and we were practically unconscious because we'd started pulling hits off Wang's three-foot Grafix,\" Bickell said.",
+                  "normalized": "\"by the time [behr] showed up the pizza was cold the xfiles was long over and we were practically unconscious because wed started pulling hits off wangs threefoot grafix\" bickell said",
+                  "tokenized": [
+                    "time",
+                    "behr",
+                    "showed",
+                    "pizza",
+                    "cold",
+                    "xfiles",
+                    "long",
+                    "practically",
+                    "unconscious",
+                    "started",
+                    "pulling",
+                    "hits",
+                    "wangs",
+                    "threefoot",
+                    "grafix",
+                    "bickell"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -10.38095238095238,
+                "attributionScore": 0,
+                "tfidfScore": 1.4407645064801136,
+                "score": -8.940187874472265
+              },
+              {
+                "index": 39,
+                "sentence": {
+                  "original": "\"That's why it's crucial that those of us who are not higher than shit on primo weed occasionally take the time to order a pizza to offset this overwhelming imbalance and give some of our pies a chance to be exposed to alternative, non-stoned lifestyles.\"",
+                  "actual": "\"That's why it's crucial that those of us who are not higher than shit on primo weed occasionally take the time to order a pizza to offset this overwhelming imbalance and give some of our pies a chance to be exposed to alternative, non-stoned lifestyles.\"",
+                  "normalized": "\"thats why its crucial that those of us who are not higher than shit on primo weed occasionally take the time to order a pizza to offset this overwhelming imbalance and give some of our pies a chance to be exposed to alternative nonstoned lifestyles\"",
+                  "tokenized": [
+                    "crucial",
+                    "higher",
+                    "shit",
+                    "primo",
+                    "weed",
+                    "occasionally",
+                    "time",
+                    "order",
+                    "pizza",
+                    "offset",
+                    "overwhelming",
+                    "imbalance",
+                    "give",
+                    "pies",
+                    "chance",
+                    "exposed",
+                    "alternative",
+                    "nonstoned",
+                    "lifestyles"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -10.714285714285714,
+                "attributionScore": 0,
+                "tfidfScore": 1.3182125352187728,
+                "score": -9.39607317906694
+              },
+              {
+                "index": 6,
+                "sentence": {
+                  "original": "\"It is interesting to note,\" Dernier said, \"that even this coupon, an admittedly secondary aspect of the pizza's story, was made by somebody who was also stoned, as evidenced by its offer of '$2 Offf.'\" The pizza entered the next phase of its THC-soaked existence when pizzeria employee Wayne \"Mr. Moondog\" Lindeman, a technical-college dropout and noted Austin-area bongo drummer, took the phone order from the two largely incapacitated customers.",
+                  "actual": "\"It is interesting to note,\" Dernier said, \"that even this coupon, an admittedly secondary aspect of the pizza's story, was made by somebody who was also stoned, as evidenced by its offer of '$2 Offf.'\" The pizza entered the next phase of its THC-soaked existence when pizzeria employee Wayne \"Mr. Moondog\" Lindeman, a technical-college dropout and noted Austin-area bongo drummer, took the phone order from the two largely incapacitated customers.",
+                  "normalized": "\"it is interesting to note\" dernier said \"that even this coupon an admittedly secondary aspect of the pizzas story was made by somebody who was also stoned as evidenced by its offer of $2 offf\" the pizza entered the next phase of its thcsoaked existence when pizzeria employee wayne \"mr moondog\" lindeman a technicalcollege dropout and noted austinarea bongo drummer took the phone order from the two largely incapacitated customers",
+                  "tokenized": [
+                    "interesting",
+                    "note",
+                    "dernier",
+                    "coupon",
+                    "admittedly",
+                    "secondary",
+                    "aspect",
+                    "pizzas",
+                    "story",
+                    "stoned",
+                    "evidenced",
+                    "offer",
+                    "offf",
+                    "pizza",
+                    "entered",
+                    "phase",
+                    "thcsoaked",
+                    "existence",
+                    "pizzeria",
+                    "employee",
+                    "wayne",
+                    "moondog",
+                    "lindeman",
+                    "technicalcollege",
+                    "dropout",
+                    "noted",
+                    "austinarea",
+                    "bongo",
+                    "drummer",
+                    "phone",
+                    "order",
+                    "largely",
+                    "incapacitated",
+                    "customers"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -10.714285714285714,
+                "attributionScore": 0,
+                "tfidfScore": 1.0444039135076066,
+                "score": -9.669881800778107
+              },
+              {
+                "index": 14,
+                "sentence": {
+                  "original": "Almost immediately, it reflected the influence of marijuana in the form of its erroneous meat topping, which had not been ordered by the vegetarian Wang.",
+                  "actual": "Almost immediately, it reflected the influence of marijuana in the form of its erroneous meat topping, which had not been ordered by the vegetarian Wang.",
+                  "normalized": "almost immediately it reflected the influence of marijuana in the form of its erroneous meat topping which had not been ordered by the vegetarian wang",
+                  "tokenized": [
+                    "immediately",
+                    "reflected",
+                    "influence",
+                    "marijuana",
+                    "form",
+                    "erroneous",
+                    "meat",
+                    "topping",
+                    "ordered",
+                    "vegetarian",
+                    "wang"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -10.184523809523808,
+                "attributionScore": 0,
+                "tfidfScore": 0.24001346642142468,
+                "score": -9.944510343102383
+              },
+              {
+                "index": 0,
+                "sentence": {
+                  "original": "AUSTIN, TX–Everyone involved in the preparation, delivery, purchase and consumption of a pizza from Tony's New York-Style Pizzeria was thoroughly baked off his ass, it was reported Monday.",
+                  "actual": "AUSTIN, TX–Everyone involved in the preparation, delivery, purchase and consumption of a pizza from Tony's New York-Style Pizzeria was thoroughly baked off his ass, it was reported Monday.",
+                  "normalized": "austin tx–everyone involved in the preparation delivery purchase and consumption of a pizza from tonys new yorkstyle pizzeria was thoroughly baked off his ass it was reported monday",
+                  "tokenized": [
+                    "austin",
+                    "tx",
+                    "involved",
+                    "preparation",
+                    "delivery",
+                    "purchase",
+                    "consumption",
+                    "pizza",
+                    "tonys",
+                    "yorkstyle",
+                    "pizzeria",
+                    "baked",
+                    "ass",
+                    "reported",
+                    "monday"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -11.642857142857144,
+                "attributionScore": 0,
+                "tfidfScore": 1.0399701861982327,
+                "score": -10.602886956658912
+              },
+              {
+                "index": 19,
+                "sentence": {
+                  "original": "After an extended wait for delivery driver Kurt Behr to return to the store–reportedly the result of Behr taking an unscheduled break to get high and make out with his girlfriend Christine between delivery runs–the pizza was finally picked up and dispatched to the Wang-Bickell residence.",
+                  "actual": "After an extended wait for delivery driver Kurt Behr to return to the store–reportedly the result of Behr taking an unscheduled break to get high and make out with his girlfriend Christine between delivery runs–the pizza was finally picked up and dispatched to the Wang-Bickell residence.",
+                  "normalized": "after an extended wait for delivery driver kurt behr to return to the store–reportedly the result of behr taking an unscheduled break to get high and make out with his girlfriend christine between delivery runs–the pizza was finally picked up and dispatched to the wangbickell residence",
+                  "tokenized": [
+                    "extended",
+                    "wait",
+                    "delivery",
+                    "driver",
+                    "kurt",
+                    "behr",
+                    "return",
+                    "store",
+                    "reportedly",
+                    "result",
+                    "behr",
+                    "unscheduled",
+                    "break",
+                    "high",
+                    "girlfriend",
+                    "christine",
+                    "delivery",
+                    "runs",
+                    "pizza",
+                    "finally",
+                    "picked",
+                    "dispatched",
+                    "wangbickell",
+                    "residence"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -12.142857142857144,
+                "attributionScore": 0,
+                "tfidfScore": 1.1936969258343813,
+                "score": -10.949160217022763
+              },
+              {
+                "index": 40,
+                "sentence": {
+                  "original": "No charges have been filed in connection with the incident, though Behr was verbally reprimanded later that night by a police officer for sleeping on the hood of his parked delivery vehicle.",
+                  "actual": "No charges have been filed in connection with the incident, though Behr was verbally reprimanded later that night by a police officer for sleeping on the hood of his parked delivery vehicle.",
+                  "normalized": "no charges have been filed in connection with the incident though behr was verbally reprimanded later that night by a police officer for sleeping on the hood of his parked delivery vehicle",
+                  "tokenized": [
+                    "charges",
+                    "filed",
+                    "connection",
+                    "incident",
+                    "behr",
+                    "verbally",
+                    "reprimanded",
+                    "night",
+                    "police",
+                    "officer",
+                    "sleeping",
+                    "hood",
+                    "parked",
+                    "delivery",
+                    "vehicle"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -11.726190476190476,
+                "attributionScore": 0,
+                "tfidfScore": 0.4839237566463189,
+                "score": -11.242266719544157
+              },
+              {
+                "index": 1,
+                "sentence": {
+                  "original": "\"From its creation at the hands of a stoned-out-of-his-mind pizzeria employee to its eventual consumption by a group of guys so unbelievably high they didn't even realize they had mistakenly given the delivery driver a $20 tip, this pizza spent its entire existence in a dense cloud of marijuana fumes,\" said pizza-industry watchdog Roger Dernier, who has been monitoring the link between pizza production and illegal drug use since 1991.",
+                  "actual": "\"From its creation at the hands of a stoned-out-of-his-mind pizzeria employee to its eventual consumption by a group of guys so unbelievably high they didn't even realize they had mistakenly given the delivery driver a $20 tip, this pizza spent its entire existence in a dense cloud of marijuana fumes,\" said pizza-industry watchdog Roger Dernier, who has been monitoring the link between pizza production and illegal drug use since 1991.",
+                  "normalized": "\"from its creation at the hands of a stonedoutofhismind pizzeria employee to its eventual consumption by a group of guys so unbelievably high they didnt even realize they had mistakenly given the delivery driver a $20 tip this pizza spent its entire existence in a dense cloud of marijuana fumes\" said pizzaindustry watchdog roger dernier who has been monitoring the link between pizza production and illegal drug use since 1991",
+                  "tokenized": [
+                    "creation",
+                    "hands",
+                    "stonedoutofhismind",
+                    "pizzeria",
+                    "employee",
+                    "eventual",
+                    "consumption",
+                    "group",
+                    "guys",
+                    "unbelievably",
+                    "high",
+                    "realize",
+                    "mistakenly",
+                    "delivery",
+                    "driver",
+                    "20",
+                    "tip",
+                    "pizza",
+                    "spent",
+                    "entire",
+                    "existence",
+                    "dense",
+                    "cloud",
+                    "marijuana",
+                    "fumes",
+                    "pizzaindustry",
+                    "watchdog",
+                    "roger",
+                    "dernier",
+                    "monitoring",
+                    "link",
+                    "pizza",
+                    "production",
+                    "illegal",
+                    "drug",
+                    "1991"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -13.571428571428573,
+                "attributionScore": 0,
+                "tfidfScore": 1.1239985949973526,
+                "score": -12.44742997643122
+              },
+              {
+                "index": 3,
+                "sentence": {
+                  "original": "According to reports, the pizza–a 16-inch black-olive and green-pepper pie mistakenly topped with extra cheese and sausage–was first conceptualized by area stoner Doug Bickell at approximately 11:30 p.m. Sunday, when he said to housemate Bob Wang during a rewatching of that evening's videotaped X-Files episode, \"Hey, Wangster, how's about we dial up some killer chow?\" Though the pizza was merely a potentiality at that point, the food item's 100-percent-stoned life cycle had already begun, as both Bickell and Wang \"had a major buzz on.\"",
+                  "actual": "According to reports, the pizza–a 16-inch black-olive and green-pepper pie mistakenly topped with extra cheese and sausage–was first conceptualized by area stoner Doug Bickell at approximately 11:30 p.m. Sunday, when he said to housemate Bob Wang during a rewatching of that evening's videotaped X-Files episode, \"Hey, Wangster, how's about we dial up some killer chow?\" Though the pizza was merely a potentiality at that point, the food item's 100-percent-stoned life cycle had already begun, as both Bickell and Wang \"had a major buzz on.\"",
+                  "normalized": "according to reports the pizza–a 16inch blackolive and greenpepper pie mistakenly topped with extra cheese and sausage–was first conceptualized by area stoner doug bickell at approximately 11:30 pm sunday when he said to housemate bob wang during a rewatching of that evenings videotaped xfiles episode \"hey wangster hows about we dial up some killer chow?\" though the pizza was merely a potentiality at that point the food items 100percentstoned life cycle had already begun as both bickell and wang \"had a major buzz on\"",
+                  "tokenized": [
+                    "reports",
+                    "pizza",
+                    "16inch",
+                    "blackolive",
+                    "greenpepper",
+                    "pie",
+                    "mistakenly",
+                    "topped",
+                    "extra",
+                    "cheese",
+                    "sausage",
+                    "conceptualized",
+                    "area",
+                    "stoner",
+                    "doug",
+                    "bickell",
+                    "approximately",
+                    "11",
+                    "30",
+                    "pm",
+                    "sunday",
+                    "housemate",
+                    "bob",
+                    "wang",
+                    "rewatching",
+                    "evenings",
+                    "videotaped",
+                    "xfiles",
+                    "episode",
+                    "hey",
+                    "wangster",
+                    "hows",
+                    "dial",
+                    "killer",
+                    "chow",
+                    "pizza",
+                    "potentiality",
+                    "point",
+                    "food",
+                    "items",
+                    "100percentstoned",
+                    "life",
+                    "cycle",
+                    "begun",
+                    "bickell",
+                    "wang",
+                    "major",
+                    "buzz"
+                  ]
+                },
+                "liScore": 0,
+                "nodeScore": 0,
+                "readabilityScore": -13.571428571428573,
+                "attributionScore": 0,
+                "tfidfScore": 1.0324731142235344,
+                "score": -12.538955457205038
+              }
+            ]
+          }
+        }
+      ],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "timeout": 0,
+      "src": "./src/detail.ts",
+      "path": "/detail",
+      "definition": {
+        "config": {
+          "defaultExport": true,
+          "language": "typescript"
+        },
+        "params": {
+          "http": false,
+          "context": false,
+          "order": [
+            "url",
+            "input",
+            "title",
+            "numSentences",
+            "minNumSentences",
+            "maxNumSentences",
+            "minImageWidth",
+            "minImageHeight",
+            "media"
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "description": "Link to website to summarize.",
+                "type": "string"
+              },
+              "input": {
+                "description": "Text or HTML to summarize.",
+                "type": "string"
+              },
+              "title": {
+                "description": "Title of `input` content.",
+                "type": "string"
+              },
+              "numSentences": {
+                "description": "Optional number of sentences to produce. Default is to\ninfer a reasonable number based on the input's length.",
+                "type": "number"
+              },
+              "minNumSentences": {
+                "description": "Optional minimum number of sentences to produce.",
+                "type": "number",
+                "default": 1
+              },
+              "maxNumSentences": {
+                "description": "Optional maximum number of sentences to produce.",
+                "type": "number",
+                "default": 1000
+              },
+              "minImageWidth": {
+                "description": "Optional minimum image width when considering images in HTML.",
+                "type": "number",
+                "default": 400
+              },
+              "minImageHeight": {
+                "description": "Optional minimum image height when considering images in HTML.",
+                "type": "number",
+                "default": 300
+              },
+              "media": {
+                "description": "Whether or not to consider source media during summarization.",
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "returns": {
+          "async": true,
+          "http": false,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "$ref": "#/definitions/SummarizationResult"
+              }
+            },
+            "additionalProperties": false,
+            "definitions": {
+              "SummarizationResult": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "extractive": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "abstractive": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "topItems": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/SummarizationItem"
+                    }
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/SummarizationItem"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              },
+              "SummarizationItem": {
+                "type": "object",
+                "properties": {
+                  "index": {
+                    "type": "number"
+                  },
+                  "sentence": {
+                    "$ref": "#/definitions/SummarizationSentence"
+                  },
+                  "liScore": {
+                    "type": "number"
+                  },
+                  "nodeScore": {
+                    "type": "number"
+                  },
+                  "readabilityScore": {
+                    "type": "number"
+                  },
+                  "attributionScore": {
+                    "type": "number"
+                  },
+                  "tfidfScore": {
+                    "type": "number"
+                  },
+                  "score": {
+                    "type": "number"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "SummarizationSentence": {
+                "type": "object",
+                "properties": {
+                  "original": {
+                    "type": "string"
+                  },
+                  "listItem": {
+                    "type": "number"
+                  },
+                  "actual": {
+                    "type": "string"
+                  },
+                  "normalized": {
+                    "type": "string"
+                  },
+                  "tokenized": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "version": "1.1.0",
+        "title": "detail",
+        "description": "Summarizes the content of any `url` or `input` text.\n\nMust provide either `url` or `input`.\n\nReturns a more verbose description of the summary and intermediary scoring\nfor all input content."
+      },
+      "url": "https://ssfy.sh/dev/synopsis@15f060e3/detail",
+      "route": "/dev/synopsis@15f060e3/detail"
+    },
+    {
+      "name": "extract",
+      "adaptor": "typescript",
+      "GET": true,
+      "POST": true,
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [
+        {
+          "inputContentType": "application/json",
+          "outputContentType": "application/json; charset=utf-8",
+          "name": "The Onion",
+          "input": {
+            "url": "https://www.theonion.com/everyone-involved-in-pizzas-preparation-delivery-purc-1819564897"
+          },
+          "output": {
+            "description": "AUSTIN, TX–Everyone involved in the preparation, delivery, purchase and consumption of a pizza from Tony's New York-Style Pizzeria was thoroughly baked off his ass, it was reported Monday.",
+            "title": "Everyone Involved In Pizza's Preparation, Delivery, Purchase Extremely High",
+            "author": null,
+            "text": "AUSTIN, TX–Everyone involved in the preparation, delivery, purchase and consumption of a pizza from Tony's New York-Style Pizzeria was thoroughly baked off his ass, it was reported Monday.\n\n\"From its creation at the hands of a stoned-out-of-his-mind pizzeria employee to its eventual consumption by a group of guys so unbelievably high they didn't even realize they had mistakenly given the delivery driver a $20 tip, this pizza spent its entire existence in a dense cloud of marijuana fumes,\" said pizza-industry watchdog Roger Dernier, who has been monitoring the link between pizza production and illegal drug use since 1991. \"In the brief time this pizza spent on Earth, at no point did it come into contact with a single non-stoned human being.\"\n\nAccording to reports, the pizza–a 16-inch black-olive and green-pepper pie mistakenly topped with extra cheese and sausage–was first conceptualized by area stoner Doug Bickell at approximately 11:30 p.m. Sunday, when he said to housemate Bob Wang during a rewatching of that evening's videotaped X-Files episode, \"Hey, Wangster, how's about we dial up some killer chow?\" Though the pizza was merely a potentiality at that point, the food item's 100-percent-stoned life cycle had already begun, as both Bickell and Wang \"had a major buzz on.\"\n\nAfter spending the next 19 minutes deciding which pizzeria to call, Wang and Bickell moved into the next phase of the pizza saga, an 11-minute search for a $2 coupon. After an exhaustive search, it was finally found on the coffee table directly next to the phone.\n\n\"It is interesting to note,\" Dernier said, \"that even this coupon, an admittedly secondary aspect of the pizza's story, was made by somebody who was also stoned, as evidenced by its offer of '$2 Offf.'\"\n\nThe pizza entered the next phase of its THC-soaked existence when pizzeria employee Wayne \"Mr. Moondog\" Lindeman, a technical-college dropout and noted Austin-area bongo drummer, took the phone order from the two largely incapacitated customers.\n\n\"It took me a while to figure out what they wanted,\" Lindeman said. \"When I was listing off the toppings we've got, they kept asking if they could get, like, Fritos or sandwiches on the pizza. Plus, there were a ton of calls on hold, and I was getting pretty stressed trying to get their order and move on to the next caller. But, luckily, me and Greg had just toked down this huge-ass fatty in the walk-in cooler, so I was able to maintain a mellow attitude throughout.\"\n\nAfter taking the order, Lindeman relayed it to co-worker and fellow stoner Greg Kanner. Kanner, normally a cashier, was forced to make pizzas that evening due to the absence of regular cook Ronny Poquette, who had skipped work because he was \"tripping his ass off.\"\n\nAt 1 a.m. Monday, the pizza came into material being for the first time. Almost immediately, it reflected the influence of marijuana in the form of its erroneous meat topping, which had not been ordered by the vegetarian Wang.\n\n\"I wasn't really trained to do what I was doing, but I figured, shit, how hard can it be?\" Kanner said. \"After all, it's just pizza, right? But I was so high, I got kind of confused about the toppings. It was no big deal, though.\"\n\nAfter an extended wait for delivery driver Kurt Behr to return to the store–reportedly the result of Behr taking an unscheduled break to get high and make out with his girlfriend Christine between delivery runs–the pizza was finally picked up and dispatched to the Wang-Bickell residence.\n\n\"Not surprisingly, there were still several detours and delays standing between the pizza and its final destination,\" Dernier said. \"For one, Behr went to the wrong address at least four times. Also, Bickell and Wang had forgotten to include their apartment number with the order. Furthermore, Behr ran out of gas about 10 minutes into the trip and had to walk to a nearby station with a gas can to get more.\"\n\nApproximately 50 minutes into his journey, Behr was heard to exclaim, \"Shit, man, I've lived in this town for, like, four years, but I still can't think of where the hell Blount Street's at. Fuck!\" Behr later described the prolonged Blount Street search as \"a serious fucking hassle.\"\n\nMatters were further complicated by the five phone calls Bickell and Wang made to the pizzeria to inquire about the status of their pizza. \"They were seriously bitching me out,\" said Lindeman, who was royally baked at the time. \"I was like, 'Dude, just chill, your pizza will be there any sec.'\"\n\nFinally, at 3:10 a.m., more than three hours after the order was placed, the pizza reached its destination.\n\n\"By the time [Behr] showed up, the pizza was cold, The X-Files was long over, and we were practically unconscious because we'd started pulling hits off Wang's three-foot Grafix,\" Bickell said. \"But he said we could have it free, so we weren't pissed or nothing. We invited him in and the three of us just pulled bingers and chowed that shit down. It's, like, against the Wangster's beliefs and shit to eat sausage and pepperoni, but he was cool about it. To tell you the truth, I don't think he even noticed.\"\n\nAdded Bickell: \"Then we all just sat back and vegged out. I think maybe Barbarella was on cable, 'cause I remember some funny shit with these alien space-chicks or something. It's kind of hard to really follow the chain of events at that point because, basically, everybody was out of their freaking minds on dope.\"\n\nAccording to Dernier, the incident is not an isolated one: He estimated that each year in the U. S., as many as 25 million pizzas lead such drug-saturated existences.\n\n\"Sadly, for millions of pizzas, interaction with non-stoned humans is simply not an option,\" Dernier said. \"That's why it's crucial that those of us who are not higher than shit on primo weed occasionally take the time to order a pizza to offset this overwhelming imbalance and give some of our pies a chance to be exposed to alternative, non-stoned lifestyles.\"\n\nNo charges have been filed in connection with the incident, though Behr was verbally reprimanded later that night by a police officer for sleeping on the hood of his parked delivery vehicle."
+          }
+        }
+      ],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "timeout": 0,
+      "src": "./src/extract.ts",
+      "path": "/extract",
+      "definition": {
+        "config": {
+          "defaultExport": true,
+          "language": "typescript"
+        },
+        "params": {
+          "http": false,
+          "context": false,
+          "order": [
+            "url"
+          ],
+          "schema": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "description": "Link to website to process.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "url"
+            ],
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "returns": {
+          "async": true,
+          "http": false,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "result": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              }
+            },
+            "additionalProperties": false,
+            "$schema": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "version": "1.1.0",
+        "title": "extract",
+        "description": "Extracts the main article content from a webpage or article, in addition to lots of useful metadata."
+      },
+      "url": "https://ssfy.sh/dev/synopsis@15f060e3/extract",
+      "route": "/dev/synopsis@15f060e3/extract"
+    }
+  ],
+  "build": null,
+  "env": null,
+  "saas": {
+    "headerName": null,
+    "logo": "https://storage.googleapis.com/saasify-uploads-prod/5e1486463b461509199b75d45e88ee760253c535.svg",
+    "logoLight": "",
+    "favicon": "https://storage.googleapis.com/saasify-uploads-prod/4627149acf466c18d38cc909ff35267ee8218423.ico",
+    "exampleImage": null,
+    "features": [
+      {
+        "name": "AI Web Extraction",
+        "desc": "Our AI powered engine extracts the main content from any website with ease.",
+        "icon": "https://storage.googleapis.com/saasify-uploads-prod/ac31f12d58f9a5a894f83b2c800db04db26cd009.svg"
+      },
+      {
+        "name": "Summarization",
+        "desc": "Easily summarize the main content of any website via URL, raw text, or HTML.",
+        "icon": "https://storage.googleapis.com/saasify-uploads-prod/90b7a63d84b814a85cd654e655f5789c95dd7200.svg"
+      },
+      {
+        "name": "Get Going Fast",
+        "desc": "Try out the REST API for FREE and then sign up with your GitHub account and Stripe.",
+        "icon": "https://storage.googleapis.com/saasify-uploads-prod/0ced1a960b6081c11e1a503eba7bf6463129c02c.svg"
+      },
+      {
+        "name": "Cost Effective",
+        "desc": "Building on top of serverless functions means you'll only pay for the API calls you actually use.",
+        "icon": "https://storage.googleapis.com/saasify-uploads-prod/34d67a43c3190b4bbe78c64a003d239e38053831.svg"
+      },
+      {
+        "name": "Open Source",
+        "desc": "Check out the source on [GitHub](https://github.com/saasify-sh/synopsis)!",
+        "icon": "https://storage.googleapis.com/saasify-uploads-prod/c8d18c17ac73e505de9cc7efa39d84b42e1b66d3.svg"
+      }
+    ],
+    "name": "synopsis",
+    "heading": "**Summarize articles automagically.**",
+    "subheading": "AI-powered content extraction and summarization for webpages and articles.",
+    "repo": "https://github.com/saasify-sh/synopsis",
+    "theme": {
+      "name": "waves",
+      "backgroundImage": "https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80",
+      "buttonStyle": "rounded",
+      "color": "#2097e2",
+      "wave": false,
+      "gradientDark": true,
+      "codeBlockDark": true
+    }
+  },
+  "createdAt": "2020-01-06T09:17:31.779Z",
+  "updatedAt": "2020-01-29T02:16:06.618Z",
+  "coupons": [],
+  "pricingPlans": [
+    {
+      "features": [],
+      "auth": false,
+      "amount": 0,
+      "requests": {
+        "amount": 0,
+        "billingScheme": "per_unit",
+        "tiersMode": "graduated",
+        "tiers": []
+      },
+      "name": "Free",
+      "slug": "free",
+      "rateLimit": {
+        "enabled": true,
+        "requestsInterval": 3600,
+        "requestsMaxPerInterval": 10
+      },
+      "baseId": "base:24534e6751cc091b454722e877cbe8008971b25d7824c0c74d8ed9f183fe05ad",
+      "requestsId": "requests:8178b588f0ccc973bec988e34c0e1f882513bc49d3300b352678b948500318b8"
+    },
+    {
+      "features": [],
+      "auth": true,
+      "amount": 1000,
+      "requests": {
+        "amount": 2,
+        "billingScheme": "per_unit",
+        "tiersMode": "graduated",
+        "tiers": []
+      },
+      "name": "Unlimited",
+      "slug": "unlimited",
+      "baseId": "base:70606ce87f7ce806a775c2e0a8e4121e9fcefb8991221a7657ad28d872a61b64",
+      "requestsId": "requests:c21412bb760e58b5aed745e16aec8ee2e1d2b0bc6193f98f0ef2ceef089719f3"
+    }
+  ],
+  "url": "https://ssfy.sh/dev/synopsis@15f060e3",
+  "openApiUrl": "https://api.saasify.sh/1/deployments/openapi/dev/synopsis@15f060e3",
+  "saasUrl": "https://dev_synopsis_15f060e3.saasify.sh",
+  "id": "dev/synopsis@15f060e3"
+}

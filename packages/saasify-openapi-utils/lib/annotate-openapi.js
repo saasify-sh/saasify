@@ -1,6 +1,7 @@
 'use strict'
 
 const cloneDeep = require('clone-deep')
+const contentType = require('content-type')
 const { parseFaasIdentifier } = require('saasify-faas-utils')
 
 const pathToService = require('./path-to-service')
@@ -185,6 +186,7 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
       }
     }
 
+    // add concrete examples to the JSON success responses
     const success = responses['200']
     if (success) {
       const mediaType = success.content && success.content['application/json']
@@ -194,7 +196,10 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
         (!mediaType.examples || !Object.keys(mediaType.examples).length)
       ) {
         mediaType.examples = service.examples.reduce((acc, example) => {
-          if (example.outputContentType !== 'application/json') {
+          const ct = contentType.parse(example.outputContentType)
+          const type = ct && ct.type
+
+          if (type !== 'application/json') {
             return acc
           }
 
