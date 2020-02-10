@@ -11,8 +11,8 @@ export const ServiceInputWrapperWithLabel = ({
   propKey,
   description
 }) => {
-  let desc = description.length > 80 ? description.split('\n')[0] : description
-  if (desc.length > 80) {
+  let desc = description?.length > 80 ? description.split('\n')[0] : description
+  if (desc?.length > 80) {
     desc = desc.split('.')[0]
   }
 
