@@ -11,6 +11,10 @@
   max-width: 1024px;
 }
 
+.examples.section .content {
+  max-width: 100%;
+}
+
 .section .title {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
