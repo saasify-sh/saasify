@@ -38,7 +38,7 @@ export class SceneSlideshow extends Component {
     const widthC = size.width * ratio
     const heightC = baseHeight * ratio
 
-    const aspectRatio = 1280 / 995
+    const aspectRatio = 1920 / 1510
 
     const heightR = widthC / aspectRatio
     const widthR = heightC * aspectRatio
@@ -91,7 +91,7 @@ export class SceneSlideshow extends Component {
                       style={{
                         width,
                         height,
-                        transform: `scale(${isSelected ? 1.0 : 0.8})`,
+                        transform: `scale(${isSelected ? 1.0 : 0.7})`,
                         filter: isSelected ? 'blur(0)' : 'blur(8px)',
                         zIndex: isSelected ? 1 : 0
                       }}
@@ -99,6 +99,7 @@ export class SceneSlideshow extends Component {
                       <BlockImage
                         src={scene.src}
                         style={{ width, height }}
+                        className={styles.image}
                         onClick={() => onSelectScene(index)}
                       />
                     </div>
