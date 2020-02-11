@@ -4,15 +4,15 @@ import { Section, theme } from 'react-saasify'
 
 import styles from './styles.module.css'
 
-export class UseCasesSection extends Component {
+export class ExamplesSection extends Component {
   render() {
     const { className, ...rest } = this.props
 
     return (
       <Section
-        id='use-cases'
-        title='Use Cases'
-        className={theme(styles, 'use-cases', className)}
+        id='examples'
+        title='Examples'
+        className={theme(styles, 'examples', className)}
         {...rest}
       >
         TODO

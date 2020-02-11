@@ -36,8 +36,7 @@ export {
 
 export * from './HeroSection'
 export * from './HowItWorksSection'
-export * from './UseCasesSection'
-export * from './CoreMissionSection'
+export * from './ExamplesSection'
 export * from './SocialProofSection'
 export * from './FeaturesSection'
 export * from './CTASection'

@@ -28,7 +28,8 @@
   max-width: unset;
   padding: 0 !important;
   justify-content: center;
-  background: url('../assets/lhs.svg') 0 50% / 25% no-repeat, url('../assets/rhs.svg') 100% 50% / 25% no-repeat;
+  background: url('../assets/lhs.svg') 0 50% / 25% no-repeat,
+    url('../assets/rhs.svg') 100% 50% / 25% no-repeat;
 }
 
 .theme-clean header.container {
@@ -41,7 +42,8 @@
   background: transparent !important;
 }
 
-.terms-page, .privacy-page {
+.terms-page,
+.privacy-page {
   padding: 0 !important;
 }
 
@@ -51,7 +53,8 @@
 
 @media only screen and (max-width: 1024px) {
   .hero .content {
-    background: url('../assets/lhs.svg') 0 50% / 15% no-repeat, url('../assets/rhs.svg') 100% 50% / 15% no-repeat;
+    background: url('../assets/lhs.svg') 0 50% / 15% no-repeat,
+      url('../assets/rhs.svg') 100% 50% / 15% no-repeat;
   }
 }
 

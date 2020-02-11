@@ -6,8 +6,7 @@ import {
   NavFooter,
   HeroSection,
   HowItWorksSection,
-  UseCasesSection,
-  CoreMissionSection,
+  ExamplesSection,
   SocialProofSection,
   FeaturesSection,
   CTASection
@@ -25,11 +24,9 @@ export class HomePage extends Component {
 
         <HowItWorksSection />
 
-        <UseCasesSection inverted />
+        <ExamplesSection />
 
-        <CoreMissionSection />
-
-        <SocialProofSection inverted />
+        <SocialProofSection />
 
         <FeaturesSection />
 

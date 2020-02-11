@@ -31,19 +31,15 @@ const saasifyContext = {
   name: 'Saasify',
   logo,
   header: {
+    displayName: false,
     links: [
-      {
-        children: 'About',
-        to: '/about'
-      },
       {
         children: 'Docs',
         to: '/docs'
       },
       {
-        children: 'Slack',
-        href:
-          'https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI'
+        children: 'About',
+        to: '/about'
       },
       {
         children: 'GitHub',
@@ -62,12 +58,16 @@ const saasifyContext = {
             to: '/'
           },
           {
+            label: 'Docs',
+            to: '/docs'
+          },
+          {
             label: 'About',
             to: '/about'
           },
           {
-            label: 'Docs',
-            to: '/docs'
+            label: 'Blog',
+            href: 'https://blog.saasify.sh'
           }
         ]
       },
