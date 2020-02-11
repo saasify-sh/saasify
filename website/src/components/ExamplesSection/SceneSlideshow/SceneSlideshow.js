@@ -29,11 +29,11 @@ export class SceneSlideshow extends Component {
   render() {
     const { scenes, selectedSceneIndex, onSelectScene, size } = this.props
 
+    const baseWidth = size.width ? size.width : window.innerWidth
     const baseHeight = size.height ? size.height : window.innerHeight * 0.4
 
-    console.log(size.width, size.height)
     const ratio = 0.9
-    const padding = 48
+    const marginRight = Math.min(48, Math.max(16, baseWidth / 40))
 
     const widthC = size.width * ratio
     const heightC = baseHeight * ratio
@@ -45,6 +45,7 @@ export class SceneSlideshow extends Component {
 
     const width = Math.min(widthC, widthR)
     const height = Math.min(heightC, heightR)
+    console.log({ ...size, finalW: width, finalH: height, marginRight })
 
     const center = {
       x: size.width / 2,
@@ -56,7 +57,7 @@ export class SceneSlideshow extends Component {
       y: center.y - height / 2
     }
 
-    const x = selectedScenePos.x - (width + padding) * selectedSceneIndex
+    const x = selectedScenePos.x - (width + marginRight) * selectedSceneIndex
     const y = selectedScenePos.y
 
     return (
@@ -91,9 +92,7 @@ export class SceneSlideshow extends Component {
                       style={{
                         width,
                         height,
-                        transform: `scale(${isSelected ? 1.0 : 0.7})`,
-                        filter: isSelected ? 'blur(0)' : 'blur(8px)',
-                        zIndex: isSelected ? 1 : 0
+                        marginRight
                       }}
                     >
                       <BlockImage
