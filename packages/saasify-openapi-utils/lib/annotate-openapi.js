@@ -240,7 +240,7 @@ function annotateOperationCodeSamples({ op, httpMethod, service }) {
     console.warn('codegen warning', err.message)
   }
 
-  if (!op['x-code-samples']) {
+  if (example && !op['x-code-samples']) {
     op['x-code-samples'] = example.snippets.map((sample) => ({
       lang: sample.language,
       label: sample.label,

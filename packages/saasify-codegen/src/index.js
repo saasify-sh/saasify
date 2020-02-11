@@ -50,7 +50,7 @@ export default (service, token, opts = {}) => {
 
   if (!example) {
     console.warn(`Codegen received empty example for service "${service.name}"`)
-    return []
+    return
   }
 
   const data = {
