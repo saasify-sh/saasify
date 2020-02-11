@@ -11,14 +11,19 @@ export class HeroSection extends Component {
     return (
       <Section
         id='hero'
-        title='Launch your SaaS API today.'
+        title='Start monetizing your API today'
         subtitle={
           <>
             <div className={theme(styles, 'desc')}>
-              We handle billing, user accounts, docs, and a polished landing
-              page.
+              Saasify generates a polished marketing site for your API that
+              handles user accounts, billing, subscriptions, and developer docs.
+              {/*
+              Quit worrying about SaaS boilerplate. We handle all the boring stuff for you.
+              */}
+              {/*
+              We handle billing, user accounts, docs, and provide a polished landing page.
+              */}
             </div>
-            <div>So you can focus on your product.</div>
           </>
         }
         className={theme(styles, 'hero', className)}

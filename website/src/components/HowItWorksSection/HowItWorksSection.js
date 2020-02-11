@@ -37,12 +37,13 @@ export class HowItWorksSection extends Component {
           <img alt='Launch' src={startupImage} />
 
           <div>
-            <h3>2. Launch on Saasify</h3>
+            <h3>2. Launch with Saasify</h3>
 
             <p>
               We generate an API proxy that tracks usage via Stripe. We also
               generate a polished, customizable marketing website that handles
-              billing, user accounts, and docs. 💪
+              user accounts, billing, subscriptions, and developer-friendly
+              docs. 💪
             </p>
           </div>
         </div>
@@ -53,9 +54,8 @@ export class HowItWorksSection extends Component {
 
             <p>
               We'll help you market your new SaaS API, and you'll receive
-              payouts each month via Stripe Connect or PayPal. We'll also help
-              with support requests so you can focus on your unique value
-              proposition.
+              payouts each month via Stripe Connect or PayPal. We also help with
+              support requests so you can focus on what you do best.
             </p>
           </div>
 

@@ -1,10 +1,9 @@
 .how-it-works {
-  margin: 0 0 2em;
+  margin: 0 auto 2em;
+  max-width: 900px;
 }
 
 .step {
-  width: 100%;
-  max-width: 800px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
