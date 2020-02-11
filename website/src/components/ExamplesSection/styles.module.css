@@ -1,0 +1,8 @@
+.container {
+  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  overflow: hidden;
+  height: 70vh;
+  max-height: 600px;
+}

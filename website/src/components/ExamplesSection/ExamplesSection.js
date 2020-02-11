@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
+import { HotKeys } from 'react-hotkeys'
 
 import { Section, theme } from 'react-saasify'
 
+import { ExampleSlideshow } from './ExampleSlideshow'
+
 import styles from './styles.module.css'
+
+const hotKeyMap = {
+  slideshowMoveSelectionLeft: 'left',
+  slideshowMoveSelectionRight: 'right'
+}
 
 export class ExamplesSection extends Component {
   render() {
@@ -15,7 +23,9 @@ export class ExamplesSection extends Component {
         className={theme(styles, 'examples', className)}
         {...rest}
       >
-        TODO
+        <HotKeys className={styles.container} keyMap={hotKeyMap}>
+          <ExampleSlideshow />
+        </HotKeys>
       </Section>
     )
   }
