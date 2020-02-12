@@ -11,6 +11,10 @@
   max-width: 1024px;
 }
 
+.examples.section {
+  padding: 2em 0;
+}
+
 .examples.section .content {
   max-width: 100%;
 }

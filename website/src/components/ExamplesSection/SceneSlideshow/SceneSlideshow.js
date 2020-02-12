@@ -32,11 +32,11 @@ export class SceneSlideshow extends Component {
     const baseWidth = size.width ? size.width : window.innerWidth
     const baseHeight = size.height ? size.height : window.innerHeight * 0.4
 
-    const ratio = 0.9
+    const verticalSpaceUsage = 0.95
     const marginRight = Math.min(48, Math.max(16, baseWidth / 40))
 
-    const widthC = size.width * ratio
-    const heightC = baseHeight * ratio
+    const widthC = size.width * verticalSpaceUsage
+    const heightC = baseHeight * verticalSpaceUsage
 
     const aspectRatio = 1920 / 1510
 

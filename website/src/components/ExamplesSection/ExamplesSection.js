@@ -23,7 +23,7 @@ export class ExamplesSection extends Component {
         className={theme(styles, 'examples', className)}
         {...rest}
       >
-        <HotKeys className={styles.container} keyMap={hotKeyMap}>
+        <HotKeys className={styles.section} keyMap={hotKeyMap}>
           <ExampleSlideshow />
         </HotKeys>
       </Section>

@@ -1,8 +1,55 @@
+.section {
+  width: 100%;
+}
+
 .container {
   position: relative;
-  width: 100vw;
-  max-width: 100%;
+  width: 100%;
+}
+
+.slideshow {
   overflow: hidden;
-  height: 70vh;
+  width: 100%;
+  height: 80vh;
   max-height: 600px;
+}
+
+.notes {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.note {
+  position: relative;
+  width: 420px;
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+  font-size: 2em;
+  margin-right: 8em;
+}
+
+.isChanging {
+  display: none;
+}
+
+.arrow {
+  position: absolute;
+  width: 3em;
+  height: 8em;
+}
+
+.arrowLeft {
+  top: -7.5em;
+  left: 20%;
+}
+
+.arrowRight {
+  top: -7.5em;
+  right: 20%;
+}
+
+.note:last-of-type {
+  margin-right: 0;
 }
