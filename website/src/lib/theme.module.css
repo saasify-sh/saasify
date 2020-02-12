@@ -5,6 +5,12 @@
 
 .section {
   padding: 2em;
+  width: 100%;
+  margin: 0 auto 4em;
+}
+
+.section:last-child {
+  margin-bottom: 0;
 }
 
 .section .content {

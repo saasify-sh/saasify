@@ -8,7 +8,7 @@ import imageminPricing from './images/imagemin-pricing.webp'
 // import imageminDocs from './images/imagemin-docs.webp'
 // import imageminDashboard from './images/imagemin-dashboard.webp'
 
-import puppetMasterHome from './images/puppet-master.webp'
+// import puppetMasterHome from './images/puppet-master.webp'
 // import puppetMasterPricing from './images/puppet-master-pricing.webp'
 // import puppetMasterDocs from './images/puppet-master-docs.webp'
 // import puppetMasterDashboard from './images/puppet-master-dashboard.webp'
@@ -25,7 +25,7 @@ export const scenes = [
         desc: 'This is a live product built with Saasify'
       },
       {
-        desc: 'Launch your own SaaS product like this one in minutes 🚀'
+        desc: 'Create your own SaaS product like this one in minutes 🚀'
       }
     ]
   },
@@ -101,7 +101,7 @@ export const scenes = [
         desc: 'Or setup metered billing to charge per request'
       }
     ]
-  },
+  }
   // {
   //   src: imageminDocs,
   //   demo: 'imagemin',
@@ -133,20 +133,20 @@ export const scenes = [
   // },
 
   // puppet master
-  {
-    src: puppetMasterHome,
-    demo: 'puppet-master',
-    key: 'puppet-master-home',
-    label: 'Puppeteer',
-    notes: [
-      {
-        desc: "Here's one last example built with Saasify"
-      },
-      {
-        desc: 'It uses a fully custom theme ☺️'
-      }
-    ]
-  }
+  // {
+  //   src: puppetMasterHome,
+  //   demo: 'puppet-master',
+  //   key: 'puppet-master-home',
+  //   label: 'Puppeteer',
+  //   notes: [
+  //     {
+  //       desc: "Here's one last example built with Saasify"
+  //     },
+  //     {
+  //       desc: 'It uses a fully custom theme ☺️'
+  //     }
+  //   ]
+  // }
   // {
   //   src: puppetMasterPricing,
   //   demo: 'puppet-master',
