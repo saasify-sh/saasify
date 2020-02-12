@@ -3,7 +3,7 @@ import { HotKeys } from 'react-hotkeys'
 
 import { Section, theme } from 'react-saasify'
 
-import { ExampleSlideshow } from './ExampleSlideshow'
+import { ExampleSlideshow } from '../ExampleSlideshow'
 
 import styles from './styles.module.css'
 

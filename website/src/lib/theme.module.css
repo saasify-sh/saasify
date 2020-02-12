@@ -48,6 +48,10 @@
   padding: 0 !important;
 }
 
+.hero.section {
+  min-height: 60vh;
+}
+
 .hero .content .cta-button {
   margin-bottom: 3em;
 }

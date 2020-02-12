@@ -152,10 +152,10 @@ const scenes = [
     label: 'Puppeteer',
     notes: [
       {
-        desc: "Here's one last example product built with Saasify"
+        desc: "Here's one last example built with Saasify"
       },
       {
-        desc: "It's built with a fully custom theme ☺️"
+        desc: 'It uses a fully custom theme ☺️'
       }
     ]
   }
