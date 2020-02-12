@@ -12,10 +12,6 @@ import styles from './styles.module.css'
 @sizeMe({ monitorWidth: true, monitorHeight: true })
 @observer
 export class SceneSlideshow extends Component {
-  static contextTypes = {
-    EventEmitter: PropTypes.object.isRequired
-  }
-
   static propTypes = {
     scenes: PropTypes.arrayOf(PropTypes.object).isRequired,
     selectedSceneIndex: PropTypes.number.isRequired,

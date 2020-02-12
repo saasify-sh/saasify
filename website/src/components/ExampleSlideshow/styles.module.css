@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.dotNavSelector {
+  margin-bottom: 1em;
+}
+
 .slideshow {
   overflow: hidden;
   width: 100%;
