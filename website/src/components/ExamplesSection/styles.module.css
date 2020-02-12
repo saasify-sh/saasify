@@ -1,5 +1,6 @@
 .section {
   width: 100%;
+  margin: 1em 0 4em;
 }
 
 .container {
@@ -38,18 +39,39 @@
   position: absolute;
   width: 3em;
   height: 8em;
+  top: -7.5em;
 }
 
 .arrowLeft {
-  top: -7.5em;
   left: 20%;
 }
 
 .arrowRight {
-  top: -7.5em;
   right: 20%;
 }
 
 .note:last-of-type {
   margin-right: 0;
+}
+
+@media (max-width: 940px) {
+  .note {
+    margin-right: 6em;
+  }
+
+  .arrow {
+    height: 6em;
+    top: -6.5em;
+  }
+}
+
+@media (max-width: 740px) {
+  .note {
+    margin-right: 3em;
+  }
+
+  .arrow {
+    height: 4em;
+    top: -4.5em;
+  }
 }

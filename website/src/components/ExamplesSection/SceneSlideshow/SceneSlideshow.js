@@ -45,7 +45,6 @@ export class SceneSlideshow extends Component {
 
     const width = Math.min(widthC, widthR)
     const height = Math.min(heightC, heightR)
-    console.log({ ...size, finalW: width, finalH: height, marginRight })
 
     const center = {
       x: size.width / 2,

@@ -37,7 +37,7 @@ const scenes = [
         desc: 'This is a live product built with Saasify'
       },
       {
-        desc: 'Create a customizable SaaS product like this one in minutes ☺️'
+        desc: 'Launch your own SaaS product like this one in minutes 🚀'
       }
     ]
   },
@@ -79,7 +79,8 @@ const scenes = [
         desc: 'Users receive an API key when they sign up'
       },
       {
-        desc: 'Customers can track usage and view invoices in their dashboard'
+        desc:
+          'They can track usage and manage account info from their dashboard'
       }
     ]
   },
@@ -106,7 +107,7 @@ const scenes = [
     label: 'Imagemin Pricing',
     notes: [
       {
-        desc: 'You can configure custom rate limits'
+        desc: 'You can configure custom rate limits for your product'
       },
       {
         desc: 'Or setup metered billing to charge per request'
@@ -124,7 +125,7 @@ const scenes = [
       },
       {
         desc:
-          'The rate limited public tier allows users to quickly test your product before signing up'
+          'The rate limited public tier allows users to quickly test things out'
       }
     ]
   },
@@ -154,7 +155,7 @@ const scenes = [
         desc: "Here's one last example product built with Saasify"
       },
       {
-        desc: 'This product uses a custom theme'
+        desc: "It's built with a fully custom theme ☺️"
       }
     ]
   }
