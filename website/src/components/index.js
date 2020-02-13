@@ -35,6 +35,7 @@ export {
 }
 
 export * from './HeroSection'
+export * from './BenefitsSection'
 export * from './HowItWorksSection'
 export * from './ExamplesSection'
 export * from './SocialProofSection'

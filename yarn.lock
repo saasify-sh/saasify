@@ -13664,6 +13664,7 @@ random-bytes@~1.0.0:
 random@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/random/-/random-2.1.1.tgz#1229fa4a752fd9bb7a605de0d70147f8ed36cb30"
+  integrity sha512-8HQriGPwjc8R+7hPOI9ZphAEEWmIt/RmuqXZ682ww9kjK5HRGXcN7hgWUxZ9AabgjZm5wIa6EwapTI1sg11XXg==
   dependencies:
     babel-runtime "^6.26.0"
     ow "^0.4.0"

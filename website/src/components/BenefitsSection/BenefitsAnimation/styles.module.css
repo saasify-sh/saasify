@@ -1,0 +1,60 @@
+.container {
+  margin: 0 1em 1em 0;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container:last-child {
+  margin: 0;
+}
+
+.container .title {
+  font-family: 'Indie Flower', cursive;
+  font-size: 2.2em;
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+.blob {
+  position: relative;
+  padding: 2em;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.canvas {
+  position: absolute;
+  top: -2em;
+  left: -2em;
+  right: -2em;
+  bottom: -2em;
+  z-index: 1;
+}
+
+.canvas svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.items {
+  position: relative;
+  z-index: 10;
+  color: #fff;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.6em;
+}
+
+.item {
+  margin-bottom: 0.3em;
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}

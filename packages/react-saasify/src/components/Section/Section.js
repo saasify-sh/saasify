@@ -17,7 +17,9 @@ export class Section extends Component {
     desc: PropTypes.node,
     id: PropTypes.string,
     className: PropTypes.string,
+    contentClassName: PropTypes.string,
     style: PropTypes.object,
+    contentStyle: PropTypes.object,
     children: PropTypes.node
   }
 
@@ -35,7 +37,9 @@ export class Section extends Component {
       desc,
       id,
       className,
+      contentClassName,
       style = {},
+      contentStyle = {},
       children
     } = this.props
 
@@ -68,8 +72,10 @@ export class Section extends Component {
           className={theme(
             styles,
             'content',
-            stretch && theme(styles, 'stretch')
+            stretch && theme(styles, 'stretch'),
+            contentClassName
           )}
+          style={contentStyle}
         >
           {title && <h1 className={theme(styles, 'title')}>{title}</h1>}
 
