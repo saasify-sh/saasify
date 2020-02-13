@@ -25,8 +25,6 @@ export class BenefitsBlob extends Component {
         {...rest}
         onClick={this._reset}
       >
-        <h3 className={theme(styles, 'benefits-title')}>{title}</h3>
-
         {path && (
           <div className={theme(styles, 'body')}>
             <div className={theme(styles, 'blob')}>
@@ -48,12 +46,15 @@ export class BenefitsBlob extends Component {
               </MorphReplace>
             </div>
 
-            <div className={theme(styles, 'items')}>
-              {items.map((item) => (
-                <div className={theme(styles, 'item')} key={item}>
-                  {item}
-                </div>
-              ))}
+            <div className={theme(styles, 'body-content')}>
+              <h3 className={theme(styles, 'benefits-title')}>{title}</h3>
+              <div className={theme(styles, 'items')}>
+                {items.map((item) => (
+                  <div className={theme(styles, 'item')} key={item}>
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}

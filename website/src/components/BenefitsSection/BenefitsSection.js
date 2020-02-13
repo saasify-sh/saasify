@@ -11,7 +11,7 @@ import styles from './styles.module.css'
 const ourBenefits = [
   '- Setting up subscription billing',
   '- User accounts (auth, emails, customer dashboard)',
-  '- API gateway (global CDN, rate limiting, usage tracking, etc)',
+  '- API gateway (rate limiting, usage tracking, global caching, etc)',
   '- Developer docs',
   '- Polished marketing site',
   '- Marketing campaigns'
@@ -19,7 +19,7 @@ const ourBenefits = [
 
 const yourFocus = [
   '+ Building your product',
-  '+ Building product features',
+  '+ Building amazing features',
   '+ Making money'
 ]
 
@@ -28,7 +28,7 @@ export class BenefitsSection extends Component {
     const { className, ...rest } = this.props
 
     return (
-      <Section id='benefits' title='Superpowers' {...rest}>
+      <Section id='benefits' title='Saasify your API' {...rest}>
         <svg className={theme(styles, 'defs')}>
           <defs>
             {/*
@@ -85,14 +85,15 @@ export class BenefitsSection extends Component {
             </linearGradient> */}
           </defs>
         </svg>
+
         <div className={theme(styles, 'benefits', className)}>
           <BenefitsBlob
             className={theme(styles, 'column')}
             items={ourBenefits}
             arrow={arrowLeft}
             fill='url(#g1)'
-            title='Things That Suck'
-            footer='We do all of this'
+            title='Boring Stuff'
+            footer='We handle all of this'
           />
 
           <BenefitsBlob
@@ -100,7 +101,7 @@ export class BenefitsSection extends Component {
             items={yourFocus}
             arrow={arrowRight}
             fill='url(#g2)'
-            title='Things That Are Fun'
+            title='Fun Stuff'
             footer='So you can focus on this'
           />
         </div>
