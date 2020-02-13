@@ -11,14 +11,15 @@ export class TermsPage extends Component {
       <div className={theme(styles, 'terms-page', theme.light)}>
         <NavHeader fixed />
 
-        <div className={theme(styles, 'content')}>
+        <div className={theme(styles, 'terms-page-body')}>
           <ScrollToTopOnMount />
 
           <h1>Terms of Use</h1>
 
           <p className={theme(styles, 'last-modified')}>
-            Last Modified: April 9, 2019
+            Last Modified: February 13, 2020
           </p>
+
           <h3>
             <u>Acceptance of the Terms of Use</u>
           </h3>

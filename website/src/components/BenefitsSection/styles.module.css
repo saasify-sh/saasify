@@ -11,7 +11,13 @@
   min-width: 300px;
 }
 
-@media (max-width: 700px) {
+.defs {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+@media (max-width: 800px) {
   .benefits {
     flex-wrap: wrap;
   }

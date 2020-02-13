@@ -11,13 +11,15 @@ export class PrivacyPage extends Component {
       <div className={theme(styles, 'privacy-page', theme.light)}>
         <NavHeader fixed />
 
-        <div className={theme(styles, 'content')}>
+        <div className={theme(styles, 'privacy-page-body')}>
           <ScrollToTopOnMount />
 
           <h1>Privacy Policy</h1>
+
           <p className={theme(styles, 'last-modified')}>
-            Last Modified: April 9, 2019
+            Last Modified: February 13, 2020
           </p>
+
           <p>
             <strong>
               <u>Introduction</u>

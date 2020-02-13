@@ -16,7 +16,7 @@ export class BenefitsBlob extends Component {
   }
 
   render() {
-    const { className, title, footer, arrow, items, ...rest } = this.props
+    const { className, title, footer, arrow, fill, items, ...rest } = this.props
     const { path } = this.state
 
     return (
@@ -27,65 +27,13 @@ export class BenefitsBlob extends Component {
       >
         <h3 className={theme(styles, 'benefits-title')}>{title}</h3>
 
-        <svg className={theme(styles, 'defs')}>
-          <defs>
-            {/*
-            <linearGradient
-              id='g1'
-              gradientUnits='userSpaceOnUse'
-              x1='-9.15%'
-              y1='15.85%'
-              x2='109.15%'
-              y2='84.15%'
-            >
-              <stop stopColor='#f093fb' />
-              <stop offset='1' stopColor='#f5576c' />
-            </linearGradient>
-            */}
-
-            <linearGradient id='g1'>
-              <stop stopColor='#ed6ea0' />
-              <stop offset='1' stopColor='#ec8c69' />
-            </linearGradient>
-
-            {/* <linearGradient id='g1'>
-              <stop stopColor='#ff758c' />
-              <stop offset='1' stopColor='#ff7eb3' />
-            </linearGradient> */}
-
-            {/* <linearGradient
-              id='g1'
-              gradientUnits='userSpaceOnUse'
-              x1='71.92%'
-              y1='110.22%'
-              x2='28.08%'
-              y2='-10.22%'
-            >
-              <stop stopColor='#2b5876' />
-              <stop offset='1' stopColor='#4e4376' />
-            </linearGradient> */}
-
-            {/* <linearGradient id='g1' x1='100%' y1='100%'>
-              <stop stopColor='#a7a6cb' />
-              <stop offset='.52' stopColor='#8989ba' />
-              <stop offset='1' stopColor='#8989ba' />
-            </linearGradient> */}
-
-            {/* <linearGradient id='g1' x1='100%' y1='100%'>
-              <stop stopColor='#1e3c72' />
-              <stop offset='.01' stopColor='#1e3c72' />
-              <stop offset='1' stopColor='#2a5298' />
-            </linearGradient> */}
-          </defs>
-        </svg>
-
         {path && (
           <div className={theme(styles, 'body')}>
             <div className={theme(styles, 'blob')}>
               <MorphReplace
                 preserveAspectRatio='none'
                 viewBox='0 0 100 100'
-                fill='url(#g1)'
+                fill={fill}
                 rotation='none'
                 duration={150}
               >

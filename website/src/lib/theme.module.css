@@ -54,9 +54,9 @@
   background: transparent !important;
 }
 
-.terms-page,
-.privacy-page {
-  padding: 0 !important;
+.terms-page-body,
+.privacy-page-body {
+  padding: 4em 0 2em;
 }
 
 .hero.section {
