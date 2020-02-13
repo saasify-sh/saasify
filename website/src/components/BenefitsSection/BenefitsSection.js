@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { Section, theme } from 'react-saasify'
-import { BenefitsAnimation } from './BenefitsAnimation/BenefitsAnimation'
+import { BenefitsBlob } from './BenefitsBlob/BenefitsBlob'
 
 import arrowLeft from './images/arrow-left.svg'
 import arrowRight from './images/arrow-right.svg'
@@ -30,7 +30,7 @@ export class BenefitsSection extends Component {
     return (
       <Section id='benefits' title='Superpowers' {...rest}>
         <div className={theme(styles, 'benefits', className)}>
-          <BenefitsAnimation
+          <BenefitsBlob
             className={theme(styles, 'column')}
             items={ourBenefits}
             arrow={arrowLeft}
@@ -38,7 +38,7 @@ export class BenefitsSection extends Component {
             footer='We do all of this'
           />
 
-          <BenefitsAnimation
+          <BenefitsBlob
             className={theme(styles, 'column')}
             items={yourFocus}
             arrow={arrowRight}

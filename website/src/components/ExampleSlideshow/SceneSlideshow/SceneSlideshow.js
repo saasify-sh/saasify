@@ -23,7 +23,7 @@ export class SceneSlideshow extends Component {
   }
 
   render() {
-    const { scenes, selectedSceneIndex, onSelectScene, size } = this.props
+    const { scenes, selectedSceneIndex, size } = this.props
 
     const baseWidth = size.width ? size.width : window.innerWidth
     const baseHeight = size.height ? size.height : window.innerHeight * 0.4
@@ -56,7 +56,7 @@ export class SceneSlideshow extends Component {
     const y = selectedScenePos.y
 
     return (
-      <div className={styles.container}>
+      <div className={styles.container} onClick={this._onClickSlideshow}>
         <Motion
           defaultStyle={{
             x,
@@ -94,7 +94,7 @@ export class SceneSlideshow extends Component {
                         src={scene.src}
                         style={{ width, height }}
                         className={styles.image}
-                        onClick={() => onSelectScene(index)}
+                        onClick={this._onSelectScene(index)}
                       />
                     </div>
                   )
@@ -106,5 +106,20 @@ export class SceneSlideshow extends Component {
         </Motion>
       </div>
     )
+  }
+
+  _onSelectScene = (index) => {
+    return (event) => {
+      event.stopPropagation()
+      this.props.onSelectScene(index)
+    }
+  }
+
+  _onClickSlideshow = (event) => {
+    if (event.pageX < window.innerWidth / 2) {
+      this.props.onSelectScene(this.props.selectedSceneIndex - 1)
+    } else {
+      this.props.onSelectScene(this.props.selectedSceneIndex + 1)
+    }
   }
 }

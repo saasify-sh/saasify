@@ -6,7 +6,7 @@ import { theme } from 'react-saasify'
 
 import styles from './styles.module.css'
 
-export class BenefitsAnimation extends Component {
+export class BenefitsBlob extends Component {
   state = {
     path: ''
   }
@@ -29,6 +29,7 @@ export class BenefitsAnimation extends Component {
 
         <svg className={theme(styles, 'defs')}>
           <defs>
+            {/*
             <linearGradient
               id='g1'
               gradientUnits='userSpaceOnUse'
@@ -40,6 +41,41 @@ export class BenefitsAnimation extends Component {
               <stop stopColor='#f093fb' />
               <stop offset='1' stopColor='#f5576c' />
             </linearGradient>
+            */}
+
+            <linearGradient id='g1'>
+              <stop stopColor='#ed6ea0' />
+              <stop offset='1' stopColor='#ec8c69' />
+            </linearGradient>
+
+            {/* <linearGradient id='g1'>
+              <stop stopColor='#ff758c' />
+              <stop offset='1' stopColor='#ff7eb3' />
+            </linearGradient> */}
+
+            {/* <linearGradient
+              id='g1'
+              gradientUnits='userSpaceOnUse'
+              x1='71.92%'
+              y1='110.22%'
+              x2='28.08%'
+              y2='-10.22%'
+            >
+              <stop stopColor='#2b5876' />
+              <stop offset='1' stopColor='#4e4376' />
+            </linearGradient> */}
+
+            {/* <linearGradient id='g1' x1='100%' y1='100%'>
+              <stop stopColor='#a7a6cb' />
+              <stop offset='.52' stopColor='#8989ba' />
+              <stop offset='1' stopColor='#8989ba' />
+            </linearGradient> */}
+
+            {/* <linearGradient id='g1' x1='100%' y1='100%'>
+              <stop stopColor='#1e3c72' />
+              <stop offset='.01' stopColor='#1e3c72' />
+              <stop offset='1' stopColor='#2a5298' />
+            </linearGradient> */}
           </defs>
         </svg>
 

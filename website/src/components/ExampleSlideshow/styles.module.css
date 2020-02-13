@@ -36,6 +36,7 @@
 
 .arrow {
   position: absolute;
+  pointer-events: none;
   width: 3em;
   height: 8em;
   top: -7.5em;
