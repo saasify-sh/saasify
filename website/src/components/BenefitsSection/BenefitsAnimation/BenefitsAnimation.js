@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { MorphReplace } from 'react-svg-morph'
 import random from 'random'
 
 import { theme } from 'react-saasify'
@@ -15,9 +16,8 @@ export class BenefitsAnimation extends Component {
   }
 
   render() {
-    const { className, title, items, ...rest } = this.props
+    const { className, title, footer, arrow, items, ...rest } = this.props
     const { path } = this.state
-    console.log(this.state)
 
     return (
       <div
@@ -25,42 +25,59 @@ export class BenefitsAnimation extends Component {
         {...rest}
         onClick={this._reset}
       >
-        <h3 className={theme(styles, 'title')}>{title}</h3>
+        <h3 className={theme(styles, 'benefits-title')}>{title}</h3>
 
-        <div className={theme(styles, 'blob')}>
-          <div className={theme(styles, 'canvas')}>
-            <svg
-              viewBox='0 0 100 100'
-              xmlns='http://www.w3.org/2000/svg'
-              preserveAspectRatio='none'
+        <svg className={theme(styles, 'defs')}>
+          <defs>
+            <linearGradient
+              id='g1'
+              gradientUnits='userSpaceOnUse'
+              x1='-9.15%'
+              y1='15.85%'
+              x2='109.15%'
+              y2='84.15%'
             >
-              <defs>
-                <linearGradient
-                  id='g1'
-                  gradientUnits='userSpaceOnUse'
-                  x1='-9.15%'
-                  y1='15.85%'
-                  x2='109.15%'
-                  y2='84.15%'
+              <stop stopColor='#f093fb' />
+              <stop offset='1' stopColor='#f5576c' />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        {path && (
+          <div className={theme(styles, 'body')}>
+            <div className={theme(styles, 'blob')}>
+              <MorphReplace
+                preserveAspectRatio='none'
+                viewBox='0 0 100 100'
+                fill='url(#g1)'
+                rotation='none'
+                duration={150}
+              >
+                <svg
+                  key={path}
+                  viewBox='0 0 100 100'
+                  xmlns='http://www.w3.org/2000/svg'
+                  preserveAspectRatio='none'
                 >
-                  <stop stopColor='#f093fb' />
-                  <stop offset='1' stopColor='#f5576c' />
-                </linearGradient>
-              </defs>
+                  <path d={path} />
+                </svg>
+              </MorphReplace>
+            </div>
 
-              <g>
-                <path d={path} fill='url(#g1)' />
-              </g>
-            </svg>
+            <div className={theme(styles, 'items')}>
+              {items.map((item) => (
+                <div className={theme(styles, 'item')} key={item}>
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
+        )}
 
-          <div className={theme(styles, 'items')}>
-            {items.map((item) => (
-              <div className={theme(styles, 'item')} key={item}>
-                {item}
-              </div>
-            ))}
-          </div>
+        <div className={theme(styles, 'footer')}>
+          <img src={arrow} />
+
+          {footer}
         </div>
       </div>
     )
@@ -69,6 +86,8 @@ export class BenefitsAnimation extends Component {
   _reset = () => {
     const path = []
 
+    // construct the control points for a blob shape that covers most of
+    // the bounding box of its container
     path.push({ x: random.float(46, 54), y: random.float(0, 3) })
     path.push({ x: random.float(5, 10), y: random.float(0, 10) })
     path.push({ x: random.float(0, 5), y: random.float(30, 60) })
@@ -77,8 +96,8 @@ export class BenefitsAnimation extends Component {
     path.push({ x: random.float(90, 100), y: random.float(90, 100) })
     path.push({ x: random.float(90, 100), y: random.float(30, 60) })
     path.push({ x: random.float(90, 100), y: random.float(0, 10) })
-    path.push(path[0])
-    path.push(path[1])
+    path.push({ x: path[0].x, y: path[0].y })
+    path.push({ x: path[1].x, y: path[1].y })
 
     // catmull rom spline
     let d = ''
@@ -92,12 +111,17 @@ export class BenefitsAnimation extends Component {
         p.push(array[index + 1])
         p.push(array[index + 2])
       } else if (index === array.length - 2) {
-        p.push(array[index - 1])
-        p.push(array[index])
-        p.push(array[index + 1])
-        p.push(array[0])
+        return
+        // p.push(array[index - 1])
+        // p.push(array[index])
+        // p.push(array[index + 1])
+        // p.push(array[0])
       } else if (index === array.length - 1) {
         return
+        // p.push(array[index - 1])
+        // p.push(array[index])
+        // p.push(array[0])
+        // p.push(array[1])
       } else {
         p.push(array[index - 1])
         p.push(array[index])
@@ -132,7 +156,8 @@ export class BenefitsAnimation extends Component {
         ' '
     })
 
-    console.log(d)
+    // d += 'Z'
+
     this.setState({ path: d })
   }
 }

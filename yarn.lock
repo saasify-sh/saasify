@@ -14281,6 +14281,11 @@ react-motion@^0.5.2:
     prop-types "^15.5.8"
     raf "^3.1.0"
 
+react-render-to-json@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-render-to-json/-/react-render-to-json-0.0.6.tgz#3d04ad156d58d64390089102554b8030f3c2a4fa"
+  integrity sha512-fMfqnDjO2HHeg3k4dVierDxVQUymaTfWlsL9pfkSNHpXhGey1J/T8CDsVhN+xjswFYSM30zL0dLBiGHqGoAWWg==
+
 react-router-dom@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-5.1.2.tgz#06701b834352f44d37fbb6311f870f84c76b9c18"
@@ -14415,6 +14420,15 @@ react-stripe-elements@^5.0.1:
   resolved "https://registry.yarnpkg.com/react-stripe-elements/-/react-stripe-elements-5.1.0.tgz#b55a09ccd6ce7a55ca61f1d1de24cdfa8f0f3b04"
   dependencies:
     prop-types "15.7.2"
+
+react-svg-morph@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-svg-morph/-/react-svg-morph-0.2.1.tgz#fdcb8a53d646cd8166e60b5ceb8f60d585d8c724"
+  integrity sha512-Z4TBpO0tXbfnligZiEQlHwU+XRe0HkJjQAmrNEENFgAlF58dKN5Pit5NOWp3JqYB7PmZ3tnnTul7T/cW9dH14g==
+  dependencies:
+    prop-types "^15.6.0"
+    react-render-to-json "0.0.6"
+    svgpath "^2.1.0"
 
 react-syntax-highlighter@^11.0.2:
   version "11.0.2"
@@ -16370,6 +16384,11 @@ svgo@^1.0.0, svgo@^1.2.2:
     stable "^0.1.8"
     unquote "~1.1.1"
     util.promisify "~1.0.0"
+
+svgpath@^2.1.0:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/svgpath/-/svgpath-2.2.3.tgz#749c673899f92c3a4fc2d5415cf85dec349d9512"
+  integrity sha512-xA0glXYpJ9SYT4JeMp3c0psbqdZsG1c0ywGvdJUPY2FKEgwJV7NgkeYuuQiOxMp+XsK9nCqjm3KDw0LkM1YLXw==
 
 swagger-methods@^2.0.1:
   version "2.0.2"

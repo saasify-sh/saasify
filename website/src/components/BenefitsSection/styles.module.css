@@ -1,6 +1,26 @@
 .benefits {
+  margin-top: 0.5em;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: stretch;
+}
+
+.column {
+  max-width: 500px;
+  min-width: 300px;
+}
+
+@media (max-width: 700px) {
+  .benefits {
+    flex-wrap: wrap;
+  }
+
+  .column {
+    margin-bottom: 2em;
+  }
+
+  .column:last-child {
+    margin-bottom: 0;
+  }
 }

@@ -46,7 +46,8 @@
     "react-motion": "^0.5.2",
     "react-router-dom": "^5.1.2",
     "react-saasify": "^1.15.9",
-    "react-sizeme": "^2.6.12"
+    "react-sizeme": "^2.6.12",
+    "react-svg-morph": "^0.2.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.7.4",

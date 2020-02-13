@@ -39,6 +39,11 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+.home-page .section:not(:first-of-type) .title {
+  font-size: 3em;
+  font-family: 'Indie Flower', cursive;
+}
+
 .theme-clean header.container {
   position: static;
   padding: 32px 24px 0;
