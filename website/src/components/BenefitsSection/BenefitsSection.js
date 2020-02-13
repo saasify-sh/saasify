@@ -13,7 +13,7 @@ const ourBenefits = [
   '- User accounts (auth, emails, customer dashboard)',
   '- API gateway (global CDN, rate limiting, usage tracking, etc)',
   '- Developer docs',
-  '- Marketing site',
+  '- Polished marketing site',
   '- Marketing campaigns'
 ]
 

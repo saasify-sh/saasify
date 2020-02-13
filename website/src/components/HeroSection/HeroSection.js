@@ -15,8 +15,11 @@ export class HeroSection extends Component {
         subtitle={
           <>
             <div className={theme(styles, 'desc')}>
+              Saasify handles all of the annoying SaaS boilerplate for you.
+              {/*
               Saasify generates a polished marketing site that handles user
               accounts, billing, subscriptions, and beautiful developer docs.
+              */}
               {/*
               Quit worrying about SaaS boilerplate. We handle all the boring stuff for you.
               */}
