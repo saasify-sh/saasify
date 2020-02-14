@@ -5,24 +5,53 @@ import { SocialProofBlob } from './SocialProofBlob/SocialProofBlob'
 
 import styles from './styles.module.css'
 
-import scottSilviPhoto from './images/scott-silvi.jpeg'
+import photoChrisVilla from './images/chris-villa.jpeg'
+import photoJustinBennett from './images/justin-bennett.jpeg'
+import photoNikonRasumov from './images/nikon-rasumov.jpeg'
+import photoScottSilvi from './images/scott-silvi.jpeg'
+import photoZachLendon from './images/zach-lendon.jpeg'
 
 const socialProofItems = [
   {
     quote:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    photo: scottSilviPhoto,
+      'I love it. The ability to quickly launch and experiment with different micro SaaS businesses is a game changer for aspiring entrepreneurs.',
+    photo: photoScottSilvi,
     name: 'Scott Silvi',
     title: 'Principal Architect, Lab49'
   },
   {
-    quote: 'Nala is a fat kitty and i love her to death <3',
-    photo: scottSilviPhoto,
-    name: 'Scott Silvi',
-    title: 'Principal Architect, Lab49'
+    quote:
+      'Being able to instantly turn my side projects into real SaaS products is really, really interesting...',
+    photo: photoChrisVilla,
+    name: 'Chris Villa',
+    title: 'Founder, wellpaid.io & ogimage.sh'
+  },
+  {
+    quote:
+      "I think it's amazing how Saasify's helping developers to get their business ideas off the ground.",
+    photo: photoZachLendon,
+    name: 'Zach Lendon',
+    title: 'Director, AIM Consulting Group'
+  },
+  {
+    quote:
+      "The hardest part about getting something off the ground isn't the product itself... it's all the other stuff. That's why I love Saasify.",
+    photo: photoJustinBennett,
+    name: 'Justin Bennett',
+    title: 'Senior Software Engineer, Artsy'
+  },
+  {
+    quote:
+      "We're partnering with Saasify as part of our mission to help machine learning researchers offer quality, bespoke alternatives to large SaaS vendors.",
+    photo: photoNikonRasumov,
+    name: 'Nikon Rasumov',
+    title: 'Founder & CEO, kindlyAnswer.me'
   }
 ]
 
+// TODO: this whole longestQuote thing is used for layout purposes to ensure
+// that the blobs don't resize regardless of the length of the currently
+// selected quote. it's pretty hacky but it works...
 const longestQuote = socialProofItems.reduce(
   (acc, item) => (acc.length < item.quote.length ? item.quote : acc),
   ''
