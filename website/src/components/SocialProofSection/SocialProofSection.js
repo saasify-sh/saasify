@@ -80,7 +80,13 @@ export class SocialProofSection extends Component {
         {...rest}
       >
         <div className={theme(styles, 'gallery', className)}>
-          <Button shape='circle' icon='left' onClick={this._onSelectPrevItem} />
+          <Button
+            className={styles.button}
+            shape='circle'
+            icon='left'
+            size='large'
+            onClick={this._onSelectPrevItem}
+          />
 
           <SocialProofBlob
             {...selectedItem}
@@ -90,8 +96,10 @@ export class SocialProofSection extends Component {
           />
 
           <Button
+            className={styles.button}
             shape='circle'
             icon='right'
+            size='large'
             onClick={this._onSelectNextItem}
           />
         </div>
