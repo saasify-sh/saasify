@@ -7,7 +7,7 @@ import styles from './styles.module.css'
 
 export class Blob extends Component {
   static defaultProps = {
-    fill: 'gl1',
+    fill: 'g1',
     duration: 150
   }
 
