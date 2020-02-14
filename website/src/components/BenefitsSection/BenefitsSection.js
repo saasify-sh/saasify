@@ -28,7 +28,7 @@ export class BenefitsSection extends Component {
     const { className, ...rest } = this.props
 
     return (
-      <Section id='benefits' title='Saasify your API' {...rest}>
+      <Section id='benefits' title='Our SaaS, your API' {...rest}>
         <svg className={theme(styles, 'defs')}>
           <defs>
             {/*

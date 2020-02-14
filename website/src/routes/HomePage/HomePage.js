@@ -6,7 +6,6 @@ import {
   NavFooter,
   HeroSection,
   BenefitsSection,
-  HowItWorksSection,
   ExamplesSection,
   SocialProofSection,
   FeaturesSection,
@@ -30,8 +29,6 @@ export class HomePage extends Component {
         <SocialProofSection />
 
         <FeaturesSection />
-
-        <HowItWorksSection />
 
         <CTASection />
 

@@ -61,6 +61,7 @@
 
 .hero.section {
   min-height: 60vh;
+  margin: 4em auto;
 }
 
 .hero .content .cta-button {
