@@ -66,3 +66,5 @@ master.json
 .next
 build
 dist
+
+.now
