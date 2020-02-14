@@ -35,8 +35,8 @@ const saasifyContext = {
     displayName: false,
     links: [
       {
-        children: 'How It Works',
-        to: '/how-it-works'
+        children: 'About',
+        to: '/about'
       },
       {
         children: 'Docs',
@@ -59,8 +59,8 @@ const saasifyContext = {
             to: '/'
           },
           {
-            children: 'How It Works',
-            to: '/how-it-works'
+            children: 'About',
+            to: '/about'
           },
           {
             label: 'Docs',
@@ -134,7 +134,7 @@ export default class App extends Component {
               <Switch>
                 <Route exact path='/' component={HomePage} />
 
-                <Route path='/how-it-works' component={HowItWorksPage} />
+                <Route path='/about' component={HowItWorksPage} />
 
                 <Route path='/terms' component={TermsPage} />
                 <Route path='/privacy' component={PrivacyPage} />
