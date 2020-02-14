@@ -43,7 +43,8 @@
     "lambda",
     "serverless",
     "deploy",
-    "saasify"
+    "saasify",
+    "fts"
   ],
   "devDependencies": {
     "babel-eslint": "^10.0.3",
