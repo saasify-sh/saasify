@@ -525,12 +525,12 @@ export class TermsPage extends Component {
           </p>
           <p>Company:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Saasify Inc.</p>
           <p>
-            Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 400
-            S. 4<sup>th</sup> Street, #401, Mailbox #208, Minneapolis, MN 55415
+            Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 110
+            Livingston Street, #3J, Brooklyn, NY 11201
           </p>
           <p>
             Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            legal@saasify.sh
+            support@saasify.sh
           </p>
           <p>&nbsp;</p>
           <p>
@@ -691,7 +691,7 @@ export class TermsPage extends Component {
             <u>Geographic Restrictions</u>
           </h3>
           <p>
-            The owner of the Website is based in the state of Minnesota &nbsp;in
+            The owner of the Website is based in the state of New York &nbsp;in
             the United States. We provide this Website for use only by persons
             located in the United States. We make no claims that the Website or
             any of its content is accessible or appropriate outside of the
@@ -793,20 +793,20 @@ export class TermsPage extends Component {
             dispute or claim arising therefrom or related thereto (in each case,
             including non-contractual disputes or claims), shall be governed by
             and construed in accordance with the internal laws of the State of
-            Minnesota without giving effect to any choice or conflict of law
-            provision or rule (whether of the State of Minnesota or any other
+            New York without giving effect to any choice or conflict of law
+            provision or rule (whether of the State of New York or any other
             jurisdiction).
           </p>
           <p>
             Any legal suit, action or proceeding arising out of, or related to,
             these Terms of Use or the Website shall be instituted exclusively in
             the federal courts of the United States or the courts of the State
-            of Minnesota in each case located in the City of Minneapolis and
-            County of Hennepin, although we retain the right to bring any suit,
-            action or proceeding against you for breach of these Terms of Use in
-            your country of residence or any other relevant country. You waive
-            any and all objections to the exercise of jurisdiction over you by
-            such courts and to venue in such courts.
+            of New York in each case located in the City of New York and County
+            of Hennepin, although we retain the right to bring any suit, action
+            or proceeding against you for breach of these Terms of Use in your
+            country of residence or any other relevant country. You waive any
+            and all objections to the exercise of jurisdiction over you by such
+            courts and to venue in such courts.
           </p>
           <h3>
             <u>Arbitration</u>
@@ -817,7 +817,7 @@ export class TermsPage extends Component {
             including disputes arising from or concerning their interpretation,
             violation, invalidity, non-performance, or termination, to final and
             binding arbitration under the Rules of Arbitration of the American
-            Arbitration Association applying Minnesota law.
+            Arbitration Association applying New York law.
           </p>
           <h3>
             <u>Limitation on Time to File Claims</u>

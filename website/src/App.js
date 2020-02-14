@@ -16,6 +16,7 @@ import {
 
 import {
   HomePage,
+  HowItWorksPage,
   LoginPage,
   LogoutPage,
   SignupPage,
@@ -34,12 +35,12 @@ const saasifyContext = {
     displayName: false,
     links: [
       {
-        children: 'Docs',
-        to: '/docs'
+        children: 'How It Works',
+        to: '/how-it-works'
       },
       {
-        children: 'About',
-        to: '/about'
+        children: 'Docs',
+        to: '/docs'
       },
       {
         children: 'GitHub',
@@ -58,12 +59,12 @@ const saasifyContext = {
             to: '/'
           },
           {
-            label: 'Docs',
-            to: '/docs'
+            children: 'How It Works',
+            to: '/how-it-works'
           },
           {
-            label: 'About',
-            to: '/about'
+            label: 'Docs',
+            to: '/docs'
           },
           {
             label: 'Blog',
@@ -90,7 +91,7 @@ const saasifyContext = {
           {
             label: 'Slack',
             href:
-              'https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI'
+              'https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY'
           },
           {
             label: 'Email',
@@ -132,6 +133,8 @@ export default class App extends Component {
             <BodyClassName className={theme(null, themeClassName)}>
               <Switch>
                 <Route exact path='/' component={HomePage} />
+
+                <Route path='/how-it-works' component={HowItWorksPage} />
 
                 <Route path='/terms' component={TermsPage} />
                 <Route path='/privacy' component={PrivacyPage} />
