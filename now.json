@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "build": {
+    "env": {
+      "SKIP_PREFLIGHT_CHECK": "true",
+      "REACT_APP_GA": "UA-148982321-2"
+    }
+  }
+}
