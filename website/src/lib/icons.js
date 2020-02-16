@@ -7,6 +7,7 @@
 // outline
 export { default as QuestionCircleOutline } from '@ant-design/icons/lib/outline/QuestionCircleOutline'
 export { default as UserOutline } from '@ant-design/icons/lib/outline/UserOutline'
+export { default as MailOutline } from '@ant-design/icons/lib/outline/MailOutline'
 export { default as LockOutline } from '@ant-design/icons/lib/outline/LockOutline'
 export { default as LoadingOutline } from '@ant-design/icons/lib/outline/LoadingOutline'
 export { default as CopyOutline } from '@ant-design/icons/lib/outline/CopyOutline'

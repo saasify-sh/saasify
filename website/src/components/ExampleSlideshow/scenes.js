@@ -1,17 +1,17 @@
-import ogImpactHome from './images/ogimpact.webp'
-import ogImpactPricing from './images/ogimpact-pricing.webp'
-import ogImpactDocs from './images/ogimpact-docs.webp'
-import ogImpactDashboard from './images/ogimpact-dashboard.webp'
+import ogImpactHome from './images/ogimpact.jpg'
+import ogImpactPricing from './images/ogimpact-pricing.jpg'
+import ogImpactDocs from './images/ogimpact-docs.jpg'
+import ogImpactDashboard from './images/ogimpact-dashboard.jpg'
 
-import imageminHome from './images/imagemin.webp'
-import imageminPricing from './images/imagemin-pricing.webp'
-// import imageminDocs from './images/imagemin-docs.webp'
-// import imageminDashboard from './images/imagemin-dashboard.webp'
+import imageminHome from './images/imagemin.jpg'
+import imageminPricing from './images/imagemin-pricing.jpg'
+// import imageminDocs from './images/imagemin-docs.jpg'
+// import imageminDashboard from './images/imagemin-dashboard.jpg'
 
-// import puppetMasterHome from './images/puppet-master.webp'
-// import puppetMasterPricing from './images/puppet-master-pricing.webp'
-// import puppetMasterDocs from './images/puppet-master-docs.webp'
-// import puppetMasterDashboard from './images/puppet-master-dashboard.webp'
+// import puppetMasterHome from './images/puppet-master.jpg'
+// import puppetMasterPricing from './images/puppet-master-pricing.jpg'
+// import puppetMasterDocs from './images/puppet-master-docs.jpg'
+// import puppetMasterDashboard from './images/puppet-master-dashboard.jpg'
 
 export const scenes = [
   // og impact
@@ -22,11 +22,11 @@ export const scenes = [
     label: 'OG Impact',
     notes: [
       {
-        desc:
+        __html:
           'This is a <a target="_blank" href="https://ogimpact.sh">live product</a> built with Saasify'
       },
       {
-        desc: 'Create your own SaaS product like this one in minutes 🚀'
+        __html: 'Create your own SaaS product like this one in minutes 🚀'
       }
     ]
   },
@@ -37,10 +37,10 @@ export const scenes = [
     label: 'OG Impact Pricing',
     notes: [
       {
-        desc: 'We generate Stripe subscription plans for your product'
+        __html: 'We generate Stripe subscription plans for your product'
       },
       {
-        desc: 'These pricing plans are fully configurable'
+        __html: 'These pricing plans are fully configurable'
       }
     ]
   },
@@ -51,10 +51,10 @@ export const scenes = [
     label: 'OG Impact API Docs',
     notes: [
       {
-        desc: 'We also generate beautiful OpenAPI-powered developer docs'
+        __html: 'We also generate beautiful OpenAPI-powered developer docs'
       },
       {
-        desc: 'These docs sync with your code and include example snippets 💪'
+        __html: 'These docs sync with your code and include example snippets 💪'
       }
     ]
   },
@@ -65,10 +65,10 @@ export const scenes = [
     label: 'OG Impact Dashboard',
     notes: [
       {
-        desc: 'Users receive an API key when they sign up'
+        __html: 'Users receive an API key when they sign up'
       },
       {
-        desc:
+        __html:
           'They can track usage and manage account info from their dashboard'
       }
     ]
@@ -82,11 +82,11 @@ export const scenes = [
     label: 'Imagemin',
     notes: [
       {
-        desc:
+        __html:
           'Here\'s another <a target="_blank" href="https://imagemin.saasify.sh">live product</a> built with Saasify'
       },
       {
-        desc: 'We ❤️ open source projects like imagemin'
+        __html: 'We ❤️ open source projects like imagemin'
       }
     ]
   },
@@ -97,10 +97,10 @@ export const scenes = [
     label: 'Imagemin Pricing',
     notes: [
       {
-        desc: 'You can configure custom rate limits for your product'
+        __html: 'You can configure custom rate limits for your product'
       },
       {
-        desc: 'Or setup metered billing to charge per request'
+        __html: 'Or setup metered billing to charge per request'
       }
     ]
   }
@@ -111,10 +111,10 @@ export const scenes = [
   //   label: 'Imagemin API Docs',
   //   notes: [
   //     {
-  //       desc: 'We strive for an amazing developer experience 💯'
+  //       __html: 'We strive for an amazing developer experience 💯'
   //     },
   //     {
-  //       desc:
+  //       __html:
   //         'The rate limited public tier allows users to quickly test things out'
   //     }
   //   ]
@@ -126,10 +126,10 @@ export const scenes = [
   //   label: 'Imagemin Dashboard',
   //   notes: [
   //     {
-  //       desc: 'Simple customer dashboard'
+  //       __html: 'Simple customer dashboard'
   //     },
   //     {
-  //       desc: 'Easy for customers to manage subscription and billing info'
+  //       __html: 'Easy for customers to manage subscription and billing info'
   //     }
   //   ]
   // },
@@ -142,10 +142,10 @@ export const scenes = [
   //   label: 'Puppeteer',
   //   notes: [
   //     {
-  //       desc: "Here's one last example built with Saasify"
+  //       __html: "Here's one last example built with Saasify"
   //     },
   //     {
-  //       desc: 'It uses a fully custom theme ☺️'
+  //       __html: 'It uses a fully custom theme ☺️'
   //     }
   //   ]
   // }
@@ -156,10 +156,10 @@ export const scenes = [
   //   label: 'Puppeteer Pricing',
   //   notes: [
   //     {
-  //       desc: 'Another example of metered billing'
+  //       __html: 'Another example of metered billing'
   //     },
   //     {
-  //       desc: 'Custom rate limits'
+  //       __html: 'Custom rate limits'
   //     }
   //   ]
   // },
@@ -170,10 +170,10 @@ export const scenes = [
   //   label: 'Puppeteer API Docs',
   //   notes: [
   //     {
-  //       desc: 'Detailed API docs'
+  //       __html: 'Detailed API docs'
   //     },
   //     {
-  //       desc: 'Developer-friendly docs that sync with your code'
+  //       __html: 'Developer-friendly docs that sync with your code'
   //     }
   //   ]
   // },
@@ -184,10 +184,10 @@ export const scenes = [
   //   label: 'Puppeteer Dashboard',
   //   notes: [
   //     {
-  //       desc: 'Every theme comes with a customer dashboard.'
+  //       __html: 'Every theme comes with a customer dashboard.'
   //     },
   //     {
-  //       desc: 'What will you be inspired to launch?'
+  //       __html: 'What will you be inspired to launch?'
   //     }
   //   ]
   // }

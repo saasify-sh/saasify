@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { CTAButton, Section, theme } from 'react-saasify'
+import { DialogManager } from '../../lib/DialogManager'
 
 import styles from './styles.module.css'
 
@@ -34,8 +35,14 @@ export class HeroSection extends Component {
         className={theme(styles, 'hero', className)}
         {...rest}
       >
-        <CTAButton>Get started</CTAButton>
+        <CTAButton onClick={this._onClickRequestAccess}>
+          Request Early Access
+        </CTAButton>
       </Section>
     )
+  }
+
+  _onClickRequestAccess = () => {
+    DialogManager.isSignupDialogOpen = true
   }
 }

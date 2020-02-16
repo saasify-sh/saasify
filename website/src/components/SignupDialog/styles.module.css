@@ -1,0 +1,11 @@
+.body {
+  width: 420px;
+}
+
+.icon {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+:global(.ant-input-affix-wrapper) :global(.ant-input) {
+  padding-left: 36px !important;
+}

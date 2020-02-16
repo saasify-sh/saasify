@@ -15,20 +15,17 @@
 .scene {
   position: relative;
   transition: transform 300ms ease-out, opacity 300ms ease-out;
-  filter: none;
 }
 
 .scene:not(.activeScene) {
   cursor: pointer;
   opacity: 0.7;
-  filter: blur(8px);
   transform: scale(0.7);
 }
 
 .scene:not(.activeScene):hover {
   transition: transform 300ms ease-out, opacity 0s ease-out;
   opacity: 1;
-  filter: blur(2px);
 }
 
 .activeScene {

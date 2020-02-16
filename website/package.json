@@ -33,6 +33,7 @@
     "antd": "^3.26.6",
     "copy-text-to-clipboard": "^2.1.1",
     "docsify": "^4.10.2",
+    "memoize-one": "^5.1.1",
     "mobx": "^5.15.1",
     "mobx-react": "^6.1.4",
     "prop-types": "^15.7.2",

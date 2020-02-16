@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import memoizeOne from 'memoize-one'
 import sizeMe from 'react-sizeme'
 import BlockImage from 'react-block-image'
 
@@ -22,6 +23,10 @@ export class SceneSlideshow extends Component {
     })
   }
 
+  _getOffset = memoizeOne((x, y) => ({ left: x, top: y }))
+  _getSize = memoizeOne((width, height) => ({ width, height }))
+  _selectSceneCache = {}
+
   render() {
     const { scenes, selectedSceneIndex, size } = this.props
 
@@ -29,7 +34,7 @@ export class SceneSlideshow extends Component {
     const baseHeight = size.height ? size.height : window.innerHeight * 0.4
 
     const verticalSpaceUsage = 0.95
-    const marginRight = Math.min(48, Math.max(16, baseWidth / 40))
+    const marginRight = Math.floor(Math.min(48, Math.max(16, baseWidth / 40)))
 
     const widthC = size.width * verticalSpaceUsage
     const heightC = baseHeight * verticalSpaceUsage
@@ -73,7 +78,7 @@ export class SceneSlideshow extends Component {
         >
           {({ x, y, width, height }) => (
             <>
-              <div className={styles.track} style={{ left: x, top: y }}>
+              <div className={styles.track} style={this._getOffset(x, y)}>
                 {scenes.map((scene, index) => {
                   const isSelected = selectedSceneIndex === index
                   const className = `${styles.scene} ${
@@ -92,8 +97,8 @@ export class SceneSlideshow extends Component {
                     >
                       <BlockImage
                         src={scene.src}
-                        style={{ width, height }}
                         className={styles.image}
+                        style={this._getSize(width, height)}
                         onClick={this._onSelectScene(index)}
                       />
                     </div>
@@ -109,10 +114,18 @@ export class SceneSlideshow extends Component {
   }
 
   _onSelectScene = (index) => {
-    return (event) => {
-      event.stopPropagation()
-      this.props.onSelectScene(index)
+    let func = this._selectSceneCache[index]
+
+    if (!func) {
+      func = (event) => {
+        event.stopPropagation()
+        this.props.onSelectScene(index)
+      }
+
+      this._selectSceneCache[index] = func
     }
+
+    return func
   }
 
   _onClickSlideshow = (event) => {

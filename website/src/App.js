@@ -14,23 +14,32 @@ import {
   theme
 } from 'react-saasify'
 
+import { SignupDialog } from './components'
+
 import {
   HomePage,
   HowItWorksPage,
   // LoginPage,
   // LogoutPage,
   // SignupPage,
+  // AuthGitHubPage,
+  EmailConfirmedPage,
   TermsPage,
   PrivacyPage,
-  // AuthGitHubPage,
   NotFoundPage
 } from './routes'
 
+import { DialogManager } from './lib/DialogManager'
 import logo from './assets/logo-horiz-white@4x.png'
 
 const saasifyContext = {
   name: 'Saasify',
   logo,
+  ctaText: 'Request Early Access',
+  ctaTextInline: 'Request Access',
+  ctaOnClick: () => {
+    DialogManager.isSignupDialogOpen = true
+  },
   header: {
     displayName: false,
     login: false,
@@ -42,7 +51,7 @@ const saasifyContext = {
       },
       {
         children: 'Docs',
-        href: 'https://docs.saasify.sh'
+        href: 'https://docs.saasify.sh/#/README'
       },
       {
         children: 'GitHub',
@@ -66,7 +75,7 @@ const saasifyContext = {
           },
           {
             label: 'Docs',
-            href: 'https://docs.saasify.sh'
+            href: 'https://docs.saasify.sh/#/README'
           },
           {
             label: 'Blog',
@@ -113,8 +122,8 @@ const saasifyContext = {
 @observer
 export default class App extends Component {
   render() {
+    const { isSignupDialogOpen } = DialogManager
     const fonts = toJS(ThemeManager.theme.fonts)
-
     const themeClassName = `theme-${ThemeManager.theme['@name']}`
 
     return (
@@ -133,26 +142,48 @@ export default class App extends Component {
             </Helmet>
 
             <BodyClassName className={theme(null, themeClassName)}>
-              <Switch>
-                <Route exact path='/' component={HomePage} />
+              <>
+                <Switch>
+                  <Route exact path='/' component={HomePage} />
 
-                <Route path='/about' component={HowItWorksPage} />
+                  <Route path='/about' component={HowItWorksPage} />
 
-                <Route path='/terms' component={TermsPage} />
-                <Route path='/privacy' component={PrivacyPage} />
+                  <Route path='/terms' component={TermsPage} />
+                  <Route path='/privacy' component={PrivacyPage} />
 
-                {/* <Route path='/login' component={LoginPage} />
+                  <Route
+                    path='/email-confirmed'
+                    component={EmailConfirmedPage}
+                  />
+
+                  {/* <Route path='/login' component={LoginPage} />
                 <Route path='/signup' component={SignupPage} />
                 <Route path='/auth/github' component={AuthGitHubPage} />
 
                 <AuthenticatedRoute path='/logout' component={LogoutPage} /> */}
 
-                <Route component={NotFoundPage} />
-              </Switch>
+                  <Route component={NotFoundPage} />
+                </Switch>
+
+                {isSignupDialogOpen && (
+                  <SignupDialog
+                    isOpen={isSignupDialogOpen}
+                    onClose={this._onCloseSignupDialog}
+                  />
+                )}
+              </>
             </BodyClassName>
           </SaasifyContext.Provider>
         </Provider>
       </Router>
     )
+  }
+
+  _onOpenSignupDialog = () => {
+    DialogManager.isSignupDialogOpen = true
+  }
+
+  _onCloseSignupDialog = () => {
+    DialogManager.isSignupDialogOpen = false
   }
 }

@@ -1,0 +1,13 @@
+.how-it-works-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.illustration {
+  margin-top: 3em;
+  min-width: 128px;
+  max-width: 420px;
+}

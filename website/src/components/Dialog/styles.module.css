@@ -1,0 +1,52 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  position: relative;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  width: 33%;
+  min-width: 300px;
+  max-width: 1280px;
+  max-height: 100vh;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: 400;
+  margin-bottom: 1em;
+  align-self: center;
+}
+
+.footer {
+  margin-top: 1em;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.action {
+  margin-right: 24px;
+}
+
+.action:last-child {
+  margin-right: 0;
+}

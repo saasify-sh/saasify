@@ -154,13 +154,22 @@ export class NavHeader extends Component {
                       </Link>
                     )}
 
-                    {config.header?.signup !== false && (
-                      <Link to='/signup'>
-                        <CTAButton type='primary' inline>
-                          Get started
+                    {config.header?.signup !== false &&
+                      (config.ctaOnClick ? (
+                        <CTAButton
+                          type='primary'
+                          inline
+                          onClick={config.ctaOnClick}
+                        >
+                          {config.ctaTextInline || 'Get started'}
                         </CTAButton>
-                      </Link>
-                    )}
+                      ) : (
+                        <Link to='/signup'>
+                          <CTAButton type='primary' inline>
+                            {config.ctaTextInline || 'Get started'}
+                          </CTAButton>
+                        </Link>
+                      ))}
                   </div>
                 )}
               </div>
