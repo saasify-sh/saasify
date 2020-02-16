@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://saasify.sh" title="Saasify">
-    <img src="https://saasify.sh/_media/logo.png" alt="Saasify Logo" width="256" />
+    <img src="https://docs.saasify.sh/_media/logo.png" alt="Saasify Logo" width="256" />
   </a>
 </p>
 
@@ -10,7 +10,7 @@
 
 <p align="center">
   <img
-    src="https://saasify.sh/_media/saasify-how-it-works-v3-body.png"
+    src="https://docs.saasify.sh/_media/saasify-how-it-works-v3-body.png"
     alt="How Saasify Works"
     width="760"
   />
@@ -33,7 +33,7 @@ The only real way to validate a SaaS idea is to ship an MVP and get real custome
 We've helped dozens of SaaS products get off the ground by enabling them to focus only on their unique value instead of SaaS boilerplate. 🔥
 
 <p align="center">
-  <img src="https://saasify.sh/_media/undraw/business_shop.svg" alt="Online shop" width="200" />
+  <img src="https://docs.saasify.sh/_media/undraw/business_shop.svg" alt="Online shop" width="200" />
 </p>
 
 ## What can be monetized using Saasify?
@@ -69,7 +69,7 @@ Check out the [quick start](https://saasify.sh/#/quick-start) guide to get start
 You may also want to check out our [mission](https://saasify.sh/#/mission) to learn more about Saasify and **open source sustainability**.
 
 <p align="center">
-  <img src="https://saasify.sh/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
+  <img src="https://docs.saasify.sh/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
 </p>
 
 ## Support
