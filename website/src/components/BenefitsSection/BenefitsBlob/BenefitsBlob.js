@@ -37,7 +37,7 @@ export class BenefitsBlob extends Component {
         </div>
 
         <div className={theme(styles, 'footer')}>
-          <img src={arrow} />
+          <img src={arrow} alt='Arrow' />
 
           {footer}
         </div>

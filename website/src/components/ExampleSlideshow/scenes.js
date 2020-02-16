@@ -23,7 +23,7 @@ export const scenes = [
     notes: [
       {
         __html:
-          'This is a <a target="_blank" href="https://ogimpact.sh">live product</a> built with Saasify'
+          'This is a <a target="_blank" rel="noopener" href="https://ogimpact.sh">live product</a> built with Saasify'
       },
       {
         __html: 'Create your own SaaS product like this one in minutes 🚀'
@@ -83,7 +83,7 @@ export const scenes = [
     notes: [
       {
         __html:
-          'Here\'s another <a target="_blank" href="https://imagemin.saasify.sh">live product</a> built with Saasify'
+          'Here\'s another <a target="_blank" rel="noopener" href="https://imagemin.saasify.sh">live product</a> built with Saasify'
       },
       {
         __html: 'We ❤️ open source projects like imagemin'

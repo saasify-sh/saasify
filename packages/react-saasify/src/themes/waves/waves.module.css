@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:400&display=swap');
-
 :root {
   /* TODO add postcss to resolve vars for IE11 */
   --filter-tint: saturate(102%) hue-rotate(10deg);

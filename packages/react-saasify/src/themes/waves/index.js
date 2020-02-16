@@ -63,6 +63,7 @@ export const waves = ({
     '@section-bg-color': '#FFFFFF',
     '@primary-color': color,
     codeTheme,
-    ...opts
+    ...opts,
+    fonts: ['Lato']
   }
 }

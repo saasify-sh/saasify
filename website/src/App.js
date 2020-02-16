@@ -56,7 +56,8 @@ const saasifyContext = {
       {
         children: 'GitHub',
         href: 'https://github.com/saasify-sh/saasify',
-        target: '_blank'
+        target: '_blank',
+        rel: 'noopener'
       }
     ]
   },
@@ -111,7 +112,8 @@ const saasifyContext = {
           {
             label: 'GitHub',
             href: 'https://github.com/saasify-sh/saasify',
-            target: '_blank'
+            target: '_blank',
+            rel: 'noopener'
           }
         ]
       }

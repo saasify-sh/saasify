@@ -55,6 +55,7 @@ export class ExampleSlideshow extends Component {
                   styles[`arrow${index === 0 ? 'Left' : 'Right'}`]
                 }
                 src={index === 0 ? arrowLeft : arrowRight}
+                alt='Arrow'
               />
 
               <div dangerouslySetInnerHTML={note} />
