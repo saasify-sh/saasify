@@ -65,7 +65,7 @@ export const features = [
   {
     name: 'Marketing automation',
     desc:
-      "Our team has launched dozens of profitable SaaS products. We'll use our experience to help refine your marketing strategy and take advantage of our distribution channel partners to help drive customers to your product.",
+      "Our team has launched dozens of profitable SaaS products. We'll use our experience to help refine your marketing strategy and take advantage of our distribution channels to help drive customers to your product.",
     icon: businessPlan
   },
   {
