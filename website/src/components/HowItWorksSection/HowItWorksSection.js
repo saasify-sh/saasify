@@ -19,47 +19,49 @@ export class HowItWorksSection extends Component {
         className={theme(styles, 'how-it-works', className)}
         {...rest}
       >
-        <div className={theme(styles, 'step')}>
-          <div>
-            <h3>1. Create an API</h3>
+        <div className={theme(styles, 'steps')}>
+          <div className={theme(styles, 'step')}>
+            <div>
+              <h3>1. Create an API</h3>
 
-            <p>
-              We support any REST API written in any programming language or web
-              framework. Just give us a brief description of your API and some
-              pricing info and we'll take things from there.
-            </p>
+              <p>
+                We support any REST API built with any web framework. Just give
+                us your API endpoints and some pricing info and Saasify
+                generates a full SaaS product from there.
+              </p>
+            </div>
+
+            <img alt='Coding' src={codingImage} />
           </div>
 
-          <img alt='Coding' src={codingImage} />
-        </div>
+          <div className={theme(styles, 'step')}>
+            <img alt='Launch' src={startupImage} />
 
-        <div className={theme(styles, 'step')}>
-          <img alt='Launch' src={startupImage} />
+            <div>
+              <h3>2. Launch with Saasify</h3>
 
-          <div>
-            <h3>2. Launch on Saasify</h3>
-
-            <p>
-              We generate a monetizable API proxy that tracks usage via Stripe.
-              We also generate a beautiful, customizable marketing website that
-              handles billing, user accounts, and docs. 💪
-            </p>
-          </div>
-        </div>
-
-        <div className={theme(styles, 'step')}>
-          <div>
-            <h3>3. Earn passive income</h3>
-
-            <p>
-              We'll help you market your new SaaS API so it gets the attention
-              it deserves. You'll receive payouts each month via Stripe Connect
-              or PayPal. We'll also help with support requests so you can just
-              sit back and enjoy earning passive income.
-            </p>
+              <p>
+                We generate an API proxy that tracks usage via Stripe. We also
+                generate a polished, customizable marketing website that handles
+                user accounts, billing, subscriptions, and developer-friendly
+                docs. 💪
+              </p>
+            </div>
           </div>
 
-          <img alt='Profit' src={stripeImage} />
+          <div className={theme(styles, 'step')}>
+            <div>
+              <h3>3. Earn passive income</h3>
+
+              <p>
+                We'll help you market your new SaaS API, and you'll receive
+                payouts each month via Stripe Connect or PayPal. We also help
+                with support requests so you can focus on what you do best.
+              </p>
+            </div>
+
+            <img alt='Profit' src={stripeImage} />
+          </div>
         </div>
       </Section>
     )

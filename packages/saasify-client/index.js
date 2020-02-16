@@ -101,6 +101,15 @@ module.exports = class SaasifyClient {
       })
   }
 
+  async signupForBeta(data) {
+    return this._request({
+      url: `/1/auth/signup-for-beta`,
+      method: 'post',
+      params: this._params,
+      data
+    }).then((res) => res.data)
+  }
+
   async authWithGitHub(data) {
     return this._request({
       url: `/1/auth/github`,

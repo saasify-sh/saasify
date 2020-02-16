@@ -3,15 +3,21 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.content {
+.body {
   position: relative;
   z-index: 100;
 
-  width: 360px;
+  width: 420px;
   min-width: 300px;
   max-width: 100%;
 }

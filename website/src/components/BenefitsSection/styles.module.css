@@ -1,0 +1,32 @@
+.benefits {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.column {
+  max-width: 500px;
+  min-width: 300px;
+}
+
+.defs {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+@media (max-width: 800px) {
+  .benefits {
+    flex-wrap: wrap;
+  }
+
+  .column {
+    margin-bottom: 2em;
+  }
+
+  .column:last-child {
+    margin-bottom: 0;
+  }
+}

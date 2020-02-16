@@ -11,13 +11,15 @@ export class PrivacyPage extends Component {
       <div className={theme(styles, 'privacy-page', theme.light)}>
         <NavHeader fixed />
 
-        <div className={theme(styles, 'content')}>
+        <div className={theme(styles, 'privacy-page-body')}>
           <ScrollToTopOnMount />
 
           <h1>Privacy Policy</h1>
+
           <p className={theme(styles, 'last-modified')}>
-            Last Modified: April 9, 2019
+            Last Modified: February 13, 2020
           </p>
+
           <p>
             <strong>
               <u>Introduction</u>
@@ -93,7 +95,7 @@ export class PrivacyPage extends Component {
             information from a child under 13 without verification of parental
             consent, we will delete that information. If you believe we might
             have any information from or about a child under 13, please contact
-            us at <u>legal@saasify.sh</u>.
+            us at <u>support@saasify.sh</u>.
           </p>
           <p>
             <strong>
@@ -400,9 +402,8 @@ export class PrivacyPage extends Component {
             that are California residents to request certain information
             regarding our disclosure of personal information to third parties
             for their direct marketing purposes.&nbsp; To make such a request,
-            please send an email to <u>legal@saasify.sh</u> or write us at: 400
-            South 4<sup>th</sup> Street, Suite 410, Mailbox # 208, Minneapolis,
-            MN 55415.
+            please send an email to <u>support@saasify.sh</u> or write us at:
+            110 Livingston Street, #3J, Brooklyn, NY 11201
           </p>
           <p>
             <strong>

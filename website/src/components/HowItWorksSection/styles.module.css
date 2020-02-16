@@ -1,19 +1,23 @@
 .how-it-works {
-  margin: 0 0 2em;
+  max-width: 900px;
+}
+
+.steps {
+  margin-top: 3em;
 }
 
 .step {
-  width: 100%;
-  max-width: 800px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 2em auto;
+  margin: 0 auto 2em;
 }
 
 .step h3 {
-  font-size: 1.7em;
+  font-size: 1.5em;
+  font-weight: 500;
+  margin-bottom: 0.5em;
 }
 
 .step div {

@@ -9,28 +9,41 @@ import { Helmet } from 'react-helmet'
 import {
   AuthManager,
   ThemeManager,
-  AuthenticatedRoute,
+  // AuthenticatedRoute,
   SaasifyContext,
   theme
 } from 'react-saasify'
 
+import { SignupDialog } from './components'
+
 import {
   HomePage,
-  LoginPage,
-  LogoutPage,
-  SignupPage,
+  HowItWorksPage,
+  // LoginPage,
+  // LogoutPage,
+  // SignupPage,
+  // AuthGitHubPage,
+  EmailConfirmedPage,
   TermsPage,
   PrivacyPage,
-  AuthGitHubPage,
   NotFoundPage
 } from './routes'
 
+import { DialogManager } from './lib/DialogManager'
 import logo from './assets/logo-horiz-white@4x.png'
 
 const saasifyContext = {
   name: 'Saasify',
   logo,
+  ctaText: 'Request Early Access',
+  ctaTextInline: 'Request Access',
+  ctaOnClick: () => {
+    DialogManager.isSignupDialogOpen = true
+  },
   header: {
+    displayName: false,
+    login: false,
+    dashboard: false,
     links: [
       {
         children: 'About',
@@ -38,12 +51,7 @@ const saasifyContext = {
       },
       {
         children: 'Docs',
-        to: '/docs'
-      },
-      {
-        children: 'Slack',
-        href:
-          'https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI'
+        href: 'https://docs.saasify.sh/#/README'
       },
       {
         children: 'GitHub',
@@ -62,12 +70,16 @@ const saasifyContext = {
             to: '/'
           },
           {
-            label: 'About',
+            children: 'About',
             to: '/about'
           },
           {
             label: 'Docs',
-            to: '/docs'
+            href: 'https://docs.saasify.sh/#/README'
+          },
+          {
+            label: 'Blog',
+            href: 'https://blog.saasify.sh'
           }
         ]
       },
@@ -90,7 +102,7 @@ const saasifyContext = {
           {
             label: 'Slack',
             href:
-              'https://join.slack.com/t/saasify/shared_invite/enQtNzY3NjgyODY5OTU2LTBlNTkwYjI3ODlkOTYxOTY5MzQ3OWM0NTFmOTc5OTdjZWYwMWU2YmIyMzdkZDk0NWRlOTJiN2JmZDYzOWM1MzI'
+              'https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY'
           },
           {
             label: 'Email',
@@ -110,8 +122,8 @@ const saasifyContext = {
 @observer
 export default class App extends Component {
   render() {
+    const { isSignupDialogOpen } = DialogManager
     const fonts = toJS(ThemeManager.theme.fonts)
-
     const themeClassName = `theme-${ThemeManager.theme['@name']}`
 
     return (
@@ -130,24 +142,48 @@ export default class App extends Component {
             </Helmet>
 
             <BodyClassName className={theme(null, themeClassName)}>
-              <Switch>
-                <Route exact path='/' component={HomePage} />
+              <>
+                <Switch>
+                  <Route exact path='/' component={HomePage} />
 
-                <Route path='/terms' component={TermsPage} />
-                <Route path='/privacy' component={PrivacyPage} />
+                  <Route path='/about' component={HowItWorksPage} />
 
-                <Route path='/login' component={LoginPage} />
+                  <Route path='/terms' component={TermsPage} />
+                  <Route path='/privacy' component={PrivacyPage} />
+
+                  <Route
+                    path='/email-confirmed'
+                    component={EmailConfirmedPage}
+                  />
+
+                  {/* <Route path='/login' component={LoginPage} />
                 <Route path='/signup' component={SignupPage} />
                 <Route path='/auth/github' component={AuthGitHubPage} />
 
-                <AuthenticatedRoute path='/logout' component={LogoutPage} />
+                <AuthenticatedRoute path='/logout' component={LogoutPage} /> */}
 
-                <Route component={NotFoundPage} />
-              </Switch>
+                  <Route component={NotFoundPage} />
+                </Switch>
+
+                {isSignupDialogOpen && (
+                  <SignupDialog
+                    isOpen={isSignupDialogOpen}
+                    onClose={this._onCloseSignupDialog}
+                  />
+                )}
+              </>
             </BodyClassName>
           </SaasifyContext.Provider>
         </Provider>
       </Router>
     )
+  }
+
+  _onOpenSignupDialog = () => {
+    DialogManager.isSignupDialogOpen = true
+  }
+
+  _onCloseSignupDialog = () => {
+    DialogManager.isSignupDialogOpen = false
   }
 }

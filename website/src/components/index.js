@@ -35,9 +35,10 @@ export {
 }
 
 export * from './HeroSection'
+export * from './BenefitsSection'
 export * from './HowItWorksSection'
-export * from './UseCasesSection'
-export * from './CoreMissionSection'
+export * from './ExamplesSection'
 export * from './SocialProofSection'
 export * from './FeaturesSection'
 export * from './CTASection'
+export * from './SignupDialog'

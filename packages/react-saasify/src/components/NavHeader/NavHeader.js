@@ -128,31 +128,48 @@ export class NavHeader extends Component {
 
                 {auth.isAuthenticated ? (
                   <div className={theme(styles, 'actions')}>
-                    <Link to='/logout' className={theme(styles, 'login')}>
-                      <CTAButton type='secondary' inline>
-                        Log out
-                      </CTAButton>
-                    </Link>
+                    {config.header?.login !== false && (
+                      <Link to='/logout' className={theme(styles, 'login')}>
+                        <CTAButton type='secondary' inline>
+                          Log out
+                        </CTAButton>
+                      </Link>
+                    )}
 
-                    <Link to='/dashboard'>
-                      <CTAButton type='primary' inline>
-                        Dashboard
-                      </CTAButton>
-                    </Link>
+                    {config.header?.dashboard !== false && (
+                      <Link to='/dashboard'>
+                        <CTAButton type='primary' inline>
+                          Dashboard
+                        </CTAButton>
+                      </Link>
+                    )}
                   </div>
                 ) : (
                   <div className={theme(styles, 'actions')}>
-                    <Link to='/login' className={theme(styles, 'login')}>
-                      <CTAButton type='secondary' inline>
-                        Log in
-                      </CTAButton>
-                    </Link>
+                    {config.header?.login !== false && (
+                      <Link to='/login' className={theme(styles, 'login')}>
+                        <CTAButton type='secondary' inline>
+                          Log in
+                        </CTAButton>
+                      </Link>
+                    )}
 
-                    <Link to='/signup'>
-                      <CTAButton type='primary' inline>
-                        Get started
-                      </CTAButton>
-                    </Link>
+                    {config.header?.signup !== false &&
+                      (config.ctaOnClick ? (
+                        <CTAButton
+                          type='primary'
+                          inline
+                          onClick={config.ctaOnClick}
+                        >
+                          {config.ctaTextInline || 'Get started'}
+                        </CTAButton>
+                      ) : (
+                        <Link to='/signup'>
+                          <CTAButton type='primary' inline>
+                            {config.ctaTextInline || 'Get started'}
+                          </CTAButton>
+                        </Link>
+                      ))}
                   </div>
                 )}
               </div>

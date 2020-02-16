@@ -1,0 +1,24 @@
+.blob svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* remove drop shadow filter in safari because of artifacts */
+@media not all and (min-resolution: 0.001dpcm) {
+  @media {
+    .blob svg {
+      filter: none;
+    }
+  }
+}
+
+@media not all and (min-resolution: 0.001dpcm) {
+  @media {
+    .blob svg {
+      filter: none;
+    }
+  }
+}

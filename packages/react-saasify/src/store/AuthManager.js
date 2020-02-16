@@ -61,6 +61,12 @@ class AuthManagerClass {
     this.auth = auth
   }
 
+  async signupForBeta(opts) {
+    debug(`AuthManager.signupForBeta [${opts.email}] [${opts.name}]`)
+
+    return API.signupForBeta({ ...this.context, ...opts })
+  }
+
   async signout() {
     debug('AuthManager.signout')
 

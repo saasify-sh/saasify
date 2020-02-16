@@ -4,48 +4,48 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
-  padding-top: 100px;
 }
 
-.content {
-  padding-bottom: 40px;
+.privacy-page-body {
   width: 80%;
   min-width: 250px;
-  max-width: 1280px;
+  max-width: 940px;
   margin: 0 auto;
 }
 
-.content p {
+.privacy-page-body p {
   color: #222;
 }
 
-.content h1 {
+.privacy-page-body h1 {
   font-size: 2.4em;
   margin-bottom: 0.25em;
 }
 
-.content h2 {
-  font-size: 2.0em;
+.privacy-page-body h2 {
+  font-size: 2em;
   margin-bottom: 1.3em;
 }
 
-.content h3 {
+.privacy-page-body h3 {
   font-size: 1.6em;
   margin-bottom: 1.1em;
 }
 
-.content h4 {
+.privacy-page-body h4 {
   font-size: 1.2em;
 }
 
-.content p, .content h4, .content ul {
+.privacy-page-body p,
+.privacy-page-body h4,
+.privacy-page-body ul {
   margin-bottom: 0.8em;
 }
 
-.content .last-modified {
+.privacy-page-body .last-modified {
   margin-bottom: 1.6em;
 }
 
-.content ul {
+.privacy-page-body ul {
   margin-left: 32px;
 }

@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-
 import { CTAButton, Section } from 'react-saasify'
+
+import { DialogManager } from '../../lib/DialogManager'
 
 export class CTASection extends Component {
   render() {
     return (
       <Section {...this.props}>
-        <Link to='/signup'>
-          <CTAButton>Get started for free!</CTAButton>
-        </Link>
+        <CTAButton onClick={this._onClickRequestAccess}>
+          Request Early Access
+        </CTAButton>
       </Section>
     )
+  }
+
+  _onClickRequestAccess = () => {
+    DialogManager.isSignupDialogOpen = true
   }
 }

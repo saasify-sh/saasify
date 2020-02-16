@@ -5,27 +5,36 @@
   box-sizing: border-box;
 }
 
-body, html {
-  color: #222;
+body,
+html {
+  color: #3e4857;
   font-family: proxima-nova, Helvetica, sans-serif;
-  font-weight: 400;
 }
 
 body {
   padding: 0 !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-style: initial;
   font-style: normal;
   font-weight: 200;
   font-family: proxima-nova, Helvetica Neue, sans-serif;
-  color: initial;
+  color: #3e4857;
   margin: initial;
 }
 
+h1 {
+  font-weight: 500;
+}
+
 p {
-  color: #222;
+  color: #5f6c7f;
   font-size: 16px;
 }
 

@@ -5,12 +5,11 @@ import {
   NavHeader,
   NavFooter,
   HeroSection,
-  HowItWorksSection,
-  UseCasesSection,
-  CoreMissionSection,
+  BenefitsSection,
+  ExamplesSection,
   SocialProofSection,
-  FeaturesSection,
-  CTASection
+  CTASection,
+  ScrollToTopOnMount
 } from 'components'
 
 import styles from './styles.module.css'
@@ -21,17 +20,15 @@ export class HomePage extends Component {
       <div className={theme(styles, 'home-page')}>
         <NavHeader />
 
+        <ScrollToTopOnMount />
+
         <HeroSection />
 
-        <HowItWorksSection />
+        <BenefitsSection />
 
-        <UseCasesSection inverted />
+        <ExamplesSection />
 
-        <CoreMissionSection />
-
-        <SocialProofSection inverted />
-
-        <FeaturesSection />
+        <SocialProofSection />
 
         <CTASection />
 

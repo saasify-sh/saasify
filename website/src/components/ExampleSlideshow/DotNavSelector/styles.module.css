@@ -1,0 +1,63 @@
+/* https://tympanus.net/codrops/2014/01/21/dot-navigation-styles/ fill in style */
+
+.dotNavSelector {
+  display: flex;
+  justify-content: center;
+}
+
+.dotNavSelector ul {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.dotNavSelector li {
+  position: relative;
+  display: inline-block;
+  margin: 0 8px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.dotNavSelector li a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border-radius: 50%;
+  background-color: #71c2ff;
+  background-color: rgba(113, 194, 255, 0.3);
+  text-indent: -999em; /* make the text accessible to screen readers */
+  cursor: pointer;
+}
+
+.dotNavSelector li a:focus {
+  outline: none;
+}
+
+.dotNavSelector li a {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px #71c2ff;
+  transition: box-shadow 0.3s ease;
+}
+
+.dotNavSelector li a:hover,
+.dotNavSelector li a:focus {
+  box-shadow: inset 0 0 0 2px rgba(113, 194, 255, 0.6);
+}
+
+.dotNavSelector li.current a {
+  box-shadow: inset 0 0 0 8px #71c2ff;
+}

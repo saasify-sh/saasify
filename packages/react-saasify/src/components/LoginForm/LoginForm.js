@@ -126,7 +126,7 @@ export class LoginForm extends Component {
             notification.error({
               message: 'Error logging in',
               description: err?.response?.data?.error || err.message,
-              duration: 10000
+              duration: 10
             })
           })
       }

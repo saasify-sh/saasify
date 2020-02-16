@@ -1,0 +1,19 @@
+.gallery {
+  width: 100%;
+  margin-top: 3em;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button {
+  width: 4em !important;
+  height: 4em !important;
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.2));
+}
+
+.button:focus:not(:hover) {
+  border-color: rgb(217, 217, 217);
+}
