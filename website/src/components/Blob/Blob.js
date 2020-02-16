@@ -62,13 +62,14 @@ export class Blob extends Component {
     path.push({ x: random.float(0, 10), y: random.float(90, 100) })
     path.push({ x: random.float(40, 60), y: random.float(95, 100) })
     path.push({ x: random.float(90, 100), y: random.float(90, 100) })
-    path.push({ x: random.float(90, 100), y: random.float(30, 60) })
+    path.push({ x: random.float(95, 100), y: random.float(30, 60) })
     path.push({ x: random.float(90, 100), y: random.float(0, 10) })
     path.push({ x: path[0].x, y: path[0].y })
     path.push({ x: path[1].x, y: path[1].y })
 
-    // catmull rom spline
+    // construct a catmull rom spline from the control points
     let d = ''
+
     path.forEach((coord, index, array) => {
       const p = []
       if (index === 0) {
