@@ -14,17 +14,17 @@ import photoZachLendon from './images/zach-lendon.jpeg'
 const socialProofItems = [
   {
     quote:
-      'I love it. The ability to quickly launch and experiment with different micro SaaS businesses is a game changer for aspiring entrepreneurs.',
+      'I love it. The ability to quickly launch and experiment with different SaaS business ideas is a game changer for aspiring entrepreneurs.',
     photo: photoScottSilvi,
     name: 'Scott Silvi',
     title: 'Principal Architect, Lab49'
   },
   {
     quote:
-      'Being able to instantly turn my side projects into real SaaS products is really, really interesting...',
+      'I build a lot of indie products, and Saasify is a seismic shift in how I launch MVPs. My time to market has been cut by an order of magnitude.',
     photo: photoChrisVilla,
     name: 'Chris Villa',
-    title: 'Founder, wellpaid.io & ogimage.sh'
+    title: 'Indie Maker'
   },
   {
     quote:
@@ -42,7 +42,7 @@ const socialProofItems = [
   },
   {
     quote:
-      "We're partnering with Saasify as part of our mission to help machine learning researchers offer quality, bespoke alternatives to large SaaS vendors.",
+      "We're partnering with Saasify as part of our mission to help machine learning researchers offer independent alternatives to large SaaS vendors.",
     photo: photoNikonRasumov,
     name: 'Nikon Rasumov',
     title: 'Founder & CEO, kindlyAnswer.me'

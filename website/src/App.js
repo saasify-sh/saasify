@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet'
 import {
   AuthManager,
   ThemeManager,
-  AuthenticatedRoute,
+  // AuthenticatedRoute,
   SaasifyContext,
   theme
 } from 'react-saasify'
@@ -17,12 +17,12 @@ import {
 import {
   HomePage,
   HowItWorksPage,
-  LoginPage,
-  LogoutPage,
-  SignupPage,
+  // LoginPage,
+  // LogoutPage,
+  // SignupPage,
   TermsPage,
   PrivacyPage,
-  AuthGitHubPage,
+  // AuthGitHubPage,
   NotFoundPage
 } from './routes'
 
@@ -33,6 +33,8 @@ const saasifyContext = {
   logo,
   header: {
     displayName: false,
+    login: false,
+    dashboard: false,
     links: [
       {
         children: 'About',
@@ -40,7 +42,7 @@ const saasifyContext = {
       },
       {
         children: 'Docs',
-        to: '/docs'
+        href: 'https://docs.saasify.sh'
       },
       {
         children: 'GitHub',
@@ -64,7 +66,7 @@ const saasifyContext = {
           },
           {
             label: 'Docs',
-            to: '/docs'
+            href: 'https://docs.saasify.sh'
           },
           {
             label: 'Blog',
@@ -139,11 +141,11 @@ export default class App extends Component {
                 <Route path='/terms' component={TermsPage} />
                 <Route path='/privacy' component={PrivacyPage} />
 
-                <Route path='/login' component={LoginPage} />
+                {/* <Route path='/login' component={LoginPage} />
                 <Route path='/signup' component={SignupPage} />
                 <Route path='/auth/github' component={AuthGitHubPage} />
 
-                <AuthenticatedRoute path='/logout' component={LogoutPage} />
+                <AuthenticatedRoute path='/logout' component={LogoutPage} /> */}
 
                 <Route component={NotFoundPage} />
               </Switch>

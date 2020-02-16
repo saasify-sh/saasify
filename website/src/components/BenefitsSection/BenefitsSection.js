@@ -13,7 +13,8 @@ const ourBenefits = [
   '- User accounts (auth, emails, customer dashboard)',
   '- API gateway (rate limiting, usage tracking, global caching, etc)',
   '- Developer docs',
-  '- Polished marketing site',
+  '- Legal docs',
+  '- Marketing site',
   '- Marketing campaigns'
 ]
 
@@ -28,7 +29,7 @@ export class BenefitsSection extends Component {
     const { className, ...rest } = this.props
 
     return (
-      <Section id='benefits' title='Our SaaS, your API' {...rest}>
+      <Section id='benefits' title='Launching a SaaS Product' {...rest}>
         <svg className={theme(styles, 'defs')}>
           <defs>
             {/*

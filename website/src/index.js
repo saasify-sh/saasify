@@ -3,9 +3,9 @@
  */
 
 // Note: the order of these imports is important mostly for CSS precedence
-import 'styles/global.css'
 import 'react-saasify'
 import 'react-saasify/dist/index.css'
+import 'styles/global.css'
 import './lib/init'
 
 import React from 'react'

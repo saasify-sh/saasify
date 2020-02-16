@@ -1,25 +1,31 @@
 import React, { Component } from 'react'
 
-import { Section, UndrawSVG, theme } from 'react-saasify'
+import { Section, theme } from 'react-saasify'
 
-import features from './features.json'
+import { features } from './features'
 import styles from './styles.module.css'
 
 export class FeaturesSection extends Component {
   render() {
     return (
-      <Section id='features' title='Features' stretch {...this.props}>
+      <Section
+        id='features'
+        title='All features at a glance'
+        stretch
+        {...this.props}
+      >
         <div className={theme(styles, 'features')}>
           {features.map((feature) => (
-            <div className={theme(styles, 'feature')} key={feature.title}>
-              <UndrawSVG
-                name={feature.undrawSVG}
+            <div className={theme(styles, 'feature')} key={feature.name}>
+              <img
+                src={feature.icon}
+                alt={feature.name}
                 className={theme(styles, 'illustration')}
               />
 
-              <h3>{feature.title}</h3>
+              <h3>{feature.name}</h3>
 
-              <p>{feature.desc}</p>
+              <p dangerouslySetInnerHTML={{ __html: feature.desc }} />
             </div>
           ))}
         </div>

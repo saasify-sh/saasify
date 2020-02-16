@@ -57,7 +57,7 @@ export class ExampleSlideshow extends Component {
                 src={index === 0 ? arrowLeft : arrowRight}
               />
 
-              {note.desc}
+              <div dangerouslySetInnerHTML={{ __html: note.desc }} />
             </div>
           ))}
         </div>

@@ -5,7 +5,7 @@
 </p>
 
 <h3 align="center" style="margin-top: .6rem">
-  The easiest way to monetize any API.
+  The easiest way to monetize your API.
 </h3>
 
 ---
@@ -62,7 +62,7 @@ Have an idea that you'd like to monetize, but not sure where to start? Feel free
 - 🔥 Every API comes with its own customizable marketing site
 - 💯 Built with TypeScript + AWS Lambda + Stripe
 - 🤖 We handle all docs, hosting, billing, and accounts for you
-  -�🚀 Our CLI makes it really easy to get started!
+- 🚀 Our CLI makes it really easy to get started
 
 ## Getting Started
 

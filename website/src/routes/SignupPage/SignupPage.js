@@ -28,9 +28,11 @@ export class SignupPage extends Component {
 
         <NavHeader fixed />
 
-        <Paper className={theme(styles, 'content')}>
-          <SignupForm onAuth={this._onAuth} />
-        </Paper>
+        <div className={theme(styles, 'content')}>
+          <Paper className={theme(styles, 'body')}>
+            <SignupForm onAuth={this._onAuth} />
+          </Paper>
+        </div>
       </div>
     )
   }

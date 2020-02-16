@@ -1,20 +1,29 @@
 .features {
+  margin-top: 3em;
   display: grid;
   grid-gap: 4em;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .feature {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .feature h3 {
+  text-align: center;
   font-size: 1.3em;
   font-weight: 500;
+  color: #3e4857;
+  margin-bottom: 0.5em;
+}
+
+.feature p {
+  color: #5f6c7f;
 }
 
 .illustration {
-  width: 192px;
-  max-height: 72px;
-  margin-bottom: 1em;
+  align-self: center;
+  max-height: 96px;
+  margin-bottom: 1.5em;
 }

@@ -22,7 +22,8 @@ export const scenes = [
     label: 'OG Impact',
     notes: [
       {
-        desc: 'This is a live product built with Saasify'
+        desc:
+          'This is a <a target="_blank" href="https://ogimpact.sh">live product</a> built with Saasify'
       },
       {
         desc: 'Create your own SaaS product like this one in minutes 🚀'
@@ -81,7 +82,8 @@ export const scenes = [
     label: 'Imagemin',
     notes: [
       {
-        desc: "Here's another live product built with Saasify"
+        desc:
+          'Here\'s another <a target="_blank" href="https://imagemin.saasify.sh">live product</a> built with Saasify'
       },
       {
         desc: 'We ❤️ open source projects like imagemin'

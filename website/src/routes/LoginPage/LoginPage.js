@@ -28,9 +28,11 @@ export class LoginPage extends Component {
 
         <NavHeader fixed />
 
-        <Paper className={theme(styles, 'content')}>
-          <LoginForm onAuth={this._onAuth} />
-        </Paper>
+        <div className={theme(styles, 'content')}>
+          <Paper className={theme(styles, 'body')}>
+            <LoginForm onAuth={this._onAuth} />
+          </Paper>
+        </div>
       </div>
     )
   }
