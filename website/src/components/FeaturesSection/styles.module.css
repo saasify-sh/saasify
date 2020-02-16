@@ -27,3 +27,9 @@
   max-height: 96px;
   margin-bottom: 1.5em;
 }
+
+@media (max-width: 500px) {
+  .features {
+    padding: 0 1em;
+  }
+}

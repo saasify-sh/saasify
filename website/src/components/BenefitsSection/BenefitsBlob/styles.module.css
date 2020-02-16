@@ -124,4 +124,12 @@
   .body {
     padding: 2em 3em;
   }
+
+  .footer {
+    padding: 0 8px;
+  }
+
+  .footer img {
+    height: 72px;
+  }
 }
