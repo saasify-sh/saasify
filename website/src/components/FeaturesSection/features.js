@@ -29,7 +29,7 @@ export const features = [
   {
     name: 'Launch in minutes',
     desc:
-      'Saasifying your API couldn\'t be simpler. Just give us an <a href="https://swagger.io/docs/specification/about/">OpenAPI</a> spec (Swagger) of your externally-hosted API and Saasify generates everything from there.',
+      'Saasifying your API couldn\'t be simpler. Just give us an <a target="_blank" rel="noopener" href="https://swagger.io/docs/specification/about/">OpenAPI</a> spec (Swagger) of your externally-hosted API and Saasify generates everything from there.',
     icon: launch
   },
   {
