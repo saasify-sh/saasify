@@ -116,25 +116,6 @@
 `
               return html + '\n\n' + editHtml
             })
-
-            hook.doneEach(function() {
-              if (!window.typeformEmbed) {
-                return
-              }
-
-              const els = document.getElementsByClassName('typeform-widget')
-
-              for (const el of els) {
-                const url = el.getAttribute('data-url')
-                console.log('loading typeform', url)
-
-                window.typeformEmbed.makeWidget(el, url, {
-                  hideFooter: false,
-                  hideHeaders: true,
-                  opacity: 0
-                })
-              }
-            })
           }
         ]
       }
@@ -150,6 +131,5 @@
     <script src="_assets/prism-javascript.min.js"></script>
     <script src="_assets/prism-typescript.min.js"></script>
     <script src="_assets/external-script.min.js"></script>
-    <script src="https://embed.typeform.com/embed.js"></script>
   </body>
 </html>

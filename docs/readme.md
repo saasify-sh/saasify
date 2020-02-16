@@ -72,12 +72,6 @@ Check out the [quick start](https://saasify.sh/#/quick-start) guide to get start
   <img src="https://docs.saasify.sh/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
 </p>
 
-<!--
-## Feedback
-
-<div class="typeform-widget" data-url="https://travisfischer.typeform.com/to/yOo9Wb" data-transparency="100" data-hide-headers=true></div>
--->
-
 ## License
 
 MIT © [Saasify](https://saasify.sh)
