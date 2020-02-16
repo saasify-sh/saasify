@@ -5,5 +5,16 @@
       "SKIP_PREFLIGHT_CHECK": "true",
       "REACT_APP_GA": "UA-148982321-2"
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/(.*).(jpg|jpeg|png|webp|svg|js|css)$",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, immutable, s-maxage=31536000, max-age=31536000, stale-while-revalidate=60"
+        }
+      ]
+    }
+  ]
 }
