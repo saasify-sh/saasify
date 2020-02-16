@@ -17,6 +17,7 @@ export { default as LeftOutline } from '@ant-design/icons/lib/outline/LeftOutlin
 export { default as EyeOutline } from '@ant-design/icons/lib/outline/EyeOutline'
 export { default as EyeInvisibleOutline } from '@ant-design/icons/lib/outline/EyeInvisibleOutline'
 export { default as ReloadOutline } from '@ant-design/icons/lib/outline/ReloadOutline'
+export { default as Menu } from '@ant-design/icons/lib/outline/MenuOutline'
 
 export { default as InfoOutline } from '@ant-design/icons/lib/outline/InfoOutline'
 export { default as CheckOutline } from '@ant-design/icons/lib/outline/CheckOutline'

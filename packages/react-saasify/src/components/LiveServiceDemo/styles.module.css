@@ -161,11 +161,6 @@
   padding-top: 16px;
 }
 
-@media only screen and (max-width: 767px) {
-  .footer__actions {
-  }
-}
-
 .footer__action {
   margin-left: var(--space-s);
 }

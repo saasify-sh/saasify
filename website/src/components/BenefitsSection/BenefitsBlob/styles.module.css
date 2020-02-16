@@ -116,7 +116,12 @@
   }
 }
 
-@media (max-width: 800px) {
-  .container .benefits-title {
+@media (max-width: 400px) {
+  .container {
+    margin-right: 0;
+  }
+
+  .body {
+    padding: 2em 3em;
   }
 }

@@ -53,3 +53,9 @@
     rgba(255, 255, 255, 1) 100%
   );
 }
+
+@media (max-width: 500px) {
+  .overlay {
+    display: none;
+  }
+}

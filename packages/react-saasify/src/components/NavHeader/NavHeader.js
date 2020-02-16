@@ -74,7 +74,8 @@ export class NavHeader extends Component {
               background:
                 attached || fixed || expanded
                   ? theme['@section-fg-color']
-                  : 'transparent'
+                  : 'transparent',
+              paddingBottom: expanded ? 24 : undefined
             }}
           >
             <div className={theme(styles, 'content')}>

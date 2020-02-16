@@ -83,3 +83,9 @@
   margin-right: 1.5em;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 500px) {
+  .body {
+    padding: 4em 2em;
+  }
+}

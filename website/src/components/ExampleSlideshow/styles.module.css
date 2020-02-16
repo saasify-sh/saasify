@@ -24,6 +24,7 @@
 .note {
   position: relative;
   width: 420px;
+  max-width: 100%;
   text-align: center;
   font-family: 'Indie Flower', cursive;
   font-size: 2em;
@@ -50,7 +51,7 @@
   right: 20%;
 }
 
-.note:last-of-type {
+.note:last-child {
   margin-right: 0;
 }
 
@@ -73,5 +74,27 @@
   .arrow {
     height: 4em;
     top: -4.5em;
+  }
+}
+
+@media (max-width: 500px) {
+  .arrow {
+    display: none;
+  }
+
+  .slideshow {
+    height: 40vh;
+    max-height: 600px;
+  }
+
+  .notes {
+    display: block;
+    margin-top: 1em;
+  }
+
+  .note {
+    margin-right: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.8em;
   }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { HotKeys } from 'react-hotkeys'
+import { Swipeable } from 'react-swipeable'
 
 import { SceneSlideshow } from './SceneSlideshow/SceneSlideshow'
 import { DotNavSelector } from './DotNavSelector/DotNavSelector'
@@ -37,13 +38,17 @@ export class ExampleSlideshow extends Component {
           onSelectScene={this._onSelectScene}
         />
 
-        <div className={styles.slideshow}>
+        <Swipeable
+          onSwipedLeft={this._onSwipeLeft}
+          onSwipedRight={this._onSwipeRight}
+          className={styles.slideshow}
+        >
           <SceneSlideshow
             scenes={this._scenes}
             selectedSceneIndex={this._selectedSceneIndex}
             onSelectScene={this._onSelectScene}
           />
-        </div>
+        </Swipeable>
 
         <div className={styles.notes}>
           {selectedScene.notes.map((note, index) => (
@@ -83,5 +88,13 @@ export class ExampleSlideshow extends Component {
       0,
       Math.min(index, this._scenes.length - 1)
     )
+  }
+
+  _onSwipeLeft = () => {
+    this._onMoveSelectionRight()
+  }
+
+  _onSwipeRight = () => {
+    this._onMoveSelectionLeft()
   }
 }

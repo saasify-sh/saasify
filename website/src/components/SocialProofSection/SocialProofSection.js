@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Section, Button, theme } from 'react-saasify'
+import { Swipeable } from 'react-swipeable'
 
 import { SocialProofBlob } from './SocialProofBlob/SocialProofBlob'
 
@@ -88,12 +89,17 @@ export class SocialProofSection extends Component {
             onClick={this._onSelectPrevItem}
           />
 
-          <SocialProofBlob
-            {...selectedItem}
-            longestQuote={longestQuote}
-            className={theme(styles, 'blob', className)}
-            ref={this._blobRef}
-          />
+          <Swipeable
+            onSwipedLeft={this._onSwipeLeft}
+            onSwipedRight={this._onSwipeRight}
+          >
+            <SocialProofBlob
+              {...selectedItem}
+              longestQuote={longestQuote}
+              className={theme(styles, 'blob', className)}
+              ref={this._blobRef}
+            />
+          </Swipeable>
 
           <Button
             className={styles.button}
@@ -129,5 +135,13 @@ export class SocialProofSection extends Component {
     this.setState({
       selectedItemIndex: index
     })
+  }
+
+  _onSwipeLeft = () => {
+    this._onSelectNextItem()
+  }
+
+  _onSwipeRight = () => {
+    this._onSelectPrevItem()
   }
 }
