@@ -125,6 +125,10 @@
     padding: 2em 3em;
   }
 
+  .items {
+    font-size: 1.5em;
+  }
+
   .footer {
     padding: 0 8px;
   }
