@@ -1,6 +1,6 @@
 {
   "name": "saasify-platform",
-  "version": "1.15.9",
+  "version": "1.15.10",
   "private": true,
   "description": "Saasify marketplace and platform website.",
   "author": "Saasify <dev@saasify.sh>",
@@ -46,7 +46,7 @@
     "react-hotkeys": "^2.0.0",
     "react-motion": "^0.5.2",
     "react-router-dom": "^5.1.2",
-    "react-saasify": "^1.15.9",
+    "react-saasify": "^1.15.10",
     "react-sizeme": "^2.6.12",
     "react-svg-morph": "^0.2.1"
   },
