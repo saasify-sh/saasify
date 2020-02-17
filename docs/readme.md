@@ -28,7 +28,7 @@ We make it really simple to "saasify" your own projects like this one.
 
 ## Why Saasify?
 
-We built Saasify as an ideal solution for makers who'd like to earn passive income via SaaS.
+We built Saasify as an ideal solution for developers who want to earn passive income from their side projects.
 
 The only real way to validate a SaaS idea is to ship an MVP and get real customers paying for it. That's why Saasify allows you to quickly ship a quality MVP and start monetizing in minutes instead of months. ✈️
 
