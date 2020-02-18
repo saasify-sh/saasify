@@ -12,7 +12,7 @@ export class HeroSection extends Component {
     return (
       <Section
         id='hero'
-        title='Start monetizing your API today'
+        title='Start Monetizing Your API Today'
         subtitle={
           <>
             <div className={theme(styles, 'desc')}>
