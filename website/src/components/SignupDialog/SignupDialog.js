@@ -37,7 +37,9 @@ export class SignupDialog extends Component {
           </Button>,
 
           <Link key='onboarding' to='/onboarding'>
-            <Button type='primary'>Onwards</Button>
+            <Button type='primary' onClick={onClose}>
+              Onwards
+            </Button>
           </Link>
         ]
       : [
