@@ -26,7 +26,7 @@
   width: 420px;
   max-width: 100%;
   text-align: center;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Indie Flower', proxima-nova, cursive;
   font-size: 2em;
   margin-right: 8em;
 }

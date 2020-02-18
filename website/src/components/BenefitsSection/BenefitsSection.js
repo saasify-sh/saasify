@@ -11,7 +11,7 @@ import styles from './styles.module.css'
 const ourBenefits = [
   '- Setting up subscription billing',
   '- User accounts (auth, emails, customer dashboard)',
-  '- API gateway (rate limiting, usage tracking, global caching, etc)',
+  '- API gateway (rate limiting, usage tracking, caching, monitoring, etc)',
   '- Developer docs',
   '- Legal docs',
   '- Marketing site',

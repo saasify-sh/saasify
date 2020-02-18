@@ -15,7 +15,7 @@ import photoZachLendon from './images/zach-lendon.jpeg'
 const socialProofItems = [
   {
     quote:
-      'I love it. The ability to quickly launch and experiment with different SaaS business ideas is a game changer for aspiring entrepreneurs.',
+      'I love it. The ability to quickly launch and experiment with different SaaS businesses is a game changer for aspiring entrepreneurs.',
     photo: photoScottSilvi,
     name: 'Scott Silvi',
     title: 'Principal Architect, Lab49'
@@ -29,7 +29,7 @@ const socialProofItems = [
   },
   {
     quote:
-      "I think it's amazing how Saasify's helping developers to get their business ideas off the ground.",
+      "I think it's amazing how Saasify's helping developers get their business ideas off the ground.",
     photo: photoZachLendon,
     name: 'Zach Lendon',
     title: 'Director, AIM Consulting Group'

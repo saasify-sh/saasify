@@ -34,8 +34,6 @@ For example, the most recent published deployment for the `puppet-master` projec
 - The underlying API endpoints will still point to `https://api.saasify.sh`.
 - All SaaS web clients, including ones served from custom domains, will only be available via `https`.
 
-?> TODO: document how to alias custom domains
-
 ## Customization
 
 You can currently customize basic aspects of your SaaS web client via your `saasify.json` config file.

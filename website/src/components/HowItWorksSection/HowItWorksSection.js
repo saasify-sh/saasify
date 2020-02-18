@@ -44,7 +44,7 @@ export class HowItWorksSection extends Component {
                 We generate an API proxy that tracks usage via Stripe. We also
                 generate a polished, customizable marketing website that handles
                 user accounts, billing, subscriptions, and developer-friendly
-                docs. 💪
+                docs.
               </p>
             </div>
           </div>

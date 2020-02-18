@@ -29,7 +29,7 @@ export class HeroSection extends Component {
               */}
             </div>
 
-            <div>So you can focus on your product.</div>
+            <div>So you can focus on what matters.</div>
           </>
         }
         className={theme(styles, 'hero', className)}

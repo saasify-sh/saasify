@@ -64,7 +64,7 @@ const saasifyContext = {
   footer: {
     columns: [
       {
-        label: 'Sitemap',
+        label: 'Product',
         links: [
           {
             label: 'Home',
