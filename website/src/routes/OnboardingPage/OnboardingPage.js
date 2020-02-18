@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import { theme } from 'react-saasify'
 
-import { ScrollToTopOnMount } from 'components'
-
 import styles from './styles.module.css'
 
 export class OnboardingPage extends Component {
   render() {
     return (
       <div>
-        <ScrollToTopOnMount />
-
         <iframe
           className={theme(styles, 'onboarding-page')}
           id='typeform-full'
