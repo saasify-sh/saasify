@@ -9,6 +9,7 @@ body,
 html {
   color: #3e4857;
   font-family: 'Quicksand', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
 }
 
 body {
@@ -23,7 +24,7 @@ h5,
 h6 {
   font-style: initial;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 500;
   font-family: 'Quicksand', 'Helvetica Neue', sans-serif;
   color: #3e4857;
   margin: initial;
