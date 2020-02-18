@@ -7,7 +7,12 @@
 }
 
 .illustration {
-  margin-top: 3em;
+  margin-top: 8em;
   min-width: 128px;
   max-width: 420px;
+}
+
+.body {
+  margin: 1em auto 2em;
+  max-width: 720px;
 }

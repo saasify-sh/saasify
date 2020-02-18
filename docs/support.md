@@ -8,7 +8,7 @@ As an early adopter of Saasify, you are trusting us with your business. We are c
 
 ## Slack
 
-The best way to contact us is via our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY).
+The best way to contact us is via our open [Slack](https://slack.saasify.sh).
 
 ## GitHub
 

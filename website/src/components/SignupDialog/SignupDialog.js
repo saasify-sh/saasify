@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { inject, observer } from 'mobx-react'
 import { Button, Form, Icon, Input, notification, theme } from 'react-saasify'
 
@@ -32,8 +33,12 @@ export class SignupDialog extends Component {
     const actions = submitted
       ? [
           <Button key='close' onClick={onClose}>
-            Close
-          </Button>
+            Do Later
+          </Button>,
+
+          <Link key='onboarding' to='/onboarding'>
+            <Button type='primary'>Onwards</Button>
+          </Link>
         ]
       : [
           <Button key='cancel' onClick={onClose}>
@@ -65,11 +70,14 @@ export class SignupDialog extends Component {
             <p>You've requested access before - welcome back!</p>
 
             <p>
-              Please <a href='mailto:support@saasify.sh'>drop us a note</a> or
-              search your inbox for next steps. 😊
+              Please <a href='mailto:support@saasify.sh'>drop us a note</a> if
+              you're unsure about next steps. 😊
             </p>
 
-            <p>Thanks!</p>
+            <p>
+              Let's get started with a quick survey to see where you're at in
+              the process...
+            </p>
           </div>
         )
       } else {
@@ -78,18 +86,14 @@ export class SignupDialog extends Component {
             <p>Welcome 😊</p>
 
             <p>
-              We'll be in touch soon -- really excited to help you get your SaaS
-              ideas off the ground!
+              We're really excited to help you get your SaaS ideas off the
+              ground!
             </p>
 
-            <p>Thanks!</p>
-
-            {/*
             <p>
               Let's get started with a quick survey to see where you're at in
               the process...
             </p>
-            */}
           </div>
         )
       }

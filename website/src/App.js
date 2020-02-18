@@ -24,6 +24,7 @@ import {
   // SignupPage,
   // AuthGitHubPage,
   EmailConfirmedPage,
+  OnboardingPage,
   TermsPage,
   PrivacyPage,
   NotFoundPage
@@ -102,8 +103,7 @@ const saasifyContext = {
         links: [
           {
             label: 'Slack',
-            href:
-              'https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY'
+            href: 'https://slack.saasify.sh'
           },
           {
             label: 'Email',
@@ -157,6 +157,8 @@ export default class App extends Component {
                     path='/email-confirmed'
                     component={EmailConfirmedPage}
                   />
+
+                  <Route path='/onboarding' component={OnboardingPage} />
 
                   {/* <Route path='/login' component={LoginPage} />
                 <Route path='/signup' component={SignupPage} />

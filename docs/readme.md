@@ -53,7 +53,7 @@ Some example use cases include:
 
 Check out the [showcase](https://saasify.sh/#/showcase) for more live examples of projects which have been saasified.
 
-Have an idea that you'd like to monetize, but not sure where to start? Feel free to connect on our open [Slack](https://join.slack.com/t/saasify/shared_invite/enQtODAxODA5MzU0NjczLTczOGU3NzNkYTJlMWIwZDkyNjJkOTk3MGEwZThlOWQyNTQxODZjZTExNjAzODJlZDQ3MWM5NWQwMGRiMDcyZTY). ✌️
+Have an idea that you'd like to monetize, but not sure where to start? Feel free to connect on our open [Slack](https://slack.saasify.sh). ✌️
 
 ## Features
 
