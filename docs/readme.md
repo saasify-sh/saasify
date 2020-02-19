@@ -66,7 +66,7 @@ Have an idea that you'd like to monetize, but not sure where to start? Feel free
 
 ## Getting Started
 
-Check out the [quick start](https://saasify.sh/#/quick-start) guide to get started creating your own SaaS products or visit the [showcase](https://saasify.sh/#/showcase) to get a feel for the types of products you can build with Saasify.
+Check out the [quick start](https://docs.saasify.sh/#/quick-start) guide to get started creating your own SaaS products or visit the [showcase](https://docs.saasify.sh/#/showcase) to get a feel for the types of products you can build with Saasify.
 
 <p align="center">
   <img src="https://docs.saasify.sh/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
