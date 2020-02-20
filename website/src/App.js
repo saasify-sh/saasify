@@ -18,7 +18,7 @@ import { SignupDialog } from './components'
 
 import {
   HomePage,
-  HowItWorksPage,
+  // AboutPage,
   // LoginPage,
   // LogoutPage,
   // SignupPage,
@@ -46,10 +46,10 @@ const saasifyContext = {
     login: false,
     dashboard: false,
     links: [
-      {
-        children: 'About',
-        to: '/about'
-      },
+      // {
+      //   children: 'About',
+      //   to: '/about'
+      // },
       {
         children: 'Docs',
         href: 'https://docs.saasify.sh/#/README'
@@ -71,10 +71,10 @@ const saasifyContext = {
             label: 'Home',
             to: '/'
           },
-          {
-            children: 'About',
-            to: '/about'
-          },
+          // {
+          //   children: 'About',
+          //   to: '/about'
+          // },
           {
             label: 'Docs',
             href: 'https://docs.saasify.sh/#/README'
@@ -148,7 +148,7 @@ export default class App extends Component {
                 <Switch>
                   <Route exact path='/' component={HomePage} />
 
-                  <Route path='/about' component={HowItWorksPage} />
+                  {/* <Route path='/about' component={AboutPage} /> */}
 
                   <Route path='/terms' component={TermsPage} />
                   <Route path='/privacy' component={PrivacyPage} />

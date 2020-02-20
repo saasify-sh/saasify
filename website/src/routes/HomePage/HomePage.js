@@ -8,6 +8,8 @@ import {
   BenefitsSection,
   ExamplesSection,
   SocialProofSection,
+  HowItWorksSection,
+  FeaturesSection,
   CTASection,
   ScrollToTopOnMount
 } from 'components'
@@ -26,9 +28,15 @@ export class HomePage extends Component {
 
         <BenefitsSection />
 
+        <HowItWorksSection />
+
         <ExamplesSection />
 
         <SocialProofSection />
+
+        <CTASection />
+
+        <FeaturesSection />
 
         <CTASection />
 

@@ -4,25 +4,25 @@ import { theme } from 'react-saasify'
 import {
   NavHeader,
   NavFooter,
-  HowItWorksSection,
-  FeaturesSection,
+  AboutSection,
+  MissionSection,
   CTASection,
   ScrollToTopOnMount
 } from 'components'
 
 import styles from './styles.module.css'
 
-export class HowItWorksPage extends Component {
+export class AboutPage extends Component {
   render() {
     return (
-      <div className={theme(styles, 'how-it-works-page')}>
+      <div className={theme(styles, 'about-page')}>
         <NavHeader />
 
         <ScrollToTopOnMount />
 
-        <HowItWorksSection />
+        <AboutSection />
 
-        <FeaturesSection />
+        <MissionSection />
 
         <CTASection />
 

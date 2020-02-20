@@ -36,7 +36,7 @@ export class HeroSection extends Component {
         {...rest}
       >
         <CTAButton onClick={this._onClickRequestAccess}>
-          Request Early Access
+          Request Access
         </CTAButton>
       </Section>
     )

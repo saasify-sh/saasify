@@ -8,7 +8,7 @@ export class CTASection extends Component {
     return (
       <Section {...this.props}>
         <CTAButton onClick={this._onClickRequestAccess}>
-          Request Early Access
+          Request Access
         </CTAButton>
       </Section>
     )
