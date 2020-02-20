@@ -139,7 +139,7 @@ export class SignupDialog extends Component {
     return (
       <Dialog
         isOpen={isOpen}
-        title='Request Early Access'
+        title='Request Access'
         onClose={onClose}
         actions={actions}
         contentClassName={styles.body}
