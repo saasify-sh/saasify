@@ -14,7 +14,7 @@ Saasify allows makers to:
 
 1) Focus on unique value instead of boilerplate 🔥
 2) Ship in minutes instead of months ✈️
-3) Monetize OSS ⭐️
+3) Instantly enable monitization ⭐️
 
 ## Status
 
@@ -24,7 +24,7 @@ If you're interested in OSS sustainability and want to follow along with our pro
 
 ## Features
 
-- **$$$**: Monetize your open source projects!
+- **$$$**: Monetize your api!
 - **Simple**: Quick to setup your own SaaS
 - **Productive**: Focus on your unique value prop instead of SaaS boilerplate
 - **Standard**: Built with TypeScript + Lambda + Stripe
