@@ -4,7 +4,7 @@ import { theme } from 'react-saasify'
 import {
   NavHeader,
   NavFooter,
-  AboutSection,
+  TeamSection,
   MissionSection,
   CTASection,
   ScrollToTopOnMount
@@ -20,11 +20,11 @@ export class AboutPage extends Component {
 
         <ScrollToTopOnMount />
 
-        <AboutSection />
+        <TeamSection />
 
         <MissionSection />
 
-        <CTASection />
+        <CTASection cta='Join us in our mission today!' />
 
         <NavFooter />
       </div>

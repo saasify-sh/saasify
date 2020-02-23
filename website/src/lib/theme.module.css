@@ -42,6 +42,10 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+body header + section:first-of-type .content {
+  padding: 6em 16px 16px;
+}
+
 .theme-clean header.container {
   position: static;
   padding: 32px 24px 0;

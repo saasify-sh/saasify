@@ -5,11 +5,11 @@ import { DialogManager } from '../../lib/DialogManager'
 
 export class CTASection extends Component {
   render() {
+    const { cta = 'Request Access' } = this.props
+
     return (
       <Section {...this.props}>
-        <CTAButton onClick={this._onClickRequestAccess}>
-          Request Access
-        </CTAButton>
+        <CTAButton onClick={this._onClickRequestAccess}>{cta}</CTAButton>
       </Section>
     )
   }

@@ -1,0 +1,47 @@
+.members {
+  margin-top: 3em;
+  display: grid;
+  grid-gap: 3em;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.photo {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: filter 200ms ease-out;
+  filter: grayscale(70%);
+}
+
+.photo:hover {
+  filter: grayscale(0%);
+}
+
+.member h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 0.5em 0 0;
+}
+
+.member p {
+  font-size: 0.95em;
+  margin: 0.2em 0;
+}
+
+.link {
+  display: inline-block;
+  font-size: 1.2em;
+  margin-right: 0.5em;
+  color: #38414f;
+}
+
+.link:last-child {
+  margin-right: 0;
+}

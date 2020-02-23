@@ -11,13 +11,16 @@ export { default as MailOutline } from '@ant-design/icons/lib/outline/MailOutlin
 export { default as LockOutline } from '@ant-design/icons/lib/outline/LockOutline'
 export { default as LoadingOutline } from '@ant-design/icons/lib/outline/LoadingOutline'
 export { default as CopyOutline } from '@ant-design/icons/lib/outline/CopyOutline'
-export { default as GithubOutline } from '@ant-design/icons/lib/outline/GithubOutline'
 export { default as RightOutline } from '@ant-design/icons/lib/outline/RightOutline'
 export { default as LeftOutline } from '@ant-design/icons/lib/outline/LeftOutline'
 export { default as EyeOutline } from '@ant-design/icons/lib/outline/EyeOutline'
 export { default as EyeInvisibleOutline } from '@ant-design/icons/lib/outline/EyeInvisibleOutline'
 export { default as ReloadOutline } from '@ant-design/icons/lib/outline/ReloadOutline'
 export { default as Menu } from '@ant-design/icons/lib/outline/MenuOutline'
+
+export { default as LinkedinOutline } from '@ant-design/icons/lib/outline/LinkedinOutline'
+export { default as TwitterOutline } from '@ant-design/icons/lib/outline/TwitterOutline'
+export { default as GithubOutline } from '@ant-design/icons/lib/outline/GithubOutline'
 
 export { default as InfoOutline } from '@ant-design/icons/lib/outline/InfoOutline'
 export { default as CheckOutline } from '@ant-design/icons/lib/outline/CheckOutline'
