@@ -17,7 +17,7 @@ export class MissionSection extends Component {
       >
         <Paper className={theme(styles, 'mission-body')}>
           <p>
-            <b>To my fellow software developers,</b>
+            <b>To my fellow software engineers,</b>
           </p>
 
           <p>
@@ -40,9 +40,9 @@ export class MissionSection extends Component {
           <p>And I'm not alone in this frustration.</p>
 
           <p>
-            There are thousands of talented developers around the world who
+            There are thousands of talented engineers around the world who
             struggle with a similar tension between their day jobs as software
-            engineers and their passion projects.
+            engineers and their passion projects on the side.
           </p>
 
           <p>

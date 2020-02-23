@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Section, PricingPlan, theme } from 'react-saasify'
 
+import { DialogManager } from '../../lib/DialogManager'
+
 import styles from './styles.module.css'
 
 const plans = [
@@ -21,7 +23,11 @@ const plans = [
     desc: 'FREE FOREVER',
     price: '$0',
     interval: 'mo',
-    cta: 'Request Access'
+    cta: 'Request Access',
+    onClickCTA: (event) => {
+      event.preventDefault()
+      DialogManager.isSignupDialogOpen = true
+    }
   },
   {
     slug: 'custom',
@@ -79,8 +85,8 @@ export class PricingSection extends Component {
         <div className={theme(styles, 'footer')}>
           <p>
             * The monetization fee covers Stripe fees, hosting costs, unlimited
-            API requests, global response caching, customer support, and future
-            feature development.
+            API requests, global response caching, customer support, and feature
+            development.
           </p>
 
           <p>

@@ -31,10 +31,9 @@ export const faq = [
             <p>
               But{' '}
               <b>
-                the only way to validate your SaaS product's solution is to ship
-                an MVP
+                the only way to validate your SaaS product is to ship an MVP
               </b>{' '}
-              and get real customers paying for it .
+              and get real customers paying for it.
             </p>
 
             <p>
@@ -62,10 +61,10 @@ export const faq = [
             </p>
 
             <p>
-              This distinction may not seem like much, but momentum is important
-              for early-stage businesses and so many founders waste time and
-              energy building out SaaS boilerplate before they even know if
-              their product will resonate with paying customers.
+              This distinction may not seem like much, but momentum is very
+              important for early-stage businesses and so many founders waste
+              time and energy building out SaaS boilerplate before they even
+              know if their product will resonate with paying customers.
             </p>
 
             <p>
@@ -238,7 +237,7 @@ export const faq = [
         answer: (
           <>
             <p>
-              Saasify powers dozens of SaaS products all over the world with a{' '}
+              Saasify powers dozens of SaaS products around the world with a{' '}
               <a
                 target='_blank'
                 rel='noopener noreferrer'

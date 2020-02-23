@@ -26,6 +26,17 @@ const allowedTypes = [
   'inlineCode'
 ]
 
+const CustomLink = ({ to, children, ...rest }) =>
+  to && to.indexOf(':') >= 0 ? (
+    <a href={to} {...rest}>
+      {children}
+    </a>
+  ) : (
+    <Link to={to} {...rest}>
+      {children}
+    </Link>
+  )
+
 @inject('auth')
 @observer
 export class PricingPlan extends Component {
@@ -53,7 +64,12 @@ export class PricingPlan extends Component {
       plan.isFree
 
     const actionLink =
-      plan.ctaLink || (isDowngrade ? '/dashboard' : `/signup?plan=${plan.slug}`)
+      plan.ctaLink ||
+      (plan.onClickCTA
+        ? ''
+        : isDowngrade
+        ? '/dashboard'
+        : `/signup?plan=${plan.slug}`)
 
     return (
       <Paper className={theme(styles, 'plan', className)} {...rest}>
@@ -143,7 +159,7 @@ export class PricingPlan extends Component {
               Current plan
             </CTAButton>
           ) : (
-            <Link to={actionLink}>
+            <CustomLink to={actionLink} onClick={plan.onClickCTA}>
               <CTAButton
                 type={plan.type}
                 className={cs(
@@ -158,7 +174,7 @@ export class PricingPlan extends Component {
                     ? 'Switch plans'
                     : 'Get started')}
               </CTAButton>
-            </Link>
+            </CustomLink>
           ))}
       </Paper>
     )
