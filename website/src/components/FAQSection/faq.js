@@ -167,7 +167,22 @@ export const faq = [
     faqItems: [
       {
         question: 'Where can I find SaaS ideas to build?',
-        answer: 'TODO: blog post'
+        answer: (
+          <>
+            <p>
+              We recommend checking out{' '}
+              <a
+                href='https://www.indiehackers.com/'
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                Indie Hackers
+              </a>{' '}
+              for now and will be providing more resources for SaaS idea
+              generation and validation shortly.
+            </p>
+          </>
+        )
       }
     ]
   }
