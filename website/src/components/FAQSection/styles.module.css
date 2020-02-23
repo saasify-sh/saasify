@@ -45,4 +45,8 @@
   .faq-body {
     padding: 0 1em;
   }
+
+  .answer-body {
+    padding: 1em 0;
+  }
 }
