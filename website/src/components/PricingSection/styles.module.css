@@ -1,0 +1,26 @@
+.plans {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto 2em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-evenly;
+}
+
+.plan {
+  min-width: 400px;
+}
+
+.footer {
+  margin-top: 1.5em;
+  width: 100%;
+  text-align: left;
+}
+
+@media only screen and (max-width: 900px) {
+  .plan:not(first-child) {
+    margin-top: 2em;
+  }
+}

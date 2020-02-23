@@ -74,6 +74,10 @@ body header + section:first-of-type .content {
   font-weight: 600;
 }
 
+.plan .features {
+  padding-inline-start: 24px;
+}
+
 @media (max-width: 400px) {
   .section {
     padding: 0;

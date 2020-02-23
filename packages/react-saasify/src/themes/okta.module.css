@@ -172,3 +172,7 @@ body header + section:first-of-type .title {
 .theme-okta footer .logo(.logo--light) {
   display: flex;
 }
+
+.theme-okta .plan .features {
+  font-size: 0.85em;
+}

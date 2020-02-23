@@ -25,6 +25,7 @@ TODO: abuse
 ### How can I be sure that I will receive the correct payout amount?
 
 TODO
+
 - visibility
 - core mission
 - get in touch and chat with us

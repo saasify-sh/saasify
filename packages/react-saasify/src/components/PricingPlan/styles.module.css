@@ -1,27 +1,16 @@
 .plan {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .plan .name {
   font-weight: 700;
   font-size: 2em;
-  letter-spacing: 4px;
-  color: rgba(0, 0, 0, 0.85) !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .infinity {
   height: 1.5em;
-}
-
-.secondaryCTAButton {
-  color: #000 !important;
-}
-
-.secondaryCTAButton:hover,
-.secondaryCTAButton:active,
-.secondaryCTAButton:focus {
-  color: #fff !important;
 }
 
 .price {
@@ -49,7 +38,6 @@
 
 .features {
   text-align: left;
-  font-size: 0.85em;
   padding-inline-start: 0.5em;
 }
 
@@ -59,4 +47,8 @@
 
 .feature:last-child {
   margin-bottom: 0;
+}
+
+.flex {
+  flex: 1;
 }

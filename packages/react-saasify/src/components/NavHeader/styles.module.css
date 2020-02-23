@@ -75,6 +75,10 @@
   font-size: 1.05em;
 }
 
+.active-link {
+  font-weight: 600;
+}
+
 .container {
   padding: 16px 24px;
 }

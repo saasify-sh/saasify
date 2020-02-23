@@ -52,7 +52,8 @@ export class PricingPlan extends Component {
       auth.consumer.plan !== plan.slug &&
       plan.isFree
 
-    const actionLink = isDowngrade ? '/dashboard' : `/signup?plan=${plan.slug}`
+    const actionLink =
+      plan.ctaLink || (isDowngrade ? '/dashboard' : `/signup?plan=${plan.slug}`)
 
     return (
       <Paper className={theme(styles, 'plan', className)} {...rest}>
@@ -62,7 +63,7 @@ export class PricingPlan extends Component {
 
         <Divider />
 
-        {(plan.context.hasMeteredBilling || plan.context.hasRateLimits) && (
+        {(plan.context?.hasMeteredBilling || plan.context?.hasRateLimits) && (
           <Fragment>
             <div className={theme(styles, 'pricing')}>
               <div />
@@ -88,6 +89,10 @@ export class PricingPlan extends Component {
               )}
             </div>
 
+            {(!plan.features || !plan.features.length) && (
+              <div className={theme(styles, 'flex')} />
+            )}
+
             <Divider />
           </Fragment>
         )}
@@ -97,14 +102,20 @@ export class PricingPlan extends Component {
             <ul className={theme(styles, 'features')}>
               {plan.features.map((feature, index) => (
                 <li className={theme(styles, 'feature')} key={index}>
-                  <ReactMarkdown
-                    source={feature}
-                    allowedTypes={allowedTypes}
-                    unwrapDisallowed
-                  />
+                  {typeof feature === 'string' ? (
+                    <ReactMarkdown
+                      source={feature}
+                      allowedTypes={allowedTypes}
+                      unwrapDisallowed
+                    />
+                  ) : (
+                    feature
+                  )}
                 </li>
               ))}
             </ul>
+
+            <div className={theme(styles, 'flex')} />
 
             <Divider />
           </Fragment>
@@ -119,10 +130,12 @@ export class PricingPlan extends Component {
           </div>
         )}
 
-        <div className={theme(styles, 'price')}>
-          <span className={theme(styles, 'dollas')}>{plan.price}</span> /{' '}
-          {plan.interval}
-        </div>
+        {plan.price && (
+          <div className={theme(styles, 'price')}>
+            <span className={theme(styles, 'dollas')}>{plan.price}</span>
+            {plan.interval && <span> / {plan.interval}</span>}
+          </div>
+        )}
 
         {!inline &&
           (isCurrentPlan ? (
@@ -138,11 +151,12 @@ export class PricingPlan extends Component {
                     theme(styles, 'secondaryCTAButton')
                 )}
               >
-                {isDowngrade
-                  ? 'Downgrade'
-                  : auth.consumer?.enabled
-                  ? 'Switch plans'
-                  : 'Get started'}
+                {plan.cta ||
+                  (isDowngrade
+                    ? 'Downgrade'
+                    : auth.consumer?.enabled
+                    ? 'Switch plans'
+                    : 'Get started')}
               </CTAButton>
             </Link>
           ))}

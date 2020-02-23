@@ -348,6 +348,16 @@
   margin-right: 0;
 }
 
+.theme-waves .plan .name {
+  letter-spacing: 4px;
+  color: rgba(0, 0, 0, 0.85) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme-waves .plan .features {
+  font-size: 0.85em;
+}
+
 @media (min-width: 48em) {
   .theme-waves .checkout-page .plan {
     margin-bottom: 0;

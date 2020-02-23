@@ -45,6 +45,10 @@
   cursor: pointer;
 }
 
+.active-link {
+  font-weight: 600;
+}
+
 .logo {
   max-width: 240px;
   max-height: 64px;

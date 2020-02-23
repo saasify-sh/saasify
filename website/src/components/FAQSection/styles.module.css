@@ -1,0 +1,42 @@
+.faq-body {
+  margin-top: 2em;
+}
+
+.faq-section {
+  margin-bottom: 4em;
+  width: 100%;
+}
+
+.faq-section-title {
+  width: 100%;
+  font-weight: 400;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.faq-item {
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.faq-item:not(.expanded) .answer {
+  max-height: 0;
+}
+
+.faq-item.expanded .answer {
+  max-height: 10000px;
+}
+
+.question {
+  font-size: 1.6em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.answer {
+  overflow: hidden;
+}
+
+.answer-body {
+  padding: 1em 4em;
+}
