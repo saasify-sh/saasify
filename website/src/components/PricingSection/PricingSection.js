@@ -79,8 +79,8 @@ export class PricingSection extends Component {
         <div className={theme(styles, 'footer')}>
           <p>
             * The monetization fee covers Stripe fees, hosting costs, unlimited
-            API requests, global response caching, support, and feature
-            development.
+            API requests, global response caching, customer support, and future
+            feature development.
           </p>
 
           <p>
