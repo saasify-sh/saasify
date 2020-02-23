@@ -29,7 +29,7 @@ export const features = [
   {
     name: 'Launch in minutes',
     desc:
-      'Saasifying your API couldn\'t be simpler. Just give us an <a target="_blank" rel="noopener" href="https://swagger.io/docs/specification/about/">OpenAPI</a> spec (Swagger) of your externally-hosted API and Saasify generates everything from there.',
+      'Saasifying your API couldn\'t be simpler. Just give us an <a target="_blank" rel="noopener noreferrer" href="https://swagger.io/docs/specification/about/">OpenAPI</a> spec (Swagger) of your externally-hosted API and Saasify generates everything from there.',
     icon: launch
   },
   {
@@ -47,13 +47,13 @@ export const features = [
   {
     name: 'Easy payouts',
     desc:
-      'Link your personal Stripe account via <a target="_blank" rel="noopener" href="https://stripe.com/connect">Stripe Connect</a> and you\'ll have full control over your Stripe subscriptions and revenue. We also offer alternatives for countries where Stripe is not supported.',
+      'Link your personal Stripe account via <a target="_blank" rel="noopener noreferrer" href="https://stripe.com/connect">Stripe Connect</a> and you\'ll have full control over your Stripe subscriptions and revenue. We also offer alternatives for countries where Stripe is not supported.',
     icon: makeItRain
   },
   {
     name: 'Global, robust & stable',
     desc:
-      'Saasify powers dozens of SaaS products all over the world with a <a target="_blank" rel="noopener" href="http://status.saasify.sh">99.99% uptime</a>.',
+      'Saasify powers dozens of SaaS products all over the world with a <a target="_blank" rel="noopener noreferrer" href="http://status.saasify.sh">99.99% uptime</a>.',
     icon: connectedWorld
   },
   {

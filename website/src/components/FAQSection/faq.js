@@ -2,11 +2,10 @@ import React from 'react'
 
 export const faq = [
   {
-    section: 'Launching a SaaS',
+    section: 'Launching your SaaS',
     faqItems: [
       {
-        question:
-          'Why would I use Saasify instead of building everything myself?',
+        question: 'Why would I use Saasify instead of building things myself?',
         answer: (
           <>
             <p>
@@ -124,17 +123,15 @@ export const faq = [
     ]
   },
   {
-    section: 'Pricing',
+    section: 'Monetization',
     faqItems: [
       {
-        question: "Does Saasify support my product's billing model?",
+        question: 'What billing models does Saasify support?',
         answer: (
           <>
             <p>
-              <b>
-                Saasify supports any combination of billing models and pricing
-                plans that Stripe supports.
-              </b>
+              We're very proud to say that{' '}
+              <b>Saasify supports any billing model that Stripe supports.</b>
             </p>
 
             <p>
@@ -159,9 +156,142 @@ export const faq = [
             </ul>
           </>
         )
+      },
+      {
+        question: 'How do I get paid?',
+        answer: (
+          <>
+            <p>
+              Link your personal Stripe account via{' '}
+              <b>
+                <a
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  href='https://stripe.com/connect'
+                >
+                  Stripe Connect
+                </a>
+              </b>{' '}
+              and you'll have full control over your Stripe subscriptions and
+              revenue. We also offer alternatives for countries where Stripe
+              Connect is not supported.
+            </p>
+
+            <p>
+              By using Stripe Connect,{' '}
+              <b>your product's revenue never touches Saasify's bank account</b>{' '}
+              and is directly deposited into your Stripe balance.
+            </p>
+
+            <p>
+              Stripe supports a wide variety of{' '}
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                href='https://stripe.com/docs/payouts'
+              >
+                payout methods and options
+              </a>
+              .
+            </p>
+          </>
+        )
+      },
+      {
+        question: 'What are the tax implications of using Saasify?',
+        answer: (
+          <>
+            <p>
+              Since Saasify uses{' '}
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                href='https://stripe.com/connect'
+              >
+                Stripe Connect
+              </a>
+              , your tax handling is no different than if you were using Stripe
+              directly.
+            </p>
+
+            <p>
+              For more information on handling taxes with Stripe, see{' '}
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                href='https://support.stripe.com/questions/charging-sales-tax-gst-or-vat-on-payments'
+              >
+                Stripe's docs
+              </a>
+              .
+            </p>
+          </>
+        )
       }
     ]
   },
+  {
+    section: 'Product',
+    faqItems: [
+      {
+        question: 'How can I be sure my SaaS product will be stable?',
+        answer: (
+          <>
+            <p>
+              Saasify powers dozens of SaaS products all over the world with a{' '}
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                href='http://status.saasify.sh'
+              >
+                99.99% uptime
+              </a>
+              .
+            </p>
+
+            <p>
+              If you have deeper questions about our infrastructure, feel free
+              to <a href='mailto:support@saasify.sh'>get in touch</a>.
+            </p>
+          </>
+        )
+      },
+      {
+        question:
+          'If I make changes to my SaaS product, how does versioning work?',
+        answer: (
+          <>
+            <p>
+              We track every change you make to your product to give you full
+              <b>semver</b> control over your product's versioning.
+            </p>
+
+            <p>
+              We recommend that all product pricing changes are accompanied by a
+              major semver version update.
+            </p>
+
+            <p>
+              Your customers will automatically be upgraded to the latest
+              version except for major version updates. For example, if you
+              update your product from v1.1.0 to v2.0.0, and a customer was
+              previously subscribed to v1.1.0, thir subscription will not
+              automatically update.
+            </p>
+
+            <p>
+              You have full control over the active versions of your product's
+              API. If you want to deprecate old versions and only support the
+              newest version of your API, you can do this from the admin
+              dashboard, but keep in mind that this may require existing users
+              to update their integration.
+            </p>
+          </>
+        )
+      }
+    ]
+  },
+
   {
     section: 'Strategy',
     faqItems: [
