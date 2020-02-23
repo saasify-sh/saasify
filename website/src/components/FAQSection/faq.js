@@ -256,8 +256,9 @@ export const faq = [
             </p>
 
             <p>
-              If you have deeper questions about our infrastructure, feel free
-              to <a href='mailto:support@saasify.sh'>get in touch</a>.
+              If you have deeper questions about our infrastructure, robustness,
+              or would prefer a custom SLA, feel free to{' '}
+              <a href='mailto:support@saasify.sh'>get in touch</a>.
             </p>
           </>
         )

@@ -16,12 +16,14 @@
   width: 100%;
   border-radius: 8px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  transition: filter 200ms ease-out;
+  transition: all 150ms ease-out;
   filter: grayscale(70%);
+  transform: scale(1);
 }
 
 .photo:hover {
   filter: grayscale(0%);
+  transform: scale(1.05);
 }
 
 .member h3 {
