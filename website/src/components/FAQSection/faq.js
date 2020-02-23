@@ -1,5 +1,12 @@
 import React from 'react'
 
+import { DialogManager } from '../../lib/DialogManager'
+
+const onClickBetaCTA = (event) => {
+  event.preventDefault()
+  DialogManager.isSignupDialogOpen = true
+}
+
 export const faq = [
   {
     section: 'Launching your SaaS',
@@ -284,6 +291,113 @@ export const faq = [
               newest version of your API, you can do this from the admin
               dashboard, but keep in mind that this may require existing users
               to update their integration.
+            </p>
+          </>
+        )
+      },
+      {
+        question: "What is Saasify's tech stack?",
+        answer: (
+          <>
+            <p>
+              Large parts of Saasify are{' '}
+              <a
+                href='https://github.com/saasify-sh/saasify'
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                open source
+              </a>{' '}
+              on GitHub which should give you an idea of our engineering
+              standards.
+            </p>
+
+            <p>
+              Saasify itself is built using Node.js and a combination of JS +
+              TS. On the frontend, we use React and MobX.
+            </p>
+
+            <p>
+              We make heavy use of AWS for hosting our main backend APIs and use
+              AWS Lambda via{' '}
+              <a
+                href='https://zeit.co/docs/v2/serverless-functions/introduction'
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                ZEIT now
+              </a>{' '}
+              for targeted cases where serverless functions make sense.
+            </p>
+
+            <p>
+              We use MongoDB as a primary data store and Redis to hold temporary
+              rate-limiting information.
+            </p>
+
+            <p>
+              Our API gateway / proxy handles all of the authentication, service
+              resolution, rate-limiting, caching, and usage tracking with as
+              minimal overhead as possible. The p99 overhead of this API proxy
+              is ~40ms, and we're able to achieve this low latency with the
+              following approaches:
+            </p>
+
+            <ul>
+              <li>
+                Moving most of this logic to be asynchronous &amp; non-blocking.
+              </li>
+
+              <li>
+                Aggressively caching our core data models which take heavy
+                advantage of immutability and{' '}
+                <a
+                  href='https://blog.saasify.sh/content-based-addressing/'
+                  rel='noopener noreferrer'
+                  target='_blank'
+                >
+                  content-based addressing
+                </a>
+                .
+              </li>
+
+              <li>KISS</li>
+            </ul>
+
+            <p>
+              Saasify uses Cloudfront's global edge CDN to cache API responses
+              according to standard cache-control semantics.
+            </p>
+          </>
+        )
+      },
+      {
+        question: 'When will Saasify launch publicly?',
+        answer: (
+          <>
+            <p>
+              <b>Saasify is currently in private beta</b> as we finalize our
+              self-serve workflow.
+            </p>
+
+            <p>
+              We've already helped launch dozens of SaaS products built on top
+              of Saasify, and the core product is very stable and mature.
+            </p>
+
+            <p>
+              We are aiming to launch Saasify's self-serve product publicly in
+              late Spring, 2020.
+            </p>
+
+            <p>
+              Until then, the best way to stay in touch is to{' '}
+              <b>
+                <a onClick={onClickBetaCTA}>
+                  request access to join the private beta
+                </a>
+              </b>
+              .
             </p>
           </>
         )
