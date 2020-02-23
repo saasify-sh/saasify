@@ -16,7 +16,8 @@ export const faq = [
         answer: (
           <>
             <p>
-              The most important factor in finding product / market fit is{' '}
+              The most important factor in the success or failure of an
+              early-stage SaaS is{' '}
               <b>
                 how quickly and efficiently you're able to start validating your
                 product
@@ -59,7 +60,7 @@ export const faq = [
             </p>
 
             <p>
-              Saasify enables you{' '}
+              Saasify enables you to{' '}
               <b>
                 launch an MVP and begin validating product / market fit in
                 minutes instead of weeks or months

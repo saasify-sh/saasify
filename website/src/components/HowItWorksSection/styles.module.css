@@ -33,3 +33,9 @@
 .step img {
   width: 30%;
 }
+
+@media only screen and (max-width: 400px) {
+  .how-it-works {
+    padding: 0 1em;
+  }
+}

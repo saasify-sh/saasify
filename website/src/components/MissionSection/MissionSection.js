@@ -21,8 +21,8 @@ export class MissionSection extends Component {
           </p>
 
           <p>
-            I'm at my absolute best when I'm working on a side project that I'm
-            passionate about.
+            I know I'm at my absolute best when I'm working on a side project
+            that I'm passionate about.
           </p>
 
           <p>
@@ -33,11 +33,14 @@ export class MissionSection extends Component {
 
           <p>
             And yet, I'm forced to treat these projects as a hobby because it
-            takes so much effort to even try and monetize them, much less give
-            up the financial stability of being a full time software engineer.
+            takes so much effort to even try and monetize them, much less even
+            consider giving up the financial stability of being a full time
+            software engineer.
           </p>
 
-          <p>And I'm not alone in this frustration.</p>
+          <p>
+            <i>And I'm not alone in this frustration.</i>
+          </p>
 
           <p>
             There are thousands of talented engineers around the world who
