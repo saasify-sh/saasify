@@ -119,7 +119,7 @@ export const faq = [
             </p>
 
             <p>
-              <b>We have a world-class development team</b> including engineers
+              <b>We have a world-class engineering team</b> including developers
               who've previously worked at Facebook, Microsoft, and Netflix. We
               can confidently say that there isn't a SaaS product in the world
               that we wouldn't be able to add value to.
