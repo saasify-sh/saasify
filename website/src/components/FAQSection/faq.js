@@ -142,8 +142,8 @@ export const faq = [
             </p>
 
             <p>
-              Here are some examples of the billing models that Saasify
-              supports:
+              Here are some examples of common billing features you can use with
+              Saasify:
             </p>
 
             <ul>
@@ -270,7 +270,7 @@ export const faq = [
         answer: (
           <>
             <p>
-              We track every change you make to your product to give you full
+              We track every change you make to your product to give you full{' '}
               <b>semver</b> control over your product's versioning.
             </p>
 
@@ -283,7 +283,7 @@ export const faq = [
               Your customers will automatically be upgraded to the latest
               version except for major version updates. For example, if you
               update your product from v1.1.0 to v2.0.0, and a customer was
-              previously subscribed to v1.1.0, thir subscription will not
+              previously subscribed to v1.1.0, their subscription will not
               automatically update.
             </p>
 
