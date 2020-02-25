@@ -38,6 +38,9 @@ class Config {
   // TODO
   openapi?: string | object
 
+  // auth provider config
+  authProviders?: AuthProviderMap
+
   // core services
   services: Service[]
 }
@@ -193,4 +196,23 @@ class Snippet {
   label: string
   code: string
   exclusive?: boolean = false
+}
+
+class AuthProviderMap {
+  // third-party oauth
+  github?: AuthProviderConfig
+
+  // third-party oauth
+  google?: AuthProviderConfig
+
+  // defautlt auth provider is email & password
+  default?: AuthProviderConfig
+}
+
+class AuthProviderConfig {
+  enabled?: boolean
+  clientId?: string
+  clientSecret?: string
+  redirectUrl?: string
+  scopes?: string[]
 }
