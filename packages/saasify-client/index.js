@@ -127,7 +127,7 @@ module.exports = class SaasifyClient {
       })
   }
 
-  async getGoogleAuthUrl(params) {
+  async getGoogleAuthUrl(params = {}) {
     return this._request({
       url: `/1/auth/google/url`,
       method: 'get',

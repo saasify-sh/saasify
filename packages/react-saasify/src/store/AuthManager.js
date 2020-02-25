@@ -87,6 +87,17 @@ class AuthManagerClass {
     await LocalStore.set(AUTH_STORE_KEY, auth)
     this.auth = auth
   }
+
+  async authWithGoogle(opts) {
+    debug('AuthManager.authWithGoogle')
+    const auth = await API.authWithGoogle({
+      ...this.context,
+      ...opts
+    })
+
+    await LocalStore.set(AUTH_STORE_KEY, auth)
+    this.auth = auth
+  }
 }
 
 export const AuthManager = observable(new AuthManagerClass())

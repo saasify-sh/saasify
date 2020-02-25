@@ -1,3 +1,5 @@
+/* global btoa */
+
 import qs from 'qs'
 import env from './env'
 import API from './api'
@@ -5,10 +7,6 @@ import API from './api'
 export const githubConfig = {
   client_id: env.providerGitHubClientId,
   redirect_uri: env.githubRedirectUri
-}
-
-export const googleConfig = {
-  redirectUrl: env.googleRedirectUri
 }
 
 export function authGitHub({ location }) {
@@ -23,12 +21,16 @@ export function authGitHub({ location }) {
 }
 
 export async function authGoogle({ location }) {
-  const opts = {
-    ...googleConfig,
-    state: location.pathname
-  }
+  const { url } = await API.getGoogleAuthUrl()
+  const authUrl = new URL(url)
+  const state = JSON.stringify({
+    uri: env.googleRedirectUri,
+    route: location.pathname
+  })
+  const state64 = btoa(state)
+  authUrl.searchParams.set('state', state64)
+  const finalUrl = authUrl.toString()
+  console.log('authenticating with google', { url, finalUrl })
 
-  const url = await API.getGoogleAuthUrl(opts)
-
-  window.location = url
+  window.location = finalUrl
 }

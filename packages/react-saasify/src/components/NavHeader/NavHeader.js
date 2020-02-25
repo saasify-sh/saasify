@@ -108,7 +108,6 @@ export class NavHeader extends Component {
                 <div className={theme(styles, 'burger')}>
                   <Button
                     type='secondary'
-                    inline
                     onClick={this.handleToggleExpanded}
                     icon='menu'
                   />
