@@ -4,7 +4,7 @@ import debug from 'lib/debug'
 import API from 'lib/api'
 import LocalStore from 'store/LocalStore'
 
-import { config as githubConfig } from 'lib/auth-github'
+import { githubConfig } from 'lib/oauth'
 
 const AUTH_STORE_KEY = 'SaasifyAuth'
 

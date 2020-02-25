@@ -21,6 +21,7 @@ export { default as Menu } from '@ant-design/icons/lib/outline/MenuOutline'
 export { default as LinkedinOutline } from '@ant-design/icons/lib/outline/LinkedinOutline'
 export { default as TwitterOutline } from '@ant-design/icons/lib/outline/TwitterOutline'
 export { default as GithubOutline } from '@ant-design/icons/lib/outline/GithubOutline'
+export { default as GoogleOutline } from '@ant-design/icons/lib/outline/GoogleOutline'
 
 export { default as InfoOutline } from '@ant-design/icons/lib/outline/InfoOutline'
 export { default as CheckOutline } from '@ant-design/icons/lib/outline/CheckOutline'

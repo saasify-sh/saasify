@@ -15,7 +15,7 @@ import {
   notification
 } from 'lib/antd'
 
-import authGitHub from 'lib/auth-github'
+import { authGitHub, authGoogle } from 'lib/oauth'
 import debug from 'lib/debug'
 
 import styles from './styles.module.css'
@@ -64,6 +64,16 @@ export class SignupForm extends Component {
             onClick={this._onClickGitHub}
           >
             Sign up with GitHub
+          </Button>
+        </FormItem>
+
+        <FormItem>
+          <Button
+            className={theme(styles, 'submit')}
+            icon='google'
+            onClick={this._onClickGoogle}
+          >
+            Sign up with Google
           </Button>
         </FormItem>
 
@@ -133,5 +143,10 @@ export class SignupForm extends Component {
   _onClickGitHub = (e) => {
     e.preventDefault()
     authGitHub({ location: this.props.location })
+  }
+
+  _onClickGoogle = (e) => {
+    e.preventDefault()
+    authGoogle({ location: this.props.location })
   }
 }
