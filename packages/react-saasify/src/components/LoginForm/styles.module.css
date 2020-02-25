@@ -20,6 +20,10 @@
   height: initial;
 }
 
+.or-signup {
+  margin-top: 1em;
+}
+
 :global(.ant-form-item) {
   margin-bottom: 16px;
 }

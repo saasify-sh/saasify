@@ -30,11 +30,15 @@ export class SignupForm extends Component {
     auth: PropTypes.object.isRequired,
     form: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
+    authConfig: PropTypes.object,
+    authParams: PropTypes.object,
     className: PropTypes.string,
     onAuth: PropTypes.func
   }
 
   static defaultProps = {
+    authConfig: {},
+    authParams: {},
     onAuth: () => undefined
   }
 
@@ -43,12 +47,16 @@ export class SignupForm extends Component {
   }
 
   render() {
-    const { className } = this.props
+    const { className, authConfig } = this.props
     const { getFieldDecorator } = this.props.form
     const { loading } = this.state
 
     const iconUser = <Icon type='user' style={{ color: 'rgba(0,0,0,.25)' }} />
     const iconLock = <Icon type='lock' style={{ color: 'rgba(0,0,0,.25)' }} />
+
+    const hasGitHubAuth = authConfig.github?.enabled !== false
+    const hasGoogleAuth = authConfig.google?.enabled !== false
+    const hasDefaultAuth = authConfig.default?.enabled !== false
 
     return (
       <Form
@@ -57,63 +65,77 @@ export class SignupForm extends Component {
       >
         <h2 className={theme(styles, 'title')}>Sign up</h2>
 
-        <FormItem>
-          <Button
-            className={theme(styles, 'submit')}
-            icon='github'
-            onClick={this._onClickGitHub}
-          >
-            Sign up with GitHub
-          </Button>
-        </FormItem>
+        {hasGitHubAuth && (
+          <FormItem>
+            <Button
+              className={theme(styles, 'submit')}
+              icon='github'
+              onClick={this._onClickGitHub}
+            >
+              Sign up with GitHub
+            </Button>
+          </FormItem>
+        )}
 
-        <FormItem>
-          <Button
-            className={theme(styles, 'submit')}
-            icon='google'
-            onClick={this._onClickGoogle}
-          >
-            Sign up with Google
-          </Button>
-        </FormItem>
+        {hasGoogleAuth && (
+          <FormItem>
+            <Button
+              className={theme(styles, 'submit')}
+              icon='google'
+              onClick={this._onClickGoogle}
+            >
+              Sign up with Google
+            </Button>
+          </FormItem>
+        )}
 
-        <Divider>Or</Divider>
+        {(hasGitHubAuth || hasGoogleAuth) && hasDefaultAuth && (
+          <Divider>Or</Divider>
+        )}
 
-        <FormItem>
-          {getFieldDecorator('email', {
-            rules: [{ required: true, message: 'Please enter your email.' }]
-          })(<Input prefix={iconUser} placeholder='Email' />)}
-        </FormItem>
+        {hasDefaultAuth && (
+          <React.Fragment>
+            <FormItem>
+              {getFieldDecorator('email', {
+                rules: [{ required: true, message: 'Please enter your email.' }]
+              })(<Input prefix={iconUser} placeholder='Email' />)}
+            </FormItem>
 
-        <FormItem>
-          {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please enter a username.' }]
-          })(<Input prefix={iconUser} placeholder='Username' />)}
-        </FormItem>
+            <FormItem>
+              {getFieldDecorator('username', {
+                rules: [{ required: true, message: 'Please enter a username.' }]
+              })(<Input prefix={iconUser} placeholder='Username' />)}
+            </FormItem>
 
-        <FormItem>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please enter a password.' }]
-          })(
-            <Input prefix={iconLock} type='password' placeholder='Password' />
-          )}
-        </FormItem>
+            <FormItem>
+              {getFieldDecorator('password', {
+                rules: [{ required: true, message: 'Please enter a password.' }]
+              })(
+                <Input
+                  prefix={iconLock}
+                  type='password'
+                  placeholder='Password'
+                />
+              )}
+            </FormItem>
 
-        <FormItem>
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true
-          })(<Checkbox>Remember me</Checkbox>)}
-        </FormItem>
+            <FormItem>
+              {getFieldDecorator('remember', {
+                valuePropName: 'checked',
+                initialValue: true
+              })(<Checkbox>Remember me</Checkbox>)}
+            </FormItem>
 
-        <Button
-          type='primary'
-          htmlType='submit'
-          className={theme(styles, 'submit')}
-          loading={loading}
-        >
-          Sign up
-        </Button>
+            <Button
+              type='primary'
+              htmlType='submit'
+              className={theme(styles, 'submit')}
+              loading={loading}
+            >
+              Sign up
+            </Button>
+          </React.Fragment>
+        )}
       </Form>
     )
   }
@@ -142,11 +164,11 @@ export class SignupForm extends Component {
 
   _onClickGitHub = (e) => {
     e.preventDefault()
-    authGitHub({ location: this.props.location })
+    authGitHub({ location: this.props.location }, this.props.authParams)
   }
 
   _onClickGoogle = (e) => {
     e.preventDefault()
-    authGoogle({ location: this.props.location })
+    authGoogle({ location: this.props.location }, this.props.authParams)
   }
 }

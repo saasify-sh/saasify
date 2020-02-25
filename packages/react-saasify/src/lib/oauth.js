@@ -20,8 +20,8 @@ export function authGitHub({ location }) {
   window.location = `https://github.com/login/oauth/authorize?${opts}`
 }
 
-export async function authGoogle({ location }) {
-  const { url } = await API.getGoogleAuthUrl()
+export async function authGoogle({ location }, params) {
+  const { url } = await API.getGoogleAuthUrl(params)
   const authUrl = new URL(url)
   const state = JSON.stringify({
     uri: env.googleRedirectUri,
