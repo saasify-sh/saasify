@@ -35,7 +35,7 @@ module.exports = (program, client) => {
         )
 
         if (program.clipboard) {
-          clipboard.writeSync(result.url)
+          clipboard.writeSync(result.saasUrl)
         }
 
         program.appendOutput(JSON.stringify(result, null, 2))

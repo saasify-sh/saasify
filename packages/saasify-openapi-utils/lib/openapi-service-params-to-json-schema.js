@@ -55,6 +55,9 @@ module.exports = async (service, openapi) => {
       components: openapi.components
     }
 
+    // TODO: this is generating invalid JSON Schemas...
+    // we really need to move away from JSON Schema entirely
+
     for (const param of op.parameters) {
       schema.properties[param.name] = {
         name: param.name,
