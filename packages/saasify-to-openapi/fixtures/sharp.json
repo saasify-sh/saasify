@@ -24,8 +24,7 @@
       "name": "process",
       "timeout": 0,
       "adaptor": "typescript",
-      "GET": true,
-      "POST": true,
+      "httpMethod": "get",
       "examples": [
         {
           "name": "Resize",

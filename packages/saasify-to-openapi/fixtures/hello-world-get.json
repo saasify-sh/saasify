@@ -16,8 +16,7 @@
       "enabled": true,
       "src": "index.ts",
       "name": "helloWorld",
-      "GET": true,
-      "POST": false,
+      "httpMethod": "get",
       "definition": {
         "config": {
           "defaultExport": true,

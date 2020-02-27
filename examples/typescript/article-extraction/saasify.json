@@ -5,7 +5,7 @@
   "services": [
     {
       "src": "src/extract-article.ts",
-      "POST": false,
+      "httpMethod": "get",
       "examples": [
         {
           "name": "Extract Wikipedia Article",

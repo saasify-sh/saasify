@@ -30,8 +30,7 @@
       "name": "index",
       "timeout": 0,
       "adaptor": "typescript",
-      "GET": true,
-      "POST": true,
+      "httpMethod": "get",
       "examples": [
         {
           "inputContentType": "application/json",

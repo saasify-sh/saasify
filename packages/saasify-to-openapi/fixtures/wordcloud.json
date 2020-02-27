@@ -62,8 +62,7 @@
       "name": "stylecloud",
       "timeout": 0,
       "adaptor": "python",
-      "GET": false,
-      "POST": true,
+      "httpMethod": "post",
       "examples": [
         {
           "inputContentType": "application/json",

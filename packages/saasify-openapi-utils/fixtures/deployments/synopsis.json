@@ -92,8 +92,7 @@
     {
       "name": "summarize",
       "adaptor": "typescript",
-      "GET": true,
-      "POST": true,
+      "httpMethod": "get",
       "immutable": false,
       "reportUsage": true,
       "examples": [
@@ -279,8 +278,7 @@
     {
       "name": "detail",
       "adaptor": "typescript",
-      "GET": true,
-      "POST": true,
+      "httpMethod": "get",
       "immutable": false,
       "reportUsage": true,
       "examples": [
@@ -361,12 +359,7 @@
                   "original": "At 1 a.m. Monday, the pizza came into material being for the first time.",
                   "actual": "At 1 a.m. Monday, the pizza came into material being for the first time.",
                   "normalized": "at 1 am monday the pizza came into material being for the first time",
-                  "tokenized": [
-                    "monday",
-                    "pizza",
-                    "material",
-                    "time"
-                  ]
+                  "tokenized": ["monday", "pizza", "material", "time"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -381,9 +374,7 @@
                   "original": "\"After all, it's just pizza, right?",
                   "actual": "\"After all, it's just pizza, right?",
                   "normalized": "\"after all its just pizza right?",
-                  "tokenized": [
-                    "pizza"
-                  ]
+                  "tokenized": ["pizza"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -398,12 +389,7 @@
                   "original": "\"For one, Behr went to the wrong address at least four times.",
                   "actual": "\"For one, Behr went to the wrong address at least four times.",
                   "normalized": "\"for one behr went to the wrong address at least four times",
-                  "tokenized": [
-                    "behr",
-                    "wrong",
-                    "address",
-                    "times"
-                  ]
+                  "tokenized": ["behr", "wrong", "address", "times"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -488,12 +474,7 @@
                   "original": "At 1 a.m. Monday, the pizza came into material being for the first time.",
                   "actual": "At 1 a.m. Monday, the pizza came into material being for the first time.",
                   "normalized": "at 1 am monday the pizza came into material being for the first time",
-                  "tokenized": [
-                    "monday",
-                    "pizza",
-                    "material",
-                    "time"
-                  ]
+                  "tokenized": ["monday", "pizza", "material", "time"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -508,9 +489,7 @@
                   "original": "\"After all, it's just pizza, right?",
                   "actual": "\"After all, it's just pizza, right?",
                   "normalized": "\"after all its just pizza right?",
-                  "tokenized": [
-                    "pizza"
-                  ]
+                  "tokenized": ["pizza"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -617,12 +596,7 @@
                   "original": "\"For one, Behr went to the wrong address at least four times.",
                   "actual": "\"For one, Behr went to the wrong address at least four times.",
                   "normalized": "\"for one behr went to the wrong address at least four times",
-                  "tokenized": [
-                    "behr",
-                    "wrong",
-                    "address",
-                    "times"
-                  ]
+                  "tokenized": ["behr", "wrong", "address", "times"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -658,12 +632,7 @@
                   "original": "Added Bickell: \"Then we all just sat back and vegged out.",
                   "actual": "Added Bickell: \"Then we all just sat back and vegged out.",
                   "normalized": "added bickell: \"then we all just sat back and vegged out",
-                  "tokenized": [
-                    "added",
-                    "bickell",
-                    "sat",
-                    "vegged"
-                  ]
+                  "tokenized": ["added", "bickell", "sat", "vegged"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -700,12 +669,7 @@
                   "original": "But I was so high, I got kind of confused about the toppings.",
                   "actual": "But I was so high, I got kind of confused about the toppings.",
                   "normalized": "but i was so high i got kind of confused about the toppings",
-                  "tokenized": [
-                    "high",
-                    "kind",
-                    "confused",
-                    "toppings"
-                  ]
+                  "tokenized": ["high", "kind", "confused", "toppings"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -720,11 +684,7 @@
                   "original": "\"It took me a while to figure out what they wanted,\" Lindeman said.",
                   "actual": "\"It took me a while to figure out what they wanted,\" Lindeman said.",
                   "normalized": "\"it took me a while to figure out what they wanted\" lindeman said",
-                  "tokenized": [
-                    "figure",
-                    "wanted",
-                    "lindeman"
-                  ]
+                  "tokenized": ["figure", "wanted", "lindeman"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -739,10 +699,7 @@
                   "original": "It was no big deal, though.\"",
                   "actual": "It was no big deal, though.\"",
                   "normalized": "it was no big deal though\"",
-                  "tokenized": [
-                    "big",
-                    "deal"
-                  ]
+                  "tokenized": ["big", "deal"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -757,10 +714,7 @@
                   "original": "To tell you the truth, I don't think he even noticed.\"",
                   "actual": "To tell you the truth, I don't think he even noticed.\"",
                   "normalized": "to tell you the truth i dont think he even noticed\"",
-                  "tokenized": [
-                    "truth",
-                    "noticed"
-                  ]
+                  "tokenized": ["truth", "noticed"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -775,10 +729,7 @@
                   "original": "\"But he said we could have it free, so we weren't pissed or nothing.",
                   "actual": "\"But he said we could have it free, so we weren't pissed or nothing.",
                   "normalized": "\"but he said we could have it free so we werent pissed or nothing",
-                  "tokenized": [
-                    "free",
-                    "pissed"
-                  ]
+                  "tokenized": ["free", "pissed"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -793,13 +744,7 @@
                   "original": "\"I wasn't really trained to do what I was doing, but I figured, shit, how hard can it be?\" Kanner said.",
                   "actual": "\"I wasn't really trained to do what I was doing, but I figured, shit, how hard can it be?\" Kanner said.",
                   "normalized": "\"i wasnt really trained to do what i was doing but i figured shit how hard can it be?\" kanner said",
-                  "tokenized": [
-                    "trained",
-                    "figured",
-                    "shit",
-                    "hard",
-                    "kanner"
-                  ]
+                  "tokenized": ["trained", "figured", "shit", "hard", "kanner"]
                 },
                 "liScore": 0,
                 "nodeScore": 0,
@@ -1776,8 +1721,7 @@
     {
       "name": "extract",
       "adaptor": "typescript",
-      "GET": true,
-      "POST": true,
+      "httpMethod": "get",
       "immutable": false,
       "reportUsage": true,
       "examples": [
@@ -1810,9 +1754,7 @@
         "params": {
           "http": false,
           "context": false,
-          "order": [
-            "url"
-          ],
+          "order": ["url"],
           "schema": {
             "type": "object",
             "properties": {
@@ -1822,9 +1764,7 @@
               }
             },
             "additionalProperties": false,
-            "required": [
-              "url"
-            ],
+            "required": ["url"],
             "$schema": "http://json-schema.org/draft-07/schema#"
           }
         },
