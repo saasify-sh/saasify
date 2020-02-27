@@ -34,29 +34,6 @@ module.exports = async (spec, config) => {
   for (const path of Object.keys(openapi.paths)) {
     const pathItem = openapi.paths[path]
 
-    let index = origServices.findIndex((s) => s.path === path)
-    let origService
-
-    if (
-      index < 0 &&
-      origServices.length === 1 &&
-      origServices[0].path === undefined
-    ) {
-      if (defaultService) {
-        throw new Error(
-          'Error resolving OpenAPI spec to services: include "path" in services to disambiguate'
-        )
-      }
-
-      index = 0
-      defaultService = true
-    }
-
-    if (index >= 0) {
-      origService = origServices[index]
-      origServices.splice(index, 1)
-    }
-
     const httpMethods = Object.keys(pathItem)
 
     for (const httpMethod of httpMethods) {
@@ -75,6 +52,33 @@ module.exports = async (spec, config) => {
         } else if (name.includes('/')) {
           name = slugify(name)
         }
+      }
+
+      let index = origServices.findIndex(
+        (s) =>
+          s.path === path &&
+          (httpMethods.length === 1 || s[httpMethod.toUpperCase()])
+      )
+      let origService
+
+      if (
+        index < 0 &&
+        origServices.length === 1 &&
+        origServices[0].path === undefined
+      ) {
+        if (defaultService) {
+          throw new Error(
+            'Error resolving OpenAPI spec to services: include "path" in services to disambiguate'
+          )
+        }
+
+        index = 0
+        defaultService = true
+      }
+
+      if (index >= 0) {
+        origService = origServices[index]
+        origServices.splice(index, 1)
       }
 
       const service = {
