@@ -11,15 +11,20 @@ const jsonContentType = 'application/json'
  * *Assumes the OpenAPI spec has been fully dereferenced.*
  *
  * @param {object} pathItem - OpenAPI PathItem to extract examples from.
+ * @param {string} [httpMethod] - HTTP method to focus on.
  *
  * @return {Promise}
  */
-module.exports = async (pathItem) => {
+module.exports = async (pathItem, httpMethod) => {
   let hasOperationParams = false
   let examples = []
 
-  for (const httpMethod of Object.keys(pathItem)) {
-    const op = pathItem[httpMethod]
+  for (const method of Object.keys(pathItem)) {
+    if (httpMethod && method.toLowerCase() !== httpMethod.toLowerCase()) {
+      continue
+    }
+
+    const op = pathItem[method]
 
     if (op.requestBody && op.requestBody.content) {
       const mediaType = op.requestBody.content[jsonContentType]

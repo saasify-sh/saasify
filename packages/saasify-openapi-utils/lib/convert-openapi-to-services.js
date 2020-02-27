@@ -37,12 +37,14 @@ module.exports = async (spec, config) => {
 
     const httpMethods = Object.keys(pathItem)
 
-    for (const httpMethod of httpMethods) {
+    for (let httpMethod of httpMethods) {
+      const op = pathItem[httpMethod]
+      httpMethod = httpMethod.toLowerCase()
+
       if (!httpMethodWhitelist.has(httpMethod)) {
         continue
       }
 
-      const op = pathItem[httpMethod]
       let name = op.operationId
 
       if (!name) {
@@ -58,7 +60,8 @@ module.exports = async (spec, config) => {
       let index = origServices.findIndex(
         (s) =>
           s.path === path &&
-          (httpMethods.length === 1 || s.httpMethod === httpMethod)
+          (httpMethods.length === 1 ||
+            s.httpMethod.toLowerCase() === httpMethod)
       )
       let origService
 
@@ -89,11 +92,11 @@ module.exports = async (spec, config) => {
         ...origService
       }
 
-      service[httpMethod.toLowerCase()] = true
+      service.httpmethod = httpMethod
 
       // extract any examples from the OpenAPI PathItem for this service
       // TODO: restrict this only to an operation
-      const examples = await getExamplesFromPathItem(pathItem)
+      const examples = await getExamplesFromPathItem(pathItem, httpMethod)
       service.examples = (service.examples || []).concat(examples)
 
       services.push(service)
