@@ -69,13 +69,18 @@ export class LiveServiceDemo extends Component {
       hitRateLimit
     } = this.state
 
-    this._example = getServiceExamples(
-      service,
-      auth.consumer && auth.consumer.token,
-      {
-        method: service.POST ? 'POST' : 'GET'
-      }
-    )
+    try {
+      this._example = getServiceExamples(
+        service,
+        auth.consumer && auth.consumer.token,
+        {
+          method: service.httpMethod.toUpperCase()
+        }
+      )
+    } catch (err) {
+      console.warn('error generating service examples', service, err)
+      return null
+    }
 
     let renderedOutput = null
 
@@ -256,11 +261,11 @@ export class LiveServiceDemo extends Component {
                   'footer__service__badge',
                   theme(
                     styles,
-                    `footer__service__badge--${service.POST ? 'POST' : 'GET'}`
+                    `footer__service__badge--${service.httpMethod.toUpperCase()}`
                   )
                 )}
               >
-                {service.POST ? 'POST' : 'GET'}
+                {service.httpMethod.toUpperCase()}
               </div>
               /
               <div className={theme(styles, 'footer__service__name')}>

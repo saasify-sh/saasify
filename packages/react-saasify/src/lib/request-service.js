@@ -7,7 +7,7 @@ export default async ({ auth, service, data }) => {
 
   try {
     const result = await sdk.call(service.url, {
-      method: service.POST ? 'POST' : 'GET',
+      method: service.httpMethod.toUpperCase(),
       data
     })
 
