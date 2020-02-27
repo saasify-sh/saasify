@@ -34,8 +34,16 @@ module.exports = async (service, openapi) => {
   // TODO: this will not be robust against arbitrary OpenAPI specs
 
   try {
-    if (op.requestBody) {
+    if (
+      op.requestBody &&
+      op.requestBody.content &&
+      op.requestBody.content['application/json'] &&
+      op.requestBody.content['application/json'].schema
+    ) {
       schema = cloneDeep(op.requestBody.content['application/json'].schema)
+      schema.type = schema.type || 'object'
+      schema.properties = schema.properties || {}
+      schema.required = schema.required || []
     } else {
       schema = {
         additionalProperties: false,
@@ -65,6 +73,7 @@ module.exports = async (service, openapi) => {
     schema = await refParser.dereference(schema)
   } catch (err) {
     console.error(err)
+    console.log(JSON.stringify(op, null, 2))
 
     throw createError(
       400,

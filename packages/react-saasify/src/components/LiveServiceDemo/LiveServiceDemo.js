@@ -82,6 +82,10 @@ export class LiveServiceDemo extends Component {
       return null
     }
 
+    if (!this._example) {
+      return null
+    }
+
     let renderedOutput = null
 
     if (outputError) {
