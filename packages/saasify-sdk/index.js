@@ -6,6 +6,14 @@ const qs = require('qs')
 
 const defaultContentType = 'application/octet-stream'
 
+const httpMethodsWithBodies = new Set([
+  'put',
+  'post',
+  'delete',
+  'trace',
+  'patch'
+])
+
 module.exports = class SaasifySDK {
   constructor(opts = {}) {
     if (typeof opts === 'string') {
@@ -32,16 +40,36 @@ module.exports = class SaasifySDK {
   // Call
   // --------------------------------------------------------------------------
 
-  post(url, opts = {}) {
-    return this.call(url, { ...opts, method: 'POST' })
-  }
-
   get(url, opts = {}) {
     return this.call(url, { ...opts, method: 'GET' })
   }
 
+  put(url, opts = {}) {
+    return this.call(url, { ...opts, method: 'PUT' })
+  }
+
+  post(url, opts = {}) {
+    return this.call(url, { ...opts, method: 'POST' })
+  }
+
+  delete(url, opts = {}) {
+    return this.call(url, { ...opts, method: 'DELETE' })
+  }
+
+  head(url, opts = {}) {
+    return this.call(url, { ...opts, method: 'HEAD' })
+  }
+
+  patch(url, opts = {}) {
+    return this.call(url, { ...opts, method: 'PATCH' })
+  }
+
+  trace(url, opts = {}) {
+    return this.call(url, { ...opts, method: 'TRACE' })
+  }
+
   async call(url, { data, method = 'POST', headers = {}, ...rest }) {
-    const isPost = method === 'POST' || method === 'post'
+    const hasBody = httpMethodsWithBodies.has(method.toLowerCase())
     const authHeaders = {}
     const payload = {}
 
@@ -50,7 +78,7 @@ module.exports = class SaasifySDK {
     }
 
     if (data !== undefined) {
-      if (isPost) {
+      if (hasBody) {
         payload.data = data
       } else {
         payload.params = data
@@ -58,7 +86,7 @@ module.exports = class SaasifySDK {
     }
 
     const options = {
-      method: isPost ? 'POST' : 'GET',
+      method,
       url,
       headers: {
         'content-type': 'application/json',

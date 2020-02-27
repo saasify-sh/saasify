@@ -44,6 +44,7 @@ const languages = [
 export default (service, token, opts = {}) => {
   const { method = 'POST', example = service.examples[0] } = opts
 
+  // TODO: support other HTTP methods
   if (method !== 'POST' && method !== 'GET') {
     throw new Error(`Service codegen is not supported for method "${method}"`)
   }

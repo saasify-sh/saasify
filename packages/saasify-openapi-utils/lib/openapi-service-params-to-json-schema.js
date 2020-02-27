@@ -4,7 +4,7 @@ const cloneDeep = require('clone-deep')
 const createError = require('http-errors')
 const refParser = require('json-schema-ref-parser')
 
-const serviceToPathItem = require('./service-to-path-item')
+const serviceToPathOperation = require('./service-to-path-operation')
 
 // TODO: use https://github.com/openapi-contrib/openapi-schema-to-json-schema
 
@@ -18,42 +18,34 @@ const serviceToPathItem = require('./service-to-path-item')
  * @return {Promise}
  */
 module.exports = async (service, openapi) => {
-  const { name } = service
+  const { name, path, httpMethod } = service
 
-  const pathItem = serviceToPathItem(service, openapi)
+  const op = serviceToPathOperation(service, openapi)
   let schema
 
-  if (!pathItem) {
+  if (!op) {
     throw createError(
       400,
-      `Error service [${name}] unable to find matching OpenAPI PathItem for path "${service.path}"`
+      `Error service [${name}] unable to find matching OpenAPI PathOperation for path "${path}" and HTTP method "${httpMethod}"`
     )
   }
 
   // TODO: handle other http methods
+  // TODO: this will not be robust against arbitrary OpenAPI specs
 
-  if (pathItem.post || pathItem.put) {
-    // Convert OpenAPI POST PathItem to JSON Schema
-    const op = pathItem.post || pathItem.put
-
-    // TODO: this will not be robust against arbitrary OpenAPI specs
-
-    schema = cloneDeep(op.requestBody.content['application/json'].schema)
-    schema.components = openapi.components
-
-    // we're ignoring the possibility of op.parameters because op.requestBody
-    // should always take precedence
-  } else if (pathItem.get) {
-    // Convert OpenAPI GET PathItem to JSON Schema
-    const op = pathItem.get
-
-    schema = {
-      additionalProperties: false,
-      type: 'object',
-      properties: {},
-      required: [],
-      components: openapi.components
+  try {
+    if (op.requestBody) {
+      schema = cloneDeep(op.requestBody.content['application/json'].schema)
+    } else {
+      schema = {
+        additionalProperties: false,
+        type: 'object',
+        properties: {},
+        required: []
+      }
     }
+
+    schema.components = openapi.components
 
     // TODO: this is generating invalid JSON Schemas...
     // we really need to move away from JSON Schema entirely
@@ -68,22 +60,18 @@ module.exports = async (service, openapi) => {
         schema.required.push(param.name)
       }
     }
-  } else {
+
+    // ensure schema is clean and fully dereferenced
+    schema = await refParser.dereference(schema)
+  } catch (err) {
+    console.error(err)
+
     throw createError(
       400,
-      `Error service [${name}] matches invalid OpenAPI path item "${service.path}" which doesn't support POST or GET`
+      `Error converting service OpenAPI "${path}" to JSON Schema`
     )
   }
 
-  if (!schema) {
-    throw createError(
-      400,
-      `Error service [${name}] matches invalid OpenAPI path item "${service.path}" - JSON schema conversion failed`
-    )
-  }
-
-  // ensure schema is clean and fully dereferenced
-  schema = await refParser.dereference(schema)
   delete schema.$ref
   delete schema.components
 

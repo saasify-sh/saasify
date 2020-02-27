@@ -8,10 +8,11 @@ const getExamplesFromPathItem = require('./get-examples-from-path-item')
 
 const httpMethodWhitelist = new Set([
   'get',
-  'head',
-  'post',
   'put',
+  'post',
   'delete',
+  'head',
+  'trace',
   'patch'
 ])
 
@@ -57,7 +58,7 @@ module.exports = async (spec, config) => {
       let index = origServices.findIndex(
         (s) =>
           s.path === path &&
-          (httpMethods.length === 1 || s[httpMethod.toUpperCase()])
+          (httpMethods.length === 1 || s.httpMethod === httpMethod)
       )
       let origService
 
@@ -88,14 +89,7 @@ module.exports = async (spec, config) => {
         ...origService
       }
 
-      service.GET = false
-      service.HEAD = false
-      service.POST = false
-      service.PUT = false
-      service.DELETE = false
-      service.PATCH = false
-
-      service[httpMethod.toUpperCase()] = true
+      service[httpMethod.toLowerCase()] = true
 
       // extract any examples from the OpenAPI PathItem for this service
       // TODO: restrict this only to an operation

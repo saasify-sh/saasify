@@ -189,13 +189,24 @@
           "title": "config",
           "additionalProperties": true
         },
-        "GET": {
-          "type": "boolean",
-          "title": "GET"
-        },
-        "POST": {
-          "type": "boolean",
-          "title": "POST"
+        "httpMethod": {
+          "title": "httpMethod",
+          "enum": [
+            "get",
+            "put",
+            "post",
+            "delete",
+            "head",
+            "trace",
+            "patch",
+            "GET",
+            "PUT",
+            "POST",
+            "DELETE",
+            "HEAD",
+            "TRACE",
+            "PATCH"
+          ]
         },
         "headers": {
           "type": "object",
