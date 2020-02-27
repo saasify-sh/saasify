@@ -4,7 +4,7 @@ import debug from 'lib/debug'
 import API from 'lib/api'
 import LocalStore from 'store/LocalStore'
 
-import { config as githubConfig } from 'lib/auth-github'
+import { githubConfig } from 'lib/oauth'
 
 const AUTH_STORE_KEY = 'SaasifyAuth'
 
@@ -81,6 +81,17 @@ class AuthManagerClass {
     const auth = await API.authWithGitHub({
       ...this.context,
       ...githubConfig,
+      ...opts
+    })
+
+    await LocalStore.set(AUTH_STORE_KEY, auth)
+    this.auth = auth
+  }
+
+  async authWithGoogle(opts) {
+    debug('AuthManager.authWithGoogle')
+    const auth = await API.authWithGoogle({
+      ...this.context,
       ...opts
     })
 

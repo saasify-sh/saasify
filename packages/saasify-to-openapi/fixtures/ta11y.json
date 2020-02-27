@@ -95,8 +95,7 @@
       "name": "audit",
       "timeout": 0,
       "adaptor": "typescript",
-      "GET": true,
-      "POST": true,
+      "httpMethod": "get",
       "immutable": false,
       "examples": [
         {
@@ -595,8 +594,7 @@
       "name": "auditExtractResults",
       "timeout": 0,
       "adaptor": "typescript",
-      "GET": false,
-      "POST": true,
+      "httpMethod": "post",
       "immutable": false,
       "examples": [
         {
@@ -987,8 +985,7 @@
       "name": "extract",
       "timeout": 0,
       "adaptor": "typescript",
-      "GET": true,
-      "POST": true,
+      "httpMethod": "get",
       "immutable": false,
       "examples": [
         {

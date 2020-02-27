@@ -19,10 +19,23 @@ module.exports = async function saasifyToOpenAPI(deployment) {
   const components = { schemas: {} }
   const paths = await pReduce(
     deployment.services,
-    async (paths, service) => ({
-      ...paths,
-      ...(await module.exports.serviceToPaths(service, components))
-    }),
+    async (paths, service) => {
+      const newPaths = await module.exports.serviceToPaths(service, components)
+      for (const path of Object.keys(newPaths)) {
+        const newPath = newPaths[path]
+
+        if (paths[path]) {
+          paths[path] = {
+            ...paths[path],
+            ...newPath
+          }
+        } else {
+          paths[path] = newPath
+        }
+      }
+
+      return paths
+    },
     {}
   )
 
@@ -193,7 +206,7 @@ module.exports.serviceToPaths = async function serviceToPaths(
   // POST Operation
   // ---------------------------------------------------------------------------
 
-  if (service.POST !== false) {
+  if (service.httpMethod === 'post') {
     const post = {
       requestBody,
       responses
@@ -210,7 +223,7 @@ module.exports.serviceToPaths = async function serviceToPaths(
   // GET Operation
   // ---------------------------------------------------------------------------
 
-  if (service.GET !== false) {
+  if (service.httpMethod === 'get') {
     const parameters = []
 
     for (const [name, schema] of Object.entries(requestSchema.properties)) {

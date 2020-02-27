@@ -12,6 +12,7 @@
   "services": [
     {
       "route": "/",
+      "httpMethod": "post",
       "timeout": 0,
       "enabled": true,
       "src": "index.ts",

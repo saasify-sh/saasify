@@ -8,10 +8,11 @@ const getExamplesFromPathItem = require('./get-examples-from-path-item')
 
 const httpMethodWhitelist = new Set([
   'get',
-  'head',
-  'post',
   'put',
+  'post',
   'delete',
+  'head',
+  'trace',
   'patch'
 ])
 
@@ -33,68 +34,73 @@ module.exports = async (spec, config) => {
 
   for (const path of Object.keys(openapi.paths)) {
     const pathItem = openapi.paths[path]
-    const ops = Object.values(pathItem)
-    let name = ops.map((op) => op.summary).filter(Boolean)[0]
-
-    if (!name) {
-      name = path.slice(1)
-
-      if (!name) {
-        name = 'Default'
-      } else if (name.includes('/')) {
-        name = slugify(name)
-      }
-    }
-
-    let index = origServices.findIndex((s) => s.path === path)
-    let origService
-
-    if (
-      index < 0 &&
-      origServices.length === 1 &&
-      origServices[0].path === undefined
-    ) {
-      if (defaultService) {
-        throw new Error(
-          'Error resolving OpenAPI spec to services: include "path" in services to disambiguate'
-        )
-      }
-
-      index = 0
-      defaultService = true
-    }
-
-    if (index >= 0) {
-      origService = origServices[index]
-      origServices.splice(index, 1)
-    }
-
-    const service = {
-      name,
-      path,
-      src: firstService ? firstService.src : undefined,
-      ...origService
-    }
-
-    service.GET = false
-    service.HEAD = false
-    service.POST = false
-    service.PUT = false
-    service.DELETE = false
-    service.PATCH = false
 
     const httpMethods = Object.keys(pathItem)
-    for (const httpMethod of httpMethods) {
-      if (httpMethodWhitelist.has(httpMethod)) {
-        service[httpMethod.toUpperCase()] = true
+
+    for (let httpMethod of httpMethods) {
+      const op = pathItem[httpMethod]
+      httpMethod = httpMethod.toLowerCase()
+
+      if (!httpMethodWhitelist.has(httpMethod)) {
+        continue
       }
+
+      let name = op.operationId
+
+      if (!name) {
+        name = path.slice(1)
+
+        if (!name) {
+          name = 'Default'
+        } else if (name.includes('/')) {
+          name = slugify(name)
+        }
+      }
+
+      let index = origServices.findIndex(
+        (s) =>
+          s.path === path &&
+          (httpMethods.length === 1 ||
+            s.httpMethod.toLowerCase() === httpMethod)
+      )
+      let origService
+
+      if (
+        index < 0 &&
+        origServices.length === 1 &&
+        origServices[0].path === undefined
+      ) {
+        if (defaultService) {
+          throw new Error(
+            'Error resolving OpenAPI spec to services: include "path" in services to disambiguate'
+          )
+        }
+
+        index = 0
+        defaultService = true
+      }
+
+      if (index >= 0) {
+        origService = origServices[index]
+        origServices.splice(index, 1)
+      }
+
+      const service = {
+        name,
+        path,
+        src: firstService ? firstService.src : undefined,
+        ...origService
+      }
+
+      service.httpmethod = httpMethod
+
+      // extract any examples from the OpenAPI PathItem for this service
+      // TODO: restrict this only to an operation
+      const examples = await getExamplesFromPathItem(pathItem, httpMethod)
+      service.examples = (service.examples || []).concat(examples)
+
+      services.push(service)
     }
-
-    // extract any examples from the OpenAPI PathItem for this service
-    const examples = await getExamplesFromPathItem(pathItem)
-    service.examples = (service.examples || []).concat(examples)
-
-    services.push(service)
   }
 
   // if there are any origServices that were not matched, throw an error

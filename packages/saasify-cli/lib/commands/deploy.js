@@ -34,11 +34,11 @@ module.exports = (program, client) => {
           'Creating deployment'
         )
 
-        if (program.clipboard) {
-          clipboard.writeSync(result.url)
-        }
-
         program.appendOutput(JSON.stringify(result, null, 2))
+
+        if (program.clipboard) {
+          clipboard.writeSync(result.saasUrl)
+        }
       } catch (err) {
         handleError(program, err)
       }

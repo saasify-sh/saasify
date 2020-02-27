@@ -24,6 +24,8 @@ module.exports = async (spec, deployment, opts = {}) => {
   const api = cloneDeep(spec)
   const version = deployment.version ? `v${deployment.version}` : undefined
 
+  // It's important that we overwrite the downstream origin servers and any security
+  // requirements they employ.
   api.servers = [{ url: baseUrl }]
   api.security = [{ 'API Key': [] }]
 

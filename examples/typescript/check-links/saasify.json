@@ -5,7 +5,7 @@
   "services": [
     {
       "src": "src/check-links.ts",
-      "POST": false,
+      "httpMethod": "get",
       "immutable": true,
       "examples": [
         {

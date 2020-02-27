@@ -30,7 +30,7 @@ module.exports = async (repos, opts = {}) => {
 
   if (!opts.yes) {
     const prompt = new Confirm({
-      message: `Are you sure you want to deploy these ${projects.length} ${projectsLabel} under ${whoamiLabel}?`,
+      message: `Are you sure you want to deploy ${projects.length} ${projectsLabel} under ${whoamiLabel}?`,
       initial: true
     })
 

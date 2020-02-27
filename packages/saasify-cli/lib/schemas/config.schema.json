@@ -73,6 +73,10 @@
           "type": "boolean",
           "title": "immutable"
         },
+        "authProviders": {
+          "title": "authProviders",
+          "$ref": "#/definitions/AuthProviderMap"
+        },
         "pricingPlans": {
           "type": "array",
           "minItems": 2,
@@ -185,13 +189,24 @@
           "title": "config",
           "additionalProperties": true
         },
-        "GET": {
-          "type": "boolean",
-          "title": "GET"
-        },
-        "POST": {
-          "type": "boolean",
-          "title": "POST"
+        "httpMethod": {
+          "title": "httpMethod",
+          "enum": [
+            "get",
+            "put",
+            "post",
+            "delete",
+            "head",
+            "trace",
+            "patch",
+            "GET",
+            "PUT",
+            "POST",
+            "DELETE",
+            "HEAD",
+            "TRACE",
+            "PATCH"
+          ]
         },
         "headers": {
           "type": "object",
@@ -379,6 +394,55 @@
         "rateLimit": {
           "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
           "title": "rateLimit"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AuthProviderMap": {
+      "title": "AuthProviderMap",
+      "type": "object",
+      "properties": {
+        "github": {
+          "title": "github",
+          "$ref": "#/definitions/AuthProviderConfig"
+        },
+        "google": {
+          "title": "google",
+          "$ref": "#/definitions/AuthProviderConfig"
+        },
+        "default": {
+          "title": "default",
+          "$ref": "#/definitions/AuthProviderConfig"
+        }
+      },
+      "additionalProperties": false
+    },
+    "AuthProviderConfig": {
+      "title": "AuthProvideronfig",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "title": "enabled",
+          "type": "boolean"
+        },
+        "clientId": {
+          "title": "clientId",
+          "type": "string"
+        },
+        "clientSecret": {
+          "title": "clientSecret",
+          "type": "string"
+        },
+        "redirectUrl": {
+          "title": "redirectUrl",
+          "type": "string"
+        },
+        "scopes": {
+          "title": "scopes",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "additionalProperties": false

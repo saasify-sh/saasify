@@ -6,7 +6,7 @@
   "services": [
     {
       "src": "src/url-to-base64.ts",
-      "POST": false,
+      "httpMethod": "get",
       "examples": [
         {
           "name": "Basic Usage",
@@ -18,7 +18,7 @@
     },
     {
       "src": "src/url-to-image.ts",
-      "POST": false,
+      "httpMethod": "get",
       "examples": [
         {
           "name": "Basic Usage",
@@ -30,11 +30,11 @@
     },
     {
       "src": "src/image-to-base64.ts",
-      "GET": false
+      "httpMethod": "post"
     },
     {
       "src": "src/image-to-image.ts",
-      "GET": false
+      "httpMethod": "post"
     }
   ],
   "saas": {
