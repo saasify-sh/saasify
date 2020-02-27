@@ -33,18 +33,6 @@ module.exports = async (spec, config) => {
 
   for (const path of Object.keys(openapi.paths)) {
     const pathItem = openapi.paths[path]
-    const ops = Object.values(pathItem)
-    let name = ops.map((op) => op.summary).filter(Boolean)[0]
-
-    if (!name) {
-      name = path.slice(1)
-
-      if (!name) {
-        name = 'Default'
-      } else if (name.includes('/')) {
-        name = slugify(name)
-      }
-    }
 
     let index = origServices.findIndex((s) => s.path === path)
     let origService
@@ -69,32 +57,49 @@ module.exports = async (spec, config) => {
       origServices.splice(index, 1)
     }
 
-    const service = {
-      name,
-      path,
-      src: firstService ? firstService.src : undefined,
-      ...origService
-    }
-
-    service.GET = false
-    service.HEAD = false
-    service.POST = false
-    service.PUT = false
-    service.DELETE = false
-    service.PATCH = false
-
     const httpMethods = Object.keys(pathItem)
+
     for (const httpMethod of httpMethods) {
-      if (httpMethodWhitelist.has(httpMethod)) {
-        service[httpMethod.toUpperCase()] = true
+      if (!httpMethodWhitelist.has(httpMethod)) {
+        continue
       }
+
+      const op = pathItem[httpMethod]
+      let name = op.operationId
+
+      if (!name) {
+        name = path.slice(1)
+
+        if (!name) {
+          name = 'Default'
+        } else if (name.includes('/')) {
+          name = slugify(name)
+        }
+      }
+
+      const service = {
+        name,
+        path,
+        src: firstService ? firstService.src : undefined,
+        ...origService
+      }
+
+      service.GET = false
+      service.HEAD = false
+      service.POST = false
+      service.PUT = false
+      service.DELETE = false
+      service.PATCH = false
+
+      service[httpMethod.toUpperCase()] = true
+
+      // extract any examples from the OpenAPI PathItem for this service
+      // TODO: restrict this only to an operation
+      const examples = await getExamplesFromPathItem(pathItem)
+      service.examples = (service.examples || []).concat(examples)
+
+      services.push(service)
     }
-
-    // extract any examples from the OpenAPI PathItem for this service
-    const examples = await getExamplesFromPathItem(pathItem)
-    service.examples = (service.examples || []).concat(examples)
-
-    services.push(service)
   }
 
   // if there are any origServices that were not matched, throw an error
