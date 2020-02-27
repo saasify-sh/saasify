@@ -20,9 +20,9 @@ export class AboutPage extends Component {
 
         <ScrollToTopOnMount />
 
-        <TeamSection />
+        <TeamSection className={theme(styles, 'preClean')} />
 
-        <MissionSection />
+        <MissionSection className={theme(styles, 'clean')} />
 
         <CTASection cta='Join us in our mission today!' />
 

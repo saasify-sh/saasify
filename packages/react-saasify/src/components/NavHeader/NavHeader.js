@@ -57,7 +57,7 @@ export class NavHeader extends Component {
   }
 
   render() {
-    const { auth, fixed } = this.props
+    const { auth, fixed, className } = this.props
     const { attached, expanded } = this.state
 
     return (
@@ -66,9 +66,10 @@ export class NavHeader extends Component {
           <header
             className={theme(
               styles,
-              'container',
+              'nav-header',
               attached || fixed ? theme(styles, 'attached') : null,
-              expanded ? theme(styles, 'expanded') : null
+              expanded ? theme(styles, 'expanded') : null,
+              className
             )}
             style={{
               background:

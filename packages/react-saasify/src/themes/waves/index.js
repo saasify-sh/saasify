@@ -59,6 +59,7 @@ export const waves = ({
   return {
     ...styles,
     '@name': 'waves',
+    '@section-bg': false,
     '@section-fg-color': '#FFFFFF',
     '@section-bg-color': '#FFFFFF',
     '@primary-color': color,

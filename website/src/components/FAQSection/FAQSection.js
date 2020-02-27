@@ -23,10 +23,7 @@ export class FAQSection extends Component {
       >
         <div className={theme(styles, 'faq-body')}>
           {faq.map((faqSection) => (
-            <div
-              className={theme(styles, 'faq-section')}
-              key={faqSection.section}
-            >
+            <div className={theme(styles, 'faq-row')} key={faqSection.section}>
               <h3 className={theme(styles, 'faq-section-title')}>
                 {faqSection.section}
               </h3>

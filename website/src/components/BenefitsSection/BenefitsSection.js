@@ -26,10 +26,8 @@ const yourFocus = [
 
 export class BenefitsSection extends Component {
   render() {
-    const { className, ...rest } = this.props
-
     return (
-      <Section id='benefits' title='Launching a SaaS Product' {...rest}>
+      <Section id='benefits' title='Launching a SaaS Product' {...this.props}>
         <svg className={theme(styles, 'defs')}>
           <defs>
             {/*
@@ -87,7 +85,7 @@ export class BenefitsSection extends Component {
           </defs>
         </svg>
 
-        <div className={theme(styles, 'benefits', className)}>
+        <div className={theme(styles, 'benefits')}>
           <BenefitsBlob
             className={theme(styles, 'column')}
             items={ourBenefits}

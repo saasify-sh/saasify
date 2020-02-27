@@ -20,9 +20,9 @@ export class PricingPage extends Component {
 
         <ScrollToTopOnMount />
 
-        <PricingSection />
+        <PricingSection className={theme(styles, 'preClean')} />
 
-        <FAQSection />
+        <FAQSection className={theme(styles, 'clean')} />
 
         <CTASection />
 

@@ -5,3 +5,14 @@
   align-items: center;
   min-height: 100vh;
 }
+
+.footer {
+  /* background: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%),
+    radial-gradient(
+      91% 146%,
+      rgba(255, 255, 255, 0.5) 47%,
+      rgba(0, 0, 0, 0.5) 100%
+    ) !important;
+  background-blend-mode: screen; */
+  /* box-shadow: 0 0 7em rgba(0, 0, 0, 0.15); */
+}

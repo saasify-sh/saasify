@@ -42,11 +42,11 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-body header + section:first-of-type .content {
+.theme-clean header + section:first-of-type .content {
   padding: 6em 16px 16px;
 }
 
-.theme-clean header.container {
+.theme-clean header {
   position: static;
   padding: 32px 24px 0;
 }
@@ -76,6 +76,42 @@ body header + section:first-of-type .content {
 
 .plan .features {
   padding-inline-start: 24px;
+}
+
+.section.clean {
+  padding: 10em 2em;
+  margin: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 12%,
+    rgba(255, 255, 255, 1) 88%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.section.preClean {
+  margin-bottom: 0;
+}
+
+.nav-header {
+  background: #fff !important;
+}
+
+.theme-clean .section:first-of-type {
+  margin: 0 auto !important;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 12%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.home-page .section:first-of-type {
+  padding: 6em 2em;
 }
 
 @media (max-width: 400px) {

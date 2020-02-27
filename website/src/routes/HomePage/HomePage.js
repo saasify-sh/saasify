@@ -20,23 +20,21 @@ export class HomePage extends Component {
   render() {
     return (
       <div className={theme(styles, 'home-page')}>
-        <NavHeader />
+        <NavHeader className={styles.header} />
 
         <ScrollToTopOnMount />
 
         <HeroSection />
 
-        <BenefitsSection />
+        <BenefitsSection className={theme(styles, 'preClean')} />
 
-        <HowItWorksSection />
+        <HowItWorksSection className={theme(styles, 'clean')} />
 
         <ExamplesSection />
 
-        <SocialProofSection />
+        <SocialProofSection className={theme(styles, 'preClean')} />
 
-        <CTASection />
-
-        <FeaturesSection />
+        <FeaturesSection className={theme(styles, 'clean')} />
 
         <CTASection />
 

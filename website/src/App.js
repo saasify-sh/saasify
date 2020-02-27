@@ -34,6 +34,8 @@ import {
 import { DialogManager } from './lib/DialogManager'
 import logo from './assets/logo-horiz-white@4x.png'
 
+import styles from './styles.module.css'
+
 const saasifyContext = {
   name: 'Saasify',
   logo,
@@ -152,7 +154,9 @@ export default class App extends Component {
                 ))}
             </Helmet>
 
-            <BodyClassName className={theme(null, themeClassName)}>
+            <BodyClassName
+              className={theme(styles, themeClassName, styles.body)}
+            >
               <>
                 <Switch>
                   <Route exact path='/' component={HomePage} />

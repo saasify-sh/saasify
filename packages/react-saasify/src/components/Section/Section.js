@@ -61,9 +61,11 @@ export class Section extends Component {
       <section
         className={theme(...themeArgs)}
         style={{
-          background: inverted
-            ? theme['@section-fg-color']
-            : theme['@section-bg-color'],
+          background: theme['@section-bg']
+            ? inverted
+              ? theme['@section-fg-color']
+              : theme['@section-bg-color']
+            : undefined,
           ...style
         }}
         {...sectionProps}

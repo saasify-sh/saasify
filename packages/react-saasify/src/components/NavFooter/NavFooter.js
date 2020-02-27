@@ -14,19 +14,27 @@ import styles from './styles.module.css'
 @observer
 export class NavFooter extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    inverted: PropTypes.bool
+  }
+
+  static defaultProps = {
+    inverted: false
   }
 
   render() {
-    const { auth } = this.props
+    const { auth, className, inverted, style } = this.props
 
     return (
       <SaasifyContext.Consumer>
         {(config) => (
           <footer
-            className={theme(styles, 'container')}
+            className={theme(styles, 'nav-footer', className)}
             style={{
-              background: theme['@section-fg-color']
+              background: inverted
+                ? theme['@section-bg-color']
+                : theme['@section-fg-color'],
+              ...style
             }}
           >
             <div className={theme(styles, 'content')}>
