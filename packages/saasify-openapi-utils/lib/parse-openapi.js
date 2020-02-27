@@ -58,15 +58,6 @@ module.exports = async (spec, opts = {}) => {
       throw new Error(`Invalid path "${path}" must a valid relative URL`)
     }
 
-    // for (const httpMethod of httpMethodBlacklist) {
-    //   const op = pathItem[httpMethod]
-    //   if (op !== undefined) {
-    //     throw new Error(
-    //       `Unsupported http method "${httpMethod}" for path "${path}"`
-    //     )
-    //   }
-    // }
-
     let httpMethodFound = false
     for (const httpMethod of Object.keys(pathItem)) {
       const op = pathItem[httpMethod]

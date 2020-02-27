@@ -92,7 +92,7 @@ module.exports = async (spec, config) => {
         ...origService
       }
 
-      service.httpmethod = httpMethod
+      service.httpMethod = httpMethod
 
       // extract any examples from the OpenAPI PathItem for this service
       // TODO: restrict this only to an operation
