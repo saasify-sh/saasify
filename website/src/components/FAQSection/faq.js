@@ -351,7 +351,7 @@ export const faq = [
               </li>
 
               <li>
-                Caching our core data models which are mostly immutable and use{' '}
+                Caching our core data models which are mostly immutable via{' '}
                 <a
                   href='https://blog.saasify.sh/content-based-addressing/'
                   rel='noopener noreferrer'

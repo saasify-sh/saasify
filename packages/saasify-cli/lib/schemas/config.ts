@@ -137,6 +137,7 @@ class Example {
   input: object
   inputContentType?: string = 'application/json'
   snippet?: Snippet
+  output?: any // only necessary if you want to mock output and not use the real output from your API
 }
 
 class RateLimit {

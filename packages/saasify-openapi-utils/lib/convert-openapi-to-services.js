@@ -61,7 +61,7 @@ module.exports = async (spec, config) => {
         (s) =>
           s.path === path &&
           (httpMethods.length === 1 ||
-            s.httpMethod.toLowerCase() === httpMethod)
+            (s.httpMethod || 'get').toLowerCase() === httpMethod)
       )
       let origService
 
@@ -102,6 +102,8 @@ module.exports = async (spec, config) => {
       services.push(service)
     }
   }
+
+  // console.log(JSON.stringify(services, null, 2))
 
   // if there are any origServices that were not matched, throw an error
   if (origServices.length > 0) {

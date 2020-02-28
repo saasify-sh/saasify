@@ -109,6 +109,9 @@
           "type": "string",
           "title": "inputContentType"
         },
+        "output": {
+          "title": "output"
+        },
         "snippet": {
           "$ref": "#/definitions/Snippet",
           "title": "snippet"
@@ -191,6 +194,7 @@
         },
         "httpMethod": {
           "title": "httpMethod",
+          "default": "get",
           "enum": [
             "get",
             "put",
