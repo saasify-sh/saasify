@@ -89,27 +89,28 @@ export const faq = [
         answer: (
           <>
             <p>
-              If your product makes it to this point,{' '}
+              First off,{' '}
               <b>congratulations -- this is a great problem to have!</b>
             </p>
 
             <p>
-              You'll have more money and resources to decide how you want to
-              proceed now that your product is generating some non-trivial
-              revenue, and you were able to get to this point quickly and
-              efficiently by using Saasify.
+              Once you're at this point, you'll have more money and resources to
+              decide how you want to proceed now that your product is generating
+              some non-trivial revenue, and you were able to get to this point
+              quickly and efficiently by using Saasify.
             </p>
 
-            <p>At this point, you have a few options.</p>
+            <p>You have a few options from here.</p>
 
             <p>
-              Either invest the time and resources in replacing the parts of
-              your product that Saasify handles (billing, auth, API gateway,
-              etc). Saasify provides a very <b>clean separation of concerns</b>{' '}
-              between your product's unique value (an externally hosted API) and
-              the SaaS base that Saasify provides, with the express intent of
-              having <b>zero vendor lock-in</b>. If you want to migrate your
-              SaaS product off of Saasify, you can do so incrementally.
+              The first option is to invest some time and resources in replacing
+              the parts of your product that Saasify handles (billing, auth, API
+              gateway, etc). Saasify provides a very{' '}
+              <b>clean separation of concerns</b> between your product's unique
+              value (an externally hosted API) and the SaaS base that Saasify
+              provides, with the express intent of having{' '}
+              <b>zero vendor lock-in</b>. If you want to migrate your SaaS
+              product off of Saasify, you can do so incrementally.
             </p>
 
             <p>
