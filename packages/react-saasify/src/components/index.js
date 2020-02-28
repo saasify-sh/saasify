@@ -4,8 +4,6 @@ export * from './LoginForm'
 export * from './SignupForm'
 export * from './CheckoutForm'
 
-export * from './SaasifyContext'
-
 export * from './NavHeader'
 export * from './NavFooter'
 

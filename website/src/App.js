@@ -9,8 +9,7 @@ import { Helmet } from 'react-helmet'
 import {
   AuthManager,
   ThemeManager,
-  // AuthenticatedRoute,
-  SaasifyContext,
+  AuthenticatedRoute,
   theme
 } from 'react-saasify'
 
@@ -20,9 +19,9 @@ import {
   HomePage,
   AboutPage,
   PricingPage,
-  // LoginPage,
-  // LogoutPage,
-  // SignupPage,
+  LoginPage,
+  LogoutPage,
+  SignupPage,
   // AuthGitHubPage,
   EmailConfirmedPage,
   OnboardingPage,
@@ -36,7 +35,7 @@ import logo from './assets/logo-horiz-white@4x.png'
 
 import styles from './styles.module.css'
 
-const saasifyContext = {
+const saasifyConfig = {
   name: 'Saasify',
   logo,
   ctaText: 'Request Access',
@@ -46,8 +45,8 @@ const saasifyContext = {
   },
   header: {
     displayName: false,
-    login: false,
-    dashboard: false,
+    dashboard: true,
+    login: true,
     links: [
       {
         children: 'About',
@@ -141,58 +140,50 @@ export default class App extends Component {
 
     return (
       <Router>
-        <Provider auth={AuthManager}>
-          <SaasifyContext.Provider value={saasifyContext}>
-            <Helmet>
-              {fonts &&
-                fonts.map((font) => (
-                  <link
-                    key={font}
-                    href={`https://fonts.googleapis.com/css?family=${font}&display=swap`}
-                    rel='stylesheet'
-                  />
-                ))}
-            </Helmet>
+        <Provider auth={AuthManager} config={saasifyConfig}>
+          <Helmet>
+            {fonts &&
+              fonts.map((font) => (
+                <link
+                  key={font}
+                  href={`https://fonts.googleapis.com/css?family=${font}&display=swap`}
+                  rel='stylesheet'
+                />
+              ))}
+          </Helmet>
 
-            <BodyClassName
-              className={theme(styles, themeClassName, styles.body)}
-            >
-              <>
-                <Switch>
-                  <Route exact path='/' component={HomePage} />
+          <BodyClassName className={theme(styles, themeClassName, styles.body)}>
+            <>
+              <Switch>
+                <Route exact path='/' component={HomePage} />
 
-                  <Route path='/about' component={AboutPage} />
+                <Route path='/about' component={AboutPage} />
 
-                  <Route path='/pricing' component={PricingPage} />
+                <Route path='/pricing' component={PricingPage} />
 
-                  <Route path='/terms' component={TermsPage} />
-                  <Route path='/privacy' component={PrivacyPage} />
+                <Route path='/terms' component={TermsPage} />
+                <Route path='/privacy' component={PrivacyPage} />
 
-                  <Route
-                    path='/email-confirmed'
-                    component={EmailConfirmedPage}
-                  />
+                <Route path='/email-confirmed' component={EmailConfirmedPage} />
 
-                  <Route path='/onboarding' component={OnboardingPage} />
+                <Route path='/onboarding' component={OnboardingPage} />
 
-                  {/* <Route path='/login' component={LoginPage} />
+                <Route path='/login' component={LoginPage} />
                 <Route path='/signup' component={SignupPage} />
-                <Route path='/auth/github' component={AuthGitHubPage} />
 
-                <AuthenticatedRoute path='/logout' component={LogoutPage} /> */}
+                <AuthenticatedRoute path='/logout' component={LogoutPage} />
 
-                  <Route component={NotFoundPage} />
-                </Switch>
+                <Route component={NotFoundPage} />
+              </Switch>
 
-                {isSignupDialogOpen && (
-                  <SignupDialog
-                    isOpen={isSignupDialogOpen}
-                    onClose={this._onCloseSignupDialog}
-                  />
-                )}
-              </>
-            </BodyClassName>
-          </SaasifyContext.Provider>
+              {isSignupDialogOpen && (
+                <SignupDialog
+                  isOpen={isSignupDialogOpen}
+                  onClose={this._onCloseSignupDialog}
+                />
+              )}
+            </>
+          </BodyClassName>
         </Provider>
       </Router>
     )
