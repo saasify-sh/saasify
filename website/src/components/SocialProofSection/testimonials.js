@@ -7,7 +7,7 @@ import photoZachLendon from 'assets/people/zach-lendon.jpg'
 export const testimonials = [
   {
     quote:
-      'I love it. The ability to quickly launch and experiment with different SaaS businesses is a game changer for aspiring entrepreneurs.',
+      'I love it. The ability to quickly launch and experiment with different SaaS ideas is a game changer for aspiring entrepreneurs.',
     photo: photoScottSilvi,
     name: 'Scott Silvi',
     title: 'Principal Architect, Lab49'
