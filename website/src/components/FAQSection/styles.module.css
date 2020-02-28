@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.faq-row:last-child {
+  margin-bottom: 0;
+}
+
 .faq-row-title {
   width: 100%;
   font-weight: 400;

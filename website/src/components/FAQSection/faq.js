@@ -351,8 +351,7 @@ export const faq = [
               </li>
 
               <li>
-                Aggressively caching our core data models which take heavy
-                advantage of immutability and{' '}
+                Caching our core data models which are mostly immutable and use{' '}
                 <a
                   href='https://blog.saasify.sh/content-based-addressing/'
                   rel='noopener noreferrer'
@@ -378,8 +377,8 @@ export const faq = [
         answer: (
           <>
             <p>
-              <b>Saasify is currently in private beta</b> as we finalize our
-              self-serve workflow.
+              <b>Saasify is currently in private beta</b> as we refine our
+              offering.
             </p>
 
             <p>
@@ -424,7 +423,7 @@ export const faq = [
                 Indie Hackers
               </a>{' '}
               for now and will be providing more resources for SaaS idea
-              generation and validation shortly.
+              generation and validation in the near future.
             </p>
           </>
         )
