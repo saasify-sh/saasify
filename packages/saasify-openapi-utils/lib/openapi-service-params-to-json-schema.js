@@ -58,14 +58,16 @@ module.exports = async (service, openapi) => {
     // TODO: this is generating invalid JSON Schemas...
     // we really need to move away from JSON Schema entirely
 
-    for (const param of op.parameters) {
-      schema.properties[param.name] = {
-        name: param.name,
-        ...param.schema
-      }
+    if (op.parameters) {
+      for (const param of op.parameters) {
+        schema.properties[param.name] = {
+          name: param.name,
+          ...param.schema
+        }
 
-      if (param.required) {
-        schema.required.push(param.name)
+        if (param.required) {
+          schema.required.push(param.name)
+        }
       }
     }
 
