@@ -22,6 +22,7 @@ import {
   LoginPage,
   LogoutPage,
   SignupPage,
+  DashboardPage,
   // AuthGitHubPage,
   EmailConfirmedPage,
   OnboardingPage,
@@ -171,6 +172,10 @@ export default class App extends Component {
                 <Route path='/login' component={LoginPage} />
                 <Route path='/signup' component={SignupPage} />
 
+                <AuthenticatedRoute
+                  path='/dashboard'
+                  component={DashboardPage}
+                />
                 <AuthenticatedRoute path='/logout' component={LogoutPage} />
 
                 <Route component={NotFoundPage} />

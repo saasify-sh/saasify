@@ -23,6 +23,8 @@ export * from './LiveServiceDemo'
 export * from './PricingPlan'
 export * from './CTAButton'
 
+export * from './InfiniteList'
+
 export * from './Markdown'
 export * from './UndrawSVG'
 export * from './Logo'
