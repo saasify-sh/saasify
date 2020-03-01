@@ -3,7 +3,7 @@ import { API, EventEmitter, theme } from 'react-saasify'
 import { withRouter } from 'react-router'
 import { withTracker } from 'lib/with-tracker'
 import { observer } from 'mobx-react'
-import { observable } from 'mobx'
+import { observable, computed } from 'mobx'
 
 import { NavHeader, NavFooter, ScrollToTopOnMount, Section } from 'components'
 
@@ -22,11 +22,27 @@ export class ProjectAdminPage extends Component {
   @observable
   _error = false
 
+  @computed get _name() {
+    if (this._project) {
+      const { lastPublishedDeployment } = this._project
+
+      if (lastPublishedDeployment?.saas?.name) {
+        return lastPublishedDeployment?.saas?.name
+      }
+
+      return this._project.name
+    }
+
+    return 'Project'
+  }
+
   componentDidMount() {
     this._reset()
   }
 
   render() {
+    console.log('name', this._name)
+
     return (
       <div className={theme(styles, 'project-admin-page')}>
         <NavHeader />
@@ -35,7 +51,7 @@ export class ProjectAdminPage extends Component {
 
         <Section
           id='project-admin'
-          title='Project Admin Page'
+          title={this._name}
           className={theme(styles, 'body')}
           contentClassName={theme(styles, 'content')}
         >
