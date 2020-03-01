@@ -79,7 +79,14 @@ export class ProjectGallery extends Component {
   }
 
   render() {
-    const { search, sort, transforms, active, ...rest } = this.props
+    const {
+      search,
+      sort,
+      transforms,
+      active,
+      onEditProject,
+      ...rest
+    } = this.props
     const { query } = this.state
 
     return (

@@ -16,19 +16,25 @@ import {
 import { SignupDialog } from './components'
 
 import {
+  // marketing site
   HomePage,
   AboutPage,
   PricingPage,
+  TermsPage,
+  PrivacyPage,
+  OnboardingPage,
+  NotFoundPage,
+
+  // auth flow
   LoginPage,
   LogoutPage,
   SignupPage,
-  DashboardPage,
-  // AuthGitHubPage,
+  AuthGitHubPage,
   EmailConfirmedPage,
-  OnboardingPage,
-  TermsPage,
-  PrivacyPage,
-  NotFoundPage
+
+  // maker webapp
+  DashboardPage,
+  ProjectAdminPage
 } from './routes'
 
 import { DialogManager } from './lib/DialogManager'
@@ -157,26 +163,31 @@ export default class App extends Component {
             <>
               <Switch>
                 <Route exact path='/' component={HomePage} />
-
                 <Route path='/about' component={AboutPage} />
-
                 <Route path='/pricing' component={PricingPage} />
 
                 <Route path='/terms' component={TermsPage} />
                 <Route path='/privacy' component={PrivacyPage} />
 
                 <Route path='/email-confirmed' component={EmailConfirmedPage} />
+                <Route path='/login' component={LoginPage} />
+                <Route path='/signup' component={SignupPage} />
+                <Route path='/auth/github' component={AuthGitHubPage} />
+                <AuthenticatedRoute path='/logout' component={LogoutPage} />
 
                 <Route path='/onboarding' component={OnboardingPage} />
 
-                <Route path='/login' component={LoginPage} />
-                <Route path='/signup' component={SignupPage} />
-
                 <AuthenticatedRoute
+                  exact
                   path='/dashboard'
                   component={DashboardPage}
                 />
-                <AuthenticatedRoute path='/logout' component={LogoutPage} />
+
+                <AuthenticatedRoute
+                  exact
+                  path='/maker/projects/:namespace/:projectName'
+                  component={ProjectAdminPage}
+                />
 
                 <Route component={NotFoundPage} />
               </Switch>

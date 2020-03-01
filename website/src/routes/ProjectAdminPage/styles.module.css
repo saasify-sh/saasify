@@ -1,4 +1,4 @@
-.dashboard-page {
+.project-admin-page {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -13,11 +13,4 @@
 .content {
   max-width: unset !important;
   padding-top: 2em !important;
-}
-
-.projectGallery {
-  width: 100%;
-  max-width: 1400px;
-  align-self: center;
-  margin: 0 auto 2em;
 }

@@ -185,7 +185,7 @@ export class ReactLiveQuery {
     }
   }
 
-  @observable
+  @observable.shallow
   _results = []
 
   /**
