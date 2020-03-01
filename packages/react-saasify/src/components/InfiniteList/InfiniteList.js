@@ -26,8 +26,8 @@ export class InfiniteList extends Component {
     renderItem: PropTypes.func.isRequired,
     renderEmpty: PropTypes.func,
     pagingThresholdPercentage: PropTypes.number,
-    contentContainerClassName: PropTypes.string,
-    contentContainerStyle: PropTypes.object,
+    className: PropTypes.string,
+    style: PropTypes.object,
     footer: PropTypes.object
   }
 
@@ -74,8 +74,8 @@ export class InfiniteList extends Component {
       renderItem,
       renderEmpty,
       pagingThresholdPercentage,
-      contentContainerClassName,
-      contentContainerStyle,
+      className,
+      style,
       ...rest
     } = this.props
 
@@ -96,10 +96,6 @@ export class InfiniteList extends Component {
     if (query.isLoadingInitialResults) {
       return <LoadingIndicator dark={false} {...rest} />
     } else {
-      const loadingStyle = {}
-      const scrollNodeStyles = {}
-      loadingStyle.bottom = 16
-
       return (
         <div
           style={{
@@ -114,20 +110,16 @@ export class InfiniteList extends Component {
           <div
             ref='scrollNode'
             className={styles.scrollNode}
-            style={scrollNodeStyles}
             onScroll={this._onScroll}
           >
-            <div
-              className={contentContainerClassName}
-              style={contentContainerStyle}
-            >
+            <div className={className} style={style}>
               {content}
             </div>
           </div>
 
           {footer}
 
-          <div className={styles.loadingSection} style={loadingStyle}>
+          <div className={styles.loadingSection}>
             {query.isLoading && (
               <div className={styles.refresh}>Loading...</div>
             )}

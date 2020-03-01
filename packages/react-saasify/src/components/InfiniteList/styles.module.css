@@ -9,6 +9,7 @@
 .loadingSection {
   position: absolute;
   left: 0;
+  bottom: 16px;
   width: 100%;
   height: 48px;
   display: flex;

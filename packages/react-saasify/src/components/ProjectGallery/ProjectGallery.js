@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import cs from 'classnames'
 
 import { InfiniteList } from '../InfiniteList'
 import { ProjectGalleryItem } from './ProjectGalleryItem'
@@ -23,7 +24,9 @@ export class ProjectGallery extends Component {
     transforms: PropTypes.arrayOf(PropTypes.func),
 
     // optional optimization for lazy loading
-    active: PropTypes.bool
+    active: PropTypes.bool,
+
+    className: PropTypes.string
   }
 
   static defaultProps = {
@@ -74,7 +77,7 @@ export class ProjectGallery extends Component {
   }
 
   render() {
-    const { search, sort, transforms, active, ...rest } = this.props
+    const { search, sort, transforms, active, className, ...rest } = this.props
     const { query } = this.state
 
     return (
@@ -83,6 +86,7 @@ export class ProjectGallery extends Component {
         contentContainerClassName={styles.videoGalleryContainer}
         renderItem={this._renderItem}
         renderEmpty={this._renderEmpty}
+        className={cs(styles.projectGallery, className)}
         {...rest}
       />
     )

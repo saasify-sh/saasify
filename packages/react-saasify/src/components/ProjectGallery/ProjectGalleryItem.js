@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
+import cs from 'classnames'
 
 import { Paper } from '../Paper'
 
-// import styles from './styles.module.css'
+import styles from './styles.module.css'
 
 @observer
 export class ProjectGalleryItem extends Component {
@@ -14,8 +15,12 @@ export class ProjectGalleryItem extends Component {
   }
 
   render() {
-    const { model, onEditProject, ...rest } = this.props
+    const { model, onEditProject, className, ...rest } = this.props
 
-    return <Paper {...rest}>{model.id}</Paper>
+    return (
+      <Paper className={cs(styles.project, className)} {...rest}>
+        {model.id}
+      </Paper>
+    )
   }
 }
