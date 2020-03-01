@@ -13,7 +13,10 @@ import {
   Logo,
   BackgroundSlideshow,
   ScrollToTopOnMount,
-  Paper
+  Paper,
+  InfiniteList,
+  ReactLiveQuery,
+  ProjectGallery
 } from 'react-saasify'
 
 export {
@@ -31,7 +34,10 @@ export {
   Logo,
   BackgroundSlideshow,
   ScrollToTopOnMount,
-  Paper
+  Paper,
+  InfiniteList,
+  ReactLiveQuery,
+  ProjectGallery
 }
 
 export * from './HeroSection'

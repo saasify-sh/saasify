@@ -13,7 +13,6 @@
  */
 
 import { observable, computed } from 'mobx'
-
 import uniqBy from 'lodash.uniqby'
 
 import { CachePolicy } from './CachePolicy'
@@ -210,7 +209,7 @@ export class ReactLiveQuery {
   isLoading = false
 
   /**
-   * Status of the query, will be either 'active', 'complete', 'error', or
+   * Status of the query, will be either 'initial', 'active', 'complete', 'error', or
    * 'frozen'.
    *
    * @name ReactLiveQuery#status
@@ -218,7 +217,7 @@ export class ReactLiveQuery {
    * @readonly
    */
   @observable
-  status = 'active'
+  status = 'initial'
 
   /**
    * Loads the next page of results if possible. Whether results will be loaded
@@ -232,8 +231,12 @@ export class ReactLiveQuery {
       return this._loadingP
     }
 
-    if (this.status !== 'active') {
+    if (this.status !== 'initial' && this.status !== 'active') {
       return Promise.resolve()
+    }
+
+    if (this.status === 'initial') {
+      this.status = 'active'
     }
 
     const baseResults = this._results
@@ -328,6 +331,10 @@ export class ReactLiveQuery {
     this._loadingP = resultP
     return resultP.then(
       (results) => {
+        if (this.status === 'frozen') {
+          return
+        }
+
         results = results || []
 
         const updateP = this._updateResults(
@@ -355,6 +362,10 @@ export class ReactLiveQuery {
         return updateP
       },
       (err) => {
+        if (this.status === 'frozen') {
+          return
+        }
+
         this.opts.debug('query error', this.opts.model, err)
 
         this.status = 'error'

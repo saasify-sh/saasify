@@ -10,7 +10,7 @@ import { LayoutCentered } from '../LayoutCentered'
 // import { Spin } from 'lib/antd'
 // import { LoadingOutlined } from '@ant-design/icons'
 
-import styles from './styles.css'
+import styles from './styles.module.css'
 
 const darkStyle = {
   background: 'rgba(0, 0, 0, 0.6)'

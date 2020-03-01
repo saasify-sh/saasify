@@ -224,6 +224,16 @@ module.exports = class SaasifyClient {
     }).then((res) => res.data)
   }
 
+  async listProjects(opts) {
+    return this._request({
+      url: `/1/projects`,
+      params: {
+        ...this._params,
+        ...opts
+      }
+    }).then((res) => res.data)
+  }
+
   // --------------------------------------------------------------------------
   // Consumers
   // --------------------------------------------------------------------------

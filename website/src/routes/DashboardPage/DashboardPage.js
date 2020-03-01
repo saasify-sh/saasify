@@ -3,7 +3,13 @@ import { theme } from 'react-saasify'
 import { withTracker } from 'lib/with-tracker'
 import { observer, inject } from 'mobx-react'
 
-import { NavHeader, NavFooter, ScrollToTopOnMount, Section } from 'components'
+import {
+  NavHeader,
+  NavFooter,
+  ScrollToTopOnMount,
+  Section,
+  ProjectGallery
+} from 'components'
 
 import styles from './styles.module.css'
 
@@ -23,6 +29,8 @@ export class DashboardPage extends Component {
           title='Dashboard'
           className={theme(styles, 'dashboard')}
         />
+
+        <ProjectGallery />
 
         <NavFooter />
       </div>

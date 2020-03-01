@@ -10,43 +10,30 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
-
-import { observer } from 'mobx-react'
 import raf from 'raf'
+import { observer } from 'mobx-react'
 
+import { EventEmitter } from '../../store/EventEmitter'
 import { LayoutCentered } from '../LayoutCentered'
 import { LoadingIndicator } from '../LoadingIndicator'
 
-import styles from './styles.css'
+import styles from './styles.module.css'
 
 @observer
 export class InfiniteList extends Component {
-  static contextTypes = {
-    EventEmitter: PropTypes.object.isRequired
-  }
-
   static propTypes = {
     query: PropTypes.object.isRequired,
-
-    itemRenderer: PropTypes.func.isRequired,
-
-    emptyRenderer: PropTypes.func,
-
-    displayBottomUpwards: PropTypes.bool,
-
+    renderItem: PropTypes.func.isRequired,
+    renderEmpty: PropTypes.func,
     pagingThresholdPercentage: PropTypes.number,
-
     contentContainerClassName: PropTypes.string,
-
     contentContainerStyle: PropTypes.object,
-
     footer: PropTypes.object
   }
 
   static defaultProps = {
-    displayBottomUpwards: false,
     pagingThresholdPercentage: 0.01,
-    emptyRenderer: () => 'No search results'
+    renderEmpty: () => 'No results'
   }
 
   state = {
@@ -54,63 +41,22 @@ export class InfiniteList extends Component {
   }
 
   componentDidMount() {
-    this.context.EventEmitter.on('refresh', this._refresh)
-    this._attachedToBottom = !!this.props.displayBottomUpwards
+    EventEmitter.on('refresh', this._refresh)
     window.addEventListener('resize', this.onComponentResize)
   }
 
   componentWillUnmount() {
-    this.context.EventEmitter.removeListener('refresh', this._refresh)
+    EventEmitter.removeListener('refresh', this._refresh)
 
     if (this._disablePointerEventsHandle) {
       clearTimeout(this._disablePointerEventsHandle)
     }
 
-    if (this._loadPageHandle) {
-      raf.cancel(this._loadPageHandle)
+    if (this._loadMoreHandle) {
+      raf.cancel(this._loadMoreHandle)
     }
 
     window.removeEventListener('resize', this.onComponentResize)
-  }
-
-  componentWillReceiveProps(props) {
-    if (props.query !== this.props.query) {
-      this._attachedToBottom = !!props.displayBottomUpwards
-    }
-  }
-
-  componentWillUpdate() {
-    if (
-      !this.props.displayBottomUpwards ||
-      !this.refs.scrollNode ||
-      this._attachedToBottom
-    ) {
-      return
-    }
-
-    const node = this._getNode()
-    if (!node) return
-
-    this._attachedToBottom =
-      node.scrollTop + node.clientHeight >= node.scrollHeight * 0.97
-    this._onDataWillUpdate()
-  }
-
-  componentDidUpdate() {
-    if (!this.props.displayBottomUpwards) {
-      return
-    }
-
-    if (this._attachedToBottom) {
-      const node = this._getNode()
-
-      if (node) {
-        node.scrollTop = node.scrollHeight
-        this._attachedToBottom = false
-      }
-    }
-
-    this._onDataDidUpdate()
   }
 
   onComponentResize = () => {
@@ -125,9 +71,8 @@ export class InfiniteList extends Component {
     const {
       query,
       footer,
-      displayBottomUpwards,
-      itemRenderer,
-      emptyRenderer,
+      renderItem,
+      renderEmpty,
       pagingThresholdPercentage,
       contentContainerClassName,
       contentContainerStyle,
@@ -144,22 +89,16 @@ export class InfiniteList extends Component {
 
     const content = query.results.length
       ? query.results.map((item, index, array) => {
-          return itemRenderer(item, index, array)
+          return renderItem(item, index, array)
         })
-      : emptyRenderer && emptyRenderer()
+      : renderEmpty && renderEmpty()
 
     if (query.isLoadingInitialResults) {
       return <LoadingIndicator dark={false} {...rest} />
     } else {
       const loadingStyle = {}
       const scrollNodeStyles = {}
-
-      if (displayBottomUpwards) {
-        scrollNodeStyles.paddingTop = 48
-        loadingStyle.top = 16
-      } else {
-        loadingStyle.bottom = 16
-      }
+      loadingStyle.bottom = 16
 
       return (
         <div
@@ -198,41 +137,12 @@ export class InfiniteList extends Component {
     }
   }
 
-  _onDataWillUpdate() {
-    if (!this.props.displayBottomUpwards) return
-
-    const node = this._getNode()
-    if (!node) return
-
-    this._scrollHeight = node.scrollHeight
-  }
-
-  _onDataDidUpdate() {
-    if (!this.props.displayBottomUpwards) return
-
-    const node = this._getNode()
-    if (!node) return
-
-    if (node.scrollHeight > this._scrollHeight) {
-      const scrollTop =
-        node.scrollTop + (node.scrollHeight - this._scrollHeight)
-      node.scrollTop = Math.max(
-        0,
-        Math.min(node.scrollHeight - node.clientHeight, scrollTop)
-      )
-    }
-  }
-
   _getNode() {
     return this.refs.scrollNode && ReactDOM.findDOMNode(this.refs.scrollNode)
   }
 
   _onScroll = (event) => {
-    const {
-      query,
-      displayBottomUpwards,
-      pagingThresholdPercentage
-    } = this.props
+    const { query, pagingThresholdPercentage } = this.props
 
     if (query.isLoading || query.status === 'complete') {
       return
@@ -245,31 +155,26 @@ export class InfiniteList extends Component {
       return
     }
 
-    if (displayBottomUpwards) {
-      if (node.scrollTop <= node.clientHeight * pagingThresholdPercentage) {
-        this._loadPage()
-      }
-    } else {
-      if (
-        node.scrollTop + node.clientHeight >=
-        node.scrollHeight - node.clientHeight * pagingThresholdPercentage
-      ) {
-        this._loadPage()
-      }
+    if (
+      node.scrollTop + node.clientHeight >=
+      node.scrollHeight - node.clientHeight * pagingThresholdPercentage
+    ) {
+      this._loadMore()
     }
   }
 
   /**
-   * Use this method to debounce multiple loads in a small span of time.
-   * This helps performance for bursty events (like onScroll).
+   * This is used to debounce multiple loads in a small span of time.
+   *
+   * It helps performance for bursty events (like onScroll).
    */
-  _loadPage() {
-    if (this._loadPageHandle) {
+  _loadMore() {
+    if (this._loadMoreHandle) {
       return
     }
 
-    this._loadPageHandle = raf(() => {
-      this._loadPageHandle = null
+    this._loadMoreHandle = raf(() => {
+      this._loadMoreHandle = null
       this.props.query.load()
     })
   }

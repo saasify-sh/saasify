@@ -23,8 +23,6 @@ export * from './LiveServiceDemo'
 export * from './PricingPlan'
 export * from './CTAButton'
 
-export * from './InfiniteList'
-
 export * from './Markdown'
 export * from './UndrawSVG'
 export * from './Logo'
@@ -33,3 +31,6 @@ export * from './ScrollToTopOnMount'
 export * from './Paper'
 export * from './Loading'
 export * from './ImageZoom'
+export * from './InfiniteList'
+
+export * from './ProjectGallery'

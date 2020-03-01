@@ -7,7 +7,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import styles from './styles.css'
+import styles from './styles.module.css'
 
 export class LayoutCentered extends Component {
   static propTypes = {

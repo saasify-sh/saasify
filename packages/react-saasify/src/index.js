@@ -15,5 +15,8 @@ export * from './lib/debug'
 export * from './lib/theme'
 
 export * from './store/AuthManager'
-export * from './store/LocalStore'
 export * from './store/ThemeManager'
+
+export * from './store/LocalStore'
+export * from './store/EventEmitter'
+export * from './store/ReactLiveQuery'
