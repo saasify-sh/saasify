@@ -32,5 +32,6 @@ export * from './Paper'
 export * from './Loading'
 export * from './ImageZoom'
 export * from './InfiniteList'
+export * from './RelativeTimeLabel'
 
 export * from './ProjectGallery'

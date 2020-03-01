@@ -6,6 +6,8 @@
 }
 
 .projectGallery {
-  max-width: 1024px;
+  width: 100%;
+  max-width: 1400px;
+  align-self: center;
   margin: 0 auto 2em;
 }

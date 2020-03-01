@@ -1,0 +1,25 @@
+.project {
+  transition: all 150ms ease-out;
+  padding: 16px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  margin-bottom: 1em;
+}
+
+.header,
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: 600;
+}

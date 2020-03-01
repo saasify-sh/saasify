@@ -26,7 +26,9 @@ export class ProjectGallery extends Component {
     // optional optimization for lazy loading
     active: PropTypes.bool,
 
-    className: PropTypes.string
+    className: PropTypes.string,
+
+    onEditProject: PropTypes.func.isRequired
   }
 
   static defaultProps = {
@@ -94,7 +96,11 @@ export class ProjectGallery extends Component {
       return (
         <div className={styles.projectGallery}>
           {models.map((model) => (
-            <ProjectGalleryItem key={model.id} model={model} />
+            <ProjectGalleryItem
+              key={model.id}
+              model={model}
+              onEditProject={() => this.props.onEditProject(model)}
+            />
           ))}
         </div>
       )
