@@ -6,8 +6,8 @@
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import cs from 'classnames'
 
+import { Empty } from 'lib/antd'
 import { InfiniteList } from '../InfiniteList'
 import { ProjectGalleryItem } from './ProjectGalleryItem'
 import { ProjectGalleryLiveQuery } from './ProjectGalleryLiveQuery'
@@ -77,30 +77,29 @@ export class ProjectGallery extends Component {
   }
 
   render() {
-    const { search, sort, transforms, active, className, ...rest } = this.props
+    const { search, sort, transforms, active, ...rest } = this.props
     const { query } = this.state
 
     return (
       <InfiniteList
         query={query}
-        contentContainerClassName={styles.videoGalleryContainer}
-        renderItem={this._renderItem}
-        renderEmpty={this._renderEmpty}
-        className={cs(styles.projectGallery, className)}
+        renderContent={this._renderContent}
         {...rest}
       />
     )
   }
 
-  _renderItem = (model) => {
-    return <ProjectGalleryItem key={model.id} model={model} />
-  }
-
-  _renderEmpty = () => {
-    return (
-      <div className={styles.container}>
-        <p>TODO</p>
-      </div>
-    )
+  _renderContent = (models) => {
+    if (models.length) {
+      return (
+        <div className={styles.projectGallery}>
+          {models.map((model) => (
+            <ProjectGalleryItem key={model.id} model={model} />
+          ))}
+        </div>
+      )
+    } else {
+      return <Empty />
+    }
   }
 }

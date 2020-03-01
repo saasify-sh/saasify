@@ -11,6 +11,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import raf from 'raf'
+import cs from 'classnames'
 import { observer } from 'mobx-react'
 
 import { EventEmitter } from '../../store/EventEmitter'
@@ -23,8 +24,7 @@ import styles from './styles.module.css'
 export class InfiniteList extends Component {
   static propTypes = {
     query: PropTypes.object.isRequired,
-    renderItem: PropTypes.func.isRequired,
-    renderEmpty: PropTypes.func,
+    renderContent: PropTypes.func.isRequired,
     pagingThresholdPercentage: PropTypes.number,
     className: PropTypes.string,
     style: PropTypes.object,
@@ -32,8 +32,7 @@ export class InfiniteList extends Component {
   }
 
   static defaultProps = {
-    pagingThresholdPercentage: 0.01,
-    renderEmpty: () => 'No results'
+    pagingThresholdPercentage: 0.01
   }
 
   state = {
@@ -71,8 +70,7 @@ export class InfiniteList extends Component {
     const {
       query,
       footer,
-      renderItem,
-      renderEmpty,
+      renderContent,
       pagingThresholdPercentage,
       className,
       style,
@@ -87,34 +85,17 @@ export class InfiniteList extends Component {
       )
     }
 
-    const content = query.results.length
-      ? query.results.map((item, index, array) => {
-          return renderItem(item, index, array)
-        })
-      : renderEmpty && renderEmpty()
-
     if (query.isLoadingInitialResults) {
       return <LoadingIndicator dark={false} {...rest} />
     } else {
       return (
-        <div
-          style={{
-            position: 'relative',
-            flex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: 0
-          }}
-          {...rest}
-        >
+        <div className={cs(styles.infiniteList, className)} {...rest}>
           <div
             ref='scrollNode'
             className={styles.scrollNode}
             onScroll={this._onScroll}
           >
-            <div className={className} style={style}>
-              {content}
-            </div>
+            {renderContent(query.results)}
           </div>
 
           {footer}
