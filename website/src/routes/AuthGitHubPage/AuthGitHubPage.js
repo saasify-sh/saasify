@@ -25,20 +25,20 @@ export class AuthGitHubPage extends Component {
       ignoreQueryPrefix: true
     })
 
-    if (!query.code || !query.state) {
+    if (!query.code || !query.route) {
       message.error('Error authenticating with GitHub')
       this.setState({ loading: false })
       return
     }
 
     this.setState({
-      pathname: query.state
+      pathname: query.route
     })
 
     this.props.auth
       .authWithGitHub({
         code: query.code,
-        state: query.state
+        route: query.route
       })
       .then(
         () => {

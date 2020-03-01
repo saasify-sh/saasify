@@ -14,7 +14,7 @@ export function authGitHub({ location }) {
   const opts = qs.stringify({
     ...githubConfig,
     scope,
-    state: location.pathname
+    route: location.pathname
   })
 
   window.location = `https://github.com/login/oauth/authorize?${opts}`
