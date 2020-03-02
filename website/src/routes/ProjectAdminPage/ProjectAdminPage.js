@@ -7,8 +7,10 @@ import { observable, computed } from 'mobx'
 import { Route, Switch } from 'react-router-dom'
 
 import { NavHeader, NavFooter, ScrollToTopOnMount, Section } from 'components'
+
 import { TabBar } from './TabBar'
 import { TabPane } from './TabPane'
+import { EventsTabPane } from './EventsTabPane'
 
 import styles from './styles.module.css'
 
@@ -71,6 +73,12 @@ export class ProjectAdminPage extends Component {
         icon: { type: 'dashboard' }
       },
       {
+        key: 'customers',
+        label: 'Customers',
+        to: `${match.url}/customers`,
+        icon: { type: 'user' }
+      },
+      {
         key: 'settings',
         label: 'Settings',
         to: `${match.url}/settings`,
@@ -94,9 +102,7 @@ export class ProjectAdminPage extends Component {
 
           <Switch>
             <Route path={`${match.path}/events`} exact>
-              <TabPane>
-                <div>{JSON.stringify(this._project, null, 2)}</div>
-              </TabPane>
+              <EventsTabPane project={this._project} />
             </Route>
 
             <Route>
