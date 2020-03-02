@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { format } from 'date-fns'
-import { API, Avatar, Table, theme } from 'react-saasify'
+import { API, Avatar, Table, Tag, theme } from 'react-saasify'
 
 import { TabPane } from '../TabPane'
 
@@ -29,6 +29,12 @@ const columns = [
   {
     title: 'Plan',
     dataIndex: 'plan'
+  },
+  {
+    title: 'Status',
+    dataIndex: 'enabled',
+    render: (enabled) =>
+      enabled ? <Tag color='blue'>active</Tag> : <Tag color='red'>inactive</Tag>
   },
   {
     title: 'Date Subscribed',
