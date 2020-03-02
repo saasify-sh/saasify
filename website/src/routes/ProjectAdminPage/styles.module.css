@@ -11,6 +11,10 @@
 }
 
 .content {
-  max-width: unset !important;
+  max-width: 1428px !important;
   padding-top: 2em !important;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }

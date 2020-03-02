@@ -184,7 +184,6 @@ export default class App extends Component {
                 />
 
                 <AuthenticatedRoute
-                  exact
                   path='/maker/projects/:namespace/:projectName'
                   component={ProjectAdminPage}
                 />

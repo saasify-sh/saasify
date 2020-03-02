@@ -33,5 +33,10 @@ export { default as CheckCircleOutline } from '@ant-design/icons/lib/outline/Che
 export { default as CloseCircleOutline } from '@ant-design/icons/lib/outline/CloseCircleOutline'
 export { default as ExclamationCircleOutline } from '@ant-design/icons/lib/outline/ExclamationCircleOutline'
 
+export { default as SettingOutline } from '@ant-design/icons/lib/outline/SettingOutline'
+export { default as HomeOutline } from '@ant-design/icons/lib/outline/HomeOutline'
+export { default as DashboardOutline } from '@ant-design/icons/lib/outline/DashboardOutline'
+export { default as ScheduleOutline } from '@ant-design/icons/lib/outline/ScheduleOutline'
+
 // twotone
 export { default as CheckCircleTwoTone } from '@ant-design/icons/lib/twotone/CheckCircleTwoTone'

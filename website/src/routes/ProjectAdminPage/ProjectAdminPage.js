@@ -4,8 +4,11 @@ import { withRouter } from 'react-router'
 import { withTracker } from 'lib/with-tracker'
 import { observer } from 'mobx-react'
 import { observable, computed } from 'mobx'
+import { Route, Switch } from 'react-router-dom'
 
 import { NavHeader, NavFooter, ScrollToTopOnMount, Section } from 'components'
+import { TabBar } from './TabBar'
+import { TabPane } from './TabPane'
 
 import styles from './styles.module.css'
 
@@ -36,12 +39,44 @@ export class ProjectAdminPage extends Component {
     return 'Project'
   }
 
+  get _projectId() {
+    const { namespace, projectName } = this.props.match.params
+    return `${namespace}/${projectName}`
+  }
+
   componentDidMount() {
     this._reset()
   }
 
   render() {
-    console.log('name', this._name)
+    const { match } = this.props
+
+    const tabs = [
+      {
+        key: 'overview',
+        label: 'Overview',
+        to: match.url,
+        icon: { type: 'home' }
+      },
+      {
+        key: 'events',
+        label: 'Events',
+        to: `${match.url}/events`,
+        icon: { type: 'schedule' }
+      },
+      {
+        key: 'analytics',
+        label: 'Analytics',
+        to: `${match.url}/analytics`,
+        icon: { type: 'dashboard' }
+      },
+      {
+        key: 'settings',
+        label: 'Settings',
+        to: `${match.url}/settings`,
+        icon: { type: 'setting' }
+      }
+    ]
 
     return (
       <div className={theme(styles, 'project-admin-page')}>
@@ -55,9 +90,21 @@ export class ProjectAdminPage extends Component {
           className={theme(styles, 'body')}
           contentClassName={theme(styles, 'content')}
         >
-          <div>{JSON.stringify(this.props.match.params, null, 2)}</div>
+          <TabBar tabs={tabs} />
 
-          <div>{JSON.stringify(this._project, null, 2)}</div>
+          <Switch>
+            <Route path={`${match.path}/events`} exact>
+              <TabPane>
+                <div>{JSON.stringify(this._project, null, 2)}</div>
+              </TabPane>
+            </Route>
+
+            <Route>
+              <TabPane>
+                <div>{JSON.stringify(this.props.match.params, null, 2)}</div>
+              </TabPane>
+            </Route>
+          </Switch>
         </Section>
 
         <NavFooter />
@@ -66,8 +113,7 @@ export class ProjectAdminPage extends Component {
   }
 
   async _reset() {
-    const { namespace, projectName } = this.props.match.params
-    const projectId = `${namespace}/${projectName}`
+    const projectId = this._projectId
 
     if (EventEmitter.project && EventEmitter.project.id === projectId) {
       this._project = EventEmitter.project
