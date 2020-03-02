@@ -11,6 +11,7 @@ import { NavHeader, NavFooter, ScrollToTopOnMount, Section } from 'components'
 import { TabBar } from './TabBar'
 import { TabPane } from './TabPane'
 import { EventsTabPane } from './EventsTabPane'
+import { CustomersTabPane } from './CustomersTabPane'
 
 import styles from './styles.module.css'
 
@@ -100,17 +101,23 @@ export class ProjectAdminPage extends Component {
         >
           <TabBar tabs={tabs} />
 
-          <Switch>
-            <Route path={`${match.path}/events`} exact>
-              <EventsTabPane project={this._project} />
-            </Route>
+          {this._project && (
+            <Switch>
+              <Route path={`${match.path}/events`} exact>
+                <EventsTabPane project={this._project} />
+              </Route>
 
-            <Route>
-              <TabPane>
-                <div>{JSON.stringify(this.props.match.params, null, 2)}</div>
-              </TabPane>
-            </Route>
-          </Switch>
+              <Route path={`${match.path}/customers`} exact>
+                <CustomersTabPane project={this._project} />
+              </Route>
+
+              <Route>
+                <TabPane>
+                  <div>{JSON.stringify(this.props.match.params, null, 2)}</div>
+                </TabPane>
+              </Route>
+            </Switch>
+          )}
         </Section>
 
         <NavFooter />

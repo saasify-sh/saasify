@@ -14,6 +14,7 @@ import {
   BackgroundSlideshow,
   ScrollToTopOnMount,
   Paper,
+  Table,
   InfiniteList,
   ReactLiveQuery,
   ProjectGallery
@@ -35,6 +36,7 @@ export {
   BackgroundSlideshow,
   ScrollToTopOnMount,
   Paper,
+  Table,
   InfiniteList,
   ReactLiveQuery,
   ProjectGallery

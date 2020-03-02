@@ -277,6 +277,16 @@ module.exports = class SaasifyClient {
     }).then((res) => res.data)
   }
 
+  async listConsumers(opts) {
+    return this._request({
+      url: `/1/consumers`,
+      params: {
+        ...this._params,
+        ...opts
+      }
+    }).then((res) => res.data)
+  }
+
   // --------------------------------------------------------------------------
   // Deployments
   // --------------------------------------------------------------------------
