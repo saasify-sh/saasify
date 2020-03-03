@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.header > div {
+  margin-right: 1em;
+}
+
+.header > div > * {
+  width: 100%;
+}
+
+.header > div:last-child {
+  margin-right: 0;
+}
+
+.label {
+  font-size: 0.85em;
+  margin-bottom: 0.5em;
+}
+
+.service {
+  flex: 1;
+  min-width: 300px;
+}
+
+.dateRange {
+  flex: 0.2;
+  min-width: 140px;
+}
+
+.granularity {
+  flex: 0.1;
+  min-width: 100px;
+}

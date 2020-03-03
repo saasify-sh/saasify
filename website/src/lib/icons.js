@@ -40,3 +40,6 @@ export { default as ScheduleOutline } from '@ant-design/icons/lib/outline/Schedu
 
 // twotone
 export { default as CheckCircleTwoTone } from '@ant-design/icons/lib/twotone/CheckCircleTwoTone'
+
+// filled
+export { default as CloseCircleFill } from '@ant-design/icons/lib/fill/CloseCircleFill'

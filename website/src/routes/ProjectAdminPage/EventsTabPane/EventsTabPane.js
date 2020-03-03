@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 
 import { Paper } from 'components'
+import { ProjectAPICallsAnalytics } from 'components/charts'
 import { TabPane } from '../TabPane'
 
 import styles from './styles.module.css'
@@ -14,7 +15,7 @@ export class EventsTabPane extends Component {
     return (
       <TabPane>
         <Paper style={styles.content}>
-          <div>{JSON.stringify(project, null, 2)}</div>
+          <ProjectAPICallsAnalytics project={project} />
         </Paper>
       </TabPane>
     )

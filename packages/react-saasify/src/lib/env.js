@@ -9,6 +9,7 @@ const githubRedirectQuery = qs.stringify({ uri: githubRedirectUri })
 const googleRedirectUri = `${window.location.origin}/auth/google`
 
 export default {
+  isProd,
   providerGitHubClientId:
     process.env[`REACT_APP_PROVIDER_GITHUB_CLIENT_ID_${suffix}`],
   githubRedirectUri: `https://auth.saasify.sh?${githubRedirectQuery}`,

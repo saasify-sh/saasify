@@ -13,6 +13,7 @@ export * from './lib/checkout'
 export * from './lib/upgrade'
 export * from './lib/debug'
 export * from './lib/theme'
+export { default as env } from './lib/env'
 
 export * from './store/AuthManager'
 export * from './store/ThemeManager'
