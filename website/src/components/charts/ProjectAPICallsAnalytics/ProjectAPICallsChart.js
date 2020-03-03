@@ -1,5 +1,5 @@
 import React from 'react'
-import { Spin } from 'react-saasify'
+import { Spin, Statistic } from 'react-saasify'
 import { QueryRenderer } from '@cubejs-client/react'
 import { Chart, Axis, Legend, Tooltip, Geom } from 'bizcharts'
 import { format } from 'date-fns'
@@ -8,7 +8,8 @@ import { cubejsApi } from 'lib/cube'
 const measureToLabel = {
   'Calls.count': 'API Calls',
   'Calls.errorCount': 'API Errors',
-  'Calls.errorPercentage': 'API Errors Percent'
+  'Calls.errorPercentage': 'API Error Rate',
+  'Calls.averageLatency': 'Average Latency'
 }
 
 const stackedChartData = (resultSet) => {
@@ -32,11 +33,26 @@ const stackedChartData = (resultSet) => {
   return data
 }
 
-const lineRender = ({ resultSet }) => (
-  <Chart height={400} data={stackedChartData(resultSet)} forceFit>
-    <Legend />
-    <Axis name='x' />
-    <Axis name='measure' />
+const numberRender = ({ resultSet, ...rest }) => (
+  <>
+    {resultSet.seriesNames().map((s) => (
+      <Statistic key={s.key} value={resultSet.totalRow()[s.key]} {...rest} />
+    ))}
+  </>
+)
+
+const lineRender = ({ resultSet, xAxis, yAxis, geom, ...rest }) => (
+  <Chart height={400} data={stackedChartData(resultSet)} forceFit {...rest}>
+    <Legend
+      textStyle={{
+        fontFamily: 'Quicksand',
+        fontSize: 18,
+        fill: '#333',
+        fontWeight: 'bold'
+      }}
+    />
+    <Axis name='x' {...xAxis} />
+    <Axis name='measure' {...yAxis} />
     <Tooltip crosshairs={{ type: 'y' }} />
     <Geom
       type='line'
@@ -44,6 +60,7 @@ const lineRender = ({ resultSet }) => (
       size={2}
       color='color'
       shape='smooth'
+      {...geom}
     />
     <Geom
       type='point'
@@ -55,12 +72,13 @@ const lineRender = ({ resultSet }) => (
         stroke: '#fff',
         lineWidth: 1
       }}
+      {...geom}
     />
   </Chart>
 )
 
-const renderChart = (Component) => ({ resultSet, error }) =>
-  (resultSet && <Component resultSet={resultSet} />) ||
+const renderChart = (Component, props) => ({ resultSet, error }) =>
+  (resultSet && <Component resultSet={resultSet} {...props} />) ||
   (error && error.toString()) || <Spin />
 
 export const ProjectAPICallsChart = ({
@@ -68,7 +86,9 @@ export const ProjectAPICallsChart = ({
   granularity = 'day',
   dateRange = 'This week',
   measures = ['Calls.count'],
-  servicePath = null
+  type = 'line',
+  servicePath = null,
+  renderProps
 }) => (
   <QueryRenderer
     query={{
@@ -76,7 +96,7 @@ export const ProjectAPICallsChart = ({
       timeDimensions: [
         {
           dimension: 'Calls.date',
-          granularity,
+          granularity: type === 'number' ? undefined : granularity,
           dateRange: dateRange === 'All time' ? undefined : dateRange
         }
       ],
@@ -95,6 +115,9 @@ export const ProjectAPICallsChart = ({
       ].filter(Boolean)
     }}
     cubejsApi={cubejsApi}
-    render={renderChart(lineRender)}
+    render={renderChart(
+      type === 'line' ? lineRender : numberRender,
+      renderProps
+    )}
   />
 )

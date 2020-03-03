@@ -16,7 +16,7 @@
 }
 
 .label {
-  font-size: 0.85em;
+  font-size: 0.9em;
   margin-bottom: 0.5em;
 }
 
@@ -33,4 +33,36 @@
 .granularity {
   flex: 0.1;
   min-width: 100px;
+}
+
+.metrics {
+  display: flex;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #aaa;
+}
+
+.metric {
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  padding: 8px 1em;
+  border-bottom: 1px solid transparent;
+}
+
+.metric:hover:not(.activeMetric) {
+  border-bottom: 1px solid #1890ff;
+}
+
+.activeMetric {
+  border-bottom: 1px solid #1890ff;
+  cursor: unset;
+}
+
+.activeMetric .label {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.chart {
+  min-height: 400px;
 }

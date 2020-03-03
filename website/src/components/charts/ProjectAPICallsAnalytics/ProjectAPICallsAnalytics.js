@@ -2,6 +2,8 @@ import React from 'react'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import { Select } from 'react-saasify'
+import cs from 'classnames'
+
 import { ProjectAPICallsChart } from './ProjectAPICallsChart'
 
 import styles from './styles.module.css'
@@ -23,6 +25,68 @@ const dateRanges = [
 ]
 const granularities = ['hour', 'day', 'week']
 
+function round(num) {
+  return Math.round((num + Number.EPSILON) * 100) / 100
+}
+
+const metrics = [
+  {
+    label: 'API Calls',
+    measures: ['Calls.count'],
+    numberRenderProps: {
+      precision: 0
+    }
+  },
+  {
+    label: 'Error Rate',
+    measures: ['Calls.errorPercentage'],
+    numberRenderProps: {
+      precision: 0,
+      suffix: '%'
+    },
+    lineRenderProps: {
+      yAxis: {
+        label: {
+          formatter: (val) => `${val}%`
+        }
+      },
+      geom: {
+        tooltip: [
+          'x*measure',
+          (x, val) => ({
+            name: 'Error Rate',
+            value: `${round(val)}%`
+          })
+        ]
+      }
+    }
+  },
+  {
+    label: 'Average Latency',
+    measures: ['Calls.averageLatency'],
+    numberRenderProps: {
+      precision: 0,
+      suffix: 'ms'
+    },
+    lineRenderProps: {
+      yAxis: {
+        label: {
+          formatter: (val) => `${val} ms`
+        }
+      },
+      geom: {
+        tooltip: [
+          'x*measure',
+          (x, val) => ({
+            name: 'Avg Latency',
+            value: `${val | 0} ms`
+          })
+        ]
+      }
+    }
+  }
+]
+
 @observer
 export class ProjectAPICallsAnalytics extends React.Component {
   @observable
@@ -34,12 +98,19 @@ export class ProjectAPICallsAnalytics extends React.Component {
   @observable
   _serviceId = null
 
+  @observable
+  _metric = 'API Calls'
+
   render() {
-    const { project } = this.props
+    const { project, ...rest } = this.props
     const services = project?.lastPublishedDeployment?.services
 
+    const selectedMetric = metrics.find(
+      (metric) => metric.label === this._metric
+    )
+
     return (
-      <div>
+      <div {...rest}>
         <div className={styles.header}>
           <div className={styles.service}>
             <div className={styles.label}>Endpoints</div>
@@ -91,12 +162,46 @@ export class ProjectAPICallsAnalytics extends React.Component {
           </div>
         </div>
 
-        <ProjectAPICallsChart
-          projectId={project.id}
-          dateRange={this._dateRange}
-          granularity={this._granularity}
-          servicePath={this._serviceId ? this._serviceId.split(' ')[1] : null}
-        />
+        <div className={styles.metrics}>
+          {metrics.map((metric) => (
+            <div
+              key={metric.label}
+              className={cs(
+                styles.metric,
+                metric.label === this._metric && styles.activeMetric
+              )}
+              onClick={() => {
+                this._metric = metric.label
+              }}
+            >
+              <h4 className={styles.label}>{metric.label}</h4>
+
+              <ProjectAPICallsChart
+                projectId={project.id}
+                dateRange={this._dateRange}
+                granularity={this._granularity}
+                servicePath={
+                  this._serviceId ? this._serviceId.split(' ')[1] : null
+                }
+                measures={metric.measures}
+                renderProps={metric.numberRenderProps}
+                type='number'
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.chart}>
+          <ProjectAPICallsChart
+            projectId={project.id}
+            dateRange={this._dateRange}
+            granularity={this._granularity}
+            servicePath={this._serviceId ? this._serviceId.split(' ')[1] : null}
+            measures={selectedMetric.measures}
+            renderProps={selectedMetric.lineRenderProps}
+            type='line'
+          />
+        </div>
       </div>
     )
   }
