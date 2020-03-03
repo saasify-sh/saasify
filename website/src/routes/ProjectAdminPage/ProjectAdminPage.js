@@ -10,7 +10,8 @@ import { NavHeader, NavFooter, ScrollToTopOnMount, Section } from 'components'
 
 import { TabBar } from './TabBar'
 import { TabPane } from './TabPane'
-import { EventsTabPane } from './EventsTabPane'
+import { AuditLogTabPane } from './AuditLogTabPane'
+import { AnalyticsTabPane } from './AnalyticsTabPane'
 import { CustomersTabPane } from './CustomersTabPane'
 
 import styles from './styles.module.css'
@@ -62,16 +63,16 @@ export class ProjectAdminPage extends Component {
         icon: { type: 'home' }
       },
       {
-        key: 'events',
-        label: 'Events',
-        to: `${match.url}/events`,
-        icon: { type: 'schedule' }
-      },
-      {
         key: 'analytics',
         label: 'Analytics',
         to: `${match.url}/analytics`,
         icon: { type: 'dashboard' }
+      },
+      {
+        key: 'audit-log',
+        label: 'Audit Log',
+        to: `${match.url}/audit-log`,
+        icon: { type: 'schedule' }
       },
       {
         key: 'customers',
@@ -103,8 +104,12 @@ export class ProjectAdminPage extends Component {
 
           {this._project && (
             <Switch>
-              <Route path={`${match.path}/events`} exact>
-                <EventsTabPane project={this._project} />
+              <Route path={`${match.path}/analytics`} exact>
+                <AnalyticsTabPane project={this._project} />
+              </Route>
+
+              <Route path={`${match.path}/audit-log`} exact>
+                <AuditLogTabPane project={this._project} />
               </Route>
 
               <Route path={`${match.path}/customers`} exact>

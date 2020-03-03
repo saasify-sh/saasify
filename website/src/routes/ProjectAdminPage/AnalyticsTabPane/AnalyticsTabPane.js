@@ -8,13 +8,13 @@ import { TabPane } from '../TabPane'
 import styles from './styles.module.css'
 
 @observer
-export class EventsTabPane extends Component {
+export class AnalyticsTabPane extends Component {
   render() {
     const { project } = this.props
 
     return (
       <TabPane>
-        <Paper style={styles.content}>
+        <Paper className={styles.content}>
           <ProjectAPICallsAnalytics project={project} />
         </Paper>
       </TabPane>
