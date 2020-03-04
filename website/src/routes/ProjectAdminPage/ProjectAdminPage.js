@@ -10,7 +10,7 @@ import { NavHeader, NavFooter, ScrollToTopOnMount, Section } from 'components'
 
 import { TabBar } from './TabBar'
 import { TabPane } from './TabPane'
-import { AuditLogTabPane } from './AuditLogTabPane'
+// import { AuditLogTabPane } from './AuditLogTabPane'
 import { AnalyticsTabPane } from './AnalyticsTabPane'
 import { CustomersTabPane } from './CustomersTabPane'
 
@@ -68,12 +68,12 @@ export class ProjectAdminPage extends Component {
         to: `${match.url}/analytics`,
         icon: { type: 'dashboard' }
       },
-      {
-        key: 'audit-log',
-        label: 'Audit Log',
-        to: `${match.url}/audit-log`,
-        icon: { type: 'schedule' }
-      },
+      // {
+      //   key: 'audit-log',
+      //   label: 'Audit Log',
+      //   to: `${match.url}/audit-log`,
+      //   icon: { type: 'schedule' }
+      // },
       {
         key: 'customers',
         label: 'Customers',
@@ -108,9 +108,9 @@ export class ProjectAdminPage extends Component {
                 <AnalyticsTabPane project={this._project} />
               </Route>
 
-              <Route path={`${match.path}/audit-log`} exact>
+              {/* <Route path={`${match.path}/audit-log`} exact>
                 <AuditLogTabPane project={this._project} />
-              </Route>
+              </Route> */}
 
               <Route path={`${match.path}/customers`} exact>
                 <CustomersTabPane project={this._project} />

@@ -75,8 +75,6 @@ const lineRender = ({
 )
 
 const renderChart = (Component, props) => ({ resultSet, error, ...rest }) => {
-  console.log({ resultSet, error, ...rest })
-
   if (error) {
     // TODO
     return error.toString()
