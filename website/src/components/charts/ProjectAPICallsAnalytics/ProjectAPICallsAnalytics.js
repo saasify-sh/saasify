@@ -1,6 +1,7 @@
 import React from 'react'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
+import { format } from 'date-fns'
 import { Select } from 'react-saasify'
 import cs from 'classnames'
 
@@ -84,6 +85,8 @@ const metrics = [
         ]
       }
     }
+
+    // TODO: add cachePercentage
   }
 ]
 
@@ -103,14 +106,28 @@ export class ProjectAPICallsAnalytics extends React.Component {
 
   render() {
     const { project, ...rest } = this.props
-    const services = project?.lastPublishedDeployment?.services
+    if (!project) {
+      return
+    }
+
+    const services = project.lastPublishedDeployment?.services
 
     const selectedMetric = metrics.find(
       (metric) => metric.label === this._metric
     )
 
+    const deploymentToVersion = (project.publishedVersions || []).reduce(
+      (acc, publishedVersion) => ({
+        ...acc,
+        [publishedVersion.deployment]: publishedVersion.version
+      }),
+      {}
+    )
+
     return (
       <div {...rest}>
+        <h4 className={styles.h4}>Analytics</h4>
+
         <div className={styles.header}>
           <div className={styles.service}>
             <div className={styles.label}>Endpoints</div>
@@ -200,6 +217,46 @@ export class ProjectAPICallsAnalytics extends React.Component {
             measures={selectedMetric.measures}
             renderProps={selectedMetric.lineRenderProps}
             type='line'
+          />
+        </div>
+
+        <div className={styles.chart}>
+          <h4 className={styles.h4}>Logs</h4>
+
+          <ProjectAPICallsChart
+            projectId={project.id}
+            dateRange={this._dateRange}
+            granularity={null}
+            servicePath={this._serviceId ? this._serviceId.split(' ')[1] : null}
+            measures={[]}
+            dimensions={[
+              'Calls.id',
+              'Calls.date',
+              'Calls.service',
+              'Calls.status',
+              'Calls.cache',
+              'Calls.plan',
+              'Calls.ip',
+              'Calls.deployment'
+            ]}
+            renderProps={{
+              columnTransforms: {
+                'Calls.id': () => null,
+                'Calls.date': (c) => ({
+                  ...c,
+                  render: (v) => format(new Date(v), 'yyyy-MM-dd h:m a')
+                }),
+                'Calls.deployment': (c) => ({
+                  ...c,
+                  render: (v) => deploymentToVersion[v] || v.split('@')[1]
+                }),
+                'Calls.status': (c) => ({
+                  ...c,
+                  render: (v) => <b>{v}</b>
+                })
+              }
+            }}
+            type='table'
           />
         </div>
       </div>
