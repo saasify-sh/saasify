@@ -99,16 +99,17 @@ export class DataTable extends React.Component {
     loadingState,
     ...rest
   }) => {
-    console.log({ resultSet, error, ...rest })
-
     if (error) {
       // TODO
       return error.toString()
     } else if (resultSet) {
       if (resultSet.totals) {
-        this._pagination.total = resultSet.totals.totalRow()[
-          this.props.totalMeasure
-        ]
+        const totals = resultSet.totals.totalRow()
+        if (totals) {
+          this._pagination.total = totals[this.props.totalMeasure] || 0
+        } else {
+          this._pagination.total = 0
+        }
       }
 
       if (resultSet.main) {

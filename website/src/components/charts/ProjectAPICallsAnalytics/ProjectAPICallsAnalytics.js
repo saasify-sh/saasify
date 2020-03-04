@@ -138,7 +138,7 @@ export class ProjectAPICallsAnalytics extends React.Component {
 
     return (
       <div {...rest}>
-        <h4 className={styles.h4}>Analytics</h4>
+        <h4 className={styles.h4}>API Analytics</h4>
 
         <div className={styles.header}>
           <div className={styles.service}>
@@ -233,7 +233,7 @@ export class ProjectAPICallsAnalytics extends React.Component {
         </div>
 
         <div className={styles.chart}>
-          <h4 className={styles.h4}>API Call Logs</h4>
+          <h4 className={styles.h4}>API Call Log</h4>
 
           <DataTable
             query={getQuery({

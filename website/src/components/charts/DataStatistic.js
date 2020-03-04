@@ -3,13 +3,25 @@ import { Spin, Statistic } from 'react-saasify'
 import { QueryRenderer } from '@cubejs-client/react'
 import { cubejsApi } from 'lib/cube'
 
-const numberRender = ({ resultSet, ...rest }) => (
-  <>
-    {resultSet.seriesNames().map((s) => (
-      <Statistic key={s.key} value={resultSet.totalRow()[s.key]} {...rest} />
-    ))}
-  </>
-)
+const numberRender = ({ resultSet, ...rest }) => {
+  const seriesNames = resultSet.seriesNames()
+
+  if (seriesNames.length) {
+    return (
+      <>
+        {seriesNames.map((s) => (
+          <Statistic
+            key={s.key}
+            value={resultSet.totalRow()[s.key] || 0}
+            {...rest}
+          />
+        ))}
+      </>
+    )
+  } else {
+    return <Statistic value={0} {...rest} />
+  }
+}
 
 const renderChart = (Component, props) => ({ resultSet, error, ...rest }) => {
   if (error) {
