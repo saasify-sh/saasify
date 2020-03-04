@@ -2,13 +2,13 @@ import React from 'react'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import { format } from 'date-fns'
-import { Select } from 'react-saasify'
+import { Select, Tag } from 'react-saasify'
 import cs from 'classnames'
 
 import { DataChart } from '../DataChart'
 import { DataStatistic } from '../DataStatistic'
 import { DataTable } from '../DataTable'
-import { getQuery } from './ProjectAPICallsQuery'
+import { getQuery } from './ProjectCustomersQuery'
 
 import styles from './styles.module.css'
 
@@ -29,90 +29,30 @@ const dateRanges = [
 ]
 const granularities = ['hour', 'day', 'week']
 
-function round(num) {
-  return Math.round((num + Number.EPSILON) * 100) / 100
-}
-
 const metrics = [
   {
-    label: 'API Calls',
-    measures: ['Calls.count'],
+    label: 'Customers',
+    measures: ['Consumers.count'],
     numberRenderProps: {
       precision: 0
     }
-  },
-  {
-    label: 'Error Rate',
-    measures: ['Calls.errorPercentage'],
-    numberRenderProps: {
-      precision: 0,
-      suffix: '%'
-    },
-    lineRenderProps: {
-      yAxis: {
-        label: {
-          formatter: (val) => `${val}%`
-        }
-      },
-      geom: {
-        tooltip: [
-          'x*measure',
-          (x, val) => ({
-            name: 'Error Rate',
-            value: `${round(val)}%`
-          })
-        ]
-      }
-    }
-  },
-  {
-    label: 'Average Latency',
-    measures: ['Calls.averageLatency'],
-    numberRenderProps: {
-      precision: 0,
-      suffix: 'ms'
-    },
-    lineRenderProps: {
-      yAxis: {
-        label: {
-          formatter: (val) => `${val} ms`
-        }
-      },
-      geom: {
-        tooltip: [
-          'x*measure',
-          (x, val) => ({
-            name: 'Avg Latency',
-            value: `${val | 0} ms`
-          })
-        ]
-      }
-    }
-
-    // TODO: add cachePercentage
   }
 ]
 
 const measureToLabel = {
-  'Calls.count': 'API Calls',
-  'Calls.errorCount': 'API Errors',
-  'Calls.errorPercentage': 'API Error Rate',
-  'Calls.averageLatency': 'Average Latency'
+  'Consumers.count': 'Customers'
 }
 
 @observer
-export class ProjectAPICallsAnalytics extends React.Component {
+export class ProjectCustomersAnalytics extends React.Component {
   @observable
-  _dateRange = 'This month'
+  _dateRange = 'All time'
 
   @observable
-  _granularity = 'day'
+  _granularity = 'week'
 
   @observable
-  _serviceId = null
-
-  @observable
-  _metric = 'API Calls'
+  _metric = 'Customers'
 
   render() {
     const { project, ...rest } = this.props
@@ -120,49 +60,15 @@ export class ProjectAPICallsAnalytics extends React.Component {
       return
     }
 
-    const services = project.lastPublishedDeployment?.services
-
     const selectedMetric = metrics.find(
       (metric) => metric.label === this._metric
     )
 
-    const deploymentToVersion = (project.publishedVersions || []).reduce(
-      (acc, publishedVersion) => ({
-        ...acc,
-        [publishedVersion.deployment]: publishedVersion.version
-      }),
-      {}
-    )
-
-    const servicePath = this._serviceId ? this._serviceId.split(' ')[1] : null
-
     return (
       <div {...rest}>
-        <h4 className={styles.h4}>Analytics</h4>
+        <h4 className={styles.h4}>Customer Analytics</h4>
 
         <div className={styles.header}>
-          <div className={styles.service}>
-            <div className={styles.label}>Endpoints</div>
-
-            <Select
-              value={this._serviceId}
-              onChange={this._onChangeServiceId}
-              disabled={!services}
-            >
-              <Select.Option value={null}>All endpoints</Select.Option>
-
-              {services &&
-                services.map((service) => {
-                  const id = `${service.httpMethod} ${service.path}`
-                  return (
-                    <Select.Option key={id} value={id}>
-                      {id}
-                    </Select.Option>
-                  )
-                })}
-            </Select>
-          </div>
-
           <div className={styles.dateRange}>
             <div className={styles.label}>Time Range</div>
 
@@ -210,7 +116,6 @@ export class ProjectAPICallsAnalytics extends React.Component {
                 query={getQuery({
                   projectId: project.id,
                   dateRange: this._dateRange,
-                  servicePath,
                   measures: metric.measures
                 })}
               />
@@ -226,54 +131,46 @@ export class ProjectAPICallsAnalytics extends React.Component {
               projectId: project.id,
               dateRange: this._dateRange,
               granularity: this._granularity,
-              servicePath,
               measures: selectedMetric.measures
             })}
           />
         </div>
 
         <div className={styles.chart}>
-          <h4 className={styles.h4}>API Call Logs</h4>
+          <h4 className={styles.h4}>Customers</h4>
 
           <DataTable
             query={getQuery({
               projectId: project.id,
               dateRange: this._dateRange,
               granularity: null,
-              servicePath,
               dimensions: [
-                'Calls.id',
-                'Calls.date',
-                'Calls.service',
-                'Calls.status',
-                'Calls.gateway',
-                'Calls.cache',
-                'Calls.plan',
-                'Calls.ip',
-                'Calls.deployment'
+                'Consumers.id',
+                'Consumers.createdAt',
+                'Consumers.username',
+                'Consumers.email',
+                'Consumers.plan',
+                'Consumers.enabled'
               ],
               order: {
-                'Calls.date': 'desc'
+                'Consumers.createdAt': 'desc'
               }
             })}
-            totalMeasure='Calls.count'
+            totalMeasure='Consumers.count'
             columnTransforms={{
-              'Calls.id': () => null,
-              'Calls.date': (c) => ({
+              'Consumers.id': () => null,
+              'Consumers.createdAt': (c) => ({
                 ...c,
                 render: (v) => format(new Date(v), 'yyyy-MM-dd h:mm a')
               }),
-              'Calls.deployment': (c) => ({
+              'Consumers.enabled': (c) => ({
                 ...c,
-                render: (v) => deploymentToVersion[v] || v.split('@')[1]
-              }),
-              'Calls.status': (c) => ({
-                ...c,
-                render: (v) => <b>{v}</b>
-              }),
-              'Calls.gateway': (c) => ({
-                ...c,
-                render: (v) => `${v | 0} ms`
+                render: (enabled) =>
+                  enabled ? (
+                    <Tag color='blue'>Enabled</Tag>
+                  ) : (
+                    <Tag color='magenta'>Disabled</Tag>
+                  )
               })
             }}
           />
@@ -288,9 +185,5 @@ export class ProjectAPICallsAnalytics extends React.Component {
 
   _onChangeGranularity = (granularity) => {
     this._granularity = granularity
-  }
-
-  _onChangeServiceId = (id) => {
-    this._serviceId = id
   }
 }

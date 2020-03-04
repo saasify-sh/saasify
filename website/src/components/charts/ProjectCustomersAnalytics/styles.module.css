@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  justify-content: flex-end;
   margin-bottom: 2em;
 }
 
@@ -18,11 +19,6 @@
 .label {
   font-size: 0.9em;
   margin-bottom: 0.5em;
-}
-
-.service {
-  flex: 1;
-  min-width: 300px;
 }
 
 .dateRange {
