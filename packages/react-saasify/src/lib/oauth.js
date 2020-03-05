@@ -36,12 +36,18 @@ export async function authGoogle({ location }, params) {
 }
 
 export function authStripe({ location, auth }) {
+  const stateRaw = JSON.stringify({
+    uri: env.stripeRedirectUri,
+    route: location.pathname
+  })
+  const state = btoa(stateRaw)
+
   const scope = 'read_write'
   const params = {
     response_type: 'code',
     client_id: env.providerStripeClientId,
     scope,
-    state: location.pathname
+    state
   }
 
   if (auth) {

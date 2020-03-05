@@ -11,6 +11,8 @@ export * from './LoginPage'
 export * from './LogoutPage'
 export * from './SignupPage'
 export * from './AuthGitHubPage'
+export * from './AuthGooglePage'
+export * from './AuthStripePage'
 export * from './EmailConfirmedPage'
 
 // maker webapp

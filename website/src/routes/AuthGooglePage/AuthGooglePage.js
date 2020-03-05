@@ -7,8 +7,6 @@ import { Redirect, withRouter } from 'react-router-dom'
 import { debug, notification } from 'react-saasify'
 import { withTracker } from 'lib/with-tracker'
 
-import deployment from 'lib/deployment'
-
 @withTracker
 @withRouter
 @inject('auth')
@@ -42,14 +40,9 @@ export class AuthGooglePage extends Component {
     })
 
     this.props.auth
-      .authWithGoogle(
-        {
-          code: query.code
-        },
-        {
-          deployment: deployment.id
-        }
-      )
+      .authWithGoogle({
+        code: query.code
+      })
       .then(
         () => {
           this.setState({ loading: false })

@@ -30,15 +30,19 @@ class AuthManagerClass {
   }
 
   constructor() {
-    LocalStore.get(AUTH_STORE_KEY).then(
-      (auth) => {
-        this.auth = auth
-        this.isBootstrapping = false
-      },
-      () => {
-        this.isBootstrapping = false
-      }
-    )
+    this._bootstrappingP = new Promise((resolve) => {
+      LocalStore.get(AUTH_STORE_KEY).then(
+        (auth) => {
+          this.auth = auth
+          this.isBootstrapping = false
+          setTimeout(resolve)
+        },
+        () => {
+          this.isBootstrapping = false
+          setTimeout(resolve)
+        }
+      )
+    })
   }
 
   async signin(opts) {
@@ -78,6 +82,8 @@ class AuthManagerClass {
 
   async authWithGitHub(opts) {
     debug('AuthManager.authWithGitHub')
+    await this._bootstrappingP
+
     const auth = await API.authWithGitHub({
       ...this.context,
       ...githubConfig,
@@ -90,6 +96,8 @@ class AuthManagerClass {
 
   async authWithGoogle(opts) {
     debug('AuthManager.authWithGoogle')
+    await this._bootstrappingP
+
     const auth = await API.authWithGoogle({
       ...this.context,
       ...opts
@@ -101,6 +109,8 @@ class AuthManagerClass {
 
   async authWithStripe(opts) {
     debug('AuthManager.authWithStripe')
+    await this._bootstrappingP
+
     const auth = await API.authWithStripe({
       ...this.context,
       ...opts

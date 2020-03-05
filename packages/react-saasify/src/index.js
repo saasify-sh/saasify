@@ -8,6 +8,7 @@ export * from './components'
 
 export * from './lib/antd'
 export * from './lib/api'
+export * from './lib/oauth'
 export * from './lib/bootstrap'
 export * from './lib/checkout'
 export * from './lib/upgrade'

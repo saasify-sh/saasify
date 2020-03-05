@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
+
 import { Button, authGitHub, authGoogle, authStripe } from 'react-saasify'
 import cs from 'classnames'
 
 import styles from './styles.module.css'
 
+@inject('auth')
+@withRouter
 @observer
 export class AuthProviders extends Component {
   static propTypes = {
+    auth: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
     authConfig: PropTypes.object,
     authParams: PropTypes.object,
     className: PropTypes.string
@@ -20,42 +26,78 @@ export class AuthProviders extends Component {
   }
 
   render() {
-    const { className, authConfig, authParams, ...rest } = this.props
+    const {
+      className,
+      authConfig,
+      authParams,
+      auth,
+      location,
+      staticContext,
+      ...rest
+    } = this.props
 
     const hasGitHubAuth = authConfig.github?.enabled !== false
     const hasGoogleAuth = authConfig.google?.enabled !== false
     const hasStripeAuth = authConfig.stripe?.enabled !== false
 
+    const isGitHubLinked = auth.user.providers.github?.id
+    const isGoogleLinked = auth.user.providers.google?.id
+    const isStripeLinked = auth.user.providers.stripe?.id
+
+    console.log(auth.user)
+
     return (
       <div className={cs(styles.authProviders, className)} {...rest}>
         {hasGitHubAuth && (
-          <Button
-            className={styles.authButton}
-            icon='github'
-            onClick={this._onClickGitHub}
-          >
-            Link GitHub
-          </Button>
+          <div className={styles.authProvider}>
+            <h4>GitHub</h4>
+
+            <Button
+              className={styles.authButton}
+              icon='github'
+              onClick={this._onClickGitHub}
+              disabled={isGitHubLinked}
+            >
+              Link GitHub
+            </Button>
+
+            {authConfig.github?.google}
+          </div>
         )}
 
         {hasGoogleAuth && (
-          <Button
-            className={styles.authButton}
-            icon='google'
-            onClick={this._onClickGoogle}
-          >
-            Link Google
-          </Button>
+          <div className={styles.authProvider}>
+            <h4>Google</h4>
+
+            <Button
+              className={styles.authButton}
+              icon='google'
+              onClick={this._onClickGoogle}
+              disabled={isGoogleLinked}
+            >
+              Link Google
+            </Button>
+
+            {authConfig.stripe?.google}
+          </div>
         )}
 
         {hasStripeAuth && (
-          <Button
-            className={styles.authButton}
-            icon='stripe'
-            onClick={this._onClickStripe}
-          >
-            Link Stripe
-          </Button>
+          <div className={styles.authProvider}>
+            <h4>Stripe</h4>
+
+            <Button
+              className={styles.authButton}
+              type={authConfig.stripe?.type || 'secondary'}
+              onClick={this._onClickStripe}
+            >
+              {isStripeLinked
+                ? 'Re-link Stripe Account'
+                : 'Link Stripe Account'}
+            </Button>
+
+            {authConfig.stripe?.detail}
+          </div>
         )}
       </div>
     )
@@ -73,6 +115,9 @@ export class AuthProviders extends Component {
 
   _onClickStripe = (e) => {
     e.preventDefault()
-    authStripe({ location: this.props.location }, this.props.authParams)
+    authStripe(
+      { location: this.props.location, auth: this.props.auth },
+      this.props.authParams
+    )
   }
 }

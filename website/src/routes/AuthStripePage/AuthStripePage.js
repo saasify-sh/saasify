@@ -9,7 +9,7 @@ import { debug, notification } from 'react-saasify'
 @withRouter
 @inject('auth')
 @observer
-export class AuthGitHubPage extends Component {
+export class AuthStripePage extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired
@@ -33,14 +33,14 @@ export class AuthGitHubPage extends Component {
       return
     }
 
-    if (query.state) {
+    if (query.route) {
       this.setState({
-        pathname: query.state
+        pathname: query.route
       })
     }
 
     this.props.auth
-      .authWithGitHub({
+      .authWithStripe({
         code: query.code
       })
       .then(

@@ -1,0 +1,17 @@
+.authProviders {
+  display: flex;
+  flex-direction: column;
+}
+
+.authProvider {
+  margin-bottom: 1em;
+}
+
+.authProvider:last-child {
+  margin-bottom: 0;
+}
+
+.authProvider h4 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}

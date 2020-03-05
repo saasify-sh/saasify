@@ -13,6 +13,7 @@ import { TabPane } from './TabPane'
 // import { AuditLogTabPane } from './AuditLogTabPane'
 import { AnalyticsTabPane } from './AnalyticsTabPane'
 import { CustomersTabPane } from './CustomersTabPane'
+import { SettingsTabPane } from './SettingsTabPane'
 
 import styles from './styles.module.css'
 
@@ -114,6 +115,10 @@ export class ProjectAdminPage extends Component {
 
               <Route path={`${match.path}/customers`} exact>
                 <CustomersTabPane project={this._project} />
+              </Route>
+
+              <Route path={`${match.path}/settings`} exact>
+                <SettingsTabPane project={this._project} />
               </Route>
 
               <Route>
