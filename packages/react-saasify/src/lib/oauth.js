@@ -34,3 +34,15 @@ export async function authGoogle({ location }, params) {
 
   window.location = finalUrl
 }
+
+export function authStripe({ location }) {
+  const scope = 'read_write'
+  const opts = qs.stringify({
+    response_type: 'code',
+    client_id: env.providerStripeClientId,
+    scope,
+    state: location.pathname
+  })
+
+  window.location = `https://connect.stripe.com/oauth/authorize?${opts}`
+}

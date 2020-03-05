@@ -7,11 +7,13 @@ import { Redirect, withRouter } from 'react-router-dom'
 import { debug, notification } from 'react-saasify'
 import { withTracker } from 'lib/with-tracker'
 
+import deployment from 'lib/deployment'
+
 @withTracker
 @withRouter
 @inject('auth')
 @observer
-export class AuthGitHubPage extends Component {
+export class AuthGooglePage extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired
@@ -19,7 +21,7 @@ export class AuthGitHubPage extends Component {
 
   state = {
     loading: true,
-    pathname: '/dashboard'
+    pathname: '/'
   }
 
   componentDidMount() {
@@ -27,34 +29,41 @@ export class AuthGitHubPage extends Component {
       ignoreQueryPrefix: true
     })
 
-    if (!query.code) {
+    if (!query.code || !query.route) {
       notification.error({
-        message: 'Error authenticating with GitHub'
+        message: 'Error authenticating with Google'
       })
       this.setState({ loading: false })
       return
     }
 
-    if (query.route) {
-      this.setState({
-        pathname: query.route
-      })
-    }
+    this.setState({
+      pathname: query.route
+    })
 
-    this.props.auth.authWithGitHub({ code: query.code }).then(
-      () => {
-        this.setState({ loading: false })
-      },
-      (err) => {
-        this.setState({ loading: false })
+    this.props.auth
+      .authWithGoogle(
+        {
+          code: query.code
+        },
+        {
+          deployment: deployment.id
+        }
+      )
+      .then(
+        () => {
+          this.setState({ loading: false })
+        },
+        (err) => {
+          this.setState({ loading: false })
 
-        debug(err)
-        notification.error({
-          message: 'Error authenticating with GitHub',
-          description: err?.response?.data?.error || err.message
-        })
-      }
-    )
+          debug(err)
+          notification.error({
+            message: 'Error authenticating with Google',
+            description: err?.response?.data?.error || err.message
+          })
+        }
+      )
   }
 
   render() {

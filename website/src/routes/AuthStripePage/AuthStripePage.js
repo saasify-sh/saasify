@@ -5,9 +5,7 @@ import qs from 'qs'
 import { observer, inject } from 'mobx-react'
 import { Redirect, withRouter } from 'react-router-dom'
 import { debug, notification } from 'react-saasify'
-import { withTracker } from 'lib/with-tracker'
 
-@withTracker
 @withRouter
 @inject('auth')
 @observer
@@ -29,32 +27,36 @@ export class AuthGitHubPage extends Component {
 
     if (!query.code) {
       notification.error({
-        message: 'Error authenticating with GitHub'
+        message: 'Error authenticating with Stripe'
       })
       this.setState({ loading: false })
       return
     }
 
-    if (query.route) {
+    if (query.state) {
       this.setState({
-        pathname: query.route
+        pathname: query.state
       })
     }
 
-    this.props.auth.authWithGitHub({ code: query.code }).then(
-      () => {
-        this.setState({ loading: false })
-      },
-      (err) => {
-        this.setState({ loading: false })
+    this.props.auth
+      .authWithGitHub({
+        code: query.code
+      })
+      .then(
+        () => {
+          this.setState({ loading: false })
+        },
+        (err) => {
+          this.setState({ loading: false })
 
-        debug(err)
-        notification.error({
-          message: 'Error authenticating with GitHub',
-          description: err?.response?.data?.error || err.message
-        })
-      }
-    )
+          debug(err)
+          notification.error({
+            message: 'Error authenticating with Stripe',
+            description: err?.response?.data?.error || err.message
+          })
+        }
+      )
   }
 
   render() {

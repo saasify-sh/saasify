@@ -98,6 +98,17 @@ class AuthManagerClass {
     await LocalStore.set(AUTH_STORE_KEY, auth)
     this.auth = auth
   }
+
+  async authWithStripe(opts) {
+    debug('AuthManager.authWithStripe')
+    const auth = await API.authWithStripe({
+      ...this.context,
+      ...opts
+    })
+
+    await LocalStore.set(AUTH_STORE_KEY, auth)
+    this.auth = auth
+  }
 }
 
 export const AuthManager = observable(new AuthManagerClass())

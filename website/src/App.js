@@ -30,6 +30,8 @@ import {
   LogoutPage,
   SignupPage,
   AuthGitHubPage,
+  AuthGooglePage,
+  AuthStripePage,
   EmailConfirmedPage,
 
   // maker webapp
@@ -173,6 +175,8 @@ export default class App extends Component {
                 <Route path='/login' component={LoginPage} />
                 <Route path='/signup' component={SignupPage} />
                 <Route path='/auth/github' component={AuthGitHubPage} />
+                <Route path='/auth/google' component={AuthGooglePage} />
+                <Route path='/auth/stripe' component={AuthStripePage} />
                 <AuthenticatedRoute path='/logout' component={LogoutPage} />
 
                 <Route path='/onboarding' component={OnboardingPage} />
