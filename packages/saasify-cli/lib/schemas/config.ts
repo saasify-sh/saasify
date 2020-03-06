@@ -200,11 +200,10 @@ class Snippet {
 }
 
 class AuthProviderMap {
-  // third-party oauth
   github?: AuthProviderConfig
-
-  // third-party oauth
   google?: AuthProviderConfig
+  spotify?: AuthProviderConfig
+  twitter?: AuthProviderConfig
 
   // defautlt auth provider is email & password
   default?: AuthProviderConfig
