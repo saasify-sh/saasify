@@ -10,6 +10,7 @@ import {
   authGitHub,
   authGoogle,
   authSpotify,
+  authTwitter,
   authStripe
 } from 'react-saasify'
 
@@ -49,11 +50,13 @@ export class AuthProviders extends Component {
     const hasGitHubAuth = authConfig.github?.enabled !== false
     const hasGoogleAuth = authConfig.google?.enabled !== false
     const hasSpotifyAuth = authConfig.spotify?.enabled !== false
+    const hasTwitterAuth = authConfig.twitter?.enabled !== false
     const hasStripeAuth = authConfig.stripe?.enabled !== false
 
     const isGitHubLinked = auth.user.providers.github?.id
     const isGoogleLinked = auth.user.providers.google?.id
     const isSpotifyLinked = auth.user.providers.spotify?.id
+    const isTwitterLinked = auth.user.providers.twitter?.id
     const isStripeLinked = auth.user.providers.stripe?.id
 
     console.log('user', toJS(auth.user))
@@ -116,6 +119,23 @@ export class AuthProviders extends Component {
           </div>
         )}
 
+        {hasTwitterAuth && (
+          <div className={styles.authProvider}>
+            <h4>Twitter</h4>
+
+            <Button
+              className={styles.authButton}
+              icon='twitter'
+              type={authConfig.twitter?.type || 'secondary'}
+              onClick={this._onClickTwitter}
+            >
+              {isTwitterLinked ? 'Re-link Twitter' : 'Link Twitter'}
+            </Button>
+
+            {authConfig.twitter?.detail}
+          </div>
+        )}
+
         {hasStripeAuth && (
           <div className={styles.authProvider}>
             <h4>Stripe</h4>
@@ -152,6 +172,11 @@ export class AuthProviders extends Component {
   _onClickSpotify = (e) => {
     e.preventDefault()
     authSpotify({ location: this.props.location }, this.props.authParams)
+  }
+
+  _onClickTwitter = (e) => {
+    e.preventDefault()
+    authTwitter({ location: this.props.location }, this.props.authParams)
   }
 
   _onClickStripe = (e) => {

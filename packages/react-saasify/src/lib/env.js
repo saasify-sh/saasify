@@ -7,6 +7,7 @@ const githubRedirectUri = `${window.location.origin}/auth/github`
 const googleRedirectUri = `${window.location.origin}/auth/google`
 const stripeRedirectUri = `${window.location.origin}/auth/stripe`
 const spotifyRedirectUri = `${window.location.origin}/auth/spotify`
+const twitterRedirectUri = `${window.location.origin}/auth/twitter`
 
 const githubRedirectQuery = qs.stringify({ uri: githubRedirectUri })
 
@@ -14,9 +15,9 @@ export default {
   isProd,
 
   // github
+  githubRedirectUri: `https://auth.saasify.sh?${githubRedirectQuery}`,
   providerGitHubClientId:
     process.env[`REACT_APP_PROVIDER_GITHUB_CLIENT_ID_${suffix}`],
-  githubRedirectUri: `https://auth.saasify.sh?${githubRedirectQuery}`,
 
   // google
   googleRedirectUri,
@@ -32,5 +33,8 @@ export default {
   // spotify
   spotifyRedirectUri,
   providerSpotifyClientId:
-    process.env[`REACT_APP_PROVIDER_SPOTIFY_CLIENT_ID_${suffix}`]
+    process.env[`REACT_APP_PROVIDER_SPOTIFY_CLIENT_ID_${suffix}`],
+
+  // twitter
+  twitterRedirectUri
 }

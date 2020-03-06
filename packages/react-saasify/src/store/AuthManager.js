@@ -107,11 +107,11 @@ class AuthManagerClass {
     this.auth = auth
   }
 
-  async authWithStripe(opts) {
-    debug('AuthManager.authWithStripe')
+  async authWithSpotify(opts) {
+    debug('AuthManager.authWithSpotify')
     await this._bootstrappingP
 
-    const auth = await API.authWithStripe({
+    const auth = await API.authWithSpotify({
       ...this.context,
       ...opts
     })
@@ -120,11 +120,24 @@ class AuthManagerClass {
     this.auth = auth
   }
 
-  async authWithSpotify(opts) {
-    debug('AuthManager.authWithSpotify')
+  async authWithTwitter(opts) {
+    debug('AuthManager.authWithTwitter')
     await this._bootstrappingP
 
-    const auth = await API.authWithSpotify({
+    const auth = await API.authWithTwitter({
+      ...this.context,
+      ...opts
+    })
+
+    await LocalStore.set(AUTH_STORE_KEY, auth)
+    this.auth = auth
+  }
+
+  async authWithStripe(opts) {
+    debug('AuthManager.authWithStripe')
+    await this._bootstrappingP
+
+    const auth = await API.authWithStripe({
       ...this.context,
       ...opts
     })

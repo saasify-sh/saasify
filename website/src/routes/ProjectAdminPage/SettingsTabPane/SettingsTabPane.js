@@ -25,6 +25,9 @@ export class SettingsTabPane extends Component {
               spotify: {
                 enabled: true
               },
+              twitter: {
+                enabled: true
+              },
               stripe: {
                 enabled: true,
                 type: 'primary',

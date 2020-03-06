@@ -81,3 +81,23 @@ export function authSpotify({ location, scope = '' }) {
   const opts = qs.stringify(params)
   window.location = `https://accounts.spotify.com/authorize?${opts}`
 }
+
+export async function authTwitter({ location }) {
+  const stateRaw = JSON.stringify({
+    uri: env.twitterRedirectUri,
+    route: location.pathname
+  })
+  const state = btoa(stateRaw)
+
+  const params = {
+    state
+  }
+
+  const opts = qs.stringify(params)
+  const redirectUri = `https://auth.saasify.sh?${opts}`
+
+  const { url: authUrl } = await API.getTwitterAuthUrl({ redirectUri })
+  console.log({ redirectUri, authUrl })
+
+  window.location = authUrl
+}
