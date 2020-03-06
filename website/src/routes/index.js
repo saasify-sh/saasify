@@ -10,10 +10,11 @@ export * from './NotFoundPage'
 export * from './LoginPage'
 export * from './LogoutPage'
 export * from './SignupPage'
+export * from './EmailConfirmedPage'
 export * from './AuthGitHubPage'
 export * from './AuthGooglePage'
 export * from './AuthStripePage'
-export * from './EmailConfirmedPage'
+export * from './AuthSpotifyPage'
 
 // maker webapp
 export * from './OnboardingPage'

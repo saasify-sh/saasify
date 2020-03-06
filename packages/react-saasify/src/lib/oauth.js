@@ -62,3 +62,22 @@ export function authStripe({ location, auth }) {
 
   window.location = `https://connect.stripe.com/oauth/authorize?${opts}`
 }
+
+export function authSpotify({ location, scope = '' }) {
+  const stateRaw = JSON.stringify({
+    uri: env.spotifyRedirectUri,
+    route: location.pathname
+  })
+  const state = btoa(stateRaw)
+
+  const params = {
+    response_type: 'code',
+    client_id: env.providerSpotifyClientId,
+    redirect_uri: 'https://auth.saasify.sh',
+    scope,
+    state
+  }
+
+  const opts = qs.stringify(params)
+  window.location = `https://accounts.spotify.com/authorize?${opts}`
+}

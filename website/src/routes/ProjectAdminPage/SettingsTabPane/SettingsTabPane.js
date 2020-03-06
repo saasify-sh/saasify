@@ -22,6 +22,9 @@ export class SettingsTabPane extends Component {
               google: {
                 enabled: false
               },
+              spotify: {
+                enabled: true
+              },
               stripe: {
                 enabled: true,
                 type: 'primary',

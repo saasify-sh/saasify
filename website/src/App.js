@@ -29,10 +29,13 @@ import {
   LoginPage,
   LogoutPage,
   SignupPage,
+  EmailConfirmedPage,
+
+  // third-party auth flow
   AuthGitHubPage,
   AuthGooglePage,
   AuthStripePage,
-  EmailConfirmedPage,
+  AuthSpotifyPage,
 
   // maker webapp
   DashboardPage,
@@ -177,6 +180,7 @@ export default class App extends Component {
                 <Route path='/auth/github' component={AuthGitHubPage} />
                 <Route path='/auth/google' component={AuthGooglePage} />
                 <Route path='/auth/stripe' component={AuthStripePage} />
+                <Route path='/auth/spotify' component={AuthSpotifyPage} />
                 <AuthenticatedRoute path='/logout' component={LogoutPage} />
 
                 <Route path='/onboarding' component={OnboardingPage} />

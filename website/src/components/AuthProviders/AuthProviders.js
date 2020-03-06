@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { toJS } from 'mobx'
 import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
-
-import { Button, authGitHub, authGoogle, authStripe } from 'react-saasify'
 import cs from 'classnames'
+
+import {
+  Button,
+  authGitHub,
+  authGoogle,
+  authSpotify,
+  authStripe
+} from 'react-saasify'
+
+import stripeIcon from './images/stripe.svg'
+import spotifyIcon from './images/spotify.svg'
 
 import styles from './styles.module.css'
 
@@ -38,13 +48,15 @@ export class AuthProviders extends Component {
 
     const hasGitHubAuth = authConfig.github?.enabled !== false
     const hasGoogleAuth = authConfig.google?.enabled !== false
+    const hasSpotifyAuth = authConfig.spotify?.enabled !== false
     const hasStripeAuth = authConfig.stripe?.enabled !== false
 
     const isGitHubLinked = auth.user.providers.github?.id
     const isGoogleLinked = auth.user.providers.google?.id
+    const isSpotifyLinked = auth.user.providers.spotify?.id
     const isStripeLinked = auth.user.providers.stripe?.id
 
-    console.log(auth.user)
+    console.log('user', toJS(auth.user))
 
     return (
       <div className={cs(styles.authProviders, className)} {...rest}>
@@ -55,13 +67,13 @@ export class AuthProviders extends Component {
             <Button
               className={styles.authButton}
               icon='github'
+              type={authConfig.github?.type || 'secondary'}
               onClick={this._onClickGitHub}
-              disabled={isGitHubLinked}
             >
-              Link GitHub
+              {isGitHubLinked ? 'Re-link GitHub' : 'Link GitHub'}
             </Button>
 
-            {authConfig.github?.google}
+            {authConfig.github?.detail}
           </div>
         )}
 
@@ -72,13 +84,35 @@ export class AuthProviders extends Component {
             <Button
               className={styles.authButton}
               icon='google'
+              type={authConfig.google?.type || 'secondary'}
               onClick={this._onClickGoogle}
-              disabled={isGoogleLinked}
             >
-              Link Google
+              {isGoogleLinked ? 'Re-link Google' : 'Link Google'}
             </Button>
 
-            {authConfig.stripe?.google}
+            {authConfig.google?.detail}
+          </div>
+        )}
+
+        {hasSpotifyAuth && (
+          <div className={styles.authProvider}>
+            <h4>Spotify</h4>
+
+            <Button
+              className={styles.authButton}
+              type={authConfig.spotify?.type || 'secondary'}
+              onClick={this._onClickSpotify}
+            >
+              <img
+                className={styles.icon}
+                src={spotifyIcon}
+                alt='Spotify logo'
+              />
+
+              {isSpotifyLinked ? 'Re-link Spotify' : 'Link Spotify'}
+            </Button>
+
+            {authConfig.spotify?.detail}
           </div>
         )}
 
@@ -91,6 +125,8 @@ export class AuthProviders extends Component {
               type={authConfig.stripe?.type || 'secondary'}
               onClick={this._onClickStripe}
             >
+              <img className={styles.icon} src={stripeIcon} alt='Stripe logo' />
+
               {isStripeLinked
                 ? 'Re-link Stripe Account'
                 : 'Link Stripe Account'}
@@ -111,6 +147,11 @@ export class AuthProviders extends Component {
   _onClickGoogle = (e) => {
     e.preventDefault()
     authGoogle({ location: this.props.location }, this.props.authParams)
+  }
+
+  _onClickSpotify = (e) => {
+    e.preventDefault()
+    authSpotify({ location: this.props.location }, this.props.authParams)
   }
 
   _onClickStripe = (e) => {
