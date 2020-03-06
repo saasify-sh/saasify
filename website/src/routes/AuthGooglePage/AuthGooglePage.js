@@ -27,36 +27,26 @@ export class AuthGooglePage extends Component {
       ignoreQueryPrefix: true
     })
 
-    if (!query.code || !query.route) {
-      notification.error({
-        message: 'Error authenticating with Google'
+    if (query.route) {
+      this.setState({
+        pathname: query.route
       })
-      this.setState({ loading: false })
-      return
     }
 
-    this.setState({
-      pathname: query.route
-    })
+    this.props.auth.authWithGoogle(query).then(
+      () => {
+        this.setState({ loading: false })
+      },
+      (err) => {
+        this.setState({ loading: false })
 
-    this.props.auth
-      .authWithGoogle({
-        code: query.code
-      })
-      .then(
-        () => {
-          this.setState({ loading: false })
-        },
-        (err) => {
-          this.setState({ loading: false })
-
-          debug(err)
-          notification.error({
-            message: 'Error authenticating with Google',
-            description: err?.response?.data?.error || err.message
-          })
-        }
-      )
+        debug(err)
+        notification.error({
+          message: 'Error authenticating with Google',
+          description: err?.response?.data?.error || err.message
+        })
+      }
+    )
   }
 
   render() {

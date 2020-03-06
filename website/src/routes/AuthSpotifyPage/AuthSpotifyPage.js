@@ -25,38 +25,26 @@ export class AuthSpotifyPage extends Component {
       ignoreQueryPrefix: true
     })
 
-    if (!query.code) {
-      notification.error({
-        message: 'Error authenticating with Spotify'
-      })
-      this.setState({ loading: false })
-      return
-    }
-
     if (query.route) {
       this.setState({
         pathname: query.route
       })
     }
 
-    this.props.auth
-      .authWithSpotify({
-        code: query.code
-      })
-      .then(
-        () => {
-          this.setState({ loading: false })
-        },
-        (err) => {
-          this.setState({ loading: false })
+    this.props.auth.authWithSpotify(query).then(
+      () => {
+        this.setState({ loading: false })
+      },
+      (err) => {
+        this.setState({ loading: false })
 
-          debug(err)
-          notification.error({
-            message: 'Error authenticating with Spotify',
-            description: err?.response?.data?.error || err.message
-          })
-        }
-      )
+        debug(err)
+        notification.error({
+          message: 'Error authenticating with Spotify',
+          description: err?.response?.data?.error || err.message
+        })
+      }
+    )
   }
 
   render() {

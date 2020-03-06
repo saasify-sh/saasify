@@ -25,38 +25,26 @@ export class AuthStripePage extends Component {
       ignoreQueryPrefix: true
     })
 
-    if (!query.code) {
-      notification.error({
-        message: 'Error authenticating with Stripe'
-      })
-      this.setState({ loading: false })
-      return
-    }
-
     if (query.route) {
       this.setState({
         pathname: query.route
       })
     }
 
-    this.props.auth
-      .authWithStripe({
-        code: query.code
-      })
-      .then(
-        () => {
-          this.setState({ loading: false })
-        },
-        (err) => {
-          this.setState({ loading: false })
+    this.props.auth.authWithStripe(query).then(
+      () => {
+        this.setState({ loading: false })
+      },
+      (err) => {
+        this.setState({ loading: false })
 
-          debug(err)
-          notification.error({
-            message: 'Error authenticating with Stripe',
-            description: err?.response?.data?.error || err.message
-          })
-        }
-      )
+        debug(err)
+        notification.error({
+          message: 'Error authenticating with Stripe',
+          description: err?.response?.data?.error || err.message
+        })
+      }
+    )
   }
 
   render() {
