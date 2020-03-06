@@ -17,7 +17,7 @@ import {
   Table,
   InfiniteList,
   ReactLiveQuery,
-  ProjectGallery
+  AuthProviders
 } from 'react-saasify'
 
 export {
@@ -39,7 +39,7 @@ export {
   Table,
   InfiniteList,
   ReactLiveQuery,
-  ProjectGallery
+  AuthProviders
 }
 
 export * from './HeroSection'
@@ -54,4 +54,4 @@ export * from './TeamSection'
 export * from './MissionSection'
 export * from './CTASection'
 export * from './SignupDialog'
-export * from './AuthProviders'
+export * from './ProjectGallery'

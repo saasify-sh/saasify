@@ -6,15 +6,7 @@ global.h = React.createElement.bind(React)
 
 export * from './components'
 
-export * from './lib/antd'
-export * from './lib/api'
-export * from './lib/oauth'
-export * from './lib/bootstrap'
-export * from './lib/checkout'
-export * from './lib/upgrade'
-export * from './lib/debug'
-export * from './lib/theme'
-export { default as env } from './lib/env'
+export * from './lib'
 
 export * from './store/AuthManager'
 export * from './store/ThemeManager'
@@ -22,3 +14,5 @@ export * from './store/ThemeManager'
 export * from './store/LocalStore'
 export * from './store/EventEmitter'
 export * from './store/ReactLiveQuery'
+
+export * from './routes'

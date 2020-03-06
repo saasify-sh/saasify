@@ -10,7 +10,14 @@ import {
   AuthManager,
   ThemeManager,
   AuthenticatedRoute,
-  theme
+  theme,
+
+  // third-party auth flow
+  AuthGitHubPage,
+  AuthGooglePage,
+  AuthSpotifyPage,
+  AuthTwitterPage,
+  AuthStripePage
 } from 'react-saasify'
 
 import { SignupDialog } from './components'
@@ -30,13 +37,6 @@ import {
   LogoutPage,
   SignupPage,
   EmailConfirmedPage,
-
-  // third-party auth flow
-  AuthGitHubPage,
-  AuthGooglePage,
-  AuthSpotifyPage,
-  AuthTwitterPage,
-  AuthStripePage,
 
   // maker webapp
   DashboardPage,

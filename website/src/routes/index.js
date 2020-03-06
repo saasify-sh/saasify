@@ -11,11 +11,6 @@ export * from './LoginPage'
 export * from './LogoutPage'
 export * from './SignupPage'
 export * from './EmailConfirmedPage'
-export * from './AuthGitHubPage'
-export * from './AuthGooglePage'
-export * from './AuthSpotifyPage'
-export * from './AuthTwitterPage'
-export * from './AuthStripePage'
 
 // maker webapp
 export * from './OnboardingPage'

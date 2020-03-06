@@ -4,7 +4,7 @@ import qs from 'qs'
 
 import { observer, inject } from 'mobx-react'
 import { Redirect, withRouter } from 'react-router-dom'
-import { debug, notification } from 'react-saasify'
+import { debug, notification } from '../../lib'
 
 @withRouter
 @inject('auth')

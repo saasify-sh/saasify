@@ -5,14 +5,15 @@ import { inject, observer } from 'mobx-react'
 import { withRouter } from 'react-router-dom'
 import cs from 'classnames'
 
+import { Button } from 'lib/antd'
+
 import {
-  Button,
   authGitHub,
   authGoogle,
   authSpotify,
   authTwitter,
   authStripe
-} from 'react-saasify'
+} from 'lib/oauth'
 
 import stripeIcon from './images/stripe.svg'
 import spotifyIcon from './images/spotify.svg'

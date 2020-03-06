@@ -4,12 +4,12 @@ import qs from 'qs'
 
 import { observer, inject } from 'mobx-react'
 import { Redirect, withRouter } from 'react-router-dom'
-import { debug, notification } from 'react-saasify'
+import { debug, notification } from '../../lib'
 
 @withRouter
 @inject('auth')
 @observer
-export class AuthStripePage extends Component {
+export class AuthSpotifyPage extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired
@@ -31,7 +31,7 @@ export class AuthStripePage extends Component {
       })
     }
 
-    this.props.auth.authWithStripe(query).then(
+    this.props.auth.authWithSpotify(query).then(
       () => {
         this.setState({ loading: false })
       },
@@ -40,7 +40,7 @@ export class AuthStripePage extends Component {
 
         debug(err)
         notification.error({
-          message: 'Error authenticating with Stripe',
+          message: 'Error authenticating with Spotify',
           description: err?.response?.data?.error || err.message
         })
       }

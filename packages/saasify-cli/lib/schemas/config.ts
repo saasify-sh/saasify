@@ -213,6 +213,5 @@ class AuthProviderConfig {
   enabled?: boolean
   clientId?: string
   clientSecret?: string
-  redirectUrl?: string
   scopes?: string[]
 }

@@ -34,4 +34,4 @@ export * from './ImageZoom'
 export * from './InfiniteList'
 export * from './RelativeTimeLabel'
 
-export * from './ProjectGallery'
+export * from './AuthProviders'
