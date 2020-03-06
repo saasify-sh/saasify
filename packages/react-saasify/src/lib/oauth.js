@@ -56,5 +56,9 @@ export function authStripe({ location, auth }) {
 
   const opts = qs.stringify(params)
 
+  // https://connect.stripe.com/express/oauth/authorize
+  // scope result will be 'express' if it is an express acount
+  // need to remove scope from request if using express account
+
   window.location = `https://connect.stripe.com/oauth/authorize?${opts}`
 }
