@@ -211,7 +211,10 @@ class AuthProviderMap {
 
 class AuthProviderConfig {
   enabled?: boolean
+  required?: boolean
+
   clientId?: string
   clientSecret?: string
+
   scopes?: string[]
 }

@@ -21,19 +21,19 @@ export class MissionSection extends Component {
           </p>
 
           <p>
-            I know I'm at my absolute best when I'm working on a side project
-            that I'm passionate about.
+            If you're anything like me, you've got at least one side project
+            that you're passionate about.
           </p>
 
           <p>
             Whether it's an open source project, a cool demo app, or learning a
-            new technology, my productivity and the satisfaction I get from
+            new technology, the productivity and the satisfaction I get from
             these projects is 10x my normal experience at work.
           </p>
 
           <p>
-            And yet, I'm forced to treat these projects as a hobby because it
-            takes so much effort to even try and monetize them, much less even
+            And yet, we're forced to treat these projects as a hobby because it
+            takes so much effort to even try and monetize them, much less
             consider giving up the financial stability of being a full time
             software engineer.
           </p>
