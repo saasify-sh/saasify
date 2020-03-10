@@ -4,12 +4,12 @@ import qs from 'qs'
 
 import { observer, inject } from 'mobx-react'
 import { Redirect, withRouter } from 'react-router-dom'
-import { debug, message } from 'react-saasify'
+import { debug, notification } from '../../lib'
 
 @withRouter
 @inject('auth')
 @observer
-export class AuthGitHubPage extends Component {
+export class AuthGooglePage extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired
@@ -25,32 +25,26 @@ export class AuthGitHubPage extends Component {
       ignoreQueryPrefix: true
     })
 
-    if (!query.code || !query.state) {
-      message.error('Error authenticating with GitHub')
-      this.setState({ loading: false })
-      return
+    if (query.route) {
+      this.setState({
+        pathname: query.route
+      })
     }
 
-    this.setState({
-      pathname: query.state
-    })
+    this.props.auth.authWithGoogle(query).then(
+      () => {
+        this.setState({ loading: false })
+      },
+      (err) => {
+        this.setState({ loading: false })
 
-    this.props.auth
-      .authWithGitHub({
-        code: query.code,
-        state: query.state
-      })
-      .then(
-        () => {
-          this.setState({ loading: false })
-        },
-        (err) => {
-          this.setState({ loading: false })
-
-          debug(err)
-          message.error('Error authenticating with GitHub.')
-        }
-      )
+        debug(err)
+        notification.error({
+          message: 'Error authenticating with Google',
+          description: err?.response?.data?.error || err.message
+        })
+      }
+    )
   }
 
   render() {

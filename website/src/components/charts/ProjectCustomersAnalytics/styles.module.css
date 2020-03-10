@@ -1,0 +1,74 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2em;
+}
+
+.header > div {
+  margin-right: 1em;
+}
+
+.header > div > * {
+  width: 100%;
+}
+
+.header > div:last-child {
+  margin-right: 0;
+}
+
+.label {
+  font-size: 0.9em;
+  margin-bottom: 0.5em;
+}
+
+.dateRange {
+  flex: 0.2;
+  min-width: 140px;
+}
+
+.granularity {
+  flex: 0.1;
+  min-width: 100px;
+}
+
+.metrics {
+  display: flex;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #aaa;
+}
+
+.metric {
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  padding: 8px 1em;
+  border-bottom: 1px solid transparent;
+}
+
+.metric:hover:not(.activeMetric) {
+  border-bottom: 1px solid #1890ff;
+}
+
+.activeMetric {
+  border-bottom: 1px solid #1890ff;
+  cursor: unset;
+}
+
+.activeMetric .label {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.chart {
+  min-height: 400px;
+  margin-bottom: 2em;
+}
+
+.chart:last-child {
+  margin-bottom: 0;
+}
+
+.h4 {
+  font-size: 1.7em;
+  margin-bottom: 0.75em;
+}

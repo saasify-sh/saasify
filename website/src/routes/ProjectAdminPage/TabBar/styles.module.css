@@ -1,0 +1,24 @@
+.tabBar {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: none;
+  border-bottom: 1px solid #aaa;
+}
+
+.tab {
+  text-align: center;
+  color: #aaa;
+  padding: 1em 2em;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+}
+
+.activeTab {
+  color: #333 !important;
+  font-weight: 700;
+  border-bottom: 1px solid #1890ff;
+}
+
+.tab:hover:not(.activeTab) {
+  color: #666;
+}

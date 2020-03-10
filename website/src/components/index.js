@@ -13,7 +13,11 @@ import {
   Logo,
   BackgroundSlideshow,
   ScrollToTopOnMount,
-  Paper
+  Paper,
+  Table,
+  InfiniteList,
+  ReactLiveQuery,
+  AuthProviders
 } from 'react-saasify'
 
 export {
@@ -31,7 +35,11 @@ export {
   Logo,
   BackgroundSlideshow,
   ScrollToTopOnMount,
-  Paper
+  Paper,
+  Table,
+  InfiniteList,
+  ReactLiveQuery,
+  AuthProviders
 }
 
 export * from './HeroSection'
@@ -46,3 +54,4 @@ export * from './TeamSection'
 export * from './MissionSection'
 export * from './CTASection'
 export * from './SignupDialog'
+export * from './ProjectGallery'

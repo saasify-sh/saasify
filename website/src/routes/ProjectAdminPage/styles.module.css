@@ -1,0 +1,20 @@
+.project-admin-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.body {
+  flex: 1 !important;
+  padding-top: 0 !important;
+}
+
+.content {
+  max-width: 1428px !important;
+  padding-top: 2em !important;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}

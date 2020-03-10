@@ -1,0 +1,23 @@
+.dashboard-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.body {
+  flex: 1 !important;
+  padding-top: 0 !important;
+}
+
+.content {
+  max-width: unset !important;
+  padding-top: 2em !important;
+}
+
+.projectGallery {
+  width: 100%;
+  max-width: 1400px;
+  align-self: center;
+  margin: 0 auto 2em;
+}

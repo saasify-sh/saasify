@@ -155,6 +155,68 @@ module.exports = class SaasifyClient {
       })
   }
 
+  async authWithStripe(data) {
+    return this._request({
+      url: `/1/auth/stripe`,
+      method: 'put',
+      params: this._params,
+      data
+    })
+      .then((res) => res.data)
+      .then((data) => {
+        this._token = data.token
+        this._user = data.user
+        this._teamId = undefined
+        this._teamSlug = undefined
+        return data
+      })
+  }
+
+  async authWithSpotify(data) {
+    return this._request({
+      url: `/1/auth/spotify`,
+      method: 'put',
+      params: this._params,
+      data
+    })
+      .then((res) => res.data)
+      .then((data) => {
+        this._token = data.token
+        this._user = data.user
+        this._teamId = undefined
+        this._teamSlug = undefined
+        return data
+      })
+  }
+
+  async getTwitterAuthUrl(params = {}) {
+    return this._request({
+      url: `/1/auth/twitter/url`,
+      method: 'get',
+      params
+    }).then((res) => {
+      console.log(res)
+      return res.data
+    })
+  }
+
+  async authWithTwitter(data) {
+    return this._request({
+      url: `/1/auth/twitter`,
+      method: 'put',
+      params: this._params,
+      data
+    })
+      .then((res) => res.data)
+      .then((data) => {
+        this._token = data.token
+        this._user = data.user
+        this._teamId = undefined
+        this._teamSlug = undefined
+        return data
+      })
+  }
+
   async signout() {
     this._token = null
     this._user = null
@@ -224,6 +286,16 @@ module.exports = class SaasifyClient {
     }).then((res) => res.data)
   }
 
+  async listProjects(opts) {
+    return this._request({
+      url: `/1/projects`,
+      params: {
+        ...this._params,
+        ...opts
+      }
+    }).then((res) => res.data)
+  }
+
   // --------------------------------------------------------------------------
   // Consumers
   // --------------------------------------------------------------------------
@@ -264,6 +336,16 @@ module.exports = class SaasifyClient {
     return this._request({
       url: `/1/consumers/projects/${projectId}`,
       params: this._params
+    }).then((res) => res.data)
+  }
+
+  async listConsumers(opts) {
+    return this._request({
+      url: `/1/consumers`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then((res) => res.data)
   }
 

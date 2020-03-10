@@ -25,11 +25,7 @@ Every web client is broken up into Sections that encapsulate a single message, a
 Here's an example implementation of the `HeroSection` on Saasify's [homepage](https://saasify.sh).
 
 ```js
-import {
-  CTAButton,
-  Section,
-  theme
-} from 'react-saasify'
+import { CTAButton, Section, theme } from 'react-saasify'
 
 import styles from './styles.module.css'
 
@@ -42,9 +38,7 @@ export class HeroSection extends Component {
         subtitle='The platform for monetizable serverless functions that empower the open source authors you love.'
         className={theme(styles, 'hero')}
       >
-        <CTAButton>
-          Get started
-        </CTAButton>
+        <CTAButton>Get started</CTAButton>
       </Section>
     )
   }
@@ -60,8 +54,6 @@ import {
   LoginForm,
   SignupForm,
   CheckoutForm,
-
-  SaasifyContext,
 
   NavHeader,
   NavFooter,

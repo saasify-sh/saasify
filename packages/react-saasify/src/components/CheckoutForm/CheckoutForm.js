@@ -9,10 +9,9 @@ import {
   injectStripe
 } from 'react-stripe-elements'
 
+import { observer, inject } from 'mobx-react'
 import { Button, Icon, Tooltip } from 'lib/antd'
 import env from 'lib/env'
-
-import { SaasifyContext } from '../SaasifyContext'
 
 import styles from './styles.module.css'
 
@@ -34,26 +33,25 @@ const createOptions = (fontSize = 16) => {
   }
 }
 
+@inject('config')
+@observer
 export class CheckoutForm extends Component {
   static propTypes = {
     onSubmit: PropTypes.func.isRequired,
     loading: PropTypes.bool,
     title: PropTypes.string,
     action: PropTypes.node,
-    className: PropTypes.string
+    className: PropTypes.string,
+    config: PropTypes.object.isRequired
   }
 
   render() {
     return (
-      <SaasifyContext.Consumer>
-        {(config) => (
-          <StripeProvider apiKey={env.stripePublicKey}>
-            <Elements>
-              <CheckoutFormImpl {...this.props} config={config} />
-            </Elements>
-          </StripeProvider>
-        )}
-      </SaasifyContext.Consumer>
+      <StripeProvider apiKey={env.stripePublicKey}>
+        <Elements>
+          <CheckoutFormImpl {...this.props} />
+        </Elements>
+      </StripeProvider>
     )
   }
 }

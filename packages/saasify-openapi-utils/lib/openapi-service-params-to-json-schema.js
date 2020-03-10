@@ -30,8 +30,10 @@ module.exports = async (service, openapi) => {
     )
   }
 
-  // TODO: handle other http methods
-  // TODO: this will not be robust against arbitrary OpenAPI specs
+  // TODO: this will not be robust against arbitrary OpenAPI specs.
+  // TODO: this is generating invalid JSON Schemas...
+  // TODO: this needs some serious work, but we may be better off just removing
+  // the JSON Schema portion of things entirely.
 
   try {
     if (
@@ -54,9 +56,6 @@ module.exports = async (service, openapi) => {
     }
 
     schema.components = openapi.components
-
-    // TODO: this is generating invalid JSON Schemas...
-    // we really need to move away from JSON Schema entirely
 
     if (op.parameters) {
       for (const param of op.parameters) {

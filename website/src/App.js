@@ -10,25 +10,39 @@ import {
   AuthManager,
   ThemeManager,
   // AuthenticatedRoute,
-  SaasifyContext,
   theme
+
+  // third-party auth flow
+  // AuthGitHubPage,
+  // AuthGooglePage,
+  // AuthSpotifyPage,
+  // AuthTwitterPage,
+  // AuthStripePage
 } from 'react-saasify'
 
 import { SignupDialog } from './components'
 
 import {
+  // marketing site
   HomePage,
   AboutPage,
   PricingPage,
+  TermsPage,
+  PrivacyPage,
+  NotFoundPage,
+
+  // beta pages
+  OnboardingPage,
+  EmailConfirmedPage
+
+  // auth flow
   // LoginPage,
   // LogoutPage,
   // SignupPage,
-  // AuthGitHubPage,
-  EmailConfirmedPage,
-  OnboardingPage,
-  TermsPage,
-  PrivacyPage,
-  NotFoundPage
+
+  // // maker webapp
+  // DashboardPage,
+  // ProjectAdminPage
 } from './routes'
 
 import { DialogManager } from './lib/DialogManager'
@@ -36,7 +50,7 @@ import logo from './assets/logo-horiz-white@4x.png'
 
 import styles from './styles.module.css'
 
-const saasifyContext = {
+const saasifyConfig = {
   name: 'Saasify',
   logo,
   ctaText: 'Request Access',
@@ -46,8 +60,8 @@ const saasifyContext = {
   },
   header: {
     displayName: false,
-    login: false,
     dashboard: false,
+    login: false,
     links: [
       {
         children: 'About',
@@ -141,58 +155,63 @@ export default class App extends Component {
 
     return (
       <Router>
-        <Provider auth={AuthManager}>
-          <SaasifyContext.Provider value={saasifyContext}>
-            <Helmet>
-              {fonts &&
-                fonts.map((font) => (
-                  <link
-                    key={font}
-                    href={`https://fonts.googleapis.com/css?family=${font}&display=swap`}
-                    rel='stylesheet'
-                  />
-                ))}
-            </Helmet>
+        <Provider auth={AuthManager} config={saasifyConfig}>
+          <Helmet>
+            {fonts &&
+              fonts.map((font) => (
+                <link
+                  key={font}
+                  href={`https://fonts.googleapis.com/css?family=${font}&display=swap`}
+                  rel='stylesheet'
+                />
+              ))}
+          </Helmet>
 
-            <BodyClassName
-              className={theme(styles, themeClassName, styles.body)}
-            >
-              <>
-                <Switch>
-                  <Route exact path='/' component={HomePage} />
+          <BodyClassName className={theme(styles, themeClassName, styles.body)}>
+            <>
+              <Switch>
+                <Route exact path='/' component={HomePage} />
+                <Route path='/about' component={AboutPage} />
+                <Route path='/pricing' component={PricingPage} />
 
-                  <Route path='/about' component={AboutPage} />
+                <Route path='/terms' component={TermsPage} />
+                <Route path='/privacy' component={PrivacyPage} />
 
-                  <Route path='/pricing' component={PricingPage} />
+                <Route path='/onboarding' component={OnboardingPage} />
+                <Route path='/email-confirmed' component={EmailConfirmedPage} />
 
-                  <Route path='/terms' component={TermsPage} />
-                  <Route path='/privacy' component={PrivacyPage} />
-
-                  <Route
-                    path='/email-confirmed'
-                    component={EmailConfirmedPage}
-                  />
-
-                  <Route path='/onboarding' component={OnboardingPage} />
-
-                  {/* <Route path='/login' component={LoginPage} />
+                {/* <Route path='/login' component={LoginPage} />
                 <Route path='/signup' component={SignupPage} />
+                <AuthenticatedRoute path='/logout' component={LogoutPage} />
+
                 <Route path='/auth/github' component={AuthGitHubPage} />
+                <Route path='/auth/google' component={AuthGooglePage} />
+                <Route path='/auth/spotify' component={AuthSpotifyPage} />
+                <Route path='/auth/twitter' component={AuthTwitterPage} />
+                <Route path='/auth/stripe' component={AuthStripePage} />
 
-                <AuthenticatedRoute path='/logout' component={LogoutPage} /> */}
+                <AuthenticatedRoute
+                  exact
+                  path='/dashboard'
+                  component={DashboardPage}
+                />
 
-                  <Route component={NotFoundPage} />
-                </Switch>
+                <AuthenticatedRoute
+                  path='/maker/projects/:namespace/:projectName'
+                  component={ProjectAdminPage}
+                />
+ */}
+                <Route component={NotFoundPage} />
+              </Switch>
 
-                {isSignupDialogOpen && (
-                  <SignupDialog
-                    isOpen={isSignupDialogOpen}
-                    onClose={this._onCloseSignupDialog}
-                  />
-                )}
-              </>
-            </BodyClassName>
-          </SaasifyContext.Provider>
+              {isSignupDialogOpen && (
+                <SignupDialog
+                  isOpen={isSignupDialogOpen}
+                  onClose={this._onCloseSignupDialog}
+                />
+              )}
+            </>
+          </BodyClassName>
         </Provider>
       </Router>
     )

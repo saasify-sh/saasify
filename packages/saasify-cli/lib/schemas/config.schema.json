@@ -414,6 +414,14 @@
           "title": "google",
           "$ref": "#/definitions/AuthProviderConfig"
         },
+        "spotify": {
+          "title": "spotify",
+          "$ref": "#/definitions/AuthProviderConfig"
+        },
+        "twitter": {
+          "title": "twitter",
+          "$ref": "#/definitions/AuthProviderConfig"
+        },
         "default": {
           "title": "default",
           "$ref": "#/definitions/AuthProviderConfig"
@@ -435,10 +443,6 @@
         },
         "clientSecret": {
           "title": "clientSecret",
-          "type": "string"
-        },
-        "redirectUrl": {
-          "title": "redirectUrl",
           "type": "string"
         },
         "scopes": {
