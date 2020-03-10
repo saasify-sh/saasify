@@ -2,9 +2,7 @@
 
 # Open Source
 
-> Saasify ❤️Open Source!
-
-OSS sustainability is at the heart of why we started building Saasify. Please check out our [core mission](./mission.md) for more info.
+> Saasify ❤️ Open Source!
 
 - [saasify](https://saasify.sh) - Saasify homepage.
 - [saasify-cli](https://github.com/saasify-sh/saasify/master/packages/packages/saasify-cli) - Saasify CLI.

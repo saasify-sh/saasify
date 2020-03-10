@@ -2,6 +2,8 @@
 
 # FaaS IDs
 
+FaaS stands for Function as a Service. Each FaaS represents one HTTP endpoint in a project.
+
 ## ID Format
 
 The most general FaaS identifier fully specifies the deployment and service path.
