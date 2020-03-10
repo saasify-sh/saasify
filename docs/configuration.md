@@ -16,7 +16,7 @@ To quickly check whether or not your `saasify.json` file is valid, you can run `
 
 `saasify.json` should be a valid JSON file that conforms to the following TypeScript pseudocode:
 
-!> This config may look complicated, but most of the fields are optional with sensible defaults. Start with a really simple config that just specifies your `services` and only customize further once you're ready to publish your SaaS product.
+!> This config may look complicated, but most of the fields are optional with sensible defaults. Start with a really simple config that just specifies your `openapi` spec and only customize further once you're ready to publish your SaaS product.
 
 ```ts
 class Config {
@@ -44,16 +44,14 @@ class Config {
   // saas marketing site config
   saas?: SaaS
 
-  // core services
-  services: Service[] // required
+  // service customization
+  services: Service[]
 }
 
 class Service {
-  src: string // required
+  path: string // HTTP path from OpenAPI
   name?: string
   examples?: Example[]
-  GET?: boolean
-  POST?: boolean
 }
 
 class Example {
@@ -84,18 +82,14 @@ class Feature {
 }
 ```
 
-Note that the only **required** property is a non-empty `services` array.
+Note that the only **required** property is to point to a valid `openapi` spec.
 
 ## Simple Example
 
 ```json
 {
   "name": "hello-world",
-  "services": [
-    {
-      "src": "index.ts"
-    }
-  ]
+  "openapi": "./hello-world-openapi.json"
 }
 ```
 
@@ -106,56 +100,8 @@ This config file contains examples for each service as well as some customizatio
 ```json
 {
   "name": "puppet-master",
-  "services": [
-    {
-      "src": "src/screenshot.ts",
-      "examples": [
-        {
-          "name": "Basic",
-          "input": {
-            "url": "https://youtube.com"
-          }
-        },
-        {
-          "name": "Custom",
-          "input": {
-            "url": "https://github.com",
-            "type": "jpeg",
-            "quality": 90,
-            "viewport": {
-              "width": 1920,
-              "height": 1080,
-              "deviceScaleFactor": 2
-            },
-            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
-          }
-        }
-      ]
-    },
-    {
-      "src": "src/pdf.ts",
-      "examples": [
-        {
-          "name": "Basic",
-          "input": {
-            "url": "https://producthunt.com"
-          }
-        }
-      ]
-    }
-  ],
-  "saas": {
-    "name": "Puppet Master",
-    "heading": "Puppeteer as a Service",
-    "subheading": "Control headless Chrome via a simple SaaS API!",
-    "repo": "https://github.com/saasify-sh/puppet-master",
-    "logo": "./media/logo.svg",
-    "favicon": "./media/favicon.ico"
-  },
-  "env": {
-    "EXAMPLE_DYNAMIC_ENV_VAR": "@my-dynamic-secret",
-    "EXAMPLE_STATIC_ENV_VAR": "foobar"
-  }
+
+  TODO
 }
 ```
 
