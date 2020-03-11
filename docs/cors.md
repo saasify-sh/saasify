@@ -2,6 +2,8 @@
 
 # CORS
 
-All services allow for very permissive [CORS](https://enable-cors.org) (Cross Origin Resource Sharing).
+Saasify's API gateway allow for very permissive [CORS](https://enable-cors.org) (Cross Origin Resource Sharing).
 
-This means that you can invoke your services from any origin, though we recommend against calling your services from client-side JavaScript code on the web due to the the private nature of your auth tokens.
+This means that your customers can use your SaaS product's API from any origin, including client-side JavaScript code.
+
+Just be sure to carefully think through your product's use case before recommending that your customers call your API from client-side JavaScript on the web due to the the private nature of their auth tokens.
