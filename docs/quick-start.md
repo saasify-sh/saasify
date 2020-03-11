@@ -4,27 +4,7 @@
 
 This guide will give you an overview of the Saasify platform by creating an example product.
 
-The result will be a public, monetizable API that anyone can call or subscribe to.
-
-## Quick Overview
-
-```bash
-npm install -g saasify
-
-saasify signup
-
-saasify init [project-name]
-
-# edit your project...
-
-saasify deploy
-
-# preview and iterate on your SaaS product...
-
-saasify publish
-
-# start marketing your live SaaS product...
-```
+The result will be a public, monetizable SaaS API that anyone can call and subscribe to.
 
 ## Getting Started
 
@@ -67,7 +47,7 @@ _(openapi.json)_
 {}
 ```
 
-Most of the time you'll want to use a framework that will auto-generate this OpenAPI spec for you, but we'll discuss that more in a bit.
+Most of the time you'll want to use a framework that will auto-generate this OpenAPI spec for you from your externally hosted API. Check out the [OpenAPI](./openapi.md) guide once you're ready to know more.
 
 <p align="center">
   <img src="./_media/undraw/working_remotely.svg" alt="Working remotely" width="200" />
@@ -83,8 +63,10 @@ saasify deploy
 
 This creates a new deployment for your project with two key features:
 
-- API Proxying via our gateway. For example, `https://ssfy.sh/username/hello-world@f4a0d67b` ([live example](https://ssfy.sh/dev/hello-world@f4a0d67b))
+- API Proxying via our API gateway. For example, `https://ssfy.sh/username/hello-world@f4a0d67b` ([live example](https://ssfy.sh/dev/hello-world@f4a0d67b))
 - A publicly accessible SaaS website for your product. For example, `https://username_hello-world_f4a0d67b.saasify.sh` ([live example](https://dev_hello-world_f4a0d67b.saasify.sh))
+
+TODO: update deployment hash identifier to be valid!
 
 The SaaS website's URL will be copied to your clipboard so you can check it out live in your browser.
 
@@ -125,7 +107,7 @@ Via HTTP POST with body params:
 Hello Nala!
 ```
 
-Note that all of these calls are being proxied through Saasify's API gateway. This adds a few key features to your downstream API:
+Note that all of these calls are being proxied through Saasify's API gateway. This adds some powerful functionality to your downstream API:
 
 - **User authentication**
   - Your customers can add a standard `Authorization: Bearer ${TOKEN}` header to these requests once they've signed up for your product.
@@ -134,8 +116,8 @@ Note that all of these calls are being proxied through Saasify's API gateway. Th
   - Based on IP address for unauthenticated requests.
   - Based on customer ID for authenticated requests.
 - **Usage tracking & analytics**
-  - Useful for _metered billing_ where you want to charge customers based on the number of requests they make.
-  - All usage is recorded for fine-grained analytics.
+  - All API calls are recorded for fine-grained analytics.
+  - This is particularly useful for _metered billing_ where you want to charge customers based on the number of requests they make.
 - **Global caching**
   - Via custom Cloudflare edge workers.
 - **Auto-generated docs**
@@ -157,17 +139,37 @@ This will prompt you for a version number following [semver](https://semver.org)
 
 Once published, your auto-generated SaaS web client will be available at `https://<username>_<project-name>.saasify.sh`. For example, [https://dev_imagemin.saasify.sh](https://dev_imagemin.saasify.sh).
 
-If you want to alias your product to an external domain via DNS, we'd be happy to help you set this up. Please [contact support](support.md) to enable this feature.
+If you want to alias your product to an external domain via DNS, we'd be happy to help you set this up. Please [contact support](support.md) to enable this feature for your project.
 
 <p align="center">
   <img src="./_media/undraw/maker_launch.svg" alt="Launching!" width="200" />
 </p>
 
+## Summary
+
+```bash
+npm install -g saasify
+
+saasify signup
+
+saasify init [project-name]
+
+# edit your project...
+
+saasify deploy
+
+# preview and iterate on your SaaS product...
+
+saasify publish
+
+# start marketing your live SaaS product...
+```
+
 ## Next Steps
 
 Congratulations -- You just launched your very own, self-contained SaaS product!
 
-While this `hello-world` example is meant to show the basic workflow, here are some areas you may want to check out next:
+While this `hello-world` example is meant to show the basic workflow, here are some areas to check out next:
 
 - [Pricing](pricing.md) - Customize your product's pricing.
 - [Configuration](configuration.md) - Fine-grained customization of your product and the template-based web client.
