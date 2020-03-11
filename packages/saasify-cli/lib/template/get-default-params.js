@@ -13,7 +13,7 @@ module.exports = async () => {
     author: config.get('author'),
     repo: (info) => `${info.author}/${info.name}`,
     license: config.get('license', 'MIT'),
-    template: config.get('template', 'typescript')
+    template: config.get('template', 'minimal')
   }
 
   try {
