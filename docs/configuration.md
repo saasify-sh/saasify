@@ -6,7 +6,7 @@ Project files are named `saasify.json` and should be placed at the root of your 
 
 ## Debugging
 
-To quickly check whether or not your `saasify.json` file is valid, you can run `saasify debug` from within your project's directory.
+You can quickly check if your `saasify.json` is valid by running `saasify debug` from within your project's directory.
 
 <p align="center">
   <img src="./_media/undraw/bug_fixing.svg" alt="Debugging" width="200" />
@@ -66,7 +66,7 @@ Note that the only **required** property is to point to a valid `openapi` spec.
 
 ## Advanced Example
 
-This config file customizes the main `/parseIngredients` endpoint, configures the Stripe pricing plans, and customizes the auto-generated SaaS web client with a custom logo, text, and brand colors.
+This config file customizes the main `/parseIngredients` endpoint, configures Stripe pricing, and customizes the auto-generated SaaS web client with a custom logo, text, and brand colors.
 
 ```json
 {
@@ -129,7 +129,7 @@ This config file customizes the main `/parseIngredients` endpoint, configures th
 }
 ```
 
-You can view the live SaaS product generated from this config [here](https://zestful.saasify.sh).
+You can view the live SaaS product generated from this config [here](https://zestful.saasify.sh ':target=_blank').
 
 Any local media files pointed to by your config will be automatically uploaded to cloud storage when you run `saasify deploy`.
 
@@ -145,11 +145,11 @@ Project name. If not provided, this will default to the containing folder's name
 
 **Required** Path to a local OpenAPI JSON file or an inline OpenAPI spec.
 
-[OpenAPI](https://swagger.io/specification/) was previously called Swagger. These specs are formal ways of defining your HTTP API's endpoints, inputs, and outputs.
+**[OpenAPI](https://swagger.io/specification/ ':target=_blank')** is a formal spec used to define your API's HTTP endpoints, inputs, and outputs. Note that OpenAPI v3 was previously called **Swagger** v1 and v2.
 
-Most of the time you shouldn't have to write these OpenAPI specs yourself or understand really anything about the format as there are many [tools](https://openapi.tools ':target=_blank') that will auto-generate them for you.
+Most of the time you shouldn't have to write these OpenAPI specs yourself or understand really anything about the format.
 
-Refer to our [OpenAPI guide](openapi.md) for more details on setting up an OpenAPI spec.
+Refer to our [OpenAPI guide](openapi.md) for more details on generating an OpenAPI spec for your API.
 
 #### pricingPlans
 
@@ -163,7 +163,7 @@ Optional array of `Coupon` objects to enable for this product.
 
 Coupons are a great way to offer discounts to different customer segments.
 
-Saasify coupons follow the same format as [Stripe coupons](https://stripe.com/docs/billing/subscriptions/discounts).
+Saasify coupons follow the same format as [Stripe coupons](https://stripe.com/docs/billing/subscriptions/discounts ':target=_blank').
 
 #### saasifyVersion
 
@@ -252,7 +252,7 @@ The `name` is the feature's title (should be no longer than a few words). The `d
 The `icon` may be any of the following:
 
 - A path to a local `png` or `svg` image file that will be uploaded by Saasify.
-- The name of an [Undraw](https://undraw.co/illustrations) SVG (all lowercase, with underscores instead of spaces).
+- The name of an [Undraw](https://undraw.co/illustrations ':target=_blank') SVG (all lowercase, with underscores instead of spaces).
 - A URL to a remote `png` or `svg` image file.
 
 ##### saas.theme

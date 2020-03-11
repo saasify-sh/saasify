@@ -148,21 +148,22 @@ If you want to alias your product to an external domain via DNS, we'd be happy t
 ## Summary
 
 ```bash
+# initial setup
 npm install -g saasify
-
 saasify signup
-
 saasify init [project-name]
 
 # edit your project...
 
+# deploy and preview your product
 saasify deploy
 
-# preview and iterate on your SaaS product...
+# edit and iterate on your product...
 
+# publish your product live which enables billing
 saasify publish <deployment-id>
 
-# start marketing your live SaaS product...
+# start marketing your live product...
 ```
 
 ## Next Steps
