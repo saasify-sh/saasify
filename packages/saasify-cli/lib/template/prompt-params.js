@@ -36,7 +36,7 @@ module.exports = async (opts) => {
         type: 'list',
         name: 'template',
         message: 'Template?',
-        choices: ['minimal', 'typescript', 'python'],
+        choices: ['minimal', 'serverless-typescript', 'serverless-python'],
         default: opts.template
       },
       {
