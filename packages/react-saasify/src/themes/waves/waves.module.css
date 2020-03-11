@@ -702,6 +702,14 @@
   color: white !important;
 }
 
+.theme-waves .cta-button:disabled,
+.theme-waves .cta-button.inline:disabled,
+.theme-waves :global(.ant-btn):disabled {
+  background-color: lightslategray !important;
+  border-color: lightslategray !important;
+  opacity: 0.7;
+}
+
 .theme-waves :global(.ant-btn-icon-only) {
   width: 40px !important;
   height: 40px !important;
