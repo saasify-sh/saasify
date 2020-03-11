@@ -30,7 +30,9 @@ You can use the `saasify init` command to bootstrap a new project.
 saasify init [project-name]
 ```
 
-This will create a new `saasify.json` file and an empty `openapi.json` file that will look something like:
+**You'll want to choose the default minimal template.**
+
+This will create a new folder containing a `saasify.json` file and a basic `openapi.json` file that will look something like:
 
 _(saasify.json)_
 
@@ -44,10 +46,16 @@ _(saasify.json)_
 _(openapi.json)_
 
 ```json
-{}
+{
+  ...
+}
 ```
 
-Most of the time you'll want to use a framework that will auto-generate this OpenAPI spec for you from your externally hosted API. Check out the [OpenAPI](./openapi.md) guide once you're ready to know more.
+This example OpenAPI spec just points to a [dummy JSON REST API](https://jsonplaceholder.typicode.com/ ':target=_blank').
+
+You'll eventually want to replace this with an OpenAPI spec representing your externally hosted API, but for the purposes of this guide, it will work just fine.
+
+Most of the time you'll want to use a framework that will auto-generate this OpenAPI spec for you from your externally hosted API. Check out our [OpenAPI](./openapi.md) docs once you're ready to tackle this side of things.
 
 <p align="center">
   <img src="./_media/undraw/working_remotely.svg" alt="Working remotely" width="200" />
@@ -63,14 +71,14 @@ saasify deploy
 
 This creates a new deployment for your project with two key features:
 
-- API Proxying via our API gateway. For example, `https://ssfy.sh/username/hello-world@68c9335e` ([live example](https://ssfy.sh/dev/hello-world@68c9335e ':target=_blank'))
-- A publicly accessible SaaS website for your product. For example, `https://username_hello-world_68c9335e.saasify.sh` ([live example](https://dev_hello-world_68c9335e.saasify.sh ':target=_blank'))
+- API Proxying via our API gateway. For example, `https://ssfy.sh/username/hello-world@7b10f6cc` ([live example](https://ssfy.sh/dev/test@7b10f6cc ':target=_blank'))
+- A publicly accessible SaaS website for your product. For example, `https://username_hello-world_7b10f6cc.saasify.sh` ([live example](https://dev_test_7b10f6cc.saasify.sh ':target=_blank'))
 
 TODO: update deployment hash identifier to be valid!
 
 The SaaS website's URL will be copied to your clipboard so you can check it out live in your browser.
 
-Deployments are immutable and represented by a unique hash (`68c9335e` in this example). Every time you make a change to your SaaS product and run `saasify deploy`, you'll get a new hash suffix.
+Deployments are immutable and represented by a unique hash (`7b10f6cc` in this example). Every time you make a change to your SaaS product and run `saasify deploy`, you'll get a new hash suffix.
 
 Deployments are really lightweight -- you can create as many deployments as you want.
 
@@ -84,26 +92,26 @@ Deployments are really lightweight -- you can create as many deployments as you 
 
 You can test out your proxied API on this live deployment via HTTP. Here are some examples using [httpie](https://httpie.org/ ':target=_blank'), an modern replacement for `curl` (`brew install httpie` on macOS).
 
-You'll need to change the URL suffix in the examples below to the `url` from your deployment. The `username` and hash `68c9335e` should be different, but everything else should be the same.
+You'll need to change the URL suffix in the examples below to the `url` from your deployment. The `username` and hash `7b10f6cc` should be different, but everything else should be the same.
 
 Via HTTP GET:
 
 ```
-> http https://ssfy.sh/username/hello-world@68c9335e
+> http https://ssfy.sh/username/hello-world@7b10f6cc
 Hello World!
 ```
 
 Via HTTP GET with query params:
 
 ```
-> http https://ssfy.sh/username/hello-world@68c9335e?name=Foo
+> http https://ssfy.sh/username/hello-world@7b10f6cc?name=Foo
 Hello Foo!
 ```
 
 Via HTTP POST with body params:
 
 ```
-> http POST https://ssfy.sh/username/hello-world@68c9335e name=Nala
+> http POST https://ssfy.sh/username/hello-world@7b10f6cc name=Nala
 Hello Nala!
 ```
 
@@ -170,7 +178,7 @@ saasify publish <deployment-id>
 
 Congratulations -- You just launched your very own, self-contained SaaS product!
 
-While this `hello-world` example is meant give you an overview of how the platform works, here are some areas to check out next:
+While this simple example is meant give you an overview of how the platform works, here are some areas to check out next:
 
 - [Examples](examples.md) - A growing list of open source examples to help get you started.
 - [Use cases](case-cases.md) - A brainstorm of different SaaS product ideas to help get you inspired.
