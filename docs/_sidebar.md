@@ -33,3 +33,4 @@
   - [Roadmap](roadmap.md)
   - [Open Source](open-source.md)
   - [Enterprise](enterprise.md)
+  - [Resources](resources.md)
