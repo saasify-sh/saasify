@@ -4,7 +4,7 @@
 
 This guide will give you an overview of the Saasify platform by creating an example product.
 
-The result will be a public, monetizable SaaS API that anyone can call and subscribe to.
+The result will be a live, public, SaaS API that anyone can call and subscribe to.
 
 ## Getting Started
 
