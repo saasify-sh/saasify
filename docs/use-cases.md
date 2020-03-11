@@ -29,15 +29,8 @@ Some example use cases include:
 - Pre-built machine learning models
 - Your NPM module or PyPI package?
   - Offering a hosted, paid version of your OSS work can be a great way to sustain yourself as an indie developer.
+  - This is commonly known as an [open core](https://coss.media/open-core-definition-examples-tradeoffs/) business model.
 
-Check out our growing list of [examples](examples.md) for inspiration.
+Have an idea for a product that you'd like to monetize, but not sure where to start? Feel free to [get in touch](support.md). In addition to our team, active community is full of passionate indie makers just like you who love helping like-minded entrepreneurs.
 
-Have an idea that you'd like to monetize, but not sure where to start? Feel free to [get in touch](support.md). Our active community is full of passionate indie makers just like you who'd be happy to help.
-
-## Serverless
-
-In addition to externally hosted APIs, we also provide built-in support for monetizing serverless functions built on top of ZEIT now (which runs on AWS Lambda).
-
-This is an advanced feature that adds additional complexity to your Saasify project, so we recommend that most makers start off with an externally hosted API that's built using your tech stack and deployment platform of choice.
-
-Please [contact us](support.md) if you're interested in learning more about serverless hosting with Saasify.
+You can also check out our growing list of [examples](examples.md) and external [resources](resources.md) for additional inspiration.

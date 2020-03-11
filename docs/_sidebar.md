@@ -4,6 +4,7 @@
   - [Quick Start](quick-start.md)
   - [Use Cases](use-cases.md)
   - [Examples](examples.md)
+  - [Resources](resources.md)
 
 - Platform
 
@@ -17,15 +18,15 @@
   - [FaaS IDs](faas-ids.md)
   - [Auth Providers](providers.md)
   - [CORS](cors.md)
-    <!-- - [Serverless](serverless.md) -->
+  - [Serverless](serverless.md)
 
-- Admin
+<!-- - Admin -->
 
-  - [Dashboard](dashboard.md)
-  - [Analytics](analytics.md)
-    <!-- - [Getting Paid](getting-paid.md) -->
-    <!-- - [Stripe Connect](stripe-connect.md) -->
-    <!-- - [Marketing](marketing.md) -->
+  <!-- - [Dashboard](dashboard.md) -->
+  <!-- - [Analytics](analytics.md) -->
+  <!-- - [Getting Paid](getting-paid.md) -->
+  <!-- - [Stripe Connect](stripe-connect.md) -->
+  <!-- - [Marketing](marketing.md) -->
 
 - Support
   - [Support](support.md)
@@ -33,4 +34,3 @@
   - [Roadmap](roadmap.md)
   - [Open Source](open-source.md)
   - [Enterprise](enterprise.md)
-  - [Resources](resources.md)
