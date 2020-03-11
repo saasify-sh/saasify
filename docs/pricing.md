@@ -2,9 +2,9 @@
 
 # Pricing
 
-!> All payments and billing info on Saasify are securely handled by [Stripe](https://stripe.com).
+!> All payments and billing info is securely handled by [Stripe](https://stripe.com).
 
-Saasify supports most of the billing models that Stripe supports. This includes:
+Saasify supports almost all of Stripe's billing models. This includes:
 
 - Automatic recurring subscriptions
 - Multiple pricing plans
@@ -17,7 +17,7 @@ Saasify supports most of the billing models that Stripe supports. This includes:
 - Support for coupons
 - ...
 
-We've found that these features should cover the vast majority of billing models you may want to use.
+We've found that these features should cover the vast majority of billing models you may want to use, but if you run into edge cases, please let us know.
 
 ## Examples
 
@@ -61,13 +61,21 @@ This is what a more advanced pricing setup could look like.
 - All prices are specified in USD cents.
 - Saasify also inherits any constraints required by Stripe.
 
-These constraints were chosen to simplify the most common SaaS use cases, and we believe they're very reasonable, but if you have a use case that conflicts with them, please let us know.
+These constraints were chosen to simplify the most common SaaS use cases, but if you have a use case that conflicts with them, please let us know.
 
 ## Schema
 
 Pricing plans are defined by the following TypeScript schema.
 
 ```ts
+class Config {
+  // saasify.json properties...
+
+  // optional pricing config
+  pricingPlans?: PricingPlan[]
+  coupons?: Coupon[]
+}
+
 class PricingPlan {
   // display name of this pricing plan
   name: string
@@ -116,6 +124,20 @@ class PricingPlanTier {
   upTo: string
 }
 
+class Coupon {
+  name?: string
+
+  currency?: string
+  amount_off?: number
+  percent_off?: number
+
+  duration: string
+  duration_in_months?: number
+
+  redeem_by?: string
+  max_redemptions?: number
+}
+
 class RateLimit {
   // whether or not this rate limit is enabled
   enabled?: boolean = true
@@ -128,25 +150,9 @@ class RateLimit {
 }
 ```
 
-Saasify's pricing plan schema should look very familiar if you've used Stripe's subscription billing in the past.
+Saasify's pricing plan schemas are based directly on Stripe's subscription billing model.
 
-Note that for key names Saasify uses camelCase throughout the platform whereas Stripe uses snake_case. Converting between the two should be straightforward, but please let us know if you have any questions.
-
-## Platform fees
-
-!> Saasify is an early stage startup and we're still figuring out an ideal pricing solution. If you're interested in being an early adopter, we're very open to working with you to figure out a pricing solution that will work for you while still covering our fixed costs. Please don't hesitate to [schedule a call](https://calendly.com/travis-fischer) with us to discuss.
-
-The Saasify platform's default pricing is to take **20%** of all revenue generated from SaaS subscriptions. This is used to pay for Stripe fees, hosting costs, support, and continued product development.
-
-Our [core mission and main objective](./mission.md), however, is to help OSS authors fund their passion via passive income, so during our initial beta period, if you're interested in a different pricing model, feel free to [schedule a call](https://calendly.com/travis-fischer) with us to discuss.
-
-It's important to note that no matter what, Saasify only makes money if you make money, so it's in our best interest to help your SaaS product become successful.
-
-## Maker Payouts
-
-Once your SaaS product starts bringing in revenue, you'll be able to initiate or schedule cashouts via [Stripe Connect](https://stripe.com/connect).
-
-As of January, 2020, we currently don't support an automated way of connecting your Stripe Connect account or initiating a payout, but this feature is on our near-term [roadmap](./roadmap.md). For the time being, we recommend emailing us at [support@saasify.sh](mailto:support@saasify.sh) to work out the details.
+Note that Saasify uses camelCase for property names whereas Stripe uses snake_case. Converting between the two should be straightforward, but please let us know if you have any questions.
 
 <p align="center">
   <img src="./_media/undraw/stripe_payments.svg" alt="Stripe" width="200" />

@@ -2,6 +2,67 @@
 
 # Services
 
+```ts
+class Config {
+  // saasify.json properties...
+
+  // optional API endpoint config
+  services?: Service[]
+}
+
+class Service {
+  path?: string
+  httpMethod?: string = 'GET'
+
+  name?: string
+  examples?: Example[]
+
+  headers?: object
+  immutable?: boolean
+
+  // whether to report calls to this service (only applicable to metered billing)
+  reportUsage?: boolean = true
+
+  // disable or customize this service's rate limits (defaults to the active pricing plan's rate limits)
+  rateLimit?: null | RateLimit
+
+  // customize this service depending on the active pricing plan
+  pricingPlanConfig?: PricingPlanServiceConfigMap
+}
+
+class PricingPlanServiceConfigMap {
+  // map of pricing plan slug to service config overrides for a given plan
+  [plan: string]: PricingPlanServiceConfig
+}
+
+class PricingPlanServiceConfig {
+  // whether this service is enabled for a given pricing plan
+  enabled?: boolean
+
+  // whether to report calls to this service on a given pricing plan (for metered usage)
+  reportUsage?: boolean
+
+  // disable or customize this service's rate limits for a given pricing plan
+  rateLimit?: null | RateLimit
+}
+
+class Example {
+  name: string
+  description?: string
+  input: object
+  inputContentType?: string = 'application/json'
+  snippet?: Snippet
+  output?: any // only necessary if you want to mock output and not use the real output from your API
+}
+
+class Snippet {
+  language: string
+  label: string
+  code: string
+  exclusive?: boolean = false
+}
+```
+
 All generated service endpoints are organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). They accept [JSON-encoded](http://www.json.org/) request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs.
 
 ## OpenAPI
@@ -28,11 +89,11 @@ By default, all service endpoints return JSON, though we allow individual servic
 
 With the public, non-authenticated version of a service, we limit the number of calls you can make over a certain period of time. Rate limits vary and are specified by the following headers in all responses:
 
-| Header | Description |
-| ------ | ----------- |
-| `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make. |
-| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |
-| `X-RateLimit-Reset` | The time at which the current rate limit window resets in UTC epoch seconds. |
+| Header                  | Description                                                                  |
+| ----------------------- | ---------------------------------------------------------------------------- |
+| `X-RateLimit-Limit`     | The maximum number of requests that the consumer is permitted to make.       |
+| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window.           |
+| `X-RateLimit-Reset`     | The time at which the current rate limit window resets in UTC epoch seconds. |
 
 When the rate limit is **exceeded**, an error is returned with the status "**429 Too Many Requests**":
 
@@ -63,7 +124,7 @@ When making backwards-incompatible changes to a project or changing pricing, you
 
 All service endpoints accept an optional auth token for authenticated access. Unauthenticated (public) requests are subject to rate limiting.
 
-Subscribers can view and manage their auth token(s) in their client dashboard. Be sure to keep your auth tokens secure. Do not share them in publicly accessible areas such as GitHub, client-side code, and so forth.
+Subscribers can view and manage their auth token(s) in their client dashboard. Be sure to keep your auth tokens secure.
 
 <p align="center">
   <img src="./_media/undraw/security.svg" alt="Security" width="200" />

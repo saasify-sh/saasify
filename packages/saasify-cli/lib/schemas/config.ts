@@ -6,6 +6,13 @@ class Config {
   // project name
   name?: string
 
+  // Path to a local OpenAPI JSON file or an inline OpenAPI spec
+  openapi: string | object
+
+  // optional pricing config
+  pricingPlans?: PricingPlan[]
+  coupons?: Coupon[]
+
   // optional version info
   saasifyVersion?: number = 1
   version?: string = '0.1.0'
@@ -14,35 +21,18 @@ class Config {
   description?: string
   keywords?: string[]
 
-  // pricing
-  pricingPlans?: PricingPlan[]
-  coupons?: Coupon[]
-
-  // @deprecated; use `pricingPlans` instead
-  // amountPerBase?: number = 99
-  // amountPerRequest?: number = 0.04
-  // amountPerCompute?: number = 0
-  // amountPerBandwidth?: number = 0
-  // authRateLimit?: RateLimit
-  // noAuthRateLimit?: RateLimit
-
-  // general config
-  build?: object
-  env?: object
+  // optional response header config
   headers?: object
   immutable?: boolean
 
-  // saas marketing site config
-  saas?: object
-
-  // TODO
-  openapi?: string | object
-
-  // auth provider config
+  // optional external auth provider config (google, github, twitter, etc)
   authProviders?: AuthProviderMap
 
-  // core services
-  services: Service[]
+  // optional saas marketing site config
+  saas?: object
+
+  // optional API endpoint config
+  services?: Service[]
 }
 
 class PricingPlan {
@@ -94,13 +84,11 @@ class PricingPlanTier {
 }
 
 class Service {
-  src?: string
+  path?: string
+  httpMethod?: string = 'GET'
+
   name?: string
   examples?: Example[]
-  config?: object
-
-  GET?: boolean
-  POST?: boolean
 
   headers?: object
   immutable?: boolean
@@ -113,6 +101,10 @@ class Service {
 
   // customize this service depending on the active pricing plan
   pricingPlanConfig?: PricingPlanServiceConfigMap
+
+  // @deprecated
+  src?: string
+  config?: object
 }
 
 class PricingPlanServiceConfigMap {
@@ -167,9 +159,6 @@ class SaaS {
 
 class Theme {
   name?: string
-  '@primary-color'?: string
-  '@section-bg-color'?: string
-  '@section-fg-color'?: string
 }
 
 class Feature {
@@ -205,7 +194,7 @@ class AuthProviderMap {
   spotify?: AuthProviderConfig
   twitter?: AuthProviderConfig
 
-  // defautlt auth provider is email & password
+  // default auth provider is email & password
   default?: AuthProviderConfig
 }
 
