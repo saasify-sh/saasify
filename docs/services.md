@@ -81,7 +81,7 @@ All HTTP calls via Saasify's API gateway should be made over **HTTPS**. Calls ma
 
 ## Authentication
 
-All service endpoints optionally accept a standard bearer auth token via an `Authentication` header (`Authentication: Bearer ${token}`).
+All service endpoints optionally accept a standard bearer auth token via an `Authorization` header (`Authorization: Bearer ${token}`).
 
 Your customers can view and manage their auth token(s) from their client dashboard once they sign up for your product.
 
