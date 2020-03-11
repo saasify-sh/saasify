@@ -1,9 +1,9 @@
 'use strict'
 
 const { parseFaasIdentifier } = require('saasify-utils')
-const pick = require('lodash.pick')
 
 const handleError = require('../handle-error')
+const pruneDeployment = require('../prune-deployment')
 const spinner = require('../spinner')
 
 module.exports = (program, client) => {
@@ -77,46 +77,4 @@ module.exports = (program, client) => {
         handleError(program, err)
       }
     })
-}
-
-function pruneDeployment(deployment, verbose) {
-  if (!verbose) {
-    deployment = pick(deployment, [
-      'id',
-      'description',
-      'version',
-      'project',
-      'user',
-      'createdAt',
-      'updatedAt',
-      'url',
-      'saasUrl',
-      'openApiUrl',
-      'enabled',
-      'published',
-      'services'
-    ])
-
-    deployment.services = deployment.services.map((service) =>
-      pruneService(service, verbose)
-    )
-  }
-
-  return deployment
-}
-
-function pruneService(service, verbose) {
-  if (verbose) {
-    return service
-  } else {
-    return pick(service, [
-      'name',
-      'adaptor',
-      'GET',
-      'POST',
-      'src',
-      'url',
-      'route'
-    ])
-  }
 }
