@@ -28,7 +28,7 @@ We built Saasify as an ideal solution for makers who want to earn passive income
 
 The only real way to validate a SaaS idea is to ship an MVP and get real customers paying for it. That's why Saasify allows you to quickly ship a quality MVP and start monetizing in minutes instead of months. ✈️
 
-We've helped dozens of SaaS products get off the ground by enabling them to focus only on their unique value instead of SaaS boilerplate. 🔥
+We've helped dozens of SaaS products get off the ground by enabling them to focus only on their unique value proposition instead of SaaS boilerplate. 🔥
 
 <p align="center">
   <img src="_media/undraw/business_shop.svg" alt="Online shop" width="200" />
@@ -41,6 +41,6 @@ We've helped dozens of SaaS products get off the ground by enabling them to focu
 - 🔥 Every API comes with its own customizable marketing site
 - 💯 Built with JS/TS + AWS Lambda + Stripe
 - 🤖 We handle all docs, hosting, billing, and accounts for you
-- 🚀 Our CLI makes it really easy to get started
+- 🚀 Our CLI makes it really easy to [get started](quick-start.md)
 
 !> Visit the [quick start](quick-start.md) guide to get started or check out our list of SaaS [use cases](use-cases.md) and [examples](examples.md) to get inspired.
