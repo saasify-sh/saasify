@@ -17,7 +17,7 @@ To achieve these goals as a platform, we'll be focused on a few key areas of pro
 
 Feel free to join in the conversation today and help guide our roadmap via [Slack](https://slack.saasify.sh) and [GitHub](https://github.com/saasify-sh/saasify).
 
-If you're interested, you can check out a more fine-grained version of our **[product roadmap on trello](https://trello.com/b/0I0V0NEM/saasify-product-roadmap)**.
+If you're interested, you can check out a more fine-grained version of our **[product roadmap on trello](https://trello.com/b/0I0V0NEM/saasify-product-roadmap ':target=_bank')**.
 
 <p align="center">
   <img src="./_media/undraw/scrum_board.svg" alt="Roadmap" width="200" />
