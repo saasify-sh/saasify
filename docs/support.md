@@ -2,17 +2,17 @@
 
 # Support
 
-As an early adopter of Saasify, you are trusting us with your business. We are committed to delivering the best customer experience possible.
+As an early adopter of Saasify, you are trusting us with your business. Therefore, we are committed to delivering the best customer experience possible.
 
 **Whenever you need help, we'll try our best to be there for you in a timely fashion.**
 
 ## Slack
 
-The best way to contact us is via our open [Slack](https://slack.saasify.sh).
+The best way to contact us is via our open [Slack](https://slack.saasify.sh ':target=_blank').
 
 ## GitHub
 
-If you encounter a problem with the platform at any point, please feel free to [open an issue](https://github.com/saasify-sh/saasify/issues) on our GitHub repo.
+If you encounter a problem with the platform at any point, please feel free to [open an issue](https://github.com/saasify-sh/saasify/issues ':target=_blank') on our GitHub repo.
 
 ## Email
 
