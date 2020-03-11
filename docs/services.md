@@ -79,6 +79,25 @@ class Snippet {
 
 All HTTP calls via Saasify's API gateway should be made over **HTTPS**. Calls made to your production API over plain HTTP will be automatically upgraded to HTTPs, but this use case is discouraged.
 
+## Authentication
+
+All service endpoints optionally accept a standard bearer auth token via an `Authentication` header (`Authentication: Bearer ${token}`).
+
+Your customers can view and manage their auth token(s) from their client dashboard once they sign up for your product.
+
+Authentication and authorization are handled transparently by Saasify's API gateway, so you can focus on your API's core functionality.
+
+Your downstream API will receive two additional headers for authenticated requests that you can use to customize your service's functionality:
+
+- `x-saasify-user` - String ID of the authenticated customer making the API call.
+- `x-saasify-plan` - String slug of the pricing plan that this user is subscribed to.
+
+For unauthenticated calls, these headers are guaranteed to not exist when Saasify's API gateway proxies these calls to your downstream API.
+
+<p align="center">
+  <img src="./_media/undraw/security.svg" alt="Security" width="200" />
+</p>
+
 ## Content Type
 
 We recommend that all endpoints dealing with non-binary data accept and return JSON via `Content-Type: application/json`.
@@ -118,23 +137,4 @@ When making backwards-incompatible changes or changing pricing, you are required
 
 <p align="center">
   <img src="./_media/undraw/version_control.svg" alt="API Version Control" width="200" />
-</p>
-
-## Authentication
-
-All service endpoints optionally accept a standard bearer auth token via an `Authentication` header (`Authentication: Bearer ${token}`).
-
-Your customers can view and manage their auth token(s) from their client dashboard once they sign up for your product.
-
-Authentication and authorization are handled transparently by Saasify's API gateway, so you can focus on your API's core functionality.
-
-Your downstream API will receive two additional headers for authenticated requests that you can use to customize your service's functionality:
-
-- `x-saasify-user` - String ID of the authenticated customer making the API call.
-- `x-saasify-plan` - String slug of the pricing plan that this user is subscribed to.
-
-For unauthenticated calls, these headers are guaranteed to not exist when Saasify's API gateway proxies these calls to your downstream API.
-
-<p align="center">
-  <img src="./_media/undraw/security.svg" alt="Security" width="200" />
 </p>
