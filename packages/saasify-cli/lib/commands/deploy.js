@@ -4,6 +4,7 @@ const clipboard = require('clipboardy')
 
 const handleError = require('../handle-error')
 const parseProject = require('../parse-project')
+const pruneDeployment = require('../prune-deployment')
 const spinner = require('../spinner')
 const zipProject = require('../zip-project')
 
@@ -12,6 +13,7 @@ module.exports = (program, client) => {
     .command('deploy [path]')
     .description('Creates a new deployment')
     .option('-f, --force', 'Force the creation of a new deployment', false)
+    .option('-v, --verbose', 'Display full deployments', false)
     .action(async (arg, opts) => {
       if (arg) program.config = arg
       program.requireAuthentication()
@@ -24,7 +26,7 @@ module.exports = (program, client) => {
 
         const zipBuffer = await zipProject(program, project)
 
-        const result = await spinner(
+        let deployment = await spinner(
           client.createDeployment({
             ...project,
             force: opts.force,
@@ -34,10 +36,11 @@ module.exports = (program, client) => {
           'Creating deployment'
         )
 
-        program.appendOutput(JSON.stringify(result, null, 2))
+        deployment = pruneDeployment(deployment, opts.verbose)
+        program.appendOutput(JSON.stringify(deployment, null, 2))
 
         if (program.clipboard) {
-          clipboard.writeSync(result.saasUrl)
+          clipboard.writeSync(deployment.saasUrl)
         }
       } catch (err) {
         handleError(program, err)

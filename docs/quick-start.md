@@ -2,15 +2,15 @@
 
 # Quick Start
 
-This quick start will give you an overview of the Saasify platform by creating an example project and deploying it to Saasify.
+This guide will give you an overview of the Saasify platform by creating an example product.
 
-The result will be a public, monetizable API that anyone can call or subscribe to.
+The result will be a live, public, SaaS API that anyone can call and subscribe to.
 
 ## Getting Started
 
-First you'll need to install the [Saasify CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli).
+First you'll need to install the [Saasify CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli ':target=_blank').
 
-```
+```bash
 npm install -g saasify
 ```
 
@@ -18,148 +18,162 @@ You can check out the available commands via `saasify --help` and run `saasify h
 
 You'll need to create a Saasify account to get started, which will authenticate with GitHub by default.
 
-```
+```bash
 saasify signup
 ```
 
 ## Creating a Project
 
-Use the `saasify init` command to create a new project.
+You can use the `saasify init` command to bootstrap a new project.
 
-```
+```bash
 saasify init [project-name]
 ```
 
-This will create a new folder `<project-name>`. The two most important files should look similar to this:
+This will create a new `saasify.json` file and an empty `openapi.json` file that will look something like:
 
-*(saasify.json)*
+_(saasify.json)_
+
 ```json
 {
   "name": "hello-world",
-  "services": [
-    {
-      "src": "index.ts"
-    }
-  ]
+  "openapi": "./openapi.json"
 }
 ```
 
-*(index.ts)*
-```ts
-export default async (name = 'World'): Promise<string> => {
-  return `Hello ${name}!`
-}
+_(openapi.json)_
+
+```json
+{}
 ```
+
+Most of the time you'll want to use a framework that will auto-generate this OpenAPI spec for you from your externally hosted API. Check out the [OpenAPI](./openapi.md) guide once you're ready to know more.
 
 <p align="center">
   <img src="./_media/undraw/working_remotely.svg" alt="Working remotely" width="200" />
 </p>
 
-## Developing your Project Locally
-
-You can now run and test your project locally before deploying it to the cloud. This is extremely useful for development and debugging.
-
-```
-saasify dev
-```
-
-This is a simple wrapper for `now dev`. Saasify uses ZEIT [now](https://zeit.co/now) heavily under the hood.
-
-!> Note that `saasify dev` is one of the most useful commands available. It's much easier to develop and debug your services locally before deploying them remotely.
-
 ## Deploying your Project
 
 You can deploy your project by running `saasify deploy` from within the directory containing your project's `saasify.json`.
 
-```
+```bash
 saasify deploy
 ```
 
-This will take a minute or so to complete, with the end result being a publicly accessible deployment. The deployment URL will be copied to your clipboard and should resemble `https://ssfy.sh/username/hello-world@f4a0d67b`.
+This creates a new deployment for your project with two key features:
+
+- API Proxying via our API gateway. For example, `https://ssfy.sh/username/hello-world@68c9335e` ([live example](https://ssfy.sh/dev/hello-world@68c9335e ':target=_blank'))
+- A publicly accessible SaaS website for your product. For example, `https://username_hello-world_68c9335e.saasify.sh` ([live example](https://dev_hello-world_68c9335e.saasify.sh ':target=_blank'))
+
+TODO: update deployment hash identifier to be valid!
+
+The SaaS website's URL will be copied to your clipboard so you can check it out live in your browser.
+
+Deployments are immutable and represented by a unique hash (`68c9335e` in this example). Every time you make a change to your SaaS product and run `saasify deploy`, you'll get a new hash suffix.
+
+Deployments are really lightweight -- you can create as many deployments as you want.
+
+!> Note that even though this website is public, your customers won't be able to sign up and pay for your new SaaS product until you `publish` a version to production.
 
 <p align="center">
-  <img src="./_media/undraw/logistics.svg" alt="Deployments" width="200" />
+  <img src="./_media/undraw/logistics.svg" alt="Deploying" width="200" />
 </p>
 
-## Calling your Deployment
+## Calling your API
 
-You can now call your services on this live deployment via HTTP. As an example, we'll be using [httpie](https://httpie.org/), an excellent command-line HTTP client.
+You can test out your proxied API on this live deployment via HTTP. Here are some examples using [httpie](https://httpie.org/ ':target=_blank'), an modern replacement for `curl` (`brew install httpie` on macOS).
 
-!> Note that you'll need to change the URL suffix in the examples below to the `url` from your `Deployment`. The `username` and hash `f4a0d67b` should be different, but everything else should be the same.
+You'll need to change the URL suffix in the examples below to the `url` from your deployment. The `username` and hash `68c9335e` should be different, but everything else should be the same.
 
 Via HTTP GET:
 
 ```
-> http https://ssfy.sh/username/hello-world@f4a0d67b
+> http https://ssfy.sh/username/hello-world@68c9335e
 Hello World!
 ```
 
 Via HTTP GET with query params:
 
 ```
-> http https://ssfy.sh/username/hello-world@f4a0d67b?name=Foo
+> http https://ssfy.sh/username/hello-world@68c9335e?name=Foo
 Hello Foo!
 ```
 
 Via HTTP POST with body params:
 
 ```
-> http POST https://ssfy.sh/username/hello-world@f4a0d67b name=Nala
+> http POST https://ssfy.sh/username/hello-world@68c9335e name=Nala
 Hello Nala!
 ```
 
-Note that because Saasify uses [Functional TypeScript](https://github.com/transitive-bullshit/functional-typescript) to define your service endpoints, all parameters and return values use type checking and type coercion for consistency.
+Note that all of these calls are being proxied through Saasify's API gateway. This adds some powerful functionality to your downstream API:
 
-Also note that all of these calls are going through a Saasify proxy that rate limits your unauthenticated HTTP requests based on your IP address.
-
-If you want to take advantage of Saasify's monetization features and usage-based pricing, you'll need to **subscribe** to this project.
-
-<p align="center">
-  <img src="./_media/undraw/confirmation.svg" alt="Deployments" width="200" />
-</p>
-
-## Subscribing to a Project
-
-The first step in creating a SaaS subscription to a project is to add a valid form of payment to your account.
-
-```
-saasify billing add
-```
-
-This will prompt you for credit card details that are stored in [Stripe](https://stripe.com).
-
-!> Note that Saasify never transmits or stores your payment info on its servers. All payment-related data is securely handled by Stripe.
-
-Now that you have a credit card connected to your account with Stripe, you can subscribe to any projects you want to access.
-
-```
-saasify subscribe <project-name>
-```
-
-This will create a new Stripe subscription for the given project and return a `Consumer` object with an access `token`.
-
-From now on, when you call your project's services via HTTP, you'll want to include this access `token` as part of the request.
-
-You can do this by either adding an `authorization` header with a value of your `token`:
-
-```
-> http https://ssfy.sh/username/hello-world_f4a0d67b authorization:<token>
-Hello World!
-```
-
-Or by adding a `token` query parameter:
-
-```
-> http https://ssfy.sh/username/hello-world_f4a0d67b?token=<token>&name=Bob
-Hello Bob!
-```
+- **User authentication**
+  - Your customers can add a standard `Authorization: Bearer ${TOKEN}` header to these requests once they've signed up for your product.
+  - Your API endpoints will receive `x-saasify-user` and `x-saasify-plan` headers for authenticated requests.
+- **Customizable rate limiting**
+  - Based on IP address for unauthenticated requests.
+  - Based on customer ID for authenticated requests.
+- **Usage tracking & analytics**
+  - All API calls are recorded for fine-grained analytics.
+  - This is particularly useful for _metered billing_ where you want to charge customers based on the number of requests they make.
+- **Global caching**
+  - Via custom Cloudflare edge workers.
+- **Auto-generated docs**
+  - Including example code snippets for many common languages.
 
 <p align="center">
-  <img src="./_media/undraw/make_it_rain.svg" alt="Deployments" width="200" />
+  <img src="./_media/undraw/confirmation.svg" alt="Success" width="200" />
 </p>
+
+## Publishing your Deployment
+
+Once you're happy with your project, it's time to publish it which will enable your customers to start paying for your product.
+
+```bash
+saasify publish <deployment-id>
+```
+
+This will prompt you for a version number following [semver](https://semver.org ':target=_blank') format. Version numbers must increase with each published version, and changes to pricing require a major version update.
+
+Once published, your auto-generated SaaS web client will be available at `https://<username>_<project-name>.saasify.sh`. For example, [https://dev_imagemin.saasify.sh](https://dev_imagemin.saasify.sh).
+
+If you want to alias your product to an external domain via DNS, we'd be happy to help you set this up. Please [contact support](support.md) to enable this feature for your project.
+
+<p align="center">
+  <img src="./_media/undraw/maker_launch.svg" alt="Launching!" width="200" />
+</p>
+
+## Summary
+
+```bash
+# initial setup
+npm install -g saasify
+saasify signup
+saasify init [project-name]
+
+# edit your project...
+
+# deploy and preview your product
+saasify deploy
+
+# edit and iterate on your product...
+
+# publish your product live which enables billing
+saasify publish <deployment-id>
+
+# start marketing your live product...
+```
 
 ## Next Steps
 
-At this point, you've created your own monetizable SaaS API and subscribed to it. Saasify takes care of all the book-keeping in terms of tracking Stripe usage and payouts via [Stripe Connect](https://stripe.com/connect).
+Congratulations -- You just launched your very own, self-contained SaaS product!
 
-Check out the development and publishing [workflow](./workflow.md) for next steps && thanks for following along!
+While this `hello-world` example is meant give you an overview of how the platform works, here are some areas to check out next:
+
+- [Examples](examples.md) - A growing list of open source examples to help get you started.
+- [Use cases](case-cases.md) - A brainstorm of different SaaS product ideas to help get you inspired.
+- [Pricing](pricing.md) - Customize your product's pricing.
+- [Configuration](configuration.md) - Fine-grained customization of your product and the template-based web client.
+  <!-- - [Getting paid](getting-paid.md) - Setup payouts via Stripe Connect or Paypal. -->

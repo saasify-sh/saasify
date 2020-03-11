@@ -15,7 +15,7 @@ const slash = require('slash')
 const spinner = require('../spinner')
 const pkg = require('../../package')
 
-const templateRepo = 'https://github.com/saasify-sh/saasify.git'
+const templateRepo = 'https://github.com/saasify-sh/templates.git'
 
 module.exports = async (opts) => {
   const {
@@ -38,7 +38,7 @@ module.exports = async (opts) => {
     `Cloning "${template}" template`
   )
 
-  const source = path.join(temp, 'templates', template)
+  const source = path.join(temp, template)
   // TODO: verify source template exists
   const files = await globby(slash(source), { dot: true })
   // TODO: verify that source files is non-empty

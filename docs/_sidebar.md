@@ -1,24 +1,37 @@
 - Getting Started
-  - [Overview](readme.md)
+
+  - [Home](readme.md)
   - [Quick Start](quick-start.md)
-  - [Workflow](workflow.md)
-  - [Concepts](concepts.md)
-  - [Showcase](showcase.md)
-  - [Mission](mission.md)
+  - [Use Cases](use-cases.md)
+  - [Examples](examples.md)
+  - [Resources](resources.md)
 
 - Platform
+
   - [CLI](cli.md)
   - [Configuration](configuration.md)
-  - [Functions](functions.md)
-  - [Services](services.md)
-  - [FaaS IDs](faas-ids.md)
-  - [Env Vars & Secrets](env-vars-and-secrets.md)
-  - [SaaS Client](saas-client.md)
-  - [CORS](cors.md)
+  - [OpenAPI](openapi.md)
   - [Pricing](pricing.md)
+  - [Services](services.md)
+    <!-- - [API Gateway](api-gateway.md) -->
+  - [SaaS Client](saas-client.md)
+  - [FaaS IDs](faas-ids.md)
+  - [Auth Providers](providers.md)
+  - [CORS](cors.md)
+  - [Serverless](serverless.md)
+
+<!-- - Admin -->
+
+  <!-- - [Dashboard](dashboard.md) -->
+  <!-- - [Analytics](analytics.md) -->
+  <!-- - [Getting Paid](getting-paid.md) -->
+  <!-- - [Stripe Connect](stripe-connect.md) -->
+  <!-- - [Marketing](marketing.md) -->
 
 - Support
+
   - [Support](support.md)
+    <!-- - [FAQ](faq.md) -->
   - [Roadmap](roadmap.md)
   - [Open Source](open-source.md)
   - [Enterprise](enterprise.md)
