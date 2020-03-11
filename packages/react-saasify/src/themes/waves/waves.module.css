@@ -453,6 +453,10 @@
   font-size: 22px;
 }
 
+.theme-waves .dashboard-page td button {
+  padding: var(--space-s) var(--space-m);
+}
+
 /*
  * NavHeader
  * ----------------------------
