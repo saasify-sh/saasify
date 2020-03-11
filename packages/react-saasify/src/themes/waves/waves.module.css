@@ -235,6 +235,7 @@
 
 .theme-waves .home-page .demo-section .content {
   font-weight: 400;
+  height: 100%;
   justify-content: center;
   margin-right: auto;
 }
