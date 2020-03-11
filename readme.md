@@ -80,4 +80,4 @@ Thanks! ⭐️
 
 ## License
 
-MIT © [Saasify](https://github.com/saasify-sh/saasify/blob/master/LICENSE)
+MIT © [Saasify](https://saasify.sh)
