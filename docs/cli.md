@@ -4,10 +4,20 @@
 
 > [Saasify CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli)
 
+The Saasify CLI is your primary interface for creating new SaaS projects and deploying updates.
+
+See the [quick start](quick-start.md) for a walkthrough of how to get started using the CLI.
+
+In the near future, Saasify's admin dashboard will offer a GUI on top of this CLI, but the core workflow and product will remain largely the same.
+
 ## Install
 
 ```
+# install the saasify CLI globally
 npm install -g saasify
+
+# signup for a new account (uses GitHub auth by default)
+saasify signup
 ```
 
 ## Usage
@@ -45,6 +55,21 @@ Advanced:
   cc|billing <command> [id]                            Manages your credit cards and billing methods
   logs [options] <url|deployment>                      Prints the logs for a given deployment
   secrets <command> [name] [value]                     Manages your secret environment variables
-  subscribe <project>                                  Subscribes to a project (requires a valid billing source)
-  unsubscribe [options] <project>                      Unsubscribes from a project
+```
+
+## Workflow
+
+```bash
+# initialize your project's saasify.json (or copy one from an example project)
+saasify init [project-name]
+
+# edit your project...
+
+saasify deploy
+
+# preview and iterate on your SaaS product...
+
+saasify publish
+
+# start marketing your live SaaS product...
 ```

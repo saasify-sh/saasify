@@ -13,7 +13,7 @@
   - [OpenAPI](openapi.md)
   - [Pricing](pricing.md)
   - [Services](services.md)
-  - [API Gateway](api-gateway.md)
+    <!-- - [API Gateway](api-gateway.md) -->
   - [SaaS Client](saas-client.md)
   - [FaaS IDs](faas-ids.md)
   - [Auth Providers](providers.md)
@@ -29,6 +29,7 @@
   <!-- - [Marketing](marketing.md) -->
 
 - Support
+
   - [Support](support.md)
     <!-- - [FAQ](faq.md) -->
   - [Roadmap](roadmap.md)

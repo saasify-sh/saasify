@@ -21,7 +21,7 @@ module.exports = (program, client) => {
 
         if (arg) {
           const parsedFaas = parseFaasIdentifier(arg, {
-            namespace: client.user.username
+            namespace: client.teamSlug || client.user.username
           })
 
           if (!parsedFaas) {

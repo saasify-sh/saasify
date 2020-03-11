@@ -2,7 +2,7 @@
 
 # FaaS IDs
 
-FaaS stands for Function as a Service. Each FaaS represents one HTTP endpoint in a project.
+FaaS stands for Function as a Service. Each FaaS represents one HTTP endpoint for a given project's API.
 
 ## ID Format
 
@@ -11,7 +11,7 @@ The most general FaaS identifier fully specifies the deployment and service path
 It _may_ include an optional URL prefix such as `http://localhost:5100/` in _development_ or `https://ssfy.sh/` in _production_. The parsed result will be the same with or without the full URL prefix.
 
 ```
-username/projectName@01234567/servicePath  // explicitly identify a specific deployment (may not be published)
+username/projectName@f4a0d67b/servicePath  // explicitly identify a specific deployment (may not be published)
 username/projectName@latest/servicePath    // explicitly identify the latest published deployment
 username/projectName@1.0.0/servicePath     // explicitly identify a published deployment with a specific version
 username/projectName/servicePath           // implicitly identify the latest published deployment
@@ -22,7 +22,7 @@ username/projectName/servicePath           // implicitly identify the latest pub
 If no `servicePath` is specified, it is assumed that the deployment either has a single service or has a service registered at the root `/` path and errors if this is not the case.
 
 ```
-username/projectName@01234567
+username/projectName@f4a0d67b
 username/projectName@latest
 username/projectName@1.0.0
 username/projectName
@@ -33,7 +33,7 @@ username/projectName
 You may optionally leave off the `username/` prefix when referring to your own projects and deployments via the dev [CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli).
 
 ```
-projectName@01234567
+projectName@f4a0d67b
 projectName@latest
 projectName@1.0.0
 projectName
@@ -42,14 +42,14 @@ projectName
 An example of this for the `hello-world` project would look like:
 
 ```sh
-# view all deployments for the authenticated user's hello-world project
+# view all deployments for the authenticated user's "hello-world" project
 saasify ls hello-world
 ```
 
 This would be equivalent to:
 
 ```sh
-# view all deployments for my-user-name/hello-world project
+# view all deployments for the "my-user-name/hello-world" project
 saasify ls my-user-name/hello-world
 ```
 

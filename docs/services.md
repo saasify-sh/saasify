@@ -2,6 +2,16 @@
 
 # Services
 
+A Service in Saasify refers to one of your API's individual HTTP endpoints.
+
+You can optionally customize how Saasify's API gateway proxies each of your API's services for:
+
+- Fine-grained control over rate limiting
+- Usage reporting
+- Restricting access to certain pricing plans
+- Response headers and caching
+- Custom example inputs and code snippets
+
 ```ts
 class Config {
   // saasify.json properties...
@@ -11,12 +21,14 @@ class Config {
 }
 
 class Service {
+  // the combination of HTTP path (beginning with /) and HTTP method uniquely identify a service
   path?: string
   httpMethod?: string = 'GET'
 
   name?: string
   examples?: Example[]
 
+  // optional customization of response headers
   headers?: object
   immutable?: boolean
 
@@ -63,27 +75,15 @@ class Snippet {
 }
 ```
 
-All generated service endpoints are organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). They accept [JSON-encoded](http://www.json.org/) request bodies, return JSON-encoded responses, and use standard HTTP response codes, authentication, and verbs.
+## HTTPS
 
-## OpenAPI
-
-Every deployment comes with a corresponding [OpenAPI spec](https://swagger.io/specification) that fully describes its service endpoints.
-
-Here is an example auto-generated OpenAPI [spec](https://api.saasify.sh/1/deployments/openapi/transitive-bullshit/puppet-master@b0c5c30c), as well as its corresponding [docs](https://puppet-master.sh/docs/api). These docs are available for every SaaS web client, and they use [Redoc](https://github.com/Redocly/redoc) to display the OpenAPI spec for any given deployment.
-
-!> Note that [OpenAPI](https://swagger.io/specification) was previously called Swagger.
-
-## HTTP
-
-By default, all generated service endpoints are available via `HTTP GET` with query parameters as well as `HTTP POST` with `application/json` encoded body parameters.
-
-!> All API requests must be made over HTTPS. Calls made to the production API over plain HTTP will fail. The one exception to this is when debugging your project locally via `saasify dev`, in which case all `localhost` API calls must be made over HTTP.
+All HTTP calls via Saasify's API gateway should be made over **HTTPS**. Calls made to your production API over plain HTTP will be automatically upgraded to HTTPs, but this use case is discouraged.
 
 ## Content Type
 
-All requests must be encoded as JSON with the `Content-Type: application/json` header. If not otherwise specified, responses from the API, including errors, are encoded exclusively as JSON as well.
+We recommend that all endpoints dealing with non-binary data accept and return JSON via `Content-Type: application/json`.
 
-By default, all service endpoints return JSON, though we allow individual services to opt out of type checking and return raw HTTP bodies directly. This is especially useful for processing media such as images.
+Unless otherwise specified, responses and error messages from the API gateway, are encoded exclusively as JSON.
 
 ## Rate Limits
 
@@ -108,23 +108,32 @@ When the rate limit is **exceeded**, an error is returned with the status "**429
 
 ## Errors
 
-All service endpoints use conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the `2xx` range indicate success. Codes in the `4xx` range indicate an error that failed given the information provided (e.g., a required parameter was omitted, endpoint not found, etc.). Codes in the `5xx` range indicate an error with our API (these should hopefully be rare).
+All service endpoints should use conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the `2xx` range indicate success. Codes in the `4xx` range indicate an error that failed given the information provided (e.g., a required parameter was omitted, endpoint not found, etc.). Codes in the `5xx` range indicate an error with either our API gateway (these should hopefully be rare) or your downstream API server.
 
 ## Versioning
 
-All published deployment versions are **immutable** which guarantees that once a customer has a working integration, it will always be completely optional for them to upgrade to newer versions.
+All published deployment versions are **immutable** which guarantees that once a customer has a working integration, it will always be optional for them to upgrade to newer versions.
 
-When making backwards-incompatible changes to a project or changing pricing, you are required to publish a new major version following standard [semver](https://semver.org) conventions.
+When making backwards-incompatible changes or changing pricing, you are required to publish a new major version of your project following standard [semver](https://semver.org) conventions.
 
 <p align="center">
   <img src="./_media/undraw/version_control.svg" alt="API Version Control" width="200" />
 </p>
 
-## Auth Tokens
+## Authentication
 
-All service endpoints accept an optional auth token for authenticated access. Unauthenticated (public) requests are subject to rate limiting.
+All service endpoints optionally accept a standard bearer auth token via an `Authentication` header (`Authentication: Bearer ${token}`).
 
-Subscribers can view and manage their auth token(s) in their client dashboard. Be sure to keep your auth tokens secure.
+Your customers can view and manage their auth token(s) from their client dashboard once they sign up for your product.
+
+Authentication and authorization are handled transparently by Saasify's API gateway, so you can focus on your API's core functionality.
+
+Your downstream API will receive two additional headers for authenticated requests that you can use to customize your service's functionality:
+
+- `x-saasify-user` - String ID of the authenticated customer making the API call.
+- `x-saasify-plan` - String slug of the pricing plan that this user is subscribed to.
+
+For unauthenticated calls, these headers are guaranteed to not exist when Saasify's API gateway proxies these calls to your downstream API.
 
 <p align="center">
   <img src="./_media/undraw/security.svg" alt="Security" width="200" />

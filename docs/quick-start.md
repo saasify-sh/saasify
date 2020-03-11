@@ -63,14 +63,14 @@ saasify deploy
 
 This creates a new deployment for your project with two key features:
 
-- API Proxying via our API gateway. For example, `https://ssfy.sh/username/hello-world@f4a0d67b` ([live example](https://ssfy.sh/dev/hello-world@f4a0d67b))
-- A publicly accessible SaaS website for your product. For example, `https://username_hello-world_f4a0d67b.saasify.sh` ([live example](https://dev_hello-world_f4a0d67b.saasify.sh))
+- API Proxying via our API gateway. For example, `https://ssfy.sh/username/hello-world@68c9335e` ([live example](https://ssfy.sh/dev/hello-world@68c9335e ':target=_blank'))
+- A publicly accessible SaaS website for your product. For example, `https://username_hello-world_68c9335e.saasify.sh` ([live example](https://dev_hello-world_68c9335e.saasify.sh ':target=_blank'))
 
 TODO: update deployment hash identifier to be valid!
 
 The SaaS website's URL will be copied to your clipboard so you can check it out live in your browser.
 
-Deployments are immutable and represented by a unique hash (`f4a0d67b` in this example). Every time you make a change to your SaaS product and run `saasify deploy`, you'll get a new hash suffix.
+Deployments are immutable and represented by a unique hash (`68c9335e` in this example). Every time you make a change to your SaaS product and run `saasify deploy`, you'll get a new hash suffix.
 
 Deployments are really lightweight -- you can create as many deployments as you want.
 
@@ -82,28 +82,28 @@ Deployments are really lightweight -- you can create as many deployments as you 
 
 ## Calling your API
 
-You can test out your proxied API on this live deployment via HTTP. Here are some examples using [httpie](https://httpie.org/), an modern replacement for `curl`.
+You can test out your proxied API on this live deployment via HTTP. Here are some examples using [httpie](https://httpie.org/ ':target=_blank'), an modern replacement for `curl` (`brew install httpie` on macOS).
 
-You'll need to change the URL suffix in the examples below to the `url` from your deployment. The `username` and hash `f4a0d67b` should be different, but everything else should be the same.
+You'll need to change the URL suffix in the examples below to the `url` from your deployment. The `username` and hash `68c9335e` should be different, but everything else should be the same.
 
 Via HTTP GET:
 
 ```
-> http https://ssfy.sh/username/hello-world@f4a0d67b
+> http https://ssfy.sh/username/hello-world@68c9335e
 Hello World!
 ```
 
 Via HTTP GET with query params:
 
 ```
-> http https://ssfy.sh/username/hello-world@f4a0d67b?name=Foo
+> http https://ssfy.sh/username/hello-world@68c9335e?name=Foo
 Hello Foo!
 ```
 
 Via HTTP POST with body params:
 
 ```
-> http POST https://ssfy.sh/username/hello-world@f4a0d67b name=Nala
+> http POST https://ssfy.sh/username/hello-world@68c9335e name=Nala
 Hello Nala!
 ```
 
@@ -160,7 +160,7 @@ saasify deploy
 
 # preview and iterate on your SaaS product...
 
-saasify publish
+saasify publish <deployment-id>
 
 # start marketing your live SaaS product...
 ```
@@ -169,9 +169,10 @@ saasify publish
 
 Congratulations -- You just launched your very own, self-contained SaaS product!
 
-While this `hello-world` example is meant to show the basic workflow, here are some areas to check out next:
+While this `hello-world` example is meant give you an overview of how the platform works, here are some areas to check out next:
 
+- [Examples](examples.md) - A growing list of open source examples to help get you started.
+- [Use cases](case-cases.md) - A brainstorm of different SaaS product ideas to help get you inspired.
 - [Pricing](pricing.md) - Customize your product's pricing.
 - [Configuration](configuration.md) - Fine-grained customization of your product and the template-based web client.
-- [Getting paid](getting-paid.md) - Setup payouts via Stripe Connect or Paypal.
-- [View examples](examples.md) - A growing list of example open source projects to help get you started.
+  <!-- - [Getting paid](getting-paid.md) - Setup payouts via Stripe Connect or Paypal. -->
