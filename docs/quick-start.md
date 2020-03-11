@@ -8,7 +8,7 @@ The result will be a public, monetizable SaaS API that anyone can call and subsc
 
 ## Getting Started
 
-First you'll need to install the [Saasify CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli).
+First you'll need to install the [Saasify CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli ':target=_blank').
 
 ```bash
 npm install -g saasify
@@ -135,7 +135,7 @@ Once you're happy with your project, it's time to publish it which will enable y
 saasify publish <deployment-id>
 ```
 
-This will prompt you for a version number following [semver](https://semver.org) format. Version numbers must increase with each published version, and changes to pricing require a major version update.
+This will prompt you for a version number following [semver](https://semver.org ':target=_blank') format. Version numbers must increase with each published version, and changes to pricing require a major version update.
 
 Once published, your auto-generated SaaS web client will be available at `https://<username>_<project-name>.saasify.sh`. For example, [https://dev_imagemin.saasify.sh](https://dev_imagemin.saasify.sh).
 
