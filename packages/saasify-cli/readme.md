@@ -12,9 +12,9 @@
 
 Saasify allows makers to:
 
-1) Focus on unique value instead of boilerplate 🔥
-2) Ship in minutes instead of months ✈️
-3) Instantly enable monitization ⭐️
+1. Focus on unique value instead of boilerplate 🔥
+2. Ship in minutes instead of months ✈️
+3. Instantly enable monitization ⭐️
 
 ## Status
 
@@ -24,7 +24,7 @@ If you're interested in OSS sustainability and want to follow along with our pro
 
 ## Features
 
-- **$$$**: Monetize your api!
+- **\$\$\$**: Monetize your api!
 - **Simple**: Quick to setup your own SaaS
 - **Productive**: Focus on your unique value prop instead of SaaS boilerplate
 - **Standard**: Built with TypeScript + Lambda + Stripe
@@ -40,8 +40,8 @@ npm install -g saasify
 
 ## Usage
 
-```bash
-Usage: saasify [options] [command]
+```
+Usage: saasify <command> [options]
 
 Options:
   -V, --version                                        output the version number
@@ -52,24 +52,27 @@ Options:
   -h, --help                                           output usage information
 
 Commands:
-  cc|billing <command> [id]                            Manages your credit cards and billing methods
-  debug [path]                                         Prints information about a local project
-  deploy [options] [path]                              Creates a new deployment
-  dev [options] [path]                                 Starts a local dev server for debugging your deployments
   help [cmd]                                           Displays usage info for [cmd]
+  debug [path]                                         Prints information about a local project
+
+Workflow:
   init [options] [project-name]                        Creates a new project based on a template
-  ls|list [options] [project]                          Lists deployments
-  logs [options] <url|deployment>                      Prints the logs for a given deployment
-  publish <deploymentId|deploymentUrl>                 Creates a subscription to a project (requires a valid billing source)
+  deploy [options] [path]                              Creates a new deployment
+  publish <deploymentId|deploymentUrl>                 Publishes a deployment
+  ls|list [project]                                    Lists deployments
   rm|remove [options] [deploymentId|deploymentUrl...]  Removes deployments
-  secrets <command> [name] [value]                     Manages your secret environment variables
+
+Accounts:
   login|signin [options]                               Logs into your account
   logout|signout                                       Logs out of your account
-  signup [options]                                     Creates a new account
-  subscribe <project>                                  Subscribes to a project (requires a valid billing source)
-  teams <command> [arg]                                Manages your teams (ls, add, invite, switch)
-  unsubscribe [options] <project>                      Unsubscribes from a project
-  whoami                                               Prints information about the current user
+  signup [options]                                     Creates a new account (defaults to GitHub auth)
+  whoami                                               Prints information about the currently authenticated user
+
+Advanced:
+  dev [options] [path]                                 Starts a local dev server for debugging your deployments
+  cc|billing <command> [id]                            Manages your credit cards and billing methods
+  logs [options] <url|deployment>                      Prints the logs for a given deployment
+  secrets <command> [name] [value]                     Manages your secret environment variables
 ```
 
 ## Walkthrough

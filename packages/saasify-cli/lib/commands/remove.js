@@ -22,7 +22,7 @@ module.exports = (program, client) => {
         const deploymentsLabel = pluralize('deployment', args.length)
         const parsedArgs = args.map((identifier) =>
           parseFaasIdentifier(identifier, {
-            namespace: client.user.username
+            namespace: client.teamSlug || client.user.username
           })
         )
 

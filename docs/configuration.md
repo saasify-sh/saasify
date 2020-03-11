@@ -189,9 +189,9 @@ Optional `object` containing additional headers to add to all API responses.
 
 #### immutable
 
-Optional `boolean` (default `false`) that specifies if your API's endpoints are all pure and immutable, meaning that they always return the same output for a given input.
+Optional `boolean` (default `false`) specifies that your API's endpoints are all pure and immutable, meaning that they always return the same output for a given input.
 
-Saasify's API gateway is able to add aggressive caching to `immutable` API endpoints which translates to a better experience for your customers and less load on your API's servers.
+Saasify's API gateway is able to aggressively cache `immutable` API responses which translates to a better experience for your customers and less load on your downstream API's servers.
 
 #### authProviders
 

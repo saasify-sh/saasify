@@ -2,15 +2,15 @@
 
 # Auth Providers
 
-One of Saasify's most powerful features is the ability to customize external OAuth providers that your customers will be able to authenticate with. Some example providers include `google`, `github`, `twitter`, and `spotify`.
+One of Saasify's most powerful features is the ability to specify external OAuth providers that your customers will be able to authenticate with. Some example providers include `google`, `github`, `twitter`, and `spotify`.
 
-This is an advanced feature that's intended to simplify building SaaS products that integrate with third-party services.
+This is an advanced feature that's intended to simplify building SaaS products that need to integrate with third-party services.
 
-You can enable / disable different providers, mark them as required, and customize their OAuth credentials and authorization scopes depending on your product's needs.
+You can enable / disable different providers, mark them as required in order to use your API, and customize their OAuth credentials and authorization scopes depending on your product's needs.
 
-An example use case would be requiring that all your customers authenticate via `google` with custom OAuth `scopes` that gives your API access to an authenticated customer's Google Sheets (or any other Google properties on behalf of that user).
+An example use case would be requiring that all your customers authenticate via `google` with custom OAuth `scopes` that gives your API access to a customer's Google Sheets (or any other Google properties on behalf of that user).
 
-If you're interested in taking advantage of this advanced feature and want help configuring your integration, please [get in touch](support.md).
+If you're interested in taking advantage of this advanced feature and want help configuring your integration, please [get in touch](support.md) as this feature is currently an early preview.
 
 ## Schema
 
