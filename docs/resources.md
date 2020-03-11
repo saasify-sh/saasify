@@ -2,7 +2,7 @@
 
 # Resources
 
-Saasify is great at quickly bringing your SaaS ideas to market, but what if you don't have an idea? And how do you validate that an idea is worth working on? And what's the best way to market your product once it's ready to launch?
+Saasify is great for quickly bringing your SaaS ideas to market, but what if you don't have an idea? And how do you validate that an idea is worth working on? And what's the best way to market your product once it's ready to launch?
 
 These are all excellent questions that profitable SaaS businesses will have to answer at some point.
 
