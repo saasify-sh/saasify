@@ -30,6 +30,8 @@ You can use the `saasify init` command to bootstrap a new project.
 saasify init [project-name]
 ```
 
+The rest of this tutorial will use `quick-start` as the project name.
+
 **You'll want to choose the default minimal template.**
 
 This will create a new folder containing a `saasify.json` file and a basic `openapi.json` file that will look something like:
@@ -38,7 +40,7 @@ _(saasify.json)_
 
 ```json
 {
-  "name": "hello-world",
+  "name": "quick-start",
   "openapi": "./openapi.json"
 }
 ```
@@ -47,7 +49,27 @@ _(openapi.json)_
 
 ```json
 {
-  ...
+  "openapi": "3.0.2",
+  "info": {
+    "title": "quick-start",
+    "description": "Saasify quick start example"
+  },
+  "paths": {
+    "/get": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Example GET service which echoes its inputs"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://httpbin.org"
+    }
+  ]
 }
 ```
 
@@ -71,51 +93,49 @@ saasify deploy
 
 This creates a new deployment for your project with two key features:
 
-- API Proxying via our API gateway. For example, `https://ssfy.sh/username/hello-world@7b10f6cc` ([live example](https://ssfy.sh/dev/test@7b10f6cc ':target=_blank'))
-- A publicly accessible SaaS website for your product. For example, `https://username_hello-world_7b10f6cc.saasify.sh` ([live example](https://dev_test_7b10f6cc.saasify.sh ':target=_blank'))
-
-TODO: update deployment hash identifier to be valid!
+- API Proxying via our API gateway. For example, `https://ssfy.sh/username/projectName@deploymentHash` ([live example](https://ssfy.sh/dev/quick-start@03b0125f ':target=_blank'))
+- A publicly accessible SaaS website for your product. For example, `https://username_projectName_deploymentHash.saasify.sh` ([live example](https://dev_quick-start_03b0125f.saasify.sh ':target=_blank'))
 
 The SaaS website's URL will be copied to your clipboard so you can check it out live in your browser.
 
-Deployments are immutable and represented by a unique hash (`7b10f6cc` in this example). Every time you make a change to your SaaS product and run `saasify deploy`, you'll get a new hash suffix.
+Deployments are immutable and represented by a unique hash (`03b0125f` in this example). Every time you make a change to your SaaS product and run `saasify deploy`, you'll get a new unique preview URL.
 
 Deployments are really lightweight -- you can create as many deployments as you want.
 
-!> Note that even though this website is public, your customers won't be able to sign up and pay for your new SaaS product until you `publish` a version to production.
+!> Note that even though this website is public, your customers won't be able to sign up and pay for your new SaaS product until you `publish` a version to production. We'll get to this step shortly.
 
 <p align="center">
   <img src="./_media/undraw/logistics.svg" alt="Deploying" width="200" />
 </p>
 
-## Calling your API
+## Testing your API
 
-You can test out your proxied API on this live deployment via HTTP. Here are some examples using [httpie](https://httpie.org/ ':target=_blank'), an modern replacement for `curl` (`brew install httpie` on macOS).
+You can test out your SaaS API on this live deployment via any HTTP framework.
 
-You'll need to change the URL suffix in the examples below to the `url` from your deployment. The `username` and hash `7b10f6cc` should be different, but everything else should be the same.
+You'll need to change the URL suffix in the example below to the `url` from your deployment. The username (`dev`), project name (`quick-start`), and hash (`03b0125f`) should all be different depending on how you initialized your project, but the structure will be the same.
 
-Via HTTP GET:
-
-```
-> http https://ssfy.sh/username/hello-world@7b10f6cc
-Hello World!
+```bash
+curl https://ssfy.sh/dev/quick-start@03b0125f
 ```
 
-Via HTTP GET with query params:
+This HTTP GET request should return a JSON payload containing all of the headers that were sent to the downstream `httpbin` endpoint from Saasify's API gateway:
 
-```
-> http https://ssfy.sh/username/hello-world@7b10f6cc?name=Foo
-Hello Foo!
+```json
+{
+  "args": {},
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip",
+    "Host": "httpbin.org",
+    "User-Agent": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)",
+    "X-Saasify-Proxy-Secret": "..."
+  },
+  "origin": "...",
+  "url": "https://httpbin.org/get"
+}
 ```
 
-Via HTTP POST with body params:
-
-```
-> http POST https://ssfy.sh/username/hello-world@7b10f6cc name=Nala
-Hello Nala!
-```
-
-Note that all of these calls are being proxied through Saasify's API gateway. This adds some powerful functionality to your downstream API:
+Saasify's API gateway adds some powerful functionality to your downstream API:
 
 - **User authentication**
   - Your customers can add a standard `Authorization: Bearer ${TOKEN}` header to these requests once they've signed up for your product.
