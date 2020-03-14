@@ -183,10 +183,10 @@ saasify init [project-name]
 
 # edit your project...
 
-# deploy and preview your product
+# preview your product
 saasify deploy
 
-# edit and iterate on your product...
+# iterate...
 
 # publish your product live which enables billing
 saasify publish <deployment-id>

@@ -2,9 +2,9 @@
 
 # SaaS Client
 
-Saasify's generate a fully functional, standalone SaaS website for your product that your customers will use to sign up, view documentation, and manage their recurring billing subscriptions.
+Saasify generates a fully functional, standalone SaaS website for your product that your customers can use to sign up, view docs, and manage their recurring billing subscriptions.
 
-Here is a screenshot of an [example](https://imagemin.saasify.sh ':target=_blank') SaaS client.
+Here is a screenshot of an [example](https://imagemin.saasify.sh ':target=_blank') SaaS client's landing page.
 
 <p align="center">
   <img src="./_media/imagemin.jpg" alt="SaaS client example" width="400" />
