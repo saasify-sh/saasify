@@ -76,7 +76,7 @@ export const faq = [
             </p>
 
             <p>
-              This is the real kep to Saasify's power, and it's why some of the
+              This is the real key to Saasify's power, and it's why some of the
               smartest &amp; most successful serial SaaS founders are choosing
               to launch their MVPs on top of Saasify instead of rolling their
               own SaaS over and over.

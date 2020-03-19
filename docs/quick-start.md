@@ -93,7 +93,7 @@ saasify deploy
 
 This creates a new deployment for your project with two key features:
 
-- API Proxying via our API gateway. For example, `https://ssfy.sh/username/projectName@deploymentHash` ([live example](https://ssfy.sh/dev/quick-start@03b0125f ':target=_blank'))
+- An API proxied via our API gateway. For example, `https://ssfy.sh/username/projectName@deploymentHash` ([live example](https://ssfy.sh/dev/quick-start@03b0125f ':target=_blank'))
 - A publicly accessible SaaS website for your product. For example, `https://username_projectName_deploymentHash.saasify.sh` ([live example](https://dev_quick-start_03b0125f.saasify.sh ':target=_blank'))
 
 The SaaS website's URL will be copied to your clipboard so you can check it out live in your browser.
@@ -198,10 +198,10 @@ saasify publish <deployment-id>
 
 Congratulations -- You just launched your very own, self-contained SaaS product!
 
-While this simple example is meant give you an overview of how the platform works, here are some areas to check out next:
+Now that you have an overview of how the platform works, here are some areas to check out next:
 
 - [Examples](examples.md) - A growing list of open source examples to help get you started.
-- [Use cases](case-cases.md) - A brainstorm of different SaaS product ideas to help get you inspired.
+- [Use cases](case-cases.md) - A brainstorm of different SaaS product ideas as inspiration.
 - [Pricing](pricing.md) - Customize your product's pricing.
 - [Configuration](configuration.md) - Fine-grained customization of your product and the template-based web client.
   <!-- - [Getting paid](getting-paid.md) - Setup payouts via Stripe Connect or Paypal. -->
