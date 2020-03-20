@@ -30,7 +30,15 @@ exports.password = (value) => {
 }
 
 exports.projectName = (value) => {
-  return value && exports.projectNameRe.test(value)
+  if (!value || value.length < 3) {
+    return 'Project name must be at least 3 characters'
+  } else if (value.length > 64) {
+    return 'Project name must be less than 64 characters'
+  } else if (!exports.projectNameRe.test(value)) {
+    return 'Project name can only be alphanumeric or a dash.'
+  } else {
+    return true
+  }
 }
 
 exports.deploymentHash = (value) => {

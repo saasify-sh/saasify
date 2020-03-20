@@ -5,6 +5,8 @@ const { validators } = require('saasify-utils')
 
 const config = require('../config')
 
+const projectNameTransformer = (name) => name.replace(/[.|_| ]/g, '-')
+
 module.exports = async (opts) => {
   const { skipPrompts, ...rest } = opts
 
@@ -43,9 +45,9 @@ module.exports = async (opts) => {
         type: 'input',
         name: 'name',
         message: 'Project Name',
-        validate: (name) => {
-          return name && validators.projectName(name)
-        },
+        transformer: projectNameTransformer,
+        validate: (name) =>
+          validators.projectName(projectNameTransformer(name)),
         default: opts.name
       },
       {
