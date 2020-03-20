@@ -4,22 +4,22 @@
   </a>
 </p>
 
-# saasify-sdk
+# saasify-faas-sdk
 
 > HTTP client for invoking [Saasify](https://saasify.sh) FaaS.
 
-[![NPM](https://img.shields.io/npm/v/saasify-sdk.svg)](https://www.npmjs.com/package/saasify-sdk) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/saasify-faas-sdk.svg)](https://www.npmjs.com/package/saasify-faas-sdk) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save saasify-sdk
+npm install --save saasify-faas-sdk
 ```
 
 ## Usage
 
 ```js
-const SaasifySDK = require('saasify-sdk')
+const SaasifySDK = require('saasify-faas-sdk')
 const sdk = new SaasifySDK()
 
 const helloWorldUrl = 'https://ssfy.sh/dev/hello-world'
@@ -29,8 +29,8 @@ const res = await sdk.post(helloWorldUrl, {
 })
 
 {
-  "output": "Hello Nala!",
-  "outputContentType": "application/json",
+  "body": "Hello Nala!",
+  "contentType": "application/json",
   "response": { /* raw axios response */ }
 }
 ```

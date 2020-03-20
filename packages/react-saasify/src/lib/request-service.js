@@ -1,4 +1,4 @@
-import SaasifySDK from 'saasify-sdk'
+import SaasifySDK from 'saasify-faas-sdk'
 
 const sdk = new SaasifySDK()
 

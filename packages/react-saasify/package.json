@@ -64,7 +64,7 @@
     "react-syntax-highlighter": "^11.0.2",
     "saasify-client": "^1.16.8",
     "saasify-codegen": "^1.16.0",
-    "saasify-sdk": "^1.16.0",
+    "saasify-faas-sdk": "^1.16.0",
     "titleize": "^2.1.0"
   },
   "peerDependencies": {
