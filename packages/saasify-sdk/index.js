@@ -1,6 +1,7 @@
 'use strict'
 
 const SaasifyFaasSDK = require('saasify-faas-sdk')
+// require('iframe-resize/js/iframeResizer.contentWindow.js')
 
 const isBrowser = typeof window !== 'undefined'
 
@@ -9,15 +10,17 @@ module.exports = class SaasifySDK {
     const {
       projectId,
       defaults,
+      baseUrl,
       timeout = 10000,
       target = isBrowser && window.parent,
       log = console.log.bind(console)
     } = opts
 
+    this._baseUrl = baseUrl
     this._log = log
 
     this._ready = new Promise((resolve, reject) => {
-      if (target) {
+      if (target && target !== window) {
         this._log('SaasifySDK initializing iframe')
 
         if (!projectId) {
@@ -65,11 +68,11 @@ module.exports = class SaasifySDK {
 
         target.postMessage(message, '*')
       } else {
-        this._log('SaasifySDK no iframe found - using defaults')
+        this._log('SaasifySDK no iframe context found - using defaults')
 
         if (!defaults) {
           throw new Error(
-            'SaasifySDK error: no iframe found - missing required parameter "defaults"'
+            'SaasifySDK error: no iframe context found - missing required parameter "defaults"'
           )
         }
 
@@ -79,26 +82,25 @@ module.exports = class SaasifySDK {
   }
 
   _init(data, resolve, reject) {
-    if (!data.project) {
-      return reject(new Error('SaasifySDK error: missing "project"'))
-    }
-
-    if (!data.deployment) {
-      return reject(new Error('SaasifySDK error: missing "deployment"'))
-    }
-
-    if (!data.consumer) {
-      return reject(new Error('SaasifySDK error: missing "consumer"'))
-    }
-
     this._project = data.project
     this._deployment = data.deployment
     this._consumer = data.consumer
 
+    if (this._consumer) {
+      this._token = this._consumer.token
+    } else {
+      this._token = data.token
+    }
+
+    if (!this._token) {
+      return reject(new Error('SaasifySDK error: missing valid auth "token"'))
+    }
+
     resolve({
       project: this._project,
       deployment: this._deployment,
-      consumer: this._consumer
+      consumer: this._consumer,
+      token: this._token
     })
   }
 
@@ -108,12 +110,13 @@ module.exports = class SaasifySDK {
 
   get api() {
     if (!this._api) {
-      if (!this._consumer) {
+      if (!this._deployment) {
         return null
       }
 
       this._api = new SaasifyFaasSDK({
-        token: this._consumer.token,
+        baseUrl: this._baseUrl,
+        token: this._token,
         deployment: this._deployment.id
       })
     }
@@ -131,5 +134,9 @@ module.exports = class SaasifySDK {
 
   get consumer() {
     return this._consumer
+  }
+
+  get token() {
+    return this._token
   }
 }
