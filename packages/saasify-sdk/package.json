@@ -1,0 +1,34 @@
+{
+  "name": "saasify-sdk",
+  "version": "1.16.0",
+  "description": "Client-side JS SDK for Saasify.",
+  "main": "index.js",
+  "author": "Saasify <dev@saasify.sh>",
+  "repository": "saasify-sh/saasify",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "faas",
+    "saas",
+    "lambda",
+    "serverless",
+    "deploy",
+    "saasify",
+    "fts"
+  ],
+  "scripts": {
+    "test": "ava -v"
+  },
+  "dependencies": {
+    "saasify-faas-sdk": "^1.16.0"
+  },
+  "devDependencies": {
+    "ava": "^2.4.0"
+  },
+  "ava": {
+    "failFast": true,
+    "snapshotDir": "./.snapshots"
+  }
+}
