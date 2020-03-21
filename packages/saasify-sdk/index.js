@@ -7,6 +7,7 @@ module.exports = class SaasifySDK {
     const {
       projectId,
       defaults,
+      timeout = 10000,
       target = window && window.parent,
       log = console.log.bind(console)
     } = opts
@@ -18,12 +19,14 @@ module.exports = class SaasifySDK {
         this._log('SaasifySDK initializing iframe')
 
         if (!projectId) {
-          throw new Error('SaasifySDK missing required parameter "projectId"')
+          throw new Error(
+            'SaasifySDK error: missing required parameter "projectId"'
+          )
         }
 
         const initTimeout = setTimeout(() => {
-          reject(new Error('SaasifySDK error timeout initializing iframe'))
-        }, 10000)
+          reject(new Error('SaasifySDK error: timeout initializing iframe'))
+        }, timeout)
 
         window.addEventListener(
           'message',
@@ -64,7 +67,7 @@ module.exports = class SaasifySDK {
 
         if (!defaults) {
           throw new Error(
-            'SaasifySDK no iframe found - missing required parameter "defaults"'
+            'SaasifySDK error: no iframe found - missing required parameter "defaults"'
           )
         }
 
@@ -73,17 +76,17 @@ module.exports = class SaasifySDK {
     })
   }
 
-  _init = (data, resolve, reject) => {
+  _init(data, resolve, reject) {
     if (!data.project) {
-      reject(new Error('SaasifySDK missing "project"'))
+      return reject(new Error('SaasifySDK error: missing "project"'))
     }
 
     if (!data.deployment) {
-      reject(new Error('SaasifySDK missing "deployment"'))
+      return reject(new Error('SaasifySDK error: missing "deployment"'))
     }
 
     if (!data.consumer) {
-      reject(new Error('SaasifySDK missing "consumer"'))
+      return reject(new Error('SaasifySDK error: missing "consumer"'))
     }
 
     this._project = data.project
