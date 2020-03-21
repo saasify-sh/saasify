@@ -44,6 +44,7 @@ export class ConsumerFrameEmbed extends Component {
       <iframe
         src={src}
         className={theme(styles, 'consumer-frame-embed', className)}
+        seamless
         {...rest}
         ref={this._frameRef}
       />
@@ -54,16 +55,22 @@ export class ConsumerFrameEmbed extends Component {
     const { auth, config } = this.props
     const { deployment } = config
     const { project } = deployment
+    let message
     console.log(event)
 
     try {
-      const message = JSON.parse(event.data)
-      console.log('iframe message data', message)
+      message = JSON.parse(event.data)
+      console.log('iframe message', message)
 
-      if (message.type !== 'saasify-sdk:init' || !message.data) {
+      if (message.type !== 'saasify-sdk:init') {
         return
       }
+    } catch (err) {
+      // ignore other types of messages
+      return
+    }
 
+    try {
       const { projectId } = message.data
       if (projectId !== project.id) {
         throw new Error(
@@ -73,14 +80,17 @@ export class ConsumerFrameEmbed extends Component {
 
       const iframe = this._frameRef.current
       const res = JSON.stringify({
-        project,
-        deployment,
-        consumer: toJS(auth.consumer)
+        type: 'saasify-sdk:init',
+        data: {
+          project,
+          deployment,
+          consumer: toJS(auth.consumer)
+        }
       })
 
-      iframe.postMessage(res, '*')
+      iframe.contentWindow.postMessage(res, '*')
     } catch (err) {
-      console.log.warn('iframe message error', err)
+      console.warn('iframe message error', err)
     }
   }
 }

@@ -50,7 +50,7 @@ module.exports = class SaasifySDK {
               clearTimeout(initTimeout)
               this._init(message.data, resolve, reject)
             } catch (err) {
-              log.warn('iframe message error', err)
+              // ignore errors
             }
           },
           false
