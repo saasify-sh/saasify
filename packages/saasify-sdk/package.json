@@ -1,7 +1,7 @@
 {
   "name": "saasify-sdk",
   "version": "1.16.1",
-  "description": "Client-side JS SDK for Saasify.",
+  "description": "Client-side iframe embedding SDK for Saasify.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",
