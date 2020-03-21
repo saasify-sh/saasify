@@ -14,13 +14,27 @@ const httpMethodsWithBodies = new Set([
   'patch'
 ])
 
-module.exports = class SaasifySDK {
+const env =
+  !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+    ? 'dev'
+    : 'prod'
+const faasBaseUrl = env === 'prod' ? 'https://ssfy.sh' : 'http://localhost:5100'
+
+module.exports = class SaasifyFaasSDK {
   constructor(opts = {}) {
     if (typeof opts === 'string') {
       this._token = opts
     } else {
-      const { token } = opts
+      const { token, baseUrl = faasBaseUrl, deploymentId, projectId } = opts
       this._token = token
+
+      if (deploymentId) {
+        this._baseUrl = `${baseUrl}/${deploymentId}`
+      } else if (projectId) {
+        this._baseUrl = `${baseUrl}/${projectId}`
+      } else {
+        this._baseUrl = baseUrl
+      }
     }
   }
 
@@ -86,8 +100,9 @@ module.exports = class SaasifySDK {
     }
 
     const options = {
-      method,
+      baseURL: this._baseUrl,
       url,
+      method,
       headers: {
         'content-type': 'application/json',
         ...authHeaders,
