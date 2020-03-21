@@ -1,5 +1,5 @@
 {
-  "name": "saasify-sdk",
+  "name": "saasify-faas-sdk",
   "version": "1.16.0",
   "description": "HTTP client for invoking Saasify FaaS.",
   "main": "index.js",
