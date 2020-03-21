@@ -2,13 +2,15 @@
 
 const SaasifyFaasSDK = require('saasify-faas-sdk')
 
+const isBrowser = typeof window !== 'undefined'
+
 module.exports = class SaasifySDK {
   constructor(opts = {}) {
     const {
       projectId,
       defaults,
       timeout = 10000,
-      target = window && window.parent,
+      target = isBrowser && window.parent,
       log = console.log.bind(console)
     } = opts
 
@@ -104,28 +106,30 @@ module.exports = class SaasifySDK {
     return this._ready
   }
 
-  get sdk() {
-    return this.ready.then(() => {
-      if (!this._sdk) {
-        this._sdk = new SaasifyFaasSDK({
-          token: this._consumer.token,
-          deployment: this._deployment.id
-        })
+  get api() {
+    if (!this._api) {
+      if (!this._consumer) {
+        return null
       }
 
-      return this._sdk
-    })
+      this._api = new SaasifyFaasSDK({
+        token: this._consumer.token,
+        deployment: this._deployment.id
+      })
+    }
+
+    return this._api
   }
 
   get project() {
-    return this.ready.then(() => this._project)
+    return this._project
   }
 
   get deployment() {
-    return this.ready.then(() => this._deployment)
+    return this._deployment
   }
 
   get consumer() {
-    return this.ready.then(() => this._consumer)
+    return this._consumer
   }
 }
