@@ -56,7 +56,6 @@ export class ConsumerFrameEmbed extends Component {
     const { deployment } = config
     const { project } = deployment
     let message
-    console.log(event)
 
     try {
       message = JSON.parse(event.data)

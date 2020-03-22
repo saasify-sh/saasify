@@ -9,18 +9,28 @@ module.exports = class SaasifySDK {
   constructor(opts = {}) {
     const {
       projectId,
-      defaults,
+      deploymentId,
       baseUrl,
+      developmentToken,
       timeout = 10000,
-      target = isBrowser && window.parent,
+      target = isBrowser && window.parent !== window && window.parent,
       log = console.log.bind(console)
     } = opts
 
     this._baseUrl = baseUrl
     this._log = log
 
+    this._projectId = projectId
+    this._deploymentId = deploymentId
+
+    this._project = null
+    this._deployment = null
+    this._consumer = null
+    this._token = null
+    this._api = null
+
     this._ready = new Promise((resolve, reject) => {
-      if (target && target !== window) {
+      if (target) {
         this._log('SaasifySDK initializing iframe')
 
         if (!projectId) {
@@ -39,8 +49,6 @@ module.exports = class SaasifySDK {
             if (event.source !== target) {
               return
             }
-
-            log('iframe message event', event)
 
             try {
               const message = JSON.parse(event.data)
@@ -68,15 +76,22 @@ module.exports = class SaasifySDK {
 
         target.postMessage(message, '*')
       } else {
-        this._log('SaasifySDK no iframe context found - using defaults')
-
-        if (!defaults) {
+        if (!developmentToken) {
           throw new Error(
-            'SaasifySDK error: no iframe context found - missing required parameter "defaults"'
+            'SaasifySDK error: no iframe context found - missing required parameter "developmentToken"'
           )
         }
 
-        this._init(defaults, resolve, reject)
+        this._log(
+          'SaasifySDK no iframe context found - using development token'
+        )
+        this._init(
+          {
+            token: developmentToken
+          },
+          resolve,
+          reject
+        )
       }
     })
   }
@@ -96,6 +111,13 @@ module.exports = class SaasifySDK {
       return reject(new Error('SaasifySDK error: missing valid auth "token"'))
     }
 
+    this._api = new SaasifyFaasSDK({
+      baseUrl: this._baseUrl,
+      token: this._token,
+      deploymentId: this._deployment ? this._deployment.id : this._deploymentId,
+      projectId: this._project ? this._project.id : this._projectId
+    })
+
     resolve({
       project: this._project,
       deployment: this._deployment,
@@ -109,18 +131,6 @@ module.exports = class SaasifySDK {
   }
 
   get api() {
-    if (!this._api) {
-      if (!this._deployment) {
-        return null
-      }
-
-      this._api = new SaasifyFaasSDK({
-        baseUrl: this._baseUrl,
-        token: this._token,
-        deployment: this._deployment.id
-      })
-    }
-
     return this._api
   }
 
