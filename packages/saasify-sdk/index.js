@@ -4,6 +4,7 @@ const SaasifyFaasSDK = require('saasify-faas-sdk')
 // require('iframe-resize/js/iframeResizer.contentWindow.js')
 
 const isBrowser = typeof window !== 'undefined'
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = class SaasifySDK {
   constructor(opts = {}) {
@@ -12,6 +13,7 @@ module.exports = class SaasifySDK {
       deploymentId,
       baseUrl,
       developmentToken,
+      developmentTargetUrl,
       timeout = 10000,
       target = isBrowser && window.parent !== window && window.parent,
       log = console.log.bind(console)
@@ -22,6 +24,7 @@ module.exports = class SaasifySDK {
 
     this._projectId = projectId
     this._deploymentId = deploymentId
+    this._developmentTargetUrl = developmentTargetUrl
 
     this._project = null
     this._deployment = null
@@ -114,6 +117,7 @@ module.exports = class SaasifySDK {
     this._api = new SaasifyFaasSDK({
       baseUrl: this._baseUrl,
       token: this._token,
+      targetUrl: isProd ? undefined : this._developmentTargetUrl,
       deploymentId: this._deployment ? this._deployment.id : this._deploymentId,
       projectId: this._project ? this._project.id : this._projectId
     })
