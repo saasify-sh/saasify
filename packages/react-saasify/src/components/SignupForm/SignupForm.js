@@ -155,7 +155,7 @@ export class SignupForm extends Component {
             notification.error({
               message: 'Error signing up',
               description: err?.response?.data?.error || err.message,
-              duration: 10000
+              duration: 10
             })
           })
       }
