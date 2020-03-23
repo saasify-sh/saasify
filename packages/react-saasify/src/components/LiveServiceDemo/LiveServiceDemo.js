@@ -6,6 +6,12 @@ import isDeepEqual from 'fast-deep-equal'
 import copyTextToClipboard from 'copy-text-to-clipboard'
 import mediumZoom from 'medium-zoom'
 
+import mime from 'mime-types'
+import fileType from 'file-type'
+import detectCsv from 'detect-csv'
+import isHtml from 'is-html'
+import download from 'downloadjs'
+
 import { observer, inject } from 'mobx-react'
 import { Button, Tooltip } from 'lib/antd'
 import { Link } from 'react-router-dom'
@@ -66,6 +72,7 @@ export class LiveServiceDemo extends Component {
       outputUrl,
       outputContentType,
       outputError,
+      downloaded,
       hitRateLimit
     } = this.state
 
@@ -108,7 +115,14 @@ export class LiveServiceDemo extends Component {
         </div>
       )
     } else if (outputContentType) {
-      if (outputUrl) {
+      if (downloaded) {
+        // TODO: gracefully handle other content-types
+        renderedOutput = (
+          <div className={theme(styles, 'message')}>
+            The resulting "{outputContentType}" file was downloaded.
+          </div>
+        )
+      } else if (outputUrl) {
         if (outputContentType.startsWith('image/')) {
           renderedOutput = (
             <div className={theme(styles, 'img-wrapper')}>
@@ -117,14 +131,6 @@ export class LiveServiceDemo extends Component {
                 alt={this._example.name || 'Example output'}
                 zoom={this._zoom}
               />
-            </div>
-          )
-        } else {
-          // TODO: gracefully handle other content-types
-          renderedOutput = (
-            <div className={theme(styles, 'error')}>
-              The API returned an unsupported content-type "{outputContentType}
-              ".
             </div>
           )
         }
@@ -172,9 +178,8 @@ export class LiveServiceDemo extends Component {
         } else {
           // TODO: gracefully handle other content-types
           renderedOutput = (
-            <div className={theme(styles, 'error')}>
-              The API returned an unsupported content-type "{outputContentType}
-              ".
+            <div className={theme(styles, 'message')}>
+              The resulting "{outputContentType}" file preview is not supported.
             </div>
           )
         }
@@ -364,6 +369,7 @@ export class LiveServiceDemo extends Component {
       outputUrl: null,
       outputContentType: null,
       outputError: null,
+      downloaded: false,
       hitRateLimit: null
     })
 
@@ -380,6 +386,8 @@ export class LiveServiceDemo extends Component {
     )
     let result
 
+    console.log({ data, builtInExample })
+
     if (builtInExample) {
       result = {
         output: builtInExample.output,
@@ -388,6 +396,14 @@ export class LiveServiceDemo extends Component {
       }
 
       await new Promise((resolve) => {
+        if (!result.outputContentType.startsWith('image/')) {
+          // window.open(result.outputUrl)
+          const ext = mime.extension(result.outputContentType)
+          const filename = ext ? `example.${ext}` : `example`
+          result.downloaded = true
+          download(result.outputUrl, filename, result.outputContentType)
+        }
+
         setTimeout(resolve, 750)
       })
     } else {
@@ -396,6 +412,47 @@ export class LiveServiceDemo extends Component {
         service,
         data
       })
+
+      if (!result.hitRateLimit && result.outputContentType) {
+        if (result.outputUrl) {
+          if (result.outputContentType.startsWith('image/')) {
+            // TODO: clean this up
+          } else {
+            window.open(result.outputUrl)
+          }
+        } else {
+          if (result.outputContentType.startsWith('application/octet-stream')) {
+            const overrides = await getContentTypeForBuffer(result.output)
+
+            if (overrides) {
+              // TODO: clean this up
+              result.origOutput = result.output
+              result = {
+                ...result,
+                ...overrides
+              }
+            }
+          }
+
+          if (
+            result.outputContentType.startsWith('text/') &&
+            !result.outputContentType.startsWith('text/html') &&
+            !result.outputContentType.startsWith('text/csv')
+          ) {
+            // TODO: clean this up
+          } else if (result.outputContentType.startsWith('image/')) {
+            // TODO: clean this up
+          } else {
+            const blob = new window.Blob([result.origOutput || result.output], {
+              type: result.outputContentType
+            })
+            const ext = mime.extension(result.outputContentType)
+            const filename = ext ? `example.${ext}` : `example`
+            result.downloaded = true
+            download(blob, filename, result.outputContentType)
+          }
+        }
+      }
     }
 
     this.setState({
@@ -406,5 +463,47 @@ export class LiveServiceDemo extends Component {
 
   _handlePlaygroundChange = (values) => {
     this.setState({ values })
+  }
+}
+
+async function getContentTypeForBuffer(buffer) {
+  try {
+    const ft = await fileType.fromBuffer(buffer)
+
+    if (ft) {
+      return {
+        outputContentType: ft.mime
+      }
+    }
+
+    const str = buffer.toString('utf8')
+
+    if (isHtml(str)) {
+      return {
+        outputContentType: 'text/html',
+        output: str
+      }
+    }
+
+    try {
+      const json = JSON.parse(str)
+      return {
+        outputContentType: 'application/json',
+        output: json
+      }
+    } catch (err) {
+      // purposefully ignore
+    }
+
+    // TODO: this CSV parser is way too lenient
+    const csv = detectCsv(str)
+    if (csv) {
+      return {
+        outputContentType: 'text/csv',
+        output: str
+      }
+    }
+  } catch (err) {
+    console.warn('getContentTypeForBuffer error', err)
   }
 }

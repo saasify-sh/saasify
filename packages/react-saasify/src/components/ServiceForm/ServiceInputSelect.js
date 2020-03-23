@@ -39,6 +39,7 @@ export class ServiceInputSelect extends Component {
         <AutoComplete
           defaultValue={defaultValue}
           style={style}
+          onChange={this._onChange}
           onSelect={this._onChange}
           onSearch={this._onSearch}
           placeholder='Select'

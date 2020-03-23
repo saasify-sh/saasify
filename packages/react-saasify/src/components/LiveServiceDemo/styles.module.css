@@ -98,6 +98,12 @@
   text-align: center;
 }
 
+.output .message {
+  font-weight: 600;
+  padding: 24px;
+  text-align: center;
+}
+
 .output .img-wrapper {
   padding: 24px;
 }
