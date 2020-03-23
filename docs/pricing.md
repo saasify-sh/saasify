@@ -2,18 +2,19 @@
 
 # Pricing
 
-!> All payments and billing info is securely handled by [Stripe](https://stripe.com).
+!> All billing and payment-related features are securely handled by [Stripe](https://stripe.com).
 
-Saasify supports almost all of Stripe's billing models. This includes:
+Saasify supports most of Stripe's billing models. This includes:
 
-- Automatic recurring subscriptions
+- Recurring subscriptions
 - Multiple pricing plans
 - Metered and licensed billing
 - Billing based on the number of requests in an invoice period (metered billing)
+- Billing based on a flat monthly amount (licensed billing)
 - Per-plan pricing tiers for metered billing
 - Per-plan rate limits
 - Per-plan service enabling / disabling
-- Per-plan service customization (e.g., watermark images on free plan results)
+- Per-plan service customization (e.g., watermark images for users on the free plan)
 - Support for coupons
 - ...
 

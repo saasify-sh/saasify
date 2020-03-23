@@ -68,18 +68,18 @@ const saasifyConfig = {
         to: '/about'
       },
       {
+        children: 'Docs',
+        href: 'https://docs.saasify.sh/#/README'
+      },
+      {
         children: 'Pricing',
         to: '/pricing'
       },
-      // {
-      //   children: 'Docs',
-      //   href: 'https://docs.saasify.sh/#/README'
-      // },
       {
         children: 'GitHub',
         href: 'https://github.com/saasify-sh/saasify',
         target: '_blank',
-        rel: 'noopener'
+        rel: 'noopener noreferrer'
       }
     ]
   },
@@ -93,26 +93,38 @@ const saasifyConfig = {
             to: '/'
           },
           {
-            children: 'About',
-            to: '/about'
+            label: 'Docs',
+            href: 'https://docs.saasify.sh/#/README'
           },
           {
             children: 'Pricing',
             to: '/pricing'
           },
-          // {
-          //   label: 'Docs',
-          //   href: 'https://docs.saasify.sh/#/README'
-          // },
           {
-            label: 'Blog',
-            href: 'https://blog.saasify.sh'
+            label: 'Use Cases',
+            href: 'https://docs.saasify.sh/#/use-cases'
+          },
+          {
+            label: 'Examples',
+            href: 'https://docs.saasify.sh/#/examples'
           }
         ]
       },
       {
-        label: 'Legal',
+        label: 'Company',
         links: [
+          {
+            children: 'About',
+            to: '/about'
+          },
+          {
+            label: 'Blog',
+            href: 'https://blog.saasify.sh'
+          },
+          {
+            label: 'Resources',
+            href: 'https://docs.saasify.sh/#/resources'
+          },
           {
             label: 'Terms',
             to: '/terms'
@@ -127,18 +139,18 @@ const saasifyConfig = {
         label: 'Support',
         links: [
           {
+            label: 'GitHub',
+            href: 'https://github.com/saasify-sh/saasify',
+            target: '_blank',
+            rel: 'noopener noreferrer'
+          },
+          {
             label: 'Slack',
             href: 'https://slack.saasify.sh'
           },
           {
             label: 'Email',
             href: 'mailto:support@saasify.sh'
-          },
-          {
-            label: 'GitHub',
-            href: 'https://github.com/saasify-sh/saasify',
-            target: '_blank',
-            rel: 'noopener'
           }
         ]
       }
