@@ -1,6 +1,6 @@
 {
   "name": "saasify-sdk",
-  "version": "1.16.1",
+  "version": "1.17.3",
   "description": "Client-side iframe embedding SDK for Saasify.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
@@ -22,7 +22,7 @@
     "test": "ava -v"
   },
   "dependencies": {
-    "saasify-faas-sdk": "^1.16.0"
+    "saasify-faas-sdk": "^1.17.3"
   },
   "devDependencies": {
     "ava": "^3.5.0"
