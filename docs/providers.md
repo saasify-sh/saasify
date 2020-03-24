@@ -17,6 +17,7 @@ If you're interested in taking advantage of this feature and want help configuri
 - Google
 - GitHub
 - Twitter
+- Stripe
 - Spotify
 
 Interested in an integration with a third-party service provider that's not currently supported? Please [get in touch](support.md).

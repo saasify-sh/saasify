@@ -155,6 +155,15 @@ class SaaS {
   sections?: object
   theme?: Theme
   socialShare?: object
+
+  webapp?: string | WebApp
+}
+
+class WebApp {
+  url: string
+  devUrl?: string
+
+  // TODO: in the future, we should support deploying static webapps automatically via ZEIT now
 }
 
 class Theme {
