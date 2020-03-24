@@ -11,7 +11,7 @@
 </h3>
 
 <p align="center">
-  <img src="_media/saasify-how-it-works-v4-body.png" alt="How Saasify Works" />
+  <img src="_media/saasify-how-it-works-v5-body.png" alt="How Saasify Works" />
 </p>
 
 ## Getting Started

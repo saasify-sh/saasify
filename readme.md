@@ -10,7 +10,7 @@
 
 <p align="center">
   <img
-    src="https://docs.saasify.sh/_media/saasify-how-it-works-v3-body.png"
+    src="https://docs.saasify.sh/_media/saasify-how-it-works-v5-body.png"
     alt="How Saasify Works"
     width="760"
   />
