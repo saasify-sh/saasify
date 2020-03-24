@@ -43,4 +43,4 @@ We've helped dozens of SaaS products get off the ground by enabling them to focu
 - 🤖 We handle all docs, hosting, billing, and accounts for you
 - 🚀 Our CLI makes it really easy to [get started](quick-start.md)
 
-!> Saasify recently launched an open beta in March 2020. **Visit the [quick start](quick-start.md) guide to get started** or check out our list of SaaS [use cases](use-cases.md) and [examples](examples.md) to get inspired.
+!> **Visit the [quick start](quick-start.md) guide to get started** or check out our list of SaaS [use cases](use-cases.md) and [examples](examples.md) to get inspired.

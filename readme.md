@@ -26,11 +26,11 @@ We make it really simple to "saasify" your own projects like this one.
 
 ## Why Saasify?
 
-We built Saasify as an ideal solution for developers who want to earn passive income from their side projects.
+We built Saasify as an ideal solution for makers who want to earn passive income from their side projects.
 
 The only real way to validate a SaaS idea is to ship an MVP and get real customers paying for it. That's why Saasify allows you to quickly ship a quality MVP and start monetizing in minutes instead of months. ✈️
 
-We've helped dozens of SaaS products get off the ground by enabling them to focus only on their unique value instead of SaaS boilerplate. 🔥
+We've helped dozens of SaaS products get off the ground by enabling them to focus only on their unique value proposition instead of SaaS boilerplate. 🔥
 
 <p align="center">
   <img src="https://docs.saasify.sh/_media/undraw/business_shop.svg" alt="Online shop" width="200" />
@@ -45,11 +45,9 @@ Some example use cases include:
 - Workflow automation (headless chrome / bots)
 - Image & media processing tasks
 - Data transformations
-- General algorithms
+- Low/no-code workflows
 - Pre-built machine learning models
 - Your NPM module or PyPi package?
-
-Check out the [showcase](https://saasify.sh/#/showcase) for more live examples of projects which have been saasified.
 
 Have an idea that you'd like to monetize, but not sure where to start? Feel free to connect on our open [Slack](https://slack.saasify.sh). ✌️
 
@@ -58,25 +56,17 @@ Have an idea that you'd like to monetize, but not sure where to start? Feel free
 - 💰 SaaS is a proven and very profitable business model
 - ⚡️️ Quick & easy to setup your own monetizable APIs
 - 🔥 Every API comes with its own customizable marketing site
-- 💯 Built with TypeScript + AWS Lambda + Stripe
+- 💯 Built with JS/TS + AWS Lambda + Stripe
 - 🤖 We handle all docs, hosting, billing, and accounts for you
-- 🚀 Our CLI makes it really easy to get started
+- 🚀 Our CLI makes it really easy to [get started](https://docs.saasify.sh/#/quick-start)
 
 ## Getting Started
 
-Check out the [quick start](https://saasify.sh/#/quick-start) guide to get started creating your own SaaS products or visit the [showcase](https://saasify.sh/#/showcase) to get a feel for the types of products you can build with Saasify.
-
-You may also want to check out our [mission](https://saasify.sh/#/mission) to learn more about Saasify and **open source sustainability**.
+**Visit the [quick start](https://docs.saasify.sh/#/quick-start) guide to get started** or check out our list of SaaS [use cases](https://docs.saasify.sh/#/use-cases) and [examples](https://docs.saasify.sh/#/examples) to get inspired.
 
 <p align="center">
   <img src="https://docs.saasify.sh/_media/undraw/onboarding.svg" alt="Onboarding" width="200" />
 </p>
-
-## Support
-
-If Saasify interests you, the best way to show your support is to **[sign up for early access](https://saasify.sh)**.
-
-Thanks! ⭐️
 
 ## License
 
