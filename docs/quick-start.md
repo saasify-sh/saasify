@@ -8,7 +8,7 @@ The result will be a live, public, SaaS API that anyone can call and subscribe t
 
 ## Getting Started
 
-First you'll need to install the [Saasify CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli ':target=_blank').
+First you'll need to install the Saasify CLI ([open source](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli ':target=_blank')).
 
 ```bash
 npm install -g saasify
@@ -34,7 +34,9 @@ saasify init [project-name]
 
 The rest of this tutorial will use `quick-start` as the project name.
 
-This will create a new folder containing a `saasify.json` file and a basic `openapi.json` file that will look something like:
+(Note that project names cannot contain underscores or special characters.)
+
+This will create a new folder containing `saasify.json` and `openapi.json` files that will look something like this:
 
 _(saasify.json)_
 
