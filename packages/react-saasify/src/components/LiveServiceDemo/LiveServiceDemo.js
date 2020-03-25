@@ -466,6 +466,7 @@ export class LiveServiceDemo extends Component {
   }
 }
 
+// TODO: move this stuff into a separate library shared between here and the backend
 async function getContentTypeForBuffer(buffer) {
   try {
     const ft = await fileType.fromBuffer(buffer)

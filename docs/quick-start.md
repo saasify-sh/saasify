@@ -30,9 +30,9 @@ You can use the `saasify init` command to bootstrap a new project.
 saasify init [project-name]
 ```
 
-The rest of this tutorial will use `quick-start` as the project name.
-
 **You'll want to choose the default minimal template.**
+
+The rest of this tutorial will use `quick-start` as the project name.
 
 This will create a new folder containing a `saasify.json` file and a basic `openapi.json` file that will look something like:
 
@@ -73,7 +73,7 @@ _(openapi.json)_
 }
 ```
 
-This example OpenAPI spec just points to a [dummy JSON REST API](https://jsonplaceholder.typicode.com/ ':target=_blank').
+This example OpenAPI spec just points to a [dummy REST API](https://jsonplaceholder.typicode.com/ ':target=_blank').
 
 You'll eventually want to replace this with an OpenAPI spec representing your externally hosted API, but for the purposes of this guide, it will work just fine.
 
@@ -204,4 +204,4 @@ Now that you have an overview of how the platform works, here are some areas to 
 - [Use cases](case-cases.md) - A brainstorm of different SaaS product ideas as inspiration.
 - [Pricing](pricing.md) - Customize your product's pricing.
 - [Configuration](configuration.md) - Fine-grained customization of your product and the template-based web client.
-  <!-- - [Getting paid](getting-paid.md) - Setup payouts via Stripe Connect or Paypal. -->
+  <!-- - [Getting paid](getting-paid.md) - Setup payouts via Stripe Connect or PayPal. -->
