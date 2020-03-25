@@ -32,6 +32,7 @@ test('username/projectName@deployment/servicePath error', (t) => {
 
 test('username/projectName@version/servicePath success', (t) => {
   success(t, 'username/foo-bar@latest/foo')
+  success(t, 'username/foo-bar@dev/foo')
   success(t, 'username/foo-bar@1.0.0/foo')
   success(t, 'username/fooBar123-yo@0.0.1/foo_bar_BAR_901')
   success(t, 'username/fooBar123-yo@0.0.1/foo/bar/123-456')
@@ -76,6 +77,7 @@ test('username/projectName@deployment error', (t) => {
 test('username/projectName@version success', (t) => {
   success(t, 'abc/hello-world@1.0.3')
   success(t, 'a16z/foo-bar@latest')
+  success(t, 'a16z/foo-bar@dev')
   success(t, 'foodoo/foo-bar@1.0.1')
   success(t, 'u/fooBar123-yo@3.2.2234')
   success(t, 'username/foo-bar@1.0.3/')
