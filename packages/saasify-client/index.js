@@ -332,10 +332,13 @@ module.exports = class SaasifyClient {
     }).then((res) => res.data)
   }
 
-  async getConsumerByProject(projectId) {
+  async getConsumerByProject(projectId, opts) {
     return this._request({
       url: `/1/consumers/projects/${projectId}`,
-      params: this._params
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then((res) => res.data)
   }
 
