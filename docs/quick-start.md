@@ -159,10 +159,10 @@ Saasify's API gateway adds some powerful functionality to your downstream API:
 
 ## Publishing your Deployment
 
-Once you're happy with your project, it's time to publish it which will enable your customers to start paying for your product.
+Once you're happy with your project, it's time to publish your most recent deployment which will enable your customers to start paying for your product.
 
 ```bash
-saasify publish <deployment-id>
+saasify publish
 ```
 
 This will prompt you for a version number following [semver](https://semver.org ':target=_blank') format. Version numbers must increase with each published version, and changes to pricing require a major version update.
@@ -191,7 +191,7 @@ saasify deploy
 # iterate...
 
 # publish your product live which enables billing
-saasify publish <deployment-id>
+saasify publish
 
 # start marketing your live product...
 ```

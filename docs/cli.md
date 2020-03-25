@@ -38,7 +38,7 @@ Commands:
 Workflow:
   init [options] [project-name]                        Creates a new project based on a template
   deploy [options] [path]                              Creates a new deployment
-  publish <deploymentId|deploymentUrl>                 Publishes a deployment
+  publish [deploymentId|deploymentUrl]                 Publishes a deployment
   ls|list [project]                                    Lists deployments
   rm|remove [options] [deploymentId|deploymentUrl...]  Removes deployments
 
