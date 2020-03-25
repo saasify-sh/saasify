@@ -8,6 +8,8 @@ import { Loading } from '../Loading'
 
 import styles from './styles.module.css'
 
+// TODO: when auth.consumer is updated, forcefully refresh the iframe
+
 @inject('auth')
 @inject('config')
 @observer

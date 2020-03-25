@@ -198,8 +198,16 @@ export class ProfileSection extends Component {
 
         notification.success({
           message: 'Subscription canceled',
-          description:
-            'Your subscription has been canceled. Any outstanding charges will be charged at the end of the current billing cycle.'
+          description: (
+            <span>
+              <p>
+                Your subscription has been canceled. Any outstanding charges
+                will be charged at the end of the current billing cycle.'
+              </p>
+
+              <p>It may take a few minutes for the changes to take effect.</p>
+            </span>
+          )
         })
 
         this.setState({ isLoadingUnsubscribe: false })
