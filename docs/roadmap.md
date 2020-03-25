@@ -4,9 +4,9 @@
 
 Saasify's goal is to become the **Shopify for SaaS**.
 
-Shopify has helped over a million people start their own e-commerce business, and Saasify's goal is to provide the same type of world class solution for SaaS.
+Shopify has helped over a million people launch their own e-commerce shops, and Saasify's goal is to provide the same type of world class solution for SaaS products.
 
-Saasify's current solution is focused on making it as easy as possible to launch **API-first SaaS products**, and we'll be gradually adding support for more types of SaaS products over time.
+Our current solution is focused on making it as easy as possible to launch **API-first SaaS products**, and we'll be gradually expanding our support for more types of products over time.
 
 To achieve these goals as a platform, we'll be focused on a few key areas of product development:
 
