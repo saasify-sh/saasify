@@ -36,6 +36,7 @@
     "commander": "^2.20.0",
     "conf": "^6.0.1",
     "credit-card": "^3.0.2",
+    "date-fns": "^2.11.0",
     "delay": "^4.3.0",
     "didyoumean": "^1.2.1",
     "enquirer": "^2.3.0",
