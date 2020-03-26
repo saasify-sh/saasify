@@ -51,7 +51,8 @@ export class ProfileSection extends Component {
       isLoadingRefreshAuthToken
     } = this.state
 
-    const hasSubscription = auth.consumer && auth.consumer.enabled
+    const hasSubscription =
+      auth.consumer && auth.consumer.enabled && auth.consumer.plan !== 'free'
 
     const columns = [
       {

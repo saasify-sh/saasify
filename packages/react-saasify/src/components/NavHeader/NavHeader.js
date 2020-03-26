@@ -81,17 +81,21 @@ export class NavHeader extends Component {
         <div className={theme(styles, 'content')}>
           <div className={theme(styles, 'primary')}>
             <Link to='/'>
-              <span className={theme(styles, 'logo-image')}>
-                <Logo className={theme(styles, 'logo')} />
-                <Logo
-                  className={theme(
-                    styles,
-                    'logo',
-                    theme(styles, 'logo--light')
-                  )}
-                  light
-                />
-              </span>
+              {config.logo &&
+                config?.deployment?.saas?.sections?.navHeader?.logo !==
+                  false && (
+                  <span className={theme(styles, 'logo-image')}>
+                    <Logo className={theme(styles, 'logo')} />
+                    <Logo
+                      className={theme(
+                        styles,
+                        'logo',
+                        theme(styles, 'logo--light')
+                      )}
+                      light
+                    />
+                  </span>
+                )}
 
               {config.logo &&
                 config?.header?.displayName !== false &&
