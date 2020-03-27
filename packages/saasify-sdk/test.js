@@ -6,6 +6,7 @@ const SaasifySDK = require('.')
 
 test('basic', async (t) => {
   const sdk = new SaasifySDK({
+    projectId: 'dev/test',
     developmentToken: 'test-token'
   })
 
