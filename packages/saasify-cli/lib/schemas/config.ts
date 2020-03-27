@@ -6,8 +6,12 @@ class Config {
   // project name
   name?: string
 
-  // Path to a local OpenAPI JSON file or an inline OpenAPI spec
-  openapi: string | object
+  // Path to a local OpenAPI JSON file or a URL to a remote OpenAPI JSON spec
+  openapi: string
+
+  // Override for the OpenAPI server url
+  // (you may also specify this secretly via the OPENAPI_SERVER_URL environment variable)
+  serverUrl?: string
 
   // optional pricing config
   pricingPlans?: PricingPlan[]

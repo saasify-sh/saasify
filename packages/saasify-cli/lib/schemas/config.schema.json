@@ -45,10 +45,11 @@
         },
         "openapi": {
           "title": "openapi",
-          "oneOf": [
-            { "type": "object", "additionalProperties": true },
-            { "type": "string" }
-          ]
+          "type": "string"
+        },
+        "serverUrl": {
+          "title": "openapi",
+          "type": "string"
         },
         "services": {
           "type": "array",
