@@ -39,6 +39,7 @@
     "date-fns": "^2.11.0",
     "delay": "^4.3.0",
     "didyoumean": "^1.2.1",
+    "dotenv": "^8.2.0",
     "enquirer": "^2.3.0",
     "execa": "^2.1.0",
     "fast-stream-to-buffer": "^1.0.0",

@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 'use strict'
 
+require('dotenv').config()
+
 const fs = require('fs').promises
 const program = require('commander')
 const SaasifyClient = require('saasify-client')

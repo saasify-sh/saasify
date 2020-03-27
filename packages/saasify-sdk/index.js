@@ -19,11 +19,17 @@ module.exports = class SaasifySDK {
       log = console.log.bind(console)
     } = opts
 
+    if (!projectId) {
+      throw new Error(
+        'SaasifySDK error: missing required parameter "projectId"'
+      )
+    }
+
     this._baseUrl = baseUrl
     this._log = log
 
     this._projectId = projectId
-    this._deploymentId = deploymentId
+    this._deploymentId = deploymentId || `${projectId}@dev`
     this._developmentTargetUrl = developmentTargetUrl
 
     this._project = null
@@ -35,12 +41,6 @@ module.exports = class SaasifySDK {
     this._ready = new Promise((resolve, reject) => {
       if (target) {
         this._log('SaasifySDK initializing iframe')
-
-        if (!projectId) {
-          throw new Error(
-            'SaasifySDK error: missing required parameter "projectId"'
-          )
-        }
 
         const initTimeout = setTimeout(() => {
           reject(new Error('SaasifySDK error: timeout initializing iframe'))
