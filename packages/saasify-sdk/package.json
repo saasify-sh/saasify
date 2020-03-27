@@ -1,6 +1,6 @@
 {
   "name": "saasify-sdk",
-  "version": "1.17.4",
+  "version": "1.17.12",
   "description": "Client-side iframe embedding SDK for Saasify.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
