@@ -18,7 +18,7 @@ export const team = [
   {
     photo: photoChrisVilla,
     name: 'Chris Villa',
-    title: 'Advisor & Contributor',
+    title: 'Developer',
     linkedin: 'https://www.linkedin.com/in/chrisvilla/',
     github: 'https://github.com/chrisvxd',
     twitter: 'https://twitter.com/chrisvxd'
@@ -26,7 +26,7 @@ export const team = [
   {
     photo: photoJustinBennett,
     name: 'Justin Bennett',
-    title: 'Contributor',
+    title: 'Developer',
     linkedin: 'https://www.linkedin.com/in/jtbnnt/',
     github: 'https://github.com/zephraph',
     twitter: 'https://twitter.com/Zephraph'
