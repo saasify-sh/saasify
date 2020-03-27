@@ -1,0 +1,51 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Fast API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Read Root",
+        "operationId": "read_root__get",
+        "parameters": [
+          {
+            "schema": {
+              "title": "x-saasify-user",
+              "type": "string"
+            },
+            "name": "x-saasify-user",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "title": "x-saasify-plan",
+              "type": "string"
+            },
+            "name": "x-saasify-plan",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "title": "foo",
+              "type": "string"
+            },
+            "name": "foo",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

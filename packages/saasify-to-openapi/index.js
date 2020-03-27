@@ -16,6 +16,10 @@ const { prepareJsonSchema } = require('./lib/prepare-json-schema')
  * @return {Promise}
  */
 module.exports = async function saasifyToOpenAPI(deployment) {
+  if (deployment.openapi) {
+    return deployment.openapi
+  }
+
   const components = { schemas: {} }
   const paths = await pReduce(
     deployment.services,

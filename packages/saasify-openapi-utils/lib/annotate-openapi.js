@@ -5,6 +5,7 @@ const contentType = require('content-type')
 const codegen = require('saasify-codegen')
 const { parseFaasIdentifier } = require('saasify-faas-utils')
 
+const openapiHeaderBlacklist = require('./openapi-header-blacklist')
 const pathToService = require('./path-to-service')
 const processReadme = require('./process-readme')
 
@@ -25,7 +26,7 @@ module.exports = async (spec, deployment, opts = {}) => {
   const version = deployment.version ? `v${deployment.version}` : undefined
 
   // It's important that we overwrite the downstream origin servers and any security
-  // requirements they employ.
+  // requirements they may use.
   api.servers = [{ url: baseUrl }]
   api.security = [{ 'API Key': [] }]
 
@@ -175,6 +176,7 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
       op.summary = `${name} (${httpMethod.toUpperCase()})`
     }
 
+    annotateOperationParameters({ op, httpMethod, service })
     annotateOperationResponses({ op, httpMethod, service })
     annotateOperationCodeSamples({ op, httpMethod, service })
 
@@ -183,6 +185,20 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
 
     // TODO: move codegen and example logic from saasify-to-openapi into here
   }
+}
+
+function annotateOperationParameters({ op }) {
+  if (!op.parameters) {
+    return
+  }
+
+  op.parameters = op.parameters.filter((param) => {
+    if (param.in === 'query' && openapiHeaderBlacklist.has(param.name)) {
+      return false
+    }
+
+    return true
+  })
 }
 
 function annotateOperationResponses({ op, service }) {

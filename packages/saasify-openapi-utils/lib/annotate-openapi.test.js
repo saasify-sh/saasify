@@ -7,6 +7,7 @@ const test = require('ava')
 
 const convertSaasifyToOpenAPI = require('saasify-to-openapi')
 const annotateOpenAPI = require('./annotate-openapi')
+const openapiHeaderBlacklist = require('./openapi-header-blacklist')
 
 const fixtures = globby.sync('./fixtures/deployments/*.json')
 
@@ -18,12 +19,28 @@ for (const fixture of fixtures) {
     const spec = await convertSaasifyToOpenAPI(deployment)
     t.truthy(spec)
     const fullSpec = await annotateOpenAPI(spec, deployment)
+    t.truthy(fullSpec)
 
     // TODO: temporary
     delete fullSpec.info.description
-    console.log(fullSpec)
+    console.log(JSON.stringify(fullSpec, null, 2))
 
-    t.truthy(fullSpec)
     t.snapshot(fullSpec)
+
+    for (const path of Object.keys(fullSpec.paths)) {
+      const pathItem = fullSpec.paths[path]
+
+      for (const httpMethod of Object.keys(pathItem)) {
+        const op = pathItem[httpMethod]
+
+        if (op.parameters) {
+          for (const param of op.parameters) {
+            if (param.in === 'query') {
+              t.false(openapiHeaderBlacklist.has(param.name))
+            }
+          }
+        }
+      }
+    }
   })
 }
