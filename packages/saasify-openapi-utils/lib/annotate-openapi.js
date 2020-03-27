@@ -193,7 +193,7 @@ function annotateOperationParameters({ op }) {
   }
 
   op.parameters = op.parameters.filter((param) => {
-    if (param.in === 'query' && openapiHeaderBlacklist.has(param.name)) {
+    if (param.in === 'header' && openapiHeaderBlacklist.has(param.name)) {
       return false
     }
 

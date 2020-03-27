@@ -35,7 +35,7 @@ for (const fixture of fixtures) {
 
         if (op.parameters) {
           for (const param of op.parameters) {
-            if (param.in === 'query') {
+            if (param.in === 'header') {
               t.false(openapiHeaderBlacklist.has(param.name))
             }
           }

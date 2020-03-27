@@ -488,7 +488,7 @@
                 "type": "string"
               },
               "name": "x-saasify-user",
-              "in": "query"
+              "in": "header"
             },
             {
               "schema": {
@@ -496,7 +496,7 @@
                 "type": "string"
               },
               "name": "x-saasify-plan",
-              "in": "query"
+              "in": "header"
             }
           ],
           "responses": {
@@ -559,7 +559,7 @@
                 "type": "string"
               },
               "name": "x-saasify-user",
-              "in": "query"
+              "in": "header"
             },
             {
               "schema": {
@@ -567,7 +567,7 @@
                 "type": "string"
               },
               "name": "x-saasify-plan",
-              "in": "query"
+              "in": "header"
             }
           ],
           "responses": {
@@ -630,7 +630,7 @@
                 "type": "string"
               },
               "name": "x-saasify-user",
-              "in": "query"
+              "in": "header"
             },
             {
               "schema": {
@@ -638,7 +638,7 @@
                 "type": "string"
               },
               "name": "x-saasify-plan",
-              "in": "query"
+              "in": "header"
             }
           ],
           "responses": {
@@ -692,7 +692,7 @@
                 "type": "string"
               },
               "name": "x-saasify-user",
-              "in": "query"
+              "in": "header"
             },
             {
               "schema": {
@@ -700,7 +700,7 @@
                 "type": "string"
               },
               "name": "x-saasify-plan",
-              "in": "query"
+              "in": "header"
             }
           ],
           "responses": {
@@ -745,7 +745,7 @@
                 "type": "string"
               },
               "name": "x-saasify-user",
-              "in": "query"
+              "in": "header"
             },
             {
               "schema": {
@@ -753,7 +753,7 @@
                 "type": "string"
               },
               "name": "x-saasify-plan",
-              "in": "query"
+              "in": "header"
             }
           ],
           "responses": {
@@ -879,7 +879,7 @@
                 "type": "string"
               },
               "name": "x-saasify-user",
-              "in": "query"
+              "in": "header"
             },
             {
               "schema": {
@@ -887,7 +887,7 @@
                 "type": "string"
               },
               "name": "x-saasify-plan",
-              "in": "query"
+              "in": "header"
             }
           ],
           "responses": {
@@ -932,7 +932,7 @@
                 "type": "string"
               },
               "name": "x-saasify-user",
-              "in": "query"
+              "in": "header"
             },
             {
               "schema": {
@@ -940,7 +940,7 @@
                 "type": "string"
               },
               "name": "x-saasify-plan",
-              "in": "query"
+              "in": "header"
             }
           ],
           "responses": {
