@@ -325,6 +325,13 @@
           "$ref": "#/definitions/PricingPlanMeteredConfig",
           "title": "requests"
         },
+        "metrics": {
+          "title": "metrics",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PricingPlanMeteredConfig"
+          }
+        },
         "rateLimit": {
           "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
           "title": "rateLimit"
@@ -341,6 +348,18 @@
           "type": "number",
           "title": "amount",
           "minimum": 0
+        },
+        "slug": {
+          "type": "string",
+          "title": "slug"
+        },
+        "label": {
+          "type": "string",
+          "title": "label"
+        },
+        "unitLabel": {
+          "type": "string",
+          "title": "unitLabel"
         },
         "billingScheme": {
           "type": "string",

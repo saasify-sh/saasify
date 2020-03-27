@@ -61,19 +61,26 @@ class PricingPlan {
   // 2999 = $29.99
   amount?: number = 0
 
-  // optional metered billing per request
+  // optional metered billing to charge per request
   requests?: PricingPlanMeteredConfig
+
+  // optional metered billing to charge per custom metrics
+  metrics?: PricingPlanMeteredConfig[]
 
   // optional rate limit to enforce on this plan
   rateLimit?: RateLimit
 }
 
 class PricingPlanMeteredConfig {
-  // amount to charge for each request in USD cents (metered billing)
+  // amount to charge for each unit in USD cents (metered billing)
   // 100 = $1.00
   // 2 = $0.02
   // 0.05 = $0.0005
   amount?: number
+
+  slug?: string
+  label?: string
+  unitLabel?: string
 
   // more advanced per-plan tiered pricing options
   billingScheme?: string = 'per_unit' // | tiered
