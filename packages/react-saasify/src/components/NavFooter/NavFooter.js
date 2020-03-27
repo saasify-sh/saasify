@@ -38,11 +38,20 @@ export class NavFooter extends Component {
       >
         <div className={theme(styles, 'content')}>
           <div className={theme(styles, 'detailColumn')}>
-            <Link to='/'>
-              <Logo className={theme(styles, 'logo')} />
-            </Link>
+            {config.logo &&
+              config?.deployment?.saas?.sections?.navFooter?.logo !== false && (
+                <Link to='/'>
+                  <Logo className={theme(styles, 'logo')} />
+                </Link>
+              )}
 
-            <div className={theme(styles, 'detail')}>Brooklyn, NY</div>
+            {config?.deployment?.saas?.sections?.navFooter?.location !==
+              false && (
+              <div className={theme(styles, 'detail')}>
+                {config?.deployment?.saas?.sections?.navFooter?.location ||
+                  'Brooklyn, NY'}
+              </div>
+            )}
           </div>
 
           {config.footer?.columns?.map((column) => (
