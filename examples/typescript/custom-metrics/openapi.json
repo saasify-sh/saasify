@@ -1,0 +1,23 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "custom-metrics",
+    "description": "Powered by Saasify"
+  },
+  "paths": {
+    "/get": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Example GET service which echoes its inputs"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://httpbin.org"
+    }
+  ]
+}
