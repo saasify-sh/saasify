@@ -60,6 +60,7 @@ export class PricingPlan extends Component {
     const isDowngrade =
       !isCurrentPlan &&
       auth.consumer &&
+      auth.consumer.plan !== 'free' &&
       auth.consumer.plan !== plan.slug &&
       plan.isFree
 
@@ -103,6 +104,25 @@ export class PricingPlan extends Component {
                   )}
                 </Fragment>
               )}
+
+              {plan.metrics &&
+                plan.metrics.map((metric) => (
+                  <Fragment key={metric.slug}>
+                    <div className={theme(styles, 'emphasis')}>
+                      {metric.label}
+                    </div>
+
+                    <div>{metric.price}</div>
+
+                    {metric.rateLimit || (
+                      <img
+                        alt='unlimited'
+                        src={infinity}
+                        className={theme(styles, 'infinity')}
+                      />
+                    )}
+                  </Fragment>
+                ))}
             </div>
 
             {(!plan.features || !plan.features.length) && (
@@ -171,7 +191,9 @@ export class PricingPlan extends Component {
                   (isDowngrade
                     ? 'Downgrade'
                     : auth.consumer?.enabled
-                    ? 'Switch plans'
+                    ? auth.consumer?.plan === 'free'
+                      ? 'Upgrade'
+                      : 'Switch plans'
                     : 'Get started')}
               </CTAButton>
             </CustomLink>
