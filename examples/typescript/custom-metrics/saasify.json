@@ -1,0 +1,23 @@
+{
+  "name": "custom-metrics",
+  "openapi": "./openapi.json",
+  "pricingPlans": [
+    {
+      "name": "Free",
+      "rateLimit": {
+        "requestsInterval": "1h",
+        "requestsMaxPerInterval": 100
+      }
+    },
+    {
+      "name": "Custom",
+      "amount": 0,
+      "metrics": [
+        {
+          "slug": "orders",
+          "amount": 0.002
+        }
+      ]
+    }
+  ]
+}
