@@ -78,7 +78,7 @@ class PricingPlanMeteredConfig {
   // 0.05 = $0.0005
   amount?: number
 
-  slug?: string
+  name?: string
   label?: string
   unitLabel?: string
 
