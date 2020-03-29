@@ -1,7 +1,7 @@
 {
   "name": "saasify-provider-sdk",
   "version": "1.17.4",
-  "description": "JS SDK for using the Saasify provider API.",
+  "description": "JS SDK for the Saasify Provider API.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
   "repository": "saasify-sh/saasify",

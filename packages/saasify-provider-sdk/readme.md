@@ -6,9 +6,13 @@
 
 # saasify-provider-sdk
 
-> JS SDK for using the [Saasify](https://saasify.sh) provider API.
+> JS SDK for the [Saasify](https://saasify.sh) Provider API.
 
 [![NPM](https://img.shields.io/npm/v/saasify-provider-sdk.svg)](https://www.npmjs.com/package/saasify-provider-sdk) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+This SDK is a small JS package that Saasify API providers can use to manage their customer's billing usage.
+
+It's likely that we'll be adding more functionality to this SDK over time, but the immediate need is for more flexibility around reporting metered billing usage for custom metrics.
 
 ## Install
 
