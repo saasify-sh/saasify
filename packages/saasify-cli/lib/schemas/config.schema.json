@@ -227,7 +227,11 @@
           "title": "reportUsage"
         },
         "rateLimit": {
-          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
+          "oneOf": [
+            { "$ref": "#/definitions/RateLimit" },
+            { "type": "null" },
+            { "type": "string" }
+          ],
           "title": "rateLimit"
         },
         "pricingPlanConfig": {
@@ -245,10 +249,14 @@
       "title": "RateLimit",
       "type": "object",
       "properties": {
-        "requests": {
+        "enabled": {
           "type": "boolean",
           "title": "enabled",
           "default": true
+        },
+        "desc": {
+          "type": "string",
+          "title": "desc"
         },
         "requestsInterval": {
           "title": "requestsInterval",
@@ -333,7 +341,11 @@
           }
         },
         "rateLimit": {
-          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
+          "oneOf": [
+            { "$ref": "#/definitions/RateLimit" },
+            { "type": "null" },
+            { "type": "string" }
+          ],
           "title": "rateLimit"
         }
       },
@@ -377,6 +389,14 @@
             "$ref": "#/definitions/PricingPlanTier"
           },
           "title": "tiers"
+        },
+        "rateLimit": {
+          "oneOf": [
+            { "$ref": "#/definitions/RateLimit" },
+            { "type": "null" },
+            { "type": "string" }
+          ],
+          "title": "rateLimit"
         }
       },
       "additionalProperties": false
@@ -416,7 +436,11 @@
           "title": "reportUsage"
         },
         "rateLimit": {
-          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
+          "oneOf": [
+            { "$ref": "#/definitions/RateLimit" },
+            { "type": "null" },
+            { "type": "string" }
+          ],
           "title": "rateLimit"
         }
       },

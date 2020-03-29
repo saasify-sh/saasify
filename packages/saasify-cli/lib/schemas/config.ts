@@ -68,7 +68,7 @@ class PricingPlan {
   metrics?: PricingPlanMeteredConfig[]
 
   // optional rate limit to enforce on this plan
-  rateLimit?: RateLimit
+  rateLimit?: RateLimit | string
 }
 
 class PricingPlanMeteredConfig {
@@ -86,6 +86,9 @@ class PricingPlanMeteredConfig {
   billingScheme?: string = 'per_unit' // | tiered
   tiers?: PricingPlanTier[]
   tiersMode?: string = 'graduated' // | volume
+
+  // optional rate limit to enforce for this metric
+  rateLimit?: RateLimit | string
 }
 
 class PricingPlanTier {
