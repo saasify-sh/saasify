@@ -199,6 +199,7 @@ export class ProfileSection extends Component {
 
         notification.success({
           message: 'Subscription canceled',
+          duration: 0,
           description: (
             <span>
               <p>
@@ -218,7 +219,7 @@ export class ProfileSection extends Component {
 
         notification.error({
           message: 'Error canceling subscription',
-          description: err.error?.message,
+          description: err?.response?.data?.error || err.error?.message,
           duration: 0
         })
 
@@ -247,7 +248,7 @@ export class ProfileSection extends Component {
 
         notification.error({
           message: 'Error refreshing auth token',
-          description: err.error && err.error.message,
+          description: err?.response?.data?.error || err.error?.message,
           duration: 0
         })
 

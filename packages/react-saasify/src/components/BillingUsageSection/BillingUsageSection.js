@@ -15,43 +15,13 @@ import styles from './styles.module.css'
 
 // TODO: also show total $ spent
 
-const columns = [
-  {
-    title: 'Start',
-    dataIndex: 'request.period.start',
-    render: (timestamp) =>
-      timestamp ? format(new Date(timestamp * 1000), 'MM/dd/yyyy') : ''
-  },
-  {
-    title: 'End',
-    dataIndex: 'request.period.end',
-    render: (timestamp) =>
-      timestamp ? format(new Date(timestamp * 1000), 'MM/dd/yyyy') : 'Current'
-  },
-  {
-    title: 'Number of Requests',
-    dataIndex: 'request.total_usage',
-    render: (amount) => amount
-  }
-  /*
-  {
-    title: 'Compute Time (ms)',
-    dataIndex: 'compute.total_usage',
-    render: (amount) => amount
-  },
-  {
-    title: 'Bandwidth (GBs)',
-    dataIndex: 'bandwidth.total_usage',
-    render: (amount) => (amount === undefined ? 0 : amount)
-  }
-  */
-]
-
 @inject('auth')
+@inject('config')
 @observer
 export class BillingUsageSection extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    config: PropTypes.object.isRequired
   }
 
   state = {
@@ -61,6 +31,47 @@ export class BillingUsageSection extends Component {
     },
     loading: false
   }
+
+  // unique metrics enabled on this deployment across all pricing plans
+  // TODO: this should be handled gracefully by the backend
+  metrics = this.props.config.deployment.pricingPlans.reduce((acc, plan) => {
+    return {
+      ...acc,
+      ...plan.metrics.reduce(
+        (acc, metric) => ({ ...acc, [metric.slug]: metric }),
+        {}
+      )
+    }
+  }, {})
+
+  columns = [
+    {
+      title: 'Start',
+      dataIndex: 'request.period.start',
+      render: (timestamp) =>
+        timestamp ? format(new Date(timestamp * 1000), 'MM/dd/yyyy') : ''
+    },
+    {
+      title: 'End',
+      dataIndex: 'request.period.end',
+      render: (timestamp) =>
+        timestamp ? format(new Date(timestamp * 1000), 'MM/dd/yyyy') : 'Current'
+    },
+    {
+      title: 'Total Requests',
+      dataIndex: 'request.total_usage'
+    }
+  ].concat(
+    Object.keys(this.metrics).map((metricSlug) => {
+      const metric = this.metrics[metricSlug]
+
+      return {
+        title: `Total ${metric.label}`,
+        dataIndex: `${metricSlug}.total_usage`,
+        render: (amount) => <b>{amount || 0}</b>
+      }
+    })
+  )
 
   componentDidMount() {
     this._fetch()
@@ -76,15 +87,14 @@ export class BillingUsageSection extends Component {
   )
 
   render() {
-    const { auth, ...rest } = this.props
-
+    const { auth, config, ...rest } = this.props
     const { data, pagination, loading } = this.state
 
     return (
       <Section id='billing-usage' title='Usage' {...rest}>
         <div className={theme(styles, 'body')}>
           <Table
-            columns={columns}
+            columns={this.columns}
             rowKey={(record) => record.request.id}
             dataSource={data}
             pagination={pagination}
