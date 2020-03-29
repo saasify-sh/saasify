@@ -23,8 +23,8 @@ npm install --save saasify-provider-sdk
 ## Usage
 
 ```js
-const SaasifyProvider = require('saasify-provider-sdk')
-const sdk = new SaasifyProvider({ token: 'YOUR PROVIDER TOKEN' })
+const SaasifyProviderSDK = require('saasify-provider-sdk')
+const sdk = new SaasifyProviderSDK({ token: 'YOUR PROVIDER TOKEN' })
 
 // ...
 
@@ -37,6 +37,20 @@ const exampleHandler = async (req, res) => {
   await sdk.reportUsage({ user, metric, quantity: 10 })
 }
 ```
+
+## Authentication
+
+To use this SDK, you'll need a provider auth token which you can find on your project's admin dashboard.
+
+Provider tokens are unique per Saasify project and can be manually refreshed from your dashboard as well.
+
+## Notes
+
+Attempting to update usage for customers not subscribed to your project will fail.
+
+Attempts to misrepresent usage on behalf of your customers or scam customers out of money using the custom usage reporting API will be taken seriously and passed on to Stripe's fraud prevention departmnet.
+
+The exception to this rule is for accidental bugs and honest mistakes which will be handled on a case-by-case basis.
 
 ## License
 
