@@ -1,0 +1,13 @@
+{
+  "swagger": {
+    "specVersion": 3,
+    "entryFile": "./src/server.ts",
+    "outputDirectory": "dist"
+  },
+  "routes": {
+    "entryFile": "./src/server.ts",
+    "routesDir": "./src",
+    "middleware": "koa"
+  },
+  "ignore": ["**/node_modules/**"]
+}
