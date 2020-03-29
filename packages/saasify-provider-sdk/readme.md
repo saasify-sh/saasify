@@ -12,7 +12,7 @@
 
 This SDK is a small JS package that Saasify API providers can use to manage their customer's billing usage.
 
-It's likely that we'll be adding more functionality to this SDK over time, but the immediate need is for more flexibility around reporting metered billing usage for custom metrics.
+We'll likely add more functionality to this SDK over time, but the immediate need is for more flexibility around reporting metered billing usage for custom metrics.
 
 ## Install
 
