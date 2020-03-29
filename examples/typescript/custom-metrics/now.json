@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "env": {
+    "SAASIFY_PROVIDER_TOKEN": "@saasify-provider-token-custom-metrics"
+  },
   "builds": [{ "src": "build/server.js", "use": "@now/node" }],
   "routes": [{ "src": ".*", "dest": "build/server.js" }]
 }
