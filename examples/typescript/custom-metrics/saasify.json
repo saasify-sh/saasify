@@ -23,5 +23,8 @@
         }
       ]
     }
-  ]
+  ],
+  "saas": {
+    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/custom-metrics"
+  }
 }
