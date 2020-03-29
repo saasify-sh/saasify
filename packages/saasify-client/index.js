@@ -297,6 +297,25 @@ module.exports = class SaasifyClient {
   }
 
   // --------------------------------------------------------------------------
+  // Providers
+  // --------------------------------------------------------------------------
+
+  async getProvider(project) {
+    return this._request({
+      url: `/1/projects/provider/${project.id}`,
+      params: this._params
+    }).then((res) => res.data)
+  }
+
+  async updateProvider(project) {
+    return this._request({
+      url: `/1/projects/provider/${project.id}`,
+      params: this._params,
+      method: 'put'
+    }).then((res) => res.data)
+  }
+
+  // --------------------------------------------------------------------------
   // Consumers
   // --------------------------------------------------------------------------
 

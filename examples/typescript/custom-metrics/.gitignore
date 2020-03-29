@@ -102,3 +102,5 @@ public
 
 # ZEIT now dev cache
 .now/
+
+.now

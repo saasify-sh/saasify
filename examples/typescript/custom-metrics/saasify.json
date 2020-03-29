@@ -1,6 +1,6 @@
 {
   "name": "custom-metrics",
-  "openapi": "./openapi.json",
+  "openapi": "dist/swagger.json",
   "pricingPlans": [
     {
       "name": "Free",
@@ -15,7 +15,7 @@
       "metrics": [
         {
           "slug": "orders",
-          "amount": 0.002
+          "amount": 2
         }
       ]
     }
