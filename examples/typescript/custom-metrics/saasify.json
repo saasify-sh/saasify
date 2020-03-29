@@ -4,14 +4,18 @@
   "pricingPlans": [
     {
       "name": "Free",
-      "rateLimit": {
-        "requestsInterval": "1h",
-        "requestsMaxPerInterval": 100
-      }
+      "rateLimit": null,
+      "metrics": [
+        {
+          "slug": "orders",
+          "amount": 0,
+          "rateLimit": "5 per day"
+        }
+      ]
     },
     {
       "name": "Custom",
-      "amount": 0,
+      "rateLimit": null,
       "metrics": [
         {
           "slug": "orders",

@@ -992,10 +992,6 @@
   content: 'test';
 }
 
-.theme-waves .plan .desc {
-  display: none;
-}
-
 .theme-waves .plan .price {
   align-items: baseline;
   color: #9e9e9e;
