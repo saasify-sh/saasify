@@ -91,7 +91,23 @@ module.exports = async (program) => {
   validateConfig(config)
 
   if (validateConfig.errors) {
-    throw new Error(`Invalid config: ${ajv.errorsText(validateConfig.errors)}`)
+    const message = `Invalid config: ${ajv.errorsText(validateConfig.errors)}`
+    let detail = ''
+
+    const error = validateConfig.errors[0]
+    if (error) {
+      // TODO: add "did you mean" prompt if additional property is close enough
+      // to a built-in property on the given schema
+      // This should help catch minor casing and spelling issues
+      // console.error(JSON.stringify(error, null, 2))
+      switch (error.keyword) {
+        case 'additionalProperties':
+          detail = ` - "${error.params.additionalProperty}"`
+          break
+      }
+    }
+
+    throw new Error(message + detail)
   }
 
   config.root = root
