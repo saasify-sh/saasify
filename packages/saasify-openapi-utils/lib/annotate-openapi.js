@@ -40,6 +40,7 @@ module.exports = async (spec, deployment, opts = {}) => {
   const readmeRaw = deployment.readme || ''
 
   const { readme, quickStart, supportingOSS } = processReadme(readmeRaw)
+  const sections = (deployment.saas && deployment.saas.sections) || {}
 
   api.info = {
     ...api.info,
@@ -61,8 +62,6 @@ ${quickStart || readme}
 
 Optional API key for authenticated access. Note that we use "auth token" and "API key" interchangably in these docs.
 
-Unauthenticated (public) requests are subject to rate limiting. See [pricing](/pricing) for specifics on these rate limits.
-
 Authenticated requests must include an \`Authorization\` header containing your subscription's auth token.
 
 | Security Schema Type | Header Name | Example Token |
@@ -79,11 +78,14 @@ You can view and manage your auth tokens in the [Dashboard](/dashboard).
 
 Be sure to keep your auth tokens secure. Do not share them in publicly accessible areas such as GitHub, client-side code, and so forth.
 
-Also note that all API requests must be made over **HTTPS**. Calls made over plain HTTP will fail.
+Also note that all API requests must be made over **HTTPS**. Calls made over plain HTTP will attempt to be automatically upgraded to HTTPS, though this use cases is discouraged.
 
+${
+  sections.docs && sections.docs.rateLimits !== false
+    ? `
 ## Rate Limits
 
-With the public, non-authenticated version of the API, we limit the number of calls you can make over a certain period of time. Rate limits vary and are specified by the following header in all responses:
+API requests may be rate limited depending on your subscription plan and traffic patterns. The following response headers will be present in these cases:
 
 | Header | Description |
 | ------ | ----------- |
@@ -101,6 +103,10 @@ When the rate limit is **exceeded**, an error is returned with the status "**429
   }
 }
 \`\`\`
+
+`
+    : ''
+}
 
 ## Errors
 
