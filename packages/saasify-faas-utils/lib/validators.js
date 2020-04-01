@@ -36,9 +36,8 @@ exports.projectName = (value) => {
     return 'Project name must be less than 64 characters'
   } else if (!exports.projectNameRe.test(value)) {
     return 'Project name can only be alphanumeric or a dash.'
-  } else {
-    return true
   }
+  return true
 }
 
 exports.deploymentHash = (value) => {
