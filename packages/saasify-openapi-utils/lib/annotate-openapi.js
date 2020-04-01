@@ -32,8 +32,8 @@ module.exports = async (spec, deployment, opts = {}) => {
 
   api.tags = (api.tags || []).concat([
     {
-      name: 'service',
-      'x-displayName': 'APIs'
+      name: 'Endpoints',
+      'x-displayName': 'Endpoints'
     }
   ])
 
@@ -174,7 +174,7 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
 
   for (const httpMethod of Object.keys(pathItem)) {
     const op = pathItem[httpMethod]
-    op.tags = ['service']
+    op.tags = ['Endpoints']
 
     if (!op.operationId) {
       op.operationId = `${name}${httpMethod.toUpperCase()}`
