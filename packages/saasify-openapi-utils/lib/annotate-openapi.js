@@ -49,7 +49,9 @@ module.exports = async (spec, deployment, opts = {}) => {
     termsOfService: '/terms',
     contact: {
       name: 'API Support',
-      email: 'support@saasify.sh'
+      email:
+        (sections.navHeader && sections.navHeader.support) ||
+        'support@saasify.sh'
     },
     description: `
 ${quickStart || readme}
