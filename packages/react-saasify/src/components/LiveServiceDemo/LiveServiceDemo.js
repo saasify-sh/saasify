@@ -396,7 +396,13 @@ export class LiveServiceDemo extends Component {
       }
 
       await new Promise((resolve) => {
-        if (!result.outputContentType.startsWith('image/')) {
+        if (
+          result.outputContentType.startsWith('text/') &&
+          !result.outputContentType.startsWith('text/html') &&
+          !result.outputContentType.startsWith('text/csv')
+        ) {
+          // TODO
+        } else if (!result.outputContentType.startsWith('image/')) {
           // window.open(result.outputUrl)
           const ext = mime.extension(result.outputContentType)
           const filename = ext ? `example.${ext}` : `example`
