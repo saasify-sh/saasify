@@ -83,7 +83,7 @@ Be sure to keep your auth tokens secure. Do not share them in publicly accessibl
 Also note that all API requests must be made over **HTTPS**. Calls made over plain HTTP will attempt to be automatically upgraded to HTTPS, though this use cases is discouraged.
 
 ${
-  sections.docs && sections.docs.rateLimits !== false
+  !sections.docs || sections.docs.rateLimits !== false
     ? `
 ## Rate Limits
 
