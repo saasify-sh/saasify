@@ -170,7 +170,10 @@ export class NavHeader extends Component {
                   ) : (
                     <Link to='/signup'>
                       <CTAButton type='primary' inline>
-                        {config.ctaTextInline || 'Get started'}
+                        {config?.deployment?.saas?.sections?.navHeader?.cta ||
+                          config?.deployment?.saas?.sections?.hero?.cta ||
+                          config.ctaTextInline ||
+                          'Get started'}
                       </CTAButton>
                     </Link>
                   ))}
