@@ -135,9 +135,9 @@ export class PricingPlan extends Component {
 
         {plan.features && plan.features.length > 0 && (
           <Fragment>
-            <ul className={theme(styles, 'features')}>
+            <div className={theme(styles, 'features')}>
               {plan.features.map((feature, index) => (
-                <li className={theme(styles, 'feature')} key={index}>
+                <div className={theme(styles, 'feature')} key={index}>
                   {typeof feature === 'string' ? (
                     <ReactMarkdown
                       source={feature}
@@ -147,9 +147,9 @@ export class PricingPlan extends Component {
                   ) : (
                     feature
                   )}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
 
             <div className={theme(styles, 'flex')} />
 
