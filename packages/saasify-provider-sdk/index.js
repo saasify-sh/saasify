@@ -64,7 +64,7 @@ module.exports = class SaasifyProviderSDK {
   // Licensed billing usage
   // --------------------------------------------------------------------------
 
-  async updateQuantity(opts) {
+  async updateUsage(opts) {
     const { user, metric, quantity, ...rest } = opts
 
     if (!user) {
