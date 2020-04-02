@@ -330,14 +330,14 @@
           "minimum": 0
         },
         "requests": {
-          "$ref": "#/definitions/PricingPlanMeteredConfig",
+          "$ref": "#/definitions/PricingPlanMetricConfig",
           "title": "requests"
         },
         "metrics": {
           "title": "metrics",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PricingPlanMeteredConfig"
+            "$ref": "#/definitions/PricingPlanMetricConfig"
           }
         },
         "rateLimit": {
@@ -352,8 +352,8 @@
       "additionalProperties": false,
       "required": ["name"]
     },
-    "PricingPlanMeteredConfig": {
-      "title": "PricingPlanMeteredConfig",
+    "PricingPlanMetricConfig": {
+      "title": "PricingPlanMetricConfig",
       "type": "object",
       "properties": {
         "amount": {
@@ -372,6 +372,11 @@
         "unitLabel": {
           "type": "string",
           "title": "unitLabel"
+        },
+        "usageType": {
+          "type": "string",
+          "title": "usageType",
+          "enum": ["metered", "licensed"]
         },
         "billingScheme": {
           "type": "string",
@@ -416,8 +421,8 @@
           "minimum": 0
         },
         "upTo": {
-          "type": "string",
-          "title": "upTo"
+          "title": "upTo",
+          "oneOf": [{ "type": "number" }, { "type": "string" }]
         }
       },
       "additionalProperties": false,

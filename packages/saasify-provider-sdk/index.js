@@ -61,6 +61,41 @@ module.exports = class SaasifyProviderSDK {
   }
 
   // --------------------------------------------------------------------------
+  // Licensed billing usage
+  // --------------------------------------------------------------------------
+
+  async updateQuantity(opts) {
+    const { user, metric, quantity, ...rest } = opts
+
+    if (!user) {
+      throw new Error(
+        'updateQuantity missing required parameter "user" (string id)'
+      )
+    }
+
+    if (!metric) {
+      throw new Error(
+        'updateQuantity missing required parameter "metric" (string slug)'
+      )
+    }
+
+    if (!quantity) {
+      throw new Error(
+        'updateQuantity missing required parameter "quantity" (number)'
+      )
+    }
+
+    return this._request({
+      url: `/1/provider/users/${user}/metrics/${metric}`,
+      method: 'put',
+      data: {
+        quantity,
+        ...rest
+      }
+    }).then((res) => res.data)
+  }
+
+  // --------------------------------------------------------------------------
   // Internal
   // --------------------------------------------------------------------------
 
