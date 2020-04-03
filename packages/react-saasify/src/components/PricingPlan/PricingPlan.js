@@ -80,41 +80,23 @@ export class PricingPlan extends Component {
 
         <Divider />
 
-        {(plan.context?.hasMeteredBilling || plan.context?.hasRateLimits) && (
-          <Fragment>
-            <div className={theme(styles, 'pricing')}>
-              <div />
+        {(plan.context?.hasMeteredBilling || plan.context?.hasRateLimits) &&
+          plan.context.showMeteredbilling && (
+            <Fragment>
+              <div className={theme(styles, 'pricing')}>
+                <div />
 
-              <div className={theme(styles, 'column')}>Price</div>
+                <div className={theme(styles, 'column')}>Price</div>
 
-              <div className={theme(styles, 'column')}>Rate Limit</div>
+                <div className={theme(styles, 'column')}>Rate Limit</div>
 
-              {plan.requests && (
-                <Fragment>
-                  <div className={theme(styles, 'emphasis')}>API Calls</div>
+                {plan.requests && (
+                  <Fragment>
+                    <div className={theme(styles, 'emphasis')}>API Calls</div>
 
-                  <div>{plan.requests.price}</div>
+                    <div>{plan.requests.price}</div>
 
-                  {plan.requests.rateLimit || (
-                    <img
-                      alt='unlimited'
-                      src={infinity}
-                      className={theme(styles, 'infinity')}
-                    />
-                  )}
-                </Fragment>
-              )}
-
-              {plan.metrics &&
-                plan.metrics.map((metric) => (
-                  <Fragment key={metric.slug}>
-                    <div className={theme(styles, 'emphasis')}>
-                      {metric.label}
-                    </div>
-
-                    <div>{metric.price}</div>
-
-                    {metric.rateLimit || (
+                    {plan.requests.rateLimit || (
                       <img
                         alt='unlimited'
                         src={infinity}
@@ -122,16 +104,35 @@ export class PricingPlan extends Component {
                       />
                     )}
                   </Fragment>
-                ))}
-            </div>
+                )}
 
-            {(!plan.features || !plan.features.length) && (
-              <div className={theme(styles, 'flex')} />
-            )}
+                {plan.metrics &&
+                  plan.metrics.map((metric) => (
+                    <Fragment key={metric.slug}>
+                      <div className={theme(styles, 'emphasis')}>
+                        {metric.label}
+                      </div>
 
-            <Divider />
-          </Fragment>
-        )}
+                      <div>{metric.price}</div>
+
+                      {metric.rateLimit || (
+                        <img
+                          alt='unlimited'
+                          src={infinity}
+                          className={theme(styles, 'infinity')}
+                        />
+                      )}
+                    </Fragment>
+                  ))}
+              </div>
+
+              {(!plan.features || !plan.features.length) && (
+                <div className={theme(styles, 'flex')} />
+              )}
+
+              <Divider />
+            </Fragment>
+          )}
 
         {plan.features && plan.features.length > 0 && (
           <Fragment>

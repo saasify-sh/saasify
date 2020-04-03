@@ -62,17 +62,17 @@ class PricingPlan {
   amount?: number = 0
 
   // optional metered billing to charge per request
-  requests?: PricingPlanMeteredConfig
+  requests?: PricingPlanMetricConfig
 
   // optional metered billing to charge per custom metrics
-  metrics?: PricingPlanMeteredConfig[]
+  metrics?: PricingPlanMetricConfig[]
 
   // optional rate limit to enforce on this plan
   rateLimit?: RateLimit | string
 }
 
-class PricingPlanMeteredConfig {
-  // amount to charge for each unit in USD cents (metered billing)
+class PricingPlanMetricConfig {
+  // amount to charge for each unit in USD cents
   // 100 = $1.00
   // 2 = $0.02
   // 0.05 = $0.0005
@@ -81,6 +81,9 @@ class PricingPlanMeteredConfig {
   name?: string
   label?: string
   unitLabel?: string
+
+  // metered vs licensed billing for this metric
+  usageType?: string = 'metered' // | licensed
 
   // more advanced per-plan tiered pricing options
   billingScheme?: string = 'per_unit' // | tiered
@@ -94,7 +97,7 @@ class PricingPlanMeteredConfig {
 class PricingPlanTier {
   unitAmount?: number
   flatAmount?: number
-  upTo: string
+  upTo: number | string
 }
 
 class Service {

@@ -44,7 +44,7 @@ module.exports = class SaasifyProviderSDK {
       )
     }
 
-    if (!quantity) {
+    if (quantity === undefined) {
       throw new Error(
         'reportUsage missing required parameter "quantity" (number)'
       )
@@ -53,6 +53,41 @@ module.exports = class SaasifyProviderSDK {
     return this._request({
       url: `/1/provider/users/${user}/metrics/${metric}/usage_records`,
       method: 'post',
+      data: {
+        quantity,
+        ...rest
+      }
+    }).then((res) => res.data)
+  }
+
+  // --------------------------------------------------------------------------
+  // Licensed billing usage
+  // --------------------------------------------------------------------------
+
+  async updateUsage(opts) {
+    const { user, metric, quantity, ...rest } = opts
+
+    if (!user) {
+      throw new Error(
+        'updateQuantity missing required parameter "user" (string id)'
+      )
+    }
+
+    if (!metric) {
+      throw new Error(
+        'updateQuantity missing required parameter "metric" (string slug)'
+      )
+    }
+
+    if (quantity === undefined) {
+      throw new Error(
+        'updateQuantity missing required parameter "quantity" (number)'
+      )
+    }
+
+    return this._request({
+      url: `/1/provider/users/${user}/metrics/${metric}`,
+      method: 'put',
       data: {
         quantity,
         ...rest
