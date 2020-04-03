@@ -44,7 +44,7 @@ module.exports = class SaasifyProviderSDK {
       )
     }
 
-    if (!quantity) {
+    if (quantity === undefined) {
       throw new Error(
         'reportUsage missing required parameter "quantity" (number)'
       )
@@ -79,7 +79,7 @@ module.exports = class SaasifyProviderSDK {
       )
     }
 
-    if (!quantity) {
+    if (quantity === undefined) {
       throw new Error(
         'updateQuantity missing required parameter "quantity" (number)'
       )
