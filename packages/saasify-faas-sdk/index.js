@@ -128,8 +128,7 @@ module.exports = class SaasifyFaasSDK {
         ...headers
       },
       responseType: 'arraybuffer',
-      validateStatus: (status) =>
-        (status >= 200 && status < 300) || status === 429,
+      validateStatus: (status) => true,
       paramsSerializer: (params) => {
         return qs.stringify(params)
       },
@@ -159,11 +158,21 @@ module.exports = class SaasifyFaasSDK {
       // TODO: gracefully handle other content-types
     }
 
-    return {
-      body,
-      contentType,
-      contentTypeParsed,
-      response: res
+    if (res.status >= 200 && res.status < 300) {
+      return {
+        body,
+        contentType,
+        contentTypeParsed,
+        response: res
+      }
+    } else {
+      const message =
+        typeof body === 'string'
+          ? body
+          : `Request failed with status code ${res.status}`
+      const err = new Error(message)
+      err.response = res
+      throw err
     }
   }
 }

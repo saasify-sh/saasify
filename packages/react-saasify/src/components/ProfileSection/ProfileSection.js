@@ -92,37 +92,42 @@ export class ProfileSection extends Component {
         )
       },
       */
-      hasSubscription && {
+      {
         title: 'Auth Token',
-        dataIndex: 'token',
-        render: (token) => (
-          <Tooltip
-            placement='top'
-            title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
-          >
-            <Button type='primary' ghost onClick={this._onClickCopyToken}>
-              {`${auth.consumer.token.substr(0, 8)} ...`}
-            </Button>
-          </Tooltip>
-        )
+        key: 'token',
+        render: (token) =>
+          auth.consumer?.token && (
+            <Tooltip
+              placement='top'
+              title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
+            >
+              <Button type='primary' ghost onClick={this._onClickCopyToken}>
+                {`${auth.consumer.token.substr(0, 8)} ...`}
+              </Button>
+            </Tooltip>
+          )
       },
       {
         title: 'Actions',
         key: 'actions',
-        render: (token) =>
-          hasSubscription ? (
-            <Fragment>
-              <Button
-                type='ghost'
-                icon='reload'
-                loading={isLoadingRefreshAuthToken}
-                onClick={this._onClickRefreshAuthToken}
-              >
-                Refresh Token
-              </Button>
+        render: (token) => (
+          <Fragment>
+            <Button
+              type='ghost'
+              icon='reload'
+              loading={isLoadingRefreshAuthToken}
+              onClick={this._onClickRefreshAuthToken}
+              block
+            >
+              Refresh Token
+            </Button>
 
-              <Divider type='vertical' />
+            <Divider
+              type='horizontal'
+              style={{ marginTop: 8, marginBottom: 8 }}
+            />
 
+            {hasSubscription ? (
               <Popconfirm
                 placement='top'
                 title='Are you sure you want to cancel your subscription?'
@@ -130,16 +135,17 @@ export class ProfileSection extends Component {
                 cancelText='No'
                 onConfirm={this._onConfirmUnsubscribe}
               >
-                <Button type='default' loading={isLoadingUnsubscribe}>
+                <Button type='default' loading={isLoadingUnsubscribe} block>
                   Downgrade
                 </Button>
               </Popconfirm>
-            </Fragment>
-          ) : (
-            <Button type='primary' href='/pricing'>
-              Upgrade
-            </Button>
-          )
+            ) : (
+              <Button type='primary' href='/pricing' block>
+                Upgrade
+              </Button>
+            )}
+          </Fragment>
+        )
       }
     ].filter(Boolean)
 

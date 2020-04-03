@@ -668,6 +668,7 @@
   font-size: 16px !important;
   font-weight: 500;
   height: auto;
+  line-height: unset;
   letter-spacing: normal !important;
   text-transform: none !important;
   text-shadow: none;
