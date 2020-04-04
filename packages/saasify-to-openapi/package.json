@@ -1,6 +1,6 @@
 {
   "name": "saasify-to-openapi",
-  "version": "1.16.0",
+  "version": "1.17.13",
   "description": "Converts Saasify deployments to OpenAPI specs.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
@@ -31,7 +31,7 @@
     "ava": "^2.4.0",
     "delay": "^4.3.0",
     "globby": "^10.0.1",
-    "swagger-parser": "^8.0.2"
+    "swagger-parser": "^9.0.1"
   },
   "ava": {
     "failFast": true,

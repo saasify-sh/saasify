@@ -4,11 +4,11 @@
 
 This guide will give you an overview of the Saasify platform by creating an example product.
 
-The result will be a live, public, SaaS API that anyone can call and subscribe to.
+The result will be a public SaaS API that anyone is able to call and subscribe to.
 
 ## Getting Started
 
-First you'll need to install the [Saasify CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli ':target=_blank').
+First you'll need to install the Saasify CLI ([open source](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli ':target=_blank')).
 
 ```bash
 npm install -g saasify
@@ -30,11 +30,13 @@ You can use the `saasify init` command to bootstrap a new project.
 saasify init [project-name]
 ```
 
-The rest of this tutorial will use `quick-start` as the project name.
-
 **You'll want to choose the default minimal template.**
 
-This will create a new folder containing a `saasify.json` file and a basic `openapi.json` file that will look something like:
+The rest of this tutorial will use `quick-start` as the project name.
+
+(Note that project names cannot contain underscores or special characters.)
+
+This will create a new folder containing `saasify.json` and `openapi.json` files that will look something like this:
 
 _(saasify.json)_
 
@@ -73,7 +75,7 @@ _(openapi.json)_
 }
 ```
 
-This example OpenAPI spec just points to a [dummy JSON REST API](https://jsonplaceholder.typicode.com/ ':target=_blank').
+This example OpenAPI spec just points to a [dummy REST API](https://jsonplaceholder.typicode.com/ ':target=_blank').
 
 You'll eventually want to replace this with an OpenAPI spec representing your externally hosted API, but for the purposes of this guide, it will work just fine.
 
@@ -157,10 +159,10 @@ Saasify's API gateway adds some powerful functionality to your downstream API:
 
 ## Publishing your Deployment
 
-Once you're happy with your project, it's time to publish it which will enable your customers to start paying for your product.
+Once you're happy with your project, it's time to publish your most recent deployment which will enable your customers to start paying for your product.
 
 ```bash
-saasify publish <deployment-id>
+saasify publish
 ```
 
 This will prompt you for a version number following [semver](https://semver.org ':target=_blank') format. Version numbers must increase with each published version, and changes to pricing require a major version update.
@@ -189,7 +191,7 @@ saasify deploy
 # iterate...
 
 # publish your product live which enables billing
-saasify publish <deployment-id>
+saasify publish
 
 # start marketing your live product...
 ```
@@ -204,4 +206,4 @@ Now that you have an overview of how the platform works, here are some areas to 
 - [Use cases](case-cases.md) - A brainstorm of different SaaS product ideas as inspiration.
 - [Pricing](pricing.md) - Customize your product's pricing.
 - [Configuration](configuration.md) - Fine-grained customization of your product and the template-based web client.
-  <!-- - [Getting paid](getting-paid.md) - Setup payouts via Stripe Connect or Paypal. -->
+  <!-- - [Getting paid](getting-paid.md) - Setup payouts via Stripe Connect or PayPal. -->

@@ -1,0 +1,30 @@
+{
+  "name": "custom-metrics",
+  "openapi": "dist/swagger.json",
+  "pricingPlans": [
+    {
+      "name": "Free",
+      "rateLimit": null,
+      "metrics": [
+        {
+          "slug": "orders",
+          "amount": 0,
+          "rateLimit": "5 per day"
+        }
+      ]
+    },
+    {
+      "name": "Custom",
+      "rateLimit": null,
+      "metrics": [
+        {
+          "slug": "orders",
+          "amount": 2
+        }
+      ]
+    }
+  ],
+  "saas": {
+    "repo": "https://github.com/saasify-sh/saasify/tree/master/examples/typescript/custom-metrics"
+  }
+}

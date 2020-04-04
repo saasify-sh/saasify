@@ -12,6 +12,72 @@ You can optionally customize how Saasify's API gateway proxies each of your API'
 - Response headers and caching
 - Custom example inputs and code snippets
 
+## Authentication
+
+All service endpoints optionally accept a standard bearer auth token via an `Authorization` header (`Authorization: Bearer ${token}` or equivalently `Authorization: ${token}`).
+
+Your customers can view and manage their auth token(s) from their client dashboard once they sign up for your product.
+
+Authentication and authorization are handled transparently by Saasify's API gateway, so you can focus on your API's core functionality.
+
+Your downstream API will receive two additional headers for authenticated requests that you can use to customize your service's functionality:
+
+- `x-saasify-user` - String ID of the authenticated customer making the API call.
+- `x-saasify-plan` - String slug of the pricing plan that this user is subscribed to.
+
+For unauthenticated calls, these headers are guaranteed to not exist when Saasify's API gateway proxies these calls to your downstream API.
+
+Customers subscribed to the free tier will have a `x-saasify-plan` of `free`.
+
+<p align="center">
+  <img src="./_media/undraw/security.svg" alt="Security" width="200" />
+</p>
+
+## HTTPS
+
+All HTTP calls via Saasify's API gateway should be made over **HTTPS**. Calls made to your production API over plain HTTP will be automatically upgraded to HTTPs, but this use case is discouraged.
+
+## Content Type
+
+We recommend that all endpoints dealing with non-binary data accept and return JSON via `Content-Type: application/json`.
+
+Unless otherwise specified, responses and error messages from the API gateway, are encoded exclusively as JSON.
+
+## Rate Limits
+
+With the public, non-authenticated version of a service, we limit the number of calls you can make over a certain period of time. Rate limits vary and are specified by the following headers in all responses:
+
+| Header                  | Description                                                                  |
+| ----------------------- | ---------------------------------------------------------------------------- |
+| `X-RateLimit-Limit`     | The maximum number of requests that the consumer is permitted to make.       |
+| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window.           |
+| `X-RateLimit-Reset`     | The time at which the current rate limit window resets in UTC epoch seconds. |
+
+When the rate limit is **exceeded**, an error is returned with the status "**429 Too Many Requests**":
+
+```json
+{
+  "error": {
+    "code": "too_many_requests",
+    "message": "Rate limit exceeded"
+  }
+}
+```
+
+## Errors
+
+We encourage all service endpoints to use conventional HTTP response codes to indicate the success or failure of an API request.
+
+In general, codes in the `2xx` range indicate success. Codes in the `4xx` range indicate an error that failed given the information provided (e.g., a required parameter was omitted, endpoint not found, etc.). Codes in the `5xx` range indicate an error with either our API gateway (these should hopefully be rare) or your downstream API server.
+
+## Versioning
+
+All published deployment versions are **immutable** which guarantees that once a customer has a working integration, it will always be optional for them to upgrade to newer versions.
+
+When making backwards-incompatible changes or changing pricing, you are encouraged to publish a new major version of your project following standard [semver](https://semver.org) conventions.
+
+## Schema
+
 ```ts
 class Config {
   // saasify.json properties...
@@ -74,66 +140,6 @@ class Snippet {
   exclusive?: boolean = false
 }
 ```
-
-## HTTPS
-
-All HTTP calls via Saasify's API gateway should be made over **HTTPS**. Calls made to your production API over plain HTTP will be automatically upgraded to HTTPs, but this use case is discouraged.
-
-## Authentication
-
-All service endpoints optionally accept a standard bearer auth token via an `Authorization` header (`Authorization: Bearer ${token}`).
-
-Your customers can view and manage their auth token(s) from their client dashboard once they sign up for your product.
-
-Authentication and authorization are handled transparently by Saasify's API gateway, so you can focus on your API's core functionality.
-
-Your downstream API will receive two additional headers for authenticated requests that you can use to customize your service's functionality:
-
-- `x-saasify-user` - String ID of the authenticated customer making the API call.
-- `x-saasify-plan` - String slug of the pricing plan that this user is subscribed to.
-
-For unauthenticated calls, these headers are guaranteed to not exist when Saasify's API gateway proxies these calls to your downstream API.
-
-<p align="center">
-  <img src="./_media/undraw/security.svg" alt="Security" width="200" />
-</p>
-
-## Content Type
-
-We recommend that all endpoints dealing with non-binary data accept and return JSON via `Content-Type: application/json`.
-
-Unless otherwise specified, responses and error messages from the API gateway, are encoded exclusively as JSON.
-
-## Rate Limits
-
-With the public, non-authenticated version of a service, we limit the number of calls you can make over a certain period of time. Rate limits vary and are specified by the following headers in all responses:
-
-| Header                  | Description                                                                  |
-| ----------------------- | ---------------------------------------------------------------------------- |
-| `X-RateLimit-Limit`     | The maximum number of requests that the consumer is permitted to make.       |
-| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window.           |
-| `X-RateLimit-Reset`     | The time at which the current rate limit window resets in UTC epoch seconds. |
-
-When the rate limit is **exceeded**, an error is returned with the status "**429 Too Many Requests**":
-
-```json
-{
-  "error": {
-    "code": "too_many_requests",
-    "message": "Rate limit exceeded"
-  }
-}
-```
-
-## Errors
-
-All service endpoints should use conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the `2xx` range indicate success. Codes in the `4xx` range indicate an error that failed given the information provided (e.g., a required parameter was omitted, endpoint not found, etc.). Codes in the `5xx` range indicate an error with either our API gateway (these should hopefully be rare) or your downstream API server.
-
-## Versioning
-
-All published deployment versions are **immutable** which guarantees that once a customer has a working integration, it will always be optional for them to upgrade to newer versions.
-
-When making backwards-incompatible changes or changing pricing, you are required to publish a new major version of your project following standard [semver](https://semver.org) conventions.
 
 <p align="center">
   <img src="./_media/undraw/version_control.svg" alt="API Version Control" width="200" />

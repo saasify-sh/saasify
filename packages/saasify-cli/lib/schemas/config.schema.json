@@ -45,10 +45,11 @@
         },
         "openapi": {
           "title": "openapi",
-          "oneOf": [
-            { "type": "object", "additionalProperties": true },
-            { "type": "string" }
-          ]
+          "type": "string"
+        },
+        "serverUrl": {
+          "title": "openapi",
+          "type": "string"
         },
         "services": {
           "type": "array",
@@ -226,7 +227,11 @@
           "title": "reportUsage"
         },
         "rateLimit": {
-          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
+          "oneOf": [
+            { "$ref": "#/definitions/RateLimit" },
+            { "type": "null" },
+            { "type": "string" }
+          ],
           "title": "rateLimit"
         },
         "pricingPlanConfig": {
@@ -244,10 +249,14 @@
       "title": "RateLimit",
       "type": "object",
       "properties": {
-        "requests": {
+        "enabled": {
           "type": "boolean",
           "title": "enabled",
           "default": true
+        },
+        "desc": {
+          "type": "string",
+          "title": "desc"
         },
         "requestsInterval": {
           "title": "requestsInterval",
@@ -321,25 +330,53 @@
           "minimum": 0
         },
         "requests": {
-          "$ref": "#/definitions/PricingPlanMeteredConfig",
+          "$ref": "#/definitions/PricingPlanMetricConfig",
           "title": "requests"
         },
+        "metrics": {
+          "title": "metrics",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PricingPlanMetricConfig"
+          }
+        },
         "rateLimit": {
-          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
+          "oneOf": [
+            { "$ref": "#/definitions/RateLimit" },
+            { "type": "null" },
+            { "type": "string" }
+          ],
           "title": "rateLimit"
         }
       },
       "additionalProperties": false,
       "required": ["name"]
     },
-    "PricingPlanMeteredConfig": {
-      "title": "PricingPlanMeteredConfig",
+    "PricingPlanMetricConfig": {
+      "title": "PricingPlanMetricConfig",
       "type": "object",
       "properties": {
         "amount": {
           "type": "number",
           "title": "amount",
           "minimum": 0
+        },
+        "slug": {
+          "type": "string",
+          "title": "slug"
+        },
+        "label": {
+          "type": "string",
+          "title": "label"
+        },
+        "unitLabel": {
+          "type": "string",
+          "title": "unitLabel"
+        },
+        "usageType": {
+          "type": "string",
+          "title": "usageType",
+          "enum": ["metered", "licensed"]
         },
         "billingScheme": {
           "type": "string",
@@ -357,6 +394,14 @@
             "$ref": "#/definitions/PricingPlanTier"
           },
           "title": "tiers"
+        },
+        "rateLimit": {
+          "oneOf": [
+            { "$ref": "#/definitions/RateLimit" },
+            { "type": "null" },
+            { "type": "string" }
+          ],
+          "title": "rateLimit"
         }
       },
       "additionalProperties": false
@@ -376,8 +421,8 @@
           "minimum": 0
         },
         "upTo": {
-          "type": "string",
-          "title": "upTo"
+          "title": "upTo",
+          "oneOf": [{ "type": "number" }, { "type": "string" }]
         }
       },
       "additionalProperties": false,
@@ -396,7 +441,11 @@
           "title": "reportUsage"
         },
         "rateLimit": {
-          "oneOf": [{ "$ref": "#/definitions/RateLimit" }, { "type": "null" }],
+          "oneOf": [
+            { "$ref": "#/definitions/RateLimit" },
+            { "type": "null" },
+            { "type": "string" }
+          ],
           "title": "rateLimit"
         }
       },

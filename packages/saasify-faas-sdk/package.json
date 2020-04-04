@@ -1,0 +1,37 @@
+{
+  "name": "saasify-faas-sdk",
+  "version": "1.18.11",
+  "description": "HTTP client for invoking Saasify FaaS.",
+  "main": "index.js",
+  "author": "Saasify <dev@saasify.sh>",
+  "repository": "saasify-sh/saasify",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
+  "keywords": [
+    "faas",
+    "saas",
+    "lambda",
+    "serverless",
+    "deploy",
+    "saasify",
+    "fts"
+  ],
+  "scripts": {
+    "test": "ava -v"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "content-type": "^1.0.4",
+    "qs": "^6.9.1"
+  },
+  "devDependencies": {
+    "ava": "^2.4.0"
+  },
+  "ava": {
+    "failFast": true,
+    "snapshotDir": "./.snapshots"
+  },
+  "gitHead": "c7c6721c98e28d0b1ea455c38276eb668c66b1f9"
+}

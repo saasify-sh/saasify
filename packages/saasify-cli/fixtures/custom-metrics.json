@@ -1,0 +1,51 @@
+{
+  "name": "solder",
+  "openapi": "https://etl-activecampaign.herokuapp.com/openapi.json",
+  "pricingPlans": [
+    {
+      "name": "Free",
+      "rateLimit": null,
+      "metrics": [
+        {
+          "slug": "rows",
+          "amount": 0,
+          "rateLimit": "100 rows per request"
+        }
+      ]
+    },
+    {
+      "name": "Unlimited",
+      "rateLimit": null,
+      "metrics": [
+        {
+          "slug": "rows",
+          "amount": 0.2
+        }
+      ]
+    }
+  ],
+  "saas": {
+    "name": "solder.sh",
+    "heading": "**An ETL Tool For The Masses**",
+    "subheading": "An API that allows you to extract, transfer, and load data from ActiveCampaign to PostgreSQL.",
+    "theme": {
+      "name": "waves",
+      "buttonStyle": "rounded",
+      "color": "#a81016",
+      "gradientDark": true,
+      "codeBlockDark": true
+    },
+    "sections": {
+      "navHeader": {
+        "logo": false,
+        "support": "mailto:noahsahar@gmail.com"
+      },
+      "navFooter": {
+        "logo": false,
+        "location": "Great Neck, NY",
+        "github": false,
+        "email": "mailto:noahsahar@gmail.com"
+      }
+    }
+  }
+}

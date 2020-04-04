@@ -16,13 +16,13 @@ Each deployment has its own, unique web client which you can access via its `saa
 
 This URL will be available at `https://<username>_<project-name>_<deployment-hash>.saasify.sh`.
 
-For example, [https://transitive-bullshit_puppet-master_b0c5c30c.saasify.sh](https://transitive-bullshit_puppet-master_b0c5c30c.saasify.s ':target=\_blank'h).
+For example, [https://dev_quick-start_03b0125f.saasify.sh](https://dev_quick-start_03b0125f.saasify.sh ':target=_blank').
 
 Once you publish a deployment for a project, you can view your most recently published deployment by visiting `https://<username>_<project-name>.saasify.sh`.
 
-For example, [https://transitive-bullshit_puppet-master.saasify.sh](https://transitive-bullshit_puppet-master.saasify.s ':target=\_blank'h).
+For example, [https://dev_quick-start.saasify.sh](https://dev_quick-start.saasify.sh ':target=_blank').
 
-In these examples, the username is `transitive-bullshit`, the project name is `puppet-master`, and the deployment hash is `b0c5c30c`.
+In these examples, the username is `dev`, the project name is `quick-start`, and the deployment hash is `03b0125f`.
 
 ## Custom Domains
 

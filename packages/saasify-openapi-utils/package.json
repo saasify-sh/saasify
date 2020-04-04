@@ -1,6 +1,6 @@
 {
   "name": "saasify-openapi-utils",
-  "version": "1.16.8",
+  "version": "1.18.13",
   "description": "OpenAPI utilities for Saasify.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
@@ -25,6 +25,7 @@
   ],
   "devDependencies": {
     "ava": "^3.2.0",
+    "path-to-regexp": "^6.1.0",
     "update-markdown-jsdoc": "^1.0.11"
   },
   "dependencies": {
@@ -38,8 +39,8 @@
     "lodash.pick": "^4.4.0",
     "remark": "^11.0.1",
     "saasify-codegen": "^1.16.0",
-    "saasify-faas-utils": "^1.15.5",
-    "saasify-to-openapi": "^1.16.0",
+    "saasify-faas-utils": "^1.17.7",
+    "saasify-to-openapi": "^1.17.13",
     "semver": "^6.3.0",
     "swagger-parser": "^8.0.1",
     "unist-builder": "^2.0.2",
@@ -49,7 +50,8 @@
     "unist-util-find-all-between": "^2.0.0"
   },
   "ava": {
-    "snapshotDir": "./.snapshots"
+    "snapshotDir": "./.snapshots",
+    "failFast": true
   },
   "gitHead": "c7c6721c98e28d0b1ea455c38276eb668c66b1f9"
 }

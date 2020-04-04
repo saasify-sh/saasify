@@ -6,8 +6,12 @@ class Config {
   // project name
   name?: string
 
-  // Path to a local OpenAPI JSON file or an inline OpenAPI spec
-  openapi: string | object
+  // Path to a local OpenAPI JSON file or a URL to a remote OpenAPI JSON spec
+  openapi: string
+
+  // Override for the OpenAPI server url
+  // (you may also specify this secretly via the OPENAPI_SERVER_URL environment variable)
+  serverUrl?: string
 
   // optional pricing config
   pricingPlans?: PricingPlan[]
@@ -57,30 +61,43 @@ class PricingPlan {
   // 2999 = $29.99
   amount?: number = 0
 
-  // optional metered billing per request
-  requests?: PricingPlanMeteredConfig
+  // optional metered billing to charge per request
+  requests?: PricingPlanMetricConfig
+
+  // optional metered billing to charge per custom metrics
+  metrics?: PricingPlanMetricConfig[]
 
   // optional rate limit to enforce on this plan
-  rateLimit?: RateLimit
+  rateLimit?: RateLimit | string
 }
 
-class PricingPlanMeteredConfig {
-  // amount to charge for each request in USD cents (metered billing)
+class PricingPlanMetricConfig {
+  // amount to charge for each unit in USD cents
   // 100 = $1.00
   // 2 = $0.02
   // 0.05 = $0.0005
   amount?: number
 
+  name?: string
+  label?: string
+  unitLabel?: string
+
+  // metered vs licensed billing for this metric
+  usageType?: string = 'metered' // | licensed
+
   // more advanced per-plan tiered pricing options
   billingScheme?: string = 'per_unit' // | tiered
   tiers?: PricingPlanTier[]
   tiersMode?: string = 'graduated' // | volume
+
+  // optional rate limit to enforce for this metric
+  rateLimit?: RateLimit | string
 }
 
 class PricingPlanTier {
   unitAmount?: number
   flatAmount?: number
-  upTo: string
+  upTo: number | string
 }
 
 class Service {
@@ -155,6 +172,15 @@ class SaaS {
   sections?: object
   theme?: Theme
   socialShare?: object
+
+  webapp?: string | WebApp
+}
+
+class WebApp {
+  url: string
+  devUrl?: string
+
+  // TODO: in the future, we should support deploying static webapps automatically via ZEIT now
 }
 
 class Theme {

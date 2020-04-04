@@ -51,7 +51,8 @@ export class ProfileSection extends Component {
       isLoadingRefreshAuthToken
     } = this.state
 
-    const hasSubscription = auth.consumer && auth.consumer.enabled
+    const hasSubscription =
+      auth.consumer && auth.consumer.enabled && auth.consumer.plan !== 'free'
 
     const columns = [
       {
@@ -91,37 +92,42 @@ export class ProfileSection extends Component {
         )
       },
       */
-      hasSubscription && {
+      {
         title: 'Auth Token',
-        dataIndex: 'token',
-        render: (token) => (
-          <Tooltip
-            placement='top'
-            title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
-          >
-            <Button type='primary' ghost onClick={this._onClickCopyToken}>
-              {`${auth.consumer.token.substr(0, 8)} ...`}
-            </Button>
-          </Tooltip>
-        )
+        key: 'token',
+        render: (token) =>
+          auth.consumer?.token && (
+            <Tooltip
+              placement='top'
+              title={copiedTextToClipboard ? 'Copied!' : 'Copy to clipboard'}
+            >
+              <Button type='primary' ghost onClick={this._onClickCopyToken}>
+                {`${auth.consumer.token.substr(0, 8)} ...`}
+              </Button>
+            </Tooltip>
+          )
       },
       {
         title: 'Actions',
         key: 'actions',
-        render: (token) =>
-          hasSubscription ? (
-            <Fragment>
-              <Button
-                type='ghost'
-                icon='reload'
-                loading={isLoadingRefreshAuthToken}
-                onClick={this._onClickRefreshAuthToken}
-              >
-                Refresh Token
-              </Button>
+        render: (token) => (
+          <Fragment>
+            <Button
+              type='ghost'
+              icon='reload'
+              loading={isLoadingRefreshAuthToken}
+              onClick={this._onClickRefreshAuthToken}
+              block
+            >
+              Refresh Token
+            </Button>
 
-              <Divider type='vertical' />
+            <Divider
+              type='horizontal'
+              style={{ marginTop: 8, marginBottom: 8 }}
+            />
 
+            {hasSubscription ? (
               <Popconfirm
                 placement='top'
                 title='Are you sure you want to cancel your subscription?'
@@ -129,16 +135,17 @@ export class ProfileSection extends Component {
                 cancelText='No'
                 onConfirm={this._onConfirmUnsubscribe}
               >
-                <Button type='default' loading={isLoadingUnsubscribe}>
+                <Button type='default' loading={isLoadingUnsubscribe} block>
                   Downgrade
                 </Button>
               </Popconfirm>
-            </Fragment>
-          ) : (
-            <Button type='primary' href='/pricing'>
-              Upgrade
-            </Button>
-          )
+            ) : (
+              <Button type='primary' href='/pricing' block>
+                Upgrade
+              </Button>
+            )}
+          </Fragment>
+        )
       }
     ].filter(Boolean)
 
@@ -198,8 +205,17 @@ export class ProfileSection extends Component {
 
         notification.success({
           message: 'Subscription canceled',
-          description:
-            'Your subscription has been canceled. Any outstanding charges will be charged at the end of the current billing cycle.'
+          duration: 0,
+          description: (
+            <span>
+              <p>
+                Your subscription has been canceled. Any outstanding charges
+                will be charged at the end of the current billing cycle.'
+              </p>
+
+              <p>It may take a few minutes for the changes to take effect.</p>
+            </span>
+          )
         })
 
         this.setState({ isLoadingUnsubscribe: false })
@@ -209,7 +225,7 @@ export class ProfileSection extends Component {
 
         notification.error({
           message: 'Error canceling subscription',
-          description: err.error?.message,
+          description: err?.response?.data?.error || err.error?.message,
           duration: 0
         })
 
@@ -238,7 +254,7 @@ export class ProfileSection extends Component {
 
         notification.error({
           message: 'Error refreshing auth token',
-          description: err.error && err.error.message,
+          description: err?.response?.data?.error || err.error?.message,
           duration: 0
         })
 

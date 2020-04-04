@@ -66,16 +66,26 @@ module.exports = async (program, opts = {}) => {
 }
 
 module.exports.getReadme = async (config) => {
-  const readmeFiles = await globby('readme.md', {
-    cwd: config.root,
-    gitignore: true,
-    nocase: true
-  })
+  if (config.saas && config.saas.readme) {
+    const { readme } = config.saas
+    const exists = await fs.pathExists(readme)
+    if (!exists) {
+      throw new Error(`Project readme not found "${readme}"`)
+    }
 
-  if (readmeFiles.length) {
-    return fs.readFile(readmeFiles[0], 'utf8')
+    return fs.readFile(readme, 'utf8')
   } else {
-    console.error('Unable to find project readme')
-    return ''
+    const readmeFiles = await globby('readme.md', {
+      cwd: config.root,
+      gitignore: true,
+      nocase: true
+    })
+
+    if (readmeFiles.length) {
+      return fs.readFile(readmeFiles[0], 'utf8')
+    } else {
+      console.error('Unable to find project readme')
+      return ''
+    }
   }
 }

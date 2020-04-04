@@ -20,6 +20,11 @@ module.exports = async (opts) => {
     throw new Error(`Error resolving OpenAPI spec: ${err.message}`)
   }
 
+  const serverUrl = process.env.OPENAPI_SERVER_URL || config.serverUrl
+  if (serverUrl) {
+    config.openapi.servers = [{ url: serverUrl }]
+  }
+
   const openapi = await parseOpenAPI(config.openapi, { strict: true })
   const services = await convertOpenAPIToServices(openapi, config)
 

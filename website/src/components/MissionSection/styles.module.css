@@ -1,3 +1,8 @@
+.mission {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .mission-body {
   max-width: 800px;
 }

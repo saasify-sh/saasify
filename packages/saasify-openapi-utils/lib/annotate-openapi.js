@@ -5,6 +5,7 @@ const contentType = require('content-type')
 const codegen = require('saasify-codegen')
 const { parseFaasIdentifier } = require('saasify-faas-utils')
 
+const openapiHeaderBlacklist = require('./openapi-header-blacklist')
 const pathToService = require('./path-to-service')
 const processReadme = require('./process-readme')
 
@@ -25,20 +26,21 @@ module.exports = async (spec, deployment, opts = {}) => {
   const version = deployment.version ? `v${deployment.version}` : undefined
 
   // It's important that we overwrite the downstream origin servers and any security
-  // requirements they employ.
+  // requirements they may use.
   api.servers = [{ url: baseUrl }]
   api.security = [{ 'API Key': [] }]
 
   api.tags = (api.tags || []).concat([
     {
-      name: 'service',
-      'x-displayName': 'APIs'
+      name: 'Endpoints',
+      'x-displayName': 'Endpoints'
     }
   ])
 
   const readmeRaw = deployment.readme || ''
 
   const { readme, quickStart, supportingOSS } = processReadme(readmeRaw)
+  const sections = (deployment.saas && deployment.saas.sections) || {}
 
   api.info = {
     ...api.info,
@@ -47,20 +49,20 @@ module.exports = async (spec, deployment, opts = {}) => {
     termsOfService: '/terms',
     contact: {
       name: 'API Support',
-      email: 'support@saasify.sh'
+      email:
+        (sections.navHeader && sections.navHeader.support) ||
+        'support@saasify.sh'
     },
     description: `
 ${quickStart || readme}
 
-# Configuration
+# API
 
 ## Authentication
 
 ### API Key
 
 Optional API key for authenticated access. Note that we use "auth token" and "API key" interchangably in these docs.
-
-Unauthenticated (public) requests are subject to rate limiting. See [pricing](/pricing) for specifics on these rate limits.
 
 Authenticated requests must include an \`Authorization\` header containing your subscription's auth token.
 
@@ -78,11 +80,14 @@ You can view and manage your auth tokens in the [Dashboard](/dashboard).
 
 Be sure to keep your auth tokens secure. Do not share them in publicly accessible areas such as GitHub, client-side code, and so forth.
 
-Also note that all API requests must be made over **HTTPS**. Calls made over plain HTTP will fail.
+Also note that all API requests must be made over **HTTPS**. Calls made over plain HTTP will attempt to be automatically upgraded to HTTPS, though this use cases is discouraged.
 
+${
+  !sections.docs || sections.docs.rateLimits !== false
+    ? `
 ## Rate Limits
 
-With the public, non-authenticated version of the API, we limit the number of calls you can make over a certain period of time. Rate limits vary and are specified by the following header in all responses:
+API requests may be rate limited depending on your subscription plan and traffic patterns. The following response headers will be present in these cases:
 
 | Header | Description |
 | ------ | ----------- |
@@ -100,6 +105,10 @@ When the rate limit is **exceeded**, an error is returned with the status "**429
   }
 }
 \`\`\`
+
+`
+    : ''
+}
 
 ## Errors
 
@@ -165,7 +174,7 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
 
   for (const httpMethod of Object.keys(pathItem)) {
     const op = pathItem[httpMethod]
-    op.tags = ['service']
+    op.tags = ['Endpoints']
 
     if (!op.operationId) {
       op.operationId = `${name}${httpMethod.toUpperCase()}`
@@ -175,6 +184,7 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
       op.summary = `${name} (${httpMethod.toUpperCase()})`
     }
 
+    annotateOperationParameters({ op, httpMethod, service })
     annotateOperationResponses({ op, httpMethod, service })
     annotateOperationCodeSamples({ op, httpMethod, service })
 
@@ -183,6 +193,20 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
 
     // TODO: move codegen and example logic from saasify-to-openapi into here
   }
+}
+
+function annotateOperationParameters({ op }) {
+  if (!op.parameters) {
+    return
+  }
+
+  op.parameters = op.parameters.filter((param) => {
+    if (param.in === 'header' && openapiHeaderBlacklist.has(param.name)) {
+      return false
+    }
+
+    return true
+  })
 }
 
 function annotateOperationResponses({ op, service }) {

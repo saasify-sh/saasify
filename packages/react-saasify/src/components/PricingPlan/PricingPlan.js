@@ -60,6 +60,7 @@ export class PricingPlan extends Component {
     const isDowngrade =
       !isCurrentPlan &&
       auth.consumer &&
+      auth.consumer.plan !== 'free' &&
       auth.consumer.plan !== plan.slug &&
       plan.isFree
 
@@ -79,45 +80,65 @@ export class PricingPlan extends Component {
 
         <Divider />
 
-        {(plan.context?.hasMeteredBilling || plan.context?.hasRateLimits) && (
-          <Fragment>
-            <div className={theme(styles, 'pricing')}>
-              <div />
+        {(plan.context?.hasMeteredBilling || plan.context?.hasRateLimits) &&
+          plan.context.showMeteredbilling && (
+            <Fragment>
+              <div className={theme(styles, 'pricing')}>
+                <div />
 
-              <div className={theme(styles, 'column')}>Price</div>
+                <div className={theme(styles, 'column')}>Price</div>
 
-              <div className={theme(styles, 'column')}>Rate Limit</div>
+                <div className={theme(styles, 'column')}>Rate Limit</div>
 
-              {plan.requests && (
-                <Fragment>
-                  <div className={theme(styles, 'emphasis')}>API Calls</div>
+                {plan.requests && (
+                  <Fragment>
+                    <div className={theme(styles, 'emphasis')}>API Calls</div>
 
-                  <div>{plan.requests.price}</div>
+                    <div>{plan.requests.price}</div>
 
-                  {plan.requests.rateLimit || (
-                    <img
-                      alt='unlimited'
-                      src={infinity}
-                      className={theme(styles, 'infinity')}
-                    />
-                  )}
-                </Fragment>
+                    {plan.requests.rateLimit || (
+                      <img
+                        alt='unlimited'
+                        src={infinity}
+                        className={theme(styles, 'infinity')}
+                      />
+                    )}
+                  </Fragment>
+                )}
+
+                {plan.metrics &&
+                  plan.metrics.map((metric) => (
+                    <Fragment key={metric.slug}>
+                      <div className={theme(styles, 'emphasis')}>
+                        {metric.label}
+                      </div>
+
+                      <div>{metric.price}</div>
+
+                      {metric.rateLimit || (
+                        <img
+                          alt='unlimited'
+                          src={infinity}
+                          className={theme(styles, 'infinity')}
+                        />
+                      )}
+                    </Fragment>
+                  ))}
+              </div>
+
+              {(!plan.features || !plan.features.length) && (
+                <div className={theme(styles, 'flex')} />
               )}
-            </div>
 
-            {(!plan.features || !plan.features.length) && (
-              <div className={theme(styles, 'flex')} />
-            )}
-
-            <Divider />
-          </Fragment>
-        )}
+              <Divider />
+            </Fragment>
+          )}
 
         {plan.features && plan.features.length > 0 && (
           <Fragment>
-            <ul className={theme(styles, 'features')}>
+            <div className={theme(styles, 'features')}>
               {plan.features.map((feature, index) => (
-                <li className={theme(styles, 'feature')} key={index}>
+                <div className={theme(styles, 'feature')} key={index}>
                   {typeof feature === 'string' ? (
                     <ReactMarkdown
                       source={feature}
@@ -127,9 +148,9 @@ export class PricingPlan extends Component {
                   ) : (
                     feature
                   )}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
 
             <div className={theme(styles, 'flex')} />
 
@@ -171,7 +192,9 @@ export class PricingPlan extends Component {
                   (isDowngrade
                     ? 'Downgrade'
                     : auth.consumer?.enabled
-                    ? 'Switch plans'
+                    ? auth.consumer?.plan === 'free'
+                      ? 'Upgrade'
+                      : 'Switch plans'
                     : 'Get started')}
               </CTAButton>
             </CustomLink>

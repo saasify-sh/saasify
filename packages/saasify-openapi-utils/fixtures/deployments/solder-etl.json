@@ -1,0 +1,1101 @@
+{
+  "enabled": true,
+  "published": false,
+  "description": "Powered by Saasify",
+  "readme": "",
+  "keywords": [],
+  "hash": "40433366",
+  "user": "5e7ac5cc8dedd3003cc5cbdd",
+  "team": null,
+  "project": {
+    "keywords": [],
+    "description": "",
+    "name": "solder",
+    "alias": "solder.sh",
+    "user": "5e7ac5cc8dedd3003cc5cbdd",
+    "team": null,
+    "publishedVersions": [],
+    "createdAt": "2020-03-25T03:34:09.339Z",
+    "updatedAt": "2020-03-27T03:56:03.736Z",
+    "lastDeployment": "nhano0228/solder@b272413c",
+    "saasUrl": "http://nhano0228_solder.localhost:3000",
+    "aliasUrl": "https://solder.sh",
+    "id": "nhano0228/solder"
+  },
+  "version": "0.1.0",
+  "pricingPlans": [
+    {
+      "features": [],
+      "auth": false,
+      "amount": 0,
+      "requests": {
+        "amount": 0,
+        "billingScheme": "per_unit",
+        "tiersMode": "graduated",
+        "tiers": []
+      },
+      "name": "Free",
+      "desc": "The Free Plan to test the API. Up to 1000 row transfers per month.",
+      "slug": "free",
+      "rateLimit": {
+        "enabled": true,
+        "requestsInterval": 3600,
+        "requestsMaxPerInterval": 25
+      },
+      "baseId": "base:79617f7f9f7aed9ecacb8e61749a35732fb77c0607d099b6b4c65d5d0b5ac019",
+      "requestsId": "requests:21d9cca0ce96b00844fcd307ad19d9eefcf0c320c308d2ec7661aa1aa04d1506"
+    },
+    {
+      "features": [],
+      "auth": true,
+      "amount": 0,
+      "requests": {
+        "amount": 2,
+        "billingScheme": "per_unit",
+        "tiersMode": "graduated",
+        "tiers": []
+      },
+      "name": "Enterprise",
+      "desc": "Has up 1000000 row transfers per month.",
+      "slug": "enterprise",
+      "baseId": "base:7ec093f9f39dfb42950745cb04d6e901d4316783d826b7c4cad0c497b5b98936",
+      "requestsId": "requests:c238a44acf9a2c401f8aa1b0ce07082d22a81378ea3c05eceaacbfdb488b5363"
+    }
+  ],
+  "coupons": [],
+  "services": [
+    {
+      "name": "get_current_running_jobs_activecampaign_postgres_get_current_running_jobs__get",
+      "adaptor": "openapi",
+      "httpMethod": "get",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [
+        {
+          "isGeneratedInput": true,
+          "isGeneratedOutput": true,
+          "inputContentType": "application/json",
+          "outputContentType": "application/json",
+          "name": "Basic",
+          "input": {
+            "uuid": "fugiat dolore ullamco anim adipisicing"
+          },
+          "output": {}
+        },
+        {
+          "isGeneratedInput": true,
+          "isGeneratedOutput": true,
+          "inputContentType": "application/json",
+          "outputContentType": "application/json",
+          "name": "Advanced",
+          "input": {
+            "uuid": "sit velit incid"
+          },
+          "output": {}
+        }
+      ],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/activecampaign-postgres/get-current-running-jobs/",
+      "pathExpress": "/activecampaign-postgres/get-current-running-jobs/",
+      "definition": {
+        "params": {
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "uuid": {
+                "name": "uuid",
+                "title": "Uuid",
+                "type": "string"
+              }
+            },
+            "required": ["uuid"]
+          }
+        }
+      },
+      "url": "http://localhost:5100/nhano0228/solder@40433366/activecampaign-postgres/get-current-running-jobs/",
+      "route": "/nhano0228/solder@40433366/activecampaign-postgres/get-current-running-jobs/"
+    },
+    {
+      "name": "modify_current_job_activecampaign_postgres_modify_current_job__post",
+      "adaptor": "openapi",
+      "httpMethod": "post",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/activecampaign-postgres/modify-current-job/",
+      "pathExpress": "/activecampaign-postgres/modify-current-job/",
+      "definition": {
+        "params": {
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "uuid": {
+                "name": "uuid",
+                "title": "Uuid",
+                "type": "string"
+              },
+              "category": {
+                "name": "category",
+                "title": "Category",
+                "type": "string"
+              },
+              "cron": {
+                "name": "cron",
+                "title": "Cron",
+                "type": "string"
+              }
+            },
+            "required": ["uuid", "category", "cron"]
+          }
+        }
+      },
+      "url": "http://localhost:5100/nhano0228/solder@40433366/activecampaign-postgres/modify-current-job/",
+      "route": "/nhano0228/solder@40433366/activecampaign-postgres/modify-current-job/"
+    },
+    {
+      "name": "start_job_activecampaign_postgres_start_job__get",
+      "adaptor": "openapi",
+      "httpMethod": "get",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/activecampaign-postgres/start-job/",
+      "pathExpress": "/activecampaign-postgres/start-job/",
+      "definition": {
+        "params": {
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "uuid": {
+                "name": "uuid",
+                "title": "Uuid",
+                "type": "string"
+              },
+              "category": {
+                "name": "category",
+                "title": "Category",
+                "type": "string"
+              },
+              "cron": {
+                "name": "cron",
+                "title": "Cron",
+                "type": "string"
+              }
+            },
+            "required": ["uuid", "category", "cron"]
+          }
+        }
+      },
+      "url": "http://localhost:5100/nhano0228/solder@40433366/activecampaign-postgres/start-job/",
+      "route": "/nhano0228/solder@40433366/activecampaign-postgres/start-job/"
+    },
+    {
+      "name": "end_job_activecampaign_postgres_end_job__get",
+      "adaptor": "openapi",
+      "httpMethod": "get",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/activecampaign-postgres/end-job/",
+      "pathExpress": "/activecampaign-postgres/end-job/",
+      "definition": {
+        "params": {
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "uuid": {
+                "name": "uuid",
+                "title": "Uuid",
+                "type": "string"
+              },
+              "category": {
+                "name": "category",
+                "title": "Category",
+                "type": "string"
+              }
+            },
+            "required": ["uuid", "category"]
+          }
+        }
+      },
+      "url": "http://localhost:5100/nhano0228/solder@40433366/activecampaign-postgres/end-job/",
+      "route": "/nhano0228/solder@40433366/activecampaign-postgres/end-job/"
+    },
+    {
+      "name": "get_user_activecampaign_postgres_get_user__get",
+      "adaptor": "openapi",
+      "httpMethod": "get",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [
+        {
+          "isGeneratedInput": true,
+          "isGeneratedOutput": true,
+          "inputContentType": "application/json",
+          "outputContentType": "application/json",
+          "name": "Advanced",
+          "input": {
+            "uuid": "sit"
+          },
+          "output": null
+        }
+      ],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/activecampaign-postgres/get-user/",
+      "pathExpress": "/activecampaign-postgres/get-user/",
+      "definition": {
+        "params": {
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "uuid": {
+                "name": "uuid",
+                "title": "Uuid",
+                "type": "string"
+              }
+            },
+            "required": ["uuid"]
+          }
+        }
+      },
+      "url": "http://localhost:5100/nhano0228/solder@40433366/activecampaign-postgres/get-user/",
+      "route": "/nhano0228/solder@40433366/activecampaign-postgres/get-user/"
+    },
+    {
+      "name": "create_user_activecampaign_postgres_create_user__post",
+      "adaptor": "openapi",
+      "httpMethod": "post",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/activecampaign-postgres/create-user/",
+      "pathExpress": "/activecampaign-postgres/create-user/",
+      "definition": {
+        "params": {
+          "schema": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "title": "TapTargetData"
+          }
+        }
+      },
+      "url": "http://localhost:5100/nhano0228/solder@40433366/activecampaign-postgres/create-user/",
+      "route": "/nhano0228/solder@40433366/activecampaign-postgres/create-user/"
+    },
+    {
+      "name": "modify_user_activecampaign_postgres_modify_user__post",
+      "adaptor": "openapi",
+      "httpMethod": "post",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/activecampaign-postgres/modify-user/",
+      "pathExpress": "/activecampaign-postgres/modify-user/",
+      "definition": {
+        "params": {
+          "schema": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "title": "ChangeableTapTargetData"
+          }
+        }
+      },
+      "url": "http://localhost:5100/nhano0228/solder@40433366/activecampaign-postgres/modify-user/",
+      "route": "/nhano0228/solder@40433366/activecampaign-postgres/modify-user/"
+    },
+    {
+      "name": "perform_etl_by_category_activecampaign_postgres_perform_etl_by_category__post",
+      "adaptor": "openapi",
+      "httpMethod": "post",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/activecampaign-postgres/perform-etl-by-category/",
+      "pathExpress": "/activecampaign-postgres/perform-etl-by-category/",
+      "definition": {
+        "params": {
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "uuid": {
+                "name": "uuid",
+                "title": "Uuid",
+                "type": "string"
+              },
+              "category": {
+                "name": "category",
+                "title": "Category",
+                "type": "string"
+              }
+            },
+            "required": ["uuid", "category"]
+          }
+        }
+      },
+      "url": "http://localhost:5100/nhano0228/solder@40433366/activecampaign-postgres/perform-etl-by-category/",
+      "route": "/nhano0228/solder@40433366/activecampaign-postgres/perform-etl-by-category/"
+    },
+    {
+      "name": "perform_etl_all_data_activecampaign_postgres_perform_etl_all_data__post",
+      "adaptor": "openapi",
+      "httpMethod": "post",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/activecampaign-postgres/perform-etl-all-data/",
+      "pathExpress": "/activecampaign-postgres/perform-etl-all-data/",
+      "definition": {
+        "params": {
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "uuid": {
+                "name": "uuid",
+                "title": "Uuid",
+                "type": "string"
+              }
+            },
+            "required": ["uuid"]
+          }
+        }
+      },
+      "url": "http://localhost:5100/nhano0228/solder@40433366/activecampaign-postgres/perform-etl-all-data/",
+      "route": "/nhano0228/solder@40433366/activecampaign-postgres/perform-etl-all-data/"
+    }
+  ],
+  "build": null,
+  "env": null,
+  "saas": {
+    "headerName": null,
+    "logo": "https://storage.googleapis.com/saasify-uploads-prod/f218cc888f902eff57c42657c5a5a1cbaee2594c.svg",
+    "logoLight": null,
+    "favicon": "https://storage.googleapis.com/saasify-uploads-prod/f88882c70e6239b99c26dcc873a84caf3e91dfeb.ico",
+    "exampleImage": null,
+    "features": [],
+    "name": "solder.sh",
+    "heading": "**An ETL Tool For The Masses**",
+    "subheading": "An API that allows you to extract, transfer, and load data from ActiveCampaign to PostgreSQL.",
+    "theme": {
+      "name": "waves",
+      "buttonStyle": "rounded",
+      "color": "#a81016",
+      "gradientDark": true,
+      "codeBlockDark": true,
+      "backgroundImage": null
+    },
+    "sections": {
+      "navHeader": {
+        "logo": false
+      },
+      "navFooter": {
+        "logo": false,
+        "location": "Great Neck, NY",
+        "github": false,
+        "email": "mailto:noahsahar@gmail.com"
+      }
+    }
+  },
+  "createdAt": "2020-03-27T01:35:09.638Z",
+  "updatedAt": "2020-03-27T01:35:09.638Z",
+  "url": "http://localhost:5100/nhano0228/solder@40433366",
+  "openApiUrl": "http://localhost:5000/1/deployments/openapi/nhano0228/solder@40433366",
+  "saasUrl": "http://nhano0228_solder_40433366.localhost:3000",
+  "authProviders": {
+    "google": {
+      "enabled": false,
+      "provider": "google",
+      "scopes": []
+    },
+    "github": {
+      "enabled": true,
+      "provider": "github",
+      "scopes": []
+    },
+    "spotify": {
+      "enabled": false,
+      "provider": "spotify",
+      "scopes": []
+    },
+    "twitter": {
+      "enabled": false,
+      "provider": "twitter",
+      "scopes": []
+    },
+    "default": {
+      "enabled": true,
+      "provider": "default",
+      "scopes": []
+    }
+  },
+  "openapi": {
+    "openapi": "3.0.2",
+    "info": {
+      "title": "FastAPI",
+      "version": "0.1.0"
+    },
+    "paths": {
+      "/activecampaign-postgres/get-current-running-jobs/": {
+        "get": {
+          "summary": "Get Current Running Jobs",
+          "operationId": "get_current_running_jobs_activecampaign_postgres_get_current_running_jobs__get",
+          "parameters": [
+            {
+              "required": true,
+              "schema": {
+                "title": "Uuid",
+                "type": "string"
+              },
+              "name": "uuid",
+              "in": "query"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-user",
+                "type": "string"
+              },
+              "name": "x-saasify-user",
+              "in": "header"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-plan",
+                "type": "string"
+              },
+              "name": "x-saasify-plan",
+              "in": "header"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/activecampaign-postgres/modify-current-job/": {
+        "post": {
+          "summary": "Modify Current Job",
+          "operationId": "modify_current_job_activecampaign_postgres_modify_current_job__post",
+          "parameters": [
+            {
+              "required": true,
+              "schema": {
+                "title": "Uuid",
+                "type": "string"
+              },
+              "name": "uuid",
+              "in": "query"
+            },
+            {
+              "required": true,
+              "schema": {
+                "title": "Category",
+                "type": "string"
+              },
+              "name": "category",
+              "in": "query"
+            },
+            {
+              "required": true,
+              "schema": {
+                "title": "Cron",
+                "type": "string"
+              },
+              "name": "cron",
+              "in": "query"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-user",
+                "type": "string"
+              },
+              "name": "x-saasify-user",
+              "in": "header"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-plan",
+                "type": "string"
+              },
+              "name": "x-saasify-plan",
+              "in": "header"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/activecampaign-postgres/start-job/": {
+        "get": {
+          "summary": "Start Job",
+          "operationId": "start_job_activecampaign_postgres_start_job__get",
+          "parameters": [
+            {
+              "required": true,
+              "schema": {
+                "title": "Uuid",
+                "type": "string"
+              },
+              "name": "uuid",
+              "in": "query"
+            },
+            {
+              "required": true,
+              "schema": {
+                "title": "Category",
+                "type": "string"
+              },
+              "name": "category",
+              "in": "query"
+            },
+            {
+              "required": true,
+              "schema": {
+                "title": "Cron",
+                "type": "string"
+              },
+              "name": "cron",
+              "in": "query"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-user",
+                "type": "string"
+              },
+              "name": "x-saasify-user",
+              "in": "header"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-plan",
+                "type": "string"
+              },
+              "name": "x-saasify-plan",
+              "in": "header"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/activecampaign-postgres/end-job/": {
+        "get": {
+          "summary": "End Job",
+          "operationId": "end_job_activecampaign_postgres_end_job__get",
+          "parameters": [
+            {
+              "required": true,
+              "schema": {
+                "title": "Uuid",
+                "type": "string"
+              },
+              "name": "uuid",
+              "in": "query"
+            },
+            {
+              "required": true,
+              "schema": {
+                "title": "Category",
+                "type": "string"
+              },
+              "name": "category",
+              "in": "query"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-user",
+                "type": "string"
+              },
+              "name": "x-saasify-user",
+              "in": "header"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-plan",
+                "type": "string"
+              },
+              "name": "x-saasify-plan",
+              "in": "header"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/activecampaign-postgres/get-user/": {
+        "get": {
+          "summary": "Get User",
+          "operationId": "get_user_activecampaign_postgres_get_user__get",
+          "parameters": [
+            {
+              "required": true,
+              "schema": {
+                "title": "Uuid",
+                "type": "string"
+              },
+              "name": "uuid",
+              "in": "query"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-user",
+                "type": "string"
+              },
+              "name": "x-saasify-user",
+              "in": "header"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-plan",
+                "type": "string"
+              },
+              "name": "x-saasify-plan",
+              "in": "header"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/activecampaign-postgres/create-user/": {
+        "post": {
+          "summary": "Create User",
+          "operationId": "create_user_activecampaign_postgres_create_user__post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TapTargetData"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/activecampaign-postgres/modify-user/": {
+        "post": {
+          "summary": "Modify User",
+          "operationId": "modify_user_activecampaign_postgres_modify_user__post",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChangeableTapTargetData"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/activecampaign-postgres/perform-etl-by-category/": {
+        "post": {
+          "summary": "Perform Etl By Category",
+          "operationId": "perform_etl_by_category_activecampaign_postgres_perform_etl_by_category__post",
+          "parameters": [
+            {
+              "required": true,
+              "schema": {
+                "title": "Uuid",
+                "type": "string"
+              },
+              "name": "uuid",
+              "in": "query"
+            },
+            {
+              "required": true,
+              "schema": {
+                "title": "Category",
+                "type": "string"
+              },
+              "name": "category",
+              "in": "query"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-user",
+                "type": "string"
+              },
+              "name": "x-saasify-user",
+              "in": "header"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-plan",
+                "type": "string"
+              },
+              "name": "x-saasify-plan",
+              "in": "header"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/activecampaign-postgres/perform-etl-all-data/": {
+        "post": {
+          "summary": "Perform Etl All Data",
+          "operationId": "perform_etl_all_data_activecampaign_postgres_perform_etl_all_data__post",
+          "parameters": [
+            {
+              "required": true,
+              "schema": {
+                "title": "Uuid",
+                "type": "string"
+              },
+              "name": "uuid",
+              "in": "query"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-user",
+                "type": "string"
+              },
+              "name": "x-saasify-user",
+              "in": "header"
+            },
+            {
+              "schema": {
+                "title": "x-saasify-plan",
+                "type": "string"
+              },
+              "name": "x-saasify-plan",
+              "in": "header"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "ChangeableTapTargetData": {
+          "title": "ChangeableTapTargetData",
+          "required": ["id"],
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "Id",
+              "type": "string"
+            },
+            "url": {
+              "title": "Url",
+              "type": "string"
+            },
+            "api_key": {
+              "title": "Api Key",
+              "type": "string"
+            },
+            "postgres_host": {
+              "title": "Postgres Host",
+              "type": "string"
+            },
+            "postgres_port": {
+              "title": "Postgres Port",
+              "type": "integer"
+            },
+            "postgres_database": {
+              "title": "Postgres Database",
+              "type": "string"
+            },
+            "postgres_username": {
+              "title": "Postgres Username",
+              "type": "string"
+            },
+            "postgres_password": {
+              "title": "Postgres Password",
+              "type": "string"
+            },
+            "postgres_schema": {
+              "title": "Postgres Schema",
+              "type": "string"
+            }
+          }
+        },
+        "HTTPValidationError": {
+          "title": "HTTPValidationError",
+          "type": "object",
+          "properties": {
+            "detail": {
+              "title": "Detail",
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              }
+            }
+          }
+        },
+        "TapTargetData": {
+          "title": "TapTargetData",
+          "required": [
+            "url",
+            "api_key",
+            "postgres_host",
+            "postgres_port",
+            "postgres_database",
+            "postgres_username",
+            "postgres_password",
+            "postgres_schema"
+          ],
+          "type": "object",
+          "properties": {
+            "url": {
+              "title": "Url",
+              "type": "string"
+            },
+            "api_key": {
+              "title": "Api Key",
+              "type": "string"
+            },
+            "postgres_host": {
+              "title": "Postgres Host",
+              "type": "string"
+            },
+            "postgres_port": {
+              "title": "Postgres Port",
+              "type": "integer"
+            },
+            "postgres_database": {
+              "title": "Postgres Database",
+              "type": "string"
+            },
+            "postgres_username": {
+              "title": "Postgres Username",
+              "type": "string"
+            },
+            "postgres_password": {
+              "title": "Postgres Password",
+              "type": "string"
+            },
+            "postgres_schema": {
+              "title": "Postgres Schema",
+              "type": "string"
+            }
+          }
+        },
+        "ValidationError": {
+          "title": "ValidationError",
+          "required": ["loc", "msg", "type"],
+          "type": "object",
+          "properties": {
+            "loc": {
+              "title": "Location",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "msg": {
+              "title": "Message",
+              "type": "string"
+            },
+            "type": {
+              "title": "Error Type",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "id": "nhano0228/solder@40433366"
+}

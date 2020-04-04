@@ -18,7 +18,7 @@ for (const fixture of fixtures) {
     const deployment = require(fixture)
     const spec = await saasifyToOpenAPI(deployment)
 
-    console.log(JSON.stringify(spec, null, 2))
+    // console.log(JSON.stringify(spec, null, 2))
     t.snapshot(spec)
 
     await delay(1000)

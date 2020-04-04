@@ -668,6 +668,7 @@
   font-size: 16px !important;
   font-weight: 500;
   height: auto;
+  line-height: unset;
   letter-spacing: normal !important;
   text-transform: none !important;
   text-shadow: none;
@@ -992,10 +993,6 @@
   content: 'test';
 }
 
-.theme-waves .plan .desc {
-  display: none;
-}
-
 .theme-waves .plan .price {
   align-items: baseline;
   color: #9e9e9e;
@@ -1056,7 +1053,7 @@
   display: flex !important;
 }
 
-.theme-waves .docs-page .logo:not(.logo--light) {
+.theme-waves .docs-page .nav-header .logo:not(.logo--light) {
   display: none !important;
 }
 

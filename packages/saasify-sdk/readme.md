@@ -6,9 +6,11 @@
 
 # saasify-sdk
 
-> HTTP client for invoking [Saasify](https://saasify.sh) FaaS.
+> Client-side iframe embedding SDK for [Saasify](https://saasify.sh).
 
 [![NPM](https://img.shields.io/npm/v/saasify-sdk.svg)](https://www.npmjs.com/package/saasify-sdk) [![Build Status](https://travis-ci.com/saasify-sh/saasify.svg?branch=master)](https://travis-ci.com/saasify-sh/saasify) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+Note: this package is meant exclusively for embedding custom UI in your SaaS client's authenticated dashboard via an iFrame.
 
 ## Install
 
@@ -18,27 +20,21 @@ npm install --save saasify-sdk
 
 ## Usage
 
+Initialize the SDK within your project's iframe. The SDK will connect to the parent SaaS client window and expose all the information you need to build custom UI on top of your Saasify API for your authenticated users.
+
 ```js
 const SaasifySDK = require('saasify-sdk')
-const sdk = new SaasifySDK()
 
-const helloWorldUrl = 'https://ssfy.sh/dev/hello-world'
+const sdk = new SaasifySDK({ projectId: 'dev/hello-world' })
+await sdk.ready
 
-const res = await sdk.post(helloWorldUrl, {
-  data: { name: 'Nala' }
-})
+console.log(sdk.deployment)
+console.log(sdk.project)
+console.log(sdk.consumer)
 
-{
-  "output": "Hello Nala!",
-  "outputContentType": "application/json",
-  "response": { /* raw axios response */ }
-}
+// call authenticated methods on your project's API
+const { body } = await sdk.api.call({ url: '/endpoint', method: 'GET' })
 ```
-
-## TODO
-
-- [ ] use `nock` in unit tests to ensure robustness and enable offline testing
-- [ ] change stateful way the auth `token` is currently handled
 
 ## License
 
