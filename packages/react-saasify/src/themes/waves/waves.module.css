@@ -1053,7 +1053,7 @@
   display: flex !important;
 }
 
-.theme-waves .docs-page .logo:not(.logo--light) {
+.theme-waves .docs-page .nav-header .logo:not(.logo--light) {
   display: none !important;
 }
 
