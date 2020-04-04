@@ -52,7 +52,7 @@ module.exports = (rawReadme) => {
 
   const readmeValue = readme.toString().trim()
   return {
-    readme: readmeValue ? `# Readme\n\n${readmeValue}` : '',
+    readme: readmeValue ? `# Docs\n\n${readmeValue}` : '',
     quickStart: quickStart !== '\n' ? quickStart : '',
     supportingOSS: supportingOSS !== '\n' ? supportingOSS : ''
   }

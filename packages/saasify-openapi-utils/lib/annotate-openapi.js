@@ -56,7 +56,7 @@ module.exports = async (spec, deployment, opts = {}) => {
     description: `
 ${quickStart || readme}
 
-# Configuration
+# API
 
 ## Authentication
 
