@@ -44,7 +44,10 @@ module.exports = async (opts) => {
         name: 'name',
         message: 'Project Name',
         validate: (name) => {
-          return name && validators.projectName(name)
+          if (!validators.projectName(name)) {
+            return 'Invalid project name, see docs: https://docs.saasify.sh/#/configuration?id=name'
+          }
+          return true
         },
         default: opts.name
       },

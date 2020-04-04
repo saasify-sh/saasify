@@ -139,7 +139,7 @@ Any local media files pointed to by your config will be automatically uploaded t
 
 Project name. If not provided, this will default to the containing folder's name.
 
-`name` cannot contain underscores. Validation regex `/^[a-zA-Z0-9-]{3,64}$/`.
+`name` cannot contain underscores or dots. Validation regex `/^[a-zA-Z0-9-]{3,64}$/`.
 
 #### openapi
 
