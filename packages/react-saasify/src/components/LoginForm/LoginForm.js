@@ -72,7 +72,7 @@ export class LoginForm extends Component {
               icon='github'
               onClick={this._onClickGitHub}
             >
-              Login with GitHub
+              Log in with GitHub
             </Button>
           </FormItem>
         )}
@@ -84,7 +84,7 @@ export class LoginForm extends Component {
               icon='google'
               onClick={this._onClickGoogle}
             >
-              Login with Google
+              Log in with Google
             </Button>
           </FormItem>
         )}

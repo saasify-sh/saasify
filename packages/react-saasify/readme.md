@@ -77,7 +77,6 @@ import {
   Markdown,
   UndrawSVG,
   Logo,
-  BackgroundSlideshow,
   ScrollToTopOnMount,
   Paper,
   Loading

@@ -1,4 +1,4 @@
-import styles from './theme.module.css'
+import styles from './theme-clean.module.css'
 
 export default (opts = {}) => {
   return {

@@ -56,6 +56,15 @@
   background: transparent !important;
 }
 
+.theme-clean .nav-header .links {
+  justify-content: flex-start;
+}
+
+.theme-clean .nav-header .link {
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .terms-page-body,
 .privacy-page-body {
   padding: 4em 0 2em;

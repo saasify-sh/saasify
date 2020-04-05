@@ -61,6 +61,15 @@ export class NavHeader extends Component {
     const { auth, config, fixed, className } = this.props
     const { attached, expanded } = this.state
 
+    // TODO: some of these config.* properties should be moved to the navHeader section
+    const sections = config?.deployment?.saas?.sections
+
+    const signupText =
+      sections?.navHeader?.cta ||
+      sections?.hero?.cta ||
+      config.ctaTextInline ||
+      'Get started'
+
     return (
       <header
         className={theme(
@@ -81,26 +90,23 @@ export class NavHeader extends Component {
         <div className={theme(styles, 'content')}>
           <div className={theme(styles, 'primary')}>
             <Link to='/'>
-              {config.logo &&
-                config?.deployment?.saas?.sections?.navHeader?.logo !==
-                  false && (
-                  <span className={theme(styles, 'logo-image')}>
-                    <Logo className={theme(styles, 'logo')} />
-                    <Logo
-                      className={theme(
-                        styles,
-                        'logo',
-                        theme(styles, 'logo--light')
-                      )}
-                      light
-                    />
-                  </span>
-                )}
+              {config.logo && sections?.navHeader?.logo !== false && (
+                <span className={theme(styles, 'logo-image')}>
+                  <Logo className={theme(styles, 'logo')} />
+                  <Logo
+                    className={theme(
+                      styles,
+                      'logo',
+                      theme(styles, 'logo--light')
+                    )}
+                    light
+                  />
+                </span>
+              )}
 
               {config.logo &&
                 config?.header?.displayName !== false &&
-                config?.deployment?.saas?.sections?.navHeader?.displayName !==
-                  false && (
+                sections?.navHeader?.displayName !== false && (
                   <span className={theme(styles, 'logo-text')}>
                     {config?.deployment?.saas?.headerName
                       ? config.deployment.saas.headerName
@@ -165,15 +171,12 @@ export class NavHeader extends Component {
                       inline
                       onClick={config.ctaOnClick}
                     >
-                      {config.ctaTextInline || 'Get started'}
+                      {signupText}
                     </CTAButton>
                   ) : (
-                    <Link to='/signup'>
+                    <Link to={sections?.hero?.ctaLink || '/signup'}>
                       <CTAButton type='primary' inline>
-                        {config?.deployment?.saas?.sections?.navHeader?.cta ||
-                          config?.deployment?.saas?.sections?.hero?.cta ||
-                          config.ctaTextInline ||
-                          'Get started'}
+                        {signupText}
                       </CTAButton>
                     </Link>
                   ))}
