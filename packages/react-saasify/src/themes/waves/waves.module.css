@@ -21,12 +21,6 @@
   --line-height-l: 1.42;
 }
 
-/*
-.theme-waves ::selection {
-  background: var(--color-primary);
-}
-*/
-
 .theme-waves {
   color: #fff;
   font-family: var(--font-family);
@@ -55,10 +49,8 @@
 }
 
 .theme-waves .paper {
-  border-radius: 10px;
-  box-shadow: 0 7px 18px 0 rgba(210, 210, 210, 0.5);
-  margin: 0;
-  padding: var(--space-xl);
+  border-radius: 8px;
+  padding: var(--space-l);
 }
 
 .theme-waves .loading {
@@ -385,11 +377,6 @@
   max-width: 352px;
 }
 
-.theme-waves .login-page :global(.box-gallery),
-.theme-waves .signup-page :global(.box-gallery) {
-  display: none;
-}
-
 .theme-waves .login-page .title,
 .theme-waves .signup-page .title {
   font-weight: 500;
@@ -668,7 +655,7 @@
   font-size: 16px !important;
   font-weight: 500;
   height: auto;
-  line-height: unset;
+  line-height: initial;
   letter-spacing: normal !important;
   text-transform: none !important;
   text-shadow: none;
@@ -859,6 +846,20 @@
   left: 0;
   top: -188px;
   width: 100vw;
+}
+
+.theme-waves .signup-page::before,
+.theme-waves .login-page::before,
+.theme-waves .checkout-page::before {
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: top;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
 @media (min-width: 48em) {

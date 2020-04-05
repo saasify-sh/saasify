@@ -54,8 +54,6 @@ export const waves = ({
     'heading-font-size': headingFontSize
   })
 
-  // TODO: make styles more dynamic based on less variables
-  // TODO: add fonts
   return {
     ...styles,
     '@name': 'waves',
