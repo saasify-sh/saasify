@@ -63,6 +63,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-end;
 
   user-select: none;
 }
@@ -97,11 +98,16 @@
 .links {
   flex-direction: row;
   flex-wrap: wrap;
+  margin-right: 4%;
 }
 
 .link {
   padding: 0;
-  margin-right: 32px;
+  margin-right: 10%;
+}
+
+.link:last-child {
+  margin-right: 0;
 }
 
 .link:hover {
