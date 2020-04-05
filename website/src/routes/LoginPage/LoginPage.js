@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 import { handleAuth, theme } from 'react-saasify'
 
-import { BackgroundSlideshow, LoginForm, Paper, NavHeader } from 'components'
+import { LoginForm, Paper, NavHeader } from 'components'
 
 import styles from './styles.module.css'
 
@@ -24,8 +24,6 @@ export class LoginPage extends Component {
 
     return (
       <div className={theme(styles, 'login-page')}>
-        <BackgroundSlideshow />
-
         <NavHeader fixed />
 
         <div className={theme(styles, 'content')}>
