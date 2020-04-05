@@ -72,6 +72,12 @@ export class PricingPlan extends Component {
         ? '/dashboard'
         : `/signup?plan=${plan.slug}`)
 
+    console.log(
+      plan.context.hasMeteredBilling,
+      plan.context.hasRateLimits,
+      plan.context.showMeteredBilling
+    )
+
     return (
       <Paper className={theme(styles, 'plan', className)} {...rest}>
         <h3 className={theme(styles, 'name')}>
@@ -81,7 +87,7 @@ export class PricingPlan extends Component {
         <Divider />
 
         {(plan.context?.hasMeteredBilling || plan.context?.hasRateLimits) &&
-          plan.context.showMeteredbilling && (
+          plan.context.showMeteredBilling && (
             <Fragment>
               <div className={theme(styles, 'pricing')}>
                 <div />
