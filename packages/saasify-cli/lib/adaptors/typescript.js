@@ -66,6 +66,10 @@ module.exports.generateDefinition = async (program, service, config, opts) => {
     }
   }
 
+  if (definition.params.http) {
+    service.httpMethod = 'post'
+  }
+
   return {
     ...service,
     definition
