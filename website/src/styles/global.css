@@ -38,3 +38,7 @@ p {
 :global(.ant-form-item:last-child) {
   margin-bottom: 0;
 }
+
+a {
+  color: #38414f;
+}

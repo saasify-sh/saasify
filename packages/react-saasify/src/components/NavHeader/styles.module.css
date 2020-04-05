@@ -60,10 +60,12 @@
 }
 
 .links {
+  flex: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  flex-wrap: wrap;
 
   user-select: none;
 }
@@ -95,15 +97,9 @@
   margin-left: 2em;
 }
 
-.links {
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-right: 4%;
-}
-
 .link {
   padding: 0;
-  margin-right: 10%;
+  margin-right: 3em;
 }
 
 .link:last-child {
@@ -116,7 +112,7 @@
 
 .actions {
   display: flex;
-  margin-left: auto;
+  margin-left: 1em;
 }
 
 .actions .link {

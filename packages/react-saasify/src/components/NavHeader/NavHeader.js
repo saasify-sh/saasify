@@ -62,7 +62,7 @@ export class NavHeader extends Component {
     const { attached, expanded } = this.state
 
     // TODO: some of these config.* properties should be moved to the navHeader section
-    const { sections = {} } = config?.deployment?.saas?.sections
+    const sections = config?.deployment?.saas?.sections
 
     const signupText =
       sections?.navHeader?.cta ||
