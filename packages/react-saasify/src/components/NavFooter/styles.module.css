@@ -31,6 +31,10 @@
   margin-bottom: 1.5em;
 }
 
+.nav-footer ul {
+  margin-bottom: 0;
+}
+
 .listItem {
   list-style-type: none;
   margin-bottom: 0.75em;
