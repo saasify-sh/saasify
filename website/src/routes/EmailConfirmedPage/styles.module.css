@@ -7,7 +7,7 @@
 }
 
 .illustration {
-  margin-top: 8em;
+  margin-top: 4em;
   min-width: 128px;
   max-width: 420px;
 }
@@ -15,4 +15,21 @@
 .body {
   margin: 1em auto 2em;
   max-width: 720px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1em auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.action {
+  margin-right: 2em;
+}
+
+.action:last-child {
+  margin-right: 0;
 }

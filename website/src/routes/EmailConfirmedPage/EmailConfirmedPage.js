@@ -25,19 +25,34 @@ export class EmailConfirmedPage extends Component {
               ground!
             </p>
 
-            <p>The next step is to complete a quick onboarding survey.</p>
+            <p>
+              We recommend that you get started with our{' '}
+              <a href='https://docs.saasify.sh'>quick start guide</a>.
+            </p>
 
             <p>
-              If you've already completed the survey, then hang tight and we'll
-              be in touch with you shortly. You can always reach out to us
-              directly via <a href='mailto:support@saasify.sh'>email</a> or via
-              our <a href='https://slack.saasify.sh'>open Slack</a>.
+              Feel free to reach out to us directly via{' '}
+              <a href='mailto:support@saasify.sh'>email</a> or via our{' '}
+              <a
+                href='https://slack.saasify.sh'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                open Slack
+              </a>
+              .
             </p>
           </div>
 
-          <Link key='onboarding' to='/onboarding'>
-            <CTAButton>Continue Onboarding</CTAButton>
-          </Link>
+          <div className={styles.actions}>
+            <a href='https://docs.saasify.sh' className={styles.action}>
+              <CTAButton>Quick Start Guide</CTAButton>
+            </a>
+
+            <Link to='/onboarding' className={styles.action}>
+              <CTAButton>Onboarding Survey</CTAButton>
+            </Link>
+          </div>
 
           <img
             src={catImage}

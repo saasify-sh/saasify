@@ -65,6 +65,11 @@
   font-weight: 500;
 }
 
+.theme-clean .nav-header .link,
+.theme-clean .nav-footer .link {
+  color: #38414f;
+}
+
 .terms-page-body,
 .privacy-page-body {
   padding: 4em 0 2em;
