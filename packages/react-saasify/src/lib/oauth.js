@@ -54,6 +54,8 @@ export function authStripe({ location, auth }) {
     params['stripe_user[email]'] = auth.user?.email
   }
 
+  // TODO: allow for additional params customization
+
   const opts = qs.stringify(params)
 
   // https://connect.stripe.com/express/oauth/authorize
