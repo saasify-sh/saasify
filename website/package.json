@@ -11,12 +11,12 @@
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "NODE_PATH=node_modules REACT_APP_SAASIFY_API_BASE_URL=http://localhost:5000 react-app-rewired start",
-    "now-build": "NODE_PATH=node_modules NODE_ENV=production react-app-rewired build",
+    "start": "NODE_PATH=../node_modules REACT_APP_SAASIFY_API_BASE_URL=http://localhost:5000 react-app-rewired start",
+    "now-build": "NODE_PATH=../node_modules NODE_ENV=production react-app-rewired build",
     "deploy": "now --prod && now rm --safe saasify-platform",
-    "build": "NODE_PATH=node_modules react-app-rewired build",
+    "build": "NODE_PATH=../node_modules react-app-rewired build",
     "test": "eslint src",
-    "test:watch": "NODE_PATH=node_modules react-app-rewired test",
+    "test:watch": "NODE_PATH=../node_modules react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
   "keywords": [
