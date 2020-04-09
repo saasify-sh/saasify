@@ -415,16 +415,15 @@ export const faq = [
         answer: (
           <>
             <p>
-              We recommend checking out{' '}
+              Check out our
               <a
-                href='https://www.indiehackers.com/'
+                href='https://docs.saasify.sh/#/resources'
                 rel='noopener noreferrer'
                 target='_blank'
               >
-                Indie Hackers
+                guide
               </a>{' '}
-              for now and will be providing more resources for SaaS idea
-              generation and validation in the near future.
+              which should give you some solid inspiration to get started.
             </p>
           </>
         )

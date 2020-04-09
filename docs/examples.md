@@ -4,7 +4,7 @@
 
 ## TypeScript
 
-- [simple-cron](https://simple-cron.saasify.sh) - Dead simple cron service for making HTTP calls on a regular schedule.
+- [simple-cron](https://simplecron.dev) - Dead simple cron service for making HTTP calls on a regular schedule.
 - [sheetful](https://github.com/saasify-sh/sheetful) - The easiest way to turn your Google Sheet into a Restful API.
 - [hello-world](https://github.com/saasify-sh/saasify/tree/master/examples/typescript/hello-world) - Simplest possible TypeScript project.
 
