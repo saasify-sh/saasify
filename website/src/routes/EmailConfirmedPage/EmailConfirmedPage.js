@@ -27,7 +27,10 @@ export class EmailConfirmedPage extends Component {
 
             <p>
               We recommend that you get started with our{' '}
-              <a href='https://docs.saasify.sh'>quick start guide</a>.
+              <a href='https://docs.saasify.sh/#/quick-start'>
+                quick start guide
+              </a>
+              .
             </p>
 
             <p>
@@ -45,7 +48,10 @@ export class EmailConfirmedPage extends Component {
           </div>
 
           <div className={styles.actions}>
-            <a href='https://docs.saasify.sh' className={styles.action}>
+            <a
+              href='https://docs.saasify.sh/#/quick-start'
+              className={styles.action}
+            >
               <CTAButton>Quick Start Guide</CTAButton>
             </a>
 
