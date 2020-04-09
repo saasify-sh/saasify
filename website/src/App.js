@@ -9,15 +9,15 @@ import { Helmet } from 'react-helmet'
 import {
   AuthManager,
   ThemeManager,
-  // AuthenticatedRoute,
-  theme
+  AuthenticatedRoute,
+  theme,
 
   // third-party auth flow
-  // AuthGitHubPage,
-  // AuthGooglePage,
-  // AuthSpotifyPage,
-  // AuthTwitterPage,
-  // AuthStripePage
+  AuthGitHubPage,
+  AuthGooglePage,
+  AuthSpotifyPage,
+  AuthTwitterPage,
+  AuthStripePage
 } from 'react-saasify'
 
 import { SignupDialog } from './components'
@@ -33,16 +33,16 @@ import {
 
   // beta pages
   OnboardingPage,
-  EmailConfirmedPage
+  EmailConfirmedPage,
 
   // auth flow
-  // LoginPage,
-  // LogoutPage,
-  // SignupPage,
+  LoginPage,
+  LogoutPage,
+  SignupPage,
 
   // // maker webapp
-  // DashboardPage,
-  // ProjectAdminPage
+  DashboardPage,
+  ProjectAdminPage
 } from './routes'
 
 import { DialogManager } from './lib/DialogManager'
@@ -60,8 +60,8 @@ const saasifyConfig = {
   },
   header: {
     displayName: false,
-    dashboard: false,
-    login: false,
+    dashboard: true,
+    login: true,
     links: [
       {
         children: 'About',
@@ -192,7 +192,7 @@ export default class App extends Component {
                 <Route path='/onboarding' component={OnboardingPage} />
                 <Route path='/email-confirmed' component={EmailConfirmedPage} />
 
-                {/* <Route path='/login' component={LoginPage} />
+                <Route path='/login' component={LoginPage} />
                 <Route path='/signup' component={SignupPage} />
                 <AuthenticatedRoute path='/logout' component={LogoutPage} />
 
@@ -212,7 +212,7 @@ export default class App extends Component {
                   path='/maker/projects/:namespace/:projectName'
                   component={ProjectAdminPage}
                 />
- */}
+
                 <Route component={NotFoundPage} />
               </Switch>
 
