@@ -1,3 +1,40 @@
 .content {
   flex: 1;
 }
+
+.h4 {
+  font-size: 1.7em;
+  margin-bottom: 0.75em;
+}
+
+.label {
+  font-size: 0.9em;
+  margin-bottom: 0.5em;
+}
+
+.metrics {
+  display: flex;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #aaa;
+}
+
+.metric {
+  flex: 1;
+  text-align: center;
+  padding: 8px 1em;
+  border-bottom: 1px solid transparent;
+}
+
+/* .metric:hover:not(.activeMetric) {
+  border-bottom: 1px solid #1890ff;
+}
+
+.activeMetric {
+  border-bottom: 1px solid #1890ff;
+  cursor: unset;
+} */
+
+.activeMetric .label {
+  font-size: 1.2em;
+  font-weight: 700;
+}

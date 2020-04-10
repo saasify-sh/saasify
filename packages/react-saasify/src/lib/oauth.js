@@ -35,14 +35,14 @@ export async function authGoogle({ location }, params) {
   window.location = finalUrl
 }
 
-export function authStripe({ location, auth }) {
+export function authStripe({ location, auth, express = false }) {
   const stateRaw = JSON.stringify({
     uri: env.stripeRedirectUri,
     route: location.pathname
   })
   const state = btoa(stateRaw)
 
-  const scope = 'read_write'
+  const scope = express ? undefined : 'read_write'
   const params = {
     response_type: 'code',
     client_id: env.providerStripeClientId,
@@ -58,11 +58,11 @@ export function authStripe({ location, auth }) {
 
   const opts = qs.stringify(params)
 
-  // https://connect.stripe.com/express/oauth/authorize
-  // scope result will be 'express' if it is an express acount
-  // need to remove scope from request if using express account
-
-  window.location = `https://connect.stripe.com/oauth/authorize?${opts}`
+  if (express) {
+    window.location = `https://connect.stripe.com/express/oauth/authorize?${opts}`
+  } else {
+    window.location = `https://connect.stripe.com/oauth/authorize?${opts}`
+  }
 }
 
 export function authSpotify({ location, scope = '' }) {
