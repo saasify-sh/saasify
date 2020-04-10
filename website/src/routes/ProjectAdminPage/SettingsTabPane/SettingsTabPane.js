@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
 import cs from 'classnames'
-import { observable, toJS } from 'mobx'
+import { observable } from 'mobx'
 import { inject, observer } from 'mobx-react'
 
-import {
-  Button,
-  Divider,
-  API,
-  Spin,
-  Statistic,
-  notification
-} from 'react-saasify'
+import { Button, API, Icon, Spin, Statistic, notification } from 'react-saasify'
 import { Paper, AuthProviders } from 'components'
 import { TabPane } from '../TabPane'
 
@@ -33,28 +26,60 @@ const authConfig = {
     enabled: true,
     type: 'primary',
     detail: (
-      <>
-        <p style={{ marginTop: '1em' }}>
+      <div className={styles.detail}>
+        <p>
+          Saasify uses{' '}
+          <b>
+            <a
+              target='_blank'
+              rel='noopener noreferrer'
+              href='https://stripe.com/connect'
+            >
+              Stripe Connect
+            </a>
+          </b>{' '}
+          to enable subscription billing{' '}
+          <b>on behalf of your own Stripe account</b>. This is an important
+          feature that gives you full control over all subscription and billing
+          aspects of your products including customer data.
+        </p>
+
+        <p>
           Saasify uses{' '}
           <a
             target='_blank'
             rel='noopener noreferrer'
-            href='https://stripe.com/connect'
+            href='https://stripe.com/connect/account-types#standard'
           >
-            Stripe Connect
-          </a>{' '}
-          to handle subscription billing and payments{' '}
-          <b>on behalf of your own Stripe account.</b> This is an important
-          feature that gives you full transparency and control over all billing
-          and financial aspects of your SaaS products.
+            <b>Standard</b> Stripe Connect Accounts
+          </a>
+          . This means that you'll link your own external Stripe account with
+          Saasify. This gives you the most control and flexibility over your
+          product's revenue and subscriptions. It also makes it easy to disable
+          your Saasify integration at any point.
         </p>
 
         <p>
-          You can either link an existing Stripe account or create a new one.
-          Either way, you'll follow the same steps by clicking the link above to
-          get started.
+          <b>Click the Stripe Connect button above to get started</b>. If you
+          already have an existing Stripe account, you will be prompted to
+          connect with Saasify. Otherwise, Stripe will walk you through the
+          fairly simple process of setting up a new <b>free</b> Standard Stripe
+          Account.
         </p>
-      </>
+
+        <p>
+          Our{' '}
+          <a
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://docs.saasify.sh/#/support'
+          >
+            support team
+          </a>{' '}
+          will be happy to answer any questions you may have around setting up
+          this integration as a key step in your product's go-to-market process.
+        </p>
+      </div>
     )
   }
 }
@@ -105,7 +130,7 @@ export class SettingsTabPane extends Component {
                 {this._loading ? (
                   <Spin />
                 ) : this._account ? (
-                  <>
+                  <div>
                     <div className={styles.metrics}>
                       <div className={cs(styles.metric, styles.activeMetric)}>
                         <h4 className={styles.label}>Available Balance</h4>
@@ -128,18 +153,25 @@ export class SettingsTabPane extends Component {
                       </div>
                     </div>
 
-                    <pre>{JSON.stringify(toJS(this._account), null, 2)}</pre>
-
                     {isExpress && (
                       <Button type='primary' onClick={this._onClickDashboard}>
                         View Stripe Dashboard
                       </Button>
                     )}
-                  </>
+
+                    <p>
+                      <Icon
+                        type='check-circle'
+                        theme='twoTone'
+                        twoToneColor='#52c41a'
+                      />{' '}
+                      Your Stripe Connect{accountLabel} is enabled and ready to
+                      use. All new Saasify products you create will be
+                      automatically linked to your connected Stripe account.
+                    </p>
+                  </div>
                 ) : null}
               </div>
-
-              <Divider />
             </>
           )}
 

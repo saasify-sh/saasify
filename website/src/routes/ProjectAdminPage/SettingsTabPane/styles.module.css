@@ -38,3 +38,8 @@
   font-size: 1.2em;
   font-weight: 700;
 }
+
+.detail {
+  margin-top: 1em;
+  max-width: 720px;
+}
