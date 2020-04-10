@@ -547,6 +547,20 @@ module.exports = class SaasifyClient {
     }).then((res) => res.data)
   }
 
+  async getBillingAccount() {
+    return this._request({
+      url: `/1/billing/account`,
+      params: this._params
+    }).then((res) => res.data)
+  }
+
+  async getBillingDashboard() {
+    return this._request({
+      url: `/1/billing/dashboard`,
+      params: this._params
+    }).then((res) => res.data)
+  }
+
   async listBillingSources() {
     return this._request({
       url: `/1/billing/sources`,
