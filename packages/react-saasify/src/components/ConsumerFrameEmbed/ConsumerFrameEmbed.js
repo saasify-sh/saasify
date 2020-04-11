@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import theme from 'lib/theme'
+import { AuthManager } from 'store/AuthManager'
 
 import { toJS } from 'mobx'
 import { observer, inject } from 'mobx-react'
@@ -38,7 +39,7 @@ export class ConsumerFrameEmbed extends Component {
       return <Loading />
     }
 
-    if (!auth.isAuthenticated) {
+    if (!auth.isAuthenticated || !auth.consumer?.token) {
       return null
     }
 
@@ -53,7 +54,7 @@ export class ConsumerFrameEmbed extends Component {
     )
   }
 
-  _onMessage = (event) => {
+  _onMessage = async (event) => {
     const { auth, config } = this.props
     const { deployment } = config
     const { project } = deployment
@@ -78,6 +79,8 @@ export class ConsumerFrameEmbed extends Component {
           `Saasify SDK project mismatch error: expected "${project.id}" received "${projectId}"`
         )
       }
+
+      await AuthManager.bootstrappingP
 
       const iframe = this._frameRef.current
       const res = JSON.stringify({

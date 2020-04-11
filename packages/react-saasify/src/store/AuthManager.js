@@ -45,6 +45,10 @@ class AuthManagerClass {
     })
   }
 
+  get bootstrappingP() {
+    return this._bootstrappingP
+  }
+
   async signin(opts) {
     debug(`AuthManager.signin [${opts.username}]`)
 
