@@ -65,10 +65,7 @@ export class NavHeader extends Component {
     const sections = config?.deployment?.saas?.sections
 
     const signupText =
-      sections?.navHeader?.cta ||
-      sections?.hero?.cta ||
-      config.ctaTextInline ||
-      'Get started'
+      sections?.navHeader?.cta || config.ctaTextInline || 'Get started'
 
     return (
       <header

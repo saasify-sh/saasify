@@ -15,7 +15,7 @@ import {
   notification
 } from 'lib/antd'
 
-import { authGitHub, authGoogle } from 'lib/oauth'
+import { authGitHub, authGoogle, authTwitter } from 'lib/oauth'
 import debug from 'lib/debug'
 
 import styles from './styles.module.css'
@@ -56,6 +56,7 @@ export class LoginForm extends Component {
 
     const hasGitHubAuth = authConfig.github?.enabled !== false
     const hasGoogleAuth = authConfig.google?.enabled !== false
+    const hasTwitterAuth = authConfig.twitter?.enabled !== false
     const hasDefaultAuth = authConfig.default?.enabled !== false
 
     return (
@@ -89,9 +90,20 @@ export class LoginForm extends Component {
           </FormItem>
         )}
 
-        {(hasGitHubAuth || hasGoogleAuth) && hasDefaultAuth && (
-          <Divider>Or</Divider>
+        {hasTwitterAuth && (
+          <FormItem>
+            <Button
+              className={theme(styles, 'submit')}
+              icon='twitter'
+              onClick={this._onClickTwitter}
+            >
+              Log in with Twitter
+            </Button>
+          </FormItem>
         )}
+
+        {(hasGitHubAuth || hasGoogleAuth || hasTwitterAuth) &&
+          hasDefaultAuth && <Divider>Or</Divider>}
 
         {hasDefaultAuth && (
           <React.Fragment>
@@ -175,5 +187,10 @@ export class LoginForm extends Component {
   _onClickGoogle = (e) => {
     e.preventDefault()
     authGoogle({ location: this.props.location }, this.props.authParams)
+  }
+
+  _onClickTwitter = (e) => {
+    e.preventDefault()
+    authTwitter({ location: this.props.location }, this.props.authParams)
   }
 }
