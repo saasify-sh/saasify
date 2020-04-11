@@ -22,8 +22,8 @@ Authentication and authorization are handled transparently by Saasify's API gate
 
 Your downstream API will receive two additional headers for authenticated requests that you can use to customize your service's functionality:
 
-- `x-saasify-user` - String ID of the authenticated customer making the API call.
-- `x-saasify-plan` - String slug of the pricing plan that this user is subscribed to.
+- `x-saasify-user` - String ID of the authenticated user making the API call.
+- `x-saasify-plan` - String slug of the pricing plan this user is subscribed to.
 
 For unauthenticated calls, these headers are guaranteed to not exist when Saasify's API gateway proxies these calls to your downstream API.
 
