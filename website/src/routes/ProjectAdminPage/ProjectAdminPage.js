@@ -9,9 +9,9 @@ import { Route, Switch } from 'react-router-dom'
 import { NavHeader, NavFooter, ScrollToTopOnMount, Section } from 'components'
 
 import { TabBar } from './TabBar'
-import { TabPane } from './TabPane'
 // import { AuditLogTabPane } from './AuditLogTabPane'
 import { AnalyticsTabPane } from './AnalyticsTabPane'
+import { HomeTabPane } from './HomeTabPane'
 import { CustomersTabPane } from './CustomersTabPane'
 import { SettingsTabPane } from './SettingsTabPane'
 
@@ -105,6 +105,10 @@ export class ProjectAdminPage extends Component {
 
           {this._project && (
             <Switch>
+              <Route path={`${match.path}`} exact>
+                <HomeTabPane project={this._project} />
+              </Route>
+
               <Route path={`${match.path}/analytics`} exact>
                 <AnalyticsTabPane project={this._project} />
               </Route>
@@ -119,12 +123,6 @@ export class ProjectAdminPage extends Component {
 
               <Route path={`${match.path}/settings`} exact>
                 <SettingsTabPane project={this._project} />
-              </Route>
-
-              <Route>
-                <TabPane>
-                  <div>{JSON.stringify(this.props.match.params, null, 2)}</div>
-                </TabPane>
               </Route>
             </Switch>
           )}
