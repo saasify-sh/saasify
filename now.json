@@ -10,6 +10,7 @@
       "REACT_APP_PROVIDER_GITHUB_CLIENT_ID_PRD": "@react_app_provider_github_client_id_prd",
       "REACT_APP_PROVIDER_SPOTIFY_CLIENT_ID_DEV": "@react_app_provider_spotify_client_id_dev",
       "REACT_APP_PROVIDER_SPOTIFY_CLIENT_ID_PRD": "@react_app_provider_spotify_client_id_prd",
+      "REACT_APP_CUBEJS_TOKEN": "@react_app_cubejs_token",
       "SKIP_PREFLIGHT_CHECK": "true",
       "REACT_APP_GA": "UA-148982321-2"
     }
