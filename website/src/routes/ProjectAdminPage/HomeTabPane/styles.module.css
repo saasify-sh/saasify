@@ -1,0 +1,12 @@
+.h4 {
+  font-size: 1.7em;
+  margin-bottom: 0.75em;
+}
+
+.externalDeploymentLink {
+  margin-bottom: 1em;
+}
+
+.externalDeploymentLink:last-child {
+  margin-bottom: 0;
+}

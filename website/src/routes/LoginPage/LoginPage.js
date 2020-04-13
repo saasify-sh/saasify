@@ -7,6 +7,8 @@ import { handleAuth, theme } from 'react-saasify'
 
 import { LoginForm, Paper, NavHeader } from 'components'
 
+import { authConfig } from 'lib/auth-config'
+
 import styles from './styles.module.css'
 
 @inject('auth')
@@ -28,7 +30,7 @@ export class LoginPage extends Component {
 
         <div className={theme(styles, 'content')}>
           <Paper className={theme(styles, 'body')}>
-            <LoginForm onAuth={this._onAuth} />
+            <LoginForm onAuth={this._onAuth} authConfig={authConfig} />
           </Paper>
         </div>
       </div>

@@ -6,12 +6,18 @@ import { observer } from 'mobx-react'
 import { observable, computed } from 'mobx'
 import { Route, Switch } from 'react-router-dom'
 
-import { NavHeader, NavFooter, ScrollToTopOnMount, Section } from 'components'
+import {
+  NavHeader,
+  NavFooter,
+  Paper,
+  ScrollToTopOnMount,
+  Section,
+  TabBar
+} from 'components'
 
-import { TabBar } from './TabBar'
-import { TabPane } from './TabPane'
 // import { AuditLogTabPane } from './AuditLogTabPane'
 import { AnalyticsTabPane } from './AnalyticsTabPane'
+import { HomeTabPane } from './HomeTabPane'
 import { CustomersTabPane } from './CustomersTabPane'
 import { SettingsTabPane } from './SettingsTabPane'
 
@@ -101,33 +107,33 @@ export class ProjectAdminPage extends Component {
           className={theme(styles, 'body')}
           contentClassName={theme(styles, 'content')}
         >
-          <TabBar tabs={tabs} />
+          <Paper className={theme(styles, 'paper')}>
+            <TabBar tabs={tabs} />
 
-          {this._project && (
-            <Switch>
-              <Route path={`${match.path}/analytics`} exact>
-                <AnalyticsTabPane project={this._project} />
-              </Route>
+            {this._project && (
+              <Switch>
+                <Route path={`${match.path}`} exact>
+                  <HomeTabPane project={this._project} />
+                </Route>
 
-              {/* <Route path={`${match.path}/audit-log`} exact>
-                <AuditLogTabPane project={this._project} />
-              </Route> */}
+                <Route path={`${match.path}/analytics`} exact>
+                  <AnalyticsTabPane project={this._project} />
+                </Route>
 
-              <Route path={`${match.path}/customers`} exact>
-                <CustomersTabPane project={this._project} />
-              </Route>
+                {/* <Route path={`${match.path}/audit-log`} exact>
+                  <AuditLogTabPane project={this._project} />
+                </Route> */}
 
-              <Route path={`${match.path}/settings`} exact>
-                <SettingsTabPane project={this._project} />
-              </Route>
+                <Route path={`${match.path}/customers`} exact>
+                  <CustomersTabPane project={this._project} />
+                </Route>
 
-              <Route>
-                <TabPane>
-                  <div>{JSON.stringify(this.props.match.params, null, 2)}</div>
-                </TabPane>
-              </Route>
-            </Switch>
-          )}
+                <Route path={`${match.path}/settings`} exact>
+                  <SettingsTabPane project={this._project} />
+                </Route>
+              </Switch>
+            )}
+          </Paper>
         </Section>
 
         <NavFooter />

@@ -276,6 +276,16 @@ module.exports = class SaasifyClient {
     }).then((res) => res.data)
   }
 
+  // enables stripe connect for a given project
+  // (must be the project's owner and must have stripe connect enabled on your acct)
+  async enableStripeConnectForProject(project) {
+    return this._request({
+      url: `/1/projects/connect/${project.id}`,
+      method: 'put',
+      params: this._params
+    }).then((res) => res.data)
+  }
+
   async getProjectByAlias(alias, opts = {}) {
     return this._request({
       url: `/1/projects/alias/${alias}`,
@@ -533,6 +543,20 @@ module.exports = class SaasifyClient {
   async getBilling() {
     return this._request({
       url: `/1/billing`,
+      params: this._params
+    }).then((res) => res.data)
+  }
+
+  async getBillingAccount() {
+    return this._request({
+      url: `/1/billing/account`,
+      params: this._params
+    }).then((res) => res.data)
+  }
+
+  async getBillingDashboard() {
+    return this._request({
+      url: `/1/billing/dashboard`,
       params: this._params
     }).then((res) => res.data)
   }

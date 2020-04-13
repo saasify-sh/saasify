@@ -66,6 +66,8 @@ export class SignupForm extends Component {
       >
         <h2 className={theme(styles, 'title')}>Sign up</h2>
 
+        {authConfig.preBody}
+
         {hasGitHubAuth && (
           <FormItem>
             <Button
@@ -148,6 +150,8 @@ export class SignupForm extends Component {
             </Button>
           </React.Fragment>
         )}
+
+        {authConfig.postBody}
       </Form>
     )
   }

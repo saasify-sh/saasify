@@ -6,7 +6,7 @@ import raf from 'raf'
 import { observer, inject } from 'mobx-react'
 
 import { CTAButton } from '../CTAButton'
-import { Button } from 'lib/antd'
+import { Button, Dropdown, Icon, Menu } from 'lib/antd'
 import { Logo } from '../Logo'
 
 import Link from './Link'
@@ -30,42 +30,64 @@ export class NavHeader extends Component {
 
   state = {
     attached: isServer || window.scrollY > 0,
-    expanded: false
+    expanded: false,
+    width: isServer ? 1000 : window.clientWidth || window.innerWidth
   }
 
   componentDidMount() {
     if (!isServer) {
       window.addEventListener('scroll', this._onScroll)
-      this._onScrollAF()
+      window.addEventListener('resize', this._onResize)
+      this._onReset()
     }
   }
 
   componentWillUnmount() {
     if (!isServer) {
       window.removeEventListener('scroll', this._onScroll)
+      window.removeEventListener('resize', this._onResize)
     }
 
-    if (this._scrollRaf) {
-      raf.cancel(this._scrollRaf)
-      this._scrollRaf = null
+    if (this._resetRaf) {
+      raf.cancel(this._resetRaf)
+      this._resetRaf = null
     }
-  }
-
-  handleToggleExpanded = () => {
-    this.setState({
-      expanded: !this.state.expanded
-    })
   }
 
   render() {
     const { auth, config, fixed, className } = this.props
-    const { attached, expanded } = this.state
+    const { attached, expanded, width } = this.state
 
     // TODO: some of these config.* properties should be moved to the navHeader section
     const sections = config?.deployment?.saas?.sections
 
-    const signupText =
-      sections?.navHeader?.cta || config.ctaTextInline || 'Get started'
+    let actions = config.header?.actions || []
+    if (typeof actions === 'function') {
+      actions = actions({ config, auth, fixed, attached })
+    }
+
+    const actionsMenu = actions && auth.isAuthenticated && (
+      <Menu onClick={(e) => console.log(e)}>
+        {actions.map((action, index) => {
+          if (typeof action === 'function') {
+            action = action({ config, auth, fixed, attached })
+            if (!action) return null
+          }
+
+          const { key, to, href, label, icon, ...rest } = action
+          const validKey = action.key || action.to || action.href || index
+
+          return (
+            <Menu.Item key={validKey}>
+              <Link key={validKey} to={to} href={href} {...rest}>
+                {icon && <Icon type={icon} className={styles.icon} />}
+                {label}
+              </Link>
+            </Menu.Item>
+          )
+        })}
+      </Menu>
+    )
 
     return (
       <header
@@ -115,7 +137,7 @@ export class NavHeader extends Component {
             <div className={theme(styles, 'burger')}>
               <Button
                 type='secondary'
-                onClick={this.handleToggleExpanded}
+                onClick={this._onToggleMainNav}
                 icon='menu'
               />
             </div>
@@ -129,73 +151,103 @@ export class NavHeader extends Component {
                   if (!link) return null
                 }
 
-                return <Link key={link.to || link.href} {...link} />
+                const { label, icon, ...rest } = link
+
+                return (
+                  <Link key={link.to || link.href} {...rest}>
+                    {label}
+                  </Link>
+                )
               })}
             </div>
 
-            {auth.isAuthenticated ? (
-              <div className={theme(styles, 'actions')}>
-                {config.header?.login !== false && (
-                  <Link to='/logout' className={theme(styles, 'login')}>
-                    <CTAButton type='secondary' inline>
-                      Log out
-                    </CTAButton>
-                  </Link>
-                )}
+            {actions ? (
+              (expanded && width < 768) || !auth.isAuthenticated ? (
+                <div className={theme(styles, 'actions')}>
+                  {actions.map((action, index) => {
+                    if (typeof action === 'function') {
+                      action = action({ config, auth, fixed, attached })
+                      if (!action) return null
+                    }
 
-                {config.header?.dashboard !== false && (
-                  <Link to='/dashboard'>
-                    <CTAButton type='primary' inline>
-                      Dashboard
-                    </CTAButton>
-                  </Link>
-                )}
-              </div>
-            ) : (
-              <div className={theme(styles, 'actions')}>
-                {config.header?.login !== false && (
-                  <Link to='/login' className={theme(styles, 'login')}>
-                    <CTAButton type='secondary' inline>
-                      Log in
-                    </CTAButton>
-                  </Link>
-                )}
+                    const { key, to, href, label, icon, ...rest } = action
+                    const validKey =
+                      action.key || action.to || action.href || index
+                    const isLink = to || href
+                    const className = theme(styles, 'action')
+                    const buttonClassName = isLink ? null : className
 
-                {config.header?.signup !== false &&
-                  (config.ctaOnClick ? (
-                    <CTAButton
-                      type='primary'
-                      inline
-                      onClick={config.ctaOnClick}
-                    >
-                      {signupText}
-                    </CTAButton>
-                  ) : (
-                    <Link to={sections?.hero?.ctaLink || '/signup'}>
-                      <CTAButton type='primary' inline>
-                        {signupText}
+                    const button = (
+                      <CTAButton
+                        key={validKey}
+                        inline
+                        className={buttonClassName}
+                        {...rest}
+                      >
+                        {label}
                       </CTAButton>
-                    </Link>
-                  ))}
-              </div>
-            )}
+                    )
+
+                    if (to || href) {
+                      return (
+                        <Link
+                          className={className}
+                          key={validKey}
+                          to={to}
+                          href={href}
+                        >
+                          {button}
+                        </Link>
+                      )
+                    } else {
+                      return button
+                    }
+                  })}
+                </div>
+              ) : (
+                <Dropdown
+                  placement='bottomRight'
+                  trigger={['click']}
+                  overlay={actionsMenu}
+                >
+                  <Button type='secondary'>
+                    <Icon type='user' />
+                    {auth.user.username}
+                    <Icon type='down' />
+                  </Button>
+                </Dropdown>
+              )
+            ) : null}
           </div>
         </div>
       </header>
     )
   }
 
+  _onToggleMainNav = () => {
+    this.setState({
+      expanded: !this.state.expanded
+    })
+  }
+
   _onScroll = () => {
-    if (!this._scrollRaf) {
-      this._scrollRaf = raf(this._onScrollAF)
+    if (!this._resetRaf) {
+      this._resetRaf = raf(this._onReset)
     }
   }
 
-  _onScrollAF = () => {
-    this._scrollRaf = null
+  _onResize = () => {
+    if (!this._resetRaf) {
+      this._resetRaf = raf(this._onReset)
+    }
+  }
+
+  _onReset = () => {
+    this._resetRaf = null
 
     this.setState({
-      attached: isServer || window.scrollY > 0
+      attached: isServer || window.scrollY > 0,
+      width: window.clientWidth || window.innerWidth
     })
   }
 }

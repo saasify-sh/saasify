@@ -9,15 +9,15 @@ import { Helmet } from 'react-helmet'
 import {
   AuthManager,
   ThemeManager,
-  // AuthenticatedRoute,
-  theme
+  AuthenticatedRoute,
+  theme,
 
   // third-party auth flow
-  // AuthGitHubPage,
-  // AuthGooglePage,
-  // AuthSpotifyPage,
-  // AuthTwitterPage,
-  // AuthStripePage
+  AuthGitHubPage,
+  AuthGooglePage,
+  AuthSpotifyPage,
+  AuthTwitterPage,
+  AuthStripePage
 } from 'react-saasify'
 
 import { SignupDialog } from './components'
@@ -33,16 +33,17 @@ import {
 
   // beta pages
   OnboardingPage,
-  EmailConfirmedPage
+  EmailConfirmedPage,
 
   // auth flow
-  // LoginPage,
-  // LogoutPage,
-  // SignupPage,
+  LoginPage,
+  LogoutPage,
+  SignupPage,
 
   // // maker webapp
-  // DashboardPage,
-  // ProjectAdminPage
+  DashboardPage,
+  ProjectAdminPage,
+  AccountPage
 } from './routes'
 
 import { DialogManager } from './lib/DialogManager'
@@ -55,33 +56,66 @@ const saasifyConfig = {
   logo,
   ctaText: 'Request Access',
   ctaTextInline: 'Request Access',
-  ctaOnClick: () => {
-    DialogManager.isSignupDialogOpen = true
-  },
   header: {
     displayName: false,
-    dashboard: false,
-    login: false,
+    dashboard: true,
+    login: true,
     links: [
       {
-        children: 'About',
+        label: 'About',
         to: '/about'
       },
       {
-        children: 'Docs',
+        label: 'Docs',
         href: 'https://docs.saasify.sh/#/README'
       },
       {
-        children: 'Pricing',
+        label: 'Pricing',
         to: '/pricing'
       },
       {
-        children: 'GitHub',
+        label: 'GitHub',
         href: 'https://github.com/saasify-sh/saasify',
         target: '_blank',
         rel: 'noopener noreferrer'
       }
-    ]
+    ],
+    actions: ({ auth }) =>
+      auth.isAuthenticated
+        ? [
+            {
+              to: '/dashboard',
+              type: 'primary',
+              icon: 'home',
+              label: 'Dashboard'
+            },
+            {
+              to: '/account',
+              type: 'secondary',
+              icon: 'setting',
+              label: 'Account'
+            },
+            {
+              to: '/logout',
+              type: 'secondary',
+              icon: 'logout',
+              label: 'Log out'
+            }
+          ]
+        : [
+            {
+              to: '/login',
+              type: 'secondary',
+              label: 'Log in'
+            },
+            {
+              type: 'primary',
+              onClick: () => {
+                DialogManager.isSignupDialogOpen = true
+              },
+              label: 'Request Access'
+            }
+          ]
   },
   footer: {
     columns: [
@@ -97,7 +131,7 @@ const saasifyConfig = {
             href: 'https://docs.saasify.sh/#/README'
           },
           {
-            children: 'Pricing',
+            label: 'Pricing',
             to: '/pricing'
           },
           {
@@ -114,7 +148,7 @@ const saasifyConfig = {
         label: 'Company',
         links: [
           {
-            children: 'About',
+            label: 'About',
             to: '/about'
           },
           {
@@ -192,7 +226,7 @@ export default class App extends Component {
                 <Route path='/onboarding' component={OnboardingPage} />
                 <Route path='/email-confirmed' component={EmailConfirmedPage} />
 
-                {/* <Route path='/login' component={LoginPage} />
+                <Route path='/login' component={LoginPage} />
                 <Route path='/signup' component={SignupPage} />
                 <AuthenticatedRoute path='/logout' component={LogoutPage} />
 
@@ -212,7 +246,9 @@ export default class App extends Component {
                   path='/maker/projects/:namespace/:projectName'
                   component={ProjectAdminPage}
                 />
- */}
+
+                <AuthenticatedRoute path='/account' component={AccountPage} />
+
                 <Route component={NotFoundPage} />
               </Switch>
 

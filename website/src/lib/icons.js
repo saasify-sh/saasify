@@ -16,7 +16,11 @@ export { default as LeftOutline } from '@ant-design/icons/lib/outline/LeftOutlin
 export { default as EyeOutline } from '@ant-design/icons/lib/outline/EyeOutline'
 export { default as EyeInvisibleOutline } from '@ant-design/icons/lib/outline/EyeInvisibleOutline'
 export { default as ReloadOutline } from '@ant-design/icons/lib/outline/ReloadOutline'
-export { default as Menu } from '@ant-design/icons/lib/outline/MenuOutline'
+export { default as MenuOutline } from '@ant-design/icons/lib/outline/MenuOutline'
+export { default as DownOutline } from '@ant-design/icons/lib/outline/DownOutline'
+export { default as LogoutOutline } from '@ant-design/icons/lib/outline/LogoutOutline'
+export { default as ApiOutline } from '@ant-design/icons/lib/outline/ApiOutline'
+export { default as LinkOutline } from '@ant-design/icons/lib/outline/LinkOutline'
 
 export { default as LinkedinOutline } from '@ant-design/icons/lib/outline/LinkedinOutline'
 export { default as TwitterOutline } from '@ant-design/icons/lib/outline/TwitterOutline'
@@ -40,6 +44,7 @@ export { default as ScheduleOutline } from '@ant-design/icons/lib/outline/Schedu
 
 // twotone
 export { default as CheckCircleTwoTone } from '@ant-design/icons/lib/twotone/CheckCircleTwoTone'
+export { default as CloseCircleTwoTone } from '@ant-design/icons/lib/twotone/CloseCircleTwoTone'
 
 // filled
 export { default as CloseCircleFill } from '@ant-design/icons/lib/fill/CloseCircleFill'
