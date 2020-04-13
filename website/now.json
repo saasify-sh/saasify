@@ -1,0 +1,18 @@
+{
+  "scope": "saasify",
+  "version": 2,
+  "build": {
+    "env": {
+      "REACT_APP_STRIPE_PUBLIC_KEY_TEST": "@react_app_stripe_public_key_test",
+      "REACT_APP_STRIPE_PUBLIC_KEY_LIVE": "@react_app_stripe_public_key_live",
+      "REACT_APP_PROVIDER_STRIPE_CLIENT_ID_DEV": "@react_app_provider_stripe_client_id_dev",
+      "REACT_APP_PROVIDER_STRIPE_CLIENT_ID_PRD": "@react_app_provider_stripe_client_id_prd",
+      "REACT_APP_PROVIDER_GITHUB_CLIENT_ID_DEV": "@react_app_provider_github_client_id_dev",
+      "REACT_APP_PROVIDER_GITHUB_CLIENT_ID_PRD": "@react_app_provider_github_client_id_prd",
+      "REACT_APP_PROVIDER_SPOTIFY_CLIENT_ID_DEV": "@react_app_provider_spotify_client_id_dev",
+      "REACT_APP_PROVIDER_SPOTIFY_CLIENT_ID_PRD": "@react_app_provider_spotify_client_id_prd",
+      "SKIP_PREFLIGHT_CHECK": "true",
+      "REACT_APP_GA": "UA-148982321-2"
+    }
+  }
+}
