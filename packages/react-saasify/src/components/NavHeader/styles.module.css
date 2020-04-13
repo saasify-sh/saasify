@@ -115,16 +115,16 @@
   margin-left: 1em;
 }
 
-.actions .link {
+.actions .action {
   margin-left: 8px;
   margin-right: 8px;
 }
 
-.actions .link:first-of-type {
+.actions .action:first-child {
   margin-left: 0;
 }
 
-.actions .link:last-of-type {
+.actions .action:last-child {
   margin-right: 0;
 }
 
@@ -152,15 +152,15 @@
     margin-top: 0.5em;
   }
 
-  .actions .link {
+  .actions .action {
     width: 100%;
   }
 
-  .actions .link:first-of-type {
+  .actions .action:first-child {
     margin-left: 0px;
   }
 
-  .actions .link button {
+  .actions button {
     width: 100%;
   }
 

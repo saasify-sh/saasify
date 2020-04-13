@@ -66,6 +66,8 @@ export class LoginForm extends Component {
       >
         <h2 className={theme(styles, 'title')}>Login</h2>
 
+        {authConfig.preBody}
+
         {hasGitHubAuth && (
           <FormItem>
             <Button
@@ -150,9 +152,17 @@ export class LoginForm extends Component {
           </React.Fragment>
         )}
 
-        <div className={theme(styles, 'or-signup')}>
-          Or <Link to='/signup'>sign up!</Link>
-        </div>
+        {authConfig.orSignup !== false && (
+          <div className={theme(styles, 'or-signup')}>
+            {authConfig.orSignup || (
+              <span>
+                Or <Link to='/signup'>sign up!</Link>
+              </span>
+            )}
+          </div>
+        )}
+
+        {authConfig.postBody}
       </Form>
     )
   }

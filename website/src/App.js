@@ -55,9 +55,6 @@ const saasifyConfig = {
   logo,
   ctaText: 'Request Access',
   ctaTextInline: 'Request Access',
-  ctaOnClick: () => {
-    DialogManager.isSignupDialogOpen = true
-  },
   header: {
     displayName: false,
     dashboard: true,
@@ -81,7 +78,35 @@ const saasifyConfig = {
         target: '_blank',
         rel: 'noopener noreferrer'
       }
-    ]
+    ],
+    actions: ({ auth }) =>
+      auth.isAuthenticated
+        ? [
+            {
+              to: '/logout',
+              type: 'secondary',
+              children: 'Log out'
+            },
+            {
+              to: '/dashboard',
+              type: 'primary',
+              children: 'Dashboard'
+            }
+          ]
+        : [
+            {
+              to: '/login',
+              type: 'secondary',
+              children: 'Log in'
+            },
+            {
+              type: 'primary',
+              onClick: () => {
+                DialogManager.isSignupDialogOpen = true
+              },
+              children: 'Request Access'
+            }
+          ]
   },
   footer: {
     columns: [

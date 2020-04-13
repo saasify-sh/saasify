@@ -64,8 +64,10 @@ export class NavHeader extends Component {
     // TODO: some of these config.* properties should be moved to the navHeader section
     const sections = config?.deployment?.saas?.sections
 
-    const signupText =
-      sections?.navHeader?.cta || config.ctaTextInline || 'Get started'
+    let actions = config.header?.actions || []
+    if (typeof actions === 'function') {
+      actions = actions({ config, auth, fixed, attached })
+    }
 
     return (
       <header
@@ -133,50 +135,45 @@ export class NavHeader extends Component {
               })}
             </div>
 
-            {auth.isAuthenticated ? (
+            {actions && (
               <div className={theme(styles, 'actions')}>
-                {config.header?.login !== false && (
-                  <Link to='/logout' className={theme(styles, 'login')}>
-                    <CTAButton type='secondary' inline>
-                      Log out
-                    </CTAButton>
-                  </Link>
-                )}
+                {actions.map((action, index) => {
+                  if (typeof action === 'function') {
+                    action = action({ config, auth, fixed, attached })
+                    if (!action) return null
+                  }
 
-                {config.header?.dashboard !== false && (
-                  <Link to='/dashboard'>
-                    <CTAButton type='primary' inline>
-                      Dashboard
-                    </CTAButton>
-                  </Link>
-                )}
-              </div>
-            ) : (
-              <div className={theme(styles, 'actions')}>
-                {config.header?.login !== false && (
-                  <Link to='/login' className={theme(styles, 'login')}>
-                    <CTAButton type='secondary' inline>
-                      Log in
-                    </CTAButton>
-                  </Link>
-                )}
+                  const { key, to, href, ...rest } = action
+                  const validKey =
+                    action.key || action.to || action.href || index
+                  const isLink = to || href
+                  const className = theme(styles, 'action')
+                  const buttonClassName = isLink ? null : className
 
-                {config.header?.signup !== false &&
-                  (config.ctaOnClick ? (
+                  const button = (
                     <CTAButton
-                      type='primary'
+                      key={validKey}
                       inline
-                      onClick={config.ctaOnClick}
-                    >
-                      {signupText}
-                    </CTAButton>
-                  ) : (
-                    <Link to={sections?.hero?.ctaLink || '/signup'}>
-                      <CTAButton type='primary' inline>
-                        {signupText}
-                      </CTAButton>
-                    </Link>
-                  ))}
+                      className={buttonClassName}
+                      {...rest}
+                    />
+                  )
+
+                  if (to || href) {
+                    return (
+                      <Link
+                        className={className}
+                        key={validKey}
+                        to={to}
+                        href={href}
+                      >
+                        {button}
+                      </Link>
+                    )
+                  } else {
+                    return button
+                  }
+                })}
               </div>
             )}
           </div>
