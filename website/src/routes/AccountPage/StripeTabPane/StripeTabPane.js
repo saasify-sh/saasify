@@ -2,93 +2,32 @@ import React, { Component } from 'react'
 import cs from 'classnames'
 import { observable } from 'mobx'
 import { inject, observer } from 'mobx-react'
+import { Link } from 'react-router-dom'
 
-import { Button, API, Icon, Spin, Statistic, notification } from 'react-saasify'
-import { Paper, AuthProviders, TabPane } from 'components'
+import {
+  Button,
+  API,
+  Icon,
+  Spin,
+  Statistic,
+  Switch,
+  notification
+} from 'react-saasify'
+import { Paper, TabPane } from 'components'
 
 import styles from './styles.module.css'
 
-const authConfig = {
-  github: {
-    enabled: false
-  },
-  google: {
-    enabled: false
-  },
-  spotify: {
-    enabled: false
-  },
-  twitter: {
-    enabled: false
-  },
-  stripe: {
-    enabled: true,
-    type: 'primary',
-    detail: (
-      <div className={styles.detail}>
-        <p>
-          Saasify uses{' '}
-          <b>
-            <a
-              target='_blank'
-              rel='noopener noreferrer'
-              href='https://stripe.com/connect'
-            >
-              Stripe Connect
-            </a>
-          </b>{' '}
-          to enable subscription billing{' '}
-          <b>on behalf of your own Stripe account</b>. This is an important
-          feature that gives you full control over all subscription and billing
-          aspects of your products including customer data.
-        </p>
-
-        <p>
-          Saasify uses{' '}
-          <a
-            target='_blank'
-            rel='noopener noreferrer'
-            href='https://stripe.com/connect/account-types#standard'
-          >
-            <b>Standard</b> Stripe Connect Accounts
-          </a>
-          . This means that you'll link your own external Stripe account with
-          Saasify. This gives you the most flexibility and control over your
-          product's billing details. It also makes it easy to disable your
-          Saasify integration at any point since your Stripe account is
-          completely isolated from Saasify's Stripe account.
-        </p>
-
-        <p>
-          <b>Click the Stripe Connect button above to get started</b>. If you
-          already have an existing Stripe account, you will be prompted to
-          connect with Saasify. Otherwise, Stripe will walk you through the
-          fairly simple process of setting up a new <b>free</b> Standard Stripe
-          Account.
-        </p>
-
-        <p>
-          Our{' '}
-          <a
-            target='_blank'
-            rel='noopener noreferrer'
-            href='https://docs.saasify.sh/#/support'
-          >
-            support team
-          </a>{' '}
-          will be happy to answer any questions you may have, as this
-          integration is a key step in your product's go-to-market process.
-        </p>
-      </div>
-    )
-  }
-}
-
 @inject('auth')
 @observer
-export class SettingsTabPane extends Component {
+export class StripeTabPane extends Component {
   @observable
   _loading = false
+
+  @observable
+  _loadingUser = false
+
+  @observable
+  _user = false
 
   @observable
   _account = null
@@ -99,8 +38,9 @@ export class SettingsTabPane extends Component {
 
   render() {
     const { auth } = this.props
+    const user = this._user || auth.user
 
-    const stripeProvider = auth.user.providers?.stripe
+    const stripeProvider = user.providers?.stripe
 
     let accountLabel = ''
     let isExpress = false
@@ -124,7 +64,7 @@ export class SettingsTabPane extends Component {
         <Paper className={styles.content}>
           <h4 className={styles.h4}>Stripe Connect{accountLabel}</h4>
 
-          {stripeProvider && (
+          {stripeProvider ? (
             <>
               <div>
                 {this._loading ? (
@@ -165,20 +105,51 @@ export class SettingsTabPane extends Component {
                           type='check-circle'
                           theme='twoTone'
                           twoToneColor='#52c41a'
+                          style={{ fontSize: '1.6em' }}
                         />{' '}
                         Your Stripe Connect{accountLabel} is enabled and ready
-                        to use. All new Saasify products you create will
-                        automatically be linked to your connected Stripe
-                        account.
+                        to use.
+                      </p>
+
+                      <p>
+                        <Icon
+                          style={{ fontSize: '1.6em' }}
+                          type={
+                            user.isStripeConnectEnabledByDefault
+                              ? 'check-circle'
+                              : 'close-circle'
+                          }
+                          theme='twoTone'
+                          twoToneColor={
+                            user.isStripeConnectEnabledByDefault
+                              ? '#52c41a'
+                              : '#1790FF'
+                          }
+                        />{' '}
+                        Automatically link new projects to your connected Stripe
+                        account.{' '}
+                        <Switch
+                          checked={user.isStripeConnectEnabledByDefault}
+                          loading={this._loadingUser}
+                          onChange={
+                            this._onChangeIsStripeConnectEnabledByDefault
+                          }
+                        />
                       </p>
                     </div>
                   </div>
                 ) : null}
               </div>
             </>
+          ) : (
+            <div className={styles.detail}>
+              <p>
+                In order to customize your maker settings, please first link
+                with Stripe connect via the{' '}
+                <Link to='/account/integrations'>Integrations</Link> tab.
+              </p>
+            </div>
           )}
-
-          <AuthProviders authConfig={authConfig} />
         </Paper>
       </TabPane>
     )
@@ -194,7 +165,13 @@ export class SettingsTabPane extends Component {
       this._account = null
 
       try {
-        this._account = await API.getBillingAccount()
+        const [account, user] = await Promise.all([
+          API.getBillingAccount(),
+          API.getMe()
+        ])
+
+        this._account = account
+        this._user = user
       } catch (err) {
         console.error(err)
 
@@ -221,6 +198,28 @@ export class SettingsTabPane extends Component {
         description: err?.response?.data?.error || err.message,
         duration: 0
       })
+    }
+  }
+
+  _onChangeIsStripeConnectEnabledByDefault = async (isEnabled) => {
+    this._loadingUser = true
+
+    try {
+      const user = await API.updateMe({
+        isStripeConnectEnabledByDefault: !!isEnabled
+      })
+
+      this._user = user
+    } catch (err) {
+      console.error(err)
+
+      notification.error({
+        message: 'Error updating account',
+        description: err?.response?.data?.error || err.message,
+        duration: 0
+      })
+    } finally {
+      this._loadingUser = false
     }
   }
 }

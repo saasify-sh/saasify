@@ -132,6 +132,10 @@
   display: none;
 }
 
+.icon {
+  margin-right: 1em;
+}
+
 @media only screen and (max-width: 767px) {
   .links {
     display: block;

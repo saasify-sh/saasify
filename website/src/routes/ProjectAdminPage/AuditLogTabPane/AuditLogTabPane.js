@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 
-import { Paper } from 'components'
-import { TabPane } from '../TabPane'
+import { Paper, TabPane } from 'components'
 
 import styles from './styles.module.css'
 

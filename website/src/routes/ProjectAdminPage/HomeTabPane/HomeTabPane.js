@@ -3,8 +3,7 @@ import { observer } from 'mobx-react'
 import { observable, computed } from 'mobx'
 
 import { API, Button } from 'react-saasify'
-import { Paper } from 'components'
-import { TabPane } from '../TabPane'
+import { Paper, TabPane } from 'components'
 
 import styles from './styles.module.css'
 

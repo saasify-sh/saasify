@@ -42,7 +42,8 @@ import {
 
   // // maker webapp
   DashboardPage,
-  ProjectAdminPage
+  ProjectAdminPage,
+  AccountPage
 } from './routes'
 
 import { DialogManager } from './lib/DialogManager'
@@ -61,19 +62,19 @@ const saasifyConfig = {
     login: true,
     links: [
       {
-        children: 'About',
+        label: 'About',
         to: '/about'
       },
       {
-        children: 'Docs',
+        label: 'Docs',
         href: 'https://docs.saasify.sh/#/README'
       },
       {
-        children: 'Pricing',
+        label: 'Pricing',
         to: '/pricing'
       },
       {
-        children: 'GitHub',
+        label: 'GitHub',
         href: 'https://github.com/saasify-sh/saasify',
         target: '_blank',
         rel: 'noopener noreferrer'
@@ -83,28 +84,36 @@ const saasifyConfig = {
       auth.isAuthenticated
         ? [
             {
-              to: '/logout',
-              type: 'secondary',
-              children: 'Log out'
-            },
-            {
               to: '/dashboard',
               type: 'primary',
-              children: 'Dashboard'
+              icon: 'home',
+              label: 'Dashboard'
+            },
+            {
+              to: '/account',
+              type: 'secondary',
+              icon: 'setting',
+              label: 'Account'
+            },
+            {
+              to: '/logout',
+              type: 'secondary',
+              icon: 'logout',
+              label: 'Log out'
             }
           ]
         : [
             {
               to: '/login',
               type: 'secondary',
-              children: 'Log in'
+              label: 'Log in'
             },
             {
               type: 'primary',
               onClick: () => {
                 DialogManager.isSignupDialogOpen = true
               },
-              children: 'Request Access'
+              label: 'Request Access'
             }
           ]
   },
@@ -122,7 +131,7 @@ const saasifyConfig = {
             href: 'https://docs.saasify.sh/#/README'
           },
           {
-            children: 'Pricing',
+            label: 'Pricing',
             to: '/pricing'
           },
           {
@@ -139,7 +148,7 @@ const saasifyConfig = {
         label: 'Company',
         links: [
           {
-            children: 'About',
+            label: 'About',
             to: '/about'
           },
           {
@@ -237,6 +246,8 @@ export default class App extends Component {
                   path='/maker/projects/:namespace/:projectName'
                   component={ProjectAdminPage}
                 />
+
+                <AuthenticatedRoute path='/account' component={AccountPage} />
 
                 <Route component={NotFoundPage} />
               </Switch>

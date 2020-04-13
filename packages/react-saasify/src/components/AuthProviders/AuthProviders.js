@@ -66,8 +66,6 @@ export class AuthProviders extends Component {
       <div className={cs(styles.authProviders, className)} {...rest}>
         {hasGitHubAuth && (
           <div className={styles.authProvider}>
-            <h4>GitHub</h4>
-
             <Button
               className={styles.authButton}
               icon='github'
@@ -83,8 +81,6 @@ export class AuthProviders extends Component {
 
         {hasGoogleAuth && (
           <div className={styles.authProvider}>
-            <h4>Google</h4>
-
             <Button
               className={styles.authButton}
               icon='google'
@@ -100,8 +96,6 @@ export class AuthProviders extends Component {
 
         {hasSpotifyAuth && (
           <div className={styles.authProvider}>
-            <h4>Spotify</h4>
-
             <Button
               className={styles.authButton}
               type={authConfig.spotify?.type || 'secondary'}
@@ -122,8 +116,6 @@ export class AuthProviders extends Component {
 
         {hasTwitterAuth && (
           <div className={styles.authProvider}>
-            <h4>Twitter</h4>
-
             <Button
               className={styles.authButton}
               icon='twitter'
@@ -139,8 +131,6 @@ export class AuthProviders extends Component {
 
         {hasStripeAuth && (
           <div className={styles.authProvider}>
-            <h4>Stripe</h4>
-
             <Button
               className={styles.authButton}
               type={authConfig.stripe?.type || 'secondary'}

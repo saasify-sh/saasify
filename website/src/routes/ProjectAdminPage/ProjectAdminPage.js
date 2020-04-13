@@ -6,9 +6,14 @@ import { observer } from 'mobx-react'
 import { observable, computed } from 'mobx'
 import { Route, Switch } from 'react-router-dom'
 
-import { NavHeader, NavFooter, ScrollToTopOnMount, Section } from 'components'
+import {
+  NavHeader,
+  NavFooter,
+  ScrollToTopOnMount,
+  Section,
+  TabBar
+} from 'components'
 
-import { TabBar } from './TabBar'
 // import { AuditLogTabPane } from './AuditLogTabPane'
 import { AnalyticsTabPane } from './AnalyticsTabPane'
 import { HomeTabPane } from './HomeTabPane'
