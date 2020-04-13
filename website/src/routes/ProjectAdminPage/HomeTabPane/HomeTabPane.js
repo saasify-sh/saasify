@@ -3,7 +3,7 @@ import { observer } from 'mobx-react'
 import { observable, computed } from 'mobx'
 
 import { API, Button } from 'react-saasify'
-import { Paper, TabPane } from 'components'
+import { TabPane } from 'components'
 
 import styles from './styles.module.css'
 
@@ -39,39 +39,39 @@ export class HomeTabPane extends Component {
 
     return (
       <TabPane className={styles.body}>
-        <Paper className={styles.content}>
-          <h4 className={styles.h4}>{this._name}</h4>
+        <h4 className={styles.h4}>{this._name}</h4>
 
-          <div className={styles.externalDeploymentLink}>
-            {lastPublishedDeployment ? (
-              <Button
-                type='primary'
-                target='_blank'
-                rel='noopener noreferrer'
-                href={project.aliasUrl || lastPublishedDeployment.saasUrl}
-              >
-                Production deployment ({lastPublishedDeployment.id})
-              </Button>
-            ) : (
-              <p>No published deployments</p>
-            )}
-          </div>
+        <div className={styles.externalDeploymentLink}>
+          {lastPublishedDeployment ? (
+            <Button
+              type='primary'
+              target='_blank'
+              rel='noopener noreferrer'
+              icon='link'
+              href={project.aliasUrl || lastPublishedDeployment.saasUrl}
+            >
+              Production deployment ({lastPublishedDeployment.id})
+            </Button>
+          ) : (
+            <p>No published deployments</p>
+          )}
+        </div>
 
-          <div className={styles.externalDeploymentLink}>
-            {this._lastDevDeployment ? (
-              <Button
-                type='secondary'
-                target='_blank'
-                rel='noopener noreferrer'
-                href={this._lastDevDeployment.saasUrl}
-              >
-                Latest dev deployment ({this._lastDevDeployment.id})
-              </Button>
-            ) : (
-              <p>No recent deployments</p>
-            )}
-          </div>
-        </Paper>
+        <div className={styles.externalDeploymentLink}>
+          {this._lastDevDeployment ? (
+            <Button
+              type='secondary'
+              target='_blank'
+              rel='noopener noreferrer'
+              icon='link'
+              href={this._lastDevDeployment.saasUrl}
+            >
+              Latest dev deployment ({this._lastDevDeployment.id})
+            </Button>
+          ) : (
+            <p>No recent deployments</p>
+          )}
+        </div>
       </TabPane>
     )
   }

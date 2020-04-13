@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 
-import { Paper, TabPane } from 'components'
+import { TabPane } from 'components'
 import { ProjectCustomersAnalytics } from 'components/charts'
-
-import styles from './styles.module.css'
 
 @observer
 export class CustomersTabPane extends Component {
@@ -13,9 +11,7 @@ export class CustomersTabPane extends Component {
 
     return (
       <TabPane>
-        <Paper className={styles.content}>
-          <ProjectCustomersAnalytics project={project} />
-        </Paper>
+        <ProjectCustomersAnalytics project={project} />
       </TabPane>
     )
   }

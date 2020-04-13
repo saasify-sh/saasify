@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 
-import { Paper, AuthProviders, TabPane } from 'components'
+import { AuthProviders, TabPane } from 'components'
 
 import styles from './styles.module.css'
 
@@ -86,11 +86,9 @@ export class IntegrationsTabPane extends Component {
   render() {
     return (
       <TabPane className={styles.body}>
-        <Paper className={styles.content}>
-          <h4 className={styles.h4}>Integrations</h4>
+        <h4 className={styles.h4}>Integrations</h4>
 
-          <AuthProviders authConfig={authConfig} />
-        </Paper>
+        <AuthProviders authConfig={authConfig} />
       </TabPane>
     )
   }

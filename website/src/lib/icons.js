@@ -20,6 +20,7 @@ export { default as MenuOutline } from '@ant-design/icons/lib/outline/MenuOutlin
 export { default as DownOutline } from '@ant-design/icons/lib/outline/DownOutline'
 export { default as LogoutOutline } from '@ant-design/icons/lib/outline/LogoutOutline'
 export { default as ApiOutline } from '@ant-design/icons/lib/outline/ApiOutline'
+export { default as LinkOutline } from '@ant-design/icons/lib/outline/LinkOutline'
 
 export { default as LinkedinOutline } from '@ant-design/icons/lib/outline/LinkedinOutline'
 export { default as TwitterOutline } from '@ant-design/icons/lib/outline/TwitterOutline'

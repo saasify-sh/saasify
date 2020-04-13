@@ -276,9 +276,9 @@ module.exports = class SaasifyClient {
     }).then((res) => res.data)
   }
 
-  // integrates stripe connect for a given project
-  // (must be the project's owner and have stripe connect enabled on your acct)
-  async connectProject(project) {
+  // enables stripe connect for a given project
+  // (must be the project's owner and must have stripe connect enabled on your acct)
+  async enableStripeConnectForProject(project) {
     return this._request({
       url: `/1/projects/connect/${project.id}`,
       method: 'put',

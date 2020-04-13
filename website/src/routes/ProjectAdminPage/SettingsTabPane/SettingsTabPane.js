@@ -1,88 +1,12 @@
 import React, { Component } from 'react'
-import cs from 'classnames'
 import { observable } from 'mobx'
 import { inject, observer } from 'mobx-react'
+import { Link } from 'react-router-dom'
 
-import { Button, API, Icon, Spin, Statistic, notification } from 'react-saasify'
-import { Paper, AuthProviders, TabPane } from 'components'
+import { API, Icon, Spin, Switch, notification } from 'react-saasify'
+import { TabPane } from 'components'
 
 import styles from './styles.module.css'
-
-const authConfig = {
-  github: {
-    enabled: false
-  },
-  google: {
-    enabled: false
-  },
-  spotify: {
-    enabled: false
-  },
-  twitter: {
-    enabled: false
-  },
-  stripe: {
-    enabled: true,
-    type: 'primary',
-    detail: (
-      <div className={styles.detail}>
-        <p>
-          Saasify uses{' '}
-          <b>
-            <a
-              target='_blank'
-              rel='noopener noreferrer'
-              href='https://stripe.com/connect'
-            >
-              Stripe Connect
-            </a>
-          </b>{' '}
-          to enable subscription billing{' '}
-          <b>on behalf of your own Stripe account</b>. This is an important
-          feature that gives you full control over all subscription and billing
-          aspects of your products including customer data.
-        </p>
-
-        <p>
-          Saasify uses{' '}
-          <a
-            target='_blank'
-            rel='noopener noreferrer'
-            href='https://stripe.com/connect/account-types#standard'
-          >
-            <b>Standard</b> Stripe Connect Accounts
-          </a>
-          . This means that you'll link your own external Stripe account with
-          Saasify. This gives you the most flexibility and control over your
-          product's billing details. It also makes it easy to disable your
-          Saasify integration at any point since your Stripe account is
-          completely isolated from Saasify's Stripe account.
-        </p>
-
-        <p>
-          <b>Click the Stripe Connect button above to get started</b>. If you
-          already have an existing Stripe account, you will be prompted to
-          connect with Saasify. Otherwise, Stripe will walk you through the
-          fairly simple process of setting up a new <b>free</b> Standard Stripe
-          Account.
-        </p>
-
-        <p>
-          Our{' '}
-          <a
-            target='_blank'
-            rel='noopener noreferrer'
-            href='https://docs.saasify.sh/#/support'
-          >
-            support team
-          </a>{' '}
-          will be happy to answer any questions you may have, as this
-          integration is a key step in your product's go-to-market process.
-        </p>
-      </div>
-    )
-  }
-}
 
 @inject('auth')
 @observer
@@ -91,7 +15,13 @@ export class SettingsTabPane extends Component {
   _loading = false
 
   @observable
-  _account = null
+  _loadingProject = false
+
+  @observable
+  _user = false
+
+  @observable
+  _project = null
 
   componentDidMount() {
     this._reset()
@@ -99,13 +29,13 @@ export class SettingsTabPane extends Component {
 
   render() {
     const { auth } = this.props
+    const project = this._project || this.props.project
+    const user = this._user || auth.user
 
-    const stripeProvider = auth.user.providers?.stripe
+    const stripeProvider = user.providers?.stripe
 
     let accountLabel = ''
     let isExpress = false
-    let availableBalance = 0
-    let pendingBalance = 0
 
     if (stripeProvider) {
       isExpress = stripeProvider.scope === 'express'
@@ -113,114 +43,134 @@ export class SettingsTabPane extends Component {
       accountLabel = ` ${isExpress ? 'Express' : 'Standard'} Account`
     }
 
-    if (this._account) {
-      const { balance } = this._account
-      availableBalance = balance.available[0].amount
-      pendingBalance = balance.pending[0].amount
-    }
-
     return (
       <TabPane className={styles.body}>
-        <Paper className={styles.content}>
-          <h4 className={styles.h4}>Stripe Connect{accountLabel}</h4>
+        <h4 className={styles.h4}>Stripe Connect{accountLabel}</h4>
 
-          {stripeProvider && (
-            <>
-              <div>
-                {this._loading ? (
-                  <Spin />
-                ) : this._account ? (
-                  <div>
-                    <div className={styles.metrics}>
-                      <div className={cs(styles.metric, styles.activeMetric)}>
-                        <h4 className={styles.label}>Available Balance</h4>
+        {stripeProvider && (
+          <>
+            <div>
+              {this._loading ? (
+                <Spin />
+              ) : project ? (
+                <div>
+                  <p>
+                    <Icon
+                      type='check-circle'
+                      theme='twoTone'
+                      twoToneColor='#52c41a'
+                      style={{ fontSize: '1.6em', marginRight: '12px' }}
+                    />
+                    Your Stripe Connect{accountLabel} is enabled and ready to
+                    use.
+                  </p>
 
-                        <Statistic
-                          precision={2}
-                          prefix='$'
-                          value={availableBalance}
-                        />
-                      </div>
+                  <p>
+                    <Icon
+                      style={{ fontSize: '1.6em', marginRight: '12px' }}
+                      type={
+                        project.isStripeConnectEnabled
+                          ? 'check-circle'
+                          : 'close-circle'
+                      }
+                      theme='twoTone'
+                      twoToneColor={
+                        project.isStripeConnectEnabled ? '#52c41a' : '#1790FF'
+                      }
+                    />
+                    Enable Stripe Connect for this project?
+                    <Switch
+                      style={{ marginLeft: '12px' }}
+                      checked={project.isStripeConnectEnabled}
+                      loading={this._loadingProject}
+                      onChange={this._onChangeIsStripeConnectEnabled}
+                    />
+                  </p>
 
-                      <div className={cs(styles.metric, styles.activeMetric)}>
-                        <h4 className={styles.label}>Pending Balance</h4>
-
-                        <Statistic
-                          precision={2}
-                          prefix='$'
-                          value={pendingBalance}
-                        />
-                      </div>
-                    </div>
-
-                    {isExpress && (
-                      <Button type='primary' onClick={this._onClickDashboard}>
-                        View Stripe Dashboard
-                      </Button>
-                    )}
-
-                    <div className={styles.detail}>
-                      <p>
-                        <Icon
-                          type='check-circle'
-                          theme='twoTone'
-                          twoToneColor='#52c41a'
-                        />{' '}
-                        Your Stripe Connect{accountLabel} is enabled and ready
-                        to use. All new Saasify products you create will
-                        automatically be linked to your connected Stripe
-                        account.
-                      </p>
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-            </>
-          )}
-
-          <AuthProviders authConfig={authConfig} />
-        </Paper>
+                  <p>
+                    You can access your Stripe Connect account from your{' '}
+                    <Link to='/account'>Account</Link> page.
+                  </p>
+                </div>
+              ) : (
+                <div className={styles.detail}>
+                  <p>
+                    In order to enable Stripe, please first enable the Stripe
+                    Connect integration on the{' '}
+                    <Link to='/account/integrations'>Account Integrations</Link>{' '}
+                    page.
+                  </p>
+                </div>
+              )}
+            </div>
+          </>
+        )}
       </TabPane>
     )
   }
 
   async _reset() {
-    const { auth } = this.props
+    this._loading = true
 
-    const stripeProvider = auth.user.providers?.stripe
-
-    if (stripeProvider) {
-      this._loading = true
-      this._account = null
-
-      try {
-        this._account = await API.getBillingAccount()
-      } catch (err) {
-        console.error(err)
-
-        notification.error({
-          message: 'Error loading account balance',
-          description: err?.response?.data?.error || err.message,
-          duration: 0
-        })
-      } finally {
-        this._loading = false
-      }
-    }
-  }
-
-  _onClickDashboard = async () => {
     try {
-      const { url } = await API.getBillingDashboard()
-      window.location = url
+      const [project, user] = await Promise.all([
+        API.getProject(this.props.project.id),
+        API.getMe()
+      ])
+
+      this._project = project
+      this._user = user
     } catch (err) {
       console.error(err)
 
       notification.error({
-        message: 'Error connecting to Stripe Connect dashboard',
+        message: 'Error loading settings',
         description: err?.response?.data?.error || err.message,
         duration: 0
       })
+    } finally {
+      this._loading = false
+    }
+  }
+
+  _onChangeIsStripeConnectEnabled = async (isEnabled) => {
+    if (!isEnabled) {
+      notification.warn({
+        message: 'Unable to disable Stripe Connect',
+        description:
+          'Disabling Stripe Connect on a per-project basis is currently not supported. Please contact support if you need this functionality.',
+        duration: 0
+      })
+      return
+    }
+
+    this._loadingProject = true
+
+    try {
+      const project = await API.enableStripeConnectForProject(
+        this._project || this.props.project
+      )
+
+      if (project.isStripeConnectEnabled) {
+        notification.success({
+          message: 'Stripe Connect Enabled',
+          description:
+            'Stripe Connect has been enabled for this project. All subscriptions and customers will be created on your connected Stripe account.',
+          duration: 10
+        })
+      }
+
+      this._project = project
+    } catch (err) {
+      console.error(err)
+
+      notification.error({
+        message: 'Error enabling Stripe Connect',
+        description: err?.response?.data?.error || err.message,
+        duration: 0
+      })
+    } finally {
+      this._loadingProject = false
     }
   }
 }

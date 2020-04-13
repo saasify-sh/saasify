@@ -13,7 +13,7 @@ import {
   Switch,
   notification
 } from 'react-saasify'
-import { Paper, TabPane } from 'components'
+import { TabPane } from 'components'
 
 import styles from './styles.module.css'
 
@@ -61,96 +61,100 @@ export class StripeTabPane extends Component {
 
     return (
       <TabPane className={styles.body}>
-        <Paper className={styles.content}>
-          <h4 className={styles.h4}>Stripe Connect{accountLabel}</h4>
+        <h4 className={styles.h4}>Stripe Connect{accountLabel}</h4>
 
-          {stripeProvider ? (
-            <>
-              <div>
-                {this._loading ? (
-                  <Spin />
-                ) : this._account ? (
-                  <div>
-                    <div className={styles.metrics}>
-                      <div className={cs(styles.metric, styles.activeMetric)}>
-                        <h4 className={styles.label}>Available Balance</h4>
+        {stripeProvider ? (
+          <>
+            <div>
+              {this._loading ? (
+                <Spin />
+              ) : this._account ? (
+                <div>
+                  <div className={styles.metrics}>
+                    <div className={cs(styles.metric, styles.activeMetric)}>
+                      <h4 className={styles.label}>Available Balance</h4>
 
-                        <Statistic
-                          precision={2}
-                          prefix='$'
-                          value={availableBalance}
-                        />
-                      </div>
-
-                      <div className={cs(styles.metric, styles.activeMetric)}>
-                        <h4 className={styles.label}>Pending Balance</h4>
-
-                        <Statistic
-                          precision={2}
-                          prefix='$'
-                          value={pendingBalance}
-                        />
-                      </div>
+                      <Statistic
+                        precision={2}
+                        prefix='$'
+                        value={availableBalance}
+                      />
                     </div>
 
-                    {isExpress && (
-                      <Button type='primary' onClick={this._onClickDashboard}>
-                        View Stripe Dashboard
-                      </Button>
-                    )}
+                    <div className={cs(styles.metric, styles.activeMetric)}>
+                      <h4 className={styles.label}>Pending Balance</h4>
 
-                    <div className={styles.detail}>
-                      <p>
-                        <Icon
-                          type='check-circle'
-                          theme='twoTone'
-                          twoToneColor='#52c41a'
-                          style={{ fontSize: '1.6em' }}
-                        />{' '}
-                        Your Stripe Connect{accountLabel} is enabled and ready
-                        to use.
-                      </p>
-
-                      <p>
-                        <Icon
-                          style={{ fontSize: '1.6em' }}
-                          type={
-                            user.isStripeConnectEnabledByDefault
-                              ? 'check-circle'
-                              : 'close-circle'
-                          }
-                          theme='twoTone'
-                          twoToneColor={
-                            user.isStripeConnectEnabledByDefault
-                              ? '#52c41a'
-                              : '#1790FF'
-                          }
-                        />{' '}
-                        Automatically link new projects to your connected Stripe
-                        account.{' '}
-                        <Switch
-                          checked={user.isStripeConnectEnabledByDefault}
-                          loading={this._loadingUser}
-                          onChange={
-                            this._onChangeIsStripeConnectEnabledByDefault
-                          }
-                        />
-                      </p>
+                      <Statistic
+                        precision={2}
+                        prefix='$'
+                        value={pendingBalance}
+                      />
                     </div>
                   </div>
-                ) : null}
-              </div>
-            </>
-          ) : (
-            <div className={styles.detail}>
-              <p>
-                In order to customize your maker settings, please first link
-                with Stripe connect via the{' '}
-                <Link to='/account/integrations'>Integrations</Link> tab.
-              </p>
+
+                  {isExpress && (
+                    <Button type='primary' onClick={this._onClickDashboard}>
+                      View Stripe Dashboard
+                    </Button>
+                  )}
+
+                  <div className={styles.detail}>
+                    <p>
+                      <Icon
+                        type='check-circle'
+                        theme='twoTone'
+                        twoToneColor='#52c41a'
+                        style={{ fontSize: '1.6em', marginRight: '12px' }}
+                      />
+                      Your Stripe Connect{accountLabel} is enabled and ready to
+                      use.
+                    </p>
+
+                    <p>
+                      <Icon
+                        style={{ fontSize: '1.6em', marginRight: '12px' }}
+                        type={
+                          user.isStripeConnectEnabledByDefault
+                            ? 'check-circle'
+                            : 'close-circle'
+                        }
+                        theme='twoTone'
+                        twoToneColor={
+                          user.isStripeConnectEnabledByDefault
+                            ? '#52c41a'
+                            : '#1790FF'
+                        }
+                      />
+                      Automatically link new projects to your connected Stripe
+                      account?
+                      <Switch
+                        style={{ marginLeft: '12px' }}
+                        checked={user.isStripeConnectEnabledByDefault}
+                        loading={this._loadingUser}
+                        onChange={this._onChangeIsStripeConnectEnabledByDefault}
+                      />
+                    </p>
+
+                    <p>
+                      Note that you can enable or disable Stripe Connect on a
+                      per-project basis via its project admin settings page. You
+                      must be a project owner in order to change Stripe
+                      settings.
+                    </p>
+                  </div>
+                </div>
+              ) : null}
             </div>
-          )}
-        </Paper>
+          </>
+        ) : (
+          <div className={styles.detail}>
+            <p>
+              In order to customize your maker settings, please first link with
+              Stripe connect via the{' '}
+              <Link to='/account/integrations'>Integrations</Link> tab.
+            </p>
+          </div>
+        )}
       </TabPane>
     )
   }
@@ -176,7 +180,7 @@ export class StripeTabPane extends Component {
         console.error(err)
 
         notification.error({
-          message: 'Error loading account balance',
+          message: 'Error loading account',
           description: err?.response?.data?.error || err.message,
           duration: 0
         })

@@ -9,6 +9,7 @@ import { Route, Switch } from 'react-router-dom'
 import {
   NavHeader,
   NavFooter,
+  Paper,
   ScrollToTopOnMount,
   Section,
   TabBar
@@ -106,31 +107,33 @@ export class ProjectAdminPage extends Component {
           className={theme(styles, 'body')}
           contentClassName={theme(styles, 'content')}
         >
-          <TabBar tabs={tabs} />
+          <Paper className={theme(styles, 'paper')}>
+            <TabBar tabs={tabs} />
 
-          {this._project && (
-            <Switch>
-              <Route path={`${match.path}`} exact>
-                <HomeTabPane project={this._project} />
-              </Route>
+            {this._project && (
+              <Switch>
+                <Route path={`${match.path}`} exact>
+                  <HomeTabPane project={this._project} />
+                </Route>
 
-              <Route path={`${match.path}/analytics`} exact>
-                <AnalyticsTabPane project={this._project} />
-              </Route>
+                <Route path={`${match.path}/analytics`} exact>
+                  <AnalyticsTabPane project={this._project} />
+                </Route>
 
-              {/* <Route path={`${match.path}/audit-log`} exact>
-                <AuditLogTabPane project={this._project} />
-              </Route> */}
+                {/* <Route path={`${match.path}/audit-log`} exact>
+                  <AuditLogTabPane project={this._project} />
+                </Route> */}
 
-              <Route path={`${match.path}/customers`} exact>
-                <CustomersTabPane project={this._project} />
-              </Route>
+                <Route path={`${match.path}/customers`} exact>
+                  <CustomersTabPane project={this._project} />
+                </Route>
 
-              <Route path={`${match.path}/settings`} exact>
-                <SettingsTabPane project={this._project} />
-              </Route>
-            </Switch>
-          )}
+                <Route path={`${match.path}/settings`} exact>
+                  <SettingsTabPane project={this._project} />
+                </Route>
+              </Switch>
+            )}
+          </Paper>
         </Section>
 
         <NavFooter />

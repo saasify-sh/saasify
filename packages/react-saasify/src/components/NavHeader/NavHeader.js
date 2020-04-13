@@ -31,7 +31,7 @@ export class NavHeader extends Component {
   state = {
     attached: isServer || window.scrollY > 0,
     expanded: false,
-    width: window.clientWidth || window.innerWidth
+    width: isServer ? 1000 : window.clientWidth || window.innerWidth
   }
 
   componentDidMount() {
@@ -162,7 +162,7 @@ export class NavHeader extends Component {
             </div>
 
             {actions ? (
-              (expanded && width > 767) || !auth.isAuthenticated ? (
+              (expanded && width < 768) || !auth.isAuthenticated ? (
                 <div className={theme(styles, 'actions')}>
                   {actions.map((action, index) => {
                     if (typeof action === 'function') {
