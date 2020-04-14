@@ -34,4 +34,3 @@ export * from './InfiniteList'
 export * from './RelativeTimeLabel'
 
 export * from './AuthProviders'
-export * from './ConsumerFrameEmbed'

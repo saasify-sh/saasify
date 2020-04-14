@@ -26,7 +26,7 @@ class Config {
   // Path to a local OpenAPI JSON file or an inline OpenAPI spec
   openapi: string | object
 
-  a/ optional pricing config
+  // optional pricing config
   pricingPlans?: PricingPlan[]
   coupons?: Coupon[]
 

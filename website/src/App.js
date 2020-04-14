@@ -40,7 +40,7 @@ import {
   LogoutPage,
   SignupPage,
 
-  // // maker webapp
+  // maker webapp
   DashboardPage,
   ProjectAdminPage,
   AccountPage
@@ -58,8 +58,6 @@ const saasifyConfig = {
   ctaTextInline: 'Request Access',
   header: {
     displayName: false,
-    dashboard: true,
-    login: true,
     links: [
       {
         label: 'About',
