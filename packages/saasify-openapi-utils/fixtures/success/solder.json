@@ -1,0 +1,635 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/activecampaign-postgres/get-current-running-jobs/": {
+      "get": {
+        "summary": "Get Current Running Jobs",
+        "description": "Get your current list of running jobs\n\nThis will let the user retrieve a list of all of his running jobs as well as their current CRON strings.",
+        "operationId": "get_current_running_jobs_activecampaign_postgres_get_current_running_jobs__get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-User",
+              "type": "string"
+            },
+            "name": "x-saasify-user",
+            "in": "header"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-Plan",
+              "type": "string"
+            },
+            "name": "x-saasify-plan",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activecampaign-postgres/modify-current-job/": {
+      "put": {
+        "summary": "Modify Current Job",
+        "description": "This endpoint modifies the CRON string of a current running job\n\nThis will allow the user to modify a job that they have running.\n\nInput:\n\n* category: \"deals | contacts\"\n* cron: a valid CRON string",
+        "operationId": "modify_current_job_activecampaign_postgres_modify_current_job__put",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Category",
+              "type": "string"
+            },
+            "name": "category",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Cron",
+              "type": "string"
+            },
+            "name": "cron",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-User",
+              "type": "string"
+            },
+            "name": "x-saasify-user",
+            "in": "header"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-Plan",
+              "type": "string"
+            },
+            "name": "x-saasify-plan",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activecampaign-postgres/start-job/": {
+      "get": {
+        "summary": "Start Job",
+        "description": "This endpoint creates a new job\n\nThis will allow the user to create an entirely new job if they do not have one running already.\n\nInput:\n\n* category: \"deals | contacts\"\n* cron: a valid CRON string",
+        "operationId": "start_job_activecampaign_postgres_start_job__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Category",
+              "type": "string"
+            },
+            "name": "category",
+            "in": "query"
+          },
+          {
+            "required": true,
+            "schema": {
+              "title": "Cron",
+              "type": "string"
+            },
+            "name": "cron",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-User",
+              "type": "string"
+            },
+            "name": "x-saasify-user",
+            "in": "header"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-Plan",
+              "type": "string"
+            },
+            "name": "x-saasify-plan",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activecampaign-postgres/end-job/": {
+      "get": {
+        "summary": "End Job",
+        "description": "This endpoint will end a current running job if there is one\n\nThis will allow the user to end a job that they have running.\n\nInput:\n\n* category: \"deals | contacts\"",
+        "operationId": "end_job_activecampaign_postgres_end_job__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Category",
+              "type": "string"
+            },
+            "name": "category",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-User",
+              "type": "string"
+            },
+            "name": "x-saasify-user",
+            "in": "header"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-Plan",
+              "type": "string"
+            },
+            "name": "x-saasify-plan",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activecampaign-postgres/get-data/": {
+      "get": {
+        "summary": "Get Data",
+        "description": "This endpoint retrieves the information regarding a current user\n\nThis will allow the user to retrieve data regarding their ActiveCampaign and Postgres data.",
+        "operationId": "get_data_activecampaign_postgres_get_data__get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-User",
+              "type": "string"
+            },
+            "name": "x-saasify-user",
+            "in": "header"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-Plan",
+              "type": "string"
+            },
+            "name": "x-saasify-plan",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activecampaign-postgres/add-data/": {
+      "post": {
+        "summary": "Add Data",
+        "description": "This endpoint allows the user to add their ActiveCampaign and Postgres data\n\nThis will allow the user to add their ActiveCampaign and Postgres data.",
+        "operationId": "add_data_activecampaign_postgres_add_data__post",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-User",
+              "type": "string"
+            },
+            "name": "x-saasify-user",
+            "in": "header"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-Plan",
+              "type": "string"
+            },
+            "name": "x-saasify-plan",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TapTargetData"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activecampaign-postgres/modify-data/": {
+      "put": {
+        "summary": "Modify Data",
+        "description": "This endpoint allows the user to modify their ActiveCampaign and Postgres data\n\nThis will allow the user to modify their ActiveCampaign and Postgres data. \nNote that the JSON object below does not have to include every field. It can only include the data you want to change.",
+        "operationId": "modify_data_activecampaign_postgres_modify_data__put",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-User",
+              "type": "string"
+            },
+            "name": "x-saasify-user",
+            "in": "header"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-Plan",
+              "type": "string"
+            },
+            "name": "x-saasify-plan",
+            "in": "header"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeableTapTargetData"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activecampaign-postgres/perform-etl-by-category/": {
+      "get": {
+        "summary": "Perform Etl By Category",
+        "description": "This endpoint allows the user to perform an ETL transfer between ActiveCampaign and Postgres data by category\n\nThis will allow the user to transfer their ActiveCampaign data to Postgres by category.\n\nInput:\n* category: \"deals | contacts\"",
+        "operationId": "perform_etl_by_category_activecampaign_postgres_perform_etl_by_category__get",
+        "parameters": [
+          {
+            "required": true,
+            "schema": {
+              "title": "Category",
+              "type": "string"
+            },
+            "name": "category",
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-User",
+              "type": "string"
+            },
+            "name": "x-saasify-user",
+            "in": "header"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-Plan",
+              "type": "string"
+            },
+            "name": "x-saasify-plan",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/activecampaign-postgres/perform-etl-all-data/": {
+      "get": {
+        "summary": "Perform Etl All Data",
+        "description": "This endpoint allows the user to transfer both their contacts and deals data from ActiveCampaign to Postgres at once\n\nThis will allow the user to transfer their ActiveCampaign data to Postgres without specifying category.",
+        "operationId": "perform_etl_all_data_activecampaign_postgres_perform_etl_all_data__get",
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-User",
+              "type": "string"
+            },
+            "name": "x-saasify-user",
+            "in": "header"
+          },
+          {
+            "required": false,
+            "schema": {
+              "title": "X-Saasify-Plan",
+              "type": "string"
+            },
+            "name": "x-saasify-plan",
+            "in": "header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ChangeableTapTargetData": {
+        "title": "ChangeableTapTargetData",
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "api_key": {
+            "title": "Api Key",
+            "type": "string"
+          },
+          "postgres_host": {
+            "title": "Postgres Host",
+            "type": "string"
+          },
+          "postgres_port": {
+            "title": "Postgres Port",
+            "type": "integer"
+          },
+          "postgres_database": {
+            "title": "Postgres Database",
+            "type": "string"
+          },
+          "postgres_username": {
+            "title": "Postgres Username",
+            "type": "string"
+          },
+          "postgres_password": {
+            "title": "Postgres Password",
+            "type": "string"
+          },
+          "postgres_schema": {
+            "title": "Postgres Schema",
+            "type": "string"
+          }
+        }
+      },
+      "HTTPValidationError": {
+        "title": "HTTPValidationError",
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            }
+          }
+        }
+      },
+      "TapTargetData": {
+        "title": "TapTargetData",
+        "required": [
+          "url",
+          "api_key",
+          "postgres_host",
+          "postgres_port",
+          "postgres_database",
+          "postgres_username",
+          "postgres_password",
+          "postgres_schema"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "title": "Url",
+            "type": "string"
+          },
+          "api_key": {
+            "title": "Api Key",
+            "type": "string"
+          },
+          "postgres_host": {
+            "title": "Postgres Host",
+            "type": "string"
+          },
+          "postgres_port": {
+            "title": "Postgres Port",
+            "type": "integer"
+          },
+          "postgres_database": {
+            "title": "Postgres Database",
+            "type": "string"
+          },
+          "postgres_username": {
+            "title": "Postgres Username",
+            "type": "string"
+          },
+          "postgres_password": {
+            "title": "Postgres Password",
+            "type": "string"
+          },
+          "postgres_schema": {
+            "title": "Postgres Schema",
+            "type": "string"
+          }
+        }
+      },
+      "ValidationError": {
+        "title": "ValidationError",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "loc": {
+            "title": "Location",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

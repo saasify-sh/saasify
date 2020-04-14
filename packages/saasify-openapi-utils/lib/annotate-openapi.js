@@ -229,31 +229,7 @@ function annotateOperationResponses({ op, service }) {
   if (success) {
     const mediaType = success.content && success.content['application/json']
 
-    if (
-      mediaType &&
-      (!mediaType.examples || !Object.keys(mediaType.examples).length)
-    ) {
-      mediaType.examples = service.examples.reduce((acc, example) => {
-        const ct = contentType.parse(example.outputContentType)
-        const type = ct && ct.type
-
-        if (type !== 'application/json') {
-          return acc
-        }
-
-        const ex = { summary: example.name, description: example.description }
-        if (example.outputUrl) {
-          ex.externalValue = example.outputUrl
-        } else {
-          ex.value = example.output
-        }
-
-        return {
-          ...acc,
-          [example.name]: ex
-        }
-      }, {})
-    }
+    annotateMediaTypeExamples({ mediaType, service })
   }
 }
 
@@ -279,8 +255,12 @@ function annotateOperationCodeSamples({ op, httpMethod, service }) {
     op.requestBody.content &&
     op.requestBody.content['application/json']
 
+  annotateMediaTypeExamples({ mediaType, service })
+}
+
+function annotateMediaTypeExamples({ mediaType, service }) {
   if (mediaType) {
-    if (!mediaType.examples || !mediaType.examples.length) {
+    if (!mediaType.examples || !Object.keys(mediaType.examples).length) {
       mediaType.examples = service.examples.reduce((acc, example) => {
         const ct = contentType.parse(example.inputContentType)
         const type = ct && ct.type
@@ -301,6 +281,10 @@ function annotateOperationCodeSamples({ op, httpMethod, service }) {
           [example.name]: ex
         }
       }, {})
+
+      if (!Object.keys(mediaType.examples).length) {
+        delete mediaType.examples
+      }
     }
   }
 }
