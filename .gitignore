@@ -67,4 +67,5 @@ master.json
 build
 dist
 
-.now
+.now/
+docs/.now/
