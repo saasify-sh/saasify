@@ -129,7 +129,7 @@ This config file customizes the main `/parseIngredients` endpoint, configures St
 }
 ```
 
-You can view the live SaaS product generated from this config [here](https://zestful.saasify.sh ':target=_blank').
+Here is the [live SaaS product](https://zestful.saasify.sh ':target=_blank') generated from this config.
 
 Any local media files pointed to by your config will be automatically uploaded to cloud storage when you run `saasify deploy`.
 
@@ -247,13 +247,14 @@ Optional array of product features that will be listed on the SaaS website's hom
 
 Each feature must have a `name`, `desc`, and `icon`.
 
-The `name` is the feature's title (should be no longer than a few words). The `desc` is the feature's description (should be one to two sentences). The `icon` is the feature's icon, preferably in SVG format.
+The `name` is the feature's title (should be no longer than a few words). The `desc` is the feature's description (should be one to two sentences). The `icon` is the feature's image, preferably in SVG format.
 
 The `icon` may be any of the following:
 
 - A path to a local `png` or `svg` image file that will be uploaded by Saasify.
-- The name of an [Undraw](https://undraw.co/illustrations ':target=_blank') SVG (all lowercase, with underscores instead of spaces).
 - A URL to a remote `png` or `svg` image file.
+
+We recommend using [Undraw](https://undraw.co/illustrations ':target=_blank') SVG icons to get started.
 
 ##### saas.theme
 

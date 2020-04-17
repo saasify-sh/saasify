@@ -10,7 +10,7 @@ You can enable / disable different providers, mark them as required in order to 
 
 If you're interested in taking advantage of this feature and want help configuring your integration, please [get in touch](support.md).
 
-!> An example use case would be requiring that all your customers authenticate via `google` with custom OAuth `scopes` that gives your API access to a customer's Google Sheets (or any other Google properties on behalf of that user).
+> An example use case would be requiring that all your customers authenticate via `google` with custom OAuth `scopes` that gives your API access to a customer's Google Sheets (or any other Google properties on behalf of that user).
 
 ## Supported Providers
 

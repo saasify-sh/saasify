@@ -2,7 +2,7 @@
 
 # Pricing
 
-!> All billing and payment-related features are securely handled by [Stripe](https://stripe.com).
+> All billing and payment-related features are securely handled by [Stripe](https://stripe.com).
 
 Saasify supports most of Stripe's billing models. This includes:
 

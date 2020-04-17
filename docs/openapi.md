@@ -4,7 +4,7 @@
 
 **[OpenAPI](https://swagger.io/specification/ ':target=_blank')** is a formal spec used to define an API's HTTP endpoints, inputs, and outputs.
 
-!> **Note that OpenAPI v3 was previously called Swagger v1 and v2**.
+> **Note that OpenAPI was previously called Swagger**.
 
 ## Why OpenAPI?
 
