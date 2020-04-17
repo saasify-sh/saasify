@@ -16,7 +16,7 @@ You can quickly check if your `saasify.json` is valid by running `saasify debug`
 
 `saasify.json` should be a valid JSON file that conforms to the following TypeScript pseudocode:
 
-!> This config may look complicated, but **most of the fields are optional with sensible defaults**. Start with a really simple config that just specifies your `openapi` spec and only customize things further once you're ready to publish your SaaS product.
+> This config may look complicated, but **most of the fields are optional with sensible defaults**. Start with a really simple config that just specifies your `openapi` spec and only customize things further once you're ready to publish your SaaS product.
 
 ```ts
 class Config {

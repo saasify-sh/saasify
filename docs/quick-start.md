@@ -32,9 +32,7 @@ saasify init [project-name]
 
 **You'll want to choose the default minimal template.**
 
-The rest of this tutorial will use `quick-start` as the project name.
-
-(Note that project names cannot contain underscores or special characters.)
+> The rest of this tutorial will use `quick-start` as the project name. Project names cannot contain underscores or special characters.
 
 This will create a new folder containing `saasify.json` and `openapi.json` files that will look something like this:
 
@@ -114,11 +112,11 @@ Deployments are really lightweight -- you can create as many deployments as you 
 
 You can test out your SaaS API on this live deployment via any HTTP framework.
 
-You'll need to change the URL suffix in the example below to the `url` from your deployment. The username (`dev`), project name (`quick-start`), and hash (`03b0125f`) should all be different depending on how you initialized your project, but the structure will be the same.
-
 ```bash
 curl https://ssfy.sh/dev/quick-start@03b0125f
 ```
+
+You'll need to change the URL suffix in the example below to the `url` from your deployment. The username (`dev`), project name (`quick-start`), and hash (`03b0125f`) may be different, but the structure will be the same.
 
 This HTTP GET request should return a JSON payload containing all of the headers that were sent to the downstream `httpbin` endpoint from Saasify's API gateway:
 
@@ -159,13 +157,13 @@ Saasify's API gateway adds some powerful functionality to your downstream API:
 
 ## Publishing your Deployment
 
-Once you're happy with your project, it's time to publish your most recent deployment which will enable your customers to start paying for your product.
+Once you're happy with your project, it's time to publish it live which will enable your customers to start paying for your product.
 
 ```bash
 saasify publish
 ```
 
-This will prompt you for a version number following [semver](https://semver.org ':target=_blank') format. Version numbers must increase with each published version, and changes to pricing require a major version update.
+This will prompt you for a version number following [semver](https://semver.org ':target=_blank') format. Version numbers must increase with each published version, and changes to pricing should result in a major version update.
 
 Once published, your auto-generated SaaS web client will be available at `https://<username>_<project-name>.saasify.sh`. For example, [https://dev_imagemin.saasify.sh](https://dev_imagemin.saasify.sh).
 
@@ -200,10 +198,10 @@ saasify publish
 
 Congratulations -- You just launched your very own, self-contained SaaS product!
 
-Now that you have an overview of how the platform works, here are some areas to check out next:
+Now that you have a solid overview, here are some areas to check out next:
 
 - [Examples](examples.md) - A growing list of open source examples to help get you started.
 - [Use cases](case-cases.md) - A brainstorm of different SaaS product ideas as inspiration.
 - [Pricing](pricing.md) - Customize your product's pricing.
-- [Configuration](configuration.md) - Fine-grained customization of your product and the template-based web client.
-  <!-- - [Getting paid](getting-paid.md) - Setup payouts via Stripe Connect or PayPal. -->
+- [Configuration](configuration.md) - Fine-grained customization of your product.
+  <!-- - [Stripe Connect](stripe-connect.md) - Connect your Stripe Account. -->

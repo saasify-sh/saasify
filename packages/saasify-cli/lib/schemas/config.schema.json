@@ -24,6 +24,13 @@
           "type": "string",
           "title": "description"
         },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "keywords"
+        },
         "alias": {
           "type": "string",
           "title": "alias"

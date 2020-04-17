@@ -4,7 +4,7 @@
 
 The [Saasify CLI](https://github.com/saasify-sh/saasify/tree/master/packages/saasify-cli ':target=_blank') will be your primary interface for creating new SaaS projects and deploying updates.
 
-See the [quick start](quick-start.md) for a walkthrough of how to get started using the CLI.
+The [quick start](quick-start.md) is a great guide for how to get started using the CLI.
 
 In the near future, Saasify's admin dashboard will offer a user-friendly GUI on top of this CLI, but the core platform and workflow will remain largely the same.
 

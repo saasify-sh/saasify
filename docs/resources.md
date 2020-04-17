@@ -16,16 +16,16 @@ In the future, Saasify's goal is to help answer some of these questions for you,
 
 ## SaaS Idea Resources
 
-- [Parabola recipes](https://parabola.io/recipes) - Curated list of workflow ideas that would make great Micro SaaS products.
 - [Top Zapier Apps](https://zapier.com/apps) - Zapier is a really solid platform for no-code workflows. There are many cases where you could take a specific Zapier workflow and build a standalone, niche SaaS product that focuses on supporting that one flow really well.
   - [Top Zapier integrations](https://zapier.com/apps/integrations/)
+- [Parabola recipes](https://parabola.io/recipes) - Curated list of workflow ideas that would make great Micro SaaS products.
 - [GitHub Actions](https://github.com/features/actions) - Lots of solid ideas for niche developer tool automations that could work well as Micro SaaS products.
 - [Top Dashdash integrations](https://dashdash.com/integrations) - Dashdash is similar to Zapier and their list of featured integrations is a great place to gather inspiration.
 - [SaaSHub](https://www.saashub.com/) - Curated collection of existing SaaS products.
 - [Machine Learning Models](https://uber.github.io/ludwig/examples/) - Curated collection of pre-built machine learning models from Uber.
 - [Automation ideas](https://phantombuster.com/phantombuster) - Validated, niche automation product ideas.
 
-!> **Don't worry if there are existing products and solutions that offer similar functionality to your SaaS product idea**. This is actually a really good thing because it helps to validate that there is a market willing to pay for your product! Competitive research is an important part of building a successful SaaS product, and understanding the landscape of existing solutions will help you narrow down your unique value proposition and find gaps in the market.
+!> **Don't worry if there are existing products and solutions that offer similar functionality to your SaaS idea**. This is actually a really good thing because it helps to validate that there is a market willing to pay for your product! Competitive research is an important part of building a successful SaaS product, and understanding the landscape of existing solutions will help you narrow down your unique value proposition and find gaps in the market.
 
 ## API Resources
 
