@@ -1,6 +1,6 @@
 {
   "name": "saasify-platform",
-  "version": "1.18.26",
+  "version": "1.18.27",
   "private": true,
   "description": "Saasify marketplace and platform website.",
   "author": "Saasify <dev@saasify.sh>",
