@@ -56,6 +56,7 @@ test('projectName failure', (t) => {
   t.falsy(validators.projectName('abc.'))
   t.falsy(validators.projectName('abc_123'))
   t.falsy(validators.projectName('ah^23'))
+  t.falsy(validators.projectName('Hello-World'))
   t.falsy(validators.projectName('f'.repeat(100)))
 })
 
@@ -83,6 +84,7 @@ test('project failure', (t) => {
   t.falsy(validators.project('abc/1.23'))
   t.falsy(validators.project('012345678/123@latest'))
   t.falsy(validators.project('foo@dev'))
+  t.falsy(validators.project('username/Project-Name'))
   t.falsy(validators.project('_/___'))
 })
 
@@ -95,6 +97,7 @@ test('deployment failure', (t) => {
   t.falsy(validators.deployment('username/project-name@012345678'))
   t.falsy(validators.deployment('username/project-name@latest'))
   t.falsy(validators.deployment('username/project-name@dev'))
+  t.falsy(validators.deployment('username/Project-Name@01234567'))
   t.falsy(validators.deployment('a/123@0123A567'))
   t.falsy(validators.deployment('_/___@012.4567'))
   t.falsy(validators.deployment('_/___@01234567'))

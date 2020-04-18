@@ -124,6 +124,16 @@ module.exports = async (program) => {
   }
 
   if (!validators.projectName(config.name)) {
+    if (config.name.toLowerCase() !== config.name) {
+      throw new Error(`Invalid config name [${config.name}] must be lowercase`)
+    }
+
+    if (config.name.replace(/_/g, '') !== config.name) {
+      throw new Error(
+        `Invalid config name [${config.name}] underscores are not allowed (use hyphens instead "-")`
+      )
+    }
+
     throw new Error(
       `Invalid config name [${config.name}] (regex ${validators.projectNameRe})`
     )
