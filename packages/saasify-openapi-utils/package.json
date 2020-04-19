@@ -1,6 +1,6 @@
 {
   "name": "saasify-openapi-utils",
-  "version": "1.18.25",
+  "version": "1.18.28",
   "description": "OpenAPI utilities for Saasify.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
@@ -39,7 +39,7 @@
     "lodash.pick": "^4.4.0",
     "remark": "^11.0.1",
     "saasify-codegen": "^1.16.0",
-    "saasify-faas-utils": "^1.17.7",
+    "saasify-faas-utils": "^1.18.28",
     "saasify-to-openapi": "^1.17.13",
     "semver": "^6.3.0",
     "swagger-parser": "^8.0.1",
