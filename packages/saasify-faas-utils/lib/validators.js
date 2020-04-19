@@ -6,11 +6,11 @@ const isRelativeUrl = require('is-relative-url')
 exports.usernameRe = /^[a-zA-Z0-9-]{1,64}$/
 exports.passwordRe = /^.{3,1024}$/
 
-exports.projectNameRe = /^[a-zA-Z0-9-]{3,64}$/
+exports.projectNameRe = /^[a-z0-9-]{3,64}$/
 exports.deploymentHashRe = /^[a-z0-9]{8}$/
 
-exports.projectRe = /^[a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64}$/
-exports.deploymentRe = /^[a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64}@[a-z0-9]{8}$/
+exports.projectRe = /^[a-zA-Z0-9-]{1,64}\/[a-z0-9-]{3,64}$/
+exports.deploymentRe = /^[a-zA-Z0-9-]{1,64}\/[a-z0-9-]{3,64}@[a-z0-9]{8}$/
 
 // service names may be any valid JavaScript identifier
 // TODO: should service names be any label?

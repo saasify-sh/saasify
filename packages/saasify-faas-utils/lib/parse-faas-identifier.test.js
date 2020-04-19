@@ -46,6 +46,7 @@ test('URL suffix success', (t) => {
 
 test('URL suffix error', (t) => {
   error(t, 'username/foo-bar@01234567/foo😀')
+  error(t, 'username/Foo-Bar@dev/foo/')
 })
 
 test('URL prefix and suffix success', (t) => {

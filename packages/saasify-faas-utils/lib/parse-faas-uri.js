@@ -2,15 +2,15 @@
 
 // namespace/projectName@deploymentHash/servicePath
 // project@deploymentHash/servicePath
-const projectDeploymentServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([a-z0-9]{8})(\/[a-zA-Z0-9\-._~%!$&'()*+,;=:/]*)?$/
+const projectDeploymentServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-z0-9-]{3,64})@([a-z0-9]{8})(\/[a-zA-Z0-9\-._~%!$&'()*+,;=:/]*)?$/
 
 // namespace/projectName@version/servicePath
 // project@version/servicePath
-const projectVersionServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})@([^/?@]+)(\/[a-zA-Z0-9\-._~%!$&'()*+,;=:/]*)?$/
+const projectVersionServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-z0-9-]{3,64})@([^/?@]+)(\/[a-zA-Z0-9\-._~%!$&'()*+,;=:/]*)?$/
 
 // namespace/projectName/servicePath
 // project/servicePath (latest version)
-const projectServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-zA-Z0-9-]{3,64})(\/[a-zA-Z0-9\-._~%!$&'()*+,;=:/]*)?$/
+const projectServiceRe = /^([a-zA-Z0-9-]{1,64}\/[a-z0-9-]{3,64})(\/[a-zA-Z0-9\-._~%!$&'()*+,;=:/]*)?$/
 
 module.exports = (uri) => {
   const pdsMatch = uri.match(projectDeploymentServiceRe)
