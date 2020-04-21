@@ -58,6 +58,10 @@
           "title": "backendUrl",
           "type": "string"
         },
+        "backendDevUrl": {
+          "title": "backendDevUrl",
+          "type": "string"
+        },
         "services": {
           "type": "array",
           "title": "services",

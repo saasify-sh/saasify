@@ -147,12 +147,8 @@ module.exports = async (program) => {
     throw new Error(`Invalid config semver version "${config.version}"`)
   }
 
-  if (!config.services || !config.services.length) {
-    if (config.openapi) {
-      config.services = []
-    } else {
-      throw new Error('Invalid config, must contain at least one service')
-    }
+  if (!config.services) {
+    config.services = []
   }
 
   return config

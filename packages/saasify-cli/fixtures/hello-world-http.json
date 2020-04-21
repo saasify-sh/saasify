@@ -1,0 +1,5 @@
+{
+  "name": "hello-world-http",
+  "description": "Most basic possible http deployment without any API validation",
+  "backendUrl": "https://httpbin.org"
+}

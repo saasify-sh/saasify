@@ -43,6 +43,7 @@ module.exports = async (program, opts = {}) => {
   }
 
   if (!adaptor) {
+    // our old friend HTTP is always around to have your back
     adaptor = 'http'
   }
 
