@@ -54,8 +54,12 @@
           "title": "openapi",
           "type": "string"
         },
-        "serverUrl": {
-          "title": "openapi",
+        "backendUrl": {
+          "title": "backendUrl",
+          "type": "string"
+        },
+        "backendDevUrl": {
+          "title": "backendDevUrl",
           "type": "string"
         },
         "services": {

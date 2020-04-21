@@ -36,7 +36,7 @@ module.exports = async (opts) => {
         type: 'list',
         name: 'template',
         message: 'Template?',
-        choices: ['minimal'],
+        choices: ['minimal', 'minimal-openapi'],
         default: opts.template
       },
       {

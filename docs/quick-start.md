@@ -30,54 +30,29 @@ You can use the `saasify init` command to bootstrap a new project.
 saasify init [project-name]
 ```
 
-**You'll want to choose the default minimal template.**
+**You'll want to choose the default template called "minimal".**
 
 > The rest of this tutorial will use `quick-start` as the project name. Project names cannot contain underscores or special characters.
 
-This will create a new folder containing `saasify.json` and `openapi.json` files that will look something like this:
+This will create a new folder containing `saasify.json` and `readme.md` files. Your saasify.json will look like this:
 
 _(saasify.json)_
 
 ```json
 {
   "name": "quick-start",
-  "openapi": "./openapi.json"
+  "description": "Minimal starter template that saasifies an externally hosted backend API.",
+  "backendUrl": "https://httpbin.org"
 }
 ```
 
-_(openapi.json)_
+This template "saasifies" an example REST API pointing to [httbin.org](https://httpbin.org ':target=_blank').
 
-```json
-{
-  "openapi": "3.0.2",
-  "info": {
-    "title": "quick-start",
-    "description": "Saasify quick start example"
-  },
-  "paths": {
-    "/get": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "Example GET service which echoes its inputs"
-          }
-        }
-      }
-    }
-  },
-  "servers": [
-    {
-      "url": "https://httpbin.org"
-    }
-  ]
-}
-```
+Saasify acts as a proxy in front of this external API to handle auth, billing, rate limiting, etc. This allows your backend API to focus solely on your product's unique value proposition.
 
-This example OpenAPI spec just points to a [dummy REST API](https://jsonplaceholder.typicode.com/ ':target=_blank').
+You'll eventually want to replace this `backendUrl` with a URL pointing to your SaaS product's externally hosted backend API.
 
-You'll eventually want to replace this with an OpenAPI spec representing your externally hosted API, but for the purposes of this guide, it will work just fine.
-
-Most of the time you'll want to use a framework that will auto-generate this OpenAPI spec for you from your externally hosted API. Check out our [OpenAPI](./openapi.md) docs once you're ready to tackle this side of things.
+_Note that an OpenAPI spec is no longer required to use Saasify_. Including an OpenAPI spec that describes your backend API allows Saasify to auto-generate API docs for your product. It also allows Saasify to perform additional validation as it proxies HTTP calls to your backend API. If this use case interests you, check out our [OpenAPI](./openapi.md) docs to learn more.
 
 <p align="center">
   <img src="./_media/undraw/working_remotely.svg" alt="Working remotely" width="200" />
@@ -113,7 +88,7 @@ Deployments are really lightweight -- you can create as many deployments as you 
 You can test out your SaaS API on this live deployment via any HTTP framework.
 
 ```bash
-curl https://ssfy.sh/dev/quick-start@03b0125f
+curl https://ssfy.sh/dev/quick-start@03b0125f/get
 ```
 
 You'll need to change the URL suffix in the example below to the `url` from your deployment. The username (`dev`), project name (`quick-start`), and hash (`03b0125f`) may be different, but the structure will be the same.

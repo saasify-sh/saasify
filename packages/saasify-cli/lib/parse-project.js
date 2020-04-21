@@ -12,7 +12,7 @@ const adaptors = require('./adaptors')
 
 module.exports = async (program, opts = {}) => {
   const config = await parseConfig(program)
-  let adaptor
+  let adaptor = null
 
   if (config.openapi) {
     adaptor = 'openapi'
@@ -28,18 +28,23 @@ module.exports = async (program, opts = {}) => {
     } else if (ext === 'py') {
       current = 'python'
     } else if (service.src === undefined) {
-      current = 'openapi'
+      current = null
     } else {
       throw new Error(`Unsupported service type "${ext}" [${service.src}]`)
     }
 
-    if (adaptor && current !== adaptor) {
+    if (adaptor && current && current !== adaptor) {
       throw new Error(
         `All services must have the same type: found "${adaptor}" and "${current}"`
       )
     }
 
     adaptor = current
+  }
+
+  if (!adaptor) {
+    // our old friend HTTP is always around to have your back
+    adaptor = 'http'
   }
 
   // perform any adaptor-specific project initialization

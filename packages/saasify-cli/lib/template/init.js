@@ -40,6 +40,7 @@ module.exports = async (opts) => {
 
   const source = path.join(temp, template)
   // TODO: verify source template exists
+
   const files = await globby(slash(source), { dot: true })
   // TODO: verify that source files is non-empty
 

@@ -24,18 +24,25 @@ module.exports = async (spec, deployment, opts = {}) => {
 
   const api = cloneDeep(spec)
   const version = deployment.version ? `v${deployment.version}` : undefined
+  api.paths = api.paths || {}
+
+  const paths = Object.keys(api.paths)
 
   // It's important that we overwrite the downstream origin servers and any security
   // requirements they may use.
   api.servers = [{ url: baseUrl }]
   api.security = [{ 'API Key': [] }]
 
-  api.tags = (api.tags || []).concat([
-    {
-      name: 'Endpoints',
-      'x-displayName': 'Endpoints'
-    }
-  ])
+  api.tags = api.tags || []
+
+  if (paths.length) {
+    api.tags = api.tags.concat([
+      {
+        name: 'Endpoints',
+        'x-displayName': 'Endpoints'
+      }
+    ])
+  }
 
   const readmeRaw = deployment.readme || ''
 
@@ -140,7 +147,7 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail.`
     }
   }
 
-  for (const path of Object.keys(api.paths)) {
+  for (const path of paths) {
     const pathItem = api.paths[path]
 
     annotatePathItem({ pathItem, path, api, deployment })

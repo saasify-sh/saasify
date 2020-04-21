@@ -1,0 +1,5 @@
+{
+  "name": "minimal-http",
+  "description": "Most basic possible HTTP project without any API validation",
+  "backendUrl": "https://httpbin.org"
+}

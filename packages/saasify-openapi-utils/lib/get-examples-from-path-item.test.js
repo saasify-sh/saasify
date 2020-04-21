@@ -15,8 +15,11 @@ for (const fixture of fixturesSuccess) {
   test(`parseOpenAPI success ${name}`, async (t) => {
     const input = await fs.readJson(fixture)
     const spec = await parser.dereference(input)
+    t.truthy(spec)
 
-    for (const path of Object.keys(spec.paths)) {
+    const paths = Object.keys(spec.paths || {})
+
+    for (const path of paths) {
       const pathItem = spec.paths[path]
       const results = await getExamplesFromPathItem(pathItem)
       console.log(path, JSON.stringify(results, null, 2))

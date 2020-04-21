@@ -28,8 +28,10 @@ module.exports = async (program, project, opts = {}) => {
     'Preparing deployment'
   )
 
+  const adaptor = project.services[0] ? project.services[0].adaptor : 'http'
+
   // TODO: make this cleaner as part of the adaptor
-  if (project.services[0].adaptor === 'typescript') {
+  if (adaptor === 'typescript') {
     await installPackageDeps(program, tempDir)
   }
 
