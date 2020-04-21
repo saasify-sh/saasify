@@ -1,11 +1,5 @@
-# Hello World
+# Minimal HTTP
 
-This is a very simple Saasify project with a single TypeScript function that implements the classic "Hello World!".
+This is the most basic Saasify project possible pointing to a backend REST API without any validation.
 
-<a href="https://hello-world.saasify.sh">
-  <img
-    src="https://badges.saasify.sh"
-    height="40"
-    alt="Hosted API"
-  />
-</a>
+It uses the Saasify defaults for all optional project config.

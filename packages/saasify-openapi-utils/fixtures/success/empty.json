@@ -1,0 +1,8 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Empty OpenAPI test",
+    "version": "0.1.0"
+  },
+  "paths": {}
+}
