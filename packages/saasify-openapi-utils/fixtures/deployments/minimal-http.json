@@ -1,0 +1,141 @@
+{
+  "enabled": true,
+  "published": false,
+  "description": "Most basic possible HTTP project without any API validation",
+  "readme": "# Hello World\n\nThis is a very simple Saasify project with a single TypeScript function that implements the classic \"Hello World!\".\n\n<a href=\"https://hello-world.saasify.sh\">\n  <img\n    src=\"https://badges.saasify.sh\"\n    height=\"40\"\n    alt=\"Hosted API\"\n  />\n</a>\n",
+  "keywords": [],
+  "hash": "346f37bf",
+  "user": "5d5b477eb5fab1199c927a36",
+  "team": "5dbef994fb93dc256540b0ce",
+  "project": {
+    "keywords": [],
+    "description": "",
+    "applicationFeePercent": 5,
+    "isStripeConnectEnabled": false,
+    "name": "minimal-http",
+    "alias": null,
+    "user": "5d5b477eb5fab1199c927a36",
+    "team": "5dbef994fb93dc256540b0ce",
+    "publishedVersions": [],
+    "createdAt": "2020-04-21T16:06:31.884Z",
+    "updatedAt": "2020-04-21T16:06:32.250Z",
+    "lastDeployment": "dev/minimal-http@346f37bf",
+    "stripeMetricProducts": {},
+    "saasUrl": "http://dev_minimal-http.localhost:3000",
+    "stripeConnectParams": [],
+    "id": "dev/minimal-http"
+  },
+  "version": "0.1.0",
+  "pricingPlans": [
+    {
+      "features": [],
+      "auth": false,
+      "amount": 0,
+      "requests": {
+        "slug": "requests",
+        "amount": 0,
+        "usageType": "metered",
+        "billingScheme": "per_unit",
+        "tiersMode": "graduated",
+        "rateLimit": null,
+        "tiers": [],
+        "label": "requests",
+        "unitLabel": "request"
+      },
+      "rateLimit": {
+        "enabled": true,
+        "requestsInterval": 3600,
+        "requestsMaxPerInterval": 25
+      },
+      "metrics": [],
+      "metricIds": {},
+      "_stripeMetricPlansTest": {},
+      "_stripeMetricPlansLive": {},
+      "name": "Free",
+      "slug": "free",
+      "baseId": "base:fe81b78daa3cb1a4a16d2b9f55511c81d88ca0b5d2127247f729333b7c8cd76f",
+      "requestsId": "requests:dcb849465f8fa69e5154ccfd8dc14549e73698e3fee264663ae103a15137bece"
+    },
+    {
+      "features": [],
+      "auth": true,
+      "amount": 99,
+      "requests": {
+        "slug": "requests",
+        "amount": 0.04,
+        "usageType": "metered",
+        "billingScheme": "per_unit",
+        "tiersMode": "graduated",
+        "rateLimit": null,
+        "tiers": [],
+        "label": "requests",
+        "unitLabel": "request"
+      },
+      "rateLimit": null,
+      "metrics": [],
+      "metricIds": {},
+      "_stripeMetricPlansTest": {},
+      "_stripeMetricPlansLive": {},
+      "name": "Unlimited",
+      "slug": "unlimited",
+      "baseId": "base:e09383bf9add40c532e95f2baaec5d24342a0861b916dc3f2137e7d92f4b2745",
+      "requestsId": "requests:db8aae854a5b10f3fcfdd1bf0d57f9e16b7401f3ef69b747e1b5ef1a8eae9dff"
+    }
+  ],
+  "coupons": [],
+  "services": [],
+  "build": null,
+  "env": null,
+  "saas": {
+    "headerName": null,
+    "logo": "https://storage.googleapis.com/saasify-uploads-prod/f218cc888f902eff57c42657c5a5a1cbaee2594c.svg",
+    "logoLight": null,
+    "favicon": "https://saasify.sh/favicon.ico",
+    "exampleImage": null,
+    "scripts": [],
+    "htmlPreBody": [],
+    "htmlPostBody": [],
+    "styles": [],
+    "features": [],
+    "name": "minimal-http",
+    "heading": "minimal-http",
+    "subheading": "Most basic possible HTTP project without any API validation",
+    "theme": {
+      "name": "waves",
+      "backgroundImage": null
+    }
+  },
+  "createdAt": "2020-04-21T16:06:32.184Z",
+  "updatedAt": "2020-04-21T16:06:32.184Z",
+  "url": "http://localhost:5100/dev/minimal-http@346f37bf",
+  "openApiUrl": "http://localhost:5000/1/deployments/openapi/dev/minimal-http@346f37bf",
+  "saasUrl": "https://dev_minimal-http_346f37bf.saasify.sh",
+  "authProviders": {
+    "google": {
+      "enabled": false,
+      "provider": "google",
+      "scopes": []
+    },
+    "github": {
+      "enabled": true,
+      "provider": "github",
+      "scopes": []
+    },
+    "spotify": {
+      "enabled": false,
+      "provider": "spotify",
+      "scopes": []
+    },
+    "twitter": {
+      "enabled": false,
+      "provider": "twitter",
+      "scopes": []
+    },
+    "default": {
+      "enabled": true,
+      "provider": "default",
+      "scopes": []
+    }
+  },
+  "id": "dev/minimal-http@346f37bf"
+}
