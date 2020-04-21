@@ -6,12 +6,13 @@ class Config {
   // project name
   name?: string
 
-  // Path to a local OpenAPI JSON file or a URL to a remote OpenAPI JSON spec
-  openapi: string
+  // URL to your backend API in production
+  // (overrides the SAASIFY_BACKEND_URL environment variable)
+  backendUrl?: string
 
-  // Override for the OpenAPI server url
-  // (you may also specify this secretly via the OPENAPI_SERVER_URL environment variable)
-  serverUrl?: string
+  // URL to your backend API in development
+  // (overrides the SAASIFY_BACKEND_DEV_URL environment variable)
+  backendDevUrl?: string
 
   // optional pricing config
   pricingPlans?: PricingPlan[]
@@ -34,6 +35,10 @@ class Config {
 
   // optional saas marketing site config
   saas?: object
+
+  // optional path to a local OpenAPI JSON file or a URL to a remote OpenAPI JSON spec
+  // that describes your API
+  openapi?: string
 
   // optional API endpoint config
   services?: Service[]
@@ -173,6 +178,7 @@ class SaaS {
   theme?: Theme
   socialShare?: object
 
+  // TODO: deprecate this
   webapp?: string | WebApp
 }
 
