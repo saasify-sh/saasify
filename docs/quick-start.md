@@ -1,10 +1,10 @@
 [header](_header.md ':include')
 
-# Quick Start
+# 5 Minute Quick Start
 
-This guide will give you an overview of the Saasify platform by creating an example product.
+This guide will give you an overview of how Saasify works by creating an example SaaS product.
 
-The result will be a public SaaS API that anyone is able to call and subscribe to.
+The result will be a live SaaS product that anyone can sign up and pay for.
 
 ## Getting Started
 
@@ -48,7 +48,7 @@ _(saasify.json)_
 
 This template "saasifies" an example REST API pointing to [httbin.org](https://httpbin.org ':target=_blank').
 
-Saasify acts as a proxy in front of this external API to handle auth, billing, rate limiting, etc. This allows your backend API to focus solely on your product's unique value proposition.
+Saasify acts as a proxy in front of this API to handle auth, billing, rate limiting, etc. This allows your backend API to focus solely on your product's unique value proposition.
 
 You'll eventually want to replace this `backendUrl` with a URL pointing to your SaaS product's externally hosted backend API.
 
@@ -68,7 +68,7 @@ saasify deploy
 
 This creates a new deployment for your project with two key features:
 
-- An API proxied via our API gateway. For example, `https://ssfy.sh/username/projectName@deploymentHash` ([live example](https://ssfy.sh/dev/quick-start@03b0125f ':target=_blank'))
+- An API proxied via our API gateway. For example, `https://ssfy.sh/username/projectName@deploymentHash` ([live example](https://ssfy.sh/dev/quick-start@03b0125f/get ':target=_blank'))
 - A publicly accessible SaaS website for your product. For example, `https://username_projectName_deploymentHash.saasify.sh` ([live example](https://dev_quick-start_03b0125f.saasify.sh ':target=_blank'))
 
 The SaaS website's URL will be copied to your clipboard so you can check it out live in your browser.
