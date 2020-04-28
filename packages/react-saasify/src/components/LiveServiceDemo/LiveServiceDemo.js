@@ -388,37 +388,7 @@ export class LiveServiceDemo extends Component {
 
     console.log({ data, builtInExample })
 
-    if (builtInExample) {
-      result = {
-        output: builtInExample.output,
-        outputUrl: builtInExample.outputUrl,
-        outputContentType: builtInExample.outputContentType
-      }
-
-      await new Promise((resolve) => {
-        if (
-          result.outputContentType.startsWith('text/') &&
-          !result.outputContentType.startsWith('text/html') &&
-          !result.outputContentType.startsWith('text/csv')
-        ) {
-          // TODO
-        } else if (!result.outputContentType.startsWith('image/')) {
-          // window.open(result.outputUrl)
-          const ext = mime.extension(result.outputContentType)
-          const filename = ext ? `example.${ext}` : `example`
-          result.downloaded = true
-          download(result.outputUrl, filename, result.outputContentType)
-        }
-
-        setTimeout(resolve, 750)
-      })
-    } else {
-      result = await requestService({
-        auth,
-        service,
-        data
-      })
-
+    async function handleResult() {
       if (!result.hitRateLimit && result.outputContentType) {
         if (result.outputUrl) {
           if (result.outputContentType.startsWith('image/')) {
@@ -446,6 +416,8 @@ export class LiveServiceDemo extends Component {
             !result.outputContentType.startsWith('text/csv')
           ) {
             // TODO: clean this up
+          } else if (result.outputContentType.startsWith('application/json')) {
+            // TODO: clean this up
           } else if (result.outputContentType.startsWith('image/')) {
             // TODO: clean this up
           } else {
@@ -459,6 +431,28 @@ export class LiveServiceDemo extends Component {
           }
         }
       }
+    }
+
+    if (builtInExample) {
+      result = {
+        output: builtInExample.output,
+        outputUrl: builtInExample.outputUrl,
+        outputContentType: builtInExample.outputContentType
+      }
+
+      await new Promise((resolve) => {
+        setTimeout(resolve, 750)
+      })
+
+      await handleResult()
+    } else {
+      result = await requestService({
+        auth,
+        service,
+        data
+      })
+
+      await handleResult()
     }
 
     this.setState({
