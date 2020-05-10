@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { API, EventEmitter, theme } from 'react-saasify'
+import { API, theme } from 'react-saasify'
 import { withRouter } from 'react-router'
 import { withTracker } from 'lib/with-tracker'
 import { observer } from 'mobx-react'
@@ -144,13 +144,15 @@ export class ProjectAdminPage extends Component {
   async _reset() {
     const projectId = this._projectId
 
-    if (EventEmitter.project && EventEmitter.project.id === projectId) {
-      this._project = EventEmitter.project
-      EventEmitter.project = null
-
-      this._loading = false
-      this._error = false
-    }
+    // currently unused since we need to fetch the project directly in order to
+    // receive private fields
+    // if (EventEmitter.project && EventEmitter.project.id === projectId) {
+    //   this._project = EventEmitter.project
+    //   EventEmitter.project = null
+    //
+    //   this._loading = false
+    //   this._error = false
+    // }
 
     this._project = null
     this._loading = true

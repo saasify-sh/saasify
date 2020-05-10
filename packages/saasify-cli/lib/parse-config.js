@@ -151,5 +151,9 @@ module.exports = async (program) => {
     config.services = []
   }
 
+  if (!config.saas) {
+    config.saas = {}
+  }
+
   return config
 }

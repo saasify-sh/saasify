@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { observable, computed } from 'mobx'
+import copyTextToClipboard from 'copy-text-to-clipboard'
 
-import { API, Button } from 'react-saasify'
+import { API, Button, Divider, Tooltip } from 'react-saasify'
 import { TabPane } from 'components'
 
 import styles from './styles.module.css'
@@ -17,6 +18,9 @@ export class HomeTabPane extends Component {
 
   @observable
   _error = false
+
+  @observable
+  _copiedSecretToClipboard = false
 
   @computed get _name() {
     const { lastPublishedDeployment } = this.props.project
@@ -72,8 +76,45 @@ export class HomeTabPane extends Component {
             <p>No recent deployments</p>
           )}
         </div>
+
+        <Divider />
+
+        {project._secret && (
+          <div className={styles.secret}>
+            <Tooltip
+              placement='top'
+              title={
+                this._copiedSecretToClipboard ? 'Copied!' : 'Copy to clipboard'
+              }
+            >
+              <Button type='primary' ghost onClick={this._onClickCopySecret}>
+                {`x-saasify-secret ${project._secret.substr(0, 8)} ...`}
+              </Button>
+            </Tooltip>
+          </div>
+        )}
       </TabPane>
     )
+  }
+
+  _onClickCopySecret = () => {
+    copyTextToClipboard(this.props.project._secret)
+
+    this._copiedSecretToClipboard = true
+    this._clearCopyTimeout()
+    this._copyTimeout = setTimeout(this._onCopyTimeout, 3000)
+  }
+
+  _onCopyTimeout = () => {
+    this._clearCopyTimeout()
+    this._copiedSecretToClipboard = false
+  }
+
+  _clearCopyTimeout = () => {
+    if (this._copyTimeout) {
+      clearTimeout(this._copyTimeout)
+      this._copyTimeout = null
+    }
   }
 
   async _reset() {
