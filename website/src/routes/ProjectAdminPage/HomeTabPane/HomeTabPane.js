@@ -88,7 +88,7 @@ export class HomeTabPane extends Component {
               }
             >
               <Button type='primary' ghost onClick={this._onClickCopySecret}>
-                {`x-saasify-secret ${project._secret.substr(0, 8)} ...`}
+                {`x-saasify-proxy-secret ${project._secret.substr(0, 8)} ...`}
               </Button>
             </Tooltip>
           </div>
