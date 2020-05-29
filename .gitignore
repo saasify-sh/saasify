@@ -67,5 +67,7 @@ master.json
 build
 dist
 
+.vercel/
 .now/
 docs/.now/
+docs/.vercel/
