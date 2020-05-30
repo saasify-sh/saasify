@@ -30,8 +30,7 @@ export function authLinkedIn({ location }) {
 
   const opts = qs.stringify({
     client_id: env.providerLinkedInClientId,
-    // redirect_uri: env.linkedinRedirectUri,
-    redirect_uri: 'https://auth.saasify.sh',
+    redirect_uri: env.redirectUri,
     response_type: 'code',
     scope,
     state
@@ -95,7 +94,7 @@ export function authSpotify({ location, scope = '' }) {
   const params = {
     response_type: 'code',
     client_id: env.providerSpotifyClientId,
-    redirect_uri: 'https://auth.saasify.sh',
+    redirect_uri: env.redirectUri,
     scope,
     state
   }
@@ -116,7 +115,7 @@ export async function authTwitter({ location }) {
   }
 
   const opts = qs.stringify(params)
-  const redirectUri = `https://auth.saasify.sh?${opts}`
+  const redirectUri = `${env.redirectUri}?${opts}`
 
   const { url: authUrl } = await API.getTwitterAuthUrl({ redirectUri })
   console.log({ redirectUri, authUrl })

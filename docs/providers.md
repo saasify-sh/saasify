@@ -17,6 +17,7 @@ If you're interested in taking advantage of this feature and want help configuri
 - Google
 - GitHub
 - Twitter
+- LinkedIn
 - Stripe
 - Spotify
 

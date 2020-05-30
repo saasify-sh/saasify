@@ -5,6 +5,8 @@ const isProd = process.env.NODE_ENV === 'production'
 const apiBaseUrl =
   process.env.REACT_APP_SAASIFY_API_BASE_URL || 'https://api.saasify.sh'
 
+const redirectUri = 'https://auth.saasify.sh'
+
 const githubRedirectUri = `${window.location.origin}/auth/github`
 const googleRedirectUri = `${window.location.origin}/auth/google`
 const stripeRedirectUri = `${window.location.origin}/auth/stripe`
@@ -29,9 +31,10 @@ export default {
   isProd,
 
   apiBaseUrl,
+  redirectUri,
 
   // github
-  githubRedirectUri: `https://auth.saasify.sh?${githubRedirectQuery}`,
+  githubRedirectUri: `${redirectUri}?${githubRedirectQuery}`,
   providerGitHubClientId: isProd
     ? saasifyProviderGitHubClientIdPrd
     : saasifyProviderGitHubClientIdDev,
