@@ -3,6 +3,8 @@
 module.exports = new Set([
   'x-saasify-user',
   'x-saasify-plan',
+  'x-saasify-user-email',
+  'x-saasify-user-username',
   'x-saasify-target',
   'x-saasify-proxy-secret',
   'x-github-access-token',
@@ -14,6 +16,9 @@ module.exports = new Set([
   'x-spotify-access-token',
   'x-spotify-refresh-token',
   'x-spotify-access-token-secret',
+  'x-linkedin-access-token',
+  'x-linkedin-refresh-token',
+  'x-linkedin-access-token-secret',
   'x-twitter-access-token',
   'x-twitter-refresh-token',
   'x-twitter-access-token-secret',

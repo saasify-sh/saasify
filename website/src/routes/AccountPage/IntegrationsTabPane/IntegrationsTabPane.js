@@ -15,6 +15,9 @@ const authConfig = {
   spotify: {
     enabled: true
   },
+  linkedin: {
+    enabled: true
+  },
   twitter: {
     enabled: true
   },

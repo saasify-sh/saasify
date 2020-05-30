@@ -1,7 +1,8 @@
 import SaasifyClient from 'saasify-client'
+import env from './env'
 
 export const API = new SaasifyClient({
-  baseUrl: process.env.REACT_APP_SAASIFY_API_BASE_URL
+  baseUrl: env.apiBaseUrl
 })
 
 export default API

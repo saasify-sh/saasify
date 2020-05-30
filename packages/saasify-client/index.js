@@ -189,6 +189,23 @@ module.exports = class SaasifyClient {
       })
   }
 
+  async authWithLinkedIn(data) {
+    return this._request({
+      url: `/1/auth/linkedin`,
+      method: 'put',
+      params: this._params,
+      data
+    })
+      .then((res) => res.data)
+      .then((data) => {
+        this._token = data.token
+        this._user = data.user
+        this._teamId = undefined
+        this._teamSlug = undefined
+        return data
+      })
+  }
+
   async getTwitterAuthUrl(params = {}) {
     return this._request({
       url: `/1/auth/twitter/url`,

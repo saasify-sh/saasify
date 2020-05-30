@@ -20,6 +20,26 @@ export function authGitHub({ location }) {
   window.location = `https://github.com/login/oauth/authorize?${opts}`
 }
 
+export function authLinkedIn({ location }) {
+  const scope = 'r_liteprofile r_emailaddress'
+  const stateRaw = JSON.stringify({
+    uri: env.linkedinRedirectUri,
+    route: location.pathname
+  })
+  const state = btoa(stateRaw)
+
+  const opts = qs.stringify({
+    client_id: env.providerLinkedInClientId,
+    // redirect_uri: env.linkedinRedirectUri,
+    redirect_uri: 'https://auth.saasify.sh',
+    response_type: 'code',
+    scope,
+    state
+  })
+
+  window.location = `https://www.linkedin.com/oauth/v2/authorization?${opts}`
+}
+
 export async function authGoogle({ location }, params) {
   const { url } = await API.getGoogleAuthUrl(params)
   const authUrl = new URL(url)

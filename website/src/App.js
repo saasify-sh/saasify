@@ -16,6 +16,7 @@ import {
   AuthGitHubPage,
   AuthGooglePage,
   AuthSpotifyPage,
+  AuthLinkedInPage,
   AuthTwitterPage,
   AuthStripePage
 } from 'react-saasify'
@@ -231,6 +232,7 @@ export default class App extends Component {
                 <Route path='/auth/github' component={AuthGitHubPage} />
                 <Route path='/auth/google' component={AuthGooglePage} />
                 <Route path='/auth/spotify' component={AuthSpotifyPage} />
+                <Route path='/auth/linkedin' component={AuthLinkedInPage} />
                 <Route path='/auth/twitter' component={AuthTwitterPage} />
                 <Route path='/auth/stripe' component={AuthStripePage} />
 
