@@ -224,6 +224,7 @@ class AuthProviderMap {
   github?: AuthProviderConfig
   google?: AuthProviderConfig
   spotify?: AuthProviderConfig
+  linkedin?: AuthProviderConfig
   twitter?: AuthProviderConfig
 
   // default auth provider is email & password

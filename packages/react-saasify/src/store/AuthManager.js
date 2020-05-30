@@ -124,6 +124,19 @@ class AuthManagerClass {
     this.auth = auth
   }
 
+  async authWithLinkedIn(opts) {
+    debug('AuthManager.authWithLinkedIn')
+    await this._bootstrappingP
+
+    const auth = await API.authWithLinkedIn({
+      ...this.context,
+      ...opts
+    })
+
+    await LocalStore.set(AUTH_STORE_KEY, auth)
+    this.auth = auth
+  }
+
   async authWithTwitter(opts) {
     debug('AuthManager.authWithTwitter')
     await this._bootstrappingP

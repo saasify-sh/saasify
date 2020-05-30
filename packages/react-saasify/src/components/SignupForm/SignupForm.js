@@ -15,7 +15,7 @@ import {
   notification
 } from 'lib/antd'
 
-import { authGitHub, authGoogle, authTwitter } from 'lib/oauth'
+import * as oauth from 'lib/oauth'
 import debug from 'lib/debug'
 
 import styles from './styles.module.css'
@@ -57,6 +57,7 @@ export class SignupForm extends Component {
     const hasGitHubAuth = authConfig.github?.enabled !== false
     const hasGoogleAuth = authConfig.google?.enabled !== false
     const hasTwitterAuth = authConfig.twitter?.enabled !== false
+    const hasLinkedInAuth = authConfig.linkedin?.enabled !== false
     const hasDefaultAuth = authConfig.default?.enabled !== false
 
     return (
@@ -104,7 +105,22 @@ export class SignupForm extends Component {
           </FormItem>
         )}
 
-        {(hasGitHubAuth || hasGoogleAuth || hasTwitterAuth) &&
+        {hasLinkedInAuth && (
+          <FormItem>
+            <Button
+              className={theme(styles, 'submit')}
+              icon='linkedin'
+              onClick={this._onClickLinkedIn}
+            >
+              Sign up with LinkedIn
+            </Button>
+          </FormItem>
+        )}
+
+        {(hasGitHubAuth ||
+          hasGoogleAuth ||
+          hasTwitterAuth ||
+          hasLinkedInAuth) &&
           hasDefaultAuth && <Divider>Or</Divider>}
 
         {hasDefaultAuth && (
@@ -180,16 +196,21 @@ export class SignupForm extends Component {
 
   _onClickGitHub = (e) => {
     e.preventDefault()
-    authGitHub({ location: this.props.location }, this.props.authParams)
+    oauth.authGitHub({ location: this.props.location }, this.props.authParams)
   }
 
   _onClickGoogle = (e) => {
     e.preventDefault()
-    authGoogle({ location: this.props.location }, this.props.authParams)
+    oauth.authGoogle({ location: this.props.location }, this.props.authParams)
   }
 
   _onClickTwitter = (e) => {
     e.preventDefault()
-    authTwitter({ location: this.props.location }, this.props.authParams)
+    oauth.authTwitter({ location: this.props.location }, this.props.authParams)
+  }
+
+  _onClickLinkedIn = (e) => {
+    e.preventDefault()
+    oauth.authLinkedIn({ location: this.props.location }, this.props.authParams)
   }
 }

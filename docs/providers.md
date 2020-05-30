@@ -17,6 +17,7 @@ If you're interested in taking advantage of this feature and want help configuri
 - Google
 - GitHub
 - Twitter
+- LinkedIn
 - Stripe
 - Spotify
 
@@ -36,6 +37,7 @@ class AuthProviderMap {
   github?: AuthProviderConfig
   google?: AuthProviderConfig
   spotify?: AuthProviderConfig
+  linkedin?: AuthProviderConfig
   twitter?: AuthProviderConfig
 
   // default auth provider is email & password

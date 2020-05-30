@@ -11,6 +11,9 @@ export const authConfig = {
   spotify: {
     enabled: false
   },
+  linkedin: {
+    enabled: false
+  },
   twitter: {
     enabled: false
   },

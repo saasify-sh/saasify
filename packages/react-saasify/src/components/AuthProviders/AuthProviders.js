@@ -6,14 +6,7 @@ import { withRouter } from 'react-router-dom'
 import cs from 'classnames'
 
 import { Button } from 'lib/antd'
-
-import {
-  authGitHub,
-  authGoogle,
-  authSpotify,
-  authTwitter,
-  authStripe
-} from 'lib/oauth'
+import * as oauth from 'lib/oauth'
 
 import stripeIcon from './images/stripe.svg'
 import spotifyIcon from './images/spotify.svg'
@@ -52,12 +45,14 @@ export class AuthProviders extends Component {
     const hasGoogleAuth = authConfig.google?.enabled !== false
     const hasSpotifyAuth = authConfig.spotify?.enabled !== false
     const hasTwitterAuth = authConfig.twitter?.enabled !== false
+    const hasLinkedInAuth = authConfig.linkedin?.enabled !== false
     const hasStripeAuth = authConfig.stripe?.enabled !== false
 
     const isGitHubLinked = auth.user.providers.github?.id
     const isGoogleLinked = auth.user.providers.google?.id
     const isSpotifyLinked = auth.user.providers.spotify?.id
     const isTwitterLinked = auth.user.providers.twitter?.id
+    const isLinkedInLinked = auth.user.providers.linkedin?.id
     const isStripeLinked = auth.user.providers.stripe?.id
 
     console.log('user', toJS(auth.user))
@@ -114,6 +109,21 @@ export class AuthProviders extends Component {
           </div>
         )}
 
+        {hasLinkedInAuth && (
+          <div className={styles.authProvider}>
+            <Button
+              className={styles.authButton}
+              icon='linkedin'
+              type={authConfig.linkedin?.type || 'secondary'}
+              onClick={this._onClickLinkedIn}
+            >
+              {isLinkedInLinked ? 'Re-link LinkedIn' : 'Link LinkedIn'}
+            </Button>
+
+            {authConfig.linkedin?.detail}
+          </div>
+        )}
+
         {hasTwitterAuth && (
           <div className={styles.authProvider}>
             <Button
@@ -152,27 +162,32 @@ export class AuthProviders extends Component {
 
   _onClickGitHub = (e) => {
     e.preventDefault()
-    authGitHub({ location: this.props.location }, this.props.authParams)
+    oauth.authGitHub({ location: this.props.location }, this.props.authParams)
   }
 
   _onClickGoogle = (e) => {
     e.preventDefault()
-    authGoogle({ location: this.props.location }, this.props.authParams)
+    oauth.authGoogle({ location: this.props.location }, this.props.authParams)
   }
 
   _onClickSpotify = (e) => {
     e.preventDefault()
-    authSpotify({ location: this.props.location }, this.props.authParams)
+    oauth.authSpotify({ location: this.props.location }, this.props.authParams)
   }
 
   _onClickTwitter = (e) => {
     e.preventDefault()
-    authTwitter({ location: this.props.location }, this.props.authParams)
+    oauth.authTwitter({ location: this.props.location }, this.props.authParams)
+  }
+
+  _onClickLinkedIn = (e) => {
+    e.preventDefault()
+    oauth.authLinkedIn({ location: this.props.location }, this.props.authParams)
   }
 
   _onClickStripe = (e) => {
     e.preventDefault()
-    authStripe(
+    oauth.authStripe(
       { location: this.props.location, auth: this.props.auth },
       this.props.authParams
     )

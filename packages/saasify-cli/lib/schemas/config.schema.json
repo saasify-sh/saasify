@@ -478,6 +478,10 @@
           "title": "spotify",
           "$ref": "#/definitions/AuthProviderConfig"
         },
+        "linkedin": {
+          "title": "linkedin",
+          "$ref": "#/definitions/AuthProviderConfig"
+        },
         "twitter": {
           "title": "twitter",
           "$ref": "#/definitions/AuthProviderConfig"

@@ -20,6 +20,25 @@ export function authGitHub({ location }) {
   window.location = `https://github.com/login/oauth/authorize?${opts}`
 }
 
+export function authLinkedIn({ location }) {
+  const scope = 'r_liteprofile r_emailaddress'
+  const stateRaw = JSON.stringify({
+    uri: env.linkedinRedirectUri,
+    route: location.pathname
+  })
+  const state = btoa(stateRaw)
+
+  const opts = qs.stringify({
+    client_id: env.providerLinkedInClientId,
+    redirect_uri: env.redirectUri,
+    response_type: 'code',
+    scope,
+    state
+  })
+
+  window.location = `https://www.linkedin.com/oauth/v2/authorization?${opts}`
+}
+
 export async function authGoogle({ location }, params) {
   const { url } = await API.getGoogleAuthUrl(params)
   const authUrl = new URL(url)
@@ -75,7 +94,7 @@ export function authSpotify({ location, scope = '' }) {
   const params = {
     response_type: 'code',
     client_id: env.providerSpotifyClientId,
-    redirect_uri: 'https://auth.saasify.sh',
+    redirect_uri: env.redirectUri,
     scope,
     state
   }
@@ -96,7 +115,7 @@ export async function authTwitter({ location }) {
   }
 
   const opts = qs.stringify(params)
-  const redirectUri = `https://auth.saasify.sh?${opts}`
+  const redirectUri = `${env.redirectUri}?${opts}`
 
   const { url: authUrl } = await API.getTwitterAuthUrl({ redirectUri })
   console.log({ redirectUri, authUrl })
