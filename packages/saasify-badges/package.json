@@ -1,6 +1,6 @@
 {
   "name": "saasify-badges",
-  "version": "1.13.3",
+  "version": "1.20.0",
   "description": "Dynamic readme badges for Saasify projects.",
   "private": true,
   "main": "lib/render-badge.js",

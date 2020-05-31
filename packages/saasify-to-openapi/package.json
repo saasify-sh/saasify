@@ -1,6 +1,6 @@
 {
   "name": "saasify-to-openapi",
-  "version": "1.17.13",
+  "version": "1.20.0",
   "description": "Converts Saasify deployments to OpenAPI specs.",
   "main": "index.js",
   "author": "Saasify <dev@saasify.sh>",
