@@ -5,6 +5,7 @@ module.exports = new Set([
   'x-saasify-plan',
   'x-saasify-user-email',
   'x-saasify-user-username',
+  'x-saasify-user-name',
   'x-saasify-target',
   'x-saasify-proxy-secret',
   'x-github-access-token',
