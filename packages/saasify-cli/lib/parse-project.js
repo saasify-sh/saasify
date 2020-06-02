@@ -83,7 +83,7 @@ module.exports.getReadme = async (config) => {
     const readmeFiles = await globby('readme.md', {
       cwd: config.root,
       gitignore: true,
-      nocase: true
+      caseSensitiveMatch: false
     })
 
     if (readmeFiles.length) {
