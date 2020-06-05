@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import theme from 'lib/theme'
 
 import { inject } from 'mobx-react'
-import { withRouter } from 'react-router-dom'
 
 import {
   Button,
@@ -23,13 +22,11 @@ import styles from './styles.module.css'
 const FormItem = Form.Item
 
 @inject('auth')
-@withRouter
 @Form.create()
 export class SignupForm extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     form: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
     authConfig: PropTypes.object,
     authParams: PropTypes.object,
     className: PropTypes.string,
@@ -196,21 +193,21 @@ export class SignupForm extends Component {
 
   _onClickGitHub = (e) => {
     e.preventDefault()
-    oauth.authGitHub({ location: this.props.location }, this.props.authParams)
+    oauth.authGitHub(this.props.authParams)
   }
 
   _onClickGoogle = (e) => {
     e.preventDefault()
-    oauth.authGoogle({ location: this.props.location }, this.props.authParams)
+    oauth.authGoogle(this.props.authParams)
   }
 
   _onClickTwitter = (e) => {
     e.preventDefault()
-    oauth.authTwitter({ location: this.props.location }, this.props.authParams)
+    oauth.authTwitter(this.props.authParams)
   }
 
   _onClickLinkedIn = (e) => {
     e.preventDefault()
-    oauth.authLinkedIn({ location: this.props.location }, this.props.authParams)
+    oauth.authLinkedIn(this.props.authParams)
   }
 }

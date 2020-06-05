@@ -16,7 +16,7 @@ async function storeState() {
   return LocalStore.set(storeKey, window.location.href)
 }
 
-export async function authGitHub({ location }) {
+export async function authGitHub() {
   const scope = 'read:user user:email'
   const opts = qs.stringify({
     ...githubConfig,
@@ -27,11 +27,11 @@ export async function authGitHub({ location }) {
   window.location = `https://github.com/login/oauth/authorize?${opts}`
 }
 
-export async function authLinkedIn({ location }) {
+export async function authLinkedIn() {
   const scope = 'r_liteprofile r_emailaddress'
   const stateRaw = JSON.stringify({
     uri: env.linkedinRedirectUri,
-    route: location.pathname
+    route: window.location.pathname
   })
   const state = btoa(stateRaw)
 
@@ -47,12 +47,12 @@ export async function authLinkedIn({ location }) {
   window.location = `https://www.linkedin.com/oauth/v2/authorization?${opts}`
 }
 
-export async function authGoogle({ location }, params) {
+export async function authGoogle(params) {
   const { url } = await API.getGoogleAuthUrl(params)
   const authUrl = new URL(url)
   const state = JSON.stringify({
     uri: env.googleRedirectUri,
-    route: location.pathname
+    route: window.location.pathname
   })
   const state64 = btoa(state)
   authUrl.searchParams.set('state', state64)
@@ -63,10 +63,10 @@ export async function authGoogle({ location }, params) {
   window.location = finalUrl
 }
 
-export async function authStripe({ location, auth, express = false }) {
+export async function authStripe({ auth, express = false }) {
   const stateRaw = JSON.stringify({
     uri: env.stripeRedirectUri,
-    route: location.pathname
+    route: window.location.pathname
   })
   const state = btoa(stateRaw)
 
@@ -95,10 +95,10 @@ export async function authStripe({ location, auth, express = false }) {
   }
 }
 
-export async function authSpotify({ location, scope = '' }) {
+export async function authSpotify({ scope = '' }) {
   const stateRaw = JSON.stringify({
     uri: env.spotifyRedirectUri,
-    route: location.pathname
+    route: window.location.pathname
   })
   const state = btoa(stateRaw)
 
@@ -113,14 +113,13 @@ export async function authSpotify({ location, scope = '' }) {
   const opts = qs.stringify(params)
 
   await storeState()
-
   window.location = `https://accounts.spotify.com/authorize?${opts}`
 }
 
-export async function authTwitter({ location }) {
+export async function authTwitter() {
   const stateRaw = JSON.stringify({
     uri: env.twitterRedirectUri,
-    route: location.pathname
+    route: window.location.pathname
   })
   const state = btoa(stateRaw)
 
@@ -135,6 +134,5 @@ export async function authTwitter({ location }) {
   console.log({ redirectUri, authUrl })
 
   await storeState()
-
   window.location = authUrl
 }
