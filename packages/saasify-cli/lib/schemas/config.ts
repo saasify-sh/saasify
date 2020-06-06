@@ -66,6 +66,9 @@ class PricingPlan {
   // 2999 = $29.99
   amount?: number = 0
 
+  // number of days to enable a free trial before charging
+  trialPeriodDays?: number
+
   // optional metered billing to charge per request
   requests?: PricingPlanMetricConfig
 

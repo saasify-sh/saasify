@@ -52,7 +52,10 @@ export class ProfileSection extends Component {
     } = this.state
 
     const hasSubscription =
-      auth.consumer && auth.consumer.enabled && auth.consumer.plan !== 'free'
+      auth.consumer &&
+      auth.consumer.enabled &&
+      auth.consumer.plan &&
+      auth.consumer.plan !== 'free'
 
     const columns = [
       {
@@ -136,7 +139,7 @@ export class ProfileSection extends Component {
                 onConfirm={this._onConfirmUnsubscribe}
               >
                 <Button type='default' loading={isLoadingUnsubscribe} block>
-                  Downgrade
+                  Cancel
                 </Button>
               </Popconfirm>
             ) : (
@@ -156,7 +159,7 @@ export class ProfileSection extends Component {
         email: auth.user.email,
         image: auth.user.image,
         joined: auth.user.createdAt,
-        subscription: hasSubscription ? auth.consumer.plan : 'Free',
+        subscription: hasSubscription ? auth.consumer.plan : 'free',
         subscribed: auth.consumer?.createdAt
       }
     ]
@@ -243,8 +246,16 @@ export class ProfileSection extends Component {
 
         notification.success({
           message: 'Auth token refreshed',
-          description:
-            'Your auth token has been refreshed. Your old token is now invalid.'
+          description: (
+            <span>
+              <p>
+                Your auth token has been refreshed. Your old token is now
+                invalid.
+              </p>
+
+              <p>It may take a few minutes for the changes to take effect.</p>
+            </span>
+          )
         })
 
         this.setState({ isLoadingRefreshAuthToken: false })

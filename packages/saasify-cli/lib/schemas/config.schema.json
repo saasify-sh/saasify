@@ -91,7 +91,7 @@
         },
         "pricingPlans": {
           "type": "array",
-          "minItems": 2,
+          "minItems": 1,
           "maxItems": 5,
           "items": {
             "$ref": "#/definitions/PricingPlan"
@@ -338,6 +338,11 @@
           "type": "number",
           "title": "amount",
           "default": 0,
+          "minimum": 0
+        },
+        "trialPeriodDays": {
+          "type": "number",
+          "title": "amount",
           "minimum": 0
         },
         "requests": {

@@ -1,7 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { Button, Divider, Icon, Modal, Table, notification } from 'lib/antd'
+import {
+  Button,
+  Divider,
+  Icon,
+  Modal,
+  Table,
+  Tooltip,
+  notification
+} from 'lib/antd'
 import { reaction } from 'mobx'
 import { observer, inject } from 'mobx-react'
 
@@ -78,23 +86,33 @@ export class BillingSourcesSection extends Component {
       key: 'actions',
       render: (card) => (
         <Fragment>
-          <Button
-            type='link'
-            disabled={card.default}
-            onClick={() => this._onClickRemoveSourceButton(card)}
+          <Tooltip
+            title={card.default ? 'Unable to remove default card' : undefined}
           >
-            Remove
-          </Button>
+            <Button
+              type='link'
+              disabled={card.default}
+              onClick={() => this._onClickRemoveSourceButton(card)}
+            >
+              Remove
+            </Button>
+          </Tooltip>
 
           <Divider type='vertical' />
 
-          <Button
-            type='link'
-            disabled={card.default}
-            onClick={() => this._onClickSetDefaultSourceButton(card)}
+          <Tooltip
+            title={
+              card.default ? 'This card is already the default' : undefined
+            }
           >
-            Set Default
-          </Button>
+            <Button
+              type='link'
+              disabled={card.default}
+              onClick={() => this._onClickSetDefaultSourceButton(card)}
+            >
+              Set Default
+            </Button>
+          </Tooltip>
         </Fragment>
       )
     }
