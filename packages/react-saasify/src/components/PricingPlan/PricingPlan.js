@@ -60,6 +60,7 @@ export class PricingPlan extends Component {
     const isDowngrade =
       !isCurrentPlan &&
       auth.consumer &&
+      auth.consumer.plan &&
       auth.consumer.plan !== 'free' &&
       auth.consumer.plan !== plan.slug &&
       plan.isFree

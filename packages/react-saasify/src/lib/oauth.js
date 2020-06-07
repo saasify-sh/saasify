@@ -3,24 +3,31 @@
 import qs from 'qs'
 import env from './env'
 import API from './api'
+import { LocalStore } from '../store/LocalStore'
+
+const storeKey = 'auth:location'
 
 export const githubConfig = {
   client_id: env.providerGitHubClientId,
   redirect_uri: env.githubRedirectUri
 }
 
-export function authGitHub({ location }) {
+async function storeState() {
+  return LocalStore.set(storeKey, window.location.href)
+}
+
+export async function authGitHub({ location }) {
   const scope = 'read:user user:email'
   const opts = qs.stringify({
     ...githubConfig,
-    scope,
-    route: location.pathname
+    scope
   })
 
+  await storeState()
   window.location = `https://github.com/login/oauth/authorize?${opts}`
 }
 
-export function authLinkedIn({ location }) {
+export async function authLinkedIn({ location }) {
   const scope = 'r_liteprofile r_emailaddress'
   const stateRaw = JSON.stringify({
     uri: env.linkedinRedirectUri,
@@ -36,6 +43,7 @@ export function authLinkedIn({ location }) {
     state
   })
 
+  await storeState()
   window.location = `https://www.linkedin.com/oauth/v2/authorization?${opts}`
 }
 
@@ -51,10 +59,11 @@ export async function authGoogle({ location }, params) {
   const finalUrl = authUrl.toString()
   console.log('authenticating with google', { url, finalUrl })
 
+  await storeState()
   window.location = finalUrl
 }
 
-export function authStripe({ location, auth, express = false }) {
+export async function authStripe({ location, auth, express = false }) {
   const stateRaw = JSON.stringify({
     uri: env.stripeRedirectUri,
     route: location.pathname
@@ -77,6 +86,8 @@ export function authStripe({ location, auth, express = false }) {
 
   const opts = qs.stringify(params)
 
+  await storeState()
+
   if (express) {
     window.location = `https://connect.stripe.com/express/oauth/authorize?${opts}`
   } else {
@@ -84,7 +95,7 @@ export function authStripe({ location, auth, express = false }) {
   }
 }
 
-export function authSpotify({ location, scope = '' }) {
+export async function authSpotify({ location, scope = '' }) {
   const stateRaw = JSON.stringify({
     uri: env.spotifyRedirectUri,
     route: location.pathname
@@ -100,6 +111,9 @@ export function authSpotify({ location, scope = '' }) {
   }
 
   const opts = qs.stringify(params)
+
+  await storeState()
+
   window.location = `https://accounts.spotify.com/authorize?${opts}`
 }
 
@@ -119,6 +133,8 @@ export async function authTwitter({ location }) {
 
   const { url: authUrl } = await API.getTwitterAuthUrl({ redirectUri })
   console.log({ redirectUri, authUrl })
+
+  await storeState()
 
   window.location = authUrl
 }

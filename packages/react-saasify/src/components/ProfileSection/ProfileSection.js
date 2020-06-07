@@ -52,7 +52,10 @@ export class ProfileSection extends Component {
     } = this.state
 
     const hasSubscription =
-      auth.consumer && auth.consumer.enabled && auth.consumer.plan !== 'free'
+      auth.consumer &&
+      auth.consumer.enabled &&
+      auth.consumer.plan &&
+      auth.consumer.plan !== 'free'
 
     const columns = [
       {
@@ -96,6 +99,7 @@ export class ProfileSection extends Component {
         title: 'Auth Token',
         key: 'token',
         render: (token) =>
+          auth.consumer?.enabled &&
           auth.consumer?.token && (
             <Tooltip
               placement='top'
@@ -112,20 +116,24 @@ export class ProfileSection extends Component {
         key: 'actions',
         render: (token) => (
           <Fragment>
-            <Button
-              type='ghost'
-              icon='reload'
-              loading={isLoadingRefreshAuthToken}
-              onClick={this._onClickRefreshAuthToken}
-              block
-            >
-              Refresh Token
-            </Button>
+            {auth.consumer?.enabled && auth.consumer?.token && (
+              <Fragment>
+                <Button
+                  type='ghost'
+                  icon='reload'
+                  loading={isLoadingRefreshAuthToken}
+                  onClick={this._onClickRefreshAuthToken}
+                  block
+                >
+                  Refresh Token
+                </Button>
 
-            <Divider
-              type='horizontal'
-              style={{ marginTop: 8, marginBottom: 8 }}
-            />
+                <Divider
+                  type='horizontal'
+                  style={{ marginTop: 8, marginBottom: 8 }}
+                />
+              </Fragment>
+            )}
 
             {hasSubscription ? (
               <Popconfirm
@@ -136,7 +144,7 @@ export class ProfileSection extends Component {
                 onConfirm={this._onConfirmUnsubscribe}
               >
                 <Button type='default' loading={isLoadingUnsubscribe} block>
-                  Downgrade
+                  Cancel
                 </Button>
               </Popconfirm>
             ) : (
@@ -156,7 +164,11 @@ export class ProfileSection extends Component {
         email: auth.user.email,
         image: auth.user.image,
         joined: auth.user.createdAt,
-        subscription: hasSubscription ? auth.consumer.plan : 'Free',
+        subscription: hasSubscription
+          ? auth.consumer.plan
+          : auth.consumer && auth.consumer.enabled && auth.consumer.plan
+          ? auth.consumer.plan
+          : 'none',
         subscribed: auth.consumer?.createdAt
       }
     ]
@@ -209,11 +221,12 @@ export class ProfileSection extends Component {
           description: (
             <span>
               <p>
-                Your subscription has been canceled. Any outstanding charges
-                will be charged at the end of the current billing cycle.'
+                Your subscription has been canceled. If you have any pending
+                charges, they will be billed at the end of the current billing
+                cycle.
               </p>
 
-              <p>It may take a few minutes for the changes to take effect.</p>
+              <p>It may take a few minutes for this change to take effect.</p>
             </span>
           )
         })
@@ -243,8 +256,16 @@ export class ProfileSection extends Component {
 
         notification.success({
           message: 'Auth token refreshed',
-          description:
-            'Your auth token has been refreshed. Your old token is now invalid.'
+          description: (
+            <span>
+              <p>
+                Your auth token has been refreshed. Your old token is now
+                invalid.
+              </p>
+
+              <p>It may take a few minutes for this change to take effect.</p>
+            </span>
+          )
         })
 
         this.setState({ isLoadingRefreshAuthToken: false })
