@@ -55,8 +55,8 @@ export class StripeTabPane extends Component {
 
     if (this._account) {
       const { balance } = this._account
-      availableBalance = balance.available[0].amount
-      pendingBalance = balance.pending[0].amount
+      availableBalance = balance.available[0].amount / 100
+      pendingBalance = balance.pending[0].amount / 100
     }
 
     return (
