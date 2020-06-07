@@ -99,6 +99,7 @@ export class ProfileSection extends Component {
         title: 'Auth Token',
         key: 'token',
         render: (token) =>
+          auth.consumer?.enabled &&
           auth.consumer?.token && (
             <Tooltip
               placement='top'
@@ -159,7 +160,11 @@ export class ProfileSection extends Component {
         email: auth.user.email,
         image: auth.user.image,
         joined: auth.user.createdAt,
-        subscription: hasSubscription ? auth.consumer.plan : 'free',
+        subscription: hasSubscription
+          ? auth.consumer.plan
+          : auth.consumer && auth.consumer.enabled && auth.consumer.plan
+          ? auth.consumer.plan
+          : 'none',
         subscribed: auth.consumer?.createdAt
       }
     ]

@@ -172,4 +172,5 @@ autorun(() => {
   API.token = AuthManager.auth && AuthManager.auth.token
 })
 
+window.auth = AuthManager
 export default AuthManager
