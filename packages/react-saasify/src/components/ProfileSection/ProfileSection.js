@@ -116,20 +116,24 @@ export class ProfileSection extends Component {
         key: 'actions',
         render: (token) => (
           <Fragment>
-            <Button
-              type='ghost'
-              icon='reload'
-              loading={isLoadingRefreshAuthToken}
-              onClick={this._onClickRefreshAuthToken}
-              block
-            >
-              Refresh Token
-            </Button>
+            {auth.consumer?.enabled && auth.consumer?.token && (
+              <Fragment>
+                <Button
+                  type='ghost'
+                  icon='reload'
+                  loading={isLoadingRefreshAuthToken}
+                  onClick={this._onClickRefreshAuthToken}
+                  block
+                >
+                  Refresh Token
+                </Button>
 
-            <Divider
-              type='horizontal'
-              style={{ marginTop: 8, marginBottom: 8 }}
-            />
+                <Divider
+                  type='horizontal'
+                  style={{ marginTop: 8, marginBottom: 8 }}
+                />
+              </Fragment>
+            )}
 
             {hasSubscription ? (
               <Popconfirm
@@ -217,11 +221,12 @@ export class ProfileSection extends Component {
           description: (
             <span>
               <p>
-                Your subscription has been canceled. Any outstanding charges
-                will be charged at the end of the current billing cycle.'
+                Your subscription has been canceled. If you have any pending
+                charges, they will be billed at the end of the current billing
+                cycle.
               </p>
 
-              <p>It may take a few minutes for the changes to take effect.</p>
+              <p>It may take a few minutes for this change to take effect.</p>
             </span>
           )
         })
@@ -258,7 +263,7 @@ export class ProfileSection extends Component {
                 invalid.
               </p>
 
-              <p>It may take a few minutes for the changes to take effect.</p>
+              <p>It may take a few minutes for this change to take effect.</p>
             </span>
           )
         })
