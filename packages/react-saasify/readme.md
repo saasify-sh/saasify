@@ -47,17 +47,14 @@ export class HeroSection extends Component {
 
 #### Components
 
-```
+```js
 import {
   AuthenticatedRoute,
-
   LoginForm,
   SignupForm,
   CheckoutForm,
-
   NavHeader,
   NavFooter,
-
   ProfileSection,
   DashboardSection,
   InvoicingSection,
@@ -65,15 +62,12 @@ import {
   BillingUsageSection,
   NotFoundSection,
   BlankSection,
-
   Section,
   SectionDivider,
-
   CodeBlock,
   LiveServiceDemo,
   PricingPlan,
   CTAButton,
-
   Markdown,
   UndrawSVG,
   Logo,
