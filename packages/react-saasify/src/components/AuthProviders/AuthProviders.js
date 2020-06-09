@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { toJS } from 'mobx'
 import { inject, observer } from 'mobx-react'
-import { withRouter } from 'react-router-dom'
 import cs from 'classnames'
 
 import { Button } from 'lib/antd'
@@ -14,12 +13,10 @@ import spotifyIcon from './images/spotify.svg'
 import styles from './styles.module.css'
 
 @inject('auth')
-@withRouter
 @observer
 export class AuthProviders extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
     authConfig: PropTypes.object,
     authParams: PropTypes.object,
     className: PropTypes.string
@@ -36,7 +33,6 @@ export class AuthProviders extends Component {
       authConfig,
       authParams,
       auth,
-      location,
       staticContext,
       ...rest
     } = this.props
@@ -162,34 +158,31 @@ export class AuthProviders extends Component {
 
   _onClickGitHub = (e) => {
     e.preventDefault()
-    oauth.authGitHub({ location: this.props.location }, this.props.authParams)
+    oauth.authGitHub(this.props.authParams)
   }
 
   _onClickGoogle = (e) => {
     e.preventDefault()
-    oauth.authGoogle({ location: this.props.location }, this.props.authParams)
+    oauth.authGoogle(this.props.authParams)
   }
 
   _onClickSpotify = (e) => {
     e.preventDefault()
-    oauth.authSpotify({ location: this.props.location }, this.props.authParams)
+    oauth.authSpotify(this.props.authParams)
   }
 
   _onClickTwitter = (e) => {
     e.preventDefault()
-    oauth.authTwitter({ location: this.props.location }, this.props.authParams)
+    oauth.authTwitter(this.props.authParams)
   }
 
   _onClickLinkedIn = (e) => {
     e.preventDefault()
-    oauth.authLinkedIn({ location: this.props.location }, this.props.authParams)
+    oauth.authLinkedIn(this.props.authParams)
   }
 
   _onClickStripe = (e) => {
     e.preventDefault()
-    oauth.authStripe(
-      { location: this.props.location, auth: this.props.auth },
-      this.props.authParams
-    )
+    oauth.authStripe({ auth: this.props.auth }, this.props.authParams)
   }
 }

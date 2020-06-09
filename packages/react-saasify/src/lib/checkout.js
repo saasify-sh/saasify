@@ -3,8 +3,6 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 
 export function handleAuth({ auth, href }) {
-  console.log('handleAuth', auth.isAuthenticated, { href })
-
   if (auth.isAuthenticated) {
     try {
       const url = new URL(href || window.location.href)

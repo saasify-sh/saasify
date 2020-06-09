@@ -3,7 +3,7 @@
 
 require('dotenv').config()
 
-const fs = require('fs').promises
+const fs = require('fs')
 const program = require('commander')
 const SaasifyClient = require('saasify-client')
 const didYouMean = require('didyoumean')
@@ -69,7 +69,15 @@ module.exports = async (argv, opts = {}) => {
 
   program.appendOutput = (content) => {
     if (program.output) {
-      return fs.appendFile(program.output, content)
+      fs.appendFileSync(program.output, content)
+    } else {
+      console.log(content)
+    }
+  }
+
+  program.writeOutput = (content) => {
+    if (program.output) {
+      fs.writeFileSync(program.output, content)
     } else {
       console.log(content)
     }

@@ -13,7 +13,7 @@ module.exports = (program, client) => {
       try {
         const project = await parseProject(program)
 
-        program.appendOutput(JSON.stringify(project, null, 2))
+        program.writeOutput(JSON.stringify(project, null, 2))
       } catch (err) {
         handleError(program, err)
       }
