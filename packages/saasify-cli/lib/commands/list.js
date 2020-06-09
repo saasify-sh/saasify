@@ -30,7 +30,7 @@ module.exports = (program, client) => {
 
           if (parsedFaas.deploymentHash) {
             query._id = parsedFaas.deploymentId
-            label = `Fetching deployment [${query.id}]`
+            label = `Fetching deployment [${query._id}]`
           } else {
             query.project = parsedFaas.projectId
             label = `Fetching deployments for project [${query.project}]`
@@ -72,7 +72,7 @@ module.exports = (program, client) => {
         )
 
         // TODO: better output formatting
-        program.appendOutput(JSON.stringify(sortedProjects, null, 2))
+        program.writeOutput(JSON.stringify(sortedProjects, null, 2))
       } catch (err) {
         handleError(program, err)
       }
