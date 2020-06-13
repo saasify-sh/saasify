@@ -7,12 +7,15 @@ const apiBaseUrl =
 
 const redirectUri = 'https://auth.saasify.sh'
 
-const githubRedirectUri = `${window.location.origin}/auth/github`
-const googleRedirectUri = `${window.location.origin}/auth/google`
-const stripeRedirectUri = `${window.location.origin}/auth/stripe`
-const spotifyRedirectUri = `${window.location.origin}/auth/spotify`
-const twitterRedirectUri = `${window.location.origin}/auth/twitter`
-const linkedinRedirectUri = `${window.location.origin}/auth/linkedin`
+const origin =
+  typeof window !== 'undefined' ? window.location.origin : 'localhost:3000'
+
+const githubRedirectUri = `${origin}/auth/github`
+const googleRedirectUri = `${origin}/auth/google`
+const stripeRedirectUri = `${origin}/auth/stripe`
+const spotifyRedirectUri = `${origin}/auth/spotify`
+const twitterRedirectUri = `${origin}/auth/twitter`
+const linkedinRedirectUri = `${origin}/auth/linkedin`
 
 const githubRedirectQuery = qs.stringify({ uri: githubRedirectUri })
 
