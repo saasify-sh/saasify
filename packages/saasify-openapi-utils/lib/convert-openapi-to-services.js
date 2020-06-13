@@ -5,16 +5,7 @@ const parser = require('swagger-parser')
 const slugify = require('@sindresorhus/slugify')
 
 const getExamplesFromPathItem = require('./get-examples-from-path-item')
-
-const httpMethodWhitelist = new Set([
-  'get',
-  'put',
-  'post',
-  'delete',
-  'head',
-  'trace',
-  'patch'
-])
+const isHttpMethod = require('./is-http-method')
 
 /**
  * Converts an OpenAPI spec to Saasify's `Service` format.
@@ -34,17 +25,10 @@ module.exports = async (spec, config) => {
 
   for (const path of Object.keys(openapi.paths)) {
     const pathItem = openapi.paths[path]
+    const httpMethods = Object.keys(pathItem).filter(isHttpMethod)
 
-    const httpMethods = Object.keys(pathItem)
-
-    for (let httpMethod of httpMethods) {
+    for (const httpMethod of httpMethods) {
       const op = pathItem[httpMethod]
-      httpMethod = httpMethod.toLowerCase()
-
-      if (!httpMethodWhitelist.has(httpMethod)) {
-        continue
-      }
-
       let name = op.operationId
 
       if (!name) {

@@ -8,6 +8,7 @@ const { parseFaasIdentifier } = require('saasify-faas-utils')
 const openapiHeaderBlacklist = require('./openapi-header-blacklist')
 const pathToService = require('./path-to-service')
 const processReadme = require('./process-readme')
+const isHttpMethod = require('./is-http-method')
 
 /**
  * Annotates a valid OpenAPI spec with extra metadata specific to Saasify's SaaS web client
@@ -179,7 +180,9 @@ function annotatePathItem({ pathItem, path, api, deployment }) {
     api.paths[route] = pathItem
   }
 
-  for (const httpMethod of Object.keys(pathItem)) {
+  const httpMethods = Object.keys(pathItem).filter(isHttpMethod)
+
+  for (const httpMethod of httpMethods) {
     const op = pathItem[httpMethod]
     op.tags = ['Endpoints']
 
@@ -218,6 +221,10 @@ function annotateOperationParameters({ op }) {
 
 function annotateOperationResponses({ op, service }) {
   const { responses } = op
+
+  if (!responses) {
+    return
+  }
 
   if (!responses['400']) {
     responses['400'] = {

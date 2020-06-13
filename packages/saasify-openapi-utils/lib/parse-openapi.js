@@ -6,6 +6,7 @@ const parser = require('swagger-parser')
 const semver = require('semver')
 const { validators } = require('saasify-faas-utils')
 
+const isHttpMethod = require('./is-http-method')
 const openAPIPathToExpressPath = require('./openapi-path-to-express-path')
 
 /**
@@ -58,8 +59,10 @@ module.exports = async (spec, opts = {}) => {
       throw new Error(`Invalid path "${path}" must a valid relative URL`)
     }
 
+    const httpMethods = Object.keys(pathItem).filter(isHttpMethod)
     let httpMethodFound = false
-    for (const httpMethod of Object.keys(pathItem)) {
+
+    for (const httpMethod of httpMethods) {
       const op = pathItem[httpMethod]
       httpMethodFound = true
 

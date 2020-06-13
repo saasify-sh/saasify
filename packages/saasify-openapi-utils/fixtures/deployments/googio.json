@@ -1,0 +1,1051 @@
+{
+  "enabled": true,
+  "published": false,
+  "description": "goog.io | Unofficial Google Search API",
+  "readme": "# googio\n\n> An Unofficial Google Search API\n\nAn API to perform Google Searches. Extremely fast and accurate. Zero proxies. Clean USA IPs.\n\nSimple to use API, but advance enough to support special parameters such as languages, country and geographic locality.\n\n",
+  "keywords": [],
+  "hash": "d6fdca5e",
+  "user": "5ee147a34e8b61003cf22e5e",
+  "project": {
+    "keywords": [],
+    "description": "goog.io | Unofficial Google Search API",
+    "applicationFeePercent": 20,
+    "isStripeConnectEnabled": false,
+    "name": "googio",
+    "user": "5ee147a34e8b61003cf22e5e",
+    "publishedVersions": [
+      {
+        "deployment": "googio/googio@6703ded4",
+        "version": "0.0.1"
+      },
+      {
+        "deployment": "googio/googio@d2afec51",
+        "version": "0.0.2"
+      },
+      {
+        "deployment": "googio/googio@41df2f50",
+        "version": "0.0.3"
+      },
+      {
+        "deployment": "googio/googio@6901a890",
+        "version": "0.0.4"
+      },
+      {
+        "deployment": "googio/googio@4842c743",
+        "version": "0.0.5"
+      }
+    ],
+    "createdAt": "2020-06-10T20:50:57.788Z",
+    "updatedAt": "2020-06-12T23:42:49.475Z",
+    "lastDeployment": "googio/googio@d6fdca5e",
+    "alias": "googio",
+    "lastPublishedDeployment": "googio/googio@4842c743",
+    "lastPublishedVersion": "0.0.5",
+    "stripeMetricProducts": {},
+    "saasUrl": "http://googio_googio.localhost:3000",
+    "aliasUrl": "https://googio.saasify.sh",
+    "stripeConnectParams": [],
+    "id": "googio/googio"
+  },
+  "version": "0.0.6",
+  "pricingPlans": [
+    {
+      "features": ["100 request / month", ""],
+      "auth": false,
+      "amount": 0,
+      "requests": {
+        "slug": "requests",
+        "amount": 0,
+        "usageType": "metered",
+        "billingScheme": "per_unit",
+        "tiersMode": "graduated",
+        "rateLimit": null,
+        "tiers": [],
+        "label": "requests",
+        "unitLabel": "request"
+      },
+      "rateLimit": {
+        "enabled": true,
+        "requestsInterval": 2628000,
+        "requestsMaxPerInterval": 100
+      },
+      "metrics": [],
+      "metricIds": {},
+      "_stripeMetricPlansTest": {},
+      "_stripeMetricPlansLive": {},
+      "name": "Free",
+      "slug": "free",
+      "baseId": "base:4af67069958b3a9ab78033213382abadd49fca2e09527a9757a66c2a5a5db73d",
+      "requestsId": "requests:ba8a269aa512309b7c9b8078477bee481a7f325a75cd3cc3a13ba3ca8a54d690"
+    },
+    {
+      "features": ["Pay-Per-Usage", "$0.005 each"],
+      "auth": true,
+      "amount": 100,
+      "requests": {
+        "slug": "requests",
+        "amount": 5,
+        "usageType": "metered",
+        "billingScheme": "per_unit",
+        "tiersMode": "graduated",
+        "rateLimit": null,
+        "tiers": [],
+        "label": "requests",
+        "unitLabel": "request"
+      },
+      "rateLimit": null,
+      "metrics": [],
+      "metricIds": {},
+      "_stripeMetricPlansTest": {},
+      "_stripeMetricPlansLive": {},
+      "name": "Starter",
+      "slug": "starter",
+      "baseId": "base:3d5a049458708978379d6bb2dbd0f3e3a289da80fc335ad6f08eef75090006d9",
+      "requestsId": "requests:45baa518ce0ccc40f836ace80bf4bb58a12a2317a06477e8fb29ad3f37639b82"
+    },
+    {
+      "features": ["50k requests / month", "then $0.001 each"],
+      "auth": true,
+      "amount": 9500,
+      "requests": {
+        "slug": "requests",
+        "amount": 0,
+        "usageType": "metered",
+        "billingScheme": "tiered",
+        "tiersMode": "graduated",
+        "rateLimit": null,
+        "tiers": [
+          {
+            "upTo": "50000",
+            "flatAmount": 0
+          },
+          {
+            "upTo": "inf",
+            "unitAmount": 2
+          }
+        ],
+        "label": "requests",
+        "unitLabel": "request"
+      },
+      "rateLimit": null,
+      "metrics": [],
+      "metricIds": {},
+      "_stripeMetricPlansTest": {},
+      "_stripeMetricPlansLive": {},
+      "name": "Pro",
+      "slug": "pro",
+      "baseId": "base:67f7d684da7c7b11cb07873316e3b8e854904342c80c18126410b8c02571ef51",
+      "requestsId": "requests:5301cb7f1ec116f7b9e762cdb66f1696f1a3c7d187d99597ef868daa584bf881"
+    },
+    {
+      "features": ["200k requests / month", "then $0.001 each"],
+      "auth": true,
+      "amount": 19500,
+      "requests": {
+        "slug": "requests",
+        "amount": 0,
+        "usageType": "metered",
+        "billingScheme": "tiered",
+        "tiersMode": "graduated",
+        "rateLimit": null,
+        "tiers": [
+          {
+            "upTo": "2000000",
+            "flatAmount": 0
+          },
+          {
+            "upTo": "inf",
+            "unitAmount": 10
+          }
+        ],
+        "label": "requests",
+        "unitLabel": "request"
+      },
+      "rateLimit": null,
+      "metrics": [],
+      "metricIds": {},
+      "_stripeMetricPlansTest": {},
+      "_stripeMetricPlansLive": {},
+      "name": "Mega",
+      "slug": "mega",
+      "baseId": "base:3b8e41df92259172d43c1257c5111f275761cf32fbe1db1af34c97c23443c94e",
+      "requestsId": "requests:8a01228051626cb75853d11ffca47ac95f20514cf370d26d609c343f7eb0989f"
+    }
+  ],
+  "coupons": [],
+  "services": [
+    {
+      "name": "Get the status of the API",
+      "httpMethod": "get",
+      "adaptor": "openapi",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [
+        {
+          "isGeneratedInput": true,
+          "isGeneratedOutput": true,
+          "inputContentType": "application/json",
+          "outputContentType": "application/json",
+          "name": "Basic",
+          "input": {},
+          "output": {
+            "status": true
+          }
+        },
+        {
+          "isGeneratedInput": true,
+          "isGeneratedOutput": true,
+          "inputContentType": "application/json",
+          "outputContentType": "application/json",
+          "name": "Advanced",
+          "input": {},
+          "output": {
+            "status": true
+          }
+        }
+      ],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/",
+      "createdAt": "2020-06-12T23:42:49.014Z",
+      "updatedAt": "2020-06-12T23:42:49.014Z",
+      "pathExpress": "/",
+      "definition": {
+        "params": {
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {},
+            "required": []
+          }
+        }
+      },
+      "url": "http://localhost:5100/googio/googio@d6fdca5e/",
+      "route": "/googio/googio@d6fdca5e/"
+    },
+    {
+      "name": "Search",
+      "httpMethod": "get",
+      "adaptor": "openapi",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/api/v1/search/{query}",
+      "createdAt": "2020-06-12T23:42:49.014Z",
+      "updatedAt": "2020-06-12T23:42:49.014Z",
+      "pathExpress": "/api/v1/search/:query",
+      "definition": {
+        "params": {
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "query": {
+                "name": "query",
+                "title": "Query",
+                "type": "string"
+              },
+              "undefined": {}
+            },
+            "required": ["query"]
+          }
+        }
+      },
+      "url": "http://localhost:5100/googio/googio@d6fdca5e/api/v1/search/{query}",
+      "route": "/googio/googio@d6fdca5e/api/v1/search/{query}"
+    },
+    {
+      "name": "Crawl",
+      "httpMethod": "get",
+      "adaptor": "openapi",
+      "immutable": false,
+      "reportUsage": true,
+      "examples": [],
+      "config": {},
+      "headers": {},
+      "pricingPlanConfig": {},
+      "path": "/api/v1/crawl/{query}",
+      "createdAt": "2020-06-12T23:42:49.014Z",
+      "updatedAt": "2020-06-12T23:42:49.014Z",
+      "pathExpress": "/api/v1/crawl/:query",
+      "definition": {
+        "params": {
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "query": {
+                "name": "query",
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": ["query"]
+          }
+        }
+      },
+      "url": "http://localhost:5100/googio/googio@d6fdca5e/api/v1/crawl/{query}",
+      "route": "/googio/googio@d6fdca5e/api/v1/crawl/{query}"
+    }
+  ],
+  "saas": {
+    "headerName": null,
+    "logo": "https://storage.googleapis.com/saasify-uploads-prod/7e9a3b55313e9f360686fd006a30607211c6fcfd.png",
+    "logoLight": null,
+    "favicon": "https://storage.googleapis.com/saasify-uploads-prod/96517b622d9a78c4b9701bc92414c19967fed541.ico",
+    "exampleImage": null,
+    "scripts": [],
+    "htmlPreBody": [],
+    "htmlPostBody": [],
+    "styles": [],
+    "features": [
+      {
+        "name": "Fast Servers",
+        "desc": "Extremely fast and accurate search results. Zero proxies required.",
+        "icon": "https://storage.googleapis.com/saasify-uploads-prod/b7540a866e357488bdfd8cbcb6d4f09bce9180f2.svg"
+      },
+      {
+        "name": "Secure Server",
+        "desc": "Each query is private and encrypted. Privacy is important to us.",
+        "icon": "https://storage.googleapis.com/saasify-uploads-prod/3158064a9df6b84975e4e744aaa88bb9c8dd63ba.svg"
+      },
+      {
+        "name": "Global Reach",
+        "desc": "Advance searches with geographic locality such as languages, and country",
+        "icon": "https://storage.googleapis.com/saasify-uploads-prod/ef803a11884f71d1c6507aba6a5b5349f367b478.svg"
+      }
+    ],
+    "name": "googio",
+    "heading": "**Google Search API**",
+    "subheading": "Lightning-fast API to perform unlimited Google Searches, without proxies.",
+    "theme": {
+      "name": "waves",
+      "buttonStyle": "rounded",
+      "color": "#F47920",
+      "wave": true,
+      "gradientDark": true,
+      "codeBlockDark": true,
+      "codeBlockOutputFlush": true,
+      "backgroundImage": null
+    }
+  },
+  "createdAt": "2020-06-12T23:42:49.015Z",
+  "updatedAt": "2020-06-12T23:42:49.015Z",
+  "url": "http://localhost:5100/googio/googio@d6fdca5e",
+  "openApiUrl": "http://localhost:5000/1/deployments/openapi/googio/googio@d6fdca5e",
+  "saasUrl": "https://googio_googio_d6fdca5e.saasify.sh",
+  "authProviders": {
+    "google": {
+      "enabled": false,
+      "provider": "google",
+      "scopes": []
+    },
+    "github": {
+      "enabled": true,
+      "provider": "github",
+      "scopes": []
+    },
+    "spotify": {
+      "enabled": false,
+      "provider": "spotify",
+      "scopes": []
+    },
+    "linkedin": {
+      "enabled": false,
+      "provider": "linkedin",
+      "scopes": []
+    },
+    "twitter": {
+      "enabled": false,
+      "provider": "twitter",
+      "scopes": []
+    },
+    "default": {
+      "enabled": true,
+      "provider": "default",
+      "scopes": []
+    }
+  },
+  "openapi": {
+    "openapi": "3.0.2",
+    "info": {
+      "title": "goog.io | Unoffical Google Search API",
+      "description": "This is the documentation for https://api.goog.io",
+      "version": "0.1.0",
+      "contact": {
+        "name": "API Support",
+        "url": "https://goog.io",
+        "email": "support@goog.io"
+      }
+    },
+    "paths": {
+      "/api/v1/search/{query}": {
+        "get": {
+          "summary": "Search",
+          "description": "Perform Google Search\n\nParameters\n----------\nquery : the string query to perform search. supports advance queries. Check out [https://moz.com/blog/the-ultimate-guide-to-the-google-search-parameters] guide for formating\n\nReturns\n-------\njson: a list of results with the link, description, and title for each result",
+          "operationId": "Search",
+          "parameters": [
+            {
+              "required": true,
+              "schema": {
+                "title": "Query",
+                "type": "string"
+              },
+              "name": "query",
+              "in": "path",
+              "examples": {
+                "regular keyword search": {
+                  "value": "q=google+search+api"
+                },
+                "regular keyword search with 100 results": {
+                  "value": "q=google+search+api&num=100"
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "description": "results",
+                    "type": "object",
+                    "properties": {
+                      "results": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "link": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "total": {
+                        "type": ["string", "integer"]
+                      },
+                      "answer": {
+                        "type": ["string", "null"]
+                      }
+                    }
+                  },
+                  "examples": {
+                    "search query \"google search api\"": {
+                      "value": {
+                        "results": [
+                          {
+                            "title": "Custom Search JSON API | Google Developers",
+                            "link": "https://developers.google.com/custom-search/v1/overview",
+                            "description": "Jun 11, 2019 - The Custom Search JSON API lets you develop websites and applications to retrieve and display search results from Google Custom Search ..."
+                          },
+                          {
+                            "title": "Using REST to Invoke the API | Custom Search | Google ...",
+                            "link": "https://developers.google.com/custom-search/v1/using_rest",
+                            "description": "As a result, the API provides a single URI that acts as the service endpoint. You can retrieve results for a particular search by sending an HTTP GET request to its ..."
+                          },
+                          {
+                            "title": "Custom Search JSON API: Introduction | Google Developers",
+                            "link": "https://developers.google.com/custom-search/v1/introduction",
+                            "description": "Apr 8, 2020 - This is the cx parameter used by the API. Identify your application to Google with API key. Custom Search JSON API requires the use of an API ..."
+                          },
+                          {
+                            "title": "SerpApi: Google Search API",
+                            "link": "https://serpapi.com/",
+                            "description": "SerpApi is a real-time API to access Google search results. We handle the issues of having to rent proxies, solving captchas, and parsing rich structured data for ..."
+                          },
+                          {
+                            "title": "What are the alternatives now that the Google web search API ...",
+                            "link": "https://stackoverflow.com/questions/4082966/what-are-the-alternatives-now-that-the-google-web-search-api-has-been-deprecated",
+                            "description": "Jun 26, 2012 - You could just send them through like a browser does, and then parse the html, that is what I have always done, even for things like Youtube."
+                          },
+                          {
+                            "title": "Is there an API for Google search results? - Quora",
+                            "link": "https://www.quora.com/Is-there-an-API-for-Google-search-results",
+                            "description": "Google AJAX Search API is not the same, as it is intended for embedding search results in widgets. Yahoo BOSS is a good example of a search API, even though ..."
+                          },
+                          {
+                            "title": "Google Search API Tutorial: Capture & Record Search Results",
+                            "link": "https://rapidapi.com/blog/google-search-api/",
+                            "description": "Jan 22, 2020 - Is There a Google Search API? Google's supremacy in search engines is so massive that people often wonder how to scrape data from Google ..."
+                          },
+                          {
+                            "title": "Google Search API Documentation (apigeek) | RapidAPI",
+                            "link": "https://rapidapi.com/apigeek/api/google-search3",
+                            "description": "Google Search API Documentation. API to perform unlimited Google searches. Learn more about this API. source. POSTpost crawl. search. GETget search."
+                          },
+                          {
+                            "title": "What is the Google AJAX Search API? - Google Developers ...",
+                            "link": "https://support.google.com/code/answer/55728?hl=en",
+                            "description": "The Google AJAX Search API is designed to make it easier for webmasters and ... site that includes Google Web, Video, News, Maps, and Blog search results."
+                          },
+                          {
+                            "title": "Get SEO Data with the Google Custom Search JSON API ...",
+                            "link": "https://mixedanalytics.com/blog/seo-data-google-custom-search-json-api/",
+                            "description": "Nov 9, 2019 - However, as part of this service, Google provides a free Google Search API that that lets you query Google's search engine to check search ..."
+                          }
+                        ],
+                        "total": 1840000000,
+                        "answer": null
+                      }
+                    },
+                    "search for instagram with 100 results": {
+                      "value": {
+                        "results": [
+                          {
+                            "title": "Instagram",
+                            "link": "https://www.instagram.com/",
+                            "description": "Create an account or log in to Instagram - A simple, fun & creative way to capture, edit & share photos, videos & messages with friends & family."
+                          },
+                          {
+                            "title": "Instagram - Apps on Google Play",
+                            "link": "https://play.google.com/store/apps/details?id=com.instagram.android&hl=en_US",
+                            "description": "Bringing you closer to the people and things you love. — Instagram from Facebook Connect with friends, share what you're up to, or see what's new from others ..."
+                          },
+                          {
+                            "title": "‎Instagram on the App Store",
+                            "link": "https://apps.apple.com/us/app/instagram/id389801252",
+                            "description": "Read reviews, compare customer ratings, see screenshots, and learn more about Instagram. Download Instagram and enjoy it on your iPhone, iPad, and iPod ..."
+                          },
+                          {
+                            "title": "Instagram - Home | Facebook",
+                            "link": "https://www.facebook.com/instagram/",
+                            "description": "Instagram · June 10 at 4:35 PM ·. These powerful posts from the Black community embody resilience and hope ..."
+                          },
+                          {
+                            "title": "Instagram - Wikipedia",
+                            "link": "https://en.wikipedia.org/wiki/Instagram",
+                            "description": "Instagram is an American photo and video-sharing social networking service owned by Facebook, Inc. It was created by Kevin Systrom and Mike Krieger, and ..."
+                          },
+                          {
+                            "title": "Instagram | Technology | The Guardian",
+                            "link": "https://www.theguardian.com/technology/instagram",
+                            "description": "2 days ago - Instagram. June 2020. Online influencers under fire for blacking ..."
+                          },
+                          {
+                            "title": "Five Art Accounts to Follow on Instagram Now - The New York ...",
+                            "link": "https://www.nytimes.com/2020/06/11/arts/design/art-accounts-to-follow-on-instagram.html",
+                            "description": "1 day ago - Then, on May 25, George Floyd was killed in police custody in Minneapolis, sparking protests around the country. Instagram had already been a ..."
+                          },
+                          {
+                            "title": "Top Instagram Updates in 2020 - May Edition - AdEspresso",
+                            "link": "https://adespresso.com/blog/instagram-updates-you-need-to-make/",
+                            "description": "May 20, 2020 - Instagram is testing a feature that allows Insta users to share their live streams directly to IGTV as soon as the broadcast is over. These lives don't ..."
+                          },
+                          {
+                            "title": "Instagram Marketing: The Ultimate Guide - HubSpot",
+                            "link": "https://www.hubspot.com/instagram-marketing",
+                            "description": "Learn how to create captivating visuals, grow your following, and drive engagement on Instagram."
+                          },
+                          {
+                            "title": "5 Tools to Boost Your Instagram Marketing Efforts in 2020 ...",
+                            "link": "https://www.socialmediatoday.com/news/5-tools-to-boost-your-instagram-marketing-efforts-in-2020/579612/",
+                            "description": "2 days ago - It's a nice tool to diversify your Instagram feed and engage more of your followers - and it can, indeed, add a “wow” factor to your social marketing."
+                          },
+                          {
+                            "title": "Instagram Brand Resources",
+                            "link": "https://instagram-brand.com/",
+                            "description": "Learn more about Instagram brand resources and download the Instagram logos, images, screenshots and more you need for your project."
+                          },
+                          {
+                            "title": "How to Use Instagram for Business: A Simple 6-Step Guide",
+                            "link": "https://blog.hootsuite.com/how-to-use-instagram-for-business/",
+                            "description": "Jan 9, 2019 - Everything you need to know about using Instagram for business—from setting up your account to creating a winning strategy."
+                          },
+                          {
+                            "title": "Influencers promote Black Lives Matter donation Instagram AR ...",
+                            "link": "https://www.insider.com/influencers-promote-black-lives-matter-donation-instagram-ar-filter-2020-6",
+                            "description": "1 day ago - Actor Keegan Allen and influencer Olivia Jade are among two popular Instagram accounts that used the \"BLM — Donate Now\" filter."
+                          },
+                          {
+                            "title": "Kylie Jenner's first Instagram posts are unbelievably normal ...",
+                            "link": "https://www.yahoo.com/lifestyle/kylie-jenner-very-first-instagram-154018364.html",
+                            "description": "8 hours ago - If you scroll all the way down to Kylie Jenner's first Instagram posts, you'll see that she, too, once fell victim to the duck face selfie and sepia filter ..."
+                          },
+                          {
+                            "title": "Nicki Minaj CRUSHES Instagram With New Bangin' Booty ...",
+                            "link": "https://theblast.com/c/nicki-minaj-tekashi-6ix9ine-69-trollz-photos-video-smoking-hot-pictures-instagram-rainbow-wig",
+                            "description": "Nicki Minaj CRUSHES Instagram With New Bangin' Booty Photos With Tekashi 6ix9ine!! Instagram. Jun 11, 2020 at 20:59 pm UTC By Mike Walters · Nicki Minaj ..."
+                          },
+                          {
+                            "title": "Instagram Stories: The Complete Guide to Creating Standout ...",
+                            "link": "https://buffer.com/library/instagram-stories/",
+                            "description": "Everything you need to know about using Instagram Stories. From posting and scheduling stories, using stickers, and everything in-between."
+                          },
+                          {
+                            "title": "Instagram Gets Couch Potatoes Up and Running, Study Says ...",
+                            "link": "https://www.ecowatch.com/exercise-study-instagram-2646169143.html",
+                            "description": "1 day ago - Instagram has a bad reputation for negatively influencing the way people see themselves. But a new study shows that its influence can be ..."
+                          },
+                          {
+                            "title": "How to Improve Your Instagram Video Ads: 5 Tips : Social ...",
+                            "link": "https://www.socialmediaexaminer.com/how-to-improve-instagram-video-ads-5-tips/",
+                            "description": "3 days ago - Instagram lets you add a call to action (CTA) to your ads that goes to a landing page, but you can only add a link to one page. This is why if you're ..."
+                          },
+                          {
+                            "title": "What is Instagram? - Definition from WhatIs.com - SearchCIO",
+                            "link": "https://searchcio.techtarget.com/definition/Instagram",
+                            "description": "Instagram allows users to edit and upload photos and short videos through a mobile app. Users can add a caption to each of their posts and use hashtags and ..."
+                          },
+                          {
+                            "title": "Iconosquare - Instagram & Facebook Analytics and ...",
+                            "link": "https://pro.iconosquare.com/",
+                            "description": "Grow your Instagram and Facebook presence with exclusive insights and best-in-class management tools for your team. Start a 14-day Free Trial."
+                          },
+                          {
+                            "title": "Later: #1 Instagram Scheduler & Social Media Platform",
+                            "link": "https://later.com/",
+                            "description": "Save Time by Scheduling Your Instagram Posts Ahead of Time. Manage Multiple Accounts, Schedule Video, Reposting, Analytics & Uploading Tools."
+                          },
+                          {
+                            "title": "Benafsha Soonawala says Instagram removed her topless pic ...",
+                            "link": "https://www.hindustantimes.com/tv/benafsha-soonawala-says-instagram-removed-her-topless-pic-they-couldn-t-take-such-extra-hotness/story-ldS0SdnqMwacVxRCK5zfnO.html",
+                            "description": "1 day ago - Benafsha Soonawala says that her recent nude picture was removed by Instagram. Check out her latest post."
+                          },
+                          {
+                            "title": "Instagram will share revenue with creators for the first time ...",
+                            "link": "https://www.theverge.com/2020/5/27/21271009/instagram-ads-igtv-live-badges-test-update-creators",
+                            "description": "May 27, 2020 - Ads will start showing up on Instagram's IGTV product as the company begins working with creators like Lele Pons and Adam Waheed as well ..."
+                          },
+                          {
+                            "title": "• Instagram: active users 2018 | Statista",
+                            "link": "https://www.statista.com/statistics/253577/number-of-monthly-active-instagram-users/",
+                            "description": "Dec 3, 2019 - How many people use Instagram? In June 2018, Instagram had reached one billion monthly active users, up from 800 million in September ..."
+                          },
+                          {
+                            "title": "21 Desi Artists You Absolutely Need To Follow On Instagram",
+                            "link": "https://www.buzzfeed.com/sumedha_bharpilania/21-desi-illustrators-you-need-to-follow-on-instagram-right",
+                            "description": "Why You Should Follow Them: For fun artwork, puns, and extremely important conversations. 3. ZHK DESIGNS. Instagram. View this photo on ..."
+                          },
+                          {
+                            "title": "Instagram just threw users of its embedding API under the bus ...",
+                            "link": "https://arstechnica.com/tech-policy/2020/06/instagram-just-threw-users-of-its-embedding-api-under-the-bus/",
+                            "description": "Jun 4, 2020 - Instagram does not provide users of its embedding API a copyright license to display embedded images on other websites, the company said in ..."
+                          },
+                          {
+                            "title": "Instagram account shines light on local black-owned businesses",
+                            "link": "https://www.10tv.com/article/news/local/instagram-account-shines-light-on-local-black-owned-businesses/530-308237a8-958e-4a4d-b7c7-7ab2949ee935",
+                            "description": "10 hours ago - Black Owned Tour” is an Instagram account dedicated to highlighting local black-owned businesses."
+                          },
+                          {
+                            "title": "Web for Instagram™ - Google Chrome",
+                            "link": "https://chrome.google.com/webstore/detail/web-for-instagram/bonieeblbnamfclndbgnhblogabjijbp?hl=en-US",
+                            "description": "Jun 3, 2020 - This extension better than a mobile version of Instagram! View and upload IG Story and other functions in your browser."
+                          },
+                          {
+                            "title": "Downloader for Instagram™ + Direct Message - Google Chrome",
+                            "link": "https://chrome.google.com/webstore/detail/downloader-for-instagram/olkpikmlhoaojbbmmpejnimiglejmboe?hl=en",
+                            "description": "Try our new tools for Instagram™: download photo, video and stories, view Live, mass download, direct message, upload photo."
+                          },
+                          {
+                            "title": "Get Instagram - Microsoft Store",
+                            "link": "https://www.microsoft.com/en-us/p/instagram/9nblggh5l9xt",
+                            "description": "Feb 26, 2016 - Download this app from Microsoft Store for Windows 10. See screenshots, read the latest customer reviews, and compare ratings for Instagram."
+                          },
+                          {
+                            "title": "The 6 best #GolfWRX photos on Instagram today (6.11.20 ...",
+                            "link": "http://www.golfwrx.com/614302/the-6-best-golfwrx-photos-on-instagram-today-6-11-20/",
+                            "description": "The 6 best #GolfWRX photos on Instagram today (6.11.20). Published. 13 hours ago. on. Jun 11, 2020. By. Gianni Magliocco. Share; Tweet. In this segment ..."
+                          },
+                          {
+                            "title": "Facebook and Instagram roll out Shops, turning business ...",
+                            "link": "https://techcrunch.com/2020/05/19/facebook-shops/",
+                            "description": "May 19, 2020 - Starting today, you'll be able to browse and buy products directly from a business' Facebook Page or Instagram profile. Both Facebook and ..."
+                          },
+                          {
+                            "title": "How Bozoma Saint John Is Amplifying Black Voices Through ...",
+                            "link": "https://www.forbes.com/sites/martyswant/2020/06/09/how-bozoma-saint-john-is-amplifying-black-voices-through-white-celebrities-instagram-accounts/",
+                            "description": "3 days ago - On Wednesday, 50 white celebrity women will hand over their Instagram accounts to 50 black women for the day to foster dialogue and reach ..."
+                          },
+                          {
+                            "title": "DownloadGram - Instagram photo, video and IGTV ...",
+                            "link": "https://downloadgram.com/",
+                            "description": "Instagram photo, video, and IGTV downloader - Free, online, and one-click download."
+                          },
+                          {
+                            "title": "Instagram Money Calculator (Instagram Influencer ...",
+                            "link": "https://influencermarketinghub.com/instagram-money-calculator/",
+                            "description": "Feb 18, 2020 - The Instagram Money Calculator estimates earnings for Instagram Influencers. The Instagram Engagement Rate Calculator is a quick way to ..."
+                          },
+                          {
+                            "title": "Instagram: Visual Social Media Cultures - Google Books Result",
+                            "link": "https://books.google.com/books?id=_QHMDwAAQBAJ&pg=PT208&lpg=PT208&dq=instagram&source=bl&ots=kx1k9_bjvs&sig=ACfU3U28VuLB9EfcIJIJs-Dykyl6zC_Adw&hl=en&sa=X&ved=2ahUKEwjt3fTus_3pAhXsgnIEHTjKBZcQ6AEwRHoECG0QAQ",
+                            "description": "BBC News, 1 May. https://www.bbc.com/news/world-africa-36132482 Zappavigna, M. (2016). 'Social media photography: Construing subjectivity in Instagram ..."
+                          },
+                          {
+                            "title": "Login Instagram Account | Hivency",
+                            "link": "https://www.hivency.com/login-instagram-account/",
+                            "description": "To log in to your Instagram account and order products in your store, you must now have an Instagram Business account associated with a Facebook Page."
+                          },
+                          {
+                            "title": "Instagram For Business For Dummies - Google Books Result",
+                            "link": "https://books.google.com/books?id=9JJFDwAAQBAJ&pg=PT16&lpg=PT16&dq=instagram&source=bl&ots=dvTKF3C37q&sig=ACfU3U0L59-z1pbR2BHuJlOafe3G5SjXcw&hl=en&sa=X&ved=2ahUKEwjt3fTus_3pAhXsgnIEHTjKBZcQ6AEwRnoECG8QAQ",
+                            "description": "IN THIS CHAPTER Finding Instagram apps for your device or computer Deploying Instagram apps on Windows and Mac computers Installing Instagram apps on ..."
+                          },
+                          {
+                            "title": "How to copy comments from instagram",
+                            "link": "http://vistaballoon.com/o51fbzs/how-to-copy-comments-from-instagram.html",
+                            "description": "Download Instagram followers, comments and likes to excel and Google Sheets ... 4 May 2020 Type up your Instagram bio and copy and paste your favorite font ..."
+                          },
+                          {
+                            "title": "11 Instagram Tips for Beginners - Lifewire",
+                            "link": "https://www.lifewire.com/instagram-tips-for-beginners-3485872",
+                            "description": "Apr 12, 2020 - The following tips can help you make the best out of your own Instagram experience so you can grow your followers and increase engagement."
+                          },
+                          {
+                            "title": "Vanessa Bryant Reveals Tattoos Honoring Kobe, Gianna on ...",
+                            "link": "https://bleacherreport.com/articles/2895859-vanessa-bryant-reveals-tattoos-honoring-kobe-gianna-on-instagram",
+                            "description": "23 hours ago - Vanessa Bryant got tattoos to honor her husband Kobe and daughter Gianna in February, according to her tattoo artist's Instagram . TMZ Sports ..."
+                          },
+                          {
+                            "title": "Suzanne Somers reunites with her lookalike granddaughter ...",
+                            "link": "https://www.dailymail.co.uk/tvshowbiz/article-8410969/Suzanne-Somers-reunites-lookalike-granddaughter-Violet-Somers-new-Instagram-video.html",
+                            "description": "1 day ago - Suzanne Somers, 73, reunites with her lookalike granddaughter Violet Somers, 22, in new Instagram video. By Sarah Sotoodeh For ..."
+                          },
+                          {
+                            "title": "20 Best Valley Music Instagram Accounts | Phoenix New Times",
+                            "link": "https://www.phoenixnewtimes.com/music/best-phoenix-music-instagram-accounts-11406390",
+                            "description": "10 hours ago - @fairybonesmusic. Part of what makes Fairy Bones' Instagram feed fun is because you're witnessing a band become stars right before your eyes, ..."
+                          },
+                          {
+                            "title": "Free unlimited likes on instagram - Britto Charette",
+                            "link": "http://brittocharette.com/x77c/free-unlimited-likes-on-instagram.html",
+                            "description": "You can generate unlimited Likes/Followers for Instagram. com is the best instagram auto liker!Here, you'll find instagram auto liker, instagram auto followers."
+                          },
+                          {
+                            "title": "Is This The End Of Instagram As We Know It? | W Magazine ...",
+                            "link": "https://www.wmagazine.com/story/instagram-armchair-activism-influencers-protests/",
+                            "description": "Will The Protests Change Instagram for Good? Maybe. Probably Not. by Andrea Whittle. June 12, 2020 1:01 pm. Cindy Sherman - December 2017."
+                          },
+                          {
+                            "title": "Instagram Stories: Everything you need to know - CNET",
+                            "link": "https://www.cnet.com/how-to/how-to-use-instagram-stories/",
+                            "description": "Apr 24, 2018 - Instagram's Snapchat-like feature lets you create sequences of photos and videos that expire after a day. Now with type mode in Stories!"
+                          },
+                          {
+                            "title": "Instagram checker download - Mariner Media",
+                            "link": "http://marinermedia.com/ik3jcdgzk/instagram-checker-download.html",
+                            "description": "Download Followers Track for Instagram! and enjoy it on your iPhone, iPad, and iPod touch. 6 Software is available for free download: Checker Version 4."
+                          },
+                          {
+                            "title": "Instagram: Here's How to Use the Sound On Sticker in Stories ...",
+                            "link": "https://www.adweek.com/digital/instagram-heres-how-to-use-the-sound-on-sticker-in-stories/",
+                            "description": "5 hours ago - Note: These screenshots were captured in the Instagram application on iOS. Step 1: Once you've taken or imported a video in Stories, tap the ..."
+                          },
+                          {
+                            "title": "7 Curators Using Instagram to Provide Access to Museums ...",
+                            "link": "https://www.artsy.net/article/artsy-editorial-7-curators-instagram-provide-access-museums-quarantine",
+                            "description": "7 hours ago - Instagram has always been an accessible way to armchair travel. During the COVID-19 pandemic, the platform has offered a view of ..."
+                          },
+                          {
+                            "title": "Instagram music - Good Cheer Food Bank",
+                            "link": "http://goodcheer.org/bgf7/instagram-music.html",
+                            "description": "2019 Instagram music ใน story ทำไมของผมใช้ได้ครับ. And 80% of Instagram users come from outside of the United States! I guess a picture really is worth a ..."
+                          },
+                          {
+                            "title": "Merge instagram followers",
+                            "link": "http://gynecologysurgeons.com/mgvnj/merge-instagram-followers.html",
+                            "description": "For less than $70, you can get 10,000 Instagram followers! That's enough to start elbowing your way into this industry. It's possible and fairly simple to go live on ..."
+                          },
+                          {
+                            "title": "Kylie Jenner's very first Instagram posts are just as basic as ...",
+                            "link": "https://www.intheknow.com/2020/06/12/kylie-jenners-very-first-instagram-posts-are-just-as-basic-as-everyone-elses/",
+                            "description": "7 hours ago - Okay, not really, but back when Instagram was just a few years old, they definitely used it like us. Case in point: If you scroll all the way down to ..."
+                          },
+                          {
+                            "title": "This Week's Best of Rowing on Instagram 6/12/2020 - Row2k",
+                            "link": "https://www.row2k.com/features/4017/This-Week-s-Best-of-Rowing-on-Instagram-6-12-2020/",
+                            "description": "row2k Features. row2k features > row2k Exclusives. InstaRowing. This Week's Best of Rowing on Instagram 6/12/2020. June 12, 2020. Erik Dresser, row2k.com."
+                          },
+                          {
+                            "title": "Yuzvendra Chahal Trolls \"Uncle\" Chris Gayle, Praises ...",
+                            "link": "https://sports.ndtv.com/cricket/yuzvendra-chahal-trolls-uncle-chris-gayle-praises-kuldeep-yadav-on-instagram-2245380",
+                            "description": "9 hours ago - Yuzvendra Chahal took to Instagram on Friday to post a video of him bowling an impressive leg-spinner to knock over New Zealand batsman ..."
+                          },
+                          {
+                            "title": "This Russian Artist Gained 4.5M Followers On Instagram ...",
+                            "link": "https://www.boredpanda.com/weird-instagram-photography-digital-art-ellen-sheidlin/",
+                            "description": "9 hours ago - Thanks to her edgy social media presence, this model, photographer, blogger, and painter has become a true Instagram sensation with 4.5 ..."
+                          },
+                          {
+                            "title": "Instagram profile download free - Rhode Island Dental",
+                            "link": "http://rhodeislanddentalmn.com/gc3/instagram-profile-download-free.html",
+                            "description": "Open the instagram profile of the user whose profile picture you want to download. ... To Download instagram photos just enter the URL of instagram photo in ..."
+                          },
+                          {
+                            "title": "celebrities' favourite Instagram poses and the ... - The Sun",
+                            "link": "https://www.thesun.co.uk/news/11843276/celebrity-instagram-poses-hidden-meanings/",
+                            "description": "1 day ago - Elizabeth Hurley posed in the bath with her arms in the air to mark her 55th birthday on InstagramCredit: Instagram. And other stars are striking ..."
+                          },
+                          {
+                            "title": "Gronk bids farewell to Mr. Stache on Instagram - Bucs Wire",
+                            "link": "https://bucswire.usatoday.com/2020/06/11/gronk-bids-farewell-to-mr-stache-on-instagram/",
+                            "description": "21 hours ago - Bucs TE Rob Gronkowski bid farewell to his hairy companion Mr. Stache today on Instagram."
+                          },
+                          {
+                            "title": "How to get 5000 followers on instagram - Wafels",
+                            "link": "http://wafels.be/xmpj7/how-to-get-5000-followers-on-instagram.html",
+                            "description": "100k free Instagram likes and free Instagram followers! Home Free Instagram Likes And Followers Welcome to FREEGramLikes. The free likes will increase your ..."
+                          },
+                          {
+                            "title": "Follow Coach On Instagram For Video Workouts From Top PTs",
+                            "link": "https://www.coachmag.co.uk/home-workouts/8596/follow-coach-on-instagram-for-video-workouts-from-top-pts",
+                            "description": "17 hours ago - Need some training inspiration? You'll find workouts for all levels on our Instagram page."
+                          },
+                          {
+                            "title": "Feds: Alameda man posed as teen girl on Instagram to lure boys",
+                            "link": "https://www.mercurynews.com/feds-alameda-man-posed-as-teen-girl-on-instagram-to-lure-boys",
+                            "description": "7 hours ago - OAKLAND — Federal prosecutors have charged an Alameda County man with posing as a 14-year-old girl on Instagram in order to lure boys ..."
+                          },
+                          {
+                            "title": "Does instagram track location - Salmon River Brewery",
+                            "link": "http://salmonriverbrewery.com/qzdrls/does-instagram-track-location.html",
+                            "description": "In this post, I share the step-by-step instructions on how to create a new location on Instagram. In online mode, the App will use cell towers to determine the ..."
+                          },
+                          {
+                            "title": "St. John's University fires coach after racist comments leak on ...",
+                            "link": "https://qns.com/story/2020/06/12/st-johns-university-fires-coach-after-racist-comments-leak-on-instagram/",
+                            "description": "5 hours ago - In the Zoom segment leaked to Instagram on June 10, Vaksman says, “Because most of the trouble coming from where? From black people."
+                          },
+                          {
+                            "title": "Volunteers Add Captions To Black Lives Matter Instagram ...",
+                            "link": "https://www.capradio.org/articles/2020/06/12/volunteers-add-captions-to-black-lives-matter-instagram-videos-to-help-hard-of-hearing-community/",
+                            "description": "46 mins ago - The app has a usability issue for hearing-impaired people and doesn't caption videos. In response, at least one Instagram account is manually ..."
+                          },
+                          {
+                            "title": "102 Black Instagram Accounts to Follow for Home Design ...",
+                            "link": "https://www.countryliving.com/life/inspirational-stories/a32791453/black-instagram-accounts-interior-designers-crafters/",
+                            "description": "8 hours ago - This list of 102 Black makers, crafters, designers, gardeners, and musicians will help enrich your Instagram feed and support Black-owned ..."
+                          },
+                          {
+                            "title": "Harford real estate agent under fire for racially insensitive ...",
+                            "link": "https://www.baltimoresun.com/maryland/harford/aegis/cng-ag-racist-realtor-20200612-possnm52rfh7je43f6jlg7pq7m-story.html",
+                            "description": "5 hours ago - In several Instagram posts, some dating back to at least 2016, Realtor Ryan Jones used language that many online found offensive. In once ..."
+                          },
+                          {
+                            "title": "300+ Best Instagram Captions for Your Photos & Selfies - Oberlo",
+                            "link": "https://www.oberlo.com/blog/instagram-captions",
+                            "description": "Jul 3, 2019 - Want to find the best Instagram captions? Whether you like cool captions or need selfie quotes for your photos, you'll find a mega list of captions ..."
+                          },
+                          {
+                            "title": "Instagram sped up rollout on its new feature that lets friends ...",
+                            "link": "https://markets.businessinsider.com/news/stocks/instagram-co-watching-feature-group-video-calling-sharing-posts-coronavirus-2020-3-1029027937",
+                            "description": "Mar 24, 2020 - Instagram has launched a new feature called Co-Watching that allows users to share photos and videos over video chat to watch together."
+                          },
+                          {
+                            "title": "Royal landmark: Touching message in Prince Charles' first ...",
+                            "link": "https://www.express.co.uk/news/royal/1294044/prince-charles-latest-royal-family-news-instagram-social-media-queen-elizabeth-spt",
+                            "description": "2 days ago - PRINCE CHARLES last year upped his social media game and posted his first ever photograph to Instagram to commemorate the creation of ..."
+                          },
+                          {
+                            "title": "marchroute-instagram-1024x1024.png | AFSCME at Work",
+                            "link": "https://wfse.org/file/23503",
+                            "description": "marchroute-instagram-1024x1024.png. Privacy Policy | Log In. © American Federation of State, County and Municipal Employees, AFL–CIO."
+                          },
+                          {
+                            "title": "INDIVIDUAL, TECHNOLOGICAL, SOCIO ... - Acumen",
+                            "link": "http://acumen.lib.ua.edu/content/u0015/0000001/0002349/u0015_0000001_0002349.pdf",
+                            "description": "Instagram users can set their privacy settings such that their posted photos and videos are available only to their own followers and require approval from the user ..."
+                          },
+                          {
+                            "title": "Instagram post of kjellandersjoberg on 2019-11-08 10:34:16 ...",
+                            "link": "https://kjellandersjoberg.se/journal/posts/instagram_2172559166213048498_1387743716/74914119_126573782092340_6580899078930915549_n/",
+                            "description": "8 Nov 2019 — Instagram. “Rethink forgotten and abandoned places; places that have the potential of becoming something better. Refine and transform rather ..."
+                          },
+                          {
+                            "title": "City branding on Instagram: DMOs and their usage of ... - DiVA",
+                            "link": "https://www.diva-portal.org/smash/get/diva2:1038452/FULLTEXT01.pdf",
+                            "description": "Jul 1, 2016 - This thesis aims to find out how. Leeuwarden and Amsterdam, two cities in the Netherlands, are utilising Instagram by using affordances ..."
+                          },
+                          {
+                            "title": "Personalisation on Instagram - Lund University Publications",
+                            "link": "http://lup.lub.lu.se/student-papers/record/8945953/file/8945962.pdf",
+                            "description": "May 24, 2018 - To achieve this aim a quantitative content analysis of prominent Swedish politicians' Instagram posts (n=1641) was conducted. The findings show."
+                          },
+                          {
+                            "title": "Instagram has launched its own take on Live Video and ...",
+                            "link": "https://www.techradar.com/in/news/instagram-has-launched-its-own-take-on-live-video-and-messaging",
+                            "description": "Nov 21, 2016 - Instagram is rolling out new live video and messaging features with a temporary twist."
+                          },
+                          {
+                            "title": "Bachelor Thesis “A comparison of Facebook and Instagram ...",
+                            "link": "http://essay.utwente.nl/78313/1/Klink%20Deborah_BA_PSY.pdf",
+                            "description": "“A comparison of Facebook and Instagram concerning emotions regarding, and identification with an automatically generated autobiography”. Deborah Klink."
+                          },
+                          {
+                            "title": "Styling for Instagram : Leela Cyd : 9782888933502",
+                            "link": "https://www.bookdepository.com/Styling-for-Instagram-Leela-Cyd/9782888933502",
+                            "description": "Feb 21, 2018 - Styling for Instagram by Leela Cyd, 9782888933502, available at Book Depository with free delivery worldwide."
+                          },
+                          {
+                            "title": "#muscleup and related hashtags on Instagram - TagsFinder.com",
+                            "link": "https://www.tagsfinder.com/en-us/related/muscleup/",
+                            "description": "Next related hashtags on Instagram used with word muscleup are fit training gymnastics strong strength streetworkout shredded fitfam pullups abs ..."
+                          },
+                          {
+                            "title": "Volkswagen resists firing responsible employees despite ...",
+                            "link": "https://ktla.com/news/nationworld/volkswagen-resists-firing-responsible-employees-despite-racist-instagram-ad/",
+                            "description": "1 day ago - The German company apologized last month for the ad promoting its new Golf 8 and removed it from its official Instagram page. The world's ..."
+                          },
+                          {
+                            "title": "16 Best Instagram Story Template images ... - Pinterest",
+                            "link": "https://www.pinterest.com/amandairyn/instagram-story-template/",
+                            "description": "Hangout this or that Instagram Story Templates TEMPLATE STORIES DO INSTAGRAM MINHA QUARENTENA EM GIFS bsf list questions snapchat #bsf #list # ..."
+                          },
+                          {
+                            "title": "Product placement on Instagram - University of Tilburg",
+                            "link": "http://arno.uvt.nl/show.cgi?fid=150748",
+                            "description": "Instagram is the most popular social media platform for influencer marketing (Mohsin, 2019). The platform is mostly used by influencers and consumers who ..."
+                          },
+                          {
+                            "title": "Instagram's measure shows fragility of Western freedom: Spox ...",
+                            "link": "https://en.irna.ir/news/83282774/Instagram-s-measure-shows-fragility-of-Western-freedom-Spox",
+                            "description": "Apr 17, 2019 - Tehran, April 17, IRNA - Iran's Foreign Ministry spokesman condemned the Instagram social network in blocking accounts of some of the ..."
+                          },
+                          {
+                            "title": "Francis Ball's Descendants: Or, The West Springfield Ball ...",
+                            "link": "https://books.google.com/books?id=n6wwAAAAMAAJ&pg=PA21&lpg=PA21&dq=instagram&source=bl&ots=jGNZTJ2MuK&sig=ACfU3U2peJK2j-4F3MLjDyRfWMWBZEuZGQ&hl=en&sa=X&ved=2ahUKEwjt3fTus_3pAhXsgnIEHTjKBZcQ6AEwc3oECHEQAQ",
+                            "description": "Instagram Wall § - Benjanin Ball La rede det to aoh - Ency King FRANCIS BALL ' S DESCENDANTS . SCENDANTS . 21 . 21 . fully , 96 years of age . Children : 3 ..."
+                          },
+                          {
+                            "title": "FAIR USE ON INSTAGRAM Transformative Self ... - HeinOnline",
+                            "link": "https://heinonline.org/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/saclj31&section=10",
+                            "description": "Feb 22, 2019 - refer to Instagram posts building upon or reproducing existing copyrighted works. The extent to which UGC must be original to attract copyright ..."
+                          },
+                          {
+                            "title": "Instagram – Sophia Anderberg Statistics - Dagens Industri",
+                            "link": "https://annons.di.se/en-no/influencers/sophia-anderberg-3710/stats/instagram-6066",
+                            "description": "99 111 total followers. Source: Instagram. Created with Highcharts 5.0.14 Followers Jan 24 Jan 26 Jan 28 Jan 30 0 60,000 120,000. Days Weeks ..."
+                          },
+                          {
+                            "title": "Instagram – Emily Slotte Statistics",
+                            "link": "http://advertise.bonniermag.se/en/influencers/emily-slotte-2630/stats/instagram-5443",
+                            "description": "Source: Instagram. Created with Highcharts 5.0.14 Followers Apr … Apr 22 Apr 24 Apr 26 Apr 28 Apr 30 May 2 May 4 May 6 May 8 May 10 May 12 May 14 May ..."
+                          },
+                          {
+                            "title": "Justin Trudeau, Instagram, and Celebrity Politics - SAGE ...",
+                            "link": "https://journals.sagepub.com/doi/pdf/10.1177/0002764217744838",
+                            "description": "Aug 2, 2016 - He is the first prime minister of the Instagram age. —Andrew-Gee (2016). While Barack Obama partly transformed dynamics of digital politicking in ..."
+                          },
+                          {
+                            "title": "Instagram - Giga",
+                            "link": "https://www.giga.de/downloads/instagram/",
+                            "description": "Jun 29, 2017 - Instagram Download. Instagram ist eine kostenlose App für euer Smartphone – egal ob Android oder iOS. Mit diesen Links könnt ihr Instagram ..."
+                          },
+                          {
+                            "title": "HIGHER EDUCATION PRIORITIES REFLECTED THROUGH ...",
+                            "link": "http://search.proquest.com/openview/89d5556d32104dfcb0bd10ca744824e5/1.pdf?pq-origsite=gscholar&cbl=18750&diss=y",
+                            "description": "INDEX WORDS: admissions, advertising diversity, enrollment management, higher education, Facebook, Instagram, marketing, social media ..."
+                          },
+                          {
+                            "title": "how online food photos on instagram influence ... - TU e-Thesis",
+                            "link": "http://ethesisarchive.library.tu.ac.th/thesis/2018/TU_2018_6002040811_10316_9982.pdf",
+                            "description": "Keywords: Online food photo, Instagram food photo, Intent to visit restaurant,. Perception on price of food, Experimental study. Ref. code: 25616002040811UKW ..."
+                          },
+                          {
+                            "title": "Download PDF - MDPI",
+                            "link": "https://www.mdpi.com/1999-5903/7/1/67/pdf",
+                            "description": "Mar 23, 2015 - Instagram, LinkedIn, Facebook and Google+, where more personal information was leaked. The tools used are discussed, the results of the ..."
+                          },
+                          {
+                            "title": "Annual Report of the Indiana State Board of Agriculture",
+                            "link": "https://books.google.com/books?id=_ulMAAAAYAAJ&pg=PA16&lpg=PA16&dq=instagram&source=bl&ots=Png5FuqqZQ&sig=ACfU3U0jNcpVhT_oXqjbGx_zmB0honn_lA&hl=en&sa=X&ved=2ahUKEwjt3fTus_3pAhXsgnIEHTjKBZcQ6AEwfHoECHIQAQ",
+                            "description": "... in a newspaper or in handbills , at least one month previous to the day of exhibition . - instagram : Fifth . All articles offered for premiums must be owned 16."
+                          },
+                          {
+                            "title": "The old fairy tales [retold]. - Page 61 - Google Books Result",
+                            "link": "https://books.google.com/books?id=IP4BAAAAQAAJ&pg=PA61&lpg=PA61&dq=instagram&source=bl&ots=4jV1WgChNM&sig=ACfU3U0mJZ807miNyU33EV3XjibRhKOT6g&hl=en&sa=X&ved=2ahUKEwjt3fTus_3pAhXsgnIEHTjKBZcQ6AEwfXoECHQQAQ",
+                            "description": "que en un entorn ace 5 a IN I - Puiululla A r e na instagram Phim TORTEMS y aura leygull dhe s hume selon vin ro \" ; W HERE was once an honest gentleman ..."
+                          },
+                          {
+                            "title": "Report of the Department of Forestry of the State of ...",
+                            "link": "https://books.google.com/books?id=XL4WAAAAYAAJ&pg=PA61&lpg=PA61&dq=instagram&source=bl&ots=uvgXITH7Qy&sig=ACfU3U1lFKEffyOIa6D3xQGpqCfvBJAXDA&hl=en&sa=X&ved=2ahUKEwjt3fTus_3pAhXsgnIEHTjKBZcQ6AEwfnoECHMQAQ",
+                            "description": "Slate Run , Snow Shoe , Stone , . . . . . . . . . . . . . fontos a : 58 n Forow the ori ca serbest CONAS OO A DONOS X o SPOR OT * * * 200 I ' m going on instagram : ."
+                          }
+                        ],
+                        "total": 93,
+                        "answer": null
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "query",
+            "in": "path",
+            "required": true,
+            "description": "A url encoded query string, for reference checkout https://moz.com/blog/the-ultimate-guide-to-the-google-search-parameters"
+          }
+        ]
+      }
+    },
+    "components": {
+      "schemas": {
+        "HTTPValidationError": {
+          "title": "HTTPValidationError",
+          "type": "object",
+          "properties": {
+            "detail": {
+              "title": "Detail",
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              }
+            }
+          }
+        },
+        "ValidationError": {
+          "title": "ValidationError",
+          "required": ["loc", "msg", "type"],
+          "type": "object",
+          "properties": {
+            "loc": {
+              "title": "Location",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "msg": {
+              "title": "Message",
+              "type": "string"
+            },
+            "type": {
+              "title": "Error Type",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "id": "googio/googio@d6fdca5e"
+}

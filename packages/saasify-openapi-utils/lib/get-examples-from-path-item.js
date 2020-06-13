@@ -2,6 +2,7 @@
 
 const pick = require('lodash.pick')
 const stringify = require('fast-json-stable-stringify')
+const isHttpMethod = require('./is-http-method')
 
 const jsonContentType = 'application/json'
 
@@ -19,7 +20,9 @@ module.exports = async (pathItem, httpMethod) => {
   let hasOperationParams = false
   let examples = []
 
-  for (const method of Object.keys(pathItem)) {
+  const httpMethods = Object.keys(pathItem).filter(isHttpMethod)
+
+  for (const method of httpMethods) {
     if (httpMethod && method.toLowerCase() !== httpMethod.toLowerCase()) {
       continue
     }

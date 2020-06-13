@@ -8,6 +8,7 @@ const test = require('ava')
 const convertSaasifyToOpenAPI = require('saasify-to-openapi')
 const annotateOpenAPI = require('./annotate-openapi')
 const openapiHeaderBlacklist = require('./openapi-header-blacklist')
+const isHttpMethod = require('./is-http-method')
 
 const fixtures = globby.sync('./fixtures/deployments/*.json')
 
@@ -29,8 +30,9 @@ for (const fixture of fixtures) {
 
     for (const path of Object.keys(fullSpec.paths)) {
       const pathItem = fullSpec.paths[path]
+      const httpMethods = Object.keys(pathItem).filter(isHttpMethod)
 
-      for (const httpMethod of Object.keys(pathItem)) {
+      for (const httpMethod of httpMethods) {
         const op = pathItem[httpMethod]
 
         if (op.parameters) {
