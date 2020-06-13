@@ -12,7 +12,6 @@
 
 - [saasify-faas-sdk](./saasify-faas-sdk) - HTTP client for invoking Saasify FaaS.
 - [saasify-provider-sdk](./saasify-provider-sdk) - JS SDK for the Saasify Provider API.
-- [saasify-sdk](./saasify-sdk) - Client-side iframe embedding SDK for Saasify.
 - [saasify-faas-proxy](./saasify-faas-proxy) - Customizable FaaS proxy which can be deployed in front of a Saasify FaaS.
 
 ## User-facing
