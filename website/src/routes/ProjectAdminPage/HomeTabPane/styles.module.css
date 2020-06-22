@@ -10,3 +10,11 @@
 .externalDeploymentLink:last-child {
   margin-bottom: 0;
 }
+
+.secret {
+  margin-bottom: 1em;
+}
+
+.secret:last-child {
+  margin-bottom: 0;
+}

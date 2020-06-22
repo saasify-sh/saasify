@@ -22,6 +22,9 @@ export class HomeTabPane extends Component {
   @observable
   _copiedSecretToClipboard = false
 
+  @observable
+  _copiedProviderTokenToClipboard = false
+
   @computed get _name() {
     const { lastPublishedDeployment } = this.props.project
 
@@ -93,6 +96,27 @@ export class HomeTabPane extends Component {
             </Tooltip>
           </div>
         )}
+
+        {project._providerToken && (
+          <div className={styles.secret}>
+            <Tooltip
+              placement='top'
+              title={
+                this._copiedProviderTokenToClipboard
+                  ? 'Copied!'
+                  : 'Copy to clipboard'
+              }
+            >
+              <Button
+                type='primary'
+                ghost
+                onClick={this._onClickCopyProviderToken}
+              >
+                {`Provider Token ${project._providerToken.substr(0, 8)} ...`}
+              </Button>
+            </Tooltip>
+          </div>
+        )}
       </TabPane>
     )
   }
@@ -105,9 +129,18 @@ export class HomeTabPane extends Component {
     this._copyTimeout = setTimeout(this._onCopyTimeout, 3000)
   }
 
+  _onClickCopyProviderToken = () => {
+    copyTextToClipboard(this.props.project._providerToken)
+
+    this._copiedProviderTokenToClipboard = true
+    this._clearCopyTimeout()
+    this._copyTimeout = setTimeout(this._onCopyTimeout, 3000)
+  }
+
   _onCopyTimeout = () => {
     this._clearCopyTimeout()
     this._copiedSecretToClipboard = false
+    this._copiedProviderTokenToClipboard = false
   }
 
   _clearCopyTimeout = () => {
