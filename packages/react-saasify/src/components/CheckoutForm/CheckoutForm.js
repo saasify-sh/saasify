@@ -41,6 +41,7 @@ export class CheckoutForm extends Component {
     loading: PropTypes.bool,
     title: PropTypes.string,
     action: PropTypes.node,
+    footer: PropTypes.node,
     className: PropTypes.string,
     config: PropTypes.object.isRequired
   }
@@ -65,6 +66,7 @@ class CheckoutFormImpl extends Component {
     loading: PropTypes.bool,
     title: PropTypes.string,
     action: PropTypes.node,
+    footer: PropTypes.node,
     className: PropTypes.string
   }
 
@@ -73,7 +75,7 @@ class CheckoutFormImpl extends Component {
   }
 
   render() {
-    const { config, loading, title, action, className } = this.props
+    const { config, loading, title, action, footer, className } = this.props
 
     return (
       <form
@@ -126,6 +128,8 @@ class CheckoutFormImpl extends Component {
             {action}
           </Button>
         )}
+
+        {footer}
       </form>
     )
   }
