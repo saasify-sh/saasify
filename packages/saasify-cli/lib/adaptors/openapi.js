@@ -20,10 +20,17 @@ module.exports = async (opts) => {
     throw new Error(`Error resolving OpenAPI spec: ${err.message}`)
   }
 
-  const serverUrl = process.env.SAASIFY_BACKEND_URL || config.backendUrl
+  const backendUrl = process.env.SAASIFY_BACKEND_URL || config.backendUrl
 
-  if (serverUrl) {
-    config.openapi.servers = [{ url: serverUrl }]
+  if (backendUrl) {
+    config.backendUrl = backendUrl
+    config.openapi.servers = [{ url: backendUrl }]
+  }
+
+  const backendDevUrl =
+    process.env.SAASIFY_BACKEND_DEV_URL || config.backendDevUrl
+  if (backendUrl) {
+    config.backendDevUrl = backendDevUrl
   }
 
   const openapi = await parseOpenAPI(config.openapi, { strict: true })

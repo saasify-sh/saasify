@@ -76,6 +76,13 @@
           },
           "title": "coupons"
         },
+        "webhooks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Webhook"
+          },
+          "title": "webhooks"
+        },
         "headers": {
           "type": "object",
           "title": "headers",
@@ -171,6 +178,25 @@
         "additionalProperties": false
       },
       "required": ["duration"]
+    },
+    "Webhook": {
+      "title": "Webhook",
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "title": "url"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "events"
+        },
+        "additionalProperties": false
+      },
+      "required": ["url"]
     },
     "Service": {
       "title": "Service",

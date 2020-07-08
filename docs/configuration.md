@@ -50,6 +50,9 @@ class Config {
 
   // optional API endpoint config
   services?: Service[]
+
+  // optional stripe webhooks
+  webhooks?: Webhook[]
 }
 ```
 
@@ -206,6 +209,23 @@ Refer to our [providers guide](providers.md) for details.
 Optional array of `Service` objects that customize your API's HTTP endpoints.
 
 Refer to our [services guide](services.md) for details.
+
+#### webhooks
+
+Optional array of `Webhook` objects to hook up to [Stripe's webhooks](https://stripe.com/docs/webhooks).
+
+Saasify will pass through normal, unsigned Stripe webhooks for events that are associated with your project.
+
+If `events` is empty or undefined, it will default to `['customer.subscription.updated']`. This is the most important webhook which will inform you when a customer's subscription has been updated. Most of the time, you'll want to listen for the [subscription status](https://stripe.com/docs/billing/subscriptions/overview#subscription-statuses) changing.
+
+The webhook's `POST` body will have the exact same structure as the original Stripe event, with the addition of Saasify-specific customer info in `event.data.customer`.
+
+```ts
+class Webhook {
+  url: string
+  events?: string[]
+}
+```
 
 #### saas
 

@@ -6,6 +6,17 @@
   letter-spacing: 2px;
   cursor: pointer;
   border-width: 2px;
+  transition: all 300ms ease;
+}
+
+.cta-button:hover {
+  transition: all 200ms ease;
+  transform: scale(1.05);
+}
+
+.cta-button:active {
+  transition: all 100ms ease;
+  transform: scale(1.03);
 }
 
 .inline {

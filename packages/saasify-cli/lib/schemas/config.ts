@@ -42,6 +42,9 @@ class Config {
 
   // optional API endpoint config
   services?: Service[]
+
+  // optional stripe webhooks
+  webhooks?: Webhook[]
 }
 
 class PricingPlan {
@@ -214,6 +217,11 @@ class Coupon {
 
   redeem_by?: string
   max_redemptions?: number
+}
+
+class Webhook {
+  url: string
+  events?: string[]
 }
 
 class Snippet {

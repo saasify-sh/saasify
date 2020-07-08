@@ -85,7 +85,7 @@ export class Section extends Component {
             <h5 className={theme(styles, 'subtitle')}>{subtitle}</h5>
           )}
 
-          {desc && <p className={theme(styles, 'desc')}>{desc}</p>}
+          {desc && <div className={theme(styles, 'desc')}>{desc}</div>}
 
           {children}
         </div>
