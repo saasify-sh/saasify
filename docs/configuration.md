@@ -53,6 +53,11 @@ class Config {
 
   // optional stripe webhooks
   webhooks?: Webhook[]
+
+  // optional proxy customization
+  // 'passive' => all calls will pass through with metadata as headers
+  // 'active' => saasify will block all calls with invalid or inactive subscriptions
+  proxyMode?: string = 'active'
 }
 ```
 

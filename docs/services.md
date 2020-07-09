@@ -20,14 +20,20 @@ Your customers can view and manage their auth token(s) from their client dashboa
 
 Authentication and authorization are handled transparently by Saasify's API gateway, so you can focus on your API's core functionality.
 
-Your downstream API will receive two additional headers for authenticated requests that you can use to customize your service's functionality:
+Your downstream API will receive a few additional headers for authenticated requests that you can use to customize your service's functionality:
 
 - `x-saasify-user` - String ID of the authenticated user making the API call.
 - `x-saasify-plan` - String slug of the pricing plan this user is subscribed to.
+- `x-saasify-subscription-enabled` - Whether or not the user's subscription is currently active and in good standing.
+- `x-saasify-subscription-status` - Stripe [subscription status](https://stripe.com/docs/billing/subscriptions/overview#subscription-statuses) of the authenticated user's subscription.
 
 For unauthenticated calls, these headers are guaranteed to not exist when Saasify's API gateway proxies these calls to your downstream API.
 
 Customers subscribed to the free tier will have a `x-saasify-plan` of `free`.
+
+If `proxyMode` is set to `active` (the default), then Saasify's proxy will block requests that don't have an active subscription. The HTTP status code Saasify responds with is `402: payment required`.
+
+If `proxyMode` is set to `passive`, then Saasify will pass all authenticated requests through to your backend API, and your application logic should handle `x-saasify-subscription-enabled` and `x-saasify-subscription-status`.
 
 <p align="center">
   <img src="./_media/undraw/security.svg" alt="Security" width="200" />
