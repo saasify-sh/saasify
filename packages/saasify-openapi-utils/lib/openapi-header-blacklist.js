@@ -3,6 +3,8 @@
 module.exports = new Set([
   'x-saasify-user',
   'x-saasify-plan',
+  'x-saasify-subscription-enabled',
+  'x-saasify-subscription-status',
   'x-saasify-user-email',
   'x-saasify-user-username',
   'x-saasify-user-name',
