@@ -96,6 +96,10 @@
           "title": "authProviders",
           "$ref": "#/definitions/AuthProviderMap"
         },
+        "proxyMode": {
+          "title": "proxyMode",
+          "enum": ["passive", "active"]
+        },
         "pricingPlans": {
           "type": "array",
           "minItems": 1,
