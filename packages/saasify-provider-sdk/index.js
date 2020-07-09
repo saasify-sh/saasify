@@ -26,6 +26,24 @@ module.exports = class SaasifyProviderSDK {
   }
 
   // --------------------------------------------------------------------------
+  // Customers
+  // --------------------------------------------------------------------------
+
+  async getUser(userId, params = {}) {
+    if (!userId) {
+      throw new Error(
+        'getCustomer missing required parameter "userId" (string id)'
+      )
+    }
+
+    return this._request({
+      url: `/1/provider/users/${userId}`,
+      method: 'get',
+      params
+    }).then((res) => res.data)
+  }
+
+  // --------------------------------------------------------------------------
   // Metered billing usage
   // --------------------------------------------------------------------------
 
