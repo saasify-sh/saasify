@@ -49,7 +49,7 @@ class Config {
   // optional proxy customization
   // 'passive' => all calls will pass through with metadata as headers
   // 'active' => saasify will block all calls with invalid or inactive subscriptions
-  proxyMode?: string
+  proxyMode?: string = 'active'
 }
 
 class PricingPlan {
