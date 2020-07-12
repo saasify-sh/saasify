@@ -74,7 +74,6 @@ class Config {
 
   // optional pricing config
   pricingPlans?: PricingPlan[]
-  coupons?: Coupon[]
 }
 
 class PricingPlan {
@@ -123,20 +122,6 @@ class PricingPlanTier {
   unitAmount?: number
   flatAmount?: number
   upTo: string
-}
-
-class Coupon {
-  name?: string
-
-  currency?: string
-  amount_off?: number
-  percent_off?: number
-
-  duration: string
-  duration_in_months?: number
-
-  redeem_by?: string
-  max_redemptions?: number
 }
 
 class RateLimit {
