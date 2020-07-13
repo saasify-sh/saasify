@@ -708,6 +708,82 @@ module.exports = class SaasifyClient {
   }
 
   // --------------------------------------------------------------------------
+  // Affiliate Campaigns
+  // --------------------------------------------------------------------------
+
+  async createAffiliateCampaign(data) {
+    return this._request({
+      url: `/1/affiliate-campaigns`,
+      method: 'post',
+      params: this._params,
+      data
+    }).then((res) => res.data)
+  }
+
+  async getAffiliateCampaign(id) {
+    return this._request({
+      url: `/1/affiliate-campaigns/${id}`,
+      params: this._params
+    }).then((res) => res.data)
+  }
+
+  async updateAffiliateCampaign(campaign) {
+    return this._request({
+      url: `/1/affiliate-campaigns/${campaign.id}`,
+      params: this._params,
+      method: 'put'
+    }).then((res) => res.data)
+  }
+
+  async listAffiliateCampaigns(opts) {
+    return this._request({
+      url: `/1/affiliate-campaigns`,
+      params: {
+        ...this._params,
+        ...opts
+      }
+    }).then((res) => res.data)
+  }
+
+  // --------------------------------------------------------------------------
+  // Affiliates
+  // --------------------------------------------------------------------------
+
+  async createAffiliate(data) {
+    return this._request({
+      url: `/1/affiliates`,
+      method: 'post',
+      params: this._params,
+      data
+    }).then((res) => res.data)
+  }
+
+  async getAffiliate(id) {
+    return this._request({
+      url: `/1/affiliates/${id}`,
+      params: this._params
+    }).then((res) => res.data)
+  }
+
+  async updateAffiliate(affiliate) {
+    return this._request({
+      url: `/1/affiliates/${affiliate.id}`,
+      params: this._params,
+      method: 'put'
+    }).then((res) => res.data)
+  }
+
+  async listAffiliates(opts) {
+    return this._request({
+      url: `/1/affiliates`,
+      params: {
+        ...this._params,
+        ...opts
+      }
+    }).then((res) => res.data)
+  }
+
+  // --------------------------------------------------------------------------
   // Uploads
   // --------------------------------------------------------------------------
 

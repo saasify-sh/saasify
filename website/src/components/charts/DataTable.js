@@ -93,12 +93,7 @@ export class DataTable extends React.Component {
     )
   }
 
-  _renderTable = (Component, props) => ({
-    resultSet,
-    error,
-    loadingState,
-    ...rest
-  }) => {
+  _renderTable = (Component, props) => ({ resultSet, error, loadingState }) => {
     if (error) {
       // TODO
       return error.toString()
