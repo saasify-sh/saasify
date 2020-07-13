@@ -720,10 +720,13 @@ module.exports = class SaasifyClient {
     }).then((res) => res.data)
   }
 
-  async getAffiliateCampaign(id) {
+  async getAffiliateCampaign(id, opts) {
     return this._request({
       url: `/1/affiliate-campaigns/${id}`,
-      params: this._params
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then((res) => res.data)
   }
 
@@ -758,10 +761,23 @@ module.exports = class SaasifyClient {
     }).then((res) => res.data)
   }
 
-  async getAffiliate(id) {
+  async getAffiliate(id, opts) {
     return this._request({
       url: `/1/affiliates/${id}`,
-      params: this._params
+      params: {
+        ...this._params,
+        ...opts
+      }
+    }).then((res) => res.data)
+  }
+
+  async getAffiliateByCampaign(campaignId, opts) {
+    return this._request({
+      url: `/1/affiliate-campaigns/${campaignId}/affiliate`,
+      params: {
+        ...this._params,
+        ...opts
+      }
     }).then((res) => res.data)
   }
 

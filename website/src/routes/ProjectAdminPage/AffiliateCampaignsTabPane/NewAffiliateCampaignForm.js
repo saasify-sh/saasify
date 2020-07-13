@@ -147,8 +147,8 @@ export class NewAffiliateCampaignForm extends Component {
     )
   }
 
-  _onSubmit = (e) => {
-    e.preventDefault()
+  _onSubmit = (event) => {
+    event.preventDefault()
 
     this.props.form.validateFields((err, data) => {
       if (!err) {
