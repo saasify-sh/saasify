@@ -106,7 +106,7 @@ class CheckoutFormImpl extends Component {
           <CardElement {...createOptions()} />
         </label>
 
-        {config?.deployment?.areCouponsEnabled && (
+        {config?.deployment?.enableCoupons && (
           <label className={theme(styles, 'label')}>
             Promo Code
             <input

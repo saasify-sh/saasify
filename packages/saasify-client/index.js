@@ -398,6 +398,16 @@ module.exports = class SaasifyClient {
     }).then((res) => res.data)
   }
 
+  async getCouponForConsumer(consumerId, couponId, opts) {
+    return this._request({
+      url: `/1/consumers/${consumerId}/coupons/${couponId}`,
+      params: {
+        ...this._params,
+        ...opts
+      }
+    }).then((res) => res.data)
+  }
+
   // --------------------------------------------------------------------------
   // Deployments
   // --------------------------------------------------------------------------

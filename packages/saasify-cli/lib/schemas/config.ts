@@ -16,7 +16,7 @@ class Config {
 
   // optional pricing config
   pricingPlans?: PricingPlan[]
-  areCouponsEnabled?: boolean
+  enableCoupons?: boolean
 
   // optional version info
   saasifyVersion?: number = 1
