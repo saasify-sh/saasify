@@ -24,7 +24,6 @@ export class AffiliateCampaignPage extends Component {
   _affiliate = null
 
   @observable
-  @observable
   _loading = true
 
   @observable

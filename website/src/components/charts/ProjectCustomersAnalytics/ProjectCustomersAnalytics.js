@@ -2,7 +2,7 @@ import React from 'react'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import { format } from 'date-fns'
-import { Select, Tag } from 'react-saasify'
+import { Select, Tag, Tooltip } from 'react-saasify'
 import cs from 'classnames'
 
 import { DataChart } from '../DataChart'
@@ -150,6 +150,7 @@ export class ProjectCustomersAnalytics extends React.Component {
                 'Consumers.username',
                 'Consumers.email',
                 'Consumers.plan',
+                'Consumers.status',
                 'Consumers.enabled'
               ],
               order: {
@@ -158,10 +159,22 @@ export class ProjectCustomersAnalytics extends React.Component {
             })}
             totalMeasure='Consumers.count'
             columnTransforms={{
-              'Consumers.id': () => null,
+              'Consumers.id': (c) => ({
+                ...c,
+                render: (id) => <pre>{id}</pre>
+              }),
               'Consumers.createdAt': (c) => ({
                 ...c,
                 render: (v) => format(new Date(v), 'yyyy-MM-dd h:mm a')
+              }),
+              'Consumers.status': (c) => ({
+                ...c,
+                render: (status) =>
+                  status && (
+                    <Tooltip title='Stripe subscription status'>
+                      {status}
+                    </Tooltip>
+                  )
               }),
               'Consumers.enabled': (c) => ({
                 ...c,
