@@ -140,6 +140,7 @@ export class ProjectCustomersAnalytics extends React.Component {
           <h4 className={styles.h4}>Customers</h4>
 
           <DataTable
+            rowKey='Consumers.id'
             query={getQuery({
               projectId: project.id,
               dateRange: this._dateRange,
@@ -172,7 +173,7 @@ export class ProjectCustomersAnalytics extends React.Component {
                 render: (status) =>
                   status && (
                     <Tooltip title='Stripe subscription status'>
-                      {status}
+                      <span>{status}</span>
                     </Tooltip>
                   )
               }),

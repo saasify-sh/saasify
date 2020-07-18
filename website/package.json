@@ -30,8 +30,8 @@
     "oss"
   ],
   "dependencies": {
-    "@cubejs-client/core": "^0.18.0",
-    "@cubejs-client/react": "^0.18.0",
+    "@cubejs-client/core": "^0.19.51",
+    "@cubejs-client/react": "^0.19.51",
     "antd": "^3.26.6",
     "bizcharts": "^3.5.7",
     "copy-text-to-clipboard": "^2.2.0",

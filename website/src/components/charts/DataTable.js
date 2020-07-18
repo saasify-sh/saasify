@@ -44,9 +44,9 @@ const tableRender = ({
     <Table
       pagination={false}
       bordered
-      rowKey={rowKey}
       columns={columns}
       dataSource={dataSource}
+      rowKey={rowKey}
       {...rest}
     />
   )
