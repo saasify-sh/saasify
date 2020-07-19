@@ -16827,6 +16827,11 @@ strip-json-comments@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.0.1.tgz#85713975a91fb87bf1b305cca77395e40d2a64a7"
 
+stripe-coupon-to-string@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/stripe-coupon-to-string/-/stripe-coupon-to-string-0.1.2.tgz#5867cf219ef312256767295e3d3752e4465e775e"
+  integrity sha512-jUqXurP325Pc0OsSvOj/Bh+DU8rGusl/8bGK7auQHmkT4l3xlb7fKvE6fqY99d9IfGsT415fATt+a8phUzF9EA==
+
 stripe@^7.6.0:
   version "7.15.0"
   resolved "https://registry.yarnpkg.com/stripe/-/stripe-7.15.0.tgz#03593caec169b698997c091b07d21da701eeee18"
