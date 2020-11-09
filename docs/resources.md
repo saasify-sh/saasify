@@ -22,7 +22,7 @@ In the future, Saasify's goal is to help answer some of these questions for you,
 - [GitHub Actions](https://github.com/features/actions) - Lots of solid ideas for niche developer tool automations that could work well as Micro SaaS products.
 - [Top Dashdash integrations](https://dashdash.com/integrations) - Dashdash is similar to Zapier and their list of featured integrations is a great place to gather inspiration.
 - [SaaSHub](https://www.saashub.com/) - Curated collection of existing SaaS products.
-- [Machine Learning Models](https://uber.github.io/ludwig/examples/) - Curated collection of pre-built machine learning models from Uber.
+- [Machine Learning Models](https://ludwig-ai.github.io/ludwig-docs/examples/) - Curated collection of pre-built machine learning models from Uber.
 - [Automation ideas](https://phantombuster.com/phantombuster) - Validated, niche automation product ideas.
 
 !> **Don't worry if there are existing products and solutions that offer similar functionality to your SaaS idea**. This is actually a really good thing because it helps to validate that there is a market willing to pay for your product! Competitive research is an important part of building a successful SaaS product, and understanding the landscape of existing solutions will help you narrow down your unique value proposition and find gaps in the market.
