@@ -176,7 +176,7 @@ Congratulations -- You just launched your very own, self-contained SaaS product!
 Now that you have a solid overview, here are some areas to check out next:
 
 - [Examples](examples.md) - A growing list of open source examples to help get you started.
-- [Use cases](case-cases.md) - A brainstorm of different SaaS product ideas as inspiration.
+- [Use cases](use-cases.md) - A brainstorm of different SaaS product ideas as inspiration.
 - [Pricing](pricing.md) - Customize your product's pricing.
 - [Configuration](configuration.md) - Fine-grained customization of your product.
   <!-- - [Stripe Connect](stripe-connect.md) - Connect your Stripe Account. -->
