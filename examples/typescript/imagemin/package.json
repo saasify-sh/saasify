@@ -7,7 +7,7 @@
   "author": "Saasify <dev@saasify.sh>",
   "license": "MIT",
   "dependencies": {
-    "file-type": "^12.1.0",
+    "file-type": "^16.5.4",
     "fts-core": "^1.1.0",
     "fts-http": "^1.3.0",
     "got": "^9.6.0",
