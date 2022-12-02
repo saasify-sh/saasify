@@ -1,3 +1,10 @@
+# 2022 Update
+
+> **Note**
+> As of January 2022, The Saasify platform has been [shut down](https://transitivebullsh.it/saasify-status). For a retrospective on why we’re shutting down and lessons learned along the way, see: [key takeways](https://transitivebullsh.it/saasify-key-takeaways) and [VC feedback](https://transitivebullsh.it/saasify-vc-feedback).
+
+---
+
 <p align="center">
   <a href="https://saasify.sh" title="Saasify">
     <img src="https://docs.saasify.sh/_media/logo.png" alt="Saasify Logo" width="256" />
